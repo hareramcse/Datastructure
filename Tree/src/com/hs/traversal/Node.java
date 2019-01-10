@@ -1,11 +1,11 @@
 package com.hs.traversal;
 
 public class Node {
-	Node left;
-	Node right;
 	int data;
+	Node left, right, next;
 
-	Node(int data) {
-		this.data = data;
+	public Node(int item) {
+		data = item;
+		left = right = next = null;
 	}
 }
