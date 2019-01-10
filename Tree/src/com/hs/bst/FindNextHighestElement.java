@@ -86,11 +86,12 @@ public class FindNextHighestElement {
 		bst.insert(9);
 		bst.insert(3);
 		bst.insert(14);
+		bst.insert(1);
 
 		bst.printDataInOrder(root);
 
-		System.out.print("Next highest element of 3 is ");
-		System.out.println(bst.searchNextHighestElement(3).data);
+		System.out.print("Next highest element of 1 is ");
+		System.out.println(bst.searchNextHighestElement(1).data);
 
 		System.out.println();
 	}

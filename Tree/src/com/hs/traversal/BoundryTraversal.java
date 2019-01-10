@@ -25,8 +25,8 @@ public class BoundryTraversal {
 	void printRightBoundry(Node root) {
 		if (root != null) {
 			if (root.right != null) {
-				printLeftBoundry(root.right);
 				System.out.println(root.data);
+				printLeftBoundry(root.right);
 			}
 		}
 	}

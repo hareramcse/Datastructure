@@ -16,7 +16,8 @@ public class IndexOfZeroReplaceWithOneToGetMaxContinousSeq {
 			// If current element is 0, then calculate the difference
 			// between curr and prev_prev_zero
 			if (arr[curr] == 0) {
-				// Update result if count of 1s around prev_zero is more
+				// If the difference between curr and prev_prev_zero is more than maximum so
+				// far, then update the maximum.
 				if (curr - prev_prev_zero > max_count) {
 					max_count = curr - prev_prev_zero;
 					max_index = prev_zero;
@@ -37,7 +38,7 @@ public class IndexOfZeroReplaceWithOneToGetMaxContinousSeq {
 
 	// Driver program to test above function
 	public static void main(String[] args) {
-		int arr[] = { 1, 1, 1, 0, 1};
+		int arr[] = { 1, 0, 1, 1, 1, 0, 1, 1, 0, 1 };
 		int n = arr.length;
 		System.out.println("Index of 0 to be replaced is " + maxOnesIndex(arr, n));
 	}

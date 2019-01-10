@@ -4,13 +4,10 @@ public class Trie {
 	static TrieNode root;
 
 	static void insert(String key) {
-		int level;
-		int length = key.length();
-		int index;
-
 		TrieNode pCrawl = root;
-		for (level = 0; level < length; level++) {
-			index = key.charAt(level) - 'a';
+		
+		for (int level = 0; level < key.length(); level++) {
+			int index = key.charAt(level) - 'a';
 			if (pCrawl.children[index] == null) {
 				pCrawl.children[index] = new TrieNode();
 			}
@@ -20,13 +17,10 @@ public class Trie {
 	}
 
 	static boolean search(String key) {
-		int level;
-		int length = key.length();
-		int index;
 		TrieNode pCrawl = root;
 
-		for (level = 0; level < length; level++) {
-			index = key.charAt(level) - 'a';
+		for (int level = 0; level < key.length(); level++) {
+			int index = key.charAt(level) - 'a';
 			if (pCrawl.children[index] == null) {
 				return false;
 			}
@@ -37,7 +31,7 @@ public class Trie {
 
 	public static void main(String args[]) {
 		// Input keys (use only 'a' through 'z' and lower case)
-		String keys[] = { "the"};
+		String keys[] = { "the" };
 
 		String output[] = { "Not present in trie", "Present in trie" };
 

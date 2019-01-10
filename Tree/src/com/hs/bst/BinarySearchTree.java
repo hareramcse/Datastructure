@@ -3,18 +3,6 @@ package com.hs.bst;
 import java.util.LinkedList;
 import java.util.List;
 
-class Node {
-	int data;
-	Node left;
-	Node right;
-
-	Node(int data) {
-		this.data = data;
-		this.left = null;
-		this.right = null;
-	}
-}
-
 public class BinarySearchTree {
 	public static Node root = null;
 

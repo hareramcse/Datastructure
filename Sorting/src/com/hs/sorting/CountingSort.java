@@ -2,7 +2,7 @@ package com.hs.sorting;
 
 public class CountingSort {
 	private static void countingSort(int arr[]) {
-		int array[] = new int[10];
+		int array[] = new int[arr.length];
 
 		for (int i = 0; i < arr.length; i++) {
 			array[arr[i]] = array[arr[i]] + 1;

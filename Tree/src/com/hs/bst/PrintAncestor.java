@@ -4,22 +4,22 @@ public class PrintAncestor {
 	Node root;
 
 	/*
-	 * If target is present in tree, then prints the ancestors and returns true,
+	 * If data is present in tree, then prints the ancestors and returns true,
 	 * otherwise returns false.
 	 */
-	boolean printAncestors(Node node, int target) {
+	boolean printAncestors(Node node, int data) {
 		/* base cases */
 		if (node == null)
 			return false;
 
-		if (node.data == target)
+		if (node.data == data)
 			return true;
 
 		/*
-		 * If target is present in either left or right subtree of this node, then print
+		 * If data is present in either left or right subtree of this node, then print
 		 * this node
 		 */
-		if (printAncestors(node.left, target) || printAncestors(node.right, target)) {
+		if (printAncestors(node.left, data) || printAncestors(node.right, data)) {
 			System.out.print(node.data + " ");
 			return true;
 		}

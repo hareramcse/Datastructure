@@ -9,8 +9,9 @@ public class DiagonalTraversal {
 	Node root;
 
 	void diagonalPrintUtil(Node root, Map<Integer, List<Integer>> map, int dno) {
-		if (root == null)
+		if (root == null) {
 			return;
+		}
 
 		List<Integer> list = map.get(dno);
 		if (list == null) {
