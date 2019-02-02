@@ -66,6 +66,4 @@ public class IterativePostOrderTwoStack {
 
 		postOrderIterative(root); 
 	} 
-} 
-
-//This code is contributed by Rishabh Mahrsee 
+}

@@ -37,8 +37,7 @@ class PrintAllPathFromRootToLeaf {
 
 	/* Utility that prints out an array on a line */
 	void printArray(int ints[], int len) {
-		int i;
-		for (i = 0; i < len; i++)
+		for (int i = 0; i < len; i++)
 			System.out.print(ints[i] + " ");
 		System.out.println("");
 	}

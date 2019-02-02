@@ -65,5 +65,3 @@ class CheckIfTwoNodesAreCousin {
 			System.out.println("No");
 	}
 }
-
-// This code has been contributed by Mayank Jaiswal

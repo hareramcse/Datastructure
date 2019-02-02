@@ -64,5 +64,3 @@ class LevelOrderTraversalInSpiralForm2 {
 		tree.printSpiral(root);
 	}
 }
-
-// This code has been contributed by Mayank Jaiswal(mayank_24)

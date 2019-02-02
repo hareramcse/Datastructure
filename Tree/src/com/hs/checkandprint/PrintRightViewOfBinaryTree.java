@@ -54,5 +54,3 @@ class PrintRightViewOfBinaryTree {
 
 	}
 }
-
-// This code has been contributed by Mayank Jaiswal

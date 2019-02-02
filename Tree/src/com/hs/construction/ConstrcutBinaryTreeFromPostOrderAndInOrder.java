@@ -77,5 +77,3 @@ class ConstrcutBinaryTreeFromPostOrderAndInOrder {
 		tree.preOrder(root);
 	}
 }
-
-// This code has been contributed by Mayank Jaiswal(mayank_24)

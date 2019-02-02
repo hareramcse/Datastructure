@@ -36,5 +36,3 @@ class MaximumDepthOfTree {
 		System.out.println("Height of tree is : " + tree.maxDepth(tree.root));
 	}
 }
-
-// This code has been cpontributed by Mayank Jaiswal(mayank_24)

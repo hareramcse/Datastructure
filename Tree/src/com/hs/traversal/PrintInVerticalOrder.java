@@ -1,4 +1,4 @@
-package com.hs.mywork;
+package com.hs.traversal;
 
 class Values {
 	int min, max;

@@ -71,5 +71,4 @@ public class ConstructTreeFromPostorderAndInorder {
 		System.out.println("Preorder of the constructed tree : ");
 		tree.preOrder(tree.root);
 	}
-
 }

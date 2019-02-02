@@ -78,5 +78,3 @@ class BinaryTreeHightBalancedOrNot {
 			System.out.println("Tree is not balanced");
 	}
 }
-
-// This code has been contributed by Mayank Jaiswal(mayank_24)

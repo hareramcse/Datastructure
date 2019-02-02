@@ -24,14 +24,14 @@ public class DiagonalTraversal {
 	 * -topmost slope. diagonalPrint - HashMap to store Diagonal elements (Passed by
 	 * Reference)
 	 */
-	static void diagonalPrintUtil(Node root, int d, HashMap<Integer, Vector<Integer>> diagonalPrint) {
+	static void printDiagonal(Node root, HashMap<Integer, Vector<Integer>> map, int d) {
 
 		// Base case
 		if (root == null)
 			return;
 
 		// get the list at the particular d value
-		Vector<Integer> k = diagonalPrint.get(d);
+		Vector<Integer> k = map.get(d);
 
 		// k is null then create a vector and store the data
 		if (k == null) {
@@ -45,23 +45,23 @@ public class DiagonalTraversal {
 		}
 
 		// Store all nodes of same line together as a vector
-		diagonalPrint.put(d, k);
+		map.put(d, k);
 
 		// Increase the vertical distance if left child
-		diagonalPrintUtil(root.left, d + 1, diagonalPrint);
+		printDiagonal(root.left, map, d + 1);
 
 		// Vertical distance remains same for right child
-		diagonalPrintUtil(root.right, d, diagonalPrint);
+		printDiagonal(root.right, map, d);
 	}
 
 	// Print diagonal traversal of given binary tree
 	static void diagonalPrint(Node root) {
 		// create a map of vectors to store Diagonal elements
-		HashMap<Integer, Vector<Integer>> diagonalPrint = new HashMap<>();
-		diagonalPrintUtil(root, 0, diagonalPrint);
+		HashMap<Integer, Vector<Integer>> map = new HashMap<>();
+		printDiagonal(root, map, 0);
 
 		System.out.println("Diagonal Traversal of Binnary Tree");
-		for (Entry<Integer, Vector<Integer>> entry : diagonalPrint.entrySet()) {
+		for (Entry<Integer, Vector<Integer>> entry : map.entrySet()) {
 			System.out.println(entry.getValue());
 		}
 	}

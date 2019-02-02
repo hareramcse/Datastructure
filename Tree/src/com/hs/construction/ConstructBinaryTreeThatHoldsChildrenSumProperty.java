@@ -105,5 +105,3 @@ class ConstructBinaryTreeThatHoldsChildrenSumProperty {
 
 	}
 }
-
-// This code has been contributed by Mayank Jaiswal(mayank_24)

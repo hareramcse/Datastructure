@@ -86,4 +86,3 @@ class CheckIfAllLeavesAreAtSameLevel {
 			System.out.println("Leaf nodes not at same level");
 	}
 }
-// This code is contributed by rachana soma

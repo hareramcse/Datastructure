@@ -53,5 +53,3 @@ class CheckBinaryTreeIsSumTree {
 			System.out.println("The given tree is not a sum tree");
 	}
 }
-
-// This code has been contributed by Mayank Jaiswal

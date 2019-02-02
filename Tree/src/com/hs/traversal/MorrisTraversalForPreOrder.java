@@ -76,5 +76,3 @@ class MorrisTraversalForPreOrder {
 
 	}
 }
-
-// this code has been contributed by Mayank Jaiswal

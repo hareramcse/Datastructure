@@ -40,5 +40,3 @@ class SumOfAllNode {
 		System.out.println("Sum of all the elements is: " + sum);
 	}
 }
-
-// This code is contributed by Arnab Kundu

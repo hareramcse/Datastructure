@@ -82,4 +82,3 @@ class MaxSumPathFromRootToLeaf {
 		System.out.println("Sum of nodes is : " + sum);
 	}
 }
-// This code has been contributed by Mayank Jaiswal

@@ -58,6 +58,3 @@ public class FindNthNodeOfInorderTraversal {
 		NthInorder(root, n);
 	}
 }
-
-// This code is contributed
-// by Arnab Kundu

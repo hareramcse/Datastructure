@@ -1,4 +1,4 @@
-package com.hs.searching;
+package com.hs.bst;
 
 public class LinearSearch {
 	private boolean search(int arr[], int value) {

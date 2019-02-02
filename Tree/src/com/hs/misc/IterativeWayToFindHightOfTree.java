@@ -54,5 +54,3 @@ class IterativeWayToFindHightOfTree {
 		System.out.println("Height of tree is " + tree.treeHeight(tree.root));
 	}
 }
-
-// This code has been contributed by Mayank Jaiswal

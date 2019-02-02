@@ -118,4 +118,4 @@ class UnionAndIntersectionOfTwoLinkedList {
 		System.out.println("Union List is");
 		unin.printList();
 	}
-} /* This code is contributed by Rajat Mishra */
+}

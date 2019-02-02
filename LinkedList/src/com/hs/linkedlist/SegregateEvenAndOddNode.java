@@ -1,7 +1,5 @@
 package com.hs.linkedlist;
 
-import java.util.LinkedList;
-
 class SegregateEvenAndOddNode {
 
 	Node head; // head of list

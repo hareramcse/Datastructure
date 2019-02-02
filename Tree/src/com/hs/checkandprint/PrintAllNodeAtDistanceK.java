@@ -32,5 +32,3 @@ class PrintAllNodeAtDistanceK {
 		tree.printKDistant(tree.root, 2);
 	}
 }
-
-// This code has been contributed by Mayank Jaiswal

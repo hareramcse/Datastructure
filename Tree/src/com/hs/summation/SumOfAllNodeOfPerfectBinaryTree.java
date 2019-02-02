@@ -61,6 +61,3 @@ class SumOfAllNodeOfPerfectBinaryTree {
 		System.out.println(sumNodes(l));
 	}
 }
-
-// This code is contributed
-// by Arnab Kundu

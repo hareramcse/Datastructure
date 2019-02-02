@@ -72,4 +72,3 @@ public class SumOfNodesOnLongestPathFromRootToLeaf {
 		System.out.println("Sum = " + sumOfLongRootToLeafPathUtil(root));
 	}
 }
-// This code is contributed by Sumit Ghosh

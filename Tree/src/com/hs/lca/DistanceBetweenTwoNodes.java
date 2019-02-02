@@ -76,5 +76,3 @@ public class DistanceBetweenTwoNodes {
 
 	}
 }
-
-// This code is contributed by Srinivasan Jayaraman.

@@ -51,5 +51,3 @@ class SumOfAllLeftLeaves {
 		System.out.println("The sum of leaves is " + tree.leftLeavesSum(tree.root));
 	}
 }
-
-// This code is contributed by Mayank Jaiswal

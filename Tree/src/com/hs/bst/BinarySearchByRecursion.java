@@ -1,4 +1,4 @@
-package com.hs.searching;
+package com.hs.bst;
 
 public class BinarySearchByRecursion {
 	private int search(int arr[], int low, int high, int value) {

@@ -52,5 +52,3 @@ class RootToLeafPathEqaulToGivenNumber {
 			System.out.println("There is no root to leaf path with sum " + sum);
 	}
 }
-
-// This code has been contributed by Mayank Jaiswal(mayank_24)

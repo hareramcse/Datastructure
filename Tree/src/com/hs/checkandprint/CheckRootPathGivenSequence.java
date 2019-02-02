@@ -4,7 +4,7 @@ public class CheckRootPathGivenSequence {
 
 	// function to check given sequence of root to leaf path exist
 	// in tree or not.
-	// index represents current element in sequence of rooth to
+	// index represents current element in sequence of root to
 	// leaf path
 	public static boolean existPath(Node root, int arr[], int index) {
 		// If root is NULL, then there must not be any element

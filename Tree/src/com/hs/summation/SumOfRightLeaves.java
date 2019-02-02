@@ -56,5 +56,3 @@ class SumOfRightLeaves {
 		System.out.println(sum);
 	}
 }
-
-// This code is contributed by Arnab Kundu

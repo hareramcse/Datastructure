@@ -100,6 +100,3 @@ class Gfg {
 		return dummyNode.next;
 	}
 }
-
-// This code is contributed
-// by Shubhaw Kumar

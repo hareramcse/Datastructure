@@ -66,5 +66,3 @@ class ConstructTreeFromInorderAndLevelOrder {
 		tree.printInorder(node);
 	}
 }
-
-// This code has been contributed by Mayank Jaiswal

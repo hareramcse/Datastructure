@@ -6,14 +6,13 @@ class LevelOrderTraversalInSpiralForm1 {
 	// Function to print the spiral traversal of tree
 	void printSpiral(Node node) {
 		int h = height(node);
-		int i;
 
 		/*
 		 * ltr -> left to right. If this variable is set then the given label is
 		 * transversed from left to right
 		 */
 		boolean ltr = false;
-		for (i = 1; i <= h; i++) {
+		for (int i = 1; i <= h; i++) {
 			printGivenLevel(node, i, ltr);
 
 			/* Revert ltr to traverse next level in opposite order */
@@ -74,5 +73,3 @@ class LevelOrderTraversalInSpiralForm1 {
 		tree.printSpiral(tree.root);
 	}
 }
-
-// This code has been contributed by Mayank Jaiswal(mayank_24)

@@ -80,5 +80,3 @@ class IterativePostOrderOneStack {
 		System.out.println(mylist);
 	}
 }
-
-// This code has been contributed by Mayank Jaiswal

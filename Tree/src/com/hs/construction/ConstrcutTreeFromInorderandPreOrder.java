@@ -79,5 +79,3 @@ class ConstrcutTreeFromInorderandPreOrder {
 		tree.printInorder(root);
 	}
 }
-
-// This code has been contributed by Mayank Jaiswal

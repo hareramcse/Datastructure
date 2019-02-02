@@ -82,5 +82,3 @@ public class ConstructCompleteBinaryTreeFromPreAndPostOrder {
 		printInorder(root);
 	}
 }
-
-// This code is contributed by Rishabh Mahrsee

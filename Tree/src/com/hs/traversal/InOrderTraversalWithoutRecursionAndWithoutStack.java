@@ -58,5 +58,3 @@ public class InOrderTraversalWithoutRecursionAndWithoutStack {
 		tree.MorrisTraversal(tree.root);
 	}
 }
-
-// This code has been contributed by Mayank Jaiswal(mayank_24)

@@ -17,7 +17,7 @@ public class CheckSymmetricBinaryTree {
 		}
 	}
 
-	/* constructor to initialise the root */
+	/* constructor to initialize the root */
 	CheckSymmetricBinaryTree(Node r) {
 		root = r;
 	}

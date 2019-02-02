@@ -109,4 +109,3 @@ class ConstructTreeFromItsLinkedListRepresentation {
 		tree.inorderTraversal(node);
 	}
 }
-// This code has been contributed by Mayank Jaiswal

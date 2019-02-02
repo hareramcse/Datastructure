@@ -1,7 +1,5 @@
 package com.hs.linkedlist;
 
-import java.util.LinkedList;
-
 class DetectCycle {
 	Node head; // head of list
 

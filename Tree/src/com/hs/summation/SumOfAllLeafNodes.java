@@ -52,4 +52,3 @@ public class SumOfAllLeafNodes {
 		System.out.println(sum);
 	}
 }
-// This code is contributed by Sumit Ghosh
