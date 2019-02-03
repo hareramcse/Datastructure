@@ -1,21 +1,12 @@
 package com.hs.linkedlist;
 
 public class InsertionSortForLinkedList {
-	node head;
-	node sorted;
-
-	class node {
-		int val;
-		node next;
-
-		public node(int val) {
-			this.val = val;
-		}
-	}
+	Node head;
+	Node sorted;
 
 	void push(int val) {
 		/* allocate node */
-		node newnode = new node(val);
+		Node newnode = new Node(val);
 		/* link the old list off the new node */
 		newnode.next = head;
 		/* move the head to point to the new node */
@@ -23,15 +14,15 @@ public class InsertionSortForLinkedList {
 	}
 
 	// function to sort a singly linked list using insertion sort
-	void insertionSort(node headref) {
+	void insertionSort(Node headref) {
 		// Initialize sorted linked list
 		sorted = null;
-		node current = headref;
+		Node current = headref;
 		// Traverse the given linked list and insert every
 		// node to sorted
 		while (current != null) {
 			// Store next for next iteration
-			node next = current.next;
+			Node next = current.next;
 			// insert current in sorted linked list
 			sortedInsert(current);
 			// Update current
@@ -46,15 +37,15 @@ public class InsertionSortForLinkedList {
 	 * pointer to head_ref as this can modify the head of the input linked list
 	 * (similar to push())
 	 */
-	void sortedInsert(node newnode) {
+	void sortedInsert(Node newnode) {
 		/* Special case for the head end */
-		if (sorted == null || sorted.val >= newnode.val) {
+		if (sorted == null || sorted.data >= newnode.data) {
 			newnode.next = sorted;
 			sorted = newnode;
 		} else {
-			node current = sorted;
+			Node current = sorted;
 			/* Locate the node before the point of insertion */
-			while (current.next != null && current.next.val < newnode.val) {
+			while (current.next != null && current.next.data < newnode.data) {
 				current = current.next;
 			}
 			newnode.next = current.next;
@@ -63,9 +54,9 @@ public class InsertionSortForLinkedList {
 	}
 
 	/* Function to print linked list */
-	void printlist(node head) {
+	void printlist(Node head) {
 		while (head != null) {
-			System.out.print(head.val + " ");
+			System.out.print(head.data + " ");
 			head = head.next;
 		}
 	}

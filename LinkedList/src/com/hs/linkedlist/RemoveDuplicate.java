@@ -3,17 +3,6 @@ package com.hs.linkedlist;
 class RemoveDuplicate {
 	Node head; // head of list
 
-	/* Linked list Node */
-	class Node {
-		int data;
-		Node next;
-
-		Node(int d) {
-			data = d;
-			next = null;
-		}
-	}
-
 	void removeDuplicates() {
 		/* Another reference to head */
 		Node current = head;

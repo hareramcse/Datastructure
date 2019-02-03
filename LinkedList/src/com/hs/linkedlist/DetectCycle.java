@@ -3,17 +3,6 @@ package com.hs.linkedlist;
 class DetectCycle {
 	Node head; // head of list
 
-	/* Linked list Node */
-	class Node {
-		int data;
-		Node next;
-
-		Node(int d) {
-			data = d;
-			next = null;
-		}
-	}
-
 	/* Inserts a new Node at front of the list. */
 	public void push(int new_data) {
 		/*
@@ -28,17 +17,20 @@ class DetectCycle {
 		head = new_node;
 	}
 
-	int detectLoop() {
-		Node slow_p = head, fast_p = head;
-		while (slow_p != null && fast_p != null && fast_p.next != null) {
-			slow_p = slow_p.next;
-			fast_p = fast_p.next.next;
-			if (slow_p == fast_p) {
-				System.out.println("Found loop");
-				return 1;
+	boolean detectLoop() {
+		Node slow = head;
+		Node fast = head.next;
+
+		// Search for loop using slow and fast pointers
+		while (fast != null && fast.next != null) {
+			if (slow == fast) {
+				System.out.println("found");
+				return true;
 			}
+			slow = slow.next;
+			fast = fast.next.next;
 		}
-		return 0;
+		return false;
 	}
 
 	/* Drier program to test above functions */

@@ -1,41 +1,30 @@
 package com.hs.checkandprint;
 
-class Max_level {
-
-	int max_level;
-}
-
 class PrintRightViewOfBinaryTree {
 
 	Node root;
-	Max_level max = new Max_level();
+	int max_level;
 
 	// Recursive function to print right view of a binary tree.
-	void rightViewUtil(Node node, int level, Max_level max_level) {
+	void rightViewUtil(Node node, int level) {
 
 		// Base Case
 		if (node == null)
 			return;
 
 		// If this is the last Node of its level
-		if (max_level.max_level < level) {
+		if (max_level < level) {
 			System.out.print(node.data + " ");
-			max_level.max_level = level;
+			max_level = level;
 		}
 
 		// Recur for right subtree first, then left subtree
-		rightViewUtil(node.right, level + 1, max_level);
-		rightViewUtil(node.left, level + 1, max_level);
+		rightViewUtil(node.right, level + 1);
+		rightViewUtil(node.left, level + 1);
 	}
 
 	void rightView() {
-		rightView(root);
-	}
-
-	// A wrapper over rightViewUtil()
-	void rightView(Node node) {
-
-		rightViewUtil(node, 1, max);
+		rightViewUtil(root, 1);
 	}
 
 	// Driver program to test the above functions

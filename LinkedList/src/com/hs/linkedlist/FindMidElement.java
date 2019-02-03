@@ -3,27 +3,16 @@ package com.hs.linkedlist;
 class FindMidElement {
 	Node head; // head of linked list
 
-	/* Linked list node */
-	class Node {
-		int data;
-		Node next;
-
-		Node(int d) {
-			data = d;
-			next = null;
-		}
-	}
-
 	/* Function to print middle of linked list */
 	void printMiddle() {
-		Node slow_ptr = head;
-		Node fast_ptr = head;
+		Node slow = head;
+		Node fast = head;
 		if (head != null) {
-			while (fast_ptr != null && fast_ptr.next != null) {
-				fast_ptr = fast_ptr.next.next;
-				slow_ptr = slow_ptr.next;
+			while (fast != null && fast.next != null) {
+				fast = fast.next.next;
+				slow = slow.next;
 			}
-			System.out.println("The middle element is [" + slow_ptr.data + "] \n");
+			System.out.println("The middle element is [" + slow.data + "] \n");
 		}
 	}
 

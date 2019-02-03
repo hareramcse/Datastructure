@@ -4,73 +4,37 @@ class IntersectionOfTwoLinkedList {
 
 	Node head1, head2;
 
-	static class Node {
-
-		int data;
-		Node next;
-
-		Node(int d) {
-			data = d;
-			next = null;
+	private int length(Node list) {
+		int lenght = 0;
+		Node tmp = list;
+		while (tmp != null) {
+			lenght++;
+			tmp = tmp.next;
 		}
+		return lenght;
 	}
 
-	/*
-	 * function to get the intersection point of two linked lists head1 and head2
-	 */
-	int getNode() {
-		int c1 = getCount(head1);
-		int c2 = getCount(head2);
-		int d;
-
-		if (c1 > c2) {
-			d = c1 - c2;
-			return _getIntesectionNode(d, head1, head2);
-		} else {
-			d = c2 - c1;
-			return _getIntesectionNode(d, head2, head1);
+	private Node findMergePoint(Node firstList, Node secondList) {
+		int firstLength = length(firstList);
+		int secondLength = length(secondList);
+		int diff = secondLength - firstLength;
+		if (firstLength > secondLength) {
+			Node tmp = firstList;
+			firstList = secondList;
+			secondList = tmp;
+			diff = firstLength - secondLength;
 		}
-	}
-
-	/*
-	 * function to get the intersection point of two linked lists head1 and head2
-	 * where head1 has d more nodes than head2
-	 */
-	int _getIntesectionNode(int d, Node node1, Node node2) {
-		int i;
-		Node current1 = node1;
-		Node current2 = node2;
-		for (i = 0; i < d; i++) {
-			if (current1 == null) {
-				return -1;
+		for (int i = 0; i < diff; i++) {
+			secondList = secondList.next;
+		}
+		while (firstList != null && secondList != null) {
+			if (firstList.data == secondList.data) {
+				return firstList;
 			}
-			current1 = current1.next;
+			firstList = firstList.next;
+			secondList = secondList.next;
 		}
-		while (current1 != null && current2 != null) {
-			if (current1.data == current2.data) {
-				return current1.data;
-			}
-			current1 = current1.next;
-			current2 = current2.next;
-		}
-
-		return -1;
-	}
-
-	/*
-	 * Takes head pointer of the linked list and returns the count of nodes in the
-	 * list
-	 */
-	int getCount(Node node) {
-		Node current = node;
-		int count = 0;
-
-		while (current != null) {
-			count++;
-			current = current.next;
-		}
-
-		return count;
+		return null;
 	}
 
 	public static void main(String[] args) {
@@ -88,7 +52,7 @@ class IntersectionOfTwoLinkedList {
 		list.head2.next = new Node(15);
 		list.head2.next.next = new Node(30);
 
-		System.out.println("The node of intersection is " + list.getNode());
+		System.out.println("The node of intersection is " + list.findMergePoint(list.head1, list.head2).data);
 
 	}
 }

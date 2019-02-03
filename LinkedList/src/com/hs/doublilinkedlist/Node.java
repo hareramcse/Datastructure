@@ -12,4 +12,8 @@ public class Node {
 		this.prev=null;
 		this.tail=null;
 	}
+	
+	Node(){
+		
+	}
 }

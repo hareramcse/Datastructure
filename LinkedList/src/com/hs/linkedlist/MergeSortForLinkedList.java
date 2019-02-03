@@ -1,20 +1,10 @@
 package com.hs.linkedlist;
 
 public class MergeSortForLinkedList {
-	node head = null;
+	Node head = null;
 
-	// node a,b;
-	static class node {
-		int val;
-		node next;
-
-		public node(int val) {
-			this.val = val;
-		}
-	}
-
-	node sortedMerge(node a, node b) {
-		node result = null;
+	Node sortedMerge(Node a, Node b) {
+		Node result = null;
 		/* Base cases */
 		if (a == null)
 			return b;
@@ -22,7 +12,7 @@ public class MergeSortForLinkedList {
 			return a;
 
 		/* Pick either a or b, and recur */
-		if (a.val <= b.val) {
+		if (a.data <= b.data) {
 			result = a;
 			result.next = sortedMerge(a.next, b);
 		} else {
@@ -33,53 +23,51 @@ public class MergeSortForLinkedList {
 
 	}
 
-	node mergeSort(node h) {
+	Node mergeSort(Node node) {
 		// Base case : if head is null
-		if (h == null || h.next == null) {
-			return h;
+		if (node == null || node.next == null) {
+			return node;
 		}
 
 		// get the middle of the list
-		node middle = getMiddle(h);
-		node nextofmiddle = middle.next;
+		Node middle = getMiddle(node);
+		Node nextOfMiddle = middle.next;
 
 		// set the next of middle node to null
 		middle.next = null;
 
 		// Apply mergeSort on left list
-		node left = mergeSort(h);
+		Node left = mergeSort(node);
 
 		// Apply mergeSort on right list
-		node right = mergeSort(nextofmiddle);
+		Node right = mergeSort(nextOfMiddle);
 
 		// Merge the left and right lists
-		node sortedlist = sortedMerge(left, right);
+		Node sortedlist = sortedMerge(left, right);
 		return sortedlist;
 	}
 
 	// Utility function to get the middle of the linked list
-	node getMiddle(node h) {
+	Node getMiddle(Node node) {
 		// Base case
-		if (h == null)
-			return h;
-		node fastptr = h.next;
-		node slowptr = h;
+		if (node == null) {
+			return node;
+		}
+		Node slowptr = node;
+		Node fastptr = node.next;
 
 		// Move fastptr by two and slow ptr by one
 		// Finally slowptr will point to middle node
-		while (fastptr != null) {
-			fastptr = fastptr.next;
-			if (fastptr != null) {
-				slowptr = slowptr.next;
-				fastptr = fastptr.next;
-			}
+		while (fastptr != null && fastptr.next != null) {
+			slowptr = slowptr.next;
+			fastptr = fastptr.next.next;
 		}
 		return slowptr;
 	}
 
 	void push(int new_data) {
 		/* allocate node */
-		node new_node = new node(new_data);
+		Node new_node = new Node(new_data);
 
 		/* link the old list off the new node */
 		new_node.next = head;
@@ -89,9 +77,9 @@ public class MergeSortForLinkedList {
 	}
 
 	// Utility function to print the linked list
-	void printList(node headref) {
+	void printList(Node headref) {
 		while (headref != null) {
-			System.out.print(headref.val + " ");
+			System.out.print(headref.data + " ");
 			headref = headref.next;
 		}
 	}

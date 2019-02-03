@@ -3,19 +3,6 @@ package com.hs.doublilinkedlist;
 class QuickSortForDoublyLinkedList {
 	Node head;
 
-	/* a node of the doubly linked list */
-	static class Node {
-		private int data;
-		private Node next;
-		private Node prev;
-
-		Node(int d) {
-			data = d;
-			next = null;
-			prev = null;
-		}
-	}
-
 	// A utility function to find last node of linked list
 	Node lastNode(Node node) {
 		while (node.next != null)

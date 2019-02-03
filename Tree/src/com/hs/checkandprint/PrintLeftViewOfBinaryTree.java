@@ -2,7 +2,7 @@ package com.hs.checkandprint;
 
 class PrintLeftViewOfBinaryTree {
 	Node root;
-	static int max_level = 0;
+	int max_level;
 
 	// recursive function to print left view
 	void leftViewUtil(Node node, int level) {

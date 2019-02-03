@@ -1,7 +1,7 @@
 package com.hs.linkedlist;
 
 
-public class FindCycleInLinkedList {
+public class RemoveCycleInLinkedList {
 	Node head;
 
 	void detectAndRemoveLoop(Node node) {
@@ -41,7 +41,7 @@ public class FindCycleInLinkedList {
 
 	// Driver program to test above functions
 	public static void main(String[] args) {
-		FindCycleInLinkedList list = new FindCycleInLinkedList();
+		RemoveCycleInLinkedList list = new RemoveCycleInLinkedList();
 		list.head = new Node(50);
 		list.head.next = new Node(20);
 		list.head.next.next = new Node(15);

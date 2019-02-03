@@ -2,13 +2,6 @@ package com.hs.doublilinkedlist;
 
 class FindPairWithGivenSumInDoublyLinkedList {
 
-	// structure of node of
-	// doubly linked list
-	static class Node {
-		int data;
-		Node next, prev;
-	};
-
 	// Function to find pair whose
 	// sum equal to given value x.
 	static void pairSum(Node head, int x) {

@@ -2,18 +2,7 @@ package com.hs.doublilinkedlist;
 
 class ReverseDoubliLinkedlist {
 
-	static Node head;
-
-	static class Node {
-
-		int data;
-		Node next, prev;
-
-		Node(int d) {
-			data = d;
-			next = prev = null;
-		}
-	}
+	Node head;
 
 	/* Function to reverse a Doubly Linked List */
 	void reverse() {
@@ -86,11 +75,11 @@ class ReverseDoubliLinkedlist {
 		list.push(10);
 
 		System.out.println("Original linked list ");
-		list.printList(head);
+		list.printList(list.head);
 
 		list.reverse();
 		System.out.println("");
 		System.out.println("The reversed Linked List is ");
-		list.printList(head);
+		list.printList(list.head);
 	}
 }
