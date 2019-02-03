@@ -58,7 +58,6 @@ class ConstructTreeFromInorderAndLevelOrder {
 		ConstructTreeFromInorderAndLevelOrder tree = new ConstructTreeFromInorderAndLevelOrder();
 		int in[] = new int[] { 4, 8, 10, 12, 14, 20, 22 };
 		int level[] = new int[] { 20, 8, 22, 4, 12, 10, 14 };
-		int n = in.length;
 		Node node = tree.buildTree(in, level);
 
 		/* Let us test the built tree by printing Inorder traversal */

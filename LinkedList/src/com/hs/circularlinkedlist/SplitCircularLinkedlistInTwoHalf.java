@@ -2,7 +2,7 @@ package com.hs.circularlinkedlist;
 
 class SplitCircularLinkedlistInTwoHalf {
 
-	static Node head, head1, head2;
+	Node head, head1, head2;
 
 	static class Node {
 
@@ -77,16 +77,16 @@ class SplitCircularLinkedlistInTwoHalf {
 		list.head.next.next.next.next = list.head;
 
 		System.out.println("Original Circular Linked list ");
-		list.printList(head);
+		list.printList(list.head);
 
 		// Split the list
 		list.splitList();
 		System.out.println("");
 		System.out.println("First Circular List ");
-		list.printList(head1);
+		list.printList(list.head1);
 		System.out.println("");
 		System.out.println("Second Circular List ");
-		list.printList(head2);
+		list.printList(list.head2);
 
 	}
 }

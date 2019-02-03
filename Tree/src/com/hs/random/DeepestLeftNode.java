@@ -6,10 +6,10 @@ class Level {
 }
 
 public class DeepestLeftNode {
-	static Node root;
+	Node root;
 
 	// Node to store resultant node after left traversal
-	static Node result;
+	Node result;
 
 	// A utility function to find deepest leaf node.
 	// lvl: level of current node.
@@ -51,9 +51,9 @@ public class DeepestLeftNode {
 		tree.root.right.left.right.left = new Node(9);
 		tree.root.right.right.right.right = new Node(10);
 
-		tree.deepestLeftLeaf(root);
-		if (result != null)
-			System.out.println("The deepest left child is " + result.data);
+		tree.deepestLeftLeaf(tree.root);
+		if (tree.result != null)
+			System.out.println("The deepest left child is " + tree.result.data);
 		else
 			System.out.println("There is no left leaf in the given tree");
 	}

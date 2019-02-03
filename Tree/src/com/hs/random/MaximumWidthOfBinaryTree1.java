@@ -2,11 +2,10 @@ package com.hs.random;
 
 class MaximumWidthOfBinaryTree1 {
 
-	static Node root;
+	Node root;
 
 	/* Function to get the maximum width of a binary tree */
 	int getMaxWidth(Node node) {
-		int width;
 		int h = height(node);
 
 		// Create an array that will store count of nodes at each level
@@ -73,6 +72,6 @@ class MaximumWidthOfBinaryTree1 {
 		tree.root.right.right.left = new Node(6);
 		tree.root.right.right.right = new Node(7);
 
-		System.out.println("Maximum width is " + tree.getMaxWidth(root));
+		System.out.println("Maximum width is " + tree.getMaxWidth(tree.root));
 	}
 }

@@ -2,7 +2,7 @@ package com.hs.random;
 
 public class SumOfAllNumbersFromRootToLeaf {
 
-	static Node root, prev;
+	Node root, prev;
 
 	// Returns sum of all root to leaf paths. The first parameter is root
 	// of current subtree, the second parameter is value of the number formed
@@ -45,6 +45,6 @@ public class SumOfAllNumbersFromRootToLeaf {
 		tree.root.left.right.right = new Node(4);
 		tree.root.left.right.left = new Node(7);
 
-		System.out.print("Sum of all paths is " + tree.treePathsSum(root));
+		System.out.print("Sum of all paths is " + tree.treePathsSum(tree.root));
 	}
 }

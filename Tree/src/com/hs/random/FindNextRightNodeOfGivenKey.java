@@ -5,7 +5,7 @@ import java.util.Queue;
 
 public class FindNextRightNodeOfGivenKey {
 
-	static Node root;
+	Node root;
 
 	// Method to find next right of given key k, it returns NULL if k is
 	// not present in tree or k is the rightmost node of its level
@@ -85,12 +85,12 @@ public class FindNextRightNodeOfGivenKey {
 		tree.root.left.left = new Node(8);
 		tree.root.left.right = new Node(4);
 
-		tree.test(root, 10);
-		tree.test(root, 2);
-		tree.test(root, 6);
-		tree.test(root, 5);
-		tree.test(root, 8);
-		tree.test(root, 4);
+		tree.test(tree.root, 10);
+		tree.test(tree.root, 2);
+		tree.test(tree.root, 6);
+		tree.test(tree.root, 5);
+		tree.test(tree.root, 8);
+		tree.test(tree.root, 4);
 
 	}
 }

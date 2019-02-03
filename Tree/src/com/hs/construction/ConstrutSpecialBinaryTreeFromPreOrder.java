@@ -41,12 +41,6 @@ class ConstrutSpecialBinaryTreeFromPreOrder {
 
 	// A wrapper over constructTreeUtil()
 	Node constructTree(int pre[], char preLN[], int n, Node node) {
-
-		// Initialize index as 0. Value of index is used in recursion to
-		// maintain
-		// the current index in pre[] and preLN[] arrays.
-		int index = 0;
-
 		return constructTreeUtil(pre, preLN, myindex, n, node);
 	}
 

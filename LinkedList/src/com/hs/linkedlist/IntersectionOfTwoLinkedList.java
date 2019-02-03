@@ -2,7 +2,7 @@ package com.hs.linkedlist;
 
 class IntersectionOfTwoLinkedList {
 
-	static Node head1, head2;
+	Node head1, head2;
 
 	static class Node {
 

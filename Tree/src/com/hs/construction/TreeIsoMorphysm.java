@@ -2,7 +2,7 @@ package com.hs.construction;
 
 public class TreeIsoMorphysm {
 
-	static Node root1, root2;
+	Node root1, root2;
 
 	/* Given a binary tree, print its nodes in reverse level order */
 	boolean isIsomorphic(Node n1, Node n2) {
@@ -51,7 +51,7 @@ public class TreeIsoMorphysm {
 		tree.root2.right.right.left = new Node(8);
 		tree.root2.right.right.right = new Node(7);
 
-		if (tree.isIsomorphic(root1, root2) == true) {
+		if (tree.isIsomorphic(tree.root1, tree.root2) == true) {
 			System.out.println("Yes");
 		} else {
 			System.out.println("No");

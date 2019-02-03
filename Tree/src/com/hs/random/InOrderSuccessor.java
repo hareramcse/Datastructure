@@ -2,8 +2,8 @@ package com.hs.random;
 
 public class InOrderSuccessor {
 
-	static Node root;
-	static Node next = null;
+	Node root;
+	Node next;
 
 	/*
 	 * Set next of p and all descendents of p by traversing them in reverse Inorder
@@ -41,7 +41,7 @@ public class InOrderSuccessor {
 		tree.root.left.left = new Node(3);
 
 		// Populates nextRight pointer in all nodes
-		tree.populateNext(root);
+		tree.populateNext(tree.root);
 
 		// Let us see the populated values
 		Node ptr = tree.root.left.left;

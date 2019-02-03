@@ -36,7 +36,6 @@ class MaximumSumFromRootToLeaf {
 		// Update current sum to hold sum of nodes on
 		// path from root to this node
 		curr_sum = curr_sum + node.data;
-		int a = max_sum_ref.max_no;
 
 		// If this is a leaf node and path to this node
 		// has maximum sum so far, the n make this node

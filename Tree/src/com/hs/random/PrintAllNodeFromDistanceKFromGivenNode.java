@@ -2,7 +2,7 @@ package com.hs.random;
 
 public class PrintAllNodeFromDistanceKFromGivenNode {
 
-	static Node root;
+	Node root;
 
 	/*
 	 * Recursive function to print all the nodes at distance k in the tree (or
@@ -99,6 +99,6 @@ public class PrintAllNodeFromDistanceKFromGivenNode {
 		tree.root.left.right.left = new Node(10);
 		tree.root.left.right.right = new Node(14);
 		Node target = tree.root.left.right;
-		tree.printkdistanceNode(root, target, 2);
+		tree.printkdistanceNode(tree.root, target, 2);
 	}
 }

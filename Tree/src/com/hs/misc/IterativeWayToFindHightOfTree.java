@@ -13,15 +13,15 @@ class IterativeWayToFindHightOfTree {
 			return 0;
 
 		// Create an empty queue for level order tarversal
-		Queue<Node> q = new LinkedList();
+		Queue<Node> q = new LinkedList<Node>();
 
 		// Enqueue Root and initialize height
 		q.add(node);
 		int height = 0;
 
-		while (1 == 1) {
+		while (true) {
 			// nodeCount (queue size) indicates number of nodes
-			// at current lelvel.
+			// at current level.
 			int nodeCount = q.size();
 			if (nodeCount == 0)
 				return height;

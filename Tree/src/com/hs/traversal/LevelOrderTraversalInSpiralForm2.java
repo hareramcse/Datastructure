@@ -4,7 +4,7 @@ import java.util.Stack;
 
 class LevelOrderTraversalInSpiralForm2 {
 
-	static Node root;
+	Node root;
 
 	void printSpiral(Node node) {
 		if (node == null)
@@ -61,6 +61,6 @@ class LevelOrderTraversalInSpiralForm2 {
 		tree.root.right.left = new Node(5);
 		tree.root.right.right = new Node(4);
 		System.out.println("Spiral Order traversal of Binary Tree is ");
-		tree.printSpiral(root);
+		tree.printSpiral(tree.root);
 	}
 }

@@ -5,7 +5,7 @@ public class DiffBetSumOfOddLevelAndEvenLevelNodes {
 	// The main function that return difference between odd and even level
 	// nodes
 
-	static Node root;
+	Node root;
 
 	int getLevelDiff(Node node) {
 		// Base case
@@ -31,7 +31,7 @@ public class DiffBetSumOfOddLevelAndEvenLevelNodes {
 		tree.root.right.right = new Node(8);
 		tree.root.right.right.right = new Node(9);
 		tree.root.right.right.left = new Node(7);
-		System.out.println(tree.getLevelDiff(root) + " is the required difference");
+		System.out.println(tree.getLevelDiff(tree.root) + " is the required difference");
 
 	}
 }

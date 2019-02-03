@@ -2,7 +2,7 @@ package com.hs.linkedlist;
 
 
 public class FindCycleInLinkedList {
-	static Node head;
+	Node head;
 
 	void detectAndRemoveLoop(Node node) {
 		Node slow = node;
@@ -49,9 +49,9 @@ public class FindCycleInLinkedList {
 		list.head.next.next.next.next = new Node(10);
 
 		// Creating a loop for testing
-		head.next.next.next.next.next = head.next.next;
-		list.detectAndRemoveLoop(head);
+		list.head.next.next.next.next.next = list.head.next.next;
+		list.detectAndRemoveLoop(list.head);
 		System.out.println("Linked List after removing loop : ");
-		list.printList(head);
+		list.printList(list.head);
 	}
 }

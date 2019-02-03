@@ -2,7 +2,7 @@ package com.hs.random;
 
 public class DepthOfDeepestOddLevelLeafNode {
 
-	static Node root;
+	Node root;
 
 	// A recursive function to find depth of the deepest odd level leaf
 	int depthOfOddLeafUtil(Node node, int level) {
@@ -25,12 +25,11 @@ public class DepthOfDeepestOddLevelLeafNode {
 	 * function mainly uses depthOfOddLeafUtil()
 	 */
 	int depthOfOddLeaf(Node node) {
-		int level = 1, depth = 0;
+		int level = 1;
 		return depthOfOddLeafUtil(node, level);
 	}
 
 	public static void main(String args[]) {
-		int k = 45;
 		DepthOfDeepestOddLevelLeafNode tree = new DepthOfDeepestOddLevelLeafNode();
 		tree.root = new Node(1);
 		tree.root.left = new Node(2);
@@ -43,6 +42,6 @@ public class DepthOfDeepestOddLevelLeafNode {
 		tree.root.right.left.right.left = new Node(9);
 		tree.root.right.right.right.right = new Node(10);
 		tree.root.right.right.right.right.left = new Node(11);
-		System.out.println(tree.depthOfOddLeaf(root) + " is the required depth");
+		System.out.println(tree.depthOfOddLeaf(tree.root) + " is the required depth");
 	}
 }

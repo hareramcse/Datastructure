@@ -7,7 +7,7 @@ class Leaf {
 
 class IsAllLeafNodeAreAtSameLevel {
 
-	static Node root;
+	Node root;
 	Leaf mylevel = new Leaf();
 
 	/* Recursive function which checks whether all leaves are at same level */
@@ -45,7 +45,6 @@ class IsAllLeafNodeAreAtSameLevel {
 	}
 
 	public static void main(String args[]) {
-		int k = 45;
 		IsAllLeafNodeAreAtSameLevel tree = new IsAllLeafNodeAreAtSameLevel();
 		tree.root = new Node(12);
 		tree.root.left = new Node(5);
@@ -53,7 +52,7 @@ class IsAllLeafNodeAreAtSameLevel {
 		tree.root.left.right = new Node(9);
 		tree.root.left.left.left = new Node(1);
 		tree.root.left.right.left = new Node(1);
-		if (tree.check(root)) {
+		if (tree.check(tree.root)) {
 			System.out.println("Leaves are at same level");
 
 		} else {

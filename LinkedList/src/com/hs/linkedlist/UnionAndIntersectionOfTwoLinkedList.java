@@ -3,17 +3,6 @@ package com.hs.linkedlist;
 class UnionAndIntersectionOfTwoLinkedList {
 	Node head; // head of list
 
-	/* Linked list Node */
-	class Node {
-		int data;
-		Node next;
-
-		Node(int d) {
-			data = d;
-			next = null;
-		}
-	}
-
 	/* Function to get Union of 2 Linked Lists */
 	void getUnion(Node head1, Node head2) {
 		Node t1 = head1, t2 = head2;
@@ -33,7 +22,6 @@ class UnionAndIntersectionOfTwoLinkedList {
 	}
 
 	void getIntersection(Node head1, Node head2) {
-		Node result = null;
 		Node t1 = head1;
 
 		// Traverse list1 and search each element of it in list2.

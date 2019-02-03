@@ -2,7 +2,7 @@ package com.hs.random;
 
 class DeleteBinaryTree1 {
 
-	static Node root;
+	Node root;
 
 	/* Wrapper function that deletes the tree and sets root node as null */
 	void deleteTreeRef(Node nodeRef) {
@@ -37,7 +37,7 @@ class DeleteBinaryTree1 {
 		tree.root.left.right = new Node(5);
 
 		/* Note that we pass root node here */
-		tree.deleteTreeRef(root);
+		tree.deleteTreeRef(tree.root);
 		System.out.println("Tree deleted");
 
 	}

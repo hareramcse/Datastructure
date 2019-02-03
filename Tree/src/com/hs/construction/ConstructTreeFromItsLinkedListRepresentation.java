@@ -58,7 +58,7 @@ class ConstructTreeFromItsLinkedListRepresentation {
 			// 2.a) take the parent node from the q and
 			// remove it from q
 			Node parent = q.peek();
-			Node pp = q.poll();
+			q.poll();
 
 			// 2.c) take next two nodes from the linked list.
 			// We will add them as children of the current

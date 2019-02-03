@@ -2,7 +2,7 @@ package com.hs.random;
 
 public class GetLevelOfNode {
 
-	static Node root;
+	Node root;
 
 	/*
 	 * Helper function for getLevel(). It returns level of the data if data is
@@ -39,9 +39,9 @@ public class GetLevelOfNode {
 		tree.root.left.left = new Node(1);
 		tree.root.left.right = new Node(4);
 		for (int x = 1; x <= 5; x++) {
-			int level = tree.getLevel(root, x);
+			int level = tree.getLevel(tree.root, x);
 			if (level != 0)
-				System.out.println("Level of " + x + " is " + tree.getLevel(root, x));
+				System.out.println("Level of " + x + " is " + tree.getLevel(tree.root, x));
 			else
 				System.out.println(x + " is not present in tree");
 		}

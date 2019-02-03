@@ -5,7 +5,7 @@ import java.util.List;
 
 class PrintAllPathFromRoot {
 
-	static Node root;
+	Node root;
 
 	public void PrintAllPossiblePath(Node root,List<Node> nodelist){
 	    if(root != null){
@@ -40,7 +40,7 @@ class PrintAllPathFromRoot {
 
 		List<Node> list=new ArrayList<Node>();
 		//Print all root-to-leaf paths of the input tree 
-		tree.PrintAllPossiblePath(root,list);
+		tree.PrintAllPossiblePath(tree.root,list);
 
 	}
 }

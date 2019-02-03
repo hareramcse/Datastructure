@@ -2,11 +2,11 @@ package com.hs.random;
 
 public class ExtractLeavesOfBinaryTreeInDLL {
 
-	static Node root;
+	Node root;
 	Node head; // will point to head of DLL
 	Node prev; // temporary pointer
 
-	// The main fuction that links the list list to be traversed
+	// The main function that links the list list to be traversed
 	public Node extractLeafList(Node root) {
 		if (root == null) {
 			return null;
@@ -29,10 +29,8 @@ public class ExtractLeavesOfBinaryTreeInDLL {
 
 	// Prints the DLL in both forward and reverse directions.
 	public void printDLL(Node head) {
-		Node last = null;
 		while (head != null) {
 			System.out.print(head.data + " ");
-			last = head;
 			head = head.right;
 		}
 	}
@@ -63,14 +61,14 @@ public class ExtractLeavesOfBinaryTreeInDLL {
 		tree.root.right.right.right = new Node(10);
 
 		System.out.println("Inorder traversal of given tree is : ");
-		tree.inorder(root);
-		tree.extractLeafList(root);
+		tree.inorder(tree.root);
+		tree.extractLeafList(tree.root);
 		System.out.println("");
 		System.out.println("Extracted double link list is : ");
 		tree.printDLL(tree.head);
 		System.out.println("");
 		System.out.println("Inorder traversal of modified tree is : ");
-		tree.inorder(root);
+		tree.inorder(tree.root);
 	}
 
 }

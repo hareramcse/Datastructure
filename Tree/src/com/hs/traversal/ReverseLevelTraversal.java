@@ -9,8 +9,8 @@ class ReverseLevelTraversal {
 
 	/* Given a binary tree, print its nodes in reverse level order */
 	void reverseLevelOrder(Node node) {
-		Stack<Node> S = new Stack();
-		Queue<Node> Q = new LinkedList();
+		Stack<Node> S = new Stack<Node>();
+		Queue<Node> Q = new LinkedList<Node>();
 		Q.add(node);
 
 		// Do something like normal level order traversal order.Following

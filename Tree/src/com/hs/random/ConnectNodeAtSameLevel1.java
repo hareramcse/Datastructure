@@ -2,7 +2,7 @@ package com.hs.random;
 
 public class ConnectNodeAtSameLevel1 {
 
-	static Node root;
+	Node root;
 
 	/*
 	 * Set next right of all descendents of p. This function makes sure that
@@ -86,22 +86,22 @@ public class ConnectNodeAtSameLevel1 {
 		tree.root.right.right = new Node(90);
 
 		// Populates nextRight pointer in all nodes
-		tree.connectRecur(root);
+		tree.connectRecur(tree.root);
 
 		// Let us check the values of nextRight pointers
-		int a = root.nextRight != null ? root.nextRight.data : -1;
-		int b = root.left.nextRight != null ? root.left.nextRight.data : -1;
-		int c = root.right.nextRight != null ? root.right.nextRight.data : -1;
-		int d = root.left.left.nextRight != null ? root.left.left.nextRight.data : -1;
-		int e = root.right.right.nextRight != null ? root.right.right.nextRight.data : -1;
+		int a = tree.root.nextRight != null ? tree.root.nextRight.data : -1;
+		int b = tree.root.left.nextRight != null ? tree.root.left.nextRight.data : -1;
+		int c = tree.root.right.nextRight != null ? tree.root.right.nextRight.data : -1;
+		int d = tree.root.left.left.nextRight != null ? tree.root.left.left.nextRight.data : -1;
+		int e = tree.root.right.right.nextRight != null ? tree.root.right.right.nextRight.data : -1;
 
 		// Now lets print the values
 		System.out.println(
 				"Following are populated nextRight pointers in " + " the tree(-1 is printed if there is no nextRight)");
-		System.out.println("nextRight of " + root.data + " is " + a);
-		System.out.println("nextRight of " + root.left.data + " is " + b);
-		System.out.println("nextRight of " + root.right.data + " is " + c);
-		System.out.println("nextRight of " + root.left.left.data + " is " + d);
-		System.out.println("nextRight of " + root.right.right.data + " is " + e);
+		System.out.println("nextRight of " + tree.root.data + " is " + a);
+		System.out.println("nextRight of " + tree.root.left.data + " is " + b);
+		System.out.println("nextRight of " + tree.root.right.data + " is " + c);
+		System.out.println("nextRight of " + tree.root.left.left.data + " is " + d);
+		System.out.println("nextRight of " + tree.root.right.right.data + " is " + e);
 	}
 }

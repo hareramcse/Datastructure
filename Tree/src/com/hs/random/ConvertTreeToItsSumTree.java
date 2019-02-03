@@ -2,7 +2,7 @@ package com.hs.random;
 
 public class ConvertTreeToItsSumTree {
 
-	static Node root;
+	Node root;
 
 	// Convert a given tree to a tree where every node contains sum of values of
 	// nodes in left and right subtrees in the original tree
@@ -48,11 +48,11 @@ public class ConvertTreeToItsSumTree {
 		tree.root.right.left = new Node(7);
 		tree.root.right.right = new Node(5);
 
-		tree.toSumTree(root);
+		tree.toSumTree(tree.root);
 
 		// Print inorder traversal of the converted tree to test result of
 		// toSumTree()
 		System.out.println("Inorder Traversal of the resultant tree is:");
-		tree.printInorder(root);
+		tree.printInorder(tree.root);
 	}
 }

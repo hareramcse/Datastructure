@@ -2,7 +2,7 @@ package com.hs.random;
 
 public class SumOfRootToLeafPath {
 
-	static Node root;
+	Node root;
 
 	/*
 	 * Given a tree and a sum, return true if there is a path from the root down to
@@ -44,7 +44,7 @@ public class SumOfRootToLeafPath {
 		tree.root.left.right = new Node(5);
 		tree.root.right.left = new Node(2);
 
-		if (tree.haspathSum(root, sum)) {
+		if (tree.haspathSum(tree.root, sum)) {
 			System.out.println("There is a root to leaf path with sum " + sum);
 		} else {
 			System.out.println("There is no root to leaf path with sum " + sum);
