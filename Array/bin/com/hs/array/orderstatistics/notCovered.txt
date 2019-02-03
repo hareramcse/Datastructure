@@ -1,1 +1,0 @@
-k-th smallest absolute difference of two elements in an array
