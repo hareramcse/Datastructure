@@ -2,19 +2,6 @@ package com.hs.summation;
 
 public class SumOfAllLeafNodes {
 
-	// user define class node
-	static class Node {
-		int data;
-		Node left, right;
-
-		// constructor
-		Node(int data) {
-			this.data = data;
-			left = null;
-			right = null;
-		}
-	}
-
 	static int sum;
 
 	// utility function which calculates

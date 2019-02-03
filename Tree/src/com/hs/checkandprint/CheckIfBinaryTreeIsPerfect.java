@@ -2,12 +2,6 @@ package com.hs.checkandprint;
 
 class CheckIfBinaryTreeIsPerfect {
 
-	/* Tree node structure */
-	static class Node {
-		int key;
-		Node left, right;
-	}
-
 	// Returns depth of leftmost leaf.
 	static int findADepth(Node node) {
 		int d = 0;
@@ -51,9 +45,9 @@ class CheckIfBinaryTreeIsPerfect {
 	 * Helper function that allocates a new node with the given key and NULL left
 	 * and right pointer.
 	 */
-	static Node newNode(int k) {
+	static Node newNode(int data) {
 		Node node = new Node();
-		node.key = k;
+		node.data = data;
 		node.right = null;
 		node.left = null;
 		return node;

@@ -5,12 +5,6 @@ class SumOfRightLeaves {
 	// sum
 	static int sum = 0;
 
-	// node of binary tree
-	static class Node {
-		int data;
-		Node left, right;
-	};
-
 	// return new node
 	static Node addNode(int data) {
 		Node temp = new Node();

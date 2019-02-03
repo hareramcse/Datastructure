@@ -1,7 +1,7 @@
 package com.hs.bst;
 
 import java.util.LinkedList;
-import java.util.List;
+import java.util.Queue;
 
 public class BinarySearchTree {
 	public static Node root = null;
@@ -89,11 +89,6 @@ public class BinarySearchTree {
 		return temp;
 	}
 
-	/*
-	 * public static int findMinInBST(Node root){ Node root=root; if(root==null){
-	 * return -1; } while(root.left != null){ root=root.left; } return root.data; }
-	 */
-
 	// as max value comes right to the root, so we traverse right nodes
 	public int findMaxInBST(Node root) {
 		Node temp = root;
@@ -109,7 +104,7 @@ public class BinarySearchTree {
 	// max no of edges from root to leaf node
 	private int findHeightOfTree(Node root) {
 		if (root == null) {
-			return -1;
+			return 0;
 		} else {
 			int leftHeight = findHeightOfTree(root.left);
 			int rightHeight = findHeightOfTree(root.right);
@@ -144,23 +139,27 @@ public class BinarySearchTree {
 	}
 
 	// post order traversal(left,right,root)
-	/*
-	 * private void printDataPostOrder(Node root){ if(root==null){ return; }else{
-	 * printDataPostOrder(root.left); printDataPostOrder(root.right);
-	 * System.out.println(root.data); } }
-	 */
+	private void printDataPostOrder(Node root) {
+		if (root == null) {
+			return;
+		} else {
+			printDataPostOrder(root.left);
+			printDataPostOrder(root.right);
+			System.out.println(root.data);
+		}
+	}
 
 	// level order traversal, it traverse level by level
 	public void levelOrderTraversal(Node root) {
-		List<Node> list = new LinkedList<Node>();
-		list.add(root);
-		while (!list.isEmpty()) {
-			Node temp = list.remove(0);
+		Queue<Node> queue = new LinkedList<Node>();
+		queue.add(root);
+		while (!queue.isEmpty()) {
+			Node temp = queue.poll();
 			System.out.println(temp.data);
 			if (temp.left != null)
-				list.add(temp.left);
+				queue.add(temp.left);
 			if (temp.right != null)
-				list.add(temp.right);
+				queue.add(temp.right);
 		}
 	}
 
@@ -180,5 +179,7 @@ public class BinarySearchTree {
 		bst.printDataPreOrder(root);
 		System.out.println("Print data by level order traversal");
 		bst.levelOrderTraversal(root);
+		System.out.println("print data in post order");
+		bst.printDataPostOrder(root);
 	}
 }

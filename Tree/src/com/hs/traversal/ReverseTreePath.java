@@ -5,12 +5,6 @@ import java.util.Map;
 
 class ReverseTreePath {
 
-	// A Binary Tree Node
-	static class Node {
-		int data;
-		Node left, right;
-	};
-
 	// class for int values
 	static class INT {
 		int data;

@@ -1,17 +1,13 @@
 package com.hs.summation;
 
 class SumOfAllNode {
-	static class Node {
-		int key;
-		Node left, right;
-	}
 
 	/*
 	 * utility that allocates a new Node with the given key
 	 */
-	static Node newNode(int key) {
+	static Node newNode(int data) {
 		Node node = new Node();
-		node.key = key;
+		node.data = data;
 		node.left = node.right = null;
 		return (node);
 	}
@@ -22,7 +18,7 @@ class SumOfAllNode {
 	static int addBT(Node root) {
 		if (root == null)
 			return 0;
-		return (root.key + addBT(root.left) + addBT(root.right));
+		return (root.data + addBT(root.left) + addBT(root.right));
 	}
 
 	// Driver Code

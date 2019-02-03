@@ -8,4 +8,8 @@ public class Node {
 		data = item;
 		left = right = next = null;
 	}
+	
+	public Node() {
+
+	}
 }

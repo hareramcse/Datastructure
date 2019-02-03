@@ -17,7 +17,7 @@ class LevelOrderTraversalInSpiralForm2 {
 		// Push first level to first stack 's1'
 		s1.push(node);
 
-		// Keep ptinting while any of the stacks has some nodes
+		// Keep printing while any of the stacks has some nodes
 		while (!s1.empty() || !s2.empty()) {
 			// Print nodes of current level from s1 and push nodes of
 			// next level to s2

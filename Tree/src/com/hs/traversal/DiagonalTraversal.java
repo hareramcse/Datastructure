@@ -1,51 +1,39 @@
 package com.hs.traversal;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map.Entry;
 import java.util.Vector;
 
 public class DiagonalTraversal {
-	// Tree node
-	static class Node {
-		int data;
-		Node left;
-		Node right;
-
-		// constructor
-		Node(int data) {
-			this.data = data;
-			left = null;
-			right = null;
-		}
-	}
 
 	/*
 	 * root - root of the binary tree d - distance of current line from rightmost
 	 * -topmost slope. diagonalPrint - HashMap to store Diagonal elements (Passed by
 	 * Reference)
 	 */
-	static void printDiagonal(Node root, HashMap<Integer, Vector<Integer>> map, int d) {
+	static void printDiagonal(Node root, HashMap<Integer, List<Integer>> map, int d) {
 
 		// Base case
 		if (root == null)
 			return;
 
 		// get the list at the particular d value
-		Vector<Integer> k = map.get(d);
+		List<Integer> list = map.get(d);
 
-		// k is null then create a vector and store the data
-		if (k == null) {
-			k = new Vector<>();
-			k.add(root.data);
+		// vector is null then create a vector and store the data
+		if (list == null) {
+			list = new Vector<>();
+			list.add(root.data);
 		}
 
-		// k is not null then update the list
+		// vector is not null then update the list
 		else {
-			k.add(root.data);
+			list.add(root.data);
 		}
 
 		// Store all nodes of same line together as a vector
-		map.put(d, k);
+		map.put(d, list);
 
 		// Increase the vertical distance if left child
 		printDiagonal(root.left, map, d + 1);
@@ -57,11 +45,11 @@ public class DiagonalTraversal {
 	// Print diagonal traversal of given binary tree
 	static void diagonalPrint(Node root) {
 		// create a map of vectors to store Diagonal elements
-		HashMap<Integer, Vector<Integer>> map = new HashMap<>();
+		HashMap<Integer, List<Integer>> map = new HashMap<>();
 		printDiagonal(root, map, 0);
 
 		System.out.println("Diagonal Traversal of Binnary Tree");
-		for (Entry<Integer, Vector<Integer>> entry : map.entrySet()) {
+		for (Entry<Integer, List<Integer>> entry : map.entrySet()) {
 			System.out.println(entry.getValue());
 		}
 	}

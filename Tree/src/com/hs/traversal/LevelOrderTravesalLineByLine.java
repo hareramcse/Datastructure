@@ -23,7 +23,7 @@ public class LevelOrderTravesalLineByLine {
 			Node curr = q.poll();
 
 			// condition to check the
-			// occurence of next level
+			// occurrence of next level
 			if (curr == null) {
 				if (!q.isEmpty()) {
 					q.add(null);

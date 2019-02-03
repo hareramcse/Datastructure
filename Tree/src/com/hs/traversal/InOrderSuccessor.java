@@ -2,13 +2,6 @@ package com.hs.traversal;
 
 //Java program to find inorder successor of a node 
 public class InOrderSuccessor {
-	// A Binary Tree Node
-	// Java program to find inorder successor of a node
-	// A Binary Tree Node
-	static class Node {
-		int data;
-		Node left, right;
-	}
 
 	// Temporary node for case 2
 	static Node temp = new Node();

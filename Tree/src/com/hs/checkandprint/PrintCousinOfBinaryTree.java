@@ -2,12 +2,6 @@ package com.hs.checkandprint;
 
 class PrintCousinOfBinaryTree {
 
-	// A Binary Tree Node
-	static class Node {
-		int data;
-		Node left, right;
-	}
-
 	// A utility function to create a new Binary
 	// Tree Node
 	static Node newNode(int item) {

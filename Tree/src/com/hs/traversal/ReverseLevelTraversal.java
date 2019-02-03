@@ -19,8 +19,7 @@ class ReverseLevelTraversal {
 		// 2) Right subtree is visited before left subtree
 		while (Q.isEmpty() == false) {
 			/* Dequeue node and make it root */
-			node = Q.peek();
-			Q.remove();
+			node = Q.poll();
 			S.push(node);
 
 			/* Enqueue right child */
@@ -35,9 +34,8 @@ class ReverseLevelTraversal {
 
 		// Now pop all items from stack one by one and print them
 		while (S.empty() == false) {
-			node = S.peek();
+			node = S.pop();
 			System.out.print(node.data + " ");
-			S.pop();
 		}
 	}
 

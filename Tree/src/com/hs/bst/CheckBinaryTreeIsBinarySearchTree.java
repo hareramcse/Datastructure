@@ -2,7 +2,7 @@ package com.hs.bst;
 
 public class CheckBinaryTreeIsBinarySearchTree {
 
-	public static Node root;
+	public Node root;
 
 	// best way (O(n)
 	public boolean isBST3rdWay(Node root, int minValue, int maxValue) {

@@ -2,17 +2,7 @@ package com.hs.traversal;
 
 public class FindNthNodeOfInorderTraversal {
 	static int count = 0;
-
-	/*
-	 * A binary tree node has data, pointer to left child and a pointer to right
-	 * child
-	 */
-	static class Node {
-		int data;
-		Node left;
-		Node right;
-	}
-
+	
 	/*
 	 * Helper function that allocates a new node with the given data and null left
 	 * and right pointers.
@@ -23,7 +13,7 @@ public class FindNthNodeOfInorderTraversal {
 		node.left = null;
 		node.right = null;
 
-		return (node);
+		return node;
 	}
 
 	/* Given a binary tree, print its nth nodes of inorder */

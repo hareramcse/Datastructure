@@ -5,19 +5,6 @@ import java.util.Queue;
 
 public class PrintLevelOfEachNode {
 
-	/* A tree node structure */
-	static class Node {
-		int data;
-		Node left;
-		Node right;
-
-		Node(int data) {
-			this.data = data;
-			left = null;
-			right = null;
-		}
-	}
-
 	// User defined class Pair to hold
 	// the node and its level
 	static class Pair {

@@ -1,0 +1,46 @@
+/.metadata/
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Intellij files
+.idea/
+*.iml
+
+# Eclipse files
+*.eml
+
+# Package Files #
+*.jar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+.metadata
+bin/
+tmp/
+*target/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+.classpath
+.project
+.springBeans
+.gradle
+
+# System Files
+.DS_Store
