@@ -3,8 +3,6 @@ package com.hs.linkedlist;
 import java.util.HashSet;
 
 public class RemoveDuplicateFromUnsortedList {
-	Node head;
-
 	/*
 	 * Function to remove duplicates from a unsorted linked list
 	 */
@@ -43,20 +41,20 @@ public class RemoveDuplicateFromUnsortedList {
 		 * The constructed linked list is: 10->12->11->11->12->11->10
 		 */
 		RemoveDuplicateFromUnsortedList list = new RemoveDuplicateFromUnsortedList();
-		list.head = new Node(10);
-		list.head.next = new Node(12);
-		list.head.next.next = new Node(11);
-		list.head.next.next.next = new Node(11);
-		list.head.next.next.next.next = new Node(12);
-		list.head.next.next.next.next.next = new Node(11);
-		list.head.next.next.next.next.next.next = new Node(10);
+		Node head = new Node(10);
+		head.next = new Node(12);
+		head.next.next = new Node(11);
+		head.next.next.next = new Node(11);
+		head.next.next.next.next = new Node(12);
+		head.next.next.next.next.next = new Node(11);
+		head.next.next.next.next.next.next = new Node(10);
 
 		System.out.println("Linked list before removing duplicates :");
-		list.printList(list.head);
+		list.printList(head);
 
-		list.removeDuplicate(list.head);
+		list.removeDuplicate(head);
 
 		System.out.println("\nLinked list after removing duplicates :");
-		list.printList(list.head);
+		list.printList(head);
 	}
 }

@@ -5,8 +5,6 @@ import java.util.Queue;
 
 public class FindNextRightNodeOfGivenKey {
 
-	Node root;
-
 	// Method to find next right of given key k, it returns NULL if k is
 	// not present in tree or k is the rightmost node of its level
 	Node nextRight(Node first, int k) {
@@ -66,7 +64,7 @@ public class FindNextRightNodeOfGivenKey {
 	}
 
 	// A utility function to test above functions
-	void test(Node node, int k) {
+	void test(Node root, int k) {
 		Node nr = nextRight(root, k);
 		if (nr != null) {
 			System.out.println("Next Right of " + k + " is " + nr.data);
@@ -78,19 +76,19 @@ public class FindNextRightNodeOfGivenKey {
 	// driver program to test above functions
 	public static void main(String args[]) {
 		FindNextRightNodeOfGivenKey tree = new FindNextRightNodeOfGivenKey();
-		tree.root = new Node(10);
-		tree.root.left = new Node(2);
-		tree.root.right = new Node(6);
-		tree.root.right.right = new Node(5);
-		tree.root.left.left = new Node(8);
-		tree.root.left.right = new Node(4);
+		Node root = new Node(10);
+		root.left = new Node(2);
+		root.right = new Node(6);
+		root.right.right = new Node(5);
+		root.left.left = new Node(8);
+		root.left.right = new Node(4);
 
-		tree.test(tree.root, 10);
-		tree.test(tree.root, 2);
-		tree.test(tree.root, 6);
-		tree.test(tree.root, 5);
-		tree.test(tree.root, 8);
-		tree.test(tree.root, 4);
+		tree.test(root, 10);
+		tree.test(root, 2);
+		tree.test(root, 6);
+		tree.test(root, 5);
+		tree.test(root, 8);
+		tree.test(root, 4);
 
 	}
 }

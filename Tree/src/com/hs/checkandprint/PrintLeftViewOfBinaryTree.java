@@ -1,7 +1,6 @@
 package com.hs.checkandprint;
 
 class PrintLeftViewOfBinaryTree {
-	Node root;
 	int max_level;
 
 	// recursive function to print left view
@@ -22,7 +21,7 @@ class PrintLeftViewOfBinaryTree {
 	}
 
 	// A wrapper over leftViewUtil()
-	void leftView() {
+	void leftView(Node root) {
 		leftViewUtil(root, 1);
 	}
 
@@ -30,12 +29,12 @@ class PrintLeftViewOfBinaryTree {
 	public static void main(String args[]) {
 		/* creating a binary tree and entering the nodes */
 		PrintLeftViewOfBinaryTree tree = new PrintLeftViewOfBinaryTree();
-		tree.root = new Node(12);
-		tree.root.left = new Node(10);
-		tree.root.right = new Node(30);
-		tree.root.right.left = new Node(25);
-		tree.root.right.right = new Node(40);
+		Node root = new Node(12);
+		root.left = new Node(10);
+		root.right = new Node(30);
+		root.right.left = new Node(25);
+		root.right.right = new Node(40);
 
-		tree.leftView();
+		tree.leftView(root);
 	}
 }

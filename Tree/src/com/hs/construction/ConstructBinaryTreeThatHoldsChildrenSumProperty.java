@@ -1,7 +1,6 @@
 package com.hs.construction;
 
 class ConstructBinaryTreeThatHoldsChildrenSumProperty {
-	Node root;
 	/*
 	 * This function changes a tree to to hold children sum property
 	 */
@@ -86,22 +85,22 @@ class ConstructBinaryTreeThatHoldsChildrenSumProperty {
 	// Driver program to test above functions
 	public static void main(String args[]) {
 		ConstructBinaryTreeThatHoldsChildrenSumProperty tree = new ConstructBinaryTreeThatHoldsChildrenSumProperty();
-		tree.root = new Node(50);
-		tree.root.left = new Node(7);
-		tree.root.right = new Node(2);
-		tree.root.left.left = new Node(3);
-		tree.root.left.right = new Node(5);
-		tree.root.right.left = new Node(1);
-		tree.root.right.right = new Node(30);
+		Node root = new Node(50);
+		root.left = new Node(7);
+		root.right = new Node(2);
+		root.left.left = new Node(3);
+		root.left.right = new Node(5);
+		root.right.left = new Node(1);
+		root.right.right = new Node(30);
 
 		System.out.println("Inorder traversal before conversion is :");
-		tree.printInorder(tree.root);
+		tree.printInorder(root);
 
-		tree.convertTree(tree.root);
+		tree.convertTree(root);
 		System.out.println("");
 
 		System.out.println("Inorder traversal after conversion is :");
-		tree.printInorder(tree.root);
+		tree.printInorder(root);
 
 	}
 }

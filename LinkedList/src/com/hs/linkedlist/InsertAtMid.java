@@ -1,16 +1,14 @@
 package com.hs.linkedlist;
 
 class InsertAtMid {
-	Node head; // head of list
 
 	// function to insert node at the
 	// middle of the linked list
-	void insertAtMid(int data) {
+	void insertAtMid(Node head, int data) {
 		// if list is empty
-		if (head == null)
+		if (head == null) {
 			head = new Node(data);
-
-		else {
+		} else {
 			// get a new node
 			Node newNode = new Node(data);
 
@@ -22,9 +20,6 @@ class InsertAtMid {
 			while (fast != null && fast.next != null) {
 				// move slow pointer to next node
 				slow = slow.next;
-
-				// move fast pointer two nodes
-				// at a time
 				fast = fast.next.next;
 			}
 
@@ -36,7 +31,7 @@ class InsertAtMid {
 	}
 
 	// function to display the linked list
-	void display() {
+	void display(Node head) {
 		Node temp = head;
 		while (temp != null) {
 			System.out.print(temp.data + " ");
@@ -48,18 +43,18 @@ class InsertAtMid {
 	public static void main(String[] args) {
 		// Creating the list 1.2.4.5
 		InsertAtMid list = new InsertAtMid();
-		list.head = new Node(1);
-		list.head.next = new Node(2);
-		list.head.next.next = new Node(4);
-		list.head.next.next.next = new Node(5);
+		Node head = new Node(1);
+		head.next = new Node(2);
+		head.next.next = new Node(4);
+		head.next.next.next = new Node(5);
 
 		System.out.println("Linked list before" + " insertion: ");
-		list.display();
+		list.display(head);
 
 		int data = 3;
-		list.insertAtMid(data);
+		list.insertAtMid(head, data);
 
 		System.out.println("\nLinked list after" + " insertion: ");
-		list.display();
+		list.display(head);
 	}
 }

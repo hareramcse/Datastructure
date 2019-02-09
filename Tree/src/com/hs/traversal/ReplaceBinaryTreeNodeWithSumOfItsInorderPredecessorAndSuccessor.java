@@ -4,27 +4,9 @@ import java.util.Vector;
 
 public class ReplaceBinaryTreeNodeWithSumOfItsInorderPredecessorAndSuccessor {
 
-	// node of a binary tree
-	static class Node {
-		int data;
-		Node left, right;
-	}
-
 	// INT class
 	static class INT {
 		int data;
-	}
-
-	// function to get a new node of a binary tree
-	static Node getNode(int data) {
-		// allocate node
-		Node new_node = new Node();
-
-		// put in the data;
-		new_node.data = data;
-		new_node.left = new_node.right = null;
-
-		return new_node;
 	}
 
 	// function to store the inorder traversal
@@ -114,13 +96,13 @@ public class ReplaceBinaryTreeNodeWithSumOfItsInorderPredecessorAndSuccessor {
 	// Driver program to test above
 	public static void main(String args[]) {
 		// binary tree formation
-		Node root = getNode(1); // 1
-		root.left = getNode(2); // / \
-		root.right = getNode(3); // 2 3
-		root.left.left = getNode(4); // / \ / \
-		root.left.right = getNode(5); // 4 5 6 7
-		root.right.left = getNode(6);
-		root.right.right = getNode(7);
+		Node root = new Node(1); // 1
+		root.left = new Node(2); // / \
+		root.right = new Node(3); // 2 3
+		root.left.left = new Node(4); // / \ / \
+		root.left.right = new Node(5); // 4 5 6 7
+		root.right.left = new Node(6);
+		root.right.right = new Node(7);
 
 		System.out.println("Preorder Traversal before tree modification:");
 		preorderTraversal(root);

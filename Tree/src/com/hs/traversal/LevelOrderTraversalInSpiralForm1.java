@@ -1,7 +1,6 @@
 package com.hs.traversal;
 
 class LevelOrderTraversalInSpiralForm1 {
-	Node root;
 
 	// Function to print the spiral traversal of tree
 	void printSpiral(Node node) {
@@ -62,14 +61,14 @@ class LevelOrderTraversalInSpiralForm1 {
 	/* Driver program to test the above functions */
 	public static void main(String[] args) {
 		LevelOrderTraversalInSpiralForm1 tree = new LevelOrderTraversalInSpiralForm1();
-		tree.root = new Node(1);
-		tree.root.left = new Node(2);
-		tree.root.right = new Node(3);
-		tree.root.left.left = new Node(7);
-		tree.root.left.right = new Node(6);
-		tree.root.right.left = new Node(5);
-		tree.root.right.right = new Node(4);
+		Node root = new Node(1);
+		root.left = new Node(2);
+		root.right = new Node(3);
+		root.left.left = new Node(7);
+		root.left.right = new Node(6);
+		root.right.left = new Node(5);
+		root.right.right = new Node(4);
 		System.out.println("Spiral order traversal of Binary Tree is ");
-		tree.printSpiral(tree.root);
+		tree.printSpiral(root);
 	}
 }

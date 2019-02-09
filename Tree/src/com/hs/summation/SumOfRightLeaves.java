@@ -3,19 +3,11 @@ package com.hs.summation;
 class SumOfRightLeaves {
 
 	// sum
-	static int sum = 0;
-
-	// return new node
-	static Node addNode(int data) {
-		Node temp = new Node();
-		temp.data = data;
-		temp.left = temp.right = null;
-		return temp;
-	}
+	int sum = 0;
 
 	// utility function to calculate
 	// sum of right leaf nodes
-	static void rightLeafSum(Node root) {
+	void rightLeafSum(Node root) {
 		if (root == null)
 			return;
 
@@ -31,22 +23,22 @@ class SumOfRightLeaves {
 
 	// Driver Code
 	public static void main(String args[]) {
+		SumOfRightLeaves tree = new SumOfRightLeaves();
 
 		// contruct binary tree
-		Node root = addNode(1);
-		root.left = addNode(2);
-		root.left.left = addNode(4);
-		root.left.right = addNode(5);
-		root.left.left.right = addNode(2);
-		root.right = addNode(3);
-		root.right.right = addNode(8);
-		root.right.right.left = addNode(6);
-		root.right.right.right = addNode(7);
+		Node root = new Node(1);
+		root.left = new Node(2);
+		root.left.left = new Node(4);
+		root.left.right = new Node(5);
+		root.left.left.right = new Node(2);
+		root.right = new Node(3);
+		root.right.right = new Node(8);
+		root.right.right.left = new Node(6);
+		root.right.right.right = new Node(7);
 
 		// variable to store sum
 		// of right leaves
-		sum = 0;
-		rightLeafSum(root);
-		System.out.println(sum);
+		tree.rightLeafSum(root);
+		System.out.println(tree.sum);
 	}
 }

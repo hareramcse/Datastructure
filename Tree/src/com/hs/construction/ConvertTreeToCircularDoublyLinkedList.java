@@ -1,8 +1,6 @@
 package com.hs.construction;
 
 public class ConvertTreeToCircularDoublyLinkedList {
-	Node root;
-
 	// concatenate both the lists and returns the head
 	// of the List
 	public Node concatenate(Node leftList, Node rightList) {
@@ -73,15 +71,15 @@ public class ConvertTreeToCircularDoublyLinkedList {
 	public static void main(String args[]) {
 		// Build the tree
 		ConvertTreeToCircularDoublyLinkedList tree = new ConvertTreeToCircularDoublyLinkedList();
-		tree.root = new Node(10);
-		tree.root.left = new Node(12);
-		tree.root.right = new Node(15);
-		tree.root.left.left = new Node(25);
-		tree.root.left.right = new Node(30);
-		tree.root.right.left = new Node(36);
+		Node root = new Node(10);
+		root.left = new Node(12);
+		root.right = new Node(15);
+		root.left.left = new Node(25);
+		root.left.right = new Node(30);
+		root.right.left = new Node(36);
 
 		// head refers to the head of the Link List
-		Node head = tree.bTreeToCList(tree.root);
+		Node head = tree.bTreeToCList(root);
 
 		// Display the Circular LinkedList
 		tree.display(head);

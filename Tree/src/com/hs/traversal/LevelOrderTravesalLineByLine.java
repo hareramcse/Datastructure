@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class LevelOrderTravesalLineByLine {
+	
 	static void levelOrder(Node root) {
 		if (root == null)
 			return;

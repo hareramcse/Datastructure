@@ -5,7 +5,6 @@ import java.util.Queue;
 import java.util.Stack;
 
 class ReverseLevelTraversal {
-	Node root;
 
 	/* Given a binary tree, print its nodes in reverse level order */
 	void reverseLevelOrder(Node node) {
@@ -44,16 +43,16 @@ class ReverseLevelTraversal {
 		ReverseLevelTraversal tree = new ReverseLevelTraversal();
 
 		// Let us create trees shown in above diagram
-		tree.root = new Node(1);
-		tree.root.left = new Node(2);
-		tree.root.right = new Node(3);
-		tree.root.left.left = new Node(4);
-		tree.root.left.right = new Node(5);
-		tree.root.right.left = new Node(6);
-		tree.root.right.right = new Node(7);
+		Node root = new Node(1);
+		root.left = new Node(2);
+		root.right = new Node(3);
+		root.left.left = new Node(4);
+		root.left.right = new Node(5);
+		root.right.left = new Node(6);
+		root.right.right = new Node(7);
 
 		System.out.println("Level Order traversal of binary tree is :");
-		tree.reverseLevelOrder(tree.root);
+		tree.reverseLevelOrder(root);
 
 	}
 }

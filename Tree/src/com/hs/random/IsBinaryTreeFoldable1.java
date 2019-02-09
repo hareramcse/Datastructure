@@ -2,8 +2,6 @@ package com.hs.random;
 
 public class IsBinaryTreeFoldable1 {
 
-	Node root;
-
 	/* Returns true if the given tree can be folded */
 	boolean IsFoldable(Node node) {
 		if (node == null) {
@@ -41,13 +39,13 @@ public class IsBinaryTreeFoldable1 {
 
 	public static void main(String args[]) {
 		IsBinaryTreeFoldable1 tree = new IsBinaryTreeFoldable1();
-		tree.root = new Node(1);
-		tree.root.left = new Node(2);
-		tree.root.right = new Node(3);
-		tree.root.right.left = new Node(4);
-		tree.root.left.right = new Node(5);
+		Node root = new Node(1);
+		root.left = new Node(2);
+		root.right = new Node(3);
+		root.right.left = new Node(4);
+		root.left.right = new Node(5);
 
-		if (tree.IsFoldable(tree.root)) {
+		if (tree.IsFoldable(root)) {
 			System.out.println("tree is foldable");
 		} else {
 			System.out.println("Tree is not foldable");

@@ -2,10 +2,9 @@ package com.hs.traversal;
 
 import java.util.Stack;
 
-public class InOrderTraversalWithoutRecurssion {
-	Node root;
+public class IterativeInOrderTraversal {
 
-	void inorder() {
+	void inorderTraversal(Node root) {
 		if (root == null)
 			return;
 
@@ -40,16 +39,12 @@ public class InOrderTraversalWithoutRecurssion {
 	}
 
 	public static void main(String args[]) {
-
-		/*
-		 * creating a binary tree and entering the nodes
-		 */
-		InOrderTraversalWithoutRecurssion tree = new InOrderTraversalWithoutRecurssion();
-		tree.root = new Node(1);
-		tree.root.left = new Node(2);
-		tree.root.right = new Node(3);
-		tree.root.left.left = new Node(4);
-		tree.root.left.right = new Node(5);
-		tree.inorder();
+		IterativeInOrderTraversal tree = new IterativeInOrderTraversal();
+		Node root = new Node(1);
+		root.left = new Node(2);
+		root.right = new Node(3);
+		root.left.left = new Node(4);
+		root.left.right = new Node(5);
+		tree.inorderTraversal(root);
 	}
 }

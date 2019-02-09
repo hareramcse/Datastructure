@@ -2,8 +2,6 @@ package com.hs.random;
 
 public class PrintAllNodeFromDistanceKFromGivenNode {
 
-	Node root;
-
 	/*
 	 * Recursive function to print all the nodes at distance k in the tree (or
 	 * subtree) rooted with given root. See
@@ -91,14 +89,14 @@ public class PrintAllNodeFromDistanceKFromGivenNode {
 		PrintAllNodeFromDistanceKFromGivenNode tree = new PrintAllNodeFromDistanceKFromGivenNode();
 
 		/* Let us construct the tree shown in above diagram */
-		tree.root = new Node(20);
-		tree.root.left = new Node(8);
-		tree.root.right = new Node(22);
-		tree.root.left.left = new Node(4);
-		tree.root.left.right = new Node(12);
-		tree.root.left.right.left = new Node(10);
-		tree.root.left.right.right = new Node(14);
-		Node target = tree.root.left.right;
-		tree.printkdistanceNode(tree.root, target, 2);
+		Node root = new Node(20);
+		root.left = new Node(8);
+		root.right = new Node(22);
+		root.left.left = new Node(4);
+		root.left.right = new Node(12);
+		root.left.right.left = new Node(10);
+		root.left.right.right = new Node(14);
+		Node target = root.left.right;
+		tree.printkdistanceNode(root, target, 2);
 	}
 }

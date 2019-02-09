@@ -1,23 +1,10 @@
 package com.hs.traversal;
 
 public class FindNthNodeOfInorderTraversal {
-	static int count = 0;
-	
-	/*
-	 * Helper function that allocates a new node with the given data and null left
-	 * and right pointers.
-	 */
-	static Node newNode(int data) {
-		Node node = new Node();
-		node.data = data;
-		node.left = null;
-		node.right = null;
-
-		return node;
-	}
+	int count = 0;
 
 	/* Given a binary tree, print its nth nodes of inorder */
-	static void NthInorder(Node node, int n) {
+	void NthInorder(Node node, int n) {
 		if (node == null)
 			return;
 
@@ -37,14 +24,15 @@ public class FindNthNodeOfInorderTraversal {
 
 	/* Driver program to test above functions */
 	public static void main(String args[]) {
-		Node root = newNode(10);
-		root.left = newNode(20);
-		root.right = newNode(30);
-		root.left.left = newNode(40);
-		root.left.right = newNode(50);
+		FindNthNodeOfInorderTraversal tree = new FindNthNodeOfInorderTraversal();
+		Node root = new Node(10);
+		root.left = new Node(20);
+		root.right = new Node(30);
+		root.left.left = new Node(40);
+		root.left.right = new Node(50);
 
 		int n = 4;
 
-		NthInorder(root, n);
+		tree.NthInorder(root, n);
 	}
 }

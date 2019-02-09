@@ -1,15 +1,14 @@
 package com.hs.checkandprint;
 
 class CheckBinaryTreeIsSumTree {
-	Node root;
-
 	/*
 	 * A utility function to get the sum of values in tree with root as root
 	 */
-	int sum(Node node) {
-		if (node == null)
+	int sum(Node root) {
+		if (root == null) {
 			return 0;
-		return sum(node.left) + node.data + sum(node.right);
+		}
+		return sum(root.left) + root.data + sum(root.right);
 	}
 
 	/*
@@ -40,14 +39,14 @@ class CheckBinaryTreeIsSumTree {
 	/* Driver program to test above functions */
 	public static void main(String args[]) {
 		CheckBinaryTreeIsSumTree tree = new CheckBinaryTreeIsSumTree();
-		tree.root = new Node(26);
-		tree.root.left = new Node(10);
-		tree.root.right = new Node(3);
-		tree.root.left.left = new Node(4);
-		tree.root.left.right = new Node(6);
-		tree.root.right.right = new Node(3);
+		Node root = new Node(26);
+		root.left = new Node(10);
+		root.right = new Node(3);
+		root.left.left = new Node(4);
+		root.left.right = new Node(6);
+		root.right.right = new Node(3);
 
-		if (tree.isSumTree(tree.root) != 0)
+		if (tree.isSumTree(root) != 0)
 			System.out.println("The given tree is a sum tree");
 		else
 			System.out.println("The given tree is not a sum tree");

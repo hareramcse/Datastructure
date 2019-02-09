@@ -1,7 +1,6 @@
 package com.hs.construction;
 
 class ConstructTreeFromInorderAndLevelOrder {
-	Node root;
 
 	Node buildTree(int in[], int level[]) {
 		Node startnode = null;

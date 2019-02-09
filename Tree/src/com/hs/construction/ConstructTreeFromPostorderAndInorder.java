@@ -1,7 +1,6 @@
 package com.hs.construction;
 
 public class ConstructTreeFromPostorderAndInorder {
-	Node root;
 	int index;
 
 	/*
@@ -67,8 +66,8 @@ public class ConstructTreeFromPostorderAndInorder {
 		int post[] = new int[] { 8, 4, 5, 2, 6, 7, 3, 1 };
 		int n = in.length;
 		tree.index = n - 1;
-		tree.root = tree.buildTree(in, post, 0, n - 1, tree.index);
+		Node root = tree.buildTree(in, post, 0, n - 1, tree.index);
 		System.out.println("Preorder of the constructed tree : ");
-		tree.preOrder(tree.root);
+		tree.preOrder(root);
 	}
 }

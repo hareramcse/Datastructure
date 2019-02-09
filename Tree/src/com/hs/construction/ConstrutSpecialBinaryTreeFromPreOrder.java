@@ -7,7 +7,6 @@ class Index {
 
 class ConstrutSpecialBinaryTreeFromPreOrder {
 
-	static Node root;
 	Index myindex = new Index();
 
 	/*
@@ -68,10 +67,10 @@ class ConstrutSpecialBinaryTreeFromPreOrder {
 		int n = pre.length;
 
 		// construct the above tree
-		Node mynode = tree.constructTree(pre, preLN, n, root);
+		Node root = tree.constructTree(pre, preLN, n, null);
 
 		// Test the constructed tree
 		System.out.println("Following is Inorder Traversal of the Constructed Binary Tree: ");
-		tree.printInorder(mynode);
+		tree.printInorder(root);
 	}
 }

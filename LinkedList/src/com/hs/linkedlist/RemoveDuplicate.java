@@ -1,9 +1,9 @@
 package com.hs.linkedlist;
 
 class RemoveDuplicate {
-	Node head; // head of list
+	Node head;
 
-	void removeDuplicates() {
+	void removeDuplicates(Node head) {
 		/* Another reference to head */
 		Node current = head;
 
@@ -44,7 +44,7 @@ class RemoveDuplicate {
 	}
 
 	/* Function to print linked list */
-	void printList() {
+	void printList(Node head) {
 		Node temp = head;
 		while (temp != null) {
 			System.out.print(temp.data + " ");
@@ -64,11 +64,11 @@ class RemoveDuplicate {
 		llist.push(11);
 
 		System.out.println("List before removal of duplicates");
-		llist.printList();
+		llist.printList(llist.head);
 
-		llist.removeDuplicates();
+		llist.removeDuplicates(llist.head);
 
 		System.out.println("List after removal of elements");
-		llist.printList();
+		llist.printList(llist.head);
 	}
 }

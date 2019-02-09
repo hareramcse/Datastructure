@@ -7,7 +7,6 @@ import java.util.Map.Entry;
 import java.util.TreeMap;
 
 public class PrintVerticalByMap {
-	Node root;
 
 	void printVerticalUtil(Node root, Map<Integer, List<Integer>> map, int hd) {
 		if (root == null)
@@ -38,16 +37,16 @@ public class PrintVerticalByMap {
 
 	public static void main(String[] args) {
 		PrintVerticalByMap tree = new PrintVerticalByMap();
-		tree.root = new Node(1);
-		tree.root.left = new Node(2);
-		tree.root.right = new Node(3);
-		tree.root.left.left = new Node(4);
-		tree.root.left.right = new Node(5);
-		tree.root.right.left = new Node(6);
-		tree.root.right.right = new Node(7);
-		tree.root.right.left.right = new Node(8);
-		tree.root.right.right.right = new Node(9);
+		Node root = new Node(1);
+		root.left = new Node(2);
+		root.right = new Node(3);
+		root.left.left = new Node(4);
+		root.left.right = new Node(5);
+		root.right.left = new Node(6);
+		root.right.right = new Node(7);
+		root.right.left.right = new Node(8);
+		root.right.right.right = new Node(9);
 
-		tree.printVertical(tree.root);
+		tree.printVertical(root);
 	}
 }

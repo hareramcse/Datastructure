@@ -2,7 +2,6 @@ package com.hs.random;
 
 public class InOrderSuccessor {
 
-	Node root;
 	Node next;
 
 	/*
@@ -35,16 +34,16 @@ public class InOrderSuccessor {
 		 * Constructed binary tree is 10 / \ 8 12 / 3
 		 */
 		InOrderSuccessor tree = new InOrderSuccessor();
-		tree.root = new Node(10);
-		tree.root.left = new Node(8);
-		tree.root.right = new Node(12);
-		tree.root.left.left = new Node(3);
+		Node root = new Node(10);
+		root.left = new Node(8);
+		root.right = new Node(12);
+		root.left.left = new Node(3);
 
 		// Populates nextRight pointer in all nodes
-		tree.populateNext(tree.root);
+		tree.populateNext(root);
 
 		// Let us see the populated values
-		Node ptr = tree.root.left.left;
+		Node ptr = root.left.left;
 		while (ptr != null) {
 
 			// -1 is printed if there is no successor

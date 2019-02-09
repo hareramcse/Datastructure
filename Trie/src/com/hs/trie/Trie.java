@@ -1,9 +1,9 @@
 package com.hs.trie;
 
 public class Trie {
-	static TrieNode root;
+	TrieNode root;
 
-	static void insert(String key) {
+	void insert(String key) {
 		TrieNode pCrawl = root;
 		
 		for (int level = 0; level < key.length(); level++) {
@@ -16,7 +16,7 @@ public class Trie {
 		pCrawl.isEndOfWord = true;
 	}
 
-	static boolean search(String key) {
+	boolean search(String key) {
 		TrieNode pCrawl = root;
 
 		for (int level = 0; level < key.length(); level++) {
@@ -30,34 +30,35 @@ public class Trie {
 	}
 
 	public static void main(String args[]) {
+		Trie trie = new Trie();
 		// Input keys (use only 'a' through 'z' and lower case)
 		String keys[] = { "the" };
 
 		String output[] = { "Not present in trie", "Present in trie" };
 
-		root = new TrieNode();
+		trie.root = new TrieNode();
 
 		// Construct trie
 		for (int i = 0; i < keys.length; i++)
-			insert(keys[i]);
+			trie.insert(keys[i]);
 
 		// Search for different keys
-		if (search("the") == true)
+		if (trie.search("the") == true)
 			System.out.println("the --- " + output[1]);
 		else
 			System.out.println("the --- " + output[0]);
 
-		if (search("these") == true)
+		if (trie.search("these") == true)
 			System.out.println("these --- " + output[1]);
 		else
 			System.out.println("these --- " + output[0]);
 
-		if (search("their") == true)
+		if (trie.search("their") == true)
 			System.out.println("their --- " + output[1]);
 		else
 			System.out.println("their --- " + output[0]);
 
-		if (search("thaw") == true)
+		if (trie.search("thaw") == true)
 			System.out.println("thaw --- " + output[1]);
 		else
 			System.out.println("thaw --- " + output[0]);

@@ -5,8 +5,6 @@ import java.util.List;
 
 class PrintAllPathFromRoot {
 
-	Node root;
-
 	public void PrintAllPossiblePath(Node root,List<Node> nodelist){
 	    if(root != null){
 	            nodelist.add(root);
@@ -32,15 +30,15 @@ class PrintAllPathFromRoot {
 
 		PrintAllPathFromRoot tree = new PrintAllPathFromRoot();
 
-		tree.root = new Node(1);
-		tree.root.left = new Node(2);
-		tree.root.right = new Node(3);
-		tree.root.left.left = new Node(4);
-		tree.root.left.right = new Node(5);
+		Node root = new Node(1);
+		root.left = new Node(2);
+		root.right = new Node(3);
+		root.left.left = new Node(4);
+		root.left.right = new Node(5);
 
 		List<Node> list=new ArrayList<Node>();
 		//Print all root-to-leaf paths of the input tree 
-		tree.PrintAllPossiblePath(tree.root,list);
+		tree.PrintAllPossiblePath(root,list);
 
 	}
 }

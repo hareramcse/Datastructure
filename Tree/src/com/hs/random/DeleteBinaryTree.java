@@ -2,8 +2,6 @@ package com.hs.random;
 
 class DeleteBinaryTree {
 
-	Node root;
-
 	/*
 	 * This function traverses tree in post order to delete each and every node of
 	 * the tree
@@ -27,15 +25,15 @@ class DeleteBinaryTree {
 
 		DeleteBinaryTree tree = new DeleteBinaryTree();
 
-		tree.root = new Node(1);
-		tree.root.left = new Node(2);
-		tree.root.right = new Node(3);
-		tree.root.left.left = new Node(4);
-		tree.root.left.right = new Node(5);
+		Node root = new Node(1);
+		root.left = new Node(2);
+		root.right = new Node(3);
+		root.left.left = new Node(4);
+		root.left.right = new Node(5);
 
 		/* Print all root-to-leaf paths of the input tree */
-		tree.deleteTree(tree.root);
-		tree.root = null;
+		tree.deleteTree(root);
+		root = null;
 		System.out.println("Tree deleted");
 
 	}

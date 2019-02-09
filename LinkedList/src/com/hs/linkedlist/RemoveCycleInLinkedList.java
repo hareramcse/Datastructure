@@ -1,12 +1,10 @@
 package com.hs.linkedlist;
 
-
 public class RemoveCycleInLinkedList {
-	Node head;
 
-	void detectAndRemoveLoop(Node node) {
-		Node slow = node;
-		Node fast = node.next;
+	void detectAndRemoveLoop(Node head) {
+		Node slow = head;
+		Node fast = head.next;
 
 		// Search for loop using slow and fast pointers
 		while (fast != null && fast.next != null) {
@@ -19,7 +17,7 @@ public class RemoveCycleInLinkedList {
 
 		/* If loop exists */
 		if (slow == fast) {
-			slow = node;
+			slow = head;
 			while (slow != fast.next) {
 				slow = slow.next;
 				fast = fast.next;
@@ -32,26 +30,26 @@ public class RemoveCycleInLinkedList {
 	}
 
 	// Function to print the linked list
-	void printList(Node node) {
-		while (node != null) {
-			System.out.print(node.data + " ");
-			node = node.next;
+	void printList(Node head) {
+		while (head != null) {
+			System.out.print(head.data + " ");
+			head = head.next;
 		}
 	}
 
 	// Driver program to test above functions
 	public static void main(String[] args) {
 		RemoveCycleInLinkedList list = new RemoveCycleInLinkedList();
-		list.head = new Node(50);
-		list.head.next = new Node(20);
-		list.head.next.next = new Node(15);
-		list.head.next.next.next = new Node(4);
-		list.head.next.next.next.next = new Node(10);
+		Node head = new Node(50);
+		head.next = new Node(20);
+		head.next.next = new Node(15);
+		head.next.next.next = new Node(4);
+		head.next.next.next.next = new Node(10);
 
 		// Creating a loop for testing
-		list.head.next.next.next.next.next = list.head.next.next;
-		list.detectAndRemoveLoop(list.head);
+		head.next.next.next.next.next = head.next.next;
+		list.detectAndRemoveLoop(head);
 		System.out.println("Linked List after removing loop : ");
-		list.printList(list.head);
+		list.printList(head);
 	}
 }

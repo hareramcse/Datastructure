@@ -1,7 +1,6 @@
 package com.hs.misc;
 
 class MaximumDepthOfTree {
-	Node root;
 
 	/*
 	 * Compute the "maxDepth" of a tree -- the number of nodes along the longest
@@ -27,12 +26,12 @@ class MaximumDepthOfTree {
 	public static void main(String[] args) {
 		MaximumDepthOfTree tree = new MaximumDepthOfTree();
 
-		tree.root = new Node(1);
-		tree.root.left = new Node(2);
-		tree.root.right = new Node(3);
-		tree.root.left.left = new Node(4);
-		tree.root.left.right = new Node(5);
+		Node root = new Node(1);
+		root.left = new Node(2);
+		root.right = new Node(3);
+		root.left.left = new Node(4);
+		root.left.right = new Node(5);
 
-		System.out.println("Height of tree is : " + tree.maxDepth(tree.root));
+		System.out.println("Height of tree is : " + tree.maxDepth(root));
 	}
 }

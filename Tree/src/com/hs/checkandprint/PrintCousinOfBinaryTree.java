@@ -2,16 +2,6 @@ package com.hs.checkandprint;
 
 class PrintCousinOfBinaryTree {
 
-	// A utility function to create a new Binary
-	// Tree Node
-	static Node newNode(int item) {
-		Node temp = new Node();
-		temp.data = item;
-		temp.left = null;
-		temp.right = null;
-		return temp;
-	}
-
 	/*
 	 * It returns level of the node if it is present in tree, otherwise returns 0.
 	 */
@@ -69,15 +59,15 @@ class PrintCousinOfBinaryTree {
 
 	// Driver Program to test above functions
 	public static void main(String[] args) {
-		Node root = newNode(1);
-		root.left = newNode(2);
-		root.right = newNode(3);
-		root.left.left = newNode(4);
-		root.left.right = newNode(5);
-		root.left.right.right = newNode(15);
-		root.right.left = newNode(6);
-		root.right.right = newNode(7);
-		root.right.left.right = newNode(8);
+		Node root = new Node(1);
+		root.left = new Node(2);
+		root.right = new Node(3);
+		root.left.left = new Node(4);
+		root.left.right = new Node(5);
+		root.left.right.right = new Node(15);
+		root.right.left = new Node(6);
+		root.right.right = new Node(7);
+		root.right.left.right = new Node(8);
 
 		printCousins(root, root.left.right);
 	}

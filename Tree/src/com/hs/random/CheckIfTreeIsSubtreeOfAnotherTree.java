@@ -2,8 +2,6 @@ package com.hs.random;
 
 public class CheckIfTreeIsSubtreeOfAnotherTree {
 
-	Node root1, root2;
-
 	/*
 	 * A utility function to check whether trees with roots as root1 and root2 are
 	 * identical or not
@@ -59,25 +57,25 @@ public class CheckIfTreeIsSubtreeOfAnotherTree {
 		 * Construct the following tree 26 / \ 10 3 / \ \ 4 6 3 \ 30
 		 */
 
-		tree.root1 = new Node(26);
-		tree.root1.right = new Node(3);
-		tree.root1.right.right = new Node(3);
-		tree.root1.left = new Node(10);
-		tree.root1.left.left = new Node(4);
-		tree.root1.left.left.right = new Node(30);
-		tree.root1.left.right = new Node(6);
+		Node root1 = new Node(26);
+		root1.right = new Node(3);
+		root1.right.right = new Node(3);
+		root1.left = new Node(10);
+		root1.left.left = new Node(4);
+		root1.left.left.right = new Node(30);
+		root1.left.right = new Node(6);
 
 		// TREE 2
 		/*
 		 * Construct the following tree 10 / \ 4 6 \ 30
 		 */
 
-		tree.root2 = new Node(10);
-		tree.root2.right = new Node(6);
-		tree.root2.left = new Node(4);
-		tree.root2.left.right = new Node(30);
+		Node root2 = new Node(10);
+		root2.right = new Node(6);
+		root2.left = new Node(4);
+		root2.left.right = new Node(30);
 
-		if (tree.isSubtree(tree.root1, tree.root2)) {
+		if (tree.isSubtree(root1, root2)) {
 			System.out.println("Tree 2 is subtree of Tree 1 ");
 		} else {
 			System.out.println("Tree 2 is not a subtree of Tree 1");

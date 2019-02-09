@@ -1,20 +1,21 @@
 package com.hs.traversal;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 class IterativePostOrderOneStack {
-	Node root;
-	ArrayList<Integer> list = new ArrayList<Integer>();
+	List<Integer> list = new ArrayList<Integer>();
 
 	// An iterative function to do postorder traversal
 	// of a given binary tree
-	ArrayList<Integer> postOrderIterative(Node node) {
+	List<Integer> postOrderIterative(Node node) {
 		Stack<Node> S = new Stack<Node>();
 
 		// Check for empty tree
-		if (node == null)
+		if (node == null) {
 			return list;
+		}
 		S.push(node);
 		Node prev = null;
 		while (!S.isEmpty()) {
@@ -66,17 +67,17 @@ class IterativePostOrderOneStack {
 		IterativePostOrderOneStack tree = new IterativePostOrderOneStack();
 
 		// Let us create trees shown in above diagram
-		tree.root = new Node(1);
-		tree.root.left = new Node(2);
-		tree.root.right = new Node(3);
-		tree.root.left.left = new Node(4);
-		tree.root.left.right = new Node(5);
-		tree.root.right.left = new Node(6);
-		tree.root.right.right = new Node(7);
+		Node root = new Node(1);
+		root.left = new Node(2);
+		root.right = new Node(3);
+		root.left.left = new Node(4);
+		root.left.right = new Node(5);
+		root.right.left = new Node(6);
+		root.right.right = new Node(7);
 
-		ArrayList<Integer> mylist = tree.postOrderIterative(tree.root);
+		List<Integer> list = tree.postOrderIterative(root);
 
 		System.out.println("Post order traversal of binary tree is :");
-		System.out.println(mylist);
+		System.out.println(list);
 	}
 }

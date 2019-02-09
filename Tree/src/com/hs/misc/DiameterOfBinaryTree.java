@@ -2,7 +2,6 @@ package com.hs.misc;
 
 /* Class to print the Diameter */
 class DiameterOfBinaryTree {
-	Node root;
 
 	/*
 	 * define height =0 globally and call diameterOpt(root,height) from main
@@ -38,14 +37,14 @@ class DiameterOfBinaryTree {
 	}
 
 	/* A wrapper over diameter(Node root) */
-	int diameter() {
+	int diameter(Node root) {
 		Height height = new Height();
 		return diameterOpt(root, height);
 	}
 
 	/*
-	 * The function Compute the "height" of a tree. Height is the number f nodes
-	 * along the longest path from the root node down to the farthest leaf node.
+	 * The function Compute the "height" of a Height is the number f nodes along the
+	 * longest path from the root node down to the farthest leaf node.
 	 */
 	static int height(Node node) {
 		/* base case tree is empty */
@@ -61,12 +60,12 @@ class DiameterOfBinaryTree {
 	public static void main(String args[]) {
 		/* creating a binary tree and entering the nodes */
 		DiameterOfBinaryTree tree = new DiameterOfBinaryTree();
-		tree.root = new Node(1);
-		tree.root.left = new Node(2);
-		tree.root.right = new Node(3);
-		tree.root.left.left = new Node(4);
-		tree.root.left.right = new Node(5);
+		Node root = new Node(1);
+		root.left = new Node(2);
+		root.right = new Node(3);
+		root.left.left = new Node(4);
+		root.left.right = new Node(5);
 
-		System.out.println("The diameter of given binary tree is : " + tree.diameter());
+		System.out.println("The diameter of given binary tree is : " + tree.diameter(root));
 	}
 }

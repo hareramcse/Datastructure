@@ -1,11 +1,6 @@
 package com.hs.construction;
 
 class ConvertBinaryTreeToItsMirrorTree {
-	Node root;
-
-	void mirror() {
-		root = mirror(root);
-	}
 
 	Node mirror(Node node) {
 		if (node == null)
@@ -22,10 +17,6 @@ class ConvertBinaryTreeToItsMirrorTree {
 		return node;
 	}
 
-	void inOrder() {
-		inOrder(root);
-	}
-
 	/*
 	 * Helper function to test mirror(). Given a binary search tree, print out its
 	 * data elements in increasing sorted order.
@@ -36,7 +27,6 @@ class ConvertBinaryTreeToItsMirrorTree {
 
 		inOrder(node.left);
 		System.out.print(node.data + " ");
-
 		inOrder(node.right);
 	}
 
@@ -44,23 +34,23 @@ class ConvertBinaryTreeToItsMirrorTree {
 	public static void main(String args[]) {
 		/* creating a binary tree and entering the nodes */
 		ConvertBinaryTreeToItsMirrorTree tree = new ConvertBinaryTreeToItsMirrorTree();
-		tree.root = new Node(1);
-		tree.root.left = new Node(2);
-		tree.root.right = new Node(3);
-		tree.root.left.left = new Node(4);
-		tree.root.left.right = new Node(5);
+		Node root = new Node(1);
+		root.left = new Node(2);
+		root.right = new Node(3);
+		root.left.left = new Node(4);
+		root.left.right = new Node(5);
 
 		/* print inorder traversal of the input tree */
 		System.out.println("Inorder traversal of input tree is :");
-		tree.inOrder();
+		tree.inOrder(root);
 		System.out.println("");
 
 		/* convert tree to its mirror */
-		tree.mirror();
+		tree.mirror(root);
 
 		/* print inorder traversal of the minor tree */
 		System.out.println("Inorder traversal of binary tree is : ");
-		tree.inOrder();
+		tree.inOrder(root);
 
 	}
 }

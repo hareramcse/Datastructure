@@ -5,11 +5,10 @@ package com.hs.construction;
  * We add nodes at the beginning of current linked list and update head of the 
  * list using pointer to head pointer. Since we insert at the beginning, 
  * we need to process leaves in reverse order. For reverse order, 
- * we first traverse the right subtree before the left subtree. 
+ * we first traverse the right subtree before the left sub 
  * i.e. do a reverse inorder traversal.
  */
 public class ConvertTreeToDoublyLinkedList {
-	Node root;
 
 	// 'head' reference to head node of created double linked list
 	Node head;
@@ -50,18 +49,18 @@ public class ConvertTreeToDoublyLinkedList {
 	public static void main(String[] args) {
 		ConvertTreeToDoublyLinkedList tree = new ConvertTreeToDoublyLinkedList();
 
-		tree.root = new Node(5);
-		tree.root.left = new Node(3);
-		tree.root.right = new Node(6);
-		tree.root.left.right = new Node(4);
-		tree.root.left.left = new Node(1);
-		tree.root.right.right = new Node(8);
-		tree.root.left.left.right = new Node(2);
-		tree.root.left.left.left = new Node(0);
-		tree.root.right.right.left = new Node(7);
-		tree.root.right.right.right = new Node(9);
+		Node root = new Node(5);
+		root.left = new Node(3);
+		root.right = new Node(6);
+		root.left.right = new Node(4);
+		root.left.left = new Node(1);
+		root.right.right = new Node(8);
+		root.left.left.right = new Node(2);
+		root.left.left.left = new Node(0);
+		root.right.right.left = new Node(7);
+		root.right.right.right = new Node(9);
 
-		tree.binaryTreeToDoublyLinkedList(tree.root);
+		tree.binaryTreeToDoublyLinkedList(root);
 		tree.printList(tree.head);
 	}
 }

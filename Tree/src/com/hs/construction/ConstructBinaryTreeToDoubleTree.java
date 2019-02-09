@@ -2,8 +2,6 @@ package com.hs.construction;
 
 class ConstructBinaryTreeToDoubleTree {
 
-	Node root;
-
 	/* Function to convert a tree to double tree */
 	void doubleTree(Node node) {
 		Node oldleft;
@@ -34,18 +32,18 @@ class ConstructBinaryTreeToDoubleTree {
 
 	public static void main(String args[]) {
 		ConstructBinaryTreeToDoubleTree tree = new ConstructBinaryTreeToDoubleTree();
-		tree.root = new Node(1);
-		tree.root.left = new Node(2);
-		tree.root.right = new Node(3);
-		tree.root.left.left = new Node(4);
-		tree.root.left.right = new Node(5);
+		Node root = new Node(1);
+		root.left = new Node(2);
+		root.right = new Node(3);
+		root.left.left = new Node(4);
+		root.left.right = new Node(5);
 
 		System.out.println("Original tree is : ");
-		tree.printInorder(tree.root);
-		tree.doubleTree(tree.root);
+		tree.printInorder(root);
+		tree.doubleTree(root);
 		System.out.println("");
 		System.out.println("Inorder traversal of double tree is : ");
-		tree.printInorder(tree.root);
+		tree.printInorder(root);
 
 	}
 }

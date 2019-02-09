@@ -2,8 +2,6 @@ package com.hs.random;
 
 public class DepthOfDeepestOddLevelLeafNode {
 
-	Node root;
-
 	// A recursive function to find depth of the deepest odd level leaf
 	int depthOfOddLeafUtil(Node node, int level) {
 		// Base Case
@@ -31,17 +29,17 @@ public class DepthOfDeepestOddLevelLeafNode {
 
 	public static void main(String args[]) {
 		DepthOfDeepestOddLevelLeafNode tree = new DepthOfDeepestOddLevelLeafNode();
-		tree.root = new Node(1);
-		tree.root.left = new Node(2);
-		tree.root.right = new Node(3);
-		tree.root.left.left = new Node(4);
-		tree.root.right.left = new Node(5);
-		tree.root.right.right = new Node(6);
-		tree.root.right.left.right = new Node(7);
-		tree.root.right.right.right = new Node(8);
-		tree.root.right.left.right.left = new Node(9);
-		tree.root.right.right.right.right = new Node(10);
-		tree.root.right.right.right.right.left = new Node(11);
-		System.out.println(tree.depthOfOddLeaf(tree.root) + " is the required depth");
+		Node root = new Node(1);
+		root.left = new Node(2);
+		root.right = new Node(3);
+		root.left.left = new Node(4);
+		root.right.left = new Node(5);
+		root.right.right = new Node(6);
+		root.right.left.right = new Node(7);
+		root.right.right.right = new Node(8);
+		root.right.left.right.left = new Node(9);
+		root.right.right.right.right = new Node(10);
+		root.right.right.right.right.left = new Node(11);
+		System.out.println(tree.depthOfOddLeaf(root) + " is the required depth");
 	}
 }

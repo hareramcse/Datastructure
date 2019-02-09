@@ -1,7 +1,6 @@
 package com.hs.construction;
 
 class ConstrcutTreeFromInorderandPreOrder {
-	Node root;
 	static int preIndex = 0;
 
 	/*

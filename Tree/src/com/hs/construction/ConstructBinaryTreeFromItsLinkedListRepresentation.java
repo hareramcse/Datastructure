@@ -5,7 +5,6 @@ import java.util.Queue;
 
 public class ConstructBinaryTreeFromItsLinkedListRepresentation {
 	ListNode head;
-	Node root;
 
 	// Function to insert a node at the beginning of the Linked List
 	void push(int new_data) {
@@ -85,10 +84,11 @@ public class ConstructBinaryTreeFromItsLinkedListRepresentation {
 		tree.push(15);
 		tree.push(12);
 		tree.push(10); /* First node of Linked List */
+		Node root = null;
 
-		Node root = tree.convertListToBinaryTree(tree.root);
+		Node node = tree.convertListToBinaryTree(root);
 
 		System.out.println("Inorder Traversal of the" + " constructed Binary Tree is:");
-		tree.inorderTraversal(root);
+		tree.inorderTraversal(node);
 	}
 }

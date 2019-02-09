@@ -2,8 +2,6 @@ package com.hs.linkedlist;
 
 class IntersectionOfTwoLinkedList {
 
-	Node head1, head2;
-
 	private int length(Node list) {
 		int lenght = 0;
 		Node tmp = list;
@@ -41,18 +39,18 @@ class IntersectionOfTwoLinkedList {
 		IntersectionOfTwoLinkedList list = new IntersectionOfTwoLinkedList();
 
 		// creating first linked list
-		list.head1 = new Node(3);
-		list.head1.next = new Node(6);
-		list.head1.next.next = new Node(15);
-		list.head1.next.next.next = new Node(15);
-		list.head1.next.next.next.next = new Node(30);
+		Node head1 = new Node(3);
+		head1.next = new Node(6);
+		head1.next.next = new Node(15);
+		head1.next.next.next = new Node(15);
+		head1.next.next.next.next = new Node(30);
 
 		// creating second linked list
-		list.head2 = new Node(10);
-		list.head2.next = new Node(15);
-		list.head2.next.next = new Node(30);
+		Node head2 = new Node(10);
+		head2.next = new Node(15);
+		head2.next.next = new Node(30);
 
-		System.out.println("The node of intersection is " + list.findMergePoint(list.head1, list.head2).data);
+		System.out.println("The node of intersection is " + list.findMergePoint(head1, head2).data);
 
 	}
 }

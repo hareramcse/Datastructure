@@ -1,7 +1,6 @@
 package com.hs.construction;
 
 public class ConstructTreeFromInorderAndPreorder {
-	Node root;
 	int index;
 
 	int search(int[] in, int start, int end, int data) {
@@ -16,7 +15,7 @@ public class ConstructTreeFromInorderAndPreorder {
 	Node constructTree(int[] in, int[] pre, int start, int end) {
 		if (start > end)
 			return null;
-		
+
 		Node root = new Node(pre[index++]);
 
 		// if node has no child
@@ -45,7 +44,7 @@ public class ConstructTreeFromInorderAndPreorder {
 		int pre[] = { 1, 2, 4, 5, 3, 6 };
 
 		ConstructTreeFromInorderAndPreorder ctfiap = new ConstructTreeFromInorderAndPreorder();
-		ctfiap.root = ctfiap.constructTree(in, pre, 0, in.length - 1);
-		ctfiap.printInorder(ctfiap.root);
+		Node root = ctfiap.constructTree(in, pre, 0, in.length - 1);
+		ctfiap.printInorder(root);
 	}
 }

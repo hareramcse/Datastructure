@@ -1,8 +1,6 @@
 package com.hs.checkandprint;
 
 class CheckIfTwoNodesAreCousin {
-	Node root;
-
 	// Recursive function to check if two Nodes are
 	// siblings
 	boolean isSibling(Node node, Node a, Node b) {
@@ -36,7 +34,7 @@ class CheckIfTwoNodesAreCousin {
 	// Returns 1 if a and b are cousins, otherwise 0
 	boolean isCousin(Node node, Node a, Node b) {
 		// 1. The two Nodes should be on the same level
-		// in the binary tree.
+		// in the binary
 		// 2. The two Nodes should not be siblings (means
 		// that they should not have the same parent
 		// Node).
@@ -46,20 +44,20 @@ class CheckIfTwoNodesAreCousin {
 	// Driver program to test above functions
 	public static void main(String args[]) {
 		CheckIfTwoNodesAreCousin tree = new CheckIfTwoNodesAreCousin();
-		tree.root = new Node(1);
-		tree.root.left = new Node(2);
-		tree.root.right = new Node(3);
-		tree.root.left.left = new Node(4);
-		tree.root.left.right = new Node(5);
-		tree.root.left.right.right = new Node(15);
-		tree.root.right.left = new Node(6);
-		tree.root.right.right = new Node(7);
-		tree.root.right.left.right = new Node(8);
+		Node root = new Node(1);
+		root.left = new Node(2);
+		root.right = new Node(3);
+		root.left.left = new Node(4);
+		root.left.right = new Node(5);
+		root.left.right.right = new Node(15);
+		root.right.left = new Node(6);
+		root.right.right = new Node(7);
+		root.right.left.right = new Node(8);
 
 		Node Node1, Node2;
-		Node1 = tree.root.left.left;
-		Node2 = tree.root.right.right;
-		if (tree.isCousin(tree.root, Node1, Node2))
+		Node1 = root.left.left;
+		Node2 = root.right.right;
+		if (tree.isCousin(root, Node1, Node2))
 			System.out.println("Yes");
 		else
 			System.out.println("No");

@@ -1,7 +1,6 @@
 package com.hs.checkandprint;
 
 class PrintMaxValue {
-	Node root;
 
 	// Returns the max value in a binary tree
 	int findMax(Node node) {
@@ -22,15 +21,15 @@ class PrintMaxValue {
 	/* Driver program to test above functions */
 	public static void main(String args[]) {
 		PrintMaxValue tree = new PrintMaxValue();
-		tree.root = new Node(2);
-		tree.root.left = new Node(7);
-		tree.root.right = new Node(5);
-		tree.root.left.right = new Node(6);
-		tree.root.left.right.left = new Node(1);
-		tree.root.left.right.right = new Node(11);
-		tree.root.right.right = new Node(9);
-		tree.root.right.right.left = new Node(4);
+		Node root = new Node(2);
+		root.left = new Node(7);
+		root.right = new Node(5);
+		root.left.right = new Node(6);
+		root.left.right.left = new Node(1);
+		root.left.right.right = new Node(11);
+		root.right.right = new Node(9);
+		root.right.right.left = new Node(4);
 
-		System.out.println("Maximum element is " + tree.findMax(tree.root));
+		System.out.println("Maximum element is " + tree.findMax(root));
 	}
 }

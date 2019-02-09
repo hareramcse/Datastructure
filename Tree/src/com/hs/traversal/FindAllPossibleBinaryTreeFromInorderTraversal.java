@@ -4,8 +4,6 @@ import java.util.Vector;
 
 public class FindAllPossibleBinaryTreeFromInorderTraversal {
 
-	Node root;
-
 	// A utility function to do preorder traversal of BST
 	void preOrder(Node node) {
 		if (node != null) {

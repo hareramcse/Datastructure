@@ -1,7 +1,6 @@
 package com.hs.construction;
 
 public class ConstructCompleteBinaryTreeFromGivenArrayInLevelOrder {
-	Node root;
 
 	public Node insertLevelOrder(int[] arr, Node root, int i) {
 		// Base case for recursion
@@ -31,7 +30,7 @@ public class ConstructCompleteBinaryTreeFromGivenArrayInLevelOrder {
 	public static void main(String args[]) {
 		ConstructCompleteBinaryTreeFromGivenArrayInLevelOrder t2 = new ConstructCompleteBinaryTreeFromGivenArrayInLevelOrder();
 		int arr[] = { 1, 2, 3, 4, 5, 6, 6, 6, 6 };
-		t2.root = t2.insertLevelOrder(arr, t2.root, 0);
-		t2.inOrder(t2.root);
+		Node root = t2.insertLevelOrder(arr, null, 0);
+		t2.inOrder(root);
 	}
 }

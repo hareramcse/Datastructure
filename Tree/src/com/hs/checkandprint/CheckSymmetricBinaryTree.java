@@ -4,27 +4,6 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class CheckSymmetricBinaryTree {
-	Node root;
-
-	static class Node {
-		int val;
-		Node left, right;
-
-		Node(int v) {
-			val = v;
-			left = null;
-			right = null;
-		}
-	}
-
-	/* constructor to initialize the root */
-	CheckSymmetricBinaryTree(Node r) {
-		root = r;
-	}
-
-	/* empty constructor */
-	CheckSymmetricBinaryTree() {
-	}
 
 	/* function to check if the tree is Symmetric */
 	public boolean isSymmetric(Node root) {
@@ -56,7 +35,7 @@ public class CheckSymmetricBinaryTree {
 			 * if both left and right nodes exist, but have different values-- inequality,
 			 * return false
 			 */
-			if (tempLeft.val != tempRight.val)
+			if (tempLeft.data != tempRight.data)
 				return false;
 
 			/*
@@ -76,16 +55,16 @@ public class CheckSymmetricBinaryTree {
 
 	/* driver function to test other functions */
 	public static void main(String[] args) {
-		Node n = new Node(1);
-		CheckSymmetricBinaryTree bt = new CheckSymmetricBinaryTree(n);
-		bt.root.left = new Node(2);
-		bt.root.right = new Node(2);
-		bt.root.left.left = new Node(3);
-		bt.root.left.right = new Node(4);
-		bt.root.right.left = new Node(4);
-		bt.root.right.right = new Node(3);
+		CheckSymmetricBinaryTree bt = new CheckSymmetricBinaryTree();
+		Node root = new Node(1);
+		root.left = new Node(2);
+		root.right = new Node(2);
+		root.left.left = new Node(3);
+		root.left.right = new Node(4);
+		root.right.left = new Node(4);
+		root.right.right = new Node(3);
 
-		if (bt.isSymmetric(bt.root))
+		if (bt.isSymmetric(root))
 			System.out.println("The given tree is Symmetric");
 		else
 			System.out.println("The given tree is not Symmetric");

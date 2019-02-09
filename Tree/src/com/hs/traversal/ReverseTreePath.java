@@ -80,25 +80,17 @@ class ReverseTreePath {
 			inorder(root.right);
 		}
 	}
-
-	// Utility function to create a new tree node
-	static Node newNode(int data) {
-		Node temp = new Node();
-		temp.data = data;
-		temp.left = temp.right = null;
-		return temp;
-	}
-
+	
 	// Driver program to test above functions
 	public static void main(String args[]) {
 		// Let us create binary tree shown in above diagram
-		Node root = newNode(7);
-		root.left = newNode(6);
-		root.right = newNode(5);
-		root.left.left = newNode(4);
-		root.left.right = newNode(3);
-		root.right.left = newNode(2);
-		root.right.right = newNode(1);
+		Node root = new Node(7);
+		root.left = new Node(6);
+		root.right = new Node(5);
+		root.left.left = new Node(4);
+		root.left.right = new Node(3);
+		root.right.left = new Node(2);
+		root.right.right = new Node(1);
 
 		/*
 		 * 7 / \ 6 5 / \ / \ 4 3 2 1

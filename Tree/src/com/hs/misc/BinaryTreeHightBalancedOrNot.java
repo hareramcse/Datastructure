@@ -6,8 +6,6 @@ class Height {
 
 class BinaryTreeHightBalancedOrNot {
 
-	Node root;
-
 	/* Returns true if binary tree with root as root is height-balanced */
 	boolean isBalanced(Node root, Height height) {
 		/* If tree is empty then return true */
@@ -43,7 +41,7 @@ class BinaryTreeHightBalancedOrNot {
 	}
 
 	/*
-	 * The function Compute the "height" of a tree. Height is the number of nodes
+	 * The function Compute the "height" of a  Height is the number of nodes
 	 * along the longest path from the root node down to the farthest leaf node.
 	 */
 	int height(Node node) {
@@ -64,15 +62,15 @@ class BinaryTreeHightBalancedOrNot {
 		 * Constructed binary tree is 1 / \ 2 3 / \ / 4 5 6 / 7
 		 */
 		BinaryTreeHightBalancedOrNot tree = new BinaryTreeHightBalancedOrNot();
-		tree.root = new Node(1);
-		tree.root.left = new Node(2);
-		tree.root.right = new Node(3);
-		tree.root.left.left = new Node(4);
-		tree.root.left.right = new Node(5);
-		tree.root.right.right = new Node(6);
-		tree.root.left.left.left = new Node(7);
+		Node root = new Node(1);
+		root.left = new Node(2);
+		root.right = new Node(3);
+		root.left.left = new Node(4);
+		root.left.right = new Node(5);
+		root.right.right = new Node(6);
+		root.left.left.left = new Node(7);
 
-		if (tree.isBalanced(tree.root, height))
+		if (tree.isBalanced(root, height))
 			System.out.println("Tree is balanced");
 		else
 			System.out.println("Tree is not balanced");

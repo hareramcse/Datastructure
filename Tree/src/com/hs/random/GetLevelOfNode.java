@@ -2,8 +2,6 @@ package com.hs.random;
 
 public class GetLevelOfNode {
 
-	Node root;
-
 	/*
 	 * Helper function for getLevel(). It returns level of the data if data is
 	 * present in tree, otherwise returns 0.
@@ -33,15 +31,15 @@ public class GetLevelOfNode {
 		GetLevelOfNode tree = new GetLevelOfNode();
 
 		/* Constructing tree given in the above figure */
-		tree.root = new Node(3);
-		tree.root.left = new Node(2);
-		tree.root.right = new Node(5);
-		tree.root.left.left = new Node(1);
-		tree.root.left.right = new Node(4);
+		Node root = new Node(3);
+		root.left = new Node(2);
+		root.right = new Node(5);
+		root.left.left = new Node(1);
+		root.left.right = new Node(4);
 		for (int x = 1; x <= 5; x++) {
-			int level = tree.getLevel(tree.root, x);
+			int level = tree.getLevel(root, x);
 			if (level != 0)
-				System.out.println("Level of " + x + " is " + tree.getLevel(tree.root, x));
+				System.out.println("Level of " + x + " is " + tree.getLevel(root, x));
 			else
 				System.out.println(x + " is not present in tree");
 		}

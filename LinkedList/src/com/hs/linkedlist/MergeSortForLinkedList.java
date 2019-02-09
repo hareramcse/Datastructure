@@ -23,21 +23,21 @@ public class MergeSortForLinkedList {
 
 	}
 
-	Node mergeSort(Node node) {
+	Node mergeSort(Node head) {
 		// Base case : if head is null
-		if (node == null || node.next == null) {
-			return node;
+		if (head == null || head.next == null) {
+			return head;
 		}
 
 		// get the middle of the list
-		Node middle = getMiddle(node);
+		Node middle = getMiddle(head);
 		Node nextOfMiddle = middle.next;
 
 		// set the next of middle node to null
 		middle.next = null;
 
 		// Apply mergeSort on left list
-		Node left = mergeSort(node);
+		Node left = mergeSort(head);
 
 		// Apply mergeSort on right list
 		Node right = mergeSort(nextOfMiddle);
@@ -48,13 +48,13 @@ public class MergeSortForLinkedList {
 	}
 
 	// Utility function to get the middle of the linked list
-	Node getMiddle(Node node) {
+	Node getMiddle(Node head) {
 		// Base case
-		if (node == null) {
-			return node;
+		if (head == null) {
+			return head;
 		}
-		Node slowptr = node;
-		Node fastptr = node.next;
+		Node slowptr = head;
+		Node fastptr = head.next;
 
 		// Move fastptr by two and slow ptr by one
 		// Finally slowptr will point to middle node
@@ -77,10 +77,10 @@ public class MergeSortForLinkedList {
 	}
 
 	// Utility function to print the linked list
-	void printList(Node headref) {
-		while (headref != null) {
-			System.out.print(headref.data + " ");
-			headref = headref.next;
+	void printList(Node head) {
+		while (head != null) {
+			System.out.print(head.data + " ");
+			head = head.next;
 		}
 	}
 

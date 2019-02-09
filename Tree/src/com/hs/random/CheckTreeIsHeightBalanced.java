@@ -2,8 +2,6 @@ package com.hs.random;
 
 public class CheckTreeIsHeightBalanced {
 
-	Node root;
-
 	/* Returns true if binary tree with root as root is height-balanced */
 	boolean isBalanced(Node node) {
 
@@ -49,14 +47,14 @@ public class CheckTreeIsHeightBalanced {
 
 	public static void main(String args[]) {
 		CheckTreeIsHeightBalanced tree = new CheckTreeIsHeightBalanced();
-		tree.root = new Node(1);
-		tree.root.left = new Node(2);
-		tree.root.right = new Node(3);
-		tree.root.left.left = new Node(4);
-		tree.root.left.right = new Node(5);
-		tree.root.left.left.left = new Node(8);
+		Node root = new Node(1);
+		root.left = new Node(2);
+		root.right = new Node(3);
+		root.left.left = new Node(4);
+		root.left.right = new Node(5);
+		root.left.left.left = new Node(8);
 
-		if (tree.isBalanced(tree.root))
+		if (tree.isBalanced(root))
 			System.out.println("Tree is balanced");
 		else
 			System.out.println("Tree is not balanced");

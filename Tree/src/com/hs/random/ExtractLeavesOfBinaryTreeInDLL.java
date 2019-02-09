@@ -2,7 +2,6 @@ package com.hs.random;
 
 public class ExtractLeavesOfBinaryTreeInDLL {
 
-	Node root;
 	Node head; // will point to head of DLL
 	Node prev; // temporary pointer
 
@@ -48,27 +47,27 @@ public class ExtractLeavesOfBinaryTreeInDLL {
 	public static void main(String args[]) {
 
 		ExtractLeavesOfBinaryTreeInDLL tree = new ExtractLeavesOfBinaryTreeInDLL();
-		tree.root = new Node(1);
-		tree.root.left = new Node(2);
-		tree.root.right = new Node(3);
+		Node root = new Node(1);
+		root.left = new Node(2);
+		root.right = new Node(3);
 
-		tree.root.left.left = new Node(4);
-		tree.root.left.right = new Node(5);
-		tree.root.right.right = new Node(6);
-		tree.root.left.left.left = new Node(7);
-		tree.root.left.left.right = new Node(8);
-		tree.root.right.right.left = new Node(9);
-		tree.root.right.right.right = new Node(10);
+		root.left.left = new Node(4);
+		root.left.right = new Node(5);
+		root.right.right = new Node(6);
+		root.left.left.left = new Node(7);
+		root.left.left.right = new Node(8);
+		root.right.right.left = new Node(9);
+		root.right.right.right = new Node(10);
 
 		System.out.println("Inorder traversal of given tree is : ");
-		tree.inorder(tree.root);
-		tree.extractLeafList(tree.root);
+		tree.inorder(root);
+		tree.extractLeafList(root);
 		System.out.println("");
 		System.out.println("Extracted double link list is : ");
 		tree.printDLL(tree.head);
 		System.out.println("");
 		System.out.println("Inorder traversal of modified tree is : ");
-		tree.inorder(tree.root);
+		tree.inorder(root);
 	}
 
 }

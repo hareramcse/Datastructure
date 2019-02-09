@@ -1,8 +1,7 @@
 package com.hs.construction;
 
 public class ConstructSpecialBinaryTreeFromInorderTraversal {
-	Node root;
-
+	
 	/*
 	 * Recursive function to construct binary of size len from Inorder traversal
 	 * inorder[]. Initial values of start and end should be 0 and len -1.
@@ -66,10 +65,10 @@ public class ConstructSpecialBinaryTreeFromInorderTraversal {
 
 		int inorder[] = new int[] { 5, 10, 40, 30, 28 };
 		int len = inorder.length;
-		Node mynode = tree.buildTree(inorder, 0, len - 1, tree.root);
+		Node root = tree.buildTree(inorder, 0, len - 1, null);
 
 		/* Let us test the built tree by printing Inorder traversal */
 		System.out.println("Inorder traversal of the constructed tree is ");
-		tree.printInorder(mynode);
+		tree.printInorder(root);
 	}
 }

@@ -1,10 +1,10 @@
 package com.hs.linkedlist;
 
 class FindMidElement {
-	Node head; // head of linked list
+	Node head;
 
 	/* Function to print middle of linked list */
-	void printMiddle() {
+	void printMiddle(Node head) {
 		Node slow = head;
 		Node fast = head;
 		if (head != null) {
@@ -33,7 +33,7 @@ class FindMidElement {
 	/*
 	 * This function prints contents of linked list starting from the given node
 	 */
-	public void printList() {
+	public void printList(Node head) {
 		Node tnode = head;
 		while (tnode != null) {
 			System.out.print(tnode.data + "->");
@@ -46,8 +46,8 @@ class FindMidElement {
 		FindMidElement llist = new FindMidElement();
 		for (int i = 5; i > 0; --i) {
 			llist.push(i);
-			llist.printList();
-			llist.printMiddle();
+			llist.printList(llist.head);
+			llist.printMiddle(llist.head);
 		}
 	}
 }

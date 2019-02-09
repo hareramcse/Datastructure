@@ -4,17 +4,11 @@ import java.util.Stack;
 
 class IterativePreOrderTraversal {
 
-	Node root;
-
-	void iterativePreorder() {
-		iterativePreorder(root);
-	}
-
 	// An iterative process to print preorder traversal of Binary tree
-	void iterativePreorder(Node node) {
+	void iterativePreorder(Node root) {
 
 		// Base Case
-		if (node == null) {
+		if (root == null) {
 			return;
 		}
 
@@ -47,13 +41,13 @@ class IterativePreOrderTraversal {
 	// driver program to test above functions
 	public static void main(String args[]) {
 		IterativePreOrderTraversal tree = new IterativePreOrderTraversal();
-		tree.root = new Node(10);
-		tree.root.left = new Node(8);
-		tree.root.right = new Node(2);
-		tree.root.left.left = new Node(3);
-		tree.root.left.right = new Node(5);
-		tree.root.right.left = new Node(2);
-		tree.iterativePreorder();
+		Node root = new Node(10);
+		root.left = new Node(8);
+		root.right = new Node(2);
+		root.left.left = new Node(3);
+		root.left.right = new Node(5);
+		root.right.left = new Node(2);
+		tree.iterativePreorder(root);
 
 	}
 }

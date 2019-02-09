@@ -6,8 +6,6 @@ class Level {
 }
 
 public class DeepestLeftNode {
-	Node root;
-
 	// Node to store resultant node after left traversal
 	Node result;
 
@@ -40,18 +38,18 @@ public class DeepestLeftNode {
 	// Driver program to test above functions
 	public static void main(String[] args) {
 		DeepestLeftNode tree = new DeepestLeftNode();
-		tree.root = new Node(1);
-		tree.root.left = new Node(2);
-		tree.root.right = new Node(3);
-		tree.root.left.left = new Node(4);
-		tree.root.right.left = new Node(5);
-		tree.root.right.right = new Node(6);
-		tree.root.right.left.right = new Node(7);
-		tree.root.right.right.right = new Node(8);
-		tree.root.right.left.right.left = new Node(9);
-		tree.root.right.right.right.right = new Node(10);
+		Node root = new Node(1);
+		root.left = new Node(2);
+		root.right = new Node(3);
+		root.left.left = new Node(4);
+		root.right.left = new Node(5);
+		root.right.right = new Node(6);
+		root.right.left.right = new Node(7);
+		root.right.right.right = new Node(8);
+		root.right.left.right.left = new Node(9);
+		root.right.right.right.right = new Node(10);
 
-		tree.deepestLeftLeaf(tree.root);
+		tree.deepestLeftLeaf(root);
 		if (tree.result != null)
 			System.out.println("The deepest left child is " + tree.result.data);
 		else

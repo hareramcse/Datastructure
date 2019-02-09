@@ -1,24 +1,13 @@
 package com.hs.summation;
 
 public class SumOfNodesOnLongestPathFromRootToLeaf {
-	// Node of a binary tree
-	static class Node {
-		int data;
-		Node left, right;
 
-		Node(int data) {
-			this.data = data;
-			left = null;
-			right = null;
-		}
-	}
-
-	static int maxLen;
-	static int maxSum;
+	int maxLen;
+	int maxSum;
 
 	// function to find the sum of nodes on the
 	// longest path from root to leaf node
-	static void sumOfLongRootToLeafPath(Node root, int sum, int len) {
+	void sumOfLongRootToLeafPath(Node root, int sum, int len) {
 		// if true, then we have traversed a
 		// root to leaf path
 		if (root == null) {
@@ -41,7 +30,7 @@ public class SumOfNodesOnLongestPathFromRootToLeaf {
 
 	// utility function to find the sum of nodes on
 	// the longest path from root to leaf node
-	static int sumOfLongRootToLeafPathUtil(Node root) {
+	int sumOfLongRootToLeafPathUtil(Node root) {
 		// if tree is NULL, then sum is 0
 		if (root == null)
 			return 0;
@@ -59,6 +48,7 @@ public class SumOfNodesOnLongestPathFromRootToLeaf {
 
 	// Driver program to test above
 	public static void main(String args[]) {
+		SumOfNodesOnLongestPathFromRootToLeaf tree = new  SumOfNodesOnLongestPathFromRootToLeaf();
 		// binary tree formation
 		Node root = new Node(4); /* 4 */
 		root.left = new Node(2); /* / \ */
@@ -69,6 +59,6 @@ public class SumOfNodesOnLongestPathFromRootToLeaf {
 		root.right.right = new Node(3); /* 6 */
 		root.left.right.left = new Node(6);
 
-		System.out.println("Sum = " + sumOfLongRootToLeafPathUtil(root));
+		System.out.println("Sum = " + tree.sumOfLongRootToLeafPathUtil(root));
 	}
 }

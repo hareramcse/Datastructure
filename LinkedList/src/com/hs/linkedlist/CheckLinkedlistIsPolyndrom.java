@@ -4,17 +4,6 @@ class CheckLinkedlistIsPolyndrom {
 	Node head; // head of list
 	Node left;
 
-	/* Linked list Node */
-	class Node {
-		char data;
-		Node next;
-
-		Node(char d) {
-			data = d;
-			next = null;
-		}
-	}
-
 	// Initial parameters to this function are &head and head
 	boolean isPalindromeUtil(Node right) {
 		left = head;
@@ -32,7 +21,7 @@ class CheckLinkedlistIsPolyndrom {
 			return false;
 
 		/* Check values at current left and right */
-		boolean isp1 = (right.data == (left).data);
+		boolean isp1 = (right.data == left.data);
 
 		/* Move left to next node */
 		left = left.next;

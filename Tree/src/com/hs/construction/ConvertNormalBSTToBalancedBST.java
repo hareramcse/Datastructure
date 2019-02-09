@@ -5,8 +5,6 @@ import java.util.List;
 
 public class ConvertNormalBSTToBalancedBST {
 
-	Node root;
-
 	void storeBSTNodes(Node root, List<Node> nodes) {
 		// Base case
 		if (root == null)
@@ -60,15 +58,14 @@ public class ConvertNormalBSTToBalancedBST {
 	public static void main(String[] args) {
 
 		ConvertNormalBSTToBalancedBST tree = new ConvertNormalBSTToBalancedBST();
-		tree.root = new Node(10);
-		tree.root.left = new Node(8);
-		tree.root.left.left = new Node(7);
-		tree.root.left.left.left = new Node(6);
-		tree.root.left.left.left.left = new Node(5);
+		Node root = new Node(10);
+		root.left = new Node(8);
+		root.left.left = new Node(7);
+		root.left.left.left = new Node(6);
+		root.left.left.left.left = new Node(5);
 
-		tree.root = tree.buildTree(tree.root);
+		Node node = tree.buildTree(root);
 		System.out.println("Preorder traversal of balanced BST is :");
-		tree.preOrder(tree.root);
+		tree.preOrder(node);
 	}
-
 }

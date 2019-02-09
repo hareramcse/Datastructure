@@ -1,8 +1,6 @@
 package com.hs.traversal;
 
-public class InOrderTraversalWithoutRecursionAndWithoutStack {
-	Node root;
-
+public class MorrisTraversalForInOrder {
 	/*
 	 * Function to traverse binary tree without recursion and without stack
 	 */
@@ -48,13 +46,13 @@ public class InOrderTraversalWithoutRecursionAndWithoutStack {
 		/*
 		 * Constructed binary tree is 1 / \ 2 3 / \ 4 5
 		 */
-		InOrderTraversalWithoutRecursionAndWithoutStack tree = new InOrderTraversalWithoutRecursionAndWithoutStack();
-		tree.root = new Node(1);
-		tree.root.left = new Node(2);
-		tree.root.right = new Node(3);
-		tree.root.left.left = new Node(4);
-		tree.root.left.right = new Node(5);
+		MorrisTraversalForInOrder tree = new MorrisTraversalForInOrder();
+		Node root = new Node(1);
+		root.left = new Node(2);
+		root.right = new Node(3);
+		root.left.left = new Node(4);
+		root.left.right = new Node(5);
 
-		tree.MorrisTraversal(tree.root);
+		tree.MorrisTraversal(root);
 	}
 }

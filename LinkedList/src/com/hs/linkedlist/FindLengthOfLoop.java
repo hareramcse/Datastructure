@@ -17,8 +17,8 @@ class FindLengthOfLoop {
 	 * This function detects and counts loop nodes in the list. If loop is not there
 	 * in then returns 0
 	 */
-	static int countNodesinLoop(Node node) {
-		Node slow = node, fast = node.next;
+	static int countNodesinLoop(Node head) {
+		Node slow = head, fast = head.next;
 
 		while (fast != null && fast.next != null) {
 			if (slow == fast)
@@ -27,23 +27,17 @@ class FindLengthOfLoop {
 			fast = fast.next.next;
 		}
 
-		/* Return 0 to indecate that there is no loop */
+		/* Return 0 to indicate that there is no loop */
 		return 0;
-	}
-
-	static Node newNode(int key) {
-		Node temp = new Node(key);
-
-		return temp;
 	}
 
 	/* Driver program to test above function */
 	public static void main(String[] args) {
-		Node head = newNode(1);
-		head.next = newNode(2);
-		head.next.next = newNode(3);
-		head.next.next.next = newNode(4);
-		head.next.next.next.next = newNode(5);
+		Node head = new Node(1);
+		head.next = new Node(2);
+		head.next.next = new Node(3);
+		head.next.next.next = new Node(4);
+		head.next.next.next.next = new Node(5);
 
 		/* Create a loop for testing */
 		head.next.next.next.next.next = head.next;

@@ -2,68 +2,56 @@ package com.hs.traversal;
 
 import java.util.Stack;
 
-public class IterativePostOrderTwoStack { 
+public class IterativePostOrderTwoStack {
 
-	static class node { 
-		int data; 
-		node left, right; 
+	// Two stacks as used in explanation
+	Stack<Node> s1, s2;
 
-		public node(int data) 
-		{ 
-			this.data = data; 
-		} 
-	} 
+	void postOrderIterative(Node root) {
+		// Create two stacks
+		s1 = new Stack<>();
+		s2 = new Stack<>();
 
-	// Two stacks as used in explanation 
-	static Stack<node> s1, s2; 
+		if (root == null)
+			return;
 
-	static void postOrderIterative(node root) 
-	{ 
-		// Create two stacks 
-		s1 = new Stack<>(); 
-		s2 = new Stack<>(); 
+		// push root to first stack
+		s1.push(root);
 
-		if (root == null) 
-			return; 
+		// Run while first stack is not empty
+		while (!s1.isEmpty()) {
+			// Pop an item from s1 and push it to s2
+			Node temp = s1.pop();
+			s2.push(temp);
 
-		// push root to first stack 
-		s1.push(root); 
+			// Push left and right children of
+			// removed item to s1
+			if (temp.left != null)
+				s1.push(temp.left);
+			if (temp.right != null)
+				s1.push(temp.right);
+		}
 
-		// Run while first stack is not empty 
-		while (!s1.isEmpty()) { 
-			// Pop an item from s1 and push it to s2 
-			node temp = s1.pop(); 
-			s2.push(temp); 
+		// Print all elements of second stack
+		while (!s2.isEmpty()) {
+			Node temp = s2.pop();
+			System.out.print(temp.data + " ");
+		}
+	}
 
-			// Push left and right children of 
-			// removed item to s1 
-			if (temp.left != null) 
-				s1.push(temp.left); 
-			if (temp.right != null) 
-				s1.push(temp.right); 
-		} 
+	public static void main(String[] args) {
 
-		// Print all elements of second stack 
-		while (!s2.isEmpty()) { 
-			node temp = s2.pop(); 
-			System.out.print(temp.data + " "); 
-		} 
-	} 
+		IterativePostOrderTwoStack tree = new IterativePostOrderTwoStack();
 
-	public static void main(String[] args) 
-	{ 
-		// Let us construct the tree 
-		// shown in above figure 
+		Node root = null;
+		root = new Node(1);
+		root.left = new Node(2);
+		root.right = new Node(3);
+		root.left.left = new Node(4);
+		root.left.right = new Node(5);
+		root.right.left = new Node(6);
+		root.right.right = new Node(7);
 
-		node root = null; 
-		root = new node(1); 
-		root.left = new node(2); 
-		root.right = new node(3); 
-		root.left.left = new node(4); 
-		root.left.right = new node(5); 
-		root.right.left = new node(6); 
-		root.right.right = new node(7); 
-
-		postOrderIterative(root); 
-	} 
+		tree.postOrderIterative(root);
+	}
 }

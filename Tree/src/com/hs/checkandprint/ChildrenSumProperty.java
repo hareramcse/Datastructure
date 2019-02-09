@@ -1,7 +1,6 @@
 package com.hs.checkandprint;
 
 class ChildrenSumProperty {
-	Node root;
 
 	/*
 	 * returns 1 if children sum property holds for the given node and both of its
@@ -47,13 +46,13 @@ class ChildrenSumProperty {
 	/* driver program to test the above functions */
 	public static void main(String[] args) {
 		ChildrenSumProperty tree = new ChildrenSumProperty();
-		tree.root = new Node(10);
-		tree.root.left = new Node(8);
-		tree.root.right = new Node(2);
-		tree.root.left.left = new Node(3);
-		tree.root.left.right = new Node(5);
-		tree.root.right.right = new Node(2);
-		if (tree.isSumProperty(tree.root) != 0)
+		Node root = new Node(10);
+		root.left = new Node(8);
+		root.right = new Node(2);
+		root.left.left = new Node(3);
+		root.left.right = new Node(5);
+		root.right.right = new Node(2);
+		if (tree.isSumProperty(root) != 0)
 			System.out.println("The given tree satisfies children" + " sum property");
 		else
 			System.out.println("The given tree does not satisfy children" + " sum property");
