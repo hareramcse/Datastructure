@@ -14,16 +14,13 @@ public class UninonAndIntersectionOfTwoSortedArray {
 		} else
 			ans = n;
 
-		// Finding elements from 1st array
-		// (non duplicates only). Using
-		// another array for storing union
-		// elements of both arrays
-		// Assuming max element present
+		// Finding elements from 1st array(non duplicates only). 
+		// Using another array for storing union elements of 
+		// both arrays Assuming max element present
 		// in array is not more than 10^7
 		int newtable[] = new int[ans + 1];
 
-		// First element is always
-		// present in final answer
+		// First element is always present in final answer
 		System.out.print(arr1[0] + " ");
 
 		// Incrementing the First element's count
@@ -41,11 +38,9 @@ public class UninonAndIntersectionOfTwoSortedArray {
 			}
 		}
 
-		// Finding only non common
-		// elements from 2nd array
+		// Finding only non common elements from 2nd array
 		for (int j = 0; j < arr2.length; j++) {
-			// By checking whether it's already
-			// present in newtable or not
+			// By checking whether it's already present in newtable or not
 			if (newtable[arr2[j]] == 0) {
 				System.out.print(arr2[j] + " ");
 				++newtable[arr2[j]];

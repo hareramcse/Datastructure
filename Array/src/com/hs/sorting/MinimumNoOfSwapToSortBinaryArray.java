@@ -1,11 +1,5 @@
 package com.hs.sorting;
 
-/*This can be done by finding number of zeroes to the right side of every 1 and add them. 
- * In order to sort the array every one always has to perform a swap operation with every zero on its right side. 
- * So the total number of swap operations for a particular 1 in array is the number of zeroes on its right hand side. 
- * Find the number of zeroes on right side for every one i.e. the number of swaps and add them all to obtain the total 
- * number of swaps
- * */
 class MinimumNoOfSwapToSortBinaryArray {
 
 	static int findMinSwaps(int arr[], int n) {
@@ -30,9 +24,8 @@ class MinimumNoOfSwapToSortBinaryArray {
 		return count;
 	}
 
-	// Driver Code
 	public static void main(String args[]) {
-		int ar[] = { 0, 0, 1, 0, 1, 0, 1, 1 };
-		System.out.println(findMinSwaps(ar, ar.length));
+		int arr[] = { 0, 0, 1, 0, 1, 0, 1, 1, 0 };
+		System.out.println(findMinSwaps(arr, arr.length));
 	}
 }

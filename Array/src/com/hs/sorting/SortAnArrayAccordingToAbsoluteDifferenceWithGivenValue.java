@@ -6,26 +6,26 @@ import java.util.TreeMap;
 
 public class SortAnArrayAccordingToAbsoluteDifferenceWithGivenValue {
 
-	static void sortWithAbsoluteDiff(int a[], int n, int value) {
+	static void sortWithAbsoluteDiff(int arr[], int n, int value) {
 
 		Map<Integer, String> map = new TreeMap<>();
 
 		for (int i = 0; i < n; i++) {
-			if (map.containsKey(Math.abs(a[i] - value))) {
-				String val = map.get(Math.abs(a[i] - value));
-				map.put(Math.abs(a[i] - value), val + "," + i);
+			if (map.containsKey(Math.abs(arr[i] - value))) {
+				String val = map.get(Math.abs(arr[i] - value));
+				map.put(Math.abs(arr[i] - value), val + "," + i);
 			} else {
-				map.put(Math.abs(a[i] - value), String.valueOf(i));
+				map.put(Math.abs(arr[i] - value), String.valueOf(i));
 			}
 		}
 
 		for (Entry<Integer, String> entry : map.entrySet()) {
 			String mapValue = entry.getValue();
 			if (mapValue.length() == 1) {
-				System.out.print(a[Integer.parseInt(mapValue)] + " ");
+				System.out.print(arr[Integer.parseInt(mapValue)] + " ");
 			} else {
 				for (int i = 0; i < mapValue.split(",").length; i++)
-					System.out.print(a[Integer.parseInt(mapValue.split(",")[i])] + " ");
+					System.out.print(arr[Integer.parseInt(mapValue.split(",")[i])] + " ");
 			}
 		}
 	}

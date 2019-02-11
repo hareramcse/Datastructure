@@ -2,9 +2,9 @@ package com.hs.sorting;
 
 public class ShortestUnorderedSubArray {
 	// boolean function to check array elements are in increasing order or not
-	public static boolean increasing(int a[], int n) {
+	public static boolean increasing(int arr[], int n) {
 		for (int i = 0; i < n - 1; i++)
-			if (a[i] >= a[i + 1])
+			if (arr[i] >= arr[i + 1])
 				return false;
 
 		return true;
@@ -19,12 +19,12 @@ public class ShortestUnorderedSubArray {
 		return true;
 	}
 
-	public static int shortestUnsorted(int a[], int n) {
+	public static int shortestUnsorted(int arr[], int n) {
 
 		// increasing and decreasing are two functions.
 		// if function return true value then print
 		// 0 otherwise 3.
-		if (increasing(a, n) == true || decreasing(a, n) == true)
+		if (increasing(arr, n) == true || decreasing(arr, n) == true)
 			return 0;
 		else
 			return 3;
@@ -32,9 +32,9 @@ public class ShortestUnorderedSubArray {
 
 	public static void main(String[] args) {
 
-		int ar[] = new int[] { 7, 9, 10, 8, 11 };
-		int n = ar.length;
+		int arr[] = new int[] { 7, 9, 10, 8, 11 };
+		int n = arr.length;
 
-		System.out.println(shortestUnsorted(ar, n));
+		System.out.println(shortestUnsorted(arr, n));
 	}
 }

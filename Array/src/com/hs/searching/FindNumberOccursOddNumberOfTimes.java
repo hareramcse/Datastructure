@@ -5,31 +5,23 @@ import java.util.Map;
 
 class FindNumberOccursOddNumberOfTimes {
 
-	// funtion to find the element occurring odd number of times
 	static int getOddOccurrence(int arr[], int n) {
-		Map<Integer, Integer> hmap = new HashMap<>();
+		Map<Integer, Integer> map = new HashMap<>();
 
 		// Putting all elements into the HashMap
 		for (int i = 0; i < n; i++) {
-			if (hmap.containsKey(arr[i])) {
-				int val = hmap.get(arr[i]);
-
-				// If array element is already present then
-				// increase the count of that element.
-				hmap.put(arr[i], val + 1);
+			if (map.containsKey(arr[i])) {
+				int val = map.get(arr[i]);
+				map.put(arr[i], val + 1);
 			} else
-
-				// if array element is not present then put
-				// element into the HashMap and initialize
-				// the count to one.
-				hmap.put(arr[i], 1);
+				map.put(arr[i], 1);
 		}
 
 		// Checking for odd occurrence of each element present
 		// in the HashMap
-		for (Integer a : hmap.keySet()) {
-			if (hmap.get(a) % 2 != 0)
-				return a;
+		for (Integer i : map.keySet()) {
+			if (map.get(i) % 2 != 0)
+				return i;
 		}
 		return -1;
 	}

@@ -1,15 +1,15 @@
 package com.hs.searching;
 
 import java.util.HashSet;
+import java.util.Set;
 
 class FindFirstRepeatingInteger {
-	// This function prints the first repeating element in arr[]
+
 	static void printFirstRepeating(int arr[]) {
 		// Initialize index of first repeating element
 		int min = -1;
 
-		// Creates an empty hashset
-		HashSet<Integer> set = new HashSet<>();
+		Set<Integer> set = new HashSet<>();
 
 		// Traverse the input array from right to left
 		for (int i = arr.length - 1; i >= 0; i--) {

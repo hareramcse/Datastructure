@@ -8,14 +8,13 @@ class MostFrequentElement {
 
 	static int mostFrequent(int arr[], int n) {
 
-		// Insert all elements in hash
 		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
 
 		for (int i = 0; i < n; i++) {
 			int key = arr[i];
 			if (map.containsKey(key)) {
-				int freq = map.get(key);
-				map.put(key, freq++);
+				int count = map.get(key);
+				map.put(key, count + 1);
 			} else {
 				map.put(key, 1);
 			}
@@ -30,15 +29,12 @@ class MostFrequentElement {
 				max_count = val.getValue();
 			}
 		}
-
 		return res;
 	}
 
 	public static void main(String[] args) {
-
 		int arr[] = { 1, 5, 2, 1, 3, 2, 1 };
 		int n = arr.length;
-
 		System.out.println(mostFrequent(arr, n));
 	}
 }

@@ -4,7 +4,6 @@ import java.util.stream.IntStream;
 
 public class MaximumEquilibriumSum {
 
-	// Function to find maximum equilibrium sum.
 	static int findMaxSum(int arr[], int n) {
 		int sum = IntStream.of(arr).sum();
 		int prefix_sum = 0, res = Integer.MIN_VALUE;
@@ -16,7 +15,6 @@ public class MaximumEquilibriumSum {
 				res = Math.max(res, prefix_sum);
 			sum -= arr[i];
 		}
-
 		return res;
 	}
 

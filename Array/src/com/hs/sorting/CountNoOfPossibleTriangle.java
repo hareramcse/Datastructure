@@ -4,11 +4,10 @@ import java.util.Arrays;
 
 public class CountNoOfPossibleTriangle {
 
-	// Function to count all possible triangles with arr[]
-	// elements
+	// Function to count all possible triangles with arr[] elements
 	static int findNumberOfTriangles(int arr[]) {
 		int n = arr.length;
-		// Sort the array elements in non-decreasing order
+
 		Arrays.sort(arr);
 
 		// Initialize count of triangles
