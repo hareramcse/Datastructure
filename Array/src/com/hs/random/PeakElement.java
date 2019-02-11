@@ -34,35 +34,5 @@ public class PeakElement {
 			Integer peak = getPeakElement(array);
 			System.out.println(peak != null ? "Peak Element is " + peak : "No peak element!");
 		}
-		{
-			int[] array = { 5, 4, 3, 2, 1 };
-			Integer peak = getPeakElement(array);
-			System.out.println(peak != null ? "Peak Element is " + peak : "No peak element!");
-		}
-		{
-			int[] array = { 1, 4, 3, 6, 7, 5 };
-			Integer peak = getPeakElement(array);
-			System.out.println(peak != null ? "Peak Element is " + peak : "No peak element!");
-		}
-		{
-			int[] array = { 1, 3, 5, 7, 6, 4, 2 };
-			Integer peak = getPeakElement(array);
-			System.out.println(peak != null ? "Peak Element is " + peak : "No peak element!");
-		}
-		{
-			int[] array = { 1 };
-			Integer peak = getPeakElement(array);
-			System.out.println(peak != null ? "Peak Element is " + peak : "No peak element!");
-		}
-		{
-			int[] array = {};
-			Integer peak = getPeakElement(array);
-			System.out.println(peak != null ? "Peak Element is " + peak : "No peak element!");
-		}
-		{
-			int[] array = null;
-			Integer peak = getPeakElement(array);
-			System.out.println(peak != null ? "Peak Element is " + peak : "No peak element!");
-		}
 	}
 }

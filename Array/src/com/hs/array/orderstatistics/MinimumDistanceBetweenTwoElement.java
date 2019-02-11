@@ -33,7 +33,6 @@ class MinimumDistanceBetweenTwoElement {
 		return min_dist;
 	}
 
-	/* Driver program to test above functions */
 	public static void main(String[] args) {
 		MinimumDistanceBetweenTwoElement min = new MinimumDistanceBetweenTwoElement();
 		int arr[] = { 3, 5, 4, 2, 6, 3, 0, 0, 5, 4, 8, 3 };

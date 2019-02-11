@@ -1,8 +1,7 @@
 package com.hs.searching;
 
 class FindElementThatAppearsOnce {
-	// Return the maximum Sum of difference
-	// between consecutive elements.
+
 	static int findSingle(int ar[], int ar_size) {
 		// Do XOR of all elements and return
 		int res = ar[0];

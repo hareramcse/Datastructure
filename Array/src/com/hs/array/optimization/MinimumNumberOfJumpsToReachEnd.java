@@ -1,6 +1,6 @@
 package com.hs.array.optimization;
 
-class Test {
+class MinimumNumberOfJumpsToReachEnd {
 	static int minJumps(int arr[]) {
 		if (arr.length <= 1)
 			return 0;
@@ -45,11 +45,9 @@ class Test {
 		return -1;
 	}
 
-	// Driver method to test the above function
 	public static void main(String[] args) {
 		int arr[] = new int[] { 1, 3, 5, 8, 9, 2, 6, 7, 6, 8, 9 };
 
-		// calling minJumps method
 		System.out.println(minJumps(arr));
 	}
 }

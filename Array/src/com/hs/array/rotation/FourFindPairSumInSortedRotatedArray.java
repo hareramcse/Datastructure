@@ -26,19 +26,6 @@ public class FourFindPairSumInSortedRotatedArray {
 		return false;
 	}
 
-	private static boolean findSum1(int arr[], int value) {
-		int n = arr.length;
-		int i = 0, j = 0;
-		for (i = 0; i < n; i++) {
-			for (j = i + 1; j < n; j++) {
-				if (arr[i] + arr[j] == value) {
-					return true;
-				}
-			}
-		}
-		return false;
-	}
-
 	public static void main(String[] args) {
 		int arr[] = { 11, 15, 6, 8, 9, 10 };
 		int sum = 17;
@@ -47,6 +34,5 @@ public class FourFindPairSumInSortedRotatedArray {
 		boolean b2 = findSum(arr, sum, n);
 		System.out.println(b2);
 
-		System.out.println(findSum1(arr, sum));
 	}
 }

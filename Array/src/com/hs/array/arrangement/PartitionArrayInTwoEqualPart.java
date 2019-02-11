@@ -35,7 +35,6 @@ public class PartitionArrayInTwoEqualPart {
 		return part[sum / 2][n];
 	}
 
-	/* Driver function to check for above function */
 	public static void main(String[] args) {
 		int arr[] = { 3, 1, 1, 2, 2, 1 };
 		int n = arr.length;

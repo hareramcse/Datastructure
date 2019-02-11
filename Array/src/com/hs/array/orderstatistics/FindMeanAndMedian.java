@@ -24,7 +24,6 @@ class FindMeanAndMedian {
 		return (double) (a[(n - 1) / 2] + a[n / 2]) / 2.0;
 	}
 
-	// Driver program
 	public static void main(String args[]) {
 		int a[] = { 1, 3, 4, 2, 7, 5, 8, 6 };
 		int n = a.length;

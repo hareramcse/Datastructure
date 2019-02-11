@@ -2,12 +2,11 @@ package com.hs.array.orderstatistics;
 
 import java.util.Stack;
 
-//Asked in: Amazon,CouponDunia,Informatica,Payu,Samsung,Snapdeal
-//print the Next Greater Element for every element
 public class NextGreaterElement {
 
 	/*
-	 * prints element and next greater element pair for all elements of arr[] of size n
+	 * prints element and next greater element pair for all elements of arr[] of
+	 * size n
 	 */
 	static void printNextGreaterElement(int arr[], int n) {
 		Stack<Integer> s = new Stack<Integer>();

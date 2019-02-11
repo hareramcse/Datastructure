@@ -28,7 +28,6 @@ class FindFirstRepeatingInteger {
 			System.out.println("There are no repeating elements");
 	}
 
-	// Driver method to test above method
 	public static void main(String[] args) throws java.lang.Exception {
 		int arr[] = { 10, 5, 3, 4, 3, 5, 6 };
 		printFirstRepeating(arr);

@@ -3,34 +3,41 @@ package com.hs.array.orderstatistics;
 //Maximum difference between two elements such that larger element appears after the smaller number
 public class MaximumDiffBetweenTwoElements {
 
-	int maxDiff(int arr[], int n) {
-		// Initialize diff, current diff and max diff
+	/*
+	 * The function assumes that there are at least two elements in array. The
+	 * function returns a negative value if the array is sorted in decreasing order
+	 * and returns 0 if elements are equal
+	 */
+	static int maxDiff(int arr[], int n) {
+		// Initialize diff, current
+		// sum and max sum
 		int diff = arr[1] - arr[0];
-		int curr_diff = diff;
-		int max_diff = curr_diff;
+		int curr_sum = diff;
+		int max_sum = curr_sum;
 
 		for (int i = 1; i < n - 1; i++) {
 			// Calculate current diff
 			diff = arr[i + 1] - arr[i];
 
-			// Calculate current diff
-			if (curr_diff > 0)
-				curr_diff += diff;
+			// Calculate current sum
+			if (curr_sum > 0)
+				curr_sum += diff;
 			else
-				curr_diff = diff;
+				curr_sum = diff;
 
-			// Update max diff, if needed
-			if (curr_diff > max_diff)
-				max_diff = curr_diff;
+			// Update max sum, if needed
+			if (curr_sum > max_sum)
+				max_sum = curr_sum;
 		}
 
-		return max_diff;
+		return max_sum;
 	}
 
 	public static void main(String[] args) {
-		MaximumDiffBetweenTwoElements maxdif = new MaximumDiffBetweenTwoElements();
-		int arr[] = { 80, 2, 6, 3, 100, 500, 300 };
-		int size = arr.length;
-		System.out.println("Maximum Difference is " + maxdif.maxDiff(arr, size));
+		int arr[] = { 80, 2, 6, 3, 100 };
+		int n = arr.length;
+
+		// Function calling
+		System.out.print("Maximum difference is " + maxDiff(arr, n));
 	}
 }

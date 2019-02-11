@@ -28,7 +28,6 @@ class MaximumRepeatingNumber {
 		return result;
 	}
 
-	/* Driver function to check for above function */
 	public static void main(String[] args) {
 
 		int arr[] = { 2, 3, 3, 5, 3, 4, 1, 7 };

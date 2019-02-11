@@ -2,9 +2,6 @@ package com.hs.array.orderstatistics;
 
 public class FindSecondLargestNumber {
 
-	/*
-	 * Function to print the second largest elements
-	 */
 	public static void printSecondLargest(int arr[], int arr_size) {
 		int i, first, second;
 
@@ -37,7 +34,6 @@ public class FindSecondLargestNumber {
 			System.out.print("The second largest element" + " is " + second);
 	}
 
-	/* Driver program to test above function */
 	public static void main(String[] args) {
 		int arr[] = { 12, 35, 1, 10 };
 		int n = arr.length;

@@ -61,7 +61,6 @@ class FirstNonRepeatingCharacter {
 		return result;
 	}
 
-	// Driver method
 	public static void main(String[] args) {
 		String str = "geeksforgeeks";
 		int index = firstNonRepeating(str);

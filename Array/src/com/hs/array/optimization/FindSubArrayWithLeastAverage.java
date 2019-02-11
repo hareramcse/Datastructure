@@ -2,11 +2,9 @@ package com.hs.array.optimization;
 
 class FindSubArrayWithLeastAverage {
 
-	static int arr[] = new int[] { 3, 7, 90, 20, 10, 50, 40 };
-
 	// Prints beginning and ending indexes of subarray
 	// of size k with minimum average
-	static void findMinAvgSubarray(int n, int k) {
+	static void findMinAvgSubarray(int[] arr, int n, int k) {
 		// k must be smaller than or equal to n
 		if (n < k)
 			return;
@@ -38,9 +36,9 @@ class FindSubArrayWithLeastAverage {
 		System.out.println("Subarray between [" + res_index + ", " + (res_index + k - 1) + "] has minimum average");
 	}
 
-	// Driver method to test the above functionm y 
 	public static void main(String[] args) {
+		int arr[] = { 3, 7, 90, 20, 10, 50, 40 };
 		int k = 3; // Subarray size
-		findMinAvgSubarray(arr.length, k);
+		findMinAvgSubarray(arr, arr.length, k);
 	}
 }

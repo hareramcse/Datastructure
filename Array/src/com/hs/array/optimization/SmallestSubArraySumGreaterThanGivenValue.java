@@ -46,7 +46,6 @@ class SmallestSubArraySumGreaterThanGivenValue {
 		return min_len;
 	}
 
-	// Driver Code
 	public static void main(String[] args) {
 		int arr1[] = { -8, 1, 4, 2, -6 };
 		int x = 6;

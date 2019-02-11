@@ -16,7 +16,6 @@ public class LeaderInArray {
 		}
 	}
 
-	/* Driver program to test above functions */
 	public static void main(String[] args) {
 		LeaderInArray lead = new LeaderInArray();
 		int arr[] = new int[] { 16, 17, 4, 3, 5, 2 };

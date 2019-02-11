@@ -41,11 +41,9 @@ class LongestIncreasingSubSequence {
 		return len;
 	}
 
-	// Driver program to test above function
 	public static void main(String[] args) {
 		int A[] = { 2, 5, 3, 7, 11, 8, 10, 13, 6 };
 		int n = A.length;
 		System.out.println("Length of Longest Increasing Subsequence is " + LongestIncreasingSubsequenceLength(A, n));
 	}
 }
-/* This code is contributed by Devesh Agrawal */

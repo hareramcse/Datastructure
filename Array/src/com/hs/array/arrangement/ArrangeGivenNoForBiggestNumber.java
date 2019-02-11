@@ -37,7 +37,6 @@ public class ArrangeGivenNoForBiggestNumber {
 
 	}
 
-	// driver program
 	public static void main(String[] args) {
 		ArrangeGivenNoForBiggestNumber agnfbn=new ArrangeGivenNoForBiggestNumber();
 
@@ -49,16 +48,5 @@ public class ArrangeGivenNoForBiggestNumber {
 		arr.add("548");
 		arr.add("60");
 		agnfbn.printLargest(arr);
-
-		// output should be 777776
-		/*
-		 * arr.add("7"); arr.add("776"); arr.add("7"); arr.add("7");
-		 */
-
-		// output should be 998764543431
-		/*
-		 * arr.add("1"); arr.add("34"); arr.add("3"); arr.add("98"); arr.add("9");
-		 * arr.add("76"); arr.add("45"); arr.add("4");
-		 */
 	}
 }

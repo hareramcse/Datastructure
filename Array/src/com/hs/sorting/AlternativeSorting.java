@@ -2,7 +2,7 @@ package com.hs.sorting;
 
 import java.util.Arrays;
 
-public class AlternativeString {
+public class AlternativeSorting {
 	// Function to print alternate sorted values
 	static void alternateSort(int arr[], int n) {
 		Arrays.sort(arr);
@@ -13,8 +13,10 @@ public class AlternativeString {
 		// element and so on.
 		int i = 0, j = n - 1;
 		while (i < j) {
-			System.out.print(arr[j--] + " ");
-			System.out.print(arr[i++] + " ");
+			System.out.print(arr[j] + " ");
+			System.out.print(arr[i] + " ");
+			i++;
+			j--;
 		}
 
 		// If the total element in array is odd
@@ -30,4 +32,3 @@ public class AlternativeString {
 		alternateSort(arr, n);
 	}
 }
-/* This code is contributed by Prakriti Gupta */

@@ -40,7 +40,6 @@ public class SubArraySumWithNegativeNumber {
 
 	}
 
-	// Driver code
 	public static void main(String[] args) {
 		int[] arr = { 10, 2, -2, -20, 10 };
 		int n = arr.length;

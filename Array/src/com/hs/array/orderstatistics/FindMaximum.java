@@ -1,7 +1,5 @@
 package com.hs.array.orderstatistics;
 
-//Asked in: Amazon, Google, VMWare
-//find the maximum j – i such that arr[j] > arr[i]
 public class FindMaximum {
 	/* Utility Functions to get max and minimum of two integers */
 	int max(int x, int y) {
@@ -56,7 +54,6 @@ public class FindMaximum {
 		return maxDiff;
 	}
 
-	/* Driver program to test the above functions */
 	public static void main(String[] args) {
 		FindMaximum max = new FindMaximum();
 		int arr[] = { 9, 2, 3, 4, 5, 6, 7, 8, 18, 0 };

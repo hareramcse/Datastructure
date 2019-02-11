@@ -1,6 +1,6 @@
 package com.hs.sorting;
 
-public class SortedSubsequence {
+public class SortedSubsequenceOfSize3 {
 	// A function to find a sorted subsequence of size 3
 	static void find3Numbers(int arr[]) {
 		int n = arr.length;

@@ -3,7 +3,6 @@ package com.hs.array.orderstatistics;
 import java.util.Deque;
 import java.util.LinkedList;
 
-// Asked in: Amazon,Directi,Flipkart
 public class SlidingWindowMaximum {
 
 	// A Dequeue (Double ended queue) based method for printing maixmum element of

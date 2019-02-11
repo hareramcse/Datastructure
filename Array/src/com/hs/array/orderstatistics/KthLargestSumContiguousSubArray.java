@@ -2,9 +2,8 @@ package com.hs.array.orderstatistics;
 
 import java.util.PriorityQueue;
 
-class KthLargestSumSubArray {
-	// function to calculate kth largest
-	// element in contiguous subarray sum
+class KthLargestSumContiguousSubArray {
+	// function to calculate kth largest element in contiguous subarray sum
 	static int kthLargestSum(int arr[], int n, int k) {
 		// array to store predix sums
 		int sum[] = new int[n + 1];
@@ -21,7 +20,7 @@ class KthLargestSumSubArray {
 		for (int i = 1; i <= n; i++) {
 
 			// loop to traverse all positions that
-			// form contiguous subarray
+			//form contiguous subarray
 			for (int j = i; j <= n; j++) {
 				// calculates the contiguous subarray
 				// sum from j to i index
@@ -51,16 +50,11 @@ class KthLargestSumSubArray {
 		return Q.poll();
 	}
 
-	// Driver Code
 	public static void main(String[] args) {
 		int a[] = new int[] { 10, -10, 20, -40 };
 		int n = a.length;
 		int k = 6;
 
-		// calls the function to find out the
-		// k-th largest sum
 		System.out.println(kthLargestSum(a, n, k));
 	}
 }
-
-/* This code is contributed by Danish Kaleem */

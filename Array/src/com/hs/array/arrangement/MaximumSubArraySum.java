@@ -44,7 +44,6 @@ public class MaximumSubArraySum {
 		return left_sum + right_sum;
 	}
 
-	/* Driver program to test maxSubArraySum */
 	public static void main(String[] args) {
 		int arr[] = { 2, 3, 4, 5, 7 };
 		int n = arr.length;

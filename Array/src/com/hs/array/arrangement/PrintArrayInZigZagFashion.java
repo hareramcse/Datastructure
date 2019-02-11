@@ -42,7 +42,6 @@ public class PrintArrayInZigZagFashion {
 		}
 	}
 
-	// Driver method to test the above function
 	public static void main(String[] args) {
 		int arr[] = new int[] { 4, 3, 7, 8, 6, 2, 1 };
 		zigZag(arr);

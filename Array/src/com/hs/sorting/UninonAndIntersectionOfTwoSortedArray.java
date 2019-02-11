@@ -1,8 +1,8 @@
 package com.hs.sorting;
 
-class FindUnion {
+public class UninonAndIntersectionOfTwoSortedArray {
 
-	static void UnionArray(int arr1[], int arr2[]) {
+	static void printUnion(int arr1[], int arr2[]) {
 		// Taking max element present in either array
 		int m = arr1[arr1.length - 1];
 		int n = arr2[arr2.length - 1];
@@ -53,11 +53,26 @@ class FindUnion {
 		}
 	}
 
-	// Driver Code
+	static void printIntersection(int arr1[], int arr2[], int m, int n) {
+		int i = 0, j = 0;
+		while (i < m && j < n) {
+			if (arr1[i] < arr2[j])
+				i++;
+			else if (arr2[j] < arr1[i])
+				j++;
+			else {
+				System.out.print(arr2[j++] + " ");
+				i++;
+			}
+		}
+	}
+
 	public static void main(String args[]) {
 		int arr1[] = { 1, 2, 2, 2, 3 };
 		int arr2[] = { 2, 3, 4, 5 };
 
-		UnionArray(arr1, arr2);
+		printUnion(arr1, arr2);
+		System.out.println();
+		printIntersection(arr1, arr2, arr1.length, arr2.length);
 	}
 }

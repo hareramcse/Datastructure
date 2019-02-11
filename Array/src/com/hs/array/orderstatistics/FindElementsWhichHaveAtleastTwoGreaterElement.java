@@ -25,7 +25,6 @@ public class FindElementsWhichHaveAtleastTwoGreaterElement {
 				System.out.println(arr[i]);
 	}
 
-	// Driver code
 	public static void main(String[] args) {
 		int arr[] = { 2, -6, 3, 5, 1 };
 		int n = arr.length;

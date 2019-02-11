@@ -17,7 +17,6 @@ class FindMimiumDiffBetweenTwoNumber {
 		return diff;
 	}
 
-	// Driver method to test the above function
 	public static void main(String[] args) {
 		int arr[] = new int[] { 1, 5, 3, 19, 18, 25 };
 		System.out.println("Minimum difference is " + findMinDiff(arr, arr.length));

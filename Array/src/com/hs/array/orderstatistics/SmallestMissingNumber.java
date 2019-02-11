@@ -18,7 +18,6 @@ public class SmallestMissingNumber {
 		return findFirstMissing(array, start, mid);
 	}
 
-	// Driver program to test the above function
 	public static void main(String[] args) {
 		SmallestMissingNumber small = new SmallestMissingNumber();
 		int arr[] = { 0, 1, 2, 3, 4, 5, 6, 7, 10 };

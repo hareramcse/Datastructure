@@ -1,6 +1,6 @@
 package com.hs.array.optimization;
 
-class BuyAndSellStockToGetMaxBenefit {
+class BuyAndSellStockMaxTwiceToGetMaxBenefit {
 	// Returns maximum profit with two transactions on a given
 	// list of stock prices, price[0..n-1]
 	static int maxProfit(int price[], int n) {

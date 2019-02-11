@@ -1,6 +1,5 @@
 package com.hs.array.orderstatistics;
 
-//Asked in: Amazon,Paytm,Walmart labs
 public class MaximumSumSuchThatNoTwoElementAreAdjacent {
 
 	int FindMaxSum(int arr[], int n) {
@@ -23,7 +22,6 @@ public class MaximumSumSuchThatNoTwoElementAreAdjacent {
 		return ((incl > excl) ? incl : excl);
 	}
 
-	// Driver program to test above functions
 	public static void main(String[] args) {
 		MaximumSumSuchThatNoTwoElementAreAdjacent sum = new MaximumSumSuchThatNoTwoElementAreAdjacent();
 		int arr[] = new int[] { 5, 5, 10, 100, 10, 5 };
