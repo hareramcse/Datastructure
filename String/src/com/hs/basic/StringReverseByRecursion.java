@@ -14,6 +14,6 @@ public class StringReverseByRecursion {
 
 	public static void main(String a[]) {
 		StringReverseByRecursion srr = new StringReverseByRecursion();
-		System.out.println("Result: " + srr.reverseString("my name is khan and i am not a terrorist"));
+		System.out.println("Result: " + srr.reverseString("abcde"));
 	}
 }

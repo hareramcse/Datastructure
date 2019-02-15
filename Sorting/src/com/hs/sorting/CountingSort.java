@@ -16,7 +16,7 @@ public class CountingSort {
 	}
 
 	public static void main(String[] args) {
-		int arr[] = { 5, 5, 6, 9, 8, 7, 4, 2, 9, 5 };
+		int arr[] = { 5, 5, 6, 9, 8, 7, 4, 2, 9, 5};
 
 		countingSort(arr);
 	}

@@ -4,9 +4,6 @@ import java.util.Arrays;
 
 public class CountPairWithDiffK {
 
-	/*
-	 * Returns count of pairs with difference k in arr[] of size n.
-	 */
 	static int countPairsWithDiffK(int arr[], int n, int k) {
 		int count = 0;
 		Arrays.sort(arr);

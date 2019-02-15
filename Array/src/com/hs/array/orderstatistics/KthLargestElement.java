@@ -6,54 +6,49 @@ public class KthLargestElement {
 	// It considers the last element as pivot
 	// and moves all smaller element to left of
 	// it and greater elements to right
-	public static int partition(Integer[] arr, int l, int r) {
-		int x = arr[r], i = l;
-		for (int j = l; j <= r - 1; j++) {
-			if (arr[j] <= x) {
-				// Swapping arr[i] and arr[j]
+	public static int partition(Integer[] arr, int start, int end) {
+		int pIndex = start;
+		int pivot = arr[end];
+		for (int i = start; i <= end - 1; i++) {
+			if (arr[i] <= pivot) {
 				int temp = arr[i];
-				arr[i] = arr[j];
-				arr[j] = temp;
-
-				i++;
+				arr[i] = arr[pIndex];
+				arr[pIndex] = temp;
+				pIndex++;
 			}
 		}
+		int temp = arr[pIndex];
+		arr[pIndex] = arr[end];
+		arr[end] = temp;
 
-		// Swapping arr[i] and arr[r]
-		int temp = arr[i];
-		arr[i] = arr[r];
-		arr[r] = temp;
-
-		return i;
+		return pIndex;
 	}
 
 	// This function returns k'th smallest element
 	// in arr[l..r] using QuickSort based method.
 	// ASSUMPTION: ALL ELEMENTS IN ARR[] ARE DISTINCT
-	public static int kthSmallest(Integer[] arr, int l, int r, int k) {
+	public static int kthSmallest(Integer[] arr, int start, int end, int k) {
 		// If k is smaller than number of elements
 		// in array
-		if (k > 0 && k <= r - l + 1) {
+		if (k > 0 && k <= end - start + 1) {
 			// Partition the array around last
 			// element and get position of pivot
 			// element in sorted array
-			int pos = partition(arr, l, r);
+			int pIndex = partition(arr, start, end);
 
 			// If position is same as k
-			if (pos - l == k - 1)
-				return arr[pos];
+			if (pIndex - start == k - 1)
+				return arr[pIndex];
 
-			// If position is more, recur for
-			// left subarray
-			if (pos - l > k - 1)
-				return kthSmallest(arr, l, pos - 1, k);
+			// If position is more, recur for left subarray
+			if (pIndex - start > k - 1)
+				return kthSmallest(arr, start, pIndex - 1, k);
 
 			// Else recur for right subarray
-			return kthSmallest(arr, pos + 1, r, k - pos + l - 1);
+			return kthSmallest(arr, pIndex + 1, end, (k - 1) - (pIndex - start));
 		}
 
-		// If k is more than number of elements
-		// in array
+		// If k is more than number of elements in array
 		return Integer.MAX_VALUE;
 	}
 

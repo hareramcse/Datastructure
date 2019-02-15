@@ -3,7 +3,7 @@ package com.hs.searching;
 import java.util.HashMap;
 import java.util.Map;
 
-class FindSubArraySum {
+class FindSubArraySumEqualToK {
 
 	public static void subArraySum(int[] arr, int n, int sum) {
 		// cur_sum to keep track of cumulative sum till that point

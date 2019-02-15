@@ -21,8 +21,8 @@ public class FindMissingNumber {
 	}
 
 	public static void main(String args[]) {
-		int a[] = { 1, 2, 4, 5, 6 };
-		int miss = getMissingNo(a, 5);
+		int arr[] = { 1, 2, 4, 5, 6 };
+		int miss = getMissingNo(arr, arr.length);
 		System.out.println(miss);
 	}
 }

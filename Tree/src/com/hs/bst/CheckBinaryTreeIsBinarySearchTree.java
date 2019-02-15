@@ -2,8 +2,6 @@ package com.hs.bst;
 
 public class CheckBinaryTreeIsBinarySearchTree {
 
-	public Node root;
-
 	// best way (O(n)
 	public boolean isBST3rdWay(Node root, int minValue, int maxValue) {
 		if (root == null) {
@@ -20,13 +18,13 @@ public class CheckBinaryTreeIsBinarySearchTree {
 
 	public static void main(String[] args) {
 		CheckBinaryTreeIsBinarySearchTree bst = new CheckBinaryTreeIsBinarySearchTree();
-		bst.root = new Node(6);
-		bst.root.left = new Node(3);
-		bst.root.right = new Node(11);
-		bst.root.right.left = new Node(9);
-		bst.root.right.right = new Node(4);
+		Node root = new Node(6);
+		root.left = new Node(3);
+		root.right = new Node(11);
+		root.right.left = new Node(9);
+		root.right.right = new Node(4);
 
-		System.out.println(bst.isBST3rdWay(bst.root, Integer.MIN_VALUE, Integer.MAX_VALUE));
+		System.out.println(bst.isBST3rdWay(root, Integer.MIN_VALUE, Integer.MAX_VALUE));
 
 	}
 }

@@ -1,9 +1,28 @@
 package com.hs.searching;
 
 import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Set;
+import java.util.Map.Entry;
 
 class FindFirstRepeatingInteger {
+
+	static Map<Integer, Integer> map = new LinkedHashMap<Integer, Integer>();
+
+	// it also works
+	static void method2(int[] arr) {
+		for (Integer ch : arr) {
+			map.put(ch, map.containsKey(ch) ? map.get(ch) + 1 : 1);
+		}
+
+		for (Entry<Integer, Integer> entry : map.entrySet()) {
+			if (entry.getValue() == 2) {
+				System.out.println(entry.getKey());
+				break;
+			}
+		}
+	}
 
 	static void printFirstRepeating(int arr[]) {
 		// Initialize index of first repeating element

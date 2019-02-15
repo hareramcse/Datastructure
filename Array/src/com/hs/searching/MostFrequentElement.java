@@ -35,6 +35,6 @@ class MostFrequentElement {
 	public static void main(String[] args) {
 		int arr[] = { 1, 5, 2, 1, 3, 2, 1 };
 		int n = arr.length;
-		System.out.println(mostFrequent(arr, n));
+		System.out.println("most frequent element is " + mostFrequent(arr, n));
 	}
 }

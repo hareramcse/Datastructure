@@ -1,27 +1,27 @@
 package com.hs.sorting;
 
+import java.util.HashMap;
+import java.util.Map;
+
 class MinimumNoOfSwapToSortBinaryArray {
 
 	static int findMinSwaps(int arr[], int n) {
-		// Array to store count of zeroes
-		int noOfZeroes[] = new int[n];
-		int i, count = 0;
-
-		// Count number of zeroes on right side of every one.
-		noOfZeroes[n - 1] = 1 - arr[n - 1];
-		for (i = n - 2; i >= 0; i--) {
-			noOfZeroes[i] = noOfZeroes[i + 1];
-			if (arr[i] == 0)
-				noOfZeroes[i]++;
+		Map<Integer, Integer> map = new HashMap<>();
+		int count = 0;
+		for (int i = n - 1; i > 0; i--) {
+			if (arr[i] == 0) {
+				count++;
+			} else {
+				map.put(i, count);
+			}
 		}
-
 		// Count total number of swaps by adding number
 		// of zeroes on right side of every one.
-		for (i = 0; i < n; i++) {
-			if (arr[i] == 1)
-				count += noOfZeroes[i];
+		int sum = 0;
+		for (Integer entry : map.keySet()) {
+			sum = sum + map.get(entry);
 		}
-		return count;
+		return sum;
 	}
 
 	public static void main(String args[]) {
