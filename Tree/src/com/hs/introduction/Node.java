@@ -1,6 +1,7 @@
-package com.hs.summation;
+package com.hs.introduction;
 
 public class Node {
+	String info;
 	int data;
 	Node left, right, next;
 
@@ -8,16 +9,12 @@ public class Node {
 		data = item;
 		left = right = next = null;
 	}
-
-	public void setLeft(Node left) {
-		this.left = left;
-	}
-
-	public void setRight(Node right) {
-		this.right = right;
-	}
-
+	
 	public Node() {
 
+	}
+	
+	public Node(String x) {
+		this.info = x;
 	}
 }

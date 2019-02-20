@@ -5,6 +5,7 @@ class Node{
 	Node left;
 	Node right;
 	Node next;
+	Node prev;
 	
 	Node(int data){
 		this.data=data;

@@ -65,10 +65,6 @@ public class BinarySearchTree {
 			}
 			// case 3, node with 2 child
 			else {
-				/*
-				 * root.data=findMinInBST(root.right); // it will also work commented
-				 * findMinInBST root.right=delete(root.right, findMinInBST(root.right));
-				 */
 				Node temp = findMinInBST(root.right);
 				root.data = temp.data;
 				root.right = delete(root.right, temp.data);

@@ -1,54 +1,51 @@
 package com.hs.construction;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ConstructTreeFromPostorderAndInorder {
-	int index;
-
-	/*
-	 * Function to find index of value in arr[start...end] The function assumes that
-	 * value is postsent in in[]
-	 */
-	int search(int in[], int strt, int end, int value) {
-		int i;
-		for (i = strt; i <= end; i++) {
-			if (in[i] == value)
-				break;
-		}
-		return i;
-	}
-
-	/*
-	 * Recursive function to construct binary of size n from Inorder traversal in[]
-	 * and Postorder traversal post[]. Initial values of inStrt and inEnd should be
-	 * 0 and n -1. The function doesn't do any error checking for cases where
-	 * inorder and postorder do not form a tree
-	 */
-	Node buildTree(int in[], int post[], int start, int end, int pIndex) {
+	Node buildUtil(int in[], int post[], int inStrt, int inEnd, int pIndex, Map<Integer, Integer> map) {
 		// Base case
-		if (start > end)
+		if (inStrt > inEnd)
 			return null;
 
 		/*
-		 * Pick current node from Post order traversal using postIndex and decrement
+		 * Pick current node from Postorder traversal using postIndex and decrement
 		 * postIndex
 		 */
-		Node root = new Node(post[index--]);
+		int curr = post[pIndex];
+		Node node = new Node(curr);
+		pIndex--;
 
 		/* If this node has no children then return */
-		if (start == end)
-			return root;
+		if (inStrt == inEnd)
+			return node;
 
 		/*
 		 * Else find the index of this node in Inorder traversal
 		 */
-		int index = search(in, start, end, root.data);
+		int iIndex = map.get(curr);
 
 		/*
 		 * Using index in Inorder traversal, construct left and right subtress
 		 */
-		root.right = buildTree(in, post, index + 1, end, pIndex);
-		root.left = buildTree(in, post, start, index - 1, pIndex);
+		node.right = buildUtil(in, post, iIndex + 1, inEnd, pIndex, map);
+		node.left = buildUtil(in, post, inStrt, iIndex - 1, pIndex, map);
 
-		return root;
+		return node;
+	}
+
+	// This function mainly creates an unordered_map, then
+	// calls buildTreeUtil()
+	Node buildTree(int in[], int post[], int len) {
+		// Store indexes of all items so that we
+		// we can quickly find later
+		Map<Integer, Integer> map = new HashMap<>();
+		for (int i = 0; i < len; i++)
+			map.put(in[i], i);
+
+		int index = len - 1; // Index in postorder
+		return buildUtil(in, post, 0, len - 1, index, map);
 	}
 
 	/* This funtcion is here just to test */
@@ -62,11 +59,10 @@ public class ConstructTreeFromPostorderAndInorder {
 
 	public static void main(String[] args) {
 		ConstructTreeFromPostorderAndInorder tree = new ConstructTreeFromPostorderAndInorder();
-		int in[] = new int[] { 4, 8, 2, 5, 1, 6, 3, 7 };
-		int post[] = new int[] { 8, 4, 5, 2, 6, 7, 3, 1 };
+		int in[] = { 4, 8, 2, 5, 1, 6, 3, 7 };
+		int post[] = { 8, 4, 5, 2, 6, 7, 3, 1 };
 		int n = in.length;
-		tree.index = n - 1;
-		Node root = tree.buildTree(in, post, 0, n - 1, tree.index);
+		Node root = tree.buildTree(in, post, n);
 		System.out.println("Preorder of the constructed tree : ");
 		tree.preOrder(root);
 	}

@@ -1,0 +1,2 @@
+Mail App is using Authentication API V6, latest version of API is V8
+Mail App is using Data Storage API V10, latest version of API is V11

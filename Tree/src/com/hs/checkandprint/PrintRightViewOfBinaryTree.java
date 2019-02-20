@@ -5,7 +5,7 @@ class PrintRightViewOfBinaryTree {
 	int max_level;
 
 	// Recursive function to print right view of a binary
-	void rightViewUtil(Node root, int level) {
+	void rightView(Node root, int level) {
 
 		// Base Case
 		if (root == null)
@@ -18,12 +18,8 @@ class PrintRightViewOfBinaryTree {
 		}
 
 		// Recur for right subtree first, then left subtree
-		rightViewUtil(root.right, level + 1);
-		rightViewUtil(root.left, level + 1);
-	}
-
-	void rightView(Node root) {
-		rightViewUtil(root, 1);
+		rightView(root.right, level + 1);
+		rightView(root.left, level + 1);
 	}
 
 	// Driver program to test the above functions
@@ -38,7 +34,7 @@ class PrintRightViewOfBinaryTree {
 		root.right.right = new Node(7);
 		root.right.left.right = new Node(8);
 
-		tree.rightView(root);
+		tree.rightView(root, 1);
 
 	}
 }

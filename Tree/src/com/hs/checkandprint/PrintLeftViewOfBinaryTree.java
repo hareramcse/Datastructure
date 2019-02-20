@@ -4,25 +4,20 @@ class PrintLeftViewOfBinaryTree {
 	int max_level;
 
 	// recursive function to print left view
-	void leftViewUtil(Node node, int level) {
+	void leftView(Node root, int level) {
 		// Base Case
-		if (node == null)
+		if (root == null)
 			return;
 
 		// If this is the first node of its level
 		if (max_level < level) {
-			System.out.print(" " + node.data);
+			System.out.print(" " + root.data);
 			max_level = level;
 		}
 
 		// Recur for left and right subtrees
-		leftViewUtil(node.left, level + 1);
-		leftViewUtil(node.right, level + 1);
-	}
-
-	// A wrapper over leftViewUtil()
-	void leftView(Node root) {
-		leftViewUtil(root, 1);
+		leftView(root.left, level + 1);
+		leftView(root.right, level + 1);
 	}
 
 	/* testing for example nodes */
@@ -35,6 +30,6 @@ class PrintLeftViewOfBinaryTree {
 		root.right.left = new Node(25);
 		root.right.right = new Node(40);
 
-		tree.leftView(root);
+		tree.leftView(root, 1);
 	}
 }

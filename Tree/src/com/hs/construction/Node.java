@@ -4,6 +4,7 @@ public class Node {
 	Node left;
 	Node right;
 	int data;
+	char ch;
 
 	Node(int data) {
 		this.data = data;
@@ -15,5 +16,9 @@ public class Node {
 
 	public void setRight(Node right) {
 		this.right = right;
+	}
+	
+	Node(char ch) {
+		this.ch = ch;
 	}
 }

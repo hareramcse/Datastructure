@@ -2,9 +2,9 @@ package com.hs.summation;
 
 import java.util.HashMap;
 
-public class DiagonalSumOfBinaryTree {
+public class VerticalSumOfBinaryTree {
 
-	private void diagonalSum(Node root) {
+	private void VerticalSum(Node root) {
 
 		// base case
 		if (root == null) {
@@ -16,7 +16,7 @@ public class DiagonalSumOfBinaryTree {
 
 		// Calls the VerticalSumUtil() to store the
 		// vertical sum values in hM
-		diagonalSumUtil(root, map, 0);
+		VerticalSumUtil(root, map, 0);
 
 		// Prints the values stored by VerticalSumUtil()
 		if (map != null) {
@@ -26,7 +26,7 @@ public class DiagonalSumOfBinaryTree {
 
 	// Traverses the tree in Inoorder form and builds
 	// a hashMap hM that contains the vertical sum
-	private void diagonalSumUtil(Node root, HashMap<Integer, Integer> map, int hD) {
+	private void VerticalSumUtil(Node root, HashMap<Integer, Integer> map, int hD) {
 
 		// base case
 		if (root == null) {
@@ -34,20 +34,20 @@ public class DiagonalSumOfBinaryTree {
 		}
 
 		// Store the values in hM for left subtree
-		diagonalSumUtil(root.left, map, hD + 1);
+		VerticalSumUtil(root.left, map, hD - 1);
 
 		// Update vertical sum for hD of this node
 		int prevSum = (map.get(hD) == null) ? 0 : map.get(hD);
 		map.put(hD, prevSum + root.data);
 
 		// Store the values in hM for right subtree
-		diagonalSumUtil(root.right, map, hD);
+		VerticalSumUtil(root.right, map, hD + 1);
 	}
 
 	// Driver class to test the verticalSum methods
 
 	public static void main(String[] args) {
-		DiagonalSumOfBinaryTree tree = new DiagonalSumOfBinaryTree();
+		VerticalSumOfBinaryTree tree = new VerticalSumOfBinaryTree();
 		Node root = new Node(1);
 		root.setLeft(new Node(2));
 		root.setRight(new Node(3));
@@ -58,6 +58,6 @@ public class DiagonalSumOfBinaryTree {
 
 		System.out.println("Following are the values of" + " vertical sums with the positions"
 				+ " of the columns with respect to root ");
-		tree.diagonalSum(root);
+		tree.VerticalSum(root);
 	}
 }
