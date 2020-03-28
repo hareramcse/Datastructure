@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class CountPairWithDiffK {
 
-	static int countPairsWithDiffK(int arr[], int n, int k) {
+	private static int countPairsWithDiffK(int arr[], int n, int k) {
 		int count = 0;
 		Arrays.sort(arr);
 

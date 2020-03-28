@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 class CheckForPairWithSumK2 {
-	static void printpairs(int arr[], int sum) {
+	private static void printPairs(int arr[], int sum) {
 		Set<Integer> set = new HashSet<Integer>();
 		for (int i = 0; i < arr.length; ++i) {
 			int temp = sum - arr[i];
@@ -20,6 +20,6 @@ class CheckForPairWithSumK2 {
 	public static void main(String[] args) {
 		int A[] = { 1, 4, 45, 6, 10, 8, 8};
 		int n = 16;
-		printpairs(A, n);
+		printPairs(A, n);
 	}
 }

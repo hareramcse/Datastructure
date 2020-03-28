@@ -14,10 +14,12 @@ public class MajorityElement {
 				if (count > arr.length / 2) {
 					System.out.println("Majority element " + arr[i]);
 					return;
-				} else
+				} else {
 					map.put(arr[i], count);
-			} else
+				}
+			} else {
 				map.put(arr[i], 1);
+			}
 		}
 		System.out.println("No Majority element");
 	}

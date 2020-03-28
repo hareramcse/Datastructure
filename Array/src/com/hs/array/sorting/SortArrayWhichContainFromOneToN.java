@@ -3,7 +3,7 @@ package com.hs.array.sorting;
 public class SortArrayWhichContainFromOneToN {
 
 	// function to sort array
-	static void sort(int[] arr, int n) {
+	private static void sort(int[] arr, int n) {
 		for (int i = 0; i < n; i++) {
 			arr[i] = i + 1;
 		}

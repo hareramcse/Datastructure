@@ -6,7 +6,7 @@ import java.util.TreeMap;
 
 public class SortAnArrayAccordingToAbsoluteDifferenceWithGivenValue {
 
-	static void sortWithAbsoluteDiff(int arr[], int n, int value) {
+	private static void sortWithAbsoluteDiff(int arr[], int n, int value) {
 
 		Map<Integer, String> map = new TreeMap<>();
 

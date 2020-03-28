@@ -4,7 +4,7 @@ import java.util.stream.IntStream;
 
 public class MaximumEquilibriumSum {
 
-	static int findMaxSum(int arr[], int n) {
+	private static int findMaxSum(int arr[], int n) {
 		int sum = IntStream.of(arr).sum();
 		int prefix_sum = 0, res = Integer.MIN_VALUE;
 

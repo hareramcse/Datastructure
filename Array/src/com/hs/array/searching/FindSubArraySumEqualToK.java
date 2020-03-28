@@ -5,7 +5,7 @@ import java.util.Map;
 
 class FindSubArraySumEqualToK {
 
-	public static void subArraySum(int[] arr, int n, int sum) {
+	private static void subArraySum(int[] arr, int n, int sum) {
 		// cur_sum to keep track of cumulative sum till that point
 		int cur_sum = 0;
 		int start = 0;
@@ -42,9 +42,9 @@ class FindSubArraySumEqualToK {
 	}
 
 	public static void main(String[] args) {
-		int[] arr = { 10, 2, -2, -20, 10 };
+		int[] arr = { 10, 2, -5, -20, 10 };
 		int n = arr.length;
-		int sum = -10;
+		int sum = -23;
 		subArraySum(arr, n, sum);
 	}
 }

@@ -2,7 +2,7 @@ package com.hs.array.searching;
 
 public class LeaderInArray {
 
-	static void  printLeaders(int arr[], int n) {
+	private static void  printLeaders(int arr[], int n) {
 		int max_from_right = arr[n - 1];
 
 		/* Rightmost element is always leader */

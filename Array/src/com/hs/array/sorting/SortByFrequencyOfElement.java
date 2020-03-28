@@ -9,15 +9,15 @@ import java.util.Map;
 
 public class SortByFrequencyOfElement {
 
-	public static void sortByFrequency(int[] arr) {
+	private static void sortByFrequency(int[] arr) {
 		Map<Integer, Integer> map = new HashMap<>();
 		List<Integer> outputArray = new ArrayList<>();
 
 		// Assign elements and their count in the list and map
-		for (int current : arr) {
-			int count = map.getOrDefault(current, 0);
-			map.put(current, count + 1);
-			outputArray.add(current);
+		for (int i : arr) {
+			int count = map.getOrDefault(i, 0);
+			map.put(i, count + 1);
+			outputArray.add(i);
 		}
 
 		// Sort the map using Collections CLass

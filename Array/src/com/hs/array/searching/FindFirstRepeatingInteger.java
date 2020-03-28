@@ -8,10 +8,10 @@ import java.util.Map.Entry;
 
 class FindFirstRepeatingInteger {
 
-	static Map<Integer, Integer> map = new LinkedHashMap<Integer, Integer>();
+	private static Map<Integer, Integer> map = new LinkedHashMap<Integer, Integer>();
 
 	// it also works
-	static void method2(int[] arr) {
+	private static void method2(int[] arr) {
 		for (Integer ch : arr) {
 			map.put(ch, map.containsKey(ch) ? map.get(ch) + 1 : 1);
 		}
@@ -24,7 +24,7 @@ class FindFirstRepeatingInteger {
 		}
 	}
 
-	static void printFirstRepeating(int arr[]) {
+	private static void printFirstRepeating(int arr[]) {
 		// Initialize index of first repeating element
 		int min = -1;
 

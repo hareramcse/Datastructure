@@ -5,7 +5,7 @@ import java.util.Set;
 
 class CountPairsWithGivenSum {
 
-	static int countPairs(int arr[], int sum) {
+	private static int countPairs(int arr[], int sum) {
 		int count = 0;
 		Set<Integer> set = new HashSet<Integer>();
 		for (int i = 0; i < arr.length; ++i) {

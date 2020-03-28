@@ -5,7 +5,7 @@ import java.util.Map;
 
 class FindNumberOccursOddNumberOfTimes {
 
-	static int getOddOccurrence(int arr[], int n) {
+	private static int getOddOccurrence(int arr[], int n) {
 		Map<Integer, Integer> map = new HashMap<>();
 
 		// Putting all elements into the HashMap

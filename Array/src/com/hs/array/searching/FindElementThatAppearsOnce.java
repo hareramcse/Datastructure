@@ -2,7 +2,7 @@ package com.hs.array.searching;
 
 class FindElementThatAppearsOnce {
 
-	static int findSingle(int arr[], int n) {
+	private static int findSingle(int arr[], int n) {
 		// Do XOR of all elements and return
 		int res = arr[0];
 		for (int i = 1; i < n; i++)

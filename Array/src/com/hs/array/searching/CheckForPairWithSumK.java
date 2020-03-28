@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 class CheckForPairWithSumK {
 
-	static void hasArrayTwoCandidates(int arr[], int n, int sum) {
+	private static void hasArrayTwoCandidates(int arr[], int n, int sum) {
 
 		Arrays.sort(arr);
 
@@ -16,7 +16,7 @@ class CheckForPairWithSumK {
 				break;
 			} else if (arr[start] + arr[end] < sum) {
 				start++;
-			} else { // A[i] + A[j] > sum
+			} else { // A[start] + A[end] > sum
 				end--;
 			}
 		}

@@ -34,8 +34,9 @@ class RotateLinkedList {
 
 		// current will point to last node after this loop
 		// current will point to node 60 in the above example
-		while (current.next != null)
+		while (current.next != null) {
 			current = current.next;
+		}
 
 		// Change next of last node to previous head
 		// Next of 60 is now changed to node 10

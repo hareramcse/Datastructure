@@ -6,27 +6,26 @@ import java.util.Map.Entry;
 
 class MostFrequentElement {
 
-	static int mostFrequent(int arr[], int n) {
+	private static int mostFrequent(int arr[], int n) {
 
 		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
 
 		for (int i = 0; i < n; i++) {
-			int key = arr[i];
-			if (map.containsKey(key)) {
-				int count = map.get(key);
-				map.put(key, count + 1);
+			if (map.containsKey(arr[i])) {
+				int count = map.get(arr[i]);
+				map.put(arr[i], count + 1);
 			} else {
-				map.put(key, 1);
+				map.put(arr[i], 1);
 			}
 		}
 
 		// find max frequency.
 		int max_count = 0, res = -1;
 
-		for (Entry<Integer, Integer> val : map.entrySet()) {
-			if (max_count < val.getValue()) {
-				res = val.getKey();
-				max_count = val.getValue();
+		for (Entry<Integer, Integer> entry : map.entrySet()) {
+			if (max_count < entry.getValue()) {
+				max_count = entry.getValue();
+				res = entry.getKey();
 			}
 		}
 		return res;

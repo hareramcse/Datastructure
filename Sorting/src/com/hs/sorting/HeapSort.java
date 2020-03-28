@@ -4,9 +4,9 @@ import java.util.Arrays;
 
 public class HeapSort {
 
-	public int heapSize;
+	private int heapSize;
 
-	public void buildMaxHeap(int arr[]) {
+	private void buildMaxHeap(int arr[]) {
 		// heap size initialized
 		heapSize = arr.length;
 
@@ -18,7 +18,7 @@ public class HeapSort {
 		}
 	}
 
-	public void maxHeapify(int arr[], int longestNonLeafIndex) {
+	private void maxHeapify(int arr[], int longestNonLeafIndex) {
 		// the left element's index which is 2*i+1 (for zero based indexed
 		// array)
 		int left = 2 * longestNonLeafIndex + 1;
@@ -49,7 +49,7 @@ public class HeapSort {
 			largestElementIndex = right;
 		}
 
-		// if root doesn't has the largest index then swap the largest element
+		// if root index is not the largest index then swap the largest element
 		// with root element
 		if (largestElementIndex != longestNonLeafIndex) {
 			int temp = arr[longestNonLeafIndex];
@@ -62,7 +62,7 @@ public class HeapSort {
 		}
 	}
 
-	public void heapSort(int arr[]) {
+	private void heapSort(int arr[]) {
 		// max heap is built with heapSize initialized
 		buildMaxHeap(arr);
 

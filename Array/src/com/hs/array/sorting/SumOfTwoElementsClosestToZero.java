@@ -1,5 +1,7 @@
 package com.hs.array.sorting;
 
+import java.util.Arrays;
+
 public class SumOfTwoElementsClosestToZero {
 
 	static void minAbsSumPair(int arr[], int n) {
@@ -19,7 +21,7 @@ public class SumOfTwoElementsClosestToZero {
 		}
 
 		/* Sort the elements */
-		sort(arr, start, end);
+		Arrays.sort(arr, start, end);
 
 		while (start < end) {
 			sum = arr[start] + arr[end];
@@ -37,32 +39,6 @@ public class SumOfTwoElementsClosestToZero {
 		}
 
 		System.out.println("The two elements whose " + "sum is minimum are " + arr[min_start] + " and " + arr[min_end]);
-	}
-
-	private static int partition(int arr[], int start, int end) {
-		int pivot = arr[end];
-		int pIndex = start;
-		for (int i = start; i < end; i++) {
-			if (arr[i] < pivot) {
-				int tmp = arr[i];
-				arr[i] = arr[pIndex];
-				arr[pIndex] = tmp;
-				pIndex++;
-			}
-		}
-		int tmp = arr[pIndex];
-		arr[pIndex] = arr[end];
-		arr[end] = tmp;
-		return pIndex;
-	}
-
-	private static void sort(int arr[], int start, int end) {
-		if (start >= end) {
-			return;
-		}
-		int pIndex = partition(arr, start, end);
-		sort(arr, start, pIndex - 1);
-		sort(arr, pIndex + 1, end);
 	}
 
 	public static void main(String[] args) {

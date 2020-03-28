@@ -1,6 +1,8 @@
 package com.hs.linkedlist;
 
-class Gfg {
+class MergeTwoSortedLinkedList {
+	Node head;
+
 	/*
 	 * Takes two lists sorted in increasing order, and splices their nodes together
 	 * to make one big sorted list which is returned.
@@ -47,10 +49,6 @@ class Gfg {
 		}
 		return dummyNode.next;
 	}
-}
-
-class MergeTwoSortedLinkedList {
-	Node head;
 
 	/*
 	 * Method to insert a node at the end of the linked list
@@ -84,6 +82,7 @@ class MergeTwoSortedLinkedList {
 		 */
 		MergeTwoSortedLinkedList llist1 = new MergeTwoSortedLinkedList();
 		MergeTwoSortedLinkedList llist2 = new MergeTwoSortedLinkedList();
+		MergeTwoSortedLinkedList obj = new MergeTwoSortedLinkedList();
 
 		// Node head1 = new Node(5);
 		llist1.addToTheLast(new Node(5));
@@ -95,7 +94,7 @@ class MergeTwoSortedLinkedList {
 		llist2.addToTheLast(new Node(3));
 		llist2.addToTheLast(new Node(20));
 
-		llist1.head = new Gfg().sortedMerge(llist1.head, llist2.head);
+		llist1.head = obj.sortedMerge(llist1.head, llist2.head);
 		llist1.printList();
 
 	}

@@ -67,7 +67,9 @@ public class MyLinkedList {
 		if (index > 0) {
 			if (head == null) {
 				System.out.println("list is empty");
-			} else {
+			} else if(index == 0){
+				head = head.next;
+			}else {
 				Node temp = head;
 				Node t = null;
 				int count = 0;
@@ -127,15 +129,19 @@ public class MyLinkedList {
 		}
 	}
 
-	private void reverseByRecursion(Node node) {
+	private Node reverseByRecursion(Node node) {
 		if (node.next == null) {
 			head = node;
-			return;
+			return head;
 		}
-		reverseByRecursion(node.next);
+		if(head.next == null) {
+			return head;
+		}
+		Node returnedNode = reverseByRecursion(node.next);
 		Node temp = node.next;
 		temp.next = node;
 		node.next = null;
+		return returnedNode;
 	}
 
 	private void printData() {
