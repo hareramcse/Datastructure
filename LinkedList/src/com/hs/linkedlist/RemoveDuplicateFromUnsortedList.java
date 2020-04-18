@@ -1,14 +1,13 @@
 package com.hs.linkedlist;
 
 import java.util.HashSet;
+import java.util.Set;
 
 public class RemoveDuplicateFromUnsortedList {
-	/*
-	 * Function to remove duplicates from a unsorted linked list
-	 */
-	void removeDuplicate(Node head) {
+
+	private void removeDuplicate(Node head) {
 		// Hash to store seen values
-		HashSet<Integer> hs = new HashSet<>();
+		Set<Integer> hs = new HashSet<>();
 
 		/* Pick elements one by one */
 		Node current = head;
@@ -25,11 +24,9 @@ public class RemoveDuplicateFromUnsortedList {
 			}
 			current = current.next;
 		}
-
 	}
 
-	/* Function to print nodes in a given linked list */
-	void printList(Node head) {
+	private void printList(Node head) {
 		while (head != null) {
 			System.out.print(head.data + " ");
 			head = head.next;

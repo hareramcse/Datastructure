@@ -1,12 +1,10 @@
 package com.hs.linkedlist;
 
 class SwapNodeWithoutSwappingData {
-	Node head; // head of list
+	Node head;
 
-	/*
-	 * Function to swap Nodes x and y in linked list by changing links
-	 */
-	public void swapNodes(int x, int y) {
+	// Function to swap Nodes x and y in linked list by changing links
+	private void swapNodes(int x, int y) {
 		// Nothing to do if x and y are same
 		if (x == y)
 			return;
@@ -47,22 +45,13 @@ class SwapNodeWithoutSwappingData {
 		currY.next = temp;
 	}
 
-	/* Function to add Node at beginning of list. */
-	public void push(int new_data) {
-		/* 1. alloc the Node and put the data */
+	private void push(int new_data) {
 		Node new_Node = new Node(new_data);
-
-		/* 2. Make next of new Node as head */
 		new_Node.next = head;
-
-		/* 3. Move the head to point to new Node */
 		head = new_Node;
 	}
 
-	/*
-	 * This function prints contents of linked list starting from the given Node
-	 */
-	public void printList() {
+	private void printList() {
 		Node tNode = head;
 		while (tNode != null) {
 			System.out.print(tNode.data + " ");
@@ -70,7 +59,7 @@ class SwapNodeWithoutSwappingData {
 		}
 	}
 
-	/* Druver program to test above function */
+	/* Driver program to test above function */
 	public static void main(String[] args) {
 		SwapNodeWithoutSwappingData llist = new SwapNodeWithoutSwappingData();
 

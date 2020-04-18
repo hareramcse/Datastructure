@@ -3,7 +3,7 @@ package com.hs.linkedlist;
 public class MergeSortForLinkedList {
 	Node head = null;
 
-	Node sortedMerge(Node a, Node b) {
+	private Node sortedMerge(Node a, Node b) {
 		Node result = null;
 		/* Base cases */
 		if (a == null)
@@ -23,7 +23,7 @@ public class MergeSortForLinkedList {
 
 	}
 
-	Node mergeSort(Node head) {
+	private Node mergeSort(Node head) {
 		// Base case : if head is null
 		if (head == null || head.next == null) {
 			return head;
@@ -47,8 +47,7 @@ public class MergeSortForLinkedList {
 		return sortedlist;
 	}
 
-	// Utility function to get the middle of the linked list
-	Node getMiddle(Node head) {
+	private Node getMiddle(Node head) {
 		// Base case
 		if (head == null) {
 			return head;
@@ -65,19 +64,13 @@ public class MergeSortForLinkedList {
 		return slowptr;
 	}
 
-	void push(int new_data) {
-		/* allocate node */
+	private void push(int new_data) {
 		Node new_node = new Node(new_data);
-
-		/* link the old list off the new node */
 		new_node.next = head;
-
-		/* move the head to point to the new node */
 		head = new_node;
 	}
 
-	// Utility function to print the linked list
-	void printList(Node head) {
+	private void printList(Node head) {
 		while (head != null) {
 			System.out.print(head.data + " ");
 			head = head.next;
@@ -102,7 +95,7 @@ public class MergeSortForLinkedList {
 
 		// Apply merge Sort
 		li.head = li.mergeSort(li.head);
-		System.out.print("\n Sorted Linked List is: \n");
+		System.out.print("\nSorted Linked List is: \n");
 		li.printList(li.head);
 	}
 }

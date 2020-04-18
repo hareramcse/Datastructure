@@ -2,7 +2,7 @@ package com.hs.linkedlist;
 
 class DetectCycle {
 
-	boolean detectLoop(Node head) {
+	private boolean detectLoop(Node head) {
 		Node slow = head;
 		Node fast = head.next;
 

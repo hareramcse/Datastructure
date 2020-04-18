@@ -1,45 +1,37 @@
 package com.hs.linkedlist;
 
 public class DeleteAlternateNode {
-	Node head; // head of list
+	Node head;
 
-	void deleteAlt() {
+	private void deleteAlt() {
 		if (head == null)
 			return;
 
-		Node prev = head;
-		Node now = head.next;
+		Node current = head;
+		Node nextNode = head.next;
 
-		while (prev != null && now != null) {
-			/* Change next link of previus node */
-			prev.next = now.next;
+		while (current != null && nextNode != null) {
+			/* Change next link of previous node */
+			current.next = nextNode.next;
 
 			/* Free node */
-			now = null;
+			nextNode = null;
 
 			/* Update prev and now */
-			prev = prev.next;
-			if (prev != null)
-				now = prev.next;
+			current = current.next;
+			if (current != null) {
+				nextNode = current.next;
+			}
 		}
 	}
 
-	/* Inserts a new Node at front of the list. */
-	public void push(int new_data) {
-		/*
-		 * 1 & 2: Allocate the Node & Put in the data
-		 */
+	private  void push(int new_data) {
 		Node new_node = new Node(new_data);
-
-		/* 3. Make next of new Node as head */
 		new_node.next = head;
-
-		/* 4. Move the head to point to new Node */
 		head = new_node;
 	}
 
-	/* Function to print linked list */
-	void printList() {
+	private void printList() {
 		Node temp = head;
 		while (temp != null) {
 			System.out.print(temp.data + " ");

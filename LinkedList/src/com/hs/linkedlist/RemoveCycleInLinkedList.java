@@ -2,11 +2,10 @@ package com.hs.linkedlist;
 
 public class RemoveCycleInLinkedList {
 
-	void detectAndRemoveLoop(Node head) {
+	private void detectAndRemoveLoop(Node head) {
 		Node slow = head;
 		Node fast = head.next;
 
-		// Search for loop using slow and fast pointers
 		while (fast != null && fast.next != null) {
 			if (slow == fast) {
 				break;
@@ -29,8 +28,7 @@ public class RemoveCycleInLinkedList {
 		}
 	}
 
-	// Function to print the linked list
-	void printList(Node head) {
+	private void printList(Node head) {
 		while (head != null) {
 			System.out.print(head.data + " ");
 			head = head.next;

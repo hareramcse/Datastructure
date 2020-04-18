@@ -2,7 +2,7 @@ package com.hs.linkedlist;
 
 public class GetNodeDataFromTail {
 
-	static int getNode(Node head, int positionFromTail) {
+	private static int getNode(Node head, int positionFromTail) {
 		Node temp = head;
         int counter = 0;
         while(head != null){
@@ -16,7 +16,7 @@ public class GetNodeDataFromTail {
         return temp.data;
 	}
 
-	static int getNodeSecondWay(Node head, int n) {
+	private static int getNodeSecondWay(Node head, int n) {
 		int count = 0;
         Node temp = head;
         while(temp != null){
@@ -30,7 +30,7 @@ public class GetNodeDataFromTail {
         return head.data;
 	}
 	
-	static int getNodeThirdWay(Node head, int positionFromTail) {
+	private static int getNodeThirdWay(Node head, int positionFromTail) {
         Node main_ptr = head; 
         Node ref_ptr = head; 
   

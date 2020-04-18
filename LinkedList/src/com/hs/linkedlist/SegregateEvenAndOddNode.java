@@ -2,9 +2,9 @@ package com.hs.linkedlist;
 
 class SegregateEvenAndOddNode {
 
-	Node head; // head of list
+	Node head;
 
-	public void segregateEvenOdd() {
+	private void segregateEvenOdd() {
 
 		Node evenStart = null;
 		Node evenEnd = null;
@@ -16,7 +16,6 @@ class SegregateEvenAndOddNode {
 			int element = currentNode.data;
 
 			if (element % 2 == 0) {
-
 				if (evenStart == null) {
 					evenStart = currentNode;
 					evenEnd = evenStart;
@@ -24,9 +23,7 @@ class SegregateEvenAndOddNode {
 					evenEnd.next = currentNode;
 					evenEnd = evenEnd.next;
 				}
-
 			} else {
-
 				if (oddStart == null) {
 					oddStart = currentNode;
 					oddEnd = oddStart;
@@ -42,31 +39,18 @@ class SegregateEvenAndOddNode {
 		if (oddStart == null || evenStart == null) {
 			return;
 		}
-
 		evenEnd.next = oddStart;
 		oddEnd.next = null;
 		head = evenStart;
 	}
 
-	/*
-	 * Given a reference (pointer to pointer) to the head of a list and an int, push
-	 * a new node on the front of the list.
-	 */
-	void push(int new_data) {
-		/*
-		 * 1 & 2: Allocate the Node & Put in the data
-		 */
+	private void push(int new_data) {
 		Node new_node = new Node(new_data);
-
-		/* 3. Make next of new Node as head */
 		new_node.next = head;
-
-		/* 4. Move the head to point to new Node */
 		head = new_node;
 	}
 
-	// Utility function to print a linked list
-	void printList() {
+	private void printList() {
 		Node temp = head;
 		while (temp != null) {
 			System.out.print(temp.data + " ");

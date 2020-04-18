@@ -2,9 +2,7 @@ package com.hs.linkedlist;
 
 class InsertAtMid {
 
-	// function to insert node at the
-	// middle of the linked list
-	void insertAtMid(Node head, int data) {
+	private void insertAtMid(Node head, int data) {
 		// if list is empty
 		if (head == null) {
 			head = new Node(data);
@@ -12,8 +10,7 @@ class InsertAtMid {
 			// get a new node
 			Node newNode = new Node(data);
 
-			// assign values to the slow
-			// and fast pointers
+			// assign values to the slow and fast pointers
 			Node slow = head;
 			Node fast = head.next;
 
@@ -23,15 +20,13 @@ class InsertAtMid {
 				fast = fast.next.next;
 			}
 
-			// insert the 'newNode' and adjust
-			// the required links
+			// insert the 'newNode' and adjust the required links
 			newNode.next = slow.next;
 			slow.next = newNode;
 		}
 	}
 
-	// function to display the linked list
-	void display(Node head) {
+	private void display(Node head) {
 		Node temp = head;
 		while (temp != null) {
 			System.out.print(temp.data + " ");

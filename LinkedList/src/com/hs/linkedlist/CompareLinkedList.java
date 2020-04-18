@@ -1,7 +1,7 @@
 package com.hs.linkedlist;
 
 public class CompareLinkedList {
-	static boolean compareLists(Node head1, Node head2) {
+	private static boolean compareLists(Node head1, Node head2) {
 		while (head1 != null && head2 != null) {
 			if (head1.data != head2.data)
 				return false;

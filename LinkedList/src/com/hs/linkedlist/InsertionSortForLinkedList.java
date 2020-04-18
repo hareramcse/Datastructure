@@ -4,31 +4,17 @@ public class InsertionSortForLinkedList {
 	Node head;
 	Node sorted;
 
-	void push(int val) {
-		/* allocate node */
-		Node newnode = new Node(val);
-		/* link the old list off the new node */
-		newnode.next = head;
-		/* move the head to point to the new node */
-		head = newnode;
-	}
-
 	// function to sort a singly linked list using insertion sort
-	void insertionSort(Node headref) {
+	private void insertionSort(Node headref) {
 		// Initialize sorted linked list
 		sorted = null;
 		Node current = headref;
-		// Traverse the given linked list and insert every
-		// node to sorted
+		// Traverse the given linked list and insert every node to sorted
 		while (current != null) {
-			// Store next for next iteration
 			Node next = current.next;
-			// insert current in sorted linked list
 			sortedInsert(current);
-			// Update current
 			current = next;
 		}
-		// Update head_ref to point to sorted linked list
 		head = sorted;
 	}
 
@@ -37,7 +23,7 @@ public class InsertionSortForLinkedList {
 	 * pointer to head_ref as this can modify the head of the input linked list
 	 * (similar to push())
 	 */
-	void sortedInsert(Node newnode) {
+	private void sortedInsert(Node newnode) {
 		/* Special case for the head end */
 		if (sorted == null || sorted.data >= newnode.data) {
 			newnode.next = sorted;
@@ -52,9 +38,14 @@ public class InsertionSortForLinkedList {
 			current.next = newnode;
 		}
 	}
+	
+	private void push(int val) {
+		Node newnode = new Node(val);
+		newnode.next = head;
+		head = newnode;
+	}
 
-	/* Function to print linked list */
-	void printlist(Node head) {
+	private void printlist(Node head) {
 		while (head != null) {
 			System.out.print(head.data + " ");
 			head = head.next;

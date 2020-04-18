@@ -1,13 +1,13 @@
 package com.hs.linkedlist;
 
 class RotateLinkedList {
-	Node head; // head of list
+	Node head;
 
 	// This function rotates a linked list counter-clockwise
 	// and updates the head. The function assumes that k is
 	// smaller than size of linked list. It doesn't modify
 	// the list if k is greater than or equal to size
-	void rotate(int k) {
+	private void rotate(int k) {
 		if (k == 0)
 			return;
 
@@ -52,24 +52,13 @@ class RotateLinkedList {
 
 	}
 
-	/*
-	 * Given a reference (pointer to pointer) to the head of a list and an int, push
-	 * a new node on the front of the list.
-	 */
-	void push(int new_data) {
-		/*
-		 * 1 & 2: Allocate the Node & Put in the data
-		 */
+	private void push(int new_data) {
 		Node new_node = new Node(new_data);
-
-		/* 3. Make next of new Node as head */
 		new_node.next = head;
-
-		/* 4. Move the head to point to new Node */
 		head = new_node;
 	}
 
-	void printList() {
+	private void printList() {
 		Node temp = head;
 		while (temp != null) {
 			System.out.print(temp.data + " ");

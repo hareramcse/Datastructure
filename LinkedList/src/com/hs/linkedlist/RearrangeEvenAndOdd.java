@@ -1,27 +1,9 @@
 package com.hs.linkedlist;
 
 public class RearrangeEvenAndOdd {
-	// A utility function to print
-	// linked list
-	static void printList(Node node) {
-		while (node != null) {
-			System.out.print(node.data + " ");
-			node = node.next;
-		}
-		System.out.println();
-	}
-
-	// Function to insert at beginning
-	static Node insertBeg(Node head, int val) {
-		Node temp = new Node(val);
-		temp.next = head;
-		head = temp;
-		return head;
-	}
-
-	// Function to rearrange the
-	// odd and even nodes
-	static Node rearrange(Node head) {
+	
+	// Function to rearrange the odd and even nodes
+	private static Node rearrange(Node head) {
 		// Step 1: Segregate even and odd nodes
 		// Step 2: Split odd and even lists
 		// Step 3: Merge even list into odd list
@@ -101,6 +83,21 @@ public class RearrangeEvenAndOdd {
 		// The case where even list exhausts before
 		// odd list is automatically handled since we
 		// merge the even list into the odd list
+		return head;
+	}
+	
+	private static void printList(Node node) {
+		while (node != null) {
+			System.out.print(node.data + " ");
+			node = node.next;
+		}
+		System.out.println();
+	}
+
+	private static Node insertBeg(Node head, int val) {
+		Node temp = new Node(val);
+		temp.next = head;
+		head = temp;
 		return head;
 	}
 

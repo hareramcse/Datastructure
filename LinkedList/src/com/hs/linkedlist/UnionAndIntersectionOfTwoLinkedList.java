@@ -1,10 +1,9 @@
 package com.hs.linkedlist;
 
 class UnionAndIntersectionOfTwoLinkedList {
-	Node head; // head of list
+	Node head;
 
-	/* Function to get Union of 2 Linked Lists */
-	void getUnion(Node head1, Node head2) {
+	private void getUnion(Node head1, Node head2) {
 		Node t1 = head1, t2 = head2;
 
 		// insert all elements of list1 in the result
@@ -21,7 +20,7 @@ class UnionAndIntersectionOfTwoLinkedList {
 		}
 	}
 
-	void getIntersection(Node head1, Node head2) {
+	private void getIntersection(Node head1, Node head2) {
 		Node t1 = head1;
 
 		// Traverse list1 and search each element of it in list2.
@@ -34,8 +33,7 @@ class UnionAndIntersectionOfTwoLinkedList {
 		}
 	}
 
-	/* Utility function to print list */
-	void printList() {
+	private void printList() {
 		Node temp = head;
 		while (temp != null) {
 			System.out.print(temp.data + " ");
@@ -44,25 +42,13 @@ class UnionAndIntersectionOfTwoLinkedList {
 		System.out.println();
 	}
 
-	/* Inserts a node at start of linked list */
-	void push(int new_data) {
-		/*
-		 * 1 & 2: Allocate the Node & Put in the data
-		 */
+	private void push(int new_data) {
 		Node new_node = new Node(new_data);
-
-		/* 3. Make next of new Node as head */
 		new_node.next = head;
-
-		/* 4. Move the head to point to new Node */
 		head = new_node;
 	}
 
-	/*
-	 * A utilty function that returns true if data is present in linked list else
-	 * return false
-	 */
-	boolean isPresent(Node head, int data) {
+	private boolean isPresent(Node head, int data) {
 		Node t = head;
 		while (t != null) {
 			if (t.data == data)
@@ -72,7 +58,7 @@ class UnionAndIntersectionOfTwoLinkedList {
 		return false;
 	}
 
-	/* Drier program to test above functions */
+	/* Driver program to test above functions */
 	public static void main(String args[]) {
 		UnionAndIntersectionOfTwoLinkedList llist1 = new UnionAndIntersectionOfTwoLinkedList();
 		UnionAndIntersectionOfTwoLinkedList llist2 = new UnionAndIntersectionOfTwoLinkedList();

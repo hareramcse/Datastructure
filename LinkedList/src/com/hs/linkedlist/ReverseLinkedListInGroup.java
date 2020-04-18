@@ -1,7 +1,7 @@
 package com.hs.linkedlist;
 
 public class ReverseLinkedListInGroup {
-	Node head; // head of list
+	Node head;
 
 	Node reverse(Node head, int k) {
 		Node current = head;
@@ -30,24 +30,13 @@ public class ReverseLinkedListInGroup {
 		return prev;
 	}
 
-	/* Utility functions */
-
-	/* Inserts a new Node at front of the list. */
-	public void push(int new_data) {
-		/*
-		 * 1 & 2: Allocate the Node & Put in the data
-		 */
+	private void push(int new_data) {
 		Node new_node = new Node(new_data);
-
-		/* 3. Make next of new Node as head */
 		new_node.next = head;
-
-		/* 4. Move the head to point to new Node */
 		head = new_node;
 	}
 
-	/* Function to print linked list */
-	void printList() {
+	private void printList() {
 		Node temp = head;
 		while (temp != null) {
 			System.out.print(temp.data + " ");
@@ -60,9 +49,7 @@ public class ReverseLinkedListInGroup {
 	public static void main(String args[]) {
 		ReverseLinkedListInGroup llist = new ReverseLinkedListInGroup();
 
-		/*
-		 * Constructed Linked List is 1->2->3->4->5->6-> 7->8->8->9->null
-		 */
+		// Constructed Linked List is 1->2->3->4->5->6-> 7->8->8->9->null
 		llist.push(9);
 		llist.push(8);
 		llist.push(7);
