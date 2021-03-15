@@ -5,12 +5,11 @@ import com.hs.basic.Node;
 public class CheckEvenOddLinkedList {
 
 	private boolean checkEvenOdd(Node head) {
-		Node temp = head;
 		boolean even = false;
-		while (temp != null && temp.next != null) {
-			temp = temp.next.next;
+		while (head != null && head.next != null) {
+			head = head.next.next;
 		}
-		if (temp == null) {
+		if (head == null) {
 			even = true;
 		}
 		return even;

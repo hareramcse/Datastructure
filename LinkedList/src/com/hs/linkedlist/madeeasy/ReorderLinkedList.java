@@ -1,5 +1,6 @@
 package com.hs.linkedlist.madeeasy;
 
+import com.hs.basic.LinkedListUtil;
 import com.hs.basic.Node;
 
 public class ReorderLinkedList {
@@ -15,7 +16,7 @@ public class ReorderLinkedList {
 		Node node2 = slow.next;
 		slow.next = null;
 
-		node2 = reverseList(node2);
+		node2 = LinkedListUtil.reverseByRecursion(node2);
 		head = new Node(0); // Assign dummy Node
 
 		// curr is the pointer to this dummy Node, which
@@ -42,27 +43,6 @@ public class ReorderLinkedList {
 		return head.next;
 	}
 
-	private Node reverseList(Node head) {
-		if (head == null || head.next == null) {
-			return head;
-		}
-		Node reverseList = reverseList(head.next);
-		head.next.next = head;
-		head.next = null;
-		return reverseList;
-	}
-
-	private void printList(Node head) {
-		Node temp = head;
-		if (head == null) {
-			System.out.println("List is empty");
-		}
-		while (temp != null) {
-			System.out.print(temp.data + " ");
-			temp = temp.next;
-		}
-	}
-
 	public static void main(String[] args) {
 		ReorderLinkedList list = new ReorderLinkedList();
 		Node head = new Node(10);
@@ -76,6 +56,6 @@ public class ReorderLinkedList {
 		head.next.next.next.next.next.next.next.next = new Node(60);
 
 		Node reverseList = list.reorderList(head);
-		list.printList(reverseList);
+		LinkedListUtil.printLinkedList(reverseList);
 	}
 }

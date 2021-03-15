@@ -1,52 +1,42 @@
 package com.hs.linkedlist.madeeasy;
 
+import java.util.Vector;
+
+import com.hs.basic.LinkedListUtil;
 import com.hs.basic.Node;
 
 public class PrintCommonNode {
-	Node head = null;
 
-	public void addLast(int data) {
-		Node temp = head;
-		if (temp == null) {
-			head = new Node(data);
-			return;
-		} else {
-			while (temp.next != null) {
-				temp = temp.next;
+	private void printCommonNodes(Node head1, Node head2) {
+		Vector<Integer> map = new Vector<Integer>();
+
+		while (head1 != null) {
+			map.add(head1.data);
+			head1 = head1.next;
+		}
+
+		while (head2 != null) {
+			if (map.contains(head2.data)) {
+				System.out.print(head2.data + " ");
 			}
-			temp.next = new Node(data);
+			head2 = head2.next;
 		}
 	}
 
-	private void printCommon(Node head1, Node head2) {
-		while (head1 != null && head2.next != null) {
-			if (head1.data == head2.next.data) {
-				System.out.println(head1.data);
-				head1 = head1.next;
-				head2 = head2.next;
-			} else if (head1.data > head2.data) {
-				head2 = head2.next;
-			} else {
-				head1 = head1.next;
-			}
-		}
-
-	}
-	
 	public static void main(String[] args) {
-		PrintCommonNode list1 = new PrintCommonNode();
-		list1.addLast(10);
-		list1.addLast(4);
-		list1.addLast(15);
-		list1.addLast(20);
+		PrintCommonNode list = new PrintCommonNode();
 
-		PrintCommonNode list2 = new PrintCommonNode();
-		list2.addLast(40);
-		list2.addLast(4);
-		list2.addLast(15);
-		list2.addLast(10);
-		list2.addLast(20);
+		Node head1 = LinkedListUtil.addLast(null, 10);
+		head1 = LinkedListUtil.addLast(head1, 4);
+		head1 = LinkedListUtil.addLast(head1, 15);
+		head1 = LinkedListUtil.addLast(head1, 20);
 
-		list1.printCommon(list1.head, list2.head);
+		Node head2 = LinkedListUtil.addLast(null, 40);
+		head2 = LinkedListUtil.addLast(head2, 4);
+		head2 = LinkedListUtil.addLast(head2, 15);
+		head2 = LinkedListUtil.addLast(head2, 10);
+		head2 = LinkedListUtil.addLast(head2, 20);
+
+		list.printCommonNodes(head1, head2);
 	}
 }

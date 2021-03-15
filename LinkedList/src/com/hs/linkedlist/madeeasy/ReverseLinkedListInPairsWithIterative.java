@@ -1,5 +1,6 @@
 package com.hs.linkedlist.madeeasy;
 
+import com.hs.basic.LinkedListUtil;
 import com.hs.basic.Node;
 
 public class ReverseLinkedListInPairsWithIterative {
@@ -12,18 +13,6 @@ public class ReverseLinkedListInPairsWithIterative {
 			temp.next.data = k;
 			temp = temp.next.next;
 		}
-	}
-
-	private void printList(Node head) {
-		Node temp = head;
-		if (head == null) {
-			System.out.println("List is empty");
-		}
-		while (temp != null) {
-			System.out.print(temp.data + " -> ");
-			temp = temp.next;
-		}
-		System.out.print("NULL");
 	}
 
 	public static void main(String[] args) {
@@ -39,6 +28,6 @@ public class ReverseLinkedListInPairsWithIterative {
 		head.next.next.next.next.next.next.next.next = new Node(60);
 
 		list.reverseListInPairs(head);
-		list.printList(head);
+		LinkedListUtil.printLinkedList(head);
 	}
 }

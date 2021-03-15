@@ -1,5 +1,6 @@
 package com.hs.linkedlist.madeeasy;
 
+import com.hs.basic.LinkedListUtil;
 import com.hs.basic.Node;
 
 public class RemoveDuplicate {
@@ -20,18 +21,6 @@ public class RemoveDuplicate {
 		return head;
 	}
 
-	private void printList(Node head) {
-		Node temp = head;
-		if (head == null) {
-			System.out.println("List is empty");
-		}
-		while (temp != null) {
-			System.out.print(temp.data + " -> ");
-			temp = temp.next;
-		}
-		System.out.print("NULL");
-	}
-
 	public static void main(String[] args) {
 		RemoveDuplicate list = new RemoveDuplicate();
 		Node head = new Node(90);
@@ -42,6 +31,6 @@ public class RemoveDuplicate {
 		head.next.next.next.next.next = new Node(40);
 
 		Node reverseList = list.removeDuplicate(head);
-		list.printList(reverseList);
+		LinkedListUtil.printLinkedList(reverseList);
 	}
 }

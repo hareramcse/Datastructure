@@ -1,5 +1,6 @@
 package com.hs.linkedlist.madeeasy;
 
+import com.hs.basic.LinkedListUtil;
 import com.hs.basic.Node;
 
 public class RightRotateByKTimes {
@@ -19,18 +20,6 @@ public class RightRotateByKTimes {
 		return head;
 	}
 
-	private void printList(Node head) {
-		Node temp = head;
-		if (head == null) {
-			System.out.println("List is empty");
-		}
-		while (temp != null) {
-			System.out.print(temp.data + " -> ");
-			temp = temp.next;
-		}
-		System.out.print("NULL");
-	}
-
 	public static void main(String[] args) {
 		RightRotateByKTimes list = new RightRotateByKTimes();
 		Node head = new Node(10);
@@ -44,6 +33,6 @@ public class RightRotateByKTimes {
 		head.next.next.next.next.next.next.next.next = new Node(60);
 
 		Node rotatedHead = list.rightRotateKTimes(head, 2);
-		list.printList(rotatedHead);
+		LinkedListUtil.printLinkedList(rotatedHead);
 	}
 }
