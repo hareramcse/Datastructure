@@ -1,5 +1,6 @@
 package com.hs.linkedlist.geekforgeeks;
 
+import com.hs.basic.LinkedListUtil;
 import com.hs.basic.Node;
 
 public class RemoveCycleInLinkedList {
@@ -26,18 +27,9 @@ public class RemoveCycleInLinkedList {
 
 			/* since fast->next is the looping point */
 			fast.next = null; /* remove loop */
-
 		}
 	}
 
-	private void printList(Node head) {
-		while (head != null) {
-			System.out.print(head.data + " ");
-			head = head.next;
-		}
-	}
-
-	// Driver program to test above functions
 	public static void main(String[] args) {
 		RemoveCycleInLinkedList list = new RemoveCycleInLinkedList();
 		Node head = new Node(50);
@@ -50,6 +42,6 @@ public class RemoveCycleInLinkedList {
 		head.next.next.next.next.next = head.next.next.next;
 		list.detectAndRemoveLoop(head);
 		System.out.println("Linked List after removing loop : ");
-		list.printList(head);
+		LinkedListUtil.printLinkedList(head);
 	}
 }

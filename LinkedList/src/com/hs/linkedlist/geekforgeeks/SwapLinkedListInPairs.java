@@ -1,9 +1,9 @@
 package com.hs.linkedlist.geekforgeeks;
 
+import com.hs.basic.LinkedListUtil;
 import com.hs.basic.Node;
 
 public class SwapLinkedListInPairs {
-	Node head;
 
 	private void swapNodes(Node head) {
 		Node current = head;
@@ -15,36 +15,23 @@ public class SwapLinkedListInPairs {
 		}
 	}
 
-	private void push(int new_data) {
-		Node new_Node = new Node(new_data);
-		new_Node.next = head;
-		head = new_Node;
-	}
-
-	private void printList() {
-		Node tNode = head;
-		while (tNode != null) {
-			System.out.print(tNode.data + " ");
-			tNode = tNode.next;
-		}
-	}
-
 	public static void main(String[] args) {
-		SwapLinkedListInPairs llist = new SwapLinkedListInPairs();
-		llist.push(7);
-		llist.push(6);
-		llist.push(5);
-		llist.push(4);
-		llist.push(3);
-		llist.push(2);
-		llist.push(1);
+		SwapLinkedListInPairs list = new SwapLinkedListInPairs();
+
+		Node head = LinkedListUtil.addLast(null, 7);
+		head = LinkedListUtil.addLast(head, 6);
+		head = LinkedListUtil.addLast(head, 5);
+		head = LinkedListUtil.addLast(head, 4);
+		head = LinkedListUtil.addLast(head, 3);
+		head = LinkedListUtil.addLast(head, 2);
+		head = LinkedListUtil.addLast(head, 1);
 
 		System.out.print("Linked list before calling swapNodes()");
 		System.out.println();
-		llist.printList();
+		LinkedListUtil.printLinkedList(head);
 
-		llist.swapNodes(llist.head);
+		list.swapNodes(head);
 		System.out.println();
-		llist.printList();
+		LinkedListUtil.printLinkedList(head);
 	}
 }

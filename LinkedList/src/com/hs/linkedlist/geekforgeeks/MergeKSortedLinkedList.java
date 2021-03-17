@@ -1,5 +1,6 @@
 package com.hs.linkedlist.geekforgeeks;
 
+import com.hs.basic.LinkedListUtil;
 import com.hs.basic.Node;
 
 public class MergeKSortedLinkedList {
@@ -9,7 +10,7 @@ public class MergeKSortedLinkedList {
 	 * recursive calls, but it can be easily modified to work with same time and
 	 * O(1) extra space
 	 */
-	public Node sortedMerge(Node a, Node b) {
+	private Node sortedMerge(Node a, Node b) {
 		Node result = null;
 		/* Base cases */
 		if (a == null)
@@ -31,15 +32,14 @@ public class MergeKSortedLinkedList {
 
 	// The main function that takes an array of lists
 	// arr[0..last] and generates the sorted output
-	public Node mergeKLists(Node arr[], int last) {
+	public Node mergeKLists(Node arr[], int noOfList) {
 		// repeat until only one list is left
-		while (last != 0) {
-			int i = 0, j = last;
+		while (noOfList != 0) {
+			int i = 0, j = noOfList;
 
 			// (i, j) forms a pair
 			while (i < j) {
-				// merge List i with List j and store
-				// merged list in List i
+				// merge List i with List j and store merged list in List i
 				arr[i] = sortedMerge(arr[i], arr[j]);
 
 				// consider next pair
@@ -48,27 +48,18 @@ public class MergeKSortedLinkedList {
 
 				// If all pairs are merged, update last
 				if (i >= j)
-					last = j;
+					noOfList = j;
 			}
 		}
 
 		return arr[0];
 	}
 
-	/* Function to print nodes in a given linked list */
-	public static void printList(Node node) {
-		while (node != null) {
-			System.out.print(node.data + " ");
-			node = node.next;
-		}
-	}
-
 	public static void main(String args[]) {
 		MergeKSortedLinkedList list = new MergeKSortedLinkedList();
 		int k = 3; // Number of linked lists
 
-		// an array of pointers storing the head nodes
-		// of the linked lists
+		// an array of pointers storing the head nodes of the linked lists
 		Node arr[] = new Node[k];
 
 		arr[0] = new Node(1);
@@ -88,6 +79,6 @@ public class MergeKSortedLinkedList {
 
 		// Merge all lists
 		Node head = list.mergeKLists(arr, k - 1);
-		printList(head);
+		LinkedListUtil.printLinkedList(head);
 	}
 }

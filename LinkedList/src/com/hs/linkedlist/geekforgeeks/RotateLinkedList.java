@@ -1,17 +1,13 @@
 package com.hs.linkedlist.geekforgeeks;
 
+import com.hs.basic.LinkedListUtil;
 import com.hs.basic.Node;
 
 class RotateLinkedList {
-	Node head;
 
-	// This function rotates a linked list counter-clockwise
-	// and updates the head. The function assumes that k is
-	// smaller than size of linked list. It doesn't modify
-	// the list if k is greater than or equal to size
-	private void rotate(int k) {
+	private Node rotate(Node head, int k) {
 		if (k == 0)
-			return;
+			return null;
 
 		// Let us understand the below code for example k = 4
 		// and list = 10->20->30->40->50->60.
@@ -28,7 +24,7 @@ class RotateLinkedList {
 		// If current is NULL, k is greater than or equal to count
 		// of nodes in linked list. Don't change the list in this case
 		if (current == null)
-			return;
+			return current;
 
 		// current points to kth node. Store it in a variable.
 		// kthNode points to node 40 in the above example
@@ -51,38 +47,26 @@ class RotateLinkedList {
 
 		// change next of kth node to null
 		kthNode.next = null;
-
+		
+		return head;
 	}
 
-	private void push(int new_data) {
-		Node new_node = new Node(new_data);
-		new_node.next = head;
-		head = new_node;
-	}
-
-	private void printList() {
-		Node temp = head;
-		while (temp != null) {
-			System.out.print(temp.data + " ");
-			temp = temp.next;
-		}
-		System.out.println();
-	}
-
-	/* Drier program to test above functions */
 	public static void main(String args[]) {
-		RotateLinkedList llist = new RotateLinkedList();
+		RotateLinkedList list = new RotateLinkedList();
 
-		// create a list 10->20->30->40->50->60
-		for (int i = 60; i >= 10; i -= 10)
-			llist.push(i);
+		Node head = LinkedListUtil.addLast(null, 10);
+		head = LinkedListUtil.addLast(head, 20);
+		head = LinkedListUtil.addLast(head, 30);
+		head = LinkedListUtil.addLast(head, 40);
+		head = LinkedListUtil.addLast(head, 50);
+		head = LinkedListUtil.addLast(head, 60);
 
 		System.out.println("Given list");
-		llist.printList();
+		LinkedListUtil.printLinkedList(head);
 
-		llist.rotate(4);
+		head = list.rotate(head, 4);
 
 		System.out.println("Rotated Linked List");
-		llist.printList();
+		LinkedListUtil.printLinkedList(head);
 	}
 }

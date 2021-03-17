@@ -1,11 +1,10 @@
 package com.hs.linkedlist.geekforgeeks;
 
+import com.hs.basic.LinkedListUtil;
 import com.hs.basic.Node;
 
 class MergeTwoSortedLinkedList {
-	Node head;
 
-	// merge two sorted linkedlist
 	Node sortedMerge(Node node1, Node node2) {
 
 		// if both the nodes are null
@@ -57,50 +56,21 @@ class MergeTwoSortedLinkedList {
 
 	}
 
-	private void addToTheLast(Node node) {
-		if (head == null) {
-			head = node;
-		} else {
-			Node temp = head;
-			while (temp.next != null)
-				temp = temp.next;
-			temp.next = node;
-		}
-	}
-
-	private void printList() {
-		Node temp = head;
-		while (temp != null) {
-			System.out.print(temp.data + " ");
-			temp = temp.next;
-		}
-		System.out.println();
-	}
-
-	// Driver Code
 	public static void main(String args[]) {
-		/*
-		 * Let us create two sorted linked lists to test the methods Created lists:
-		 * llist1: 5->10->15, llist2: 2->3->20
-		 */
-		MergeTwoSortedLinkedList llist1 = new MergeTwoSortedLinkedList();
-		MergeTwoSortedLinkedList llist2 = new MergeTwoSortedLinkedList();
-		MergeTwoSortedLinkedList obj = new MergeTwoSortedLinkedList();
+		MergeTwoSortedLinkedList list = new MergeTwoSortedLinkedList();
 
-		// Node head1 = new Node(5);
-		llist1.addToTheLast(new Node(5));
-		llist1.addToTheLast(new Node(10));
-		llist1.addToTheLast(new Node(15));
+		Node head1 = LinkedListUtil.addLast(null, 5);
+		head1 = LinkedListUtil.addLast(head1, 10);
+		head1 = LinkedListUtil.addLast(head1, 15);
 
-		// Node head2 = new Node(2);
-		llist2.addToTheLast(new Node(2));
-		llist2.addToTheLast(new Node(3));
-		llist2.addToTheLast(new Node(20));
-		llist2.addToTheLast(new Node(40));
-		llist2.addToTheLast(new Node(50));
-		llist2.addToTheLast(new Node(60));
+		Node head2 = LinkedListUtil.addLast(null, 2);
+		head2 = LinkedListUtil.addLast(head2, 3);
+		head2 = LinkedListUtil.addLast(head2, 20);
+		head2 = LinkedListUtil.addLast(head2, 40);
+		head2 = LinkedListUtil.addLast(head2, 50);
+		head2 = LinkedListUtil.addLast(head2, 60);
 
-		llist1.head = obj.sortedMerge(llist1.head, llist2.head);
-		llist1.printList();
+		Node head = list.sortedMerge(head1, head2);
+		LinkedListUtil.printLinkedList(head);
 	}
 }

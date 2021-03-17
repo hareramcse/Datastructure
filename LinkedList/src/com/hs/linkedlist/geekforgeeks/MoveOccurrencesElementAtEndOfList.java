@@ -1,17 +1,9 @@
 package com.hs.linkedlist.geekforgeeks;
 
+import com.hs.basic.LinkedListUtil;
 import com.hs.basic.Node;
 
 public class MoveOccurrencesElementAtEndOfList {
-	// Utility function to print the elements in Linked list
-	private void printList(Node head) {
-		Node temp = head;
-		while (temp != null) {
-			System.out.printf("%d ", temp.data);
-			temp = temp.next;
-		}
-		System.out.printf("\n");
-	}
 
 	// Moves all occurrences of given key to end of linked list.
 	private void moveToEnd(Node head, int key) {
@@ -51,12 +43,12 @@ public class MoveOccurrencesElementAtEndOfList {
 		head.next.next.next.next.next.next = new Node(60);
 
 		System.out.printf("Before moveToEnd(), the Linked list is\n");
-		list.printList(head);
+		LinkedListUtil.printLinkedList(head);
 
 		int key = 10;
 		list.moveToEnd(head, key);
 
 		System.out.printf("\nAfter moveToEnd(), the Linked list is\n");
-		list.printList(head);
+		LinkedListUtil.printLinkedList(head);
 	}
 }

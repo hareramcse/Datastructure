@@ -1,5 +1,6 @@
 package com.hs.linkedlist.geekforgeeks;
 
+import com.hs.basic.LinkedListUtil;
 import com.hs.basic.Node;
 
 class FindMidElement {
@@ -23,21 +24,12 @@ class FindMidElement {
 		head = new_node;
 	}
 
-	private void printList(Node head) {
-		Node tnode = head;
-		while (tnode != null) {
-			System.out.print(tnode.data + "->");
-			tnode = tnode.next;
-		}
-		System.out.println("NULL");
-	}
-
 	public static void main(String[] args) {
-		FindMidElement llist = new FindMidElement();
+		FindMidElement list = new FindMidElement();
 		for (int i = 5; i > 0; --i) {
-			llist.push(i);
-			llist.printList(llist.head);
-			llist.printMiddle(llist.head);
+			list.push(i);
+			LinkedListUtil.printLinkedList(list.head);
+			list.printMiddle(list.head);
 		}
 	}
 }

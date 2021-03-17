@@ -1,5 +1,6 @@
 package com.hs.linkedlist.geekforgeeks;
 
+import com.hs.basic.LinkedListUtil;
 import com.hs.basic.Node;
 
 public class RearrangeEvenAndOdd {
@@ -85,36 +86,20 @@ public class RearrangeEvenAndOdd {
 		return head;
 	}
 
-	private static void printList(Node node) {
-		while (node != null) {
-			System.out.print(node.data + " ");
-			node = node.next;
-		}
-		System.out.println();
-	}
-
-	private static Node insertBeg(Node head, int val) {
-		Node temp = new Node(val);
-		temp.next = head;
-		head = temp;
-		return head;
-	}
-
-	// Driver Code
 	public static void main(String args[]) {
-		Node head = new Node(8);
-		head = insertBeg(head, 7);
-		head = insertBeg(head, 6);
-		head = insertBeg(head, 3);
-		head = insertBeg(head, 5);
-		head = insertBeg(head, 1);
-		head = insertBeg(head, 2);
-		head = insertBeg(head, 10);
+		Node head = LinkedListUtil.addLast(null, 8);
+		head = LinkedListUtil.addLast(head, 7);
+		head = LinkedListUtil.addLast(head, 6);
+		head = LinkedListUtil.addLast(head, 3);
+		head = LinkedListUtil.addLast(head, 5);
+		head = LinkedListUtil.addLast(head, 1);
+		head = LinkedListUtil.addLast(head, 2);
+		head = LinkedListUtil.addLast(head, 10);
 
 		System.out.println("Linked List:");
-		printList(head);
+		LinkedListUtil.printLinkedList(head);
 		System.out.println("Rearranged List");
 		head = rearrange(head);
-		printList(head);
+		LinkedListUtil.printLinkedList(head);
 	}
 }

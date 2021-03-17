@@ -1,21 +1,9 @@
 package com.hs.linkedlist.geekforgeeks;
 
+import com.hs.basic.LinkedListUtil;
 import com.hs.basic.Node;
 
 public class MultiplyTwoLinkedListNumbers {
-	// Function to insert a node at the
-	// beginning of the Linked List
-	private Node push(Node head_ref, int new_data) {
-		// allocate node
-		Node new_node = new Node(new_data);
-
-		// link the old list off the new node
-		new_node.next = (head_ref);
-
-		// move the head to point to the new node
-		(head_ref) = new_node;
-		return head_ref;
-	}
 
 	// Multiply contents of two linked lists
 	private long multiplyTwoLists(Node first, Node second) {
@@ -33,40 +21,25 @@ public class MultiplyTwoLinkedListNumbers {
 			}
 		}
 
-		// Return multiplication of
-		// two numbers
+		// Return multiplication of two numbers
 		return num1 * num2;
 	}
 
-	// A utility function to print a linked list
-	private void printList(Node node) {
-		while (node != null) {
-			System.out.printf("%d", node.data);
-			if (node.next != null)
-				System.out.printf("->");
-			node = node.next;
-		}
-		System.out.printf("\n");
-	}
-
-	// Driver code
 	public static void main(String args[]) {
 		MultiplyTwoLinkedListNumbers list = new MultiplyTwoLinkedListNumbers();
-		Node first = null;
-		Node second = null;
 
-		// create first list 9.4.6
-		first = list.push(first, 6);
-		first = list.push(first, 4);
-		first = list.push(first, 9);
+		Node first = LinkedListUtil.addLast(null, 9);
+		first = LinkedListUtil.addLast(first, 4);
+		first = LinkedListUtil.addLast(first, 6);
+
 		System.out.printf("First List is: ");
-		list.printList(first);
+		LinkedListUtil.printLinkedList(first);
 
-		// create second list 8.4
-		second = list.push(second, 4);
-		second = list.push(second, 8);
+		Node second = LinkedListUtil.addLast(null, 4);
+		second = LinkedListUtil.addLast(second, 8);
+
 		System.out.printf("Second List is: ");
-		list.printList(second);
+		LinkedListUtil.printLinkedList(second);
 
 		// Multiply the two lists and see result
 		System.out.printf("Result is: ");

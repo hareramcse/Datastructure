@@ -1,12 +1,11 @@
 package com.hs.linkedlist.geekforgeeks;
 
+import com.hs.basic.LinkedListUtil;
 import com.hs.basic.Node;
 
 class SegregateEvenAndOddNode {
 
-	Node head;
-
-	private void segregateEvenOdd(Node currentNode) {
+	private Node segregateEvenOdd(Node currentNode) {
 
 		Node evenStart = null;
 		Node evenEnd = null;
@@ -38,44 +37,30 @@ class SegregateEvenAndOddNode {
 		}
 
 		if (oddStart == null || evenStart == null) {
-			return;
+			return null;
 		}
 		evenEnd.next = oddStart;
 		oddEnd.next = null;
-		head = evenStart;
+		return evenStart;
 	}
 
-	private void push(int new_data) {
-		Node new_node = new Node(new_data);
-		new_node.next = head;
-		head = new_node;
-	}
-
-	private void printList() {
-		Node temp = head;
-		while (temp != null) {
-			System.out.print(temp.data + " ");
-			temp = temp.next;
-		}
-		System.out.println();
-	}
-
-	/* Drier program to test above functions */
 	public static void main(String args[]) {
-		SegregateEvenAndOddNode llist = new SegregateEvenAndOddNode();
-		llist.push(11);
-		llist.push(10);
-		llist.push(9);
-		llist.push(6);
-		llist.push(4);
-		llist.push(1);
-		llist.push(0);
-		System.out.println("Origional Linked List");
-		llist.printList();
+		SegregateEvenAndOddNode list = new SegregateEvenAndOddNode();
 
-		llist.segregateEvenOdd(llist.head);
+		Node head = LinkedListUtil.addLast(null, 11);
+		head = LinkedListUtil.addLast(head, 10);
+		head = LinkedListUtil.addLast(head, 9);
+		head = LinkedListUtil.addLast(head, 6);
+		head = LinkedListUtil.addLast(head, 4);
+		head = LinkedListUtil.addLast(head, 1);
+		head = LinkedListUtil.addLast(head, 0);
+
+		System.out.println("Origional Linked List");
+		LinkedListUtil.printLinkedList(head);
+
+		head = list.segregateEvenOdd(head);
 
 		System.out.println("Modified Linked List");
-		llist.printList();
+		LinkedListUtil.printLinkedList(head);
 	}
 }

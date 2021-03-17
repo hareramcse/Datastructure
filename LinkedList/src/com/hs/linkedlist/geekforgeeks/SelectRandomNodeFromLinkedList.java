@@ -5,11 +5,10 @@ import java.util.UUID;
 import com.hs.basic.Node;
 
 public class SelectRandomNodeFromLinkedList {
-	Node head;
 
 	// A reservoir sampling based function to print a
 	// random node from a linked list
-	void printrandom(Node node) {
+	private void printRandom(Node node) {
 
 		// If list is empty
 		if (node == null) {
@@ -43,13 +42,13 @@ public class SelectRandomNodeFromLinkedList {
 	public static void main(String[] args) {
 
 		SelectRandomNodeFromLinkedList list = new SelectRandomNodeFromLinkedList();
-		list.head = new Node(5);
-		list.head.next = new Node(20);
-		list.head.next.next = new Node(4);
-		list.head.next.next.next = new Node(3);
-		list.head.next.next.next.next = new Node(30);
+		Node head = new Node(5);
+		head.next = new Node(20);
+		head.next.next = new Node(4);
+		head.next.next.next = new Node(3);
+		head.next.next.next.next = new Node(30);
 
-		list.printrandom(list.head);
+		list.printRandom(head);
 
 	}
 }

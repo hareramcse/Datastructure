@@ -1,16 +1,15 @@
 package com.hs.linkedlist.geekforgeeks;
 
+import com.hs.basic.LinkedListUtil;
 import com.hs.basic.Node;
 
 public class InsertionSortForLinkedList {
-	Node head;
 	Node sorted;
 
 	// function to sort a singly linked list using insertion sort
-	private void insertionSort(Node headref) {
+	private Node insertionSort(Node head) {
 		// Initialize sorted linked list
-		sorted = null;
-		Node current = headref;
+		Node current = head;
 		// Traverse the given linked list and insert every node to sorted
 		while (current != null) {
 			Node next = current.next;
@@ -18,6 +17,7 @@ public class InsertionSortForLinkedList {
 			current = next;
 		}
 		head = sorted;
+		return head;
 	}
 
 	/*
@@ -40,32 +40,19 @@ public class InsertionSortForLinkedList {
 			current.next = newnode;
 		}
 	}
-	
-	private void push(int val) {
-		Node newnode = new Node(val);
-		newnode.next = head;
-		head = newnode;
-	}
 
-	private void printlist(Node head) {
-		while (head != null) {
-			System.out.print(head.data + " ");
-			head = head.next;
-		}
-	}
-
-	// Driver program to test above functions
 	public static void main(String[] args) {
 		InsertionSortForLinkedList list = new InsertionSortForLinkedList();
-		list.push(5);
-		list.push(20);
-		list.push(4);
-		list.push(3);
-		list.push(30);
+		Node head = LinkedListUtil.addLast(null, 5);
+		head = LinkedListUtil.addLast(head, 20);
+		head = LinkedListUtil.addLast(head, 4);
+		head = LinkedListUtil.addLast(head, 3);
+		head = LinkedListUtil.addLast(head, 30);
+		head = LinkedListUtil.addLast(head, 10);
 		System.out.println("Linked List before Sorting..");
-		list.printlist(list.head);
-		list.insertionSort(list.head);
+		LinkedListUtil.printLinkedList(head);
+		head = list.insertionSort(head);
 		System.out.println("\nLinkedList After sorting");
-		list.printlist(list.head);
+		LinkedListUtil.printLinkedList(head);
 	}
 }

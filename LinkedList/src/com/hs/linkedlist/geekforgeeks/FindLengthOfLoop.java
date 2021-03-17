@@ -5,7 +5,7 @@ import com.hs.basic.Node;
 class FindLengthOfLoop {
 
 	// Returns count of nodes present in loop.
-	private static int countNodes(Node head) {
+	private int countNodes(Node head) {
 		int count = 1;
 		Node temp = head;
 		while (temp.next != head) {
@@ -16,7 +16,7 @@ class FindLengthOfLoop {
 	}
 
 	// count number of nodes in the loop
-	private static int countNodesInLoop(Node head) {
+	private int countNodesInLoop(Node head) {
 		Node slow = head, fast = head.next;
 
 		while (fast != null && fast.next != null) {
@@ -30,8 +30,8 @@ class FindLengthOfLoop {
 		return 0;
 	}
 
-	/* Driver program to test above function */
 	public static void main(String[] args) {
+		FindLengthOfLoop list = new FindLengthOfLoop();
 		Node head = new Node(1);
 		head.next = new Node(2);
 		head.next.next = new Node(3);
@@ -41,6 +41,6 @@ class FindLengthOfLoop {
 		/* Create a loop for testing */
 		head.next.next.next.next.next = head.next;
 
-		System.out.println(countNodesInLoop(head));
+		System.out.println(list.countNodesInLoop(head));
 	}
 }

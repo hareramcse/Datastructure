@@ -1,9 +1,9 @@
 package com.hs.linkedlist.geekforgeeks;
 
+import com.hs.basic.LinkedListUtil;
 import com.hs.basic.Node;
 
 public class ReverseLinkedListInGroup {
-	Node head;
 
 	Node reverse(Node head, int k) {
 		Node current = head;
@@ -32,42 +32,25 @@ public class ReverseLinkedListInGroup {
 		return prev;
 	}
 
-	private void push(int new_data) {
-		Node new_node = new Node(new_data);
-		new_node.next = head;
-		head = new_node;
-	}
-
-	private void printList() {
-		Node temp = head;
-		while (temp != null) {
-			System.out.print(temp.data + " ");
-			temp = temp.next;
-		}
-		System.out.println();
-	}
-
-	/* Driver program to test above functions */
 	public static void main(String args[]) {
-		ReverseLinkedListInGroup llist = new ReverseLinkedListInGroup();
+		ReverseLinkedListInGroup list = new ReverseLinkedListInGroup();
 
-		// Constructed Linked List is 1->2->3->4->5->6-> 7->8->8->9->null
-		llist.push(9);
-		llist.push(8);
-		llist.push(7);
-		llist.push(6);
-		llist.push(5);
-		llist.push(4);
-		llist.push(3);
-		llist.push(2);
-		llist.push(1);
+		Node head = LinkedListUtil.addLast(null, 9);
+		head = LinkedListUtil.addLast(head, 8);
+		head = LinkedListUtil.addLast(head, 7);
+		head = LinkedListUtil.addLast(head, 6);
+		head = LinkedListUtil.addLast(head, 5);
+		head = LinkedListUtil.addLast(head, 4);
+		head = LinkedListUtil.addLast(head, 3);
+		head = LinkedListUtil.addLast(head, 2);
+		head = LinkedListUtil.addLast(head, 1);
 
 		System.out.println("Given Linked List");
-		llist.printList();
+		LinkedListUtil.printLinkedList(head);
 
-		llist.head = llist.reverse(llist.head, 3);
+		head = list.reverse(head, 3);
 
 		System.out.println("Reversed list");
-		llist.printList();
+		LinkedListUtil.printLinkedList(head);
 	}
 }

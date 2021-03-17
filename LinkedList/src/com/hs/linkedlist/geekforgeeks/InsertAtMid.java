@@ -1,5 +1,6 @@
 package com.hs.linkedlist.geekforgeeks;
 
+import com.hs.basic.LinkedListUtil;
 import com.hs.basic.Node;
 
 class InsertAtMid {
@@ -28,17 +29,7 @@ class InsertAtMid {
 		}
 	}
 
-	private void display(Node head) {
-		Node temp = head;
-		while (temp != null) {
-			System.out.print(temp.data + " ");
-			temp = temp.next;
-		}
-	}
-
-	// Driver program to test above
 	public static void main(String[] args) {
-		// Creating the list 1.2.4.5
 		InsertAtMid list = new InsertAtMid();
 		Node head = new Node(1);
 		head.next = new Node(2);
@@ -46,12 +37,12 @@ class InsertAtMid {
 		head.next.next.next = new Node(5);
 
 		System.out.println("Linked list before" + " insertion: ");
-		list.display(head);
+		LinkedListUtil.printLinkedList(head);
 
 		int data = 3;
 		list.insertAtMid(head, data);
 
 		System.out.println("\nLinked list after" + " insertion: ");
-		list.display(head);
+		LinkedListUtil.printLinkedList(head);
 	}
 }

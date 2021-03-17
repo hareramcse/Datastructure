@@ -1,9 +1,9 @@
 package com.hs.linkedlist.geekforgeeks;
 
+import com.hs.basic.LinkedListUtil;
 import com.hs.basic.Node;
 
 public class MergeSortForLinkedList {
-	Node head = null;
 
 	private Node sortedMerge(Node a, Node b) {
 		Node result = null;
@@ -66,38 +66,22 @@ public class MergeSortForLinkedList {
 		return slowptr;
 	}
 
-	private void push(int new_data) {
-		Node new_node = new Node(new_data);
-		new_node.next = head;
-		head = new_node;
-	}
-
-	private void printList(Node head) {
-		while (head != null) {
-			System.out.print(head.data + " ");
-			head = head.next;
-		}
-	}
-
 	public static void main(String[] args) {
 
-		MergeSortForLinkedList li = new MergeSortForLinkedList();
-		/*
-		 * Let us create a unsorted linked lists to test the functions Created lists
-		 * shall be a: 2->3->20->5->10->15
-		 */
-		li.push(15);
-		li.push(10);
-		li.push(5);
-		li.push(20);
-		li.push(3);
-		li.push(2);
-		System.out.println("Linked List without sorting is :");
-		li.printList(li.head);
+		MergeSortForLinkedList list = new MergeSortForLinkedList();
+		Node head = LinkedListUtil.addLast(null, 15);
+		head = LinkedListUtil.addLast(head, 10);
+		head = LinkedListUtil.addLast(head, 5);
+		head = LinkedListUtil.addLast(head, 20);
+		head = LinkedListUtil.addLast(head, 3);
+		head = LinkedListUtil.addLast(head, 2);
+		head = LinkedListUtil.addLast(head, 25);
 
-		// Apply merge Sort
-		li.head = li.mergeSort(li.head);
+		System.out.println("Linked List without sorting is :");
+		LinkedListUtil.printLinkedList(head);
+
+		head = list.mergeSort(head);
 		System.out.print("\nSorted Linked List is: \n");
-		li.printList(li.head);
+		LinkedListUtil.printLinkedList(head);
 	}
 }

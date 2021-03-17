@@ -1,9 +1,9 @@
 package com.hs.linkedlist.geekforgeeks;
 
+import com.hs.basic.LinkedListUtil;
 import com.hs.basic.Node;
 
 class RemoveDuplicateFromSortedList {
-	Node head;
 
 	private void removeDuplicates(Node head) {
 		/* Another reference to head */
@@ -29,37 +29,22 @@ class RemoveDuplicateFromSortedList {
 		}
 	}
 
-	private void push(int new_data) {
-		Node new_node = new Node(new_data);
-		new_node.next = head;
-		head = new_node;
-	}
-
-	private void printList(Node head) {
-		Node temp = head;
-		while (temp != null) {
-			System.out.print(temp.data + " ");
-			temp = temp.next;
-		}
-		System.out.println();
-	}
-
-	/* Drier program to test above functions */
 	public static void main(String args[]) {
-		RemoveDuplicateFromSortedList llist = new RemoveDuplicateFromSortedList();
-		llist.push(20);
-		llist.push(13);
-		llist.push(13);
-		llist.push(11);
-		llist.push(11);
-		llist.push(11);
+		RemoveDuplicateFromSortedList list = new RemoveDuplicateFromSortedList();
+
+		Node head = LinkedListUtil.addLast(null, 20);
+		head = LinkedListUtil.addLast(head, 13);
+		head = LinkedListUtil.addLast(head, 13);
+		head = LinkedListUtil.addLast(head, 11);
+		head = LinkedListUtil.addLast(head, 11);
+		head = LinkedListUtil.addLast(head, 11);
 
 		System.out.println("List before removal of duplicates");
-		llist.printList(llist.head);
+		LinkedListUtil.printLinkedList(head);
 
-		llist.removeDuplicates(llist.head);
+		list.removeDuplicates(head);
 
 		System.out.println("List after removal of elements");
-		llist.printList(llist.head);
+		LinkedListUtil.printLinkedList(head);
 	}
 }
