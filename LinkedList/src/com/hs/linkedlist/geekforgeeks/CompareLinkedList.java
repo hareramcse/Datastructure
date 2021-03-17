@@ -18,12 +18,13 @@ public class CompareLinkedList {
 		Node head1 = new Node(10);
 		head1.next = new Node(20);
 		head1.next.next = new Node(30);
-		head1.next.next = new Node(40);
+		head1.next.next.next = new Node(40);
 
 		Node head2 = new Node(10);
 		head2.next = new Node(20);
 		head2.next.next = new Node(30);
-		head2.next.next = new Node(40);
+		head2.next.next.next = new Node(40);
+		head2.next.next.next.next = new Node(50);
 
 		System.out.println(compareLists(head1, head2));
 	}

@@ -20,7 +20,6 @@ class DetectCycle {
 		return false;
 	}
 
-	/* Drier program to test above functions */
 	public static void main(String args[]) {
 		DetectCycle llist = new DetectCycle();
 		Node head = new Node(20);

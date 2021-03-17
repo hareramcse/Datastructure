@@ -30,7 +30,7 @@ public class RemoveDuplicate {
 		head.next.next.next.next = new Node(60);
 		head.next.next.next.next.next = new Node(40);
 
-		Node reverseList = list.removeDuplicate(head);
-		LinkedListUtil.printLinkedList(reverseList);
+		Node listWithoutDuplicate = list.removeDuplicate(head);
+		LinkedListUtil.printLinkedList(listWithoutDuplicate);
 	}
 }

@@ -6,32 +6,30 @@ import com.hs.basic.Node;
 public class MergeTwoSortedListInto3rdSortedList {
 
 	private Node mergeTwoList(Node head1, Node head2, Node head) {
-		Node list1 = head1;
-		Node list2 = head2;
 
-		while (list1 != null && list2 != null) {
-			if (list1.data > list2.data) {
-				head = LinkedListUtil.addLast(head, list2.data);
-				list2 = list2.next;
+		while (head1 != null && head2 != null) {
+			if (head1.data > head2.data) {
+				head = LinkedListUtil.addLast(head, head2.data);
+				head2 = head2.next;
 			}
 
-			if (list1.data < list2.data) {
-				head = LinkedListUtil.addLast(head, list1.data);
-				list1 = list1.next;
+			if (head1.data < head2.data) {
+				head = LinkedListUtil.addLast(head, head1.data);
+				head1 = head1.next;
 			}
 		}
 
-		while (list1 != null) {
-			head = LinkedListUtil.addLast(head, list1.data);
-			list1 = list1.next;
+		while (head1 != null) {
+			head = LinkedListUtil.addLast(head, head1.data);
+			head1 = head1.next;
 		}
 
-		while (list2 != null) {
-			head = LinkedListUtil.addLast(head, list2.data);
-			list2 = list2.next;
+		while (head2 != null) {
+			head = LinkedListUtil.addLast(head, head2.data);
+			head2 = head2.next;
 		}
 
-		return head;
+		return head.next;
 	}
 
 	public static void main(String[] args) {

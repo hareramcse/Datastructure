@@ -6,15 +6,15 @@ import com.hs.basic.Node;
 public class RightRotateByKTimes {
 
 	private Node rightRotateKTimes(Node head, int k) {
-		Node head1 = head;
-		while (k-- > 0 && head1 != null) {
-			head1 = head1.next;
+		Node temp = head;
+		while (k-- > 0 && temp != null) {
+			temp = temp.next;
 		}
-		Node kthNode = head1;
-		while (head1.next != null) {
-			head1 = head1.next;
+		Node kthNode = temp;
+		while (temp.next != null) {
+			temp = temp.next;
 		}
-		head1.next = head;
+		temp.next = head;
 		head = kthNode.next;
 		kthNode.next = null;
 		return head;

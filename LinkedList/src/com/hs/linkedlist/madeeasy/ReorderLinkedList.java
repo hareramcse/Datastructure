@@ -5,37 +5,39 @@ import com.hs.basic.Node;
 
 public class ReorderLinkedList {
 
+	// find the mid element
+	// reverse the second half of the element
+	// add alternatively from the 1st list and 2nd list into dummy node
 	private Node reorderList(Node head) {
 		Node slow = head;
-		Node fast = head.next;
+		Node fast = head;
 		while (fast != null && fast.next != null) {
 			slow = slow.next;
 			fast = fast.next.next;
 		}
-		Node node1 = head;
-		Node node2 = slow.next;
+		Node start = head;
+		Node mid = slow.next;
 		slow.next = null;
 
-		node2 = LinkedListUtil.reverseByRecursion(node2);
-		head = new Node(0); // Assign dummy Node
+		mid = LinkedListUtil.reverseByRecursion(mid);
+		head = new Node(); // Assign dummy Node
 
-		// curr is the pointer to this dummy Node, which
-		// will be used to form the new list
+		// curr is the pointer to this dummy Node, which will be used to form the new list
 		Node curr = head;
-		while (node1 != null || node2 != null) {
+		while (start != null || mid != null) {
 
 			// First add the element from first list
-			if (node1 != null) {
-				curr.next = node1;
+			if (start != null) {
+				curr.next = start;
 				curr = curr.next;
-				node1 = node1.next;
+				start = start.next;
 			}
 
 			// Then add the element from second list
-			if (node2 != null) {
-				curr.next = node2;
+			if (mid != null) {
+				curr.next = mid;
 				curr = curr.next;
-				node2 = node2.next;
+				mid = mid.next;
 			}
 		}
 
@@ -49,7 +51,7 @@ public class ReorderLinkedList {
 		head.next = new Node(4);
 		head.next.next = new Node(15);
 		head.next.next.next = new Node(20);
-		head.next.next.next.next = new Node(20);
+		head.next.next.next.next = new Node(45);
 		head.next.next.next.next.next = new Node(50);
 		head.next.next.next.next.next.next = new Node(25);
 		head.next.next.next.next.next.next.next = new Node(30);

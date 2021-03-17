@@ -1,9 +1,9 @@
 package com.hs.linkedlist.geekforgeeks;
 
+import com.hs.basic.LinkedListUtil;
 import com.hs.basic.Node;
 
 public class DeleteAlternateNode {
-	Node head;
 
 	private void deleteAlt(Node head) {
 		if (head == null)
@@ -27,39 +27,22 @@ public class DeleteAlternateNode {
 		}
 	}
 
-	private  void push(int new_data) {
-		Node new_node = new Node(new_data);
-		new_node.next = head;
-		head = new_node;
-	}
-
-	private void printList() {
-		Node temp = head;
-		while (temp != null) {
-			System.out.print(temp.data + " ");
-			temp = temp.next;
-		}
-		System.out.println();
-	}
-
-	/* Driver program to test above functions */
 	public static void main(String args[]) {
-		DeleteAlternateNode llist = new DeleteAlternateNode();
+		DeleteAlternateNode list = new DeleteAlternateNode();
 
-		/* Constructed Linked List is 1->2->3->4->5->null */
-		llist.push(5);
-		llist.push(4);
-		llist.push(3);
-		llist.push(2);
-		llist.push(1);
+		Node head = LinkedListUtil.addLast(null, 5);
+		head = LinkedListUtil.addLast(head, 4);
+		head = LinkedListUtil.addLast(head, 3);
+		head = LinkedListUtil.addLast(head, 2);
+		head = LinkedListUtil.addLast(head, 1);
 
 		System.out.println("Linked List before calling deleteAlt() ");
-		llist.printList();
+		LinkedListUtil.printLinkedList(head);
 
-		llist.deleteAlt(llist.head);
+		list.deleteAlt(head);
 
 		System.out.println("Linked List after calling deleteAlt() ");
-		llist.printList();
+		LinkedListUtil.printLinkedList(head);
 	}
 
 }

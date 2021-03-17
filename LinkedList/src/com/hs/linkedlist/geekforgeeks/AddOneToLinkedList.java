@@ -1,13 +1,13 @@
 package com.hs.linkedlist.geekforgeeks;
 
+import com.hs.basic.LinkedListUtil;
 import com.hs.basic.Node;
 
 public class AddOneToLinkedList {
 	// carry after all nodes are processed.
 	private int addWithCarry(Node head) {
 
-		// If linked list is empty, then
-		// return carry
+		// If linked list is empty, then return carry
 		if (head == null)
 			return 1;
 
@@ -15,8 +15,8 @@ public class AddOneToLinkedList {
 		int res = head.data + addWithCarry(head.next);
 
 		// Update data and return new carry
-		head.data = (res) % 10;
-		return (res) / 10;
+		head.data = res % 10;
+		return res / 10;
 	}
 
 	// This function mainly uses addWithCarry().
@@ -36,18 +36,6 @@ public class AddOneToLinkedList {
 		return head;
 	}
 
-	private void printList(Node head) {
-		Node temp = head;
-		if (head == null) {
-			System.out.println("List is empty");
-		}
-		while (temp != null) {
-			System.out.print(temp.data + " -> ");
-			temp = temp.next;
-		}
-		System.out.print("NULL");
-	}
-
 	public static void main(String[] args) {
 		AddOneToLinkedList list = new AddOneToLinkedList();
 		Node head = new Node(1);
@@ -56,11 +44,11 @@ public class AddOneToLinkedList {
 		head.next.next.next = new Node(9);
 
 		System.out.print("List is ");
-		list.printList(head);
+		LinkedListUtil.printLinkedList(head);
 
 		head = list.addOne(head);
 		System.out.println();
 		System.out.print("Resultant list is ");
-		list.printList(head);
+		LinkedListUtil.printLinkedList(head);
 	}
 }
