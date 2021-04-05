@@ -5,35 +5,35 @@ import com.hs.basic.Node;
 
 class SegregateEvenAndOddNode {
 
-	private Node segregateEvenOdd(Node currentNode) {
+	private Node segregateEvenOdd(Node head) {
 
 		Node evenStart = null;
 		Node evenEnd = null;
 		Node oddStart = null;
 		Node oddEnd = null;
 
-		while (currentNode != null) {
-			int element = currentNode.data;
+		while (head != null) {
+			int data = head.data;
 
-			if (element % 2 == 0) {
+			if (data % 2 == 0) {
 				if (evenStart == null) {
-					evenStart = currentNode;
-					evenEnd = currentNode;
+					evenStart = head;
+					evenEnd = head;
 				} else {
-					evenEnd.next = currentNode;
-					evenEnd = currentNode;
+					evenEnd.next = head;
+					evenEnd = head;
 				}
 			} else {
 				if (oddStart == null) {
-					oddStart = currentNode;
-					oddEnd = currentNode;
+					oddStart = head;
+					oddEnd = head;
 				} else {
-					oddEnd.next = currentNode;
-					oddEnd = currentNode;
+					oddEnd.next = head;
+					oddEnd = head;
 				}
 			}
 			// Move current pointer one step in forward direction
-			currentNode = currentNode.next;
+			head = head.next;
 		}
 
 		if (oddStart == null || evenStart == null) {

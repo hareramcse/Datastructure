@@ -1,21 +1,12 @@
 package com.hs.linkedlist.geekforgeeks;
 
+import com.hs.basic.LinkedListUtil;
 import com.hs.basic.Node;
 
 public class RemoveAllOccurrencesFromList {
-	Node head = null;
 
-	// Function to insert data nodes into
-	// the Linked List at the front
-	public void insert(int data) {
-		Node new_node = new Node(data);
-		new_node.next = head;
-		head = new_node;
-	}
-
-	// Function to remove all occurrences
-	// of duplicate elements
-	public void removeAllDuplicates() {
+	// Function to remove all occurrences of duplicate elements
+	public Node removeAllDuplicates(Node head) {
 
 		// Create a dummy node that acts like a fake
 		// head of list pointing to the original head
@@ -27,14 +18,13 @@ public class RemoveAllOccurrencesFromList {
 		Node current = head;
 
 		while (current != null) {
-			// Until the current and previous values
-			// are same, keep updating current
-			while (current.next != null && prev.next.data == current.next.data)
+			// Until the current and previous values are same, keep updating current
+			while (current.next != null && prev.next.data == current.next.data) {
 				current = current.next;
+			}
 
 			// If current has unique value i.e current
-			// is not updated, Move the prev pointer
-			// to next node
+			// is not updated, Move the prev pointer to next node
 			if (prev.next == current)
 				prev = prev.next;
 
@@ -47,41 +37,28 @@ public class RemoveAllOccurrencesFromList {
 			current = current.next;
 		}
 
-		// Update original head to the next of dummy
-		// node
-		head = dummy.next;
-	}
-
-	// Function to print the list elements
-	public void printList() {
-		Node trav = head;
-		if (head == null)
-			System.out.print(" List is empty");
-
-		while (trav != null) {
-			System.out.print(trav.data + " ");
-			trav = trav.next;
-		}
+		// Update original head to the next of dummy node
+		return dummy.next;
 	}
 
 	// Driver code
 	public static void main(String[] args) {
-		RemoveAllOccurrencesFromList ll = new RemoveAllOccurrencesFromList();
-		ll.insert(53);
-		ll.insert(53);
-		ll.insert(49);
-		ll.insert(49);
-		ll.insert(35);
-		ll.insert(28);
-		ll.insert(28);
-		ll.insert(23);
+		RemoveAllOccurrencesFromList list = new RemoveAllOccurrencesFromList();
+		Node head = new Node(53);
+		head.next = new Node(53);
+		head.next.next = new Node(49);
+		head.next.next.next = new Node(49);
+		head.next.next.next.next = new Node(49);
+		head.next.next.next.next.next = new Node(35);
+		head.next.next.next.next.next.next = new Node(28);
+		head.next.next.next.next.next.next.next = new Node(23);
 
 		System.out.println("Before removal of duplicates");
-		ll.printList();
+		LinkedListUtil.printLinkedList(head);
 
-		ll.removeAllDuplicates();
+		Node removeAllDuplicates = list.removeAllDuplicates(head);
 
 		System.out.println("\nAfter removal of duplicates");
-		ll.printList();
+		LinkedListUtil.printLinkedList(removeAllDuplicates);
 	}
 }

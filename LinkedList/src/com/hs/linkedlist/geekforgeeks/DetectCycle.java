@@ -11,7 +11,7 @@ class DetectCycle {
 		// Search for loop using slow and fast pointers
 		while (fast != null && fast.next != null) {
 			if (slow == fast) {
-				System.out.println("found");
+				System.out.println("Loop found");
 				return true;
 			}
 			slow = slow.next;

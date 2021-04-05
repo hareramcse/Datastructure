@@ -8,10 +8,10 @@ public class SelectRandomNodeFromLinkedList {
 
 	// A reservoir sampling based function to print a
 	// random node from a linked list
-	private void printRandom(Node node) {
+	private void printRandom(Node head) {
 
 		// If list is empty
-		if (node == null) {
+		if (head == null) {
 			return;
 		}
 
@@ -20,10 +20,10 @@ public class SelectRandomNodeFromLinkedList {
 		Math.abs(UUID.randomUUID().getMostSignificantBits());
 
 		// Initialize result as first node
-		int result = node.data;
+		int result = head.data;
 
 		// Iterate from the (k+1)th element to nth element
-		Node current = node;
+		Node current = head;
 		for (int n = 2; current != null; n++) {
 
 			// change result with probability 1/n

@@ -5,8 +5,9 @@ import com.hs.basic.Node;
 public class CompareLinkedList {
 	private static boolean compareLists(Node head1, Node head2) {
 		while (head1 != null && head2 != null) {
-			if (head1.data != head2.data)
+			if (head1.data != head2.data) {
 				return false;
+			}
 
 			head1 = head1.next;
 			head2 = head2.next;

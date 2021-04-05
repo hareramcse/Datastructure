@@ -2,7 +2,7 @@ package com.hs.linkedlist.geekforgeeks;
 
 import com.hs.basic.Node;
 
-public class GetNodeDataFromTail {
+public class FindKthNodeFromTail {
 
 	private Node findNthNode(Node head, int n) {
 		Node temp1 = head;
@@ -22,7 +22,7 @@ public class GetNodeDataFromTail {
 	}
 
 	public static void main(String[] args) {
-		GetNodeDataFromTail list = new GetNodeDataFromTail();
+		FindKthNodeFromTail list = new FindKthNodeFromTail();
 		Node head = new Node(20);
 		head.next = new Node(10);
 		head.next.next = new Node(30);

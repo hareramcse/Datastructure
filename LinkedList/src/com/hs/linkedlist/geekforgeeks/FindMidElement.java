@@ -11,8 +11,8 @@ class FindMidElement {
 		Node fast = head;
 		if (head != null) {
 			while (fast != null && fast.next != null) {
-				fast = fast.next.next;
 				slow = slow.next;
+				fast = fast.next.next;
 			}
 			System.out.println("The middle element is [" + slow.data + "] \n");
 		}

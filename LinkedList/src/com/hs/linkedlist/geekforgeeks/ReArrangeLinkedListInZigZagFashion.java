@@ -40,7 +40,7 @@ public class ReArrangeLinkedListInZigZagFashion {
 			current = current.next;
 
 			/* flip flag for reverse checking */
-			flag = !(flag);
+			flag = !flag;
 		}
 	}
 

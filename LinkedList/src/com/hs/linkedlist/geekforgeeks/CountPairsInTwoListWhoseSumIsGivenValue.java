@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Set;
 
 public class CountPairsInTwoListWhoseSumIsGivenValue {
 	// method to count all pairs from both the linked lists whose sum is equal to a
@@ -11,20 +12,19 @@ public class CountPairsInTwoListWhoseSumIsGivenValue {
 	private int countPairs(LinkedList<Integer> head1, LinkedList<Integer> head2, int x) {
 		int count = 0;
 
-		HashSet<Integer> set = new HashSet<Integer>();
+		Set<Integer> set = new HashSet<Integer>();
 
 		// insert all the elements of 1st list in the hash table(unordered_set 'set')
-		Iterator<Integer> itr1 = head1.iterator();
-		while (itr1.hasNext()) {
-			set.add(itr1.next());
-
+		Iterator<Integer> itr = head1.iterator();
+		while (itr.hasNext()) {
+			set.add(itr.next());
 		}
 
-		Iterator<Integer> itr2 = head2.iterator();
+		itr = head2.iterator();
 		// for each element of 2nd list
-		while (itr2.hasNext()) {
+		while (itr.hasNext()) {
 			// find (x - head2->data) in 'set'
-			if (set.contains(x - itr2.next())) {
+			if (set.contains(x - itr.next())) {
 				count++;
 			}
 		}

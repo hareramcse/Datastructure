@@ -18,7 +18,7 @@ class IntersectionOfTwoLinkedList {
 		int firstLength = length(head1);
         int secondLength = length(head2);
         int diff = secondLength - firstLength;
-        if (firstLength > secondLength) {
+        if (diff <  0) {
             Node tmp = head1;
             head1 = head2;
             head2 = tmp;

@@ -10,21 +10,21 @@ public class MergeKSortedLinkedList {
 	 * recursive calls, but it can be easily modified to work with same time and
 	 * O(1) extra space
 	 */
-	private Node sortedMerge(Node a, Node b) {
+	private Node sortedMerge(Node head1, Node head2) {
 		Node result = null;
 		/* Base cases */
-		if (a == null)
-			return b;
-		else if (b == null)
-			return a;
+		if (head1 == null)
+			return head2;
+		else if (head2 == null)
+			return head1;
 
 		/* Pick either a or b, and recur */
-		if (a.data <= b.data) {
-			result = a;
-			result.next = sortedMerge(a.next, b);
+		if (head1.data <= head2.data) {
+			result = head1;
+			result.next = sortedMerge(head1.next, head2);
 		} else {
-			result = b;
-			result.next = sortedMerge(a, b.next);
+			result = head2;
+			result.next = sortedMerge(head1, head2.next);
 		}
 
 		return result;

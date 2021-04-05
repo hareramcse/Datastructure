@@ -6,18 +6,18 @@ import com.hs.basic.Node;
 class RemoveDuplicateFromSortedList {
 
 	private void removeDuplicates(Node head) {
+		/* do nothing if the list is empty */
+		if (head == null)
+			return;
+		
 		/* Another reference to head */
 		Node current = head;
 
 		/* Pointer to store the next pointer of a node to be deleted */
 		Node next_next;
 
-		/* do nothing if the list is empty */
-		if (head == null)
-			return;
-
 		/* Traverse list till the last node */
-		while (current.next != null) {
+		while (current != null && current.next != null) {
 
 			/* Compare current node with the next node */
 			if (current.data == current.next.data) {
