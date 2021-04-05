@@ -5,31 +5,31 @@ import com.hs.basic.Node;
 
 public class MergeTwoSortedListInto3rdSortedList {
 
-	private Node mergeTwoList(Node head1, Node head2, Node head) {
+	private Node mergeTwoList(Node head1, Node head2, Node result) {
 
 		while (head1 != null && head2 != null) {
 			if (head1.data > head2.data) {
-				head = LinkedListUtil.addLast(head, head2.data);
+				result = LinkedListUtil.addLast(result, head2.data);
 				head2 = head2.next;
 			}
 
 			if (head1.data < head2.data) {
-				head = LinkedListUtil.addLast(head, head1.data);
+				result = LinkedListUtil.addLast(result, head1.data);
 				head1 = head1.next;
 			}
 		}
 
 		while (head1 != null) {
-			head = LinkedListUtil.addLast(head, head1.data);
+			result = LinkedListUtil.addLast(result, head1.data);
 			head1 = head1.next;
 		}
 
 		while (head2 != null) {
-			head = LinkedListUtil.addLast(head, head2.data);
+			result = LinkedListUtil.addLast(result, head2.data);
 			head2 = head2.next;
 		}
 
-		return head.next;
+		return result.next;
 	}
 
 	public static void main(String[] args) {

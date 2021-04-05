@@ -34,7 +34,6 @@ public class CheckLoopInLinkedList {
 		/* Create loop for testing */
 		head.next.next.next.next.next.next.next = head.next.next;
 
-		Node detectLoop = list.detectLoop(head);
-		System.out.println(detectLoop.data);
+		list.detectLoop(head);
 	}
 }

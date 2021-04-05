@@ -9,40 +9,33 @@ public class ReorderLinkedList {
 	// reverse the second half of the element
 	// add alternatively from the 1st list and 2nd list into dummy node
 	private Node reorderList(Node head) {
-		Node slow = head;
-		Node fast = head;
-		while (fast != null && fast.next != null) {
-			slow = slow.next;
-			fast = fast.next.next;
-		}
-		Node start = head;
+		Node slow = LinkedListUtil.findMiddle(head);
 		Node mid = slow.next;
 		slow.next = null;
 
-		mid = LinkedListUtil.reverseByRecursion(mid);
-		head = new Node(); // Assign dummy Node
+		Node head1 = head;
+		Node head2 = LinkedListUtil.reverseByRecursion(mid);
+		Node result = new Node(); // result node
 
-		// curr is the pointer to this dummy Node, which will be used to form the new list
-		Node curr = head;
-		while (start != null || mid != null) {
+		while (head1 != null || head2 != null) {
 
 			// First add the element from first list
-			if (start != null) {
-				curr.next = start;
-				curr = curr.next;
-				start = start.next;
+			if (head1 != null) {
+				result.next = head1;
+				result = result.next;
+				head1 = head1.next;
 			}
 
 			// Then add the element from second list
-			if (mid != null) {
-				curr.next = mid;
-				curr = curr.next;
-				mid = mid.next;
+			if (head2 != null) {
+				result.next = head2;
+				result = result.next;
+				head2 = head2.next;
 			}
 		}
 
 		// Assign the head of the new list to head pointer
-		return head.next;
+		return head;
 	}
 
 	public static void main(String[] args) {

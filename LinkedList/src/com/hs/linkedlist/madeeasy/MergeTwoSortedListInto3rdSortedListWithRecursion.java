@@ -5,7 +5,7 @@ import com.hs.basic.Node;
 
 public class MergeTwoSortedListInto3rdSortedListWithRecursion {
 
-	private Node mergeTwoList(Node head1, Node head2, Node head) {
+	private Node mergeTwoList(Node head1, Node head2, Node result) {
 		if (head1 == null) {
 			return head2;
 		}
@@ -13,13 +13,13 @@ public class MergeTwoSortedListInto3rdSortedListWithRecursion {
 			return head1;
 		}
 		if (head1.data > head2.data) {
-			head = head2;
-			head.next = mergeTwoList(head1, head2.next, head);
+			result = head2;
+			result.next = mergeTwoList(head1, head2.next, result);
 		} else {
-			head = head1;
-			head.next = mergeTwoList(head1.next, head2, head);
+			result = head1;
+			result.next = mergeTwoList(head1.next, head2, result);
 		}
-		return head;
+		return result;
 	}
 
 	public static void main(String[] args) {
@@ -38,9 +38,9 @@ public class MergeTwoSortedListInto3rdSortedListWithRecursion {
 		head2 = LinkedListUtil.addLast(head2, 80);
 		head2 = LinkedListUtil.addLast(head2, 90);
 
-		Node head = new Node();
+		Node result = new Node();
 
-		Node mergeTwoList = list.mergeTwoList(head1, head2, head);
+		Node mergeTwoList = list.mergeTwoList(head1, head2, result);
 		LinkedListUtil.printLinkedList(mergeTwoList);
 	}
 }
