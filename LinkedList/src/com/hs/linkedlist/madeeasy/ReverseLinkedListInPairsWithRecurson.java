@@ -9,10 +9,10 @@ public class ReverseLinkedListInPairsWithRecurson {
 		if (head == null || head.next == null) {
 			return head;
 		}
-		Node remaing = head.next.next;
+		Node remaining = head.next.next;
 		Node newHead = head.next;
 		head.next.next = head;
-		head.next = reverseListInPairs(remaing);
+		head.next = reverseListInPairs(remaining);
 		return newHead;
 	}
 

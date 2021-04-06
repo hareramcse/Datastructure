@@ -4,19 +4,21 @@ import com.hs.basic.Node;
 
 public class CheckLoopInLinkedList {
 
-	private Node detectLoop(Node head) {
+	private boolean detectLoop(Node head) {
+		if (head == null)
+			return false;
+
 		Node slow = head;
-		Node fast = head;
+		Node fast = head.next;
 
 		while (fast != null && fast.next != null) {
 			slow = slow.next;
 			fast = fast.next.next;
 			if (slow == fast) {
-				System.out.println("loop found");
-				break;
+				return true;
 			}
 		}
-		return slow;
+		return false;
 	}
 
 	public static void main(String[] args) {
@@ -34,6 +36,7 @@ public class CheckLoopInLinkedList {
 		/* Create loop for testing */
 		head.next.next.next.next.next.next.next = head.next.next;
 
-		list.detectLoop(head);
+		boolean b = list.detectLoop(head);
+		System.out.println("Loop found " + b);
 	}
 }

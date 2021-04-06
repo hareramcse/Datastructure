@@ -9,12 +9,12 @@ public class ReorderLinkedList {
 	// reverse the second half of the element
 	// add alternatively from the 1st list and 2nd list into dummy node
 	private Node reorderList(Node head) {
-		Node slow = LinkedListUtil.findMiddle(head);
-		Node mid = slow.next;
-		slow.next = null;
+		Node mid = LinkedListUtil.findMiddle(head);
+		Node nextOfMid = mid.next;
+		mid.next = null;
 
 		Node head1 = head;
-		Node head2 = LinkedListUtil.reverseByRecursion(mid);
+		Node head2 = LinkedListUtil.reverseByRecursion(nextOfMid);
 		Node result = new Node(); // result node
 
 		while (head1 != null || head2 != null) {
