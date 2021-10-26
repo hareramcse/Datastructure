@@ -4,21 +4,21 @@ public class FindNthNodeOfInorderTraversal {
 	int count = 0;
 
 	/* Given a binary tree, print its nth nodes of inorder */
-	void NthInorder(Node node, int n) {
-		if (node == null)
+	private void NthInorder(Node root, int n) {
+		if (root == null)
 			return;
 
 		if (count <= n) {
 			/* first recur on left child */
-			NthInorder(node.left, n);
+			NthInorder(root.left, n);
 			count++;
 
 			// when count = n then print element
 			if (count == n)
-				System.out.printf("%d ", node.data);
+				System.out.printf("%d ", root.data);
 
 			/* now recur on right child */
-			NthInorder(node.right, n);
+			NthInorder(root.right, n);
 		}
 	}
 

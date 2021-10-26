@@ -1,30 +1,29 @@
 package com.hs.checkandprint;
 
 import java.util.HashSet;
+import java.util.Set;
 
 public class CheckIfTreeContainsDuplicateValue {
 
 	// Function that used HashSet to find presence of duplicate nodes
-	public static boolean checkDupUtil(Node root, HashSet<Integer> s) {
-		// If tree is empty, there are no
-		// duplicates.
+	private static boolean checkDupUtil(Node root, Set<Integer> set) {
+		// If tree is empty, there are no duplicates.
 		if (root == null)
 			return false;
 
 		// If current node's data is already present.
-		if (s.contains(root.data))
+		if (set.contains(root.data))
 			return true;
 
 		// Insert current node
-		s.add(root.data);
+		set.add(root.data);
 
-		// Recursively check in left and right
-		// subtrees.
-		return checkDupUtil(root.left, s) || checkDupUtil(root.right, s);
+		// Recursively check in left and right subtrees.
+		return checkDupUtil(root.left, set) || checkDupUtil(root.right, set);
 	}
 
 	// To check if tree has duplicates
-	public static boolean checkDup(Node root) {
+	private static boolean checkDup(Node root) {
 		HashSet<Integer> s = new HashSet<>();
 		return checkDupUtil(root, s);
 	}

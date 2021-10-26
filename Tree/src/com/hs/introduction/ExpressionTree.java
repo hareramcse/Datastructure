@@ -4,10 +4,9 @@ import java.util.Stack;
 
 public class ExpressionTree {
 
-	// A utility function to check if 'c'
-	// is an operator
+	// A utility function to check if 'c' is an operator
 
-	boolean isOperator(char c) {
+	private boolean isOperator(char c) {
 		if (c == '+' || c == '-' || c == '*' || c == '/' || c == '^') {
 			return true;
 		}
@@ -15,12 +14,13 @@ public class ExpressionTree {
 	}
 
 	// Utility function to do inorder traversal
-	void inorder(Node root) {
-		if (root != null) {
-			inorder(root.left);
-			System.out.print(root.data + " ");
-			inorder(root.right);
-		}
+	private void inorder(Node root) {
+		if (root == null)
+			return;
+
+		inorder(root.left);
+		System.out.print(root.data + " ");
+		inorder(root.right);
 	}
 
 	// Returns root of constructed tree for given postfix expression

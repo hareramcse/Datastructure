@@ -3,29 +3,27 @@ package com.hs.introduction;
 public class ContinuousTree {
 
 	// Function to check tree is continuous or not
-
-	static boolean treeContinuous(Node ptr) {
+	private static boolean treeContinuous(Node root) {
 		// if next node is empty then return true
-		if (ptr == null)
+		if (root == null)
 			return true;
 
 		// if current node is leaf node then return true
 		// because it is end of root to leaf path
-		if (ptr.left == null && ptr.right == null)
+		if (root.left == null && root.right == null)
 			return true;
 
 		// If left subtree is empty, then only check right
-		if (ptr.left == null)
-			return (Math.abs(ptr.data - ptr.right.data) == 1) && treeContinuous(ptr.right);
+		if (root.left == null)
+			return (Math.abs(root.data - root.right.data) == 1) && treeContinuous(root.right);
 
 		// If right subtree is empty, then only check left
-		if (ptr.right == null)
-			return (Math.abs(ptr.data - ptr.left.data) == 1) && treeContinuous(ptr.left);
+		if (root.right == null)
+			return (Math.abs(root.data - root.left.data) == 1) && treeContinuous(root.left);
 
-		// If both left and right subtrees are not empty, check
-		// everything
-		return Math.abs(ptr.data - ptr.left.data) == 1 && Math.abs(ptr.data - ptr.right.data) == 1
-				&& treeContinuous(ptr.left) && treeContinuous(ptr.right);
+		// If both left and right subtrees are not empty, check everything
+		return Math.abs(root.data - root.left.data) == 1 && Math.abs(root.data - root.right.data) == 1
+				&& treeContinuous(root.left) && treeContinuous(root.right);
 	}
 
 	/* Driver program to test mirror() */

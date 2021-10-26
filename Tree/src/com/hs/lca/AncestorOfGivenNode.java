@@ -2,28 +2,24 @@ package com.hs.lca;
 
 class AncestorOfGivenNode {
 
-	/*
-	 * If target is present in tree, then prints the ancestors and returns true,
-	 * otherwise returns false.
-	 */
-	boolean printAncestors(Node node, int target) {
+	/* If target is present in tree, then prints the ancestors and returns true, otherwise returns false. */
+	private boolean printAncestors(Node root, int target) {
 		/* base cases */
-		if (node == null)
+		if (root == null)
 			return false;
 
-		if (node.data == target)
+		if (root.data == target)
 			return true;
 
 		/*
 		 * If target is present in either left or right subtree of this node, then print
 		 * this node
 		 */
-		if (printAncestors(node.left, target) || printAncestors(node.right, target)) {
-			System.out.print(node.data + " ");
+		if (printAncestors(root.left, target) || printAncestors(root.right, target)) {
+			System.out.print(root.data + " ");
 			return true;
 		}
 
-		/* Else return false */
 		return false;
 	}
 

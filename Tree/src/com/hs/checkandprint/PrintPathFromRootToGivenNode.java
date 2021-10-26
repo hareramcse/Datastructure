@@ -1,29 +1,26 @@
 package com.hs.checkandprint;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PrintPathFromRootToGivenNode {
 
-	// Returns true if there is a path from root
-	// to the given node. It also populates
-	// 'arr' with the given path
-	public static boolean hasPath(Node root, ArrayList<Integer> arr, int x) {
-		// if root is NULL
-		// there is no path
+	// Returns true if there is a path from root to the given node.
+	// It also populates 'arr' with the given path
+	private static boolean hasPath(Node root, List<Integer> arr, int x) {
+		// if root is NULL there is no path
 		if (root == null)
 			return false;
 
 		// push the node's value in 'arr'
 		arr.add(root.data);
 
-		// if it is the required node
-		// return true
+		// if it is the required node return true
 		if (root.data == x)
 			return true;
 
 		// else check whether the required node lies
-		// in the left subtree or right subtree of
-		// the current node
+		// in the left subtree or right subtree of the current node
 		if (hasPath(root.left, arr, x) || hasPath(root.right, arr, x))
 			return true;
 
@@ -37,9 +34,9 @@ public class PrintPathFromRootToGivenNode {
 
 	// function to print the path from root to the
 	// given node if the node lies in the binary tree
-	public static void printPath(Node root, int x) {
+	private static void printPath(Node root, int x) {
 		// ArrayList to store the path
-		ArrayList<Integer> arr = new ArrayList<>();
+		List<Integer> arr = new ArrayList<>();
 
 		// if required node 'x' is present
 		// then print the path

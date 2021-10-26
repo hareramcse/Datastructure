@@ -3,16 +3,15 @@ package com.hs.introduction;
 public class EvaluateExpressionTree {
 
 	// Utility function to return the integer value of a given string
-	int toInt(String s) {
+	private int toInt(String str) {
 		int num = 0;
-		for (int i = 0; i < s.length(); i++)
-			num = num * 10 + (s.charAt(i) - 48);
+		for (int i = 0; i < str.length(); i++)
+			num = num * 10 + (str.charAt(i) - 48);
 		return num;
 	}
 
-	// This function receives a node of the syntax tree
-	// and recursively evaluates it
-	int eval(Node root) {
+	// This function receives a node of the syntax tree and recursively evaluates it
+	private int eval(Node root) {
 		// empty tree
 		if (root == null)
 			return 0;

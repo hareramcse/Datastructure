@@ -3,7 +3,7 @@ package com.hs.summation;
 class SumOfAllLeftLeaves {
 
 	// A utility function to check if a given node is leaf or not
-	boolean isLeaf(Node node) {
+	private boolean isLeaf(Node node) {
 		if (node == null)
 			return false;
 		if (node.left == null && node.right == null)
@@ -11,16 +11,14 @@ class SumOfAllLeftLeaves {
 		return false;
 	}
 
-	// This function returns sum of all left leaves in a given
-	// binary tree
-	int leftLeavesSum(Node node) {
+	// This function returns sum of all left leaves in a given binary tree
+	private int leftLeavesSum(Node node) {
 		// Initialize result
 		int res = 0;
 
 		// Update result if root is not NULL
 		if (node != null) {
-			// If left of root is NULL, then add key of
-			// left child
+			// If left of root is NULL, then add key of left child
 			if (isLeaf(node.left))
 				res += node.left.data;
 			else // Else recur for left child of root

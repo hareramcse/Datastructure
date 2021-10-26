@@ -2,25 +2,21 @@ package com.hs.checkandprint;
 
 public class PrintMiddleLevelWithoutFindingHeight {
 
-	// Takes two parameters - same initially and
-	// calls recursively
+	// Takes two parameters - same initially and calls recursively
 	private static void printMiddleLevelUtil(Node a, Node b) {
 		// Base case e
 		if (a == null || b == null)
 			return;
 
-		// Fast pointer has reached the leaf so print
-		// value at slow pointer
+		// Fast pointer has reached the leaf so print value at slow pointer
 		if ((b.left == null) && (b.right == null)) {
 			System.out.print(a.data + " ");
 			return;
 		}
 
-		// Recursive call
-		// root.left.left and root.left.right will
-		// print same value
-		// root.right.left and root.right.right
-		// will print same value
+		// Recursive call 
+		// root.left.left and root.left.right will print same value
+		// root.right.left and root.right.right will print same value
 		// So we use any one of the condition
 		printMiddleLevelUtil(a.left, b.left.left);
 		printMiddleLevelUtil(a.right, b.left.left);

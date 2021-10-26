@@ -1,10 +1,8 @@
 package com.hs.checkandprint;
 
 class CheckIfTwoTreesAreIdentical {
-	/*
-	 * Given two trees, return true if they are structurally identical
-	 */
-	boolean identicalTrees(Node a, Node b) {
+	/* Given two trees, return true if they are structurally identical */
+	private boolean identicalTrees(Node a, Node b) {
 		/* 1. both empty */
 		if (a == null && b == null)
 			return true;

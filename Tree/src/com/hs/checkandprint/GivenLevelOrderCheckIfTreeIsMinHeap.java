@@ -3,9 +3,8 @@ package com.hs.checkandprint;
 import java.io.IOException;
 
 public class GivenLevelOrderCheckIfTreeIsMinHeap {
-	// Returns true if given level order traversal
-	// is Min Heap.
-	static boolean isMinHeap(int[] level) {
+	// Returns true if given level order traversal is Min Heap.
+	private static boolean isMinHeap(int[] level) {
 		int n = level.length - 1;
 
 		// First non leaf node is at index (n/2-1).

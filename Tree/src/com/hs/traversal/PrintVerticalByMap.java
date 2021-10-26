@@ -8,11 +8,11 @@ import java.util.TreeMap;
 
 public class PrintVerticalByMap {
 
-	void printVerticalUtil(Node root, Map<Integer, List<Integer>> map, int hd) {
+	private void printVerticalUtil(Node root, Map<Integer, List<Integer>> map, int d) {
 		if (root == null)
 			return;
 		
-		List<Integer> list = map.get(hd);
+		List<Integer> list = map.get(d);
 		if (list == null) {
 			list = new ArrayList<Integer>();
 			list.add(root.data);
@@ -20,13 +20,13 @@ public class PrintVerticalByMap {
 			list.add(root.data);
 		}
 		
-		map.put(hd, list);
+		map.put(d, list);
 		
-		printVerticalUtil(root.left, map, hd - 1);
-		printVerticalUtil(root.right, map, hd + 1);
+		printVerticalUtil(root.left, map, d - 1);
+		printVerticalUtil(root.right, map, d + 1);
 	}
 
-	void printVertical(Node root) {
+	private void printVertical(Node root) {
 		Map<Integer, List<Integer>> map = new TreeMap<>();
 		printVerticalUtil(root, map, 0);
 

@@ -1,43 +1,39 @@
 package com.hs.checkandprint;
 
 class CheckIfTwoNodesAreCousin {
-	// Recursive function to check if two Nodes are
-	// siblings
-	boolean isSibling(Node node, Node a, Node b) {
+	// Recursive function to check if two Nodes are siblings
+	private boolean isSibling(Node root, Node a, Node b) {
 		// Base case
-		if (node == null)
+		if (root == null)
 			return false;
 
-		return ((node.left == a && node.right == b) || (node.left == b && node.right == a) || isSibling(node.left, a, b)
-				|| isSibling(node.right, a, b));
+		return ((root.left == a && root.right == b) || (root.left == b && root.right == a) || isSibling(root.left, a, b)
+				|| isSibling(root.right, a, b));
 	}
 
-	// Recursive function to find level of Node 'ptr' in
-	// a binary tree
-	int level(Node node, Node ptr, int lev) {
+	// Recursive function to find level of Node 'ptr' in a binary tree
+	private int level(Node root, Node ptr, int level) {
 		// base cases
-		if (node == null)
+		if (root == null)
 			return 0;
 
-		if (node == ptr)
-			return lev;
+		if (root == ptr)
+			return level;
 
 		// Return level if Node is present in left subtree
-		int l = level(node.left, ptr, lev + 1);
+		int l = level(root.left, ptr, level + 1);
 		if (l != 0)
 			return l;
 
 		// Else search in right subtree
-		return level(node.right, ptr, lev + 1);
+		return level(root.right, ptr, level + 1);
 	}
 
 	// Returns 1 if a and b are cousins, otherwise 0
-	boolean isCousin(Node node, Node a, Node b) {
-		// 1. The two Nodes should be on the same level
-		// in the binary
+	private boolean isCousin(Node node, Node a, Node b) {
+		// 1. The two Nodes should be on the same level in the binary
 		// 2. The two Nodes should not be siblings (means
-		// that they should not have the same parent
-		// Node).
+		// that they should not have the same parent Node).
 		return ((level(node, a, 1) == level(node, b, 1)) && (!isSibling(node, a, b)));
 	}
 

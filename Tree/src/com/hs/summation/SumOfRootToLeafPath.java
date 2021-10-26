@@ -9,22 +9,22 @@ public class SumOfRootToLeafPath {
 	 * check to see if the sum is 0 when you run out of
 	 */
 
-	boolean haspathSum(Node root, int sum) {
+	private boolean hasPathSum(Node root, int sum) {
 		if (root == null) {
 			return (sum == 0);
 		} else {
 			boolean ans = false;
 
 			/* otherwise check both subtrees */
-			int subsum = sum - root.data;
-			if (subsum == 0 && root.left == null && root.right == null) {
+			int subSum = sum - root.data;
+			if (subSum == 0 && root.left == null && root.right == null) {
 				return true;
 			}
 			if (root.left != null) {
-				ans = ans || haspathSum(root.left, subsum);
+				ans = ans || hasPathSum(root.left, subSum);
 			}
 			if (root.right != null) {
-				ans = ans || haspathSum(root.right, subsum);
+				ans = ans || hasPathSum(root.right, subSum);
 			}
 			return ans;
 		}
@@ -40,7 +40,7 @@ public class SumOfRootToLeafPath {
 		root.left.right = new Node(5);
 		root.right.left = new Node(2);
 
-		if (tree.haspathSum(root, sum)) {
+		if (tree.hasPathSum(root, sum)) {
 			System.out.println("There is a root to leaf path with sum " + sum);
 		} else {
 			System.out.println("There is no root to leaf path with sum " + sum);

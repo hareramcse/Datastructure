@@ -2,9 +2,8 @@ package com.hs.lca;
 
 public class CommonAncestor {
 
-	// Utility function to find the LCA of two given values
-	// n1 and n2.
-	Node findLCA(Node root, int n1, int n2) {
+	// Utility function to find the LCA of two given values n1 and n2.
+	private Node findLCA(Node root, int n1, int n2) {
 		// Base case
 		if (root == null)
 			return null;
@@ -17,22 +16,22 @@ public class CommonAncestor {
 			return root;
 
 		// Look for keys in left and right subtrees
-		Node left_lca = findLCA(root.left, n1, n2);
-		Node right_lca = findLCA(root.right, n1, n2);
+		Node leftLca = findLCA(root.left, n1, n2);
+		Node rightLca = findLCA(root.right, n1, n2);
 
 		// If both of the above calls return Non-NULL, then
 		// one key is present in once subtree and other is
 		// present in other, So this node is the LCA
-		if (left_lca != null && right_lca != null)
+		if (leftLca != null && rightLca != null)
 			return root;
 
 		// Otherwise check if left subtree or right
 		// subtree is LCA
-		return (left_lca != null) ? left_lca : right_lca;
+		return (leftLca != null) ? leftLca : rightLca;
 	}
 
 	// Utility Function to print all ancestors of LCA
-	boolean printAncestors(Node root, int target) {
+	private boolean printAncestors(Node root, int target) {
 		/* base cases */
 		if (root == null)
 			return false;
@@ -50,13 +49,11 @@ public class CommonAncestor {
 			System.out.print(root.data + " ");
 			return true;
 		}
-
-		/* Else return false */
 		return false;
 	}
 
 	// Function to find nodes common to given two nodes
-	boolean findCommonNodes(Node root, int first, int second) {
+	private boolean findCommonNodes(Node root, int first, int second) {
 		Node LCA = findLCA(root, first, second);
 		if (LCA == null)
 			return false;

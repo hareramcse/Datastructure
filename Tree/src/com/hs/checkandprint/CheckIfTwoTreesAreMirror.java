@@ -1,10 +1,8 @@
 package com.hs.checkandprint;
 
 class CheckIfTwoTreesAreMirror {
-	/*
-	 * Given two trees, return true if they are mirror of each other
-	 */
-	boolean areMirror(Node a, Node b) {
+	/* Given two trees, return true if they are mirror of each other */
+	private boolean areMirror(Node a, Node b) {
 		/* Base case : Both empty */
 		if (a == null && b == null)
 			return true;

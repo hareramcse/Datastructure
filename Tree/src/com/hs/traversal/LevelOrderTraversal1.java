@@ -3,34 +3,34 @@ package com.hs.traversal;
 class LevelOrderTraversal1 {
 
 	/* function to print level order traversal of tree */
-	void printLevelOrder(Node root) {
+	private void printLevelOrder(Node root) {
 		int h = height(root);
-		for (int i = 1; i <= h; i++)
+		for (int i = 1; i <= h; i++) {
 			printGivenLevel(root, i);
+			
+			// add bellow line to print the data line by line
+			System.out.println();
+		}
 	}
 
-	/*
-	 * Compute the "height" of a tree -- the number of nodes along the longest path
-	 * from the root node down to the farthest leaf node.
-	 */
-	int height(Node root) {
+	private int height(Node root) {
 		if (root == null)
 			return 0;
 		else {
 			/* compute height of each subtree */
-			int lheight = height(root.left);
-			int rheight = height(root.right);
+			int lHeight = height(root.left);
+			int rHeight = height(root.right);
 
 			/* use the larger one */
-			if (lheight > rheight)
-				return (lheight + 1);
+			if (lHeight > rHeight)
+				return (lHeight + 1);
 			else
-				return (rheight + 1);
+				return (rHeight + 1);
 		}
 	}
 
 	/* Print nodes at the given level */
-	void printGivenLevel(Node root, int level) {
+	private void printGivenLevel(Node root, int level) {
 		if (root == null)
 			return;
 		if (level == 1)

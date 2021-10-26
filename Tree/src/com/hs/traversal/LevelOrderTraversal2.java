@@ -5,7 +5,7 @@ import java.util.Queue;
 
 class LevelOrderTraversal2 {
 
-	void printLevelOrder(Node root) {
+	private void printLevelOrder(Node root) {
 		Queue<Node> queue = new LinkedList<Node>();
 		queue.add(root);
 		while (!queue.isEmpty()) {

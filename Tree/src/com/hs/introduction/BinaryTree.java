@@ -5,43 +5,37 @@ import java.util.Queue;
 
 public class BinaryTree {
 
-	/* function to insert element in binary tree */
-	void insert(Node root, int key) {
+	/* function to insert element in binary tree where 1st space is empty */
+	private void insert(Node root, int data) {
 		Queue<Node> q = new LinkedList<Node>();
 		q.add(root);
 
-		// Do level order traversal until we find
-		// an empty place.
+		// Do level order traversal until we find an empty place.
 		while (!q.isEmpty()) {
-			root = q.peek();
-			q.remove();
+			root = q.poll();
 
 			if (root.left == null) {
-				root.left = new Node(key);
+				root.left = new Node(data);
 				break;
 			} else
 				q.add(root.left);
 
 			if (root.right == null) {
-				root.right = new Node(key);
+				root.right = new Node(data);
 				break;
 			} else
 				q.add(root.right);
 		}
 	}
 
-	/*
-	 * function to delete the given deepest node (d_node) in binary tree
-	 */
-	void deletDeepest(Node root, Node deepestNode) {
+	/* function to delete the given deepest node in binary tree */
+	private void deletDeepest(Node root, Node deepestNode) {
 		Queue<Node> q = new LinkedList<>();
 		q.add(root);
 
 		// Do level order traversal until last node
-		Node temp;
 		while (!q.isEmpty()) {
-			temp = q.peek();
-			q.poll();
+			Node temp = q.poll();
 
 			if (temp.right != null) {
 				if (temp.right == deepestNode) {
@@ -62,21 +56,20 @@ public class BinaryTree {
 	}
 
 	/* function to delete element in binary tree */
-	void deletion(Node root, int key) {
+	private void deletion(Node root, int key) {
 		Queue<Node> q = new LinkedList<>();
 		q.add(root);
 
 		Node temp = new Node();
-		Node key_node = null;
+		Node toBeDeleted = null;
 
 		// Do level order traversal to find deepest
 		// node(temp) and node to be deleted (key_node)
 		while (!q.isEmpty()) {
-			temp = q.peek();
-			q.poll();
+			temp = q.poll();
 
 			if (temp.data == key)
-				key_node = temp;
+				toBeDeleted = temp;
 
 			if (temp.left != null)
 				q.add(temp.left);
@@ -87,11 +80,11 @@ public class BinaryTree {
 
 		int x = temp.data;
 		deletDeepest(root, temp);
-		key_node.data = x;
+		toBeDeleted.data = x;
 	}
 
 	/* Inorder traversal of a binary tree */
-	void inorder(Node root) {
+	private void inorder(Node root) {
 		if (root == null)
 			return;
 

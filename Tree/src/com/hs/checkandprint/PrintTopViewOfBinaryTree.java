@@ -8,16 +8,15 @@ import java.util.TreeMap;
 
 class PrintTopViewOfBinaryTree {
 
-	// function should print the topView of
-	// the binary tree
+	// function should print the topView of the binary tree
 	private void topView(Node root) {
 		class QueueObj {
 			Node node;
-			int hd;
+			int d;
 
-			QueueObj(Node node, int hd) {
+			QueueObj(Node node, int d) {
 				this.node = node;
-				this.hd = hd;
+				this.d = d;
 			}
 		}
 		Queue<QueueObj> queue = new LinkedList<QueueObj>();
@@ -33,18 +32,18 @@ class PrintTopViewOfBinaryTree {
 
 		// count function returns 1 if the container
 		// contains an element whose key is equivalent
-		// to hd, or returns zero otherwise.
+		// to d, or returns zero otherwise.
 		while (!queue.isEmpty()) {
 			QueueObj tmpNode = queue.poll();
-			if (!map.containsKey(tmpNode.hd)) {
-				map.put(tmpNode.hd, tmpNode.node);
+			if (!map.containsKey(tmpNode.d)) {
+				map.put(tmpNode.d, tmpNode.node);
 			}
 
 			if (tmpNode.node.left != null) {
-				queue.add(new QueueObj(tmpNode.node.left, tmpNode.hd - 1));
+				queue.add(new QueueObj(tmpNode.node.left, tmpNode.d - 1));
 			}
 			if (tmpNode.node.right != null) {
-				queue.add(new QueueObj(tmpNode.node.right, tmpNode.hd + 1));
+				queue.add(new QueueObj(tmpNode.node.right, tmpNode.d + 1));
 			}
 
 		}

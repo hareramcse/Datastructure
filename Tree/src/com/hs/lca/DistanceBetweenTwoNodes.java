@@ -2,9 +2,10 @@ package com.hs.lca;
 
 public class DistanceBetweenTwoNodes {
 
-	public static Node LCA(Node root, int n1, int n2) {
+	private static Node LCA(Node root, int n1, int n2) {
 		if (root == null)
 			return root;
+		
 		if (root.data == n1 || root.data == n2)
 			return root;
 
@@ -19,9 +20,8 @@ public class DistanceBetweenTwoNodes {
 			return LCA(root.right, n1, n2);
 	}
 
-	// Returns level of key k if it is present in
-	// tree, otherwise returns -1
-	public static int findLevel(Node root, int a, int level) {
+	// Returns level of key k if it is present in tree, otherwise returns -1
+	private static int findLevel(Node root, int a, int level) {
 		if (root == null)
 			return -1;
 		if (root.data == a)
@@ -32,7 +32,7 @@ public class DistanceBetweenTwoNodes {
 		return left;
 	}
 
-	public static int findDistance(Node root, int a, int b) {
+	private static int findDistance(Node root, int a, int b) {
 		Node lca = LCA(root, a, b);
 
 		int d1 = findLevel(lca, a, 0);
@@ -44,8 +44,6 @@ public class DistanceBetweenTwoNodes {
 	// Driver program to test above functions
 	public static void main(String[] args) {
 
-		// Let us create binary tree given in
-		// the above example
 		Node root = new Node(1);
 		root.left = new Node(2);
 		root.right = new Node(3);

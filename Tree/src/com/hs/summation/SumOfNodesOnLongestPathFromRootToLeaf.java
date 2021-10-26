@@ -2,17 +2,29 @@ package com.hs.summation;
 
 public class SumOfNodesOnLongestPathFromRootToLeaf {
 
-	int maxLen;
-	int maxSum;
+	private int maxLen;
+	private int maxSum;
 
-	// function to find the sum of nodes on the
-	// longest path from root to leaf node
-	void sumOfLongRootToLeafPath(Node root, int sum, int len) {
-		// if true, then we have traversed a
-		// root to leaf path
+	// utility function to find the sum of nodes on the longest path from root to
+	// leaf node
+	private int sumOfLongRootToLeafPathUtil(Node root) {
+		// if tree is NULL, then sum is 0
+		if (root == null)
+			return 0;
+
+		maxSum = Integer.MIN_VALUE;
+		maxLen = 0;
+
+		// finding the maximum sum 'maxSum' for the maximum length root to leaf path
+		longestPathFromRootToLeafNode(root, 0, 0);
+		return maxSum;
+	}
+
+	// function to find the sum of nodes on the longest path from root to leaf node
+	private void longestPathFromRootToLeafNode(Node root, int sum, int len) {
+		// if true, then we have traversed a root to leaf path
 		if (root == null) {
-			// update maximum length and maximum sum
-			// according to the given conditions
+			// update maximum length and maximum sum according to the given conditions
 			if (maxLen < len) {
 				maxLen = len;
 				maxSum = sum;
@@ -21,34 +33,13 @@ public class SumOfNodesOnLongestPathFromRootToLeaf {
 			return;
 		}
 
-		// recur for left subtree
-		sumOfLongRootToLeafPath(root.left, sum + root.data, len + 1);
-
-		sumOfLongRootToLeafPath(root.right, sum + root.data, len + 1);
-
-	}
-
-	// utility function to find the sum of nodes on
-	// the longest path from root to leaf node
-	int sumOfLongRootToLeafPathUtil(Node root) {
-		// if tree is NULL, then sum is 0
-		if (root == null)
-			return 0;
-
-		maxSum = Integer.MIN_VALUE;
-		maxLen = 0;
-
-		// finding the maximum sum 'maxSum' for the
-		// maximum length root to leaf path
-		sumOfLongRootToLeafPath(root, 0, 0);
-
-		// required maximum sum
-		return maxSum;
+		longestPathFromRootToLeafNode(root.left, sum + root.data, len + 1);
+		longestPathFromRootToLeafNode(root.right, sum + root.data, len + 1);
 	}
 
 	// Driver program to test above
 	public static void main(String args[]) {
-		SumOfNodesOnLongestPathFromRootToLeaf tree = new  SumOfNodesOnLongestPathFromRootToLeaf();
+		SumOfNodesOnLongestPathFromRootToLeaf tree = new SumOfNodesOnLongestPathFromRootToLeaf();
 		// binary tree formation
 		Node root = new Node(4); /* 4 */
 		root.left = new Node(2); /* / \ */

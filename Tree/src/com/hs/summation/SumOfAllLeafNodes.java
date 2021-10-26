@@ -2,21 +2,18 @@ package com.hs.summation;
 
 public class SumOfAllLeafNodes {
 
-	static int sum;
+	private static int sum;
 
-	// utility function which calculates
-	// sum of all leaf nodes
-	static void leafSum(Node root) {
+	// utility function which calculates sum of all leaf nodes
+	private static void leafSum(Node root) {
 		if (root == null)
 			return;
 
-		// add root data to sum if
-		// root is a leaf node
+		// add root data to sum if root is a leaf node
 		if (root.left == null && root.right == null)
 			sum += root.data;
 
-		// propagate recursively in left
-		// and right subtree
+		// propagate recursively in left and right subtree
 		leafSum(root.left);
 		leafSum(root.right);
 	}

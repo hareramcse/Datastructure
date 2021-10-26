@@ -2,10 +2,10 @@ package com.hs.checkandprint;
 
 class PrintRightViewOfBinaryTree {
 
-	int max_level;
+	private int max_level;
 
 	// Recursive function to print right view of a binary
-	void rightView(Node root, int level) {
+	private void rightView(Node root, int level) {
 
 		// Base Case
 		if (root == null)

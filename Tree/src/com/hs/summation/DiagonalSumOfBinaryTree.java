@@ -1,8 +1,29 @@
 package com.hs.summation;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class DiagonalSumOfBinaryTree {
+
+	// Traverses the tree in Inoorder form and builds a hashMap map that contains
+	// the vertical sum
+	private void diagonalSumUtil(Node root, Map<Integer, Integer> map, int d) {
+
+		// base case
+		if (root == null) {
+			return;
+		}
+
+		// Store the values in hM for left subtree
+		diagonalSumUtil(root.left, map, d + 1);
+
+		// Update vertical sum for hD of this node
+		int prevSum = (map.get(d) == null) ? 0 : map.get(d);
+		map.put(d, prevSum + root.data);
+
+		// Store the values in hM for right subtree
+		diagonalSumUtil(root.right, map, d);
+	}
 
 	private void diagonalSum(Node root) {
 
@@ -12,7 +33,7 @@ public class DiagonalSumOfBinaryTree {
 		}
 
 		// Creates an empty hashMap hM
-		HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
 
 		// Calls the VerticalSumUtil() to store the
 		// vertical sum values in hM
@@ -24,28 +45,7 @@ public class DiagonalSumOfBinaryTree {
 		}
 	}
 
-	// Traverses the tree in Inoorder form and builds
-	// a hashMap hM that contains the vertical sum
-	private void diagonalSumUtil(Node root, HashMap<Integer, Integer> map, int hD) {
-
-		// base case
-		if (root == null) {
-			return;
-		}
-
-		// Store the values in hM for left subtree
-		diagonalSumUtil(root.left, map, hD + 1);
-
-		// Update vertical sum for hD of this node
-		int prevSum = (map.get(hD) == null) ? 0 : map.get(hD);
-		map.put(hD, prevSum + root.data);
-
-		// Store the values in hM for right subtree
-		diagonalSumUtil(root.right, map, hD);
-	}
-
 	// Driver class to test the verticalSum methods
-
 	public static void main(String[] args) {
 		DiagonalSumOfBinaryTree tree = new DiagonalSumOfBinaryTree();
 		Node root = new Node(1);

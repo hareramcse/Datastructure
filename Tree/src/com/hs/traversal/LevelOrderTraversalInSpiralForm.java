@@ -1,10 +1,10 @@
 package com.hs.traversal;
 
-class LevelOrderTraversalInSpiralForm1 {
+class LevelOrderTraversalInSpiralForm {
 
 	// Function to print the spiral traversal of tree
-	void printSpiral(Node node) {
-		int h = height(node);
+	private void printSpiral(Node root) {
+		int h = height(root);
 
 		/*
 		 * ltr -> left to right. If this variable is set then the given label is
@@ -12,7 +12,7 @@ class LevelOrderTraversalInSpiralForm1 {
 		 */
 		boolean ltr = false;
 		for (int i = 1; i <= h; i++) {
-			printGivenLevel(node, i, ltr);
+			printGivenLevel(root, i, ltr);
 
 			/* Revert ltr to traverse next level in opposite order */
 			ltr = !ltr;
@@ -20,18 +20,14 @@ class LevelOrderTraversalInSpiralForm1 {
 
 	}
 
-	/*
-	 * Compute the "height" of a tree -- the number of nodes along the longest path
-	 * from the root node down to the farthest leaf node.
-	 */
-	int height(Node node) {
-		if (node == null)
+	private int height(Node root) {
+		if (root == null)
 			return 0;
 		else {
 
 			/* compute the height of each subtree */
-			int lheight = height(node.left);
-			int rheight = height(node.right);
+			int lheight = height(root.left);
+			int rheight = height(root.right);
 
 			/* use the larger one */
 			if (lheight > rheight)
@@ -42,25 +38,25 @@ class LevelOrderTraversalInSpiralForm1 {
 	}
 
 	/* Print nodes at a given level */
-	void printGivenLevel(Node node, int level, boolean ltr) {
-		if (node == null)
+	void printGivenLevel(Node root, int level, boolean ltr) {
+		if (root == null)
 			return;
 		if (level == 1)
-			System.out.print(node.data + " ");
+			System.out.print(root.data + " ");
 		else if (level > 1) {
-			if (ltr != false) {
-				printGivenLevel(node.left, level - 1, ltr);
-				printGivenLevel(node.right, level - 1, ltr);
+			if (ltr) {
+				printGivenLevel(root.left, level - 1, ltr);
+				printGivenLevel(root.right, level - 1, ltr);
 			} else {
-				printGivenLevel(node.right, level - 1, ltr);
-				printGivenLevel(node.left, level - 1, ltr);
+				printGivenLevel(root.right, level - 1, ltr);
+				printGivenLevel(root.left, level - 1, ltr);
 			}
 		}
 	}
 
 	/* Driver program to test the above functions */
 	public static void main(String[] args) {
-		LevelOrderTraversalInSpiralForm1 tree = new LevelOrderTraversalInSpiralForm1();
+		LevelOrderTraversalInSpiralForm tree = new LevelOrderTraversalInSpiralForm();
 		Node root = new Node(1);
 		root.left = new Node(2);
 		root.right = new Node(3);

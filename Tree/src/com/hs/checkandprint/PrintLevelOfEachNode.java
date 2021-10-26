@@ -5,9 +5,8 @@ import java.util.Queue;
 
 public class PrintLevelOfEachNode {
 
-	// User defined class Pair to hold
-	// the node and its level
-	static class Pair {
+	// User defined class Pair to hold the node and its level
+	private static class Pair {
 		Node n;
 		int i;
 
@@ -18,9 +17,8 @@ public class PrintLevelOfEachNode {
 
 	}
 
-	// function to print the nodes and
-	// its corresponding level
-	static void printLevel(Node root) {
+	// function to print the nodes and its corresponding level
+	private static void printLevel(Node root) {
 		if (root == null)
 			return;
 

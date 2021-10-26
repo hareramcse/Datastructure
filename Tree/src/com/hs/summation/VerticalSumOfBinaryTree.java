@@ -1,10 +1,11 @@
 package com.hs.summation;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class VerticalSumOfBinaryTree {
 
-	private void VerticalSum(Node root) {
+	private void verticalSum(Node root) {
 
 		// base case
 		if (root == null) {
@@ -12,11 +13,11 @@ public class VerticalSumOfBinaryTree {
 		}
 
 		// Creates an empty hashMap hM
-		HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
 
 		// Calls the VerticalSumUtil() to store the
 		// vertical sum values in hM
-		VerticalSumUtil(root, map, 0);
+		verticalSumUtil(root, map, 0);
 
 		// Prints the values stored by VerticalSumUtil()
 		if (map != null) {
@@ -24,9 +25,8 @@ public class VerticalSumOfBinaryTree {
 		}
 	}
 
-	// Traverses the tree in Inoorder form and builds
-	// a hashMap hM that contains the vertical sum
-	private void VerticalSumUtil(Node root, HashMap<Integer, Integer> map, int hD) {
+	// Traverses the tree in Inoorder form and builds a hashMap map that contains the vertical sum
+	private void verticalSumUtil(Node root, Map<Integer, Integer> map, int d) {
 
 		// base case
 		if (root == null) {
@@ -34,14 +34,14 @@ public class VerticalSumOfBinaryTree {
 		}
 
 		// Store the values in hM for left subtree
-		VerticalSumUtil(root.left, map, hD - 1);
+		verticalSumUtil(root.left, map, d - 1);
 
 		// Update vertical sum for hD of this node
-		int prevSum = (map.get(hD) == null) ? 0 : map.get(hD);
-		map.put(hD, prevSum + root.data);
+		int prevSum = map.get(d) == null ? 0 : map.get(d);
+		map.put(d, prevSum + root.data);
 
 		// Store the values in hM for right subtree
-		VerticalSumUtil(root.right, map, hD + 1);
+		verticalSumUtil(root.right, map, d + 1);
 	}
 
 	// Driver class to test the verticalSum methods
@@ -58,6 +58,6 @@ public class VerticalSumOfBinaryTree {
 
 		System.out.println("Following are the values of" + " vertical sums with the positions"
 				+ " of the columns with respect to root ");
-		tree.VerticalSum(root);
+		tree.verticalSum(root);
 	}
 }

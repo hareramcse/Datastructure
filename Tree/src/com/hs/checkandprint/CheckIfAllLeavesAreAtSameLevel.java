@@ -1,48 +1,51 @@
 package com.hs.checkandprint;
 
+/* 
+ *        12
+        /    \
+      5       7       
+    /          \ 
+   3            1
+   
+  Leaves are at same level
+ * */
 class Leaf {
-	int leaflevel = 0;
+	int leafLevel = 0;
 }
 
 class CheckIfAllLeavesAreAtSameLevel {
 
-	Node root;
-	Leaf mylevel = new Leaf();
+	private Leaf mylevel = new Leaf();
+	
+	/* The main function to check if all leafs are at same level. */
+	private boolean check(Node root) {
+		int level = 0;
+		return checkUtil(root, level, mylevel);
+	}
 
 	/*
 	 * Recursive function which checks whether all leaves are at same level
 	 */
-	boolean checkUtil(Node node, int level, Leaf leafLevel) {
+	private boolean checkUtil(Node root, int level, Leaf leafLevel) {
 		// Base case
-		if (node == null)
+		if (root == null)
 			return true;
 
 		// If a leaf node is encountered
-		if (node.left == null && node.right == null) {
+		if (root.left == null && root.right == null) {
 			// When a leaf node is found first time
-			if (leafLevel.leaflevel == 0) {
+			if (leafLevel.leafLevel == 0) {
 				// Set first found leaf's level
-				leafLevel.leaflevel = level;
+				leafLevel.leafLevel = level;
 				return true;
 			}
 
-			// If this is not first leaf node, compare its level with
-			// first leaf's level
-			return (level == leafLevel.leaflevel);
+			// If this is not first leaf node, compare its level with first leaf's level
+			return (level == leafLevel.leafLevel);
 		}
 
-		// If this node is not leaf, recursively check left and right
-		// subtrees
-		return checkUtil(node.left, level + 1, leafLevel) && checkUtil(node.right, level + 1, leafLevel);
-	}
-
-	/*
-	 * The main function to check if all leafs are at same level. It mainly uses
-	 * checkUtil()
-	 */
-	boolean check(Node node) {
-		int level = 0;
-		return checkUtil(node, level, mylevel);
+		// If this node is not leaf, recursively check left and right subtrees
+		return checkUtil(root.left, level + 1, leafLevel) && checkUtil(root.right, level + 1, leafLevel);
 	}
 
 	public static void main(String args[]) {

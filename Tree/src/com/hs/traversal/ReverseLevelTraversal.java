@@ -7,34 +7,34 @@ import java.util.Stack;
 class ReverseLevelTraversal {
 
 	/* Given a binary tree, print its nodes in reverse level order */
-	void reverseLevelOrder(Node node) {
-		Stack<Node> S = new Stack<Node>();
-		Queue<Node> Q = new LinkedList<Node>();
-		Q.add(node);
+	private void reverseLevelOrder(Node root) {
+		Stack<Node> stack = new Stack<Node>();
+		Queue<Node> queue = new LinkedList<Node>();
+		queue.add(root);
 
-		// Do something like normal level order traversal order.Following
-		// are the differences with normal level order traversal
+		// Do something like normal level order traversal order.
+		// Following are the differences with normal level order traversal
 		// 1) Instead of printing a node, we push the node to stack
 		// 2) Right subtree is visited before left subtree
-		while (Q.isEmpty() == false) {
+		while (!queue.isEmpty()) {
 			/* Dequeue node and make it root */
-			node = Q.poll();
-			S.push(node);
+			Node temp = queue.poll();
+			stack.push(temp);
 
 			/* Enqueue right child */
-			if (node.right != null)
+			if (temp.right != null)
 				// NOTE: RIGHT CHILD IS ENQUEUED BEFORE LEFT
-				Q.add(node.right);
+				queue.add(temp.right);
 
 			/* Enqueue left child */
-			if (node.left != null)
-				Q.add(node.left);
+			if (temp.left != null)
+				queue.add(temp.left);
 		}
 
 		// Now pop all items from stack one by one and print them
-		while (S.empty() == false) {
-			node = S.pop();
-			System.out.print(node.data + " ");
+		while (stack.empty() == false) {
+			Node tmp = stack.pop();
+			System.out.print(tmp.data + " ");
 		}
 	}
 

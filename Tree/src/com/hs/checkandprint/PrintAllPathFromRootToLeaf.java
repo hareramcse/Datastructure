@@ -6,7 +6,7 @@ class PrintAllPathFromRootToLeaf {
 	 * Given a binary tree, print out all of its root-to-leaf paths, one per line.
 	 * Uses a recursive helper to do the work.
 	 */
-	void printPaths(Node root) {
+	private void printPaths(Node root) {
 		int path[] = new int[1000];
 		printPathsRecur(root, path, 0);
 	}
@@ -16,7 +16,7 @@ class PrintAllPathFromRootToLeaf {
 	 * from the root node up to but not including this node, print out all the
 	 * root-leaf paths.
 	 */
-	void printPathsRecur(Node root, int path[], int pathLen) {
+	private void printPathsRecur(Node root, int path[], int pathLen) {
 		if (root == null)
 			return;
 
@@ -35,7 +35,7 @@ class PrintAllPathFromRootToLeaf {
 	}
 
 	/* Utility that prints out an array on a line */
-	void printArray(int ints[], int len) {
+	private void printArray(int ints[], int len) {
 		for (int i = 0; i < len; i++)
 			System.out.print(ints[i] + " ");
 		System.out.println("");

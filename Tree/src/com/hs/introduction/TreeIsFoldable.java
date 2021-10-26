@@ -3,7 +3,7 @@ package com.hs.introduction;
 public class TreeIsFoldable {
 
 	/* Returns true if the given tree can be folded */
-	boolean IsFoldable(Node root) {
+	private boolean IsFoldable(Node root) {
 		if (root == null)
 			return true;
 
@@ -11,26 +11,20 @@ public class TreeIsFoldable {
 	}
 
 	/*
-	 * A utility function that checks if trees with roots as n1 and n2 are mirror of
+	 * A utility function that checks if trees with roots as root1 and root2 are mirror of
 	 * each other
 	 */
-	boolean IsFoldableUtil(Node root1, Node root2) {
+	private boolean IsFoldableUtil(Node root1, Node root2) {
 
-		/*
-		 * If both left and right subtrees are NULL, then return true
-		 */
+		/* If both left and right subtrees are NULL, then return true */
 		if (root1 == null && root2 == null)
 			return true;
 
-		/*
-		 * If one of the trees is NULL and other is not, then return false
-		 */
+		/*  If one of the trees is NULL and other is not, then return false */
 		if (root1 == null || root2 == null)
 			return false;
 
-		/*
-		 * Otherwise check if left and right subtrees are mirrors of their counterparts
-		 */
+		/* Otherwise check if left and right subtrees are mirrors of their counterparts */
 		return IsFoldableUtil(root1.left, root2.right) && IsFoldableUtil(root1.right, root2.left);
 	}
 

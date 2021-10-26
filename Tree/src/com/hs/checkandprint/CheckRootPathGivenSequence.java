@@ -2,19 +2,15 @@ package com.hs.checkandprint;
 
 public class CheckRootPathGivenSequence {
 
-	// function to check given sequence of root to leaf path exist
-	// in tree or not.
-	// index represents current element in sequence of root to
-	// leaf path
-	public static boolean existPath(Node root, int arr[], int index) {
-		// If root is NULL, then there must not be any element
-		// in array.
+	// function to check given sequence of root to leaf path exist in tree or not.
+	// index represents current element in sequence of root to leaf path
+	private static boolean existPath(Node root, int arr[], int index) {
+		// If root is NULL, then there must not be any element in array.
 		if (root == null) {
 			return arr.length == 0;
 		}
 
-		// If this node is a leaf and matches with last entry
-		// of array.
+		// If this node is a leaf and matches with last entry of array.
 		if ((root.left == null && root.right == null)
 				&& (root.data == arr[index] && root.data == arr[arr.length - 1])) {
 			return true;
