@@ -1,33 +1,38 @@
 package com.hs.construction;
 
+/*
+ * Algorithm: 
+Recursively convert the tree to double tree in postorder fashion. For each node, first 
+convert the left subtree of the node, then right subtree, finally create a duplicate 
+node of the node and fix the left child of the node and left child of left child.*/
 class ConvertBinaryTreeToDoubleTree {
 
 	// Function to convert a tree to double tree
-	private void doubleTree(Node node) {
-		Node oldleft;
+	private void doubleTree(Node root) {
+		Node oldLeft;
 
-		if (node == null) {
+		if (root == null) {
 			return;
 		}
 
 		// do the subtrees
-		doubleTree(node.left);
-		doubleTree(node.right);
+		doubleTree(root.left);
+		doubleTree(root.right);
 
 		// duplicate this node to its left
-		oldleft = node.left;
-		node.left = new Node(node.data);
-		node.left.left = oldleft;
+		oldLeft = root.left;
+		root.left = new Node(root.data);
+		root.left.left = oldLeft;
 	}
 
 	// Given a binary tree, print its nodes in inorder
-	private void printInorder(Node node) {
-		if (node == null) {
+	private void printInorder(Node root) {
+		if (root == null) {
 			return;
 		}
-		printInorder(node.left);
-		System.out.print(node.data + " ");
-		printInorder(node.right);
+		printInorder(root.left);
+		System.out.print(root.data + " ");
+		printInorder(root.right);
 	}
 
 	public static void main(String args[]) {

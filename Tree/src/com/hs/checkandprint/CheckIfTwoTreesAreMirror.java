@@ -1,5 +1,11 @@
 package com.hs.checkandprint;
 
+/*For two trees ‘a’ and ‘b’ to be mirror images, the following three conditions must be 
+ * true: 
+
+Their root node’s key must be same
+Left subtree of root of ‘a’ and right subtree root of ‘b’ are mirror.
+Right subtree of ‘a’ and left subtree of ‘b’ are mirror.*/
 class CheckIfTwoTreesAreMirror {
 	/* Given two trees, return true if they are mirror of each other */
 	private boolean areMirror(Node a, Node b) {

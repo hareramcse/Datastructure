@@ -1,5 +1,9 @@
-package com.hs.construction;
+package com.hs.construction.hard;
 
+/*In a Levelorder sequence, the first element is the root of the tree. So we know ’20’ is root 
+ * for given sequences. By searching ’20’ in Inorder sequence, we can find out all elements on 
+ * left side of ‘20’ are in left subtree and elements on right are in right subtree. So we know 
+ * below structure now. */
 class ConstructTreeFromInorderAndLevelOrder {
 
 	private Node buildTree(int in[], int level[]) {
@@ -37,8 +41,8 @@ class ConstructTreeFromInorderAndLevelOrder {
 
 		// elements present before index are part of left child of startNode.
 		// elements present after index are part of right child of startNode.
-		startNode.setLeft(constructTree(startNode, levelOrder, inOrder, inStart, index - 1));
-		startNode.setRight(constructTree(startNode, levelOrder, inOrder, index + 1, inEnd));
+		startNode.left = constructTree(startNode, levelOrder, inOrder, inStart, index - 1);
+		startNode.right = constructTree(startNode, levelOrder, inOrder, index + 1, inEnd);
 
 		return startNode;
 	}

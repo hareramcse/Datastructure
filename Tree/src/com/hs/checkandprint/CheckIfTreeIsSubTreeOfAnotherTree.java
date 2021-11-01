@@ -1,5 +1,14 @@
 package com.hs.checkandprint;
 
+/*Following are detailed steps.
+1) Find inorder and preorder traversals of T, store them in two auxiliary arrays inT[] 
+and preT[].
+2) Find inorder and preorder traversals of S, store them in two auxiliary arrays inS[] 
+and preS[].
+3) If inS[] is a subarray of inT[] and preS[] is a subarray preT[], then S is a subtree 
+of T. Else not*/
+
+// O(n)
 class Passing {
 	int i;
 	int m = 0;
@@ -8,10 +17,9 @@ class Passing {
 
 public class CheckIfTreeIsSubTreeOfAnotherTree {
 
-	static Node root;
 	Passing p = new Passing();
 
-	String strstr(String haystack, String needle) {
+	private String strstr(String haystack, String needle) {
 		if (haystack == null || needle == null) {
 			return null;
 		}
@@ -41,7 +49,7 @@ public class CheckIfTreeIsSubTreeOfAnotherTree {
 
 	// A utility function to store inorder traversal of tree rooted
 	// with root in an array arr[]. Note that i is passed as reference
-	void storeInorder(Node node, int arr[], Passing i) {
+	private void storeInorder(Node node, int arr[], Passing i) {
 		if (node == null) {
 			arr[i.i++] = '$';
 			return;
@@ -53,7 +61,7 @@ public class CheckIfTreeIsSubTreeOfAnotherTree {
 
 	// A utility function to store preorder traversal of tree rooted
 	// with root in an array arr[]. Note that i is passed as reference
-	void storePreOrder(Node node, int arr[], Passing i) {
+	private void storePreOrder(Node node, int arr[], Passing i) {
 		if (node == null) {
 			arr[i.i++] = '$';
 			return;
@@ -64,7 +72,7 @@ public class CheckIfTreeIsSubTreeOfAnotherTree {
 	}
 
 	/* This function returns true if S is a subtree of T, otherwise false */
-	boolean isSubtree(Node T, Node S) {
+	private boolean isSubtree(Node T, Node S) {
 		/* base cases */
 		if (S == null) {
 			return true;

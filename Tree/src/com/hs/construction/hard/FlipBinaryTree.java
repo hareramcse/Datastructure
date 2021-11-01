@@ -1,8 +1,11 @@
-package com.hs.construction;
+package com.hs.construction.hard;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
+/*In the flip operation, the leftmost node becomes the root of the flipped tree and its 
+ * parent becomes its right child and the right sibling becomes its left child and the 
+ * same should be done for all left most nodes recursively.*/
 public class FlipBinaryTree {
 
 	// method to flip the binary tree

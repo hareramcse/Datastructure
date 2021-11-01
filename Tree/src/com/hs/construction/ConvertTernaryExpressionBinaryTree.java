@@ -1,14 +1,14 @@
 package com.hs.construction;
 
+/*
+ * Idea is that we traverse a string make first character as root and do
+ * following step recursively . 1. If we see Symbol ‘?’ …….. then we add next
+ * character as the left child of root. 2. If we see Symbol ‘:’ …….. then we add
+ * it as the right child of current root. do this process until we traverse all
+ * element of “String”.
+ */
 public class ConvertTernaryExpressionBinaryTree {
 
-	/*
-	 * Idea is that we traverse a string make first character as root and do
-	 * following step recursively . 1. If we see Symbol ‘?’ …….. then we add next
-	 * character as the left child of root. 2. If we see Symbol ‘:’ …….. then we add
-	 * it as the right child of current root. do this process until we traverse all
-	 * element of “String”.
-	 */
 	private Node convertExpression(char[] expression, int i) {
 		// Base case
 		if (i >= expression.length)

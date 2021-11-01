@@ -1,8 +1,13 @@
-package com.hs.construction;
+package com.hs.construction.hard;
 
 import java.util.HashMap;
 import java.util.Map;
+
 // O(n)
+/*In a Preorder sequence, the leftmost element is the root of the tree. 
+ * So we know ‘A’ is the root for given sequences. By searching ‘A’ in the Inorder sequence, 
+ * we can find out all elements on the left side of ‘A’ is in the left subtree, and elements 
+ * on right in the right subtree. */
 class ConstructTreeFromInorderAndPreOrder {
 
 	private static Node root;
@@ -19,20 +24,22 @@ class ConstructTreeFromInorderAndPreOrder {
 
 		// Pick current node from Preorder using preIndex and increment preIndex
 		char curr = pre[preIndex++];
-		Node tNode = new Node(curr);
+		
+		// make this node as root node
+		Node root = new Node(curr);
 
 		// If this node has no children then return
 		if (inStrt == inEnd) {
-			return tNode;
+			return root;
 		}
 
 		// Else find the index of this node in Inorder traversal
 		int inIndex = map.get(curr);
 
-		// Using index in Inorder traversal, construct left and right subtress
-		tNode.left = buildTree(in, pre, inStrt, inIndex - 1);
-		tNode.right = buildTree(in, pre, inIndex + 1, inEnd);
-		return tNode;
+		// Using index in Inorder traversal, construct left and right subtrees
+		root.left = buildTree(in, pre, inStrt, inIndex - 1);
+		root.right = buildTree(in, pre, inIndex + 1, inEnd);
+		return root;
 	}
 
 	// This function mainly creates an unordered_map, then calls buildTree()

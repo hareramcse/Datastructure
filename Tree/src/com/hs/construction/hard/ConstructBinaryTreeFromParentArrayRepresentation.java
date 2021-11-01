@@ -1,4 +1,4 @@
-package com.hs.construction;
+package com.hs.construction.hard;
 
 public class ConstructBinaryTreeFromParentArrayRepresentation {
 	private Node root;

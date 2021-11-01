@@ -1,4 +1,4 @@
-package com.hs.construction;
+package com.hs.construction.hard;
 
 /* Given an array ‘pre[]’ that represents Preorder traversal of a special binary tree where every 
  * node has either 0 or 2 children. One more array ‘preLN[]’ is given which has only two possible 
@@ -11,9 +11,9 @@ class Index {
 	int index = 0;
 }
 
-class ConstrutSpecialBinaryTreeFromPreOrder {
+class ConstructSpecialBinaryTreeFromPreOrder {
 
-	private Index myindex = new Index();
+	private Index myIndex = new Index();
 
 	private Node constructTreeUtil(int pre[], char preLN[], Index index_ptr, int n, Node temp) {
 		// store the current value of index in pre[]
@@ -41,7 +41,7 @@ class ConstrutSpecialBinaryTreeFromPreOrder {
 
 	// A wrapper over constructTreeUtil()
 	private Node constructTree(int pre[], char preLN[], int n, Node node) {
-		return constructTreeUtil(pre, preLN, myindex, n, node);
+		return constructTreeUtil(pre, preLN, myIndex, n, node);
 	}
 
 	/* This function is used only for testing */
@@ -57,7 +57,7 @@ class ConstrutSpecialBinaryTreeFromPreOrder {
 
 	// driver function to test the above functions
 	public static void main(String args[]) {
-		ConstrutSpecialBinaryTreeFromPreOrder tree = new ConstrutSpecialBinaryTreeFromPreOrder();
+		ConstructSpecialBinaryTreeFromPreOrder tree = new ConstructSpecialBinaryTreeFromPreOrder();
 		int pre[] = new int[] { 10, 30, 20, 5, 15 };
 		char preLN[] = new char[] { 'N', 'N', 'L', 'L', 'L' };
 		int n = pre.length;

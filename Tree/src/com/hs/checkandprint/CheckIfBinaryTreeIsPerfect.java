@@ -1,5 +1,11 @@
 package com.hs.checkandprint;
 
+/*Below is an idea to check whether a given Binary Tree is perfect or not.  
+
+1) Find depth of any node. Let this depth be d. Now recursively traverse the tree and check for following two conditions. Every 
+internal node should have both children non-empty 
+2) All leaves are at depth ‘d’*/
+// O(n) 
 class CheckIfBinaryTreeIsPerfect {
 
 	private static boolean isPerfect(Node root) {
@@ -17,11 +23,6 @@ class CheckIfBinaryTreeIsPerfect {
 		return d;
 	}
 
-	/*
-	 * This function tests if a binary tree is perfect or not. It basically checks
-	 * for two things : 1) All leaves are at same level 2) All internal nodes have
-	 * two children
-	 */
 	private static boolean isPerfectTree(Node root, int level, int depth) {
 		// An empty tree is perfect
 		if (root == null)

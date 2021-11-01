@@ -1,5 +1,10 @@
 package com.hs.construction;
 
+/*Do a traversal of the given tree. In the traversal, store the old value of the current 
+ * node, recursively call for left and right subtrees and change the value of current 
+ * node as sum of the values returned by the recursive calls. Finally return the sum of 
+ * new value and value (which is sum of values in the subtree rooted with this node). */
+// O(n) 
 class ConvertBinaryTreeToSumTree {
 
 	// Convert a given tree to a tree where every node contains sum of

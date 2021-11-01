@@ -13,6 +13,16 @@ class ListNode {
 	}
 }
 
+/*
+ * We are mainly given level order traversal in sequential access form. We know
+ * head of linked list is always is root of the tree. We take the first node as
+ * root and we also know that the next two nodes are left and right children of
+ * root. So we know partial Binary Tree. The idea is to do Level order traversal
+ * of the partially built Binary Tree using queue and traverse the linked list
+ * at the same time. At every step, we take the parent node from queue, make
+ * next two nodes of linked list as children of the parent node, and enqueue the
+ * next two nodes to queue.
+ */
 // O(n)
 public class ConstructBinaryTreeFromItsLinkedListRepresentation {
 	private ListNode head;
@@ -36,7 +46,7 @@ public class ConstructBinaryTreeFromItsLinkedListRepresentation {
 			return null;
 		}
 
-		// 1.) The first node is always the root node, and add it to the queue
+		// 1.) The first node is always the root node, add it to the queue
 		root = new Node(head.data);
 		queue.add(root);
 
@@ -95,7 +105,7 @@ public class ConstructBinaryTreeFromItsLinkedListRepresentation {
 
 		Node node = tree.convertListToBinaryTree(root);
 
-		System.out.println("Inorder Traversal of the" + " constructed Binary Tree is:");
+		System.out.println("Inorder Traversal of the constructed Binary Tree is:");
 		tree.inorderTraversal(node);
 	}
 }

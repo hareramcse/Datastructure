@@ -1,8 +1,16 @@
 package com.hs.checkandprint;
 
+/*The idea to first find level of given node using the approach discussed here. Once we 
+ * have found level, we can print all nodes at a given level using the approach discussed 
+ * here. The only thing to take care of is, sibling should not be printed. To handle this, 
+ * we change the printing function to first check for sibling and print node only if it 
+ * is not sibling.
+ * */
 class PrintCousinOfBinaryTree {
 
-	/* It returns level of the node if it is present in tree, otherwise returns 0. */
+	/*
+	 * It returns level of the node if it is present in tree, otherwise returns 0.
+	 */
 	private static int getLevel(Node root, Node node, int level) {
 		// base cases
 		if (root == null)
@@ -19,7 +27,10 @@ class PrintCousinOfBinaryTree {
 		return getLevel(root.right, node, level + 1);
 	}
 
-	/* Print nodes at a given level such that sibling of node is not printed if it exists */
+	/*
+	 * Print nodes at a given level such that sibling of node is not printed if it
+	 * exists
+	 */
 	private static void printGivenLevel(Node root, Node node, int level) {
 		// Base cases
 		if (root == null || level < 2)

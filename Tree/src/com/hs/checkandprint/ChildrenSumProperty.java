@@ -1,11 +1,10 @@
 package com.hs.checkandprint;
 
+/*Algorithm: 
+Traverse the given binary tree. For each node check (recursively) if the node and both 
+its children satisfy the Children Sum Property, if so then return true else return false.*/
 class ChildrenSumProperty {
 
-	/*
-	 * returns 1 if children sum property holds for the given node and both of its
-	 * children
-	 */
 	private int isSumProperty(Node node) {
 
 		/* left_data is left child data and right_data is for right child data */

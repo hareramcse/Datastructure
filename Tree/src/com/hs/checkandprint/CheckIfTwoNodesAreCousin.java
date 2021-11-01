@@ -1,5 +1,8 @@
 package com.hs.checkandprint;
 
+/*The idea is to find level of one of the nodes. Using the found level, check if ‘a’ 
+ * and ‘b’ are at this level. If ‘a’ and ‘b’ are at given level, then finally check if 
+ * they are not children of same parent.*/
 class CheckIfTwoNodesAreCousin {
 	// Recursive function to check if two Nodes are siblings
 	private boolean isSibling(Node root, Node a, Node b) {
@@ -31,9 +34,6 @@ class CheckIfTwoNodesAreCousin {
 
 	// Returns 1 if a and b are cousins, otherwise 0
 	private boolean isCousin(Node node, Node a, Node b) {
-		// 1. The two Nodes should be on the same level in the binary
-		// 2. The two Nodes should not be siblings (means
-		// that they should not have the same parent Node).
 		return ((level(node, a, 1) == level(node, b, 1)) && (!isSibling(node, a, b)));
 	}
 

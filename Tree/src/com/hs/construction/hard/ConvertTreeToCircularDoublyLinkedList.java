@@ -1,4 +1,4 @@
-package com.hs.construction;
+package com.hs.construction.hard;
 
 public class ConvertTreeToCircularDoublyLinkedList {
 	// concatenate both the lists and returns the head of the List

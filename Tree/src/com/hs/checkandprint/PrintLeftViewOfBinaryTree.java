@@ -1,5 +1,9 @@
 package com.hs.checkandprint;
 
+/*
+ * The left view contains all nodes that are first nodes in their levels. A simple 
+ * solution is to do level order traversal and print the first node in every level.
+ * */
 class PrintLeftViewOfBinaryTree {
 	private int max_level;
 

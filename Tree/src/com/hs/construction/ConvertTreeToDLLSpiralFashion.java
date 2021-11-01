@@ -4,6 +4,17 @@ import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Stack;
 
+/* We can do this by doing a spiral order traversal in O(n) time and O(n) extra space. 
+ * The idea is to use deque (Double-ended queue) that can be expanded or contracted on 
+ * both ends (either its front or its back). We do something similar to level order 
+ * traversal but to maintain spiral order, for every odd level, we dequeue node from 
+ * the front and inserts its left and right children in the back of the deque data 
+ * structure. And for each even level, we dequeue node from the back and inserts its 
+ * right and left children in the front of deque. We also maintain a stack to store 
+ * Binary Tree nodes. Whenever we pop nodes from deque, we push that node into stack. 
+ * Later, we pop all nodes from stack and push the nodes in the beginning of the list.
+ * We can avoid use of stack if we maintain a tail pointer that always points to last 
+ * node of DLL and inserts nodes in O(1) time in the end.*/
 public class ConvertTreeToDLLSpiralFashion {
 	Node head;
 

@@ -2,6 +2,11 @@ package com.hs.checkandprint;
 
 import java.io.IOException;
 
+/* We need to check whether each non-leaf node (parent) satisfies the heap property. For 
+ * this, we check whether each parent (at index i) is smaller than its children 
+ * (at indices 2*i+1 and 2*i+2, if the parent has two children). If only one child,
+ * we only check the parent against index 2*i+1.
+ * */
 public class GivenLevelOrderCheckIfTreeIsMinHeap {
 	// Returns true if given level order traversal is Min Heap.
 	private static boolean isMinHeap(int[] level) {

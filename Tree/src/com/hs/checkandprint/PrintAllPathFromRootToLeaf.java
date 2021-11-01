@@ -2,20 +2,11 @@ package com.hs.checkandprint;
 
 class PrintAllPathFromRootToLeaf {
 
-	/*
-	 * Given a binary tree, print out all of its root-to-leaf paths, one per line.
-	 * Uses a recursive helper to do the work.
-	 */
 	private void printPaths(Node root) {
 		int path[] = new int[1000];
 		printPathsRecur(root, path, 0);
 	}
 
-	/*
-	 * Recursive helper function -- given a node, and an array containing the path
-	 * from the root node up to but not including this node, print out all the
-	 * root-leaf paths.
-	 */
 	private void printPathsRecur(Node root, int path[], int pathLen) {
 		if (root == null)
 			return;
