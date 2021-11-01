@@ -4,7 +4,7 @@ class ConvertBinaryTreeToSumTree {
 
 	// Convert a given tree to a tree where every node contains sum of
 	// values of nodes in left and right subtrees in the original tree
-	int toSumTree(Node root) {
+	private int toSumTree(Node root) {
 		// Base case
 		if (root == null)
 			return 0;
@@ -22,7 +22,7 @@ class ConvertBinaryTreeToSumTree {
 	}
 
 	// A utility function to print inorder traversal of a Binary Tree
-	void printInorder(Node root) {
+	private void printInorder(Node root) {
 		if (root == null)
 			return;
 		printInorder(root.left);
@@ -45,8 +45,6 @@ class ConvertBinaryTreeToSumTree {
 
 		tree.toSumTree(root);
 
-		// Print inorder traversal of the converted tree to test result
-		// of toSumTree()
 		System.out.println("Inorder Traversal of the resultant tree is:");
 		tree.printInorder(root);
 	}

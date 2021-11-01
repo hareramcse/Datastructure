@@ -1,9 +1,15 @@
 package com.hs.construction;
 
 public class ConvertTernaryExpressionBinaryTree {
-	// Function to convert Ternary Expression to a Binary
-	// Tree. It return the root of tree
-	Node convertExpression(char[] expression, int i) {
+
+	/*
+	 * Idea is that we traverse a string make first character as root and do
+	 * following step recursively . 1. If we see Symbol ‘?’ …….. then we add next
+	 * character as the left child of root. 2. If we see Symbol ‘:’ …….. then we add
+	 * it as the right child of current root. do this process until we traverse all
+	 * element of “String”.
+	 */
+	private Node convertExpression(char[] expression, int i) {
 		// Base case
 		if (i >= expression.length)
 			return null;
@@ -30,7 +36,7 @@ public class ConvertTernaryExpressionBinaryTree {
 	}
 
 	// function print tree
-	public void printTree(Node root) {
+	private void printTree(Node root) {
 		if (root == null)
 			return;
 

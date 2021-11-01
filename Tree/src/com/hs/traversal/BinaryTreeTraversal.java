@@ -2,11 +2,8 @@ package com.hs.traversal;
 
 public class BinaryTreeTraversal {
 
-	/*
-	 * Given a binary tree, print its nodes according to the "bottom-up" postorder
-	 * traversal.
-	 */
-	void printPostorder(Node root) {
+	 // Given a binary tree, print its nodes according to the "bottom-up" postorder traversal.
+	private void printPostorder(Node root) {
 		if (root == null)
 			return;
 
@@ -20,8 +17,8 @@ public class BinaryTreeTraversal {
 		System.out.print(root.data + " ");
 	}
 
-	/* Given a binary tree, print its nodes in inorder */
-	void printInorder(Node root) {
+	// Given a binary tree, print its nodes in inorder
+	private void printInorder(Node root) {
 		if (root == null)
 			return;
 
@@ -35,8 +32,8 @@ public class BinaryTreeTraversal {
 		printInorder(root.right);
 	}
 
-	/* Given a binary tree, print its nodes in preorder */
-	void printPreorder(Node root) {
+	// Given a binary tree, print its nodes in preorder
+	private void printPreorder(Node root) {
 		if (root == null)
 			return;
 

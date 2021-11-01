@@ -2,36 +2,32 @@ package com.hs.construction;
 
 public class ConstructCompleteBinaryTreeFromPreAndPostOrder {
 	// variable to hold index in pre[] array
-	static int preindex;
+	private static int preIndex;
 
-	// A recursive function to construct Full
-	// from pre[] and post[]. preIndex is used
-	// to keep track of index in pre[]. l is
-	// low index and h is high index for the
-	// current subarray in post[]
-	static Node constructTreeUtil(int pre[], int post[], int l, int h, int size) {
+	// preIndex is used to keep track of index in pre[].
+	// l is low index and h is high index for the current subarray in post[]
+	private static Node constructTreeUtil(int pre[], int post[], int l, int h, int size) {
 
 		// Base case
-		if (preindex >= size || l > h)
+		if (preIndex >= size || l > h)
 			return null;
 
-		// The first node in preorder traversal is
-		// root. So take the node at preIndex from
-		// preorder and make it root, and increment
-		// preIndex
-		Node root = new Node(pre[preindex]);
-		preindex++;
+		// The first node in preorder traversal is root.
+		// So take the node at preIndex from preorder and make it root,
+		// and increment preIndex
+		Node root = new Node(pre[preIndex]);
+		preIndex++;
 
 		// If the current subarry has only one
 		// element, no need to recur or
 		// preIndex > size after incrementing
-		if (l == h || preindex >= size)
+		if (l == h || preIndex >= size)
 			return root;
 		int i;
 
 		// Search the next element of pre[] in post[]
 		for (i = l; i <= h; i++) {
-			if (post[i] == pre[preindex])
+			if (post[i] == pre[preIndex])
 				break;
 		}
 		// Use the index of element found in
@@ -43,17 +39,13 @@ public class ConstructCompleteBinaryTreeFromPreAndPostOrder {
 		}
 		return root;
 	}
-
-	// The main function to construct Full
-	// Binary Tree from given preorder and
-	// postorder traversals. This function
-	// mainly uses constructTreeUtil()
-	static Node constructTree(int pre[], int post[], int size) {
-		preindex = 0;
+	
+	private static Node constructTree(int pre[], int post[], int size) {
+		preIndex = 0;
 		return constructTreeUtil(pre, post, 0, size - 1, size);
 	}
 
-	static void printInorder(Node root) {
+	private static void printInorder(Node root) {
 		if (root == null)
 			return;
 		printInorder(root.left);

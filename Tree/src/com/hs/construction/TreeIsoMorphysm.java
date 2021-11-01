@@ -2,8 +2,8 @@ package com.hs.construction;
 
 public class TreeIsoMorphysm {
 
-	/* Given a binary tree, print its nodes in reverse level order */
-	boolean isIsomorphic(Node n1, Node n2) {
+	// Given a binary tree, print its nodes in reverse level order
+	private boolean isIsomorphic(Node n1, Node n2) {
 		// Both roots are NULL, trees isomorphic by definition
 		if (n1 == null && n2 == null) {
 			return true;

@@ -8,18 +8,15 @@ public class FindNthNodeOfInorderTraversal {
 		if (root == null)
 			return;
 
-		if (count <= n) {
-			/* first recur on left child */
-			NthInorder(root.left, n);
-			count++;
+		NthInorder(root.left, n);
+		count++;
 
-			// when count = n then print element
-			if (count == n)
-				System.out.printf("%d ", root.data);
+		// when count = n then print element
+		if (count == n)
+			System.out.printf("%d ", root.data);
 
-			/* now recur on right child */
-			NthInorder(root.right, n);
-		}
+		/* now recur on right child */
+		NthInorder(root.right, n);
 	}
 
 	/* Driver program to test above functions */

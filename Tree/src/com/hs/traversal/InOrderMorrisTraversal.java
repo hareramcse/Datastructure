@@ -1,10 +1,8 @@
 package com.hs.traversal;
 
 public class InOrderMorrisTraversal {
-	/*
-	 * Function to traverse binary tree without recursion and without stack
-	 */
-	void MorrisTraversal(Node root) {
+	// Function to traverse binary tree without recursion and without stack
+	private void MorrisTraversal(Node root) {
 		Node current, pre;
 
 		if (root == null)

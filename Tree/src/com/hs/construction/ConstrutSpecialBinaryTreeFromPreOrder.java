@@ -1,5 +1,11 @@
 package com.hs.construction;
 
+/* Given an array ‘pre[]’ that represents Preorder traversal of a special binary tree where every 
+ * node has either 0 or 2 children. One more array ‘preLN[]’ is given which has only two possible 
+ * values ‘L’ and ‘N’. The value ‘L’ in ‘preLN[]’ indicates that the corresponding node in Binary 
+ * Tree is a leaf node and value ‘N’ indicates that the corresponding node is a non-leaf node. 
+ * Write a function to construct the tree from the given two arrays.
+ * */
 class Index {
 
 	int index = 0;
@@ -7,16 +13,11 @@ class Index {
 
 class ConstrutSpecialBinaryTreeFromPreOrder {
 
-	Index myindex = new Index();
+	private Index myindex = new Index();
 
-	/*
-	 * A recursive function to create a Binary Tree from given pre[] preLN[] arrays.
-	 * The function returns root of tree. index_ptr is used to update index values
-	 * in recursive calls. index must be initially passed as 0
-	 */
-	Node constructTreeUtil(int pre[], char preLN[], Index index_ptr, int n, Node temp) {
-		int index = index_ptr.index; // store the current value of index in
-										// pre[]
+	private Node constructTreeUtil(int pre[], char preLN[], Index index_ptr, int n, Node temp) {
+		// store the current value of index in pre[]
+		int index = index_ptr.index; 
 
 		// Base Case: All nodes are constructed
 		if (index == n) {
@@ -39,23 +40,18 @@ class ConstrutSpecialBinaryTreeFromPreOrder {
 	}
 
 	// A wrapper over constructTreeUtil()
-	Node constructTree(int pre[], char preLN[], int n, Node node) {
+	private Node constructTree(int pre[], char preLN[], int n, Node node) {
 		return constructTreeUtil(pre, preLN, myindex, n, node);
 	}
 
 	/* This function is used only for testing */
-	void printInorder(Node node) {
+	private void printInorder(Node node) {
 		if (node == null) {
 			return;
 		}
 
-		/* first recur on left child */
 		printInorder(node.left);
-
-		/* then print the data of node */
 		System.out.print(node.data + " ");
-
-		/* now recur on right child */
 		printInorder(node.right);
 	}
 

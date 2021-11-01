@@ -2,12 +2,12 @@ package com.hs.construction;
 
 public class ConstructFullBinaryTreeFromPreorderAndPostorder {
 	// variable to hold index in pre[] array
-	static int preindex;
+	private static int preindex;
 
 	// A recursive function to construct Full from pre[] and post[]. preIndex is
 	// used to keep track of index in pre[]. low is low index and high is high index
 	// for the current subarray in post[]
-	static Node constructTreeUtil(int pre[], int post[], int low, int high, int size) {
+	private static Node constructTreeUtil(int pre[], int post[], int low, int high, int size) {
 
 		// Base case
 		if (preindex >= size || low > high)
@@ -40,12 +40,12 @@ public class ConstructFullBinaryTreeFromPreorderAndPostorder {
 
 	// The main function to construct Full Binary Tree from given preorder and
 	// postorder traversals. This function mainly uses constructTreeUtil()
-	static Node constructTree(int pre[], int post[], int size) {
+	private static Node constructTree(int pre[], int post[], int size) {
 		preindex = 0;
 		return constructTreeUtil(pre, post, 0, size - 1, size);
 	}
 
-	static void printInorder(Node root) {
+	private static void printInorder(Node root) {
 		if (root == null)
 			return;
 		printInorder(root.left);

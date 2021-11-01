@@ -2,12 +2,12 @@ package com.hs.construction;
 
 class ConstructTreeFromInorderAndLevelOrder {
 
-	Node buildTree(int in[], int level[]) {
+	private Node buildTree(int in[], int level[]) {
 		Node startnode = null;
 		return constructTree(startnode, level, in, 0, in.length - 1);
 	}
 
-	Node constructTree(Node startNode, int[] levelOrder, int[] inOrder, int inStart, int inEnd) {
+	private Node constructTree(Node startNode, int[] levelOrder, int[] inOrder, int inStart, int inEnd) {
 
 		// if start index is more than end index
 		if (inStart > inEnd)
@@ -44,7 +44,7 @@ class ConstructTreeFromInorderAndLevelOrder {
 	}
 
 	/* Utility function to print inorder traversal of binary tree */
-	void printInorder(Node node) {
+	private void printInorder(Node node) {
 		if (node == null)
 			return;
 		printInorder(node.left);

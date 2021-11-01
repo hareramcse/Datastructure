@@ -3,7 +3,7 @@ package com.hs.construction;
 public class ConvertBinaryTreeToChildrenSum {
 
 	// This function changes a tree to to hold children sum property
-	void convertTree(Node node) {
+	private void convertTree(Node node) {
 		int left_data = 0, right_data = 0, diff;
 
 		// If tree is empty or it's a leaf node then return true
@@ -34,15 +34,14 @@ public class ConvertBinaryTreeToChildrenSum {
 			 * increment subtree by diff
 			 */
 			if (diff < 0)
-
 				// -diff is used to make diff positive
 				increment(node, -diff);
 		}
 	}
 
-	/* This function is used to increment subtree by diff */
-	void increment(Node node, int diff) {
-		/* IF left child is not NULL then increment it */
+	// This function is used to increment subtree by diff
+	private void increment(Node node, int diff) {
+		/* If left child is not NULL then increment it */
 		if (node.left != null) {
 			node.left.data = node.left.data + diff;
 
@@ -56,20 +55,13 @@ public class ConvertBinaryTreeToChildrenSum {
 		}
 	}
 
-	/*
-	 * Given a binary tree, printInorder() prints out its inorder traversal
-	 */
-	void printInorder(Node node) {
+	// Given a binary tree, printInorder() prints out its inorder traversal
+	private void printInorder(Node node) {
 		if (node == null)
 			return;
 
-		/* first recur on left child */
 		printInorder(node.left);
-
-		/* then print the data of node */
 		System.out.print(node.data + " ");
-
-		/* now recur on right child */
 		printInorder(node.right);
 	}
 

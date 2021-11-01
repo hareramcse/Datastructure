@@ -4,117 +4,102 @@ import java.util.Arrays;
 
 public class ConvertBinaryTreeToBST {
 
-	// Represent the root of binary tree
+	private static int index;
 
-	int[] treeArray;
-	int index = 0;
+	// A helper function that stores inorder traversal of a tree rooted with node
+	private static void storeInorder(Node node, int inorder[]) {
+		// Base Case
+		if (node == null)
+			return;
 
-	// convertBTBST() will convert a binary tree to binary search tree
-	public Node convertBTBST(Node root) {
+		// first store the left subtree
+		storeInorder(node.left, inorder);
 
-		// Variable treeSize will hold size of tree
-		int treeSize = calculateSize(root);
-		treeArray = new int[treeSize];
+		// Copy the root's data
+		inorder[index] = node.data;
+		index++; // increase index for next entry
 
-		// Converts binary tree to array
-		convertBTtoArray(root);
-
-		// Sort treeArray
-		Arrays.sort(treeArray);
-
-		// Converts array to binary search tree
-		Node d = createBST(0, treeArray.length - 1);
-		return d;
+		// finally store the right subtree
+		storeInorder(node.right, inorder);
 	}
 
-	// calculateSize() will calculate size of tree
-	public int calculateSize(Node root) {
+	// A helper function to count nodes in a Binary Tree
+	private static int countNodes(Node root) {
 		if (root == null)
 			return 0;
-		else {
-			return calculateSize(root.left) + calculateSize(root.right) + 1;
-		}
+		return countNodes(root.left) + countNodes(root.right) + 1;
 	}
 
-	// convertBTtoArray() will convert the given binary tree to its corresponding
-	// array representation
-	public void convertBTtoArray(Node root) {
-		// Check whether tree is empty
-		if (root == null) {
-			System.out.println("Tree is empty");
+	/*
+	 * A helper function that copies contents of arr[] to Binary Tree. This function
+	 * basically does Inorder traversal of Binary Tree and one by one copy arr[]
+	 * elements to Binary Tree nodes
+	 */
+	private static void arrayToBST(int[] arr, Node root) {
+		// Base Case
+		if (root == null)
 			return;
-		} else {
-			if (root.left != null)
-				convertBTtoArray(root.left);
-			// Adds nodes of binary tree to treeArray
-			treeArray[index] = root.data;
-			index++;
-			if (root.right != null)
-				convertBTtoArray(root.right);
-		}
+
+		/* first update the left subtree */
+		arrayToBST(arr, root.left);
+
+		/* Now update root's data and increment index */
+		root.data = arr[index];
+		index++;
+
+		/* finally update the right subtree */
+		arrayToBST(arr, root.right);
 	}
 
-	// createBST() will convert array to binary search tree
-	public Node createBST(int start, int end) {
-
-		// It will avoid overflow
-		if (start > end) {
-			return null;
-		}
-
-		// Variable will store middle element of array and make it root of binary search
-		// tree
-		int mid = (start + end) / 2;
-		Node node = new Node(treeArray[mid]);
-
-		// Construct left subtree
-		node.left = createBST(start, mid - 1);
-
-		// Construct right subtree
-		node.right = createBST(mid + 1, end);
-
-		return node;
-	}
-
-	// inorder() will perform inorder traversal on binary search tree
-	public void inorderTraversal(Node root) {
-
-		// Check whether tree is empty
-		if (root == null) {
-			System.out.println("Tree is empty");
+	// This function converts a given Binary Tree to BST
+	private static void binaryTreeToBST(Node root) {
+		// base case: tree is empty
+		if (root == null)
 			return;
-		} else {
 
-			if (root.left != null)
-				inorderTraversal(root.left);
-			System.out.print(root.data + " ");
-			if (root.right != null)
-				inorderTraversal(root.right);
+		/*
+		 * Count the number of nodes in Binary Tree so that we know the size of
+		 * temporary array to be created
+		 */
+		int n = countNodes(root);
 
-		}
+		// Create a temp array arr[] and store inorder traversal of tree in arr[]
+		int arr[] = new int[n];
+
+		storeInorder(root, arr);
+
+		// Sort the array using library function for quick sort
+		Arrays.sort(arr);
+
+		// Copy array elements back to Binary Tree
+		index = 0;
+		arrayToBST(arr, root);
 	}
 
-	public static void main(String[] args) {
+	/* Utility function to print inorder traversal of Binary Tree */
+	private static void printInorder(Node node) {
+		if (node == null)
+			return;
 
-		ConvertBinaryTreeToBST bt = new ConvertBinaryTreeToBST();
-		// Add nodes to the binary tree
-		Node root = new Node(1);
-		root.left = new Node(2);
-		root.right = new Node(3);
-		root.left.left = new Node(4);
-		root.left.right = new Node(5);
-		root.right.left = new Node(6);
-		root.right.right = new Node(7);
-
-		// Display given binary tree
-		System.out.println("Inorder representation of binary tree: ");
-		bt.inorderTraversal(root);
-
-		// Converts binary tree to corresponding binary search tree
-		Node bst = bt.convertBTBST(root);
-
-		// Display corresponding binary search tree
-		System.out.println("\nInorder representation of resulting binary search tree: ");
-		bt.inorderTraversal(bst);
+		printInorder(node.left);
+		System.out.print(node.data + " ");
+		printInorder(node.right);
 	}
+
+	/* Driver function to test above functions */
+	public static void main(String args[]) {
+		Node root = new Node(10);
+		root.left = new Node(30);
+		root.right = new Node(15);
+		root.left.left = new Node(20);
+		root.right.right = new Node(5);
+
+		// convert Binary Tree to BST
+		binaryTreeToBST(root);
+
+		System.out.println("Following is Inorder Traversal of the converted BST: ");
+		printInorder(root);
+
+	}
+
 }

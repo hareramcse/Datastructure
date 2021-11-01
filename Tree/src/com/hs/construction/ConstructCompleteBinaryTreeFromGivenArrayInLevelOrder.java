@@ -2,7 +2,7 @@ package com.hs.construction;
 
 public class ConstructCompleteBinaryTreeFromGivenArrayInLevelOrder {
 
-	public Node insertLevelOrder(int[] arr, Node root, int i) {
+	private Node insertLevelOrder(int[] arr, Node root, int i) {
 		// Base case for recursion
 		if (i < arr.length) {
 			Node temp = new Node(arr[i]);
@@ -18,7 +18,7 @@ public class ConstructCompleteBinaryTreeFromGivenArrayInLevelOrder {
 	}
 
 	// Function to print tree nodes in InOrder fashion
-	public void inOrder(Node root) {
+	private void inOrder(Node root) {
 		if (root != null) {
 			inOrder(root.left);
 			System.out.print(root.data + " ");

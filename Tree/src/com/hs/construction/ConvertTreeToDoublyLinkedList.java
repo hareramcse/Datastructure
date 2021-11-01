@@ -11,11 +11,11 @@ package com.hs.construction;
 public class ConvertTreeToDoublyLinkedList {
 
 	// 'head' reference to head node of created double linked list
-	Node head;
+	private Node head;
 
 	// A simple recursive function to convert a given
 	// Binary tree to Doubly Linked List
-	void binaryTreeToDoublyLinkedList(Node root) {
+	private void binaryTreeToDoublyLinkedList(Node root) {
 		// Base cases
 		if (root == null)
 			return;
@@ -38,7 +38,7 @@ public class ConvertTreeToDoublyLinkedList {
 	}
 
 	/* Function to print nodes in a given doubly linked list */
-	void printList(Node node) {
+	private void printList(Node node) {
 		while (node != null) {
 			System.out.print(node.data + " ");
 			node = node.right;

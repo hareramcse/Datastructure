@@ -1,33 +1,33 @@
 package com.hs.construction;
 
+/*
+ * Given a Binary Tree (Every node has at most 2 children) where each node has value 
+ * either 0 or 1. Convert a given Binary tree to a tree that holds Logical AND 
+ * property, i.e., each node value should be the logical AND between its children*/
 public class ConvertTreeThatHoldesLogicalANDProperty {
 	// Convert the given tree to a tree where
 	// each node is logical AND of its children
 	// The main idea is to do Postorder traversal
-	void convertTree(Node root) {
+	private void convertTree(Node root) {
 		if (root == null)
 			return;
 
-		/* first recur on left child */
+		// first recur on left child
 		convertTree(root.left);
 
-		/* then recur on right child */
+		// then recur on right child
 		convertTree(root.right);
 
 		if (root.left != null && root.right != null)
 			root.data = (root.left.data) & (root.right.data);
 	}
 
-	void printInorder(Node root) {
+	private void printInorder(Node root) {
 		if (root == null)
 			return;
 
-		/* first recur on left child */
 		printInorder(root.left);
-
 		System.out.println(root.data);
-
-		/* now recur on right child */
 		printInorder(root.right);
 	}
 

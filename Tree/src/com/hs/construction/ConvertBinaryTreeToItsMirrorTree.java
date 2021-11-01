@@ -2,7 +2,7 @@ package com.hs.construction;
 
 class ConvertBinaryTreeToItsMirrorTree {
 
-	Node mirror(Node node) {
+	private Node mirror(Node node) {
 		if (node == null)
 			return node;
 
@@ -17,11 +17,7 @@ class ConvertBinaryTreeToItsMirrorTree {
 		return node;
 	}
 
-	/*
-	 * Helper function to test mirror(). Given a binary search tree, print out its
-	 * data elements in increasing sorted order.
-	 */
-	void inOrder(Node node) {
+	private void inOrder(Node node) {
 		if (node == null)
 			return;
 

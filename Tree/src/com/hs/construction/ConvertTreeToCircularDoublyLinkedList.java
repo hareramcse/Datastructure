@@ -1,13 +1,12 @@
 package com.hs.construction;
 
 public class ConvertTreeToCircularDoublyLinkedList {
-	// concatenate both the lists and returns the head
-	// of the List
-	public Node concatenate(Node leftList, Node rightList) {
+	// concatenate both the lists and returns the head of the List
+	private Node concatenate(Node leftList, Node rightList) {
 		// If either of the list is empty, then return the other list
 		if (leftList == null)
 			return rightList;
-		
+
 		if (rightList == null)
 			return leftList;
 
@@ -34,10 +33,9 @@ public class ConvertTreeToCircularDoublyLinkedList {
 		return leftList;
 	}
 
-	// Method converts a tree to a circular
-	// Link List and then returns the head
-	// of the Link List
-	public Node bTreeToCList(Node root) {
+	// Method converts a tree to a circular Link List and then returns the head of
+	// the Link List
+	private  Node bTreeToCList(Node root) {
 		if (root == null)
 			return null;
 
@@ -58,7 +56,7 @@ public class ConvertTreeToCircularDoublyLinkedList {
 	}
 
 	// Display Circular Link List
-	public void display(Node head) {
+	private void display(Node head) {
 		System.out.println("Circular Linked List is :");
 		Node itr = head;
 		do {

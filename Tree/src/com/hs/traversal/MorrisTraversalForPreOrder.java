@@ -3,7 +3,7 @@ package com.hs.traversal;
 class MorrisTraversalForPreOrder {
 
 	// Preorder traversal without recursion and without stack
-	void morrisTraversalPreorder(Node root) {
+	private void morrisTraversalPreorder(Node root) {
 		while (root != null) {
 
 			// If left child is null, print the current node data. Move to
@@ -38,7 +38,7 @@ class MorrisTraversalForPreOrder {
 	}
 
 	// Function for Standard preorder traversal
-	void preorder(Node node) {
+	private void preorder(Node node) {
 		if (node != null) {
 			System.out.print(node.data + " ");
 			preorder(node.left);

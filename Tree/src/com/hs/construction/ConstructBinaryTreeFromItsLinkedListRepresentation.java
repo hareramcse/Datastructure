@@ -3,24 +3,30 @@ package com.hs.construction;
 import java.util.LinkedList;
 import java.util.Queue;
 
+class ListNode {
+	int data;
+	ListNode next;
+
+	ListNode(int d) {
+		data = d;
+		next = null;
+	}
+}
+
+// O(n)
 public class ConstructBinaryTreeFromItsLinkedListRepresentation {
-	ListNode head;
+	private ListNode head;
 
 	// Function to insert a node at the beginning of the Linked List
-	void push(int new_data) {
-		// allocate node and assign data
+	private void push(int new_data) {
 		ListNode new_node = new ListNode(new_data);
-
-		// link the old list off the new node
 		new_node.next = head;
-
-		// move the head to point to the new node
 		head = new_node;
 	}
 
 	// converts a given linked list representing a complete binary tree into the
 	// linked representation of binary tree.
-	Node convertListToBinaryTree(Node root) {
+	private Node convertListToBinaryTree(Node root) {
 		// queue to store the parent nodes
 		Queue<Node> queue = new LinkedList<Node>();
 
@@ -39,14 +45,15 @@ public class ConstructBinaryTreeFromItsLinkedListRepresentation {
 
 		// until the end of linked list is reached, do the following steps
 		while (head != null) {
-			// 2.a) take the parent node from the queue and remove it from queue
+			// a) take the parent node from the queue and remove it from queue
 			Node parent = queue.peek();
 			queue.poll();
 
-			// 2.c) take next two nodes from the linked list.
+			// b) take next two nodes from the linked list.
 			// We will add them as children of the current
-			// parent node in step 2.b. Push them into the
-			// queue so that they will be parents to the
+			// parent node in step
+
+			// c) Push them into the queue so that they will be parents to the
 			// future nodes
 			Node leftChild = null, rightChild = null;
 			leftChild = new Node(head.data);
@@ -58,7 +65,7 @@ public class ConstructBinaryTreeFromItsLinkedListRepresentation {
 				head = head.next;
 			}
 
-			// 2.b) assign the left and right children of parent
+			// d) assign the left and right children of parent
 			parent.left = leftChild;
 			parent.right = rightChild;
 		}
@@ -67,11 +74,11 @@ public class ConstructBinaryTreeFromItsLinkedListRepresentation {
 	}
 
 	// Utility function to traverse the binary tree after conversion
-	void inorderTraversal(Node node) {
-		if (node != null) {
-			inorderTraversal(node.left);
-			System.out.print(node.data + " ");
-			inorderTraversal(node.right);
+	private void inorderTraversal(Node root) {
+		if (root != null) {
+			inorderTraversal(root.left);
+			System.out.print(root.data + " ");
+			inorderTraversal(root.right);
 		}
 	}
 

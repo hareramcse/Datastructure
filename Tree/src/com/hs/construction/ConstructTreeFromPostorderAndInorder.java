@@ -4,42 +4,32 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ConstructTreeFromPostorderAndInorder {
-	Node buildUtil(int in[], int post[], int inStrt, int inEnd, int pIndex, Map<Integer, Integer> map) {
+	private Node buildUtil(int in[], int post[], int inStrt, int inEnd, int pIndex, Map<Integer, Integer> map) {
 		// Base case
 		if (inStrt > inEnd)
 			return null;
 
-		/*
-		 * Pick current node from Postorder traversal using postIndex and decrement
-		 * postIndex
-		 */
+		 // Pick current node from Postorder using postIndex and decrement postIndex
 		int curr = post[pIndex];
 		Node node = new Node(curr);
 		pIndex--;
 
-		/* If this node has no children then return */
+		// If this node has no children then return
 		if (inStrt == inEnd)
 			return node;
 
-		/*
-		 * Else find the index of this node in Inorder traversal
-		 */
+		//Else find the index of this node in Inorder traversal
 		int iIndex = map.get(curr);
 
-		/*
-		 * Using index in Inorder traversal, construct left and right subtress
-		 */
+        // Using index in Inorder traversal, construct left and right subtress
 		node.right = buildUtil(in, post, iIndex + 1, inEnd, pIndex, map);
 		node.left = buildUtil(in, post, inStrt, iIndex - 1, pIndex, map);
 
 		return node;
 	}
 
-	// This function mainly creates an unordered_map, then
-	// calls buildTreeUtil()
-	Node buildTree(int in[], int post[], int len) {
-		// Store indexes of all items so that we
-		// we can quickly find later
+	private Node buildTree(int in[], int post[], int len) {
+		// Store indexes of all items so that we can quickly find later
 		Map<Integer, Integer> map = new HashMap<>();
 		for (int i = 0; i < len; i++)
 			map.put(in[i], i);
@@ -49,7 +39,7 @@ public class ConstructTreeFromPostorderAndInorder {
 	}
 
 	/* This funtcion is here just to test */
-	void preOrder(Node node) {
+	private void preOrder(Node node) {
 		if (node == null)
 			return;
 		System.out.print(node.data + " ");
