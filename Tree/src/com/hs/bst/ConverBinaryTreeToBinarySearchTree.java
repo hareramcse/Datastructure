@@ -7,8 +7,7 @@ public class ConverBinaryTreeToBinarySearchTree {
 	int[] treeArray;
 	int index = 0;
 
-	// convertBTBST() will convert a binary tree to binary search tree
-	public Node convertBTBST(Node root) {
+	private Node convertBTBST(Node root) {
 
 		// Variable treeSize will hold size of tree
 		int treeSize = calculateSize(root);
@@ -25,8 +24,7 @@ public class ConverBinaryTreeToBinarySearchTree {
 		return d;
 	}
 
-	// calculateSize() will calculate size of tree
-	public int calculateSize(Node root) {
+	private int calculateSize(Node root) {
 		int size = 0;
 		if (root == null)
 			return 0;
@@ -38,7 +36,7 @@ public class ConverBinaryTreeToBinarySearchTree {
 
 	// convertBTtoArray() will convert the given binary tree to its corresponding
 	// array representation
-	public void convertBTtoArray(Node root) {
+	private void convertBTtoArray(Node root) {
 		// Check whether tree is empty
 		if (root == null) {
 			System.out.println("Tree is empty");
@@ -55,7 +53,7 @@ public class ConverBinaryTreeToBinarySearchTree {
 	}
 
 	// createBST() will convert array to binary search tree
-	public Node createBST(int start, int end) {
+	private Node createBST(int start, int end) {
 
 		// It will avoid overflow
 		if (start > end) {
@@ -77,7 +75,7 @@ public class ConverBinaryTreeToBinarySearchTree {
 	}
 
 	// inorder() will perform inorder traversal on binary search tree
-	public void inorderTraversal(Node root) {
+	private void inorderTraversal(Node root) {
 
 		Node node = root;
 		// Check whether tree is empty
@@ -85,7 +83,6 @@ public class ConverBinaryTreeToBinarySearchTree {
 			System.out.println("Tree is empty");
 			return;
 		} else {
-
 			if (node.left != null)
 				inorderTraversal(node.left);
 			System.out.print(node.data + " ");

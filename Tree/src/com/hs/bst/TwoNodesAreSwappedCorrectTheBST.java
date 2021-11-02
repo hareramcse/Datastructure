@@ -2,7 +2,7 @@ package com.hs.bst;
 
 public class TwoNodesAreSwappedCorrectTheBST {
 
-	Node first, middle, last, prev;
+	private Node first, middle, last, prev;
 
 	// This function does inorder traversal
 	// to find out the two swapped nodes.
@@ -12,7 +12,7 @@ public class TwoNodesAreSwappedCorrectTheBST {
 	// and middle contain the resultant nodes
 	// Else, first and last contain the
 	// resultant nodes
-	void correctBSTUtil(Node root) {
+	private void correctBSTUtil(Node root) {
 		if (root != null) {
 			// Recur for the left subtree
 			correctBSTUtil(root.left);
@@ -43,12 +43,7 @@ public class TwoNodesAreSwappedCorrectTheBST {
 		}
 	}
 
-	// A function to fix a given BST where
-	// two nodes are swapped. This function
-	// uses correctBSTUtil() to find out
-	// two nodes and swaps the nodes to
-	// fix the BST
-	void correctBST(Node root) {
+	private void correctBST(Node root) {
 		// Initialize pointers needed
 		// for correctBSTUtil()
 		first = middle = last = prev = null;
@@ -74,7 +69,7 @@ public class TwoNodesAreSwappedCorrectTheBST {
 		// passed tree is really BST.
 	}
 
-	void printInorder(Node node) {
+	private void printInorder(Node node) {
 		if (node == null)
 			return;
 		printInorder(node.left);

@@ -2,7 +2,7 @@ package com.hs.bst;
 
 public class InOrderSuccessorOfBST {
 
-	public Node inOrderSuccessor(Node root, Node k) {
+	private Node inOrderSuccessor(Node root, Node k) {
 		// step 1 of the above algorithm
 		if (k.right != null)
 			return findMinNode(k.right);
@@ -23,7 +23,7 @@ public class InOrderSuccessorOfBST {
 		return successor;
 	}
 
-	Node findMinNode(Node root) {
+	private Node findMinNode(Node root) {
 		if (root == null)
 			return root;
 		while (root.left != null) {

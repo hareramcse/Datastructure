@@ -8,11 +8,9 @@ public class MinValueInBinaryTree {
 	 * the caller should then use (the standard trick to avoid using reference
 	 * parameters).
 	 */
-	Node insert(Node node, int data) {
+	private Node insert(Node node, int data) {
 
-		/*
-		 * 1. If the tree is empty, return a new, single node
-		 */
+		// 1. If the tree is empty, return a new, single node
 		if (node == null) {
 			return (new Node(data));
 		} else {
@@ -33,7 +31,7 @@ public class MinValueInBinaryTree {
 	 * Given a non-empty binary search tree, return the minimum data value found in
 	 * that tree. Note that the entire tree does not need to be searched.
 	 */
-	int minvalue(Node node) {
+	private int minvalue(Node node) {
 		Node current = node;
 
 		/* loop down to find the leftmost leaf */

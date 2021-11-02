@@ -2,23 +2,21 @@ package com.hs.bst;
 
 public class CommonAncestorInBST {
 
-	/*
-	 * Function to find LCA of n1 and n2. The function assumes that both n1 and n2
-	 * are present in BST
-	 */
-	Node lca(Node node, int n1, int n2) {
-		if (node == null)
+	// Function to find LCA of n1 and n2. The function assumes that both n1 and n2
+	// are present in BST
+	private Node lca(Node root, int n1, int n2) {
+		if (root == null)
 			return null;
 
 		// If both n1 and n2 are smaller than root, then LCA lies in left
-		if (node.data > n1 && node.data > n2)
-			return lca(node.left, n1, n2);
+		if (root.data > n1 && root.data > n2)
+			return lca(root.left, n1, n2);
 
 		// If both n1 and n2 are greater than root, then LCA lies in right
-		if (node.data < n1 && node.data < n2)
-			return lca(node.right, n1, n2);
+		if (root.data < n1 && root.data < n2)
+			return lca(root.right, n1, n2);
 
-		return node;
+		return root;
 	}
 
 	public static void main(String args[]) {

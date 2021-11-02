@@ -1,7 +1,7 @@
 package com.hs.bst;
 
 public class CheckIfGivenSortedSubSequenceExistInBST {
-	void seqExistUtil(Node root, int seq[], int index) {
+	private void seqExistUtil(Node root, int seq[], int index) {
 		if (root == null)
 			return;
 
@@ -19,7 +19,7 @@ public class CheckIfGivenSortedSubSequenceExistInBST {
 
 	// A wrapper over seqExistUtil. It returns true
 	// if seq[0..n-1] exists in tree.
-	boolean seqExist(Node root, int seq[], int n) {
+	private boolean seqExist(Node root, int seq[], int n) {
 		// Initialize index in seq[]
 		int index = 0;
 

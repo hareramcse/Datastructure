@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class FindPairSumEqualToKInBST {
 
-	boolean findpairUtil(Node root, int sum, Set<Integer> set) {
+	private boolean findpairUtil(Node root, int sum, Set<Integer> set) {
 		if (root == null)
 			return false;
 
@@ -21,7 +21,7 @@ public class FindPairSumEqualToKInBST {
 		return findpairUtil(root.right, sum, set);
 	}
 
-	void findPair(Node root, int sum) {
+	private void findPair(Node root, int sum) {
 		Set<Integer> set = new HashSet<>();
 		if (!findpairUtil(root, sum, set))
 			System.out.println();

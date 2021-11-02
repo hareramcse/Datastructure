@@ -11,7 +11,7 @@ public class ConstructBSTFromPreOrderTraversalRecursiveWay {
 
 	// A recursive function to construct BST from pre[]. preIndex is used
 	// to keep track of index in pre[].
-	Node constructTreeUtil(int pre[], Index preIndex, int key, int min, int max, int size) {
+	private Node constructTreeUtil(int pre[], Index preIndex, int key, int min, int max, int size) {
 
 		// Base case
 		if (preIndex.index >= size) {
@@ -44,14 +44,12 @@ public class ConstructBSTFromPreOrderTraversalRecursiveWay {
 		return root;
 	}
 
-	// The main function to construct BST from given preorder traversal.
-	// This function mainly uses constructTreeUtil()
-	Node constructTree(int pre[], int size) {
+	private Node constructTree(int pre[], int size) {
 		return constructTreeUtil(pre, index, pre[0], Integer.MIN_VALUE, Integer.MAX_VALUE, size);
 	}
 
 	// A utility function to print inorder traversal of a Binary Tree
-	void printInorder(Node node) {
+	private void printInorder(Node node) {
 		if (node == null) {
 			return;
 		}

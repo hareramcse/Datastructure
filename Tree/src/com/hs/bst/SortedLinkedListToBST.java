@@ -3,13 +3,13 @@ package com.hs.bst;
 class SortedLinkedListToBST {
 
 	/* head node of link list */
-	static Node head;
+	private static Node head;
 
 	/*
 	 * This function counts the number of nodes in Linked List and then calls
 	 * sortedListToBSTRecur() to construct BST
 	 */
-	Node sortedListToBST() {
+	private Node sortedListToBST() {
 		/* Count the number of nodes in Linked List */
 		int n = countNodes(head);
 
@@ -21,7 +21,7 @@ class SortedLinkedListToBST {
 	 * The main function that constructs balanced BST and returns root of it. n -->
 	 * No. of nodes in the Doubly Linked List
 	 */
-	Node sortedListToBSTRecur(int n) {
+	private Node sortedListToBSTRecur(int n) {
 		/* Base Case */
 		if (n <= 0)
 			return null;
@@ -51,11 +51,7 @@ class SortedLinkedListToBST {
 		return root;
 	}
 
-	/* UTILITY FUNCTIONS */
-	/*
-	 * A utility function that returns count of nodes in a given Linked List
-	 */
-	int countNodes(Node head) {
+	private int countNodes(Node head) {
 		int count = 0;
 		Node temp = head;
 		while (temp != null) {
@@ -65,16 +61,12 @@ class SortedLinkedListToBST {
 		return count;
 	}
 
-	/*
-	 * Function to insert a node at the beginging of the Doubly Linked List
-	 */
-	void push(int new_data) {
+	// Function to insert a node at the beginging of the Doubly Linked List
+	private void push(int new_data) {
 		/* allocate node */
 		Node new_node = new Node(new_data);
 
-		/*
-		 * since we are adding at the begining, prev is always NULL
-		 */
+		// since we are adding at the begining, prev is always NULL
 		new_node.prev = null;
 
 		/* link the old list off the new node */
@@ -89,7 +81,7 @@ class SortedLinkedListToBST {
 	}
 
 	/* Function to print nodes in a given linked list */
-	void printList(Node node) {
+	private void printList(Node node) {
 		while (node != null) {
 			System.out.print(node.data + " ");
 			node = node.next;
@@ -97,7 +89,7 @@ class SortedLinkedListToBST {
 	}
 
 	/* A utility function to print preorder traversal of BST */
-	void preOrder(Node node) {
+	private void preOrder(Node node) {
 		if (node == null)
 			return;
 		System.out.print(node.data + " ");
@@ -105,14 +97,10 @@ class SortedLinkedListToBST {
 		preOrder(node.right);
 	}
 
-	/* Drier program to test above functions */
+	/* Driver program to test above functions */
 	public static void main(String[] args) {
 		SortedLinkedListToBST llist = new SortedLinkedListToBST();
 
-		/*
-		 * Let us create a sorted linked list to test the functions Created linked list
-		 * will be 7->6->5->4->3->2->1
-		 */
 		llist.push(7);
 		llist.push(6);
 		llist.push(5);

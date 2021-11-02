@@ -8,20 +8,19 @@ public class ConvertBSTToBalancedBST {
 	 * This function traverse the skewed binary tree and stores its nodes pointers
 	 * in vector nodes[]
 	 */
-	void storeBSTNodes(Node root, Vector<Node> nodes) {
+	private void storeBSTNodes(Node root, Vector<Node> nodes) {
 		// Base case
 		if (root == null)
 			return;
 
-		// Store nodes in Inorder (which is sorted
-		// order for BST)
+		// Store nodes in Inorder (which is sorted order for BST)
 		storeBSTNodes(root.left, nodes);
 		nodes.add(root);
 		storeBSTNodes(root.right, nodes);
 	}
 
 	/* Recursive function to construct binary tree */
-	Node buildTreeUtil(Vector<Node> nodes, int start, int end) {
+	private Node buildTreeUtil(Vector<Node> nodes, int start, int end) {
 		// base case
 		if (start > end)
 			return null;
@@ -30,18 +29,15 @@ public class ConvertBSTToBalancedBST {
 		int mid = (start + end) / 2;
 		Node node = nodes.get(mid);
 
-		/*
-		 * Using index in Inorder traversal, construct left and right subtress
-		 */
+		// Using index in Inorder traversal, construct left and right subtress
 		node.left = buildTreeUtil(nodes, start, mid - 1);
 		node.right = buildTreeUtil(nodes, mid + 1, end);
 
 		return node;
 	}
 
-	// This functions converts an unbalanced BST to
-	// a balanced BST
-	Node buildTree(Node root) {
+	// This functions converts an unbalanced BST to a balanced BST
+	private Node buildTree(Node root) {
 		// Store nodes of given BST in sorted order
 		Vector<Node> nodes = new Vector<Node>();
 		storeBSTNodes(root, nodes);
@@ -52,7 +48,7 @@ public class ConvertBSTToBalancedBST {
 	}
 
 	/* Function to do preorder traversal of tree */
-	void preOrder(Node node) {
+	private void preOrder(Node node) {
 		if (node == null)
 			return;
 		System.out.print(node.data + " ");

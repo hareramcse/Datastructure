@@ -4,8 +4,7 @@ import java.util.Stack;
 
 public class ConstructBSTFromPreOrderTraversalIterativeWay {
 
-	// The main function that constructs BST from pre[]
-	Node constructTree(int pre[], int size) {
+	private Node constructTree(int pre[], int size) {
 
 		// The first element of pre[] is always root
 		Node root = new Node(pre[0]);
@@ -19,9 +18,7 @@ public class ConstructBSTFromPreOrderTraversalIterativeWay {
 		for (int i = 1; i < size; ++i) {
 			Node temp = null;
 
-			/*
-			 * Keep on popping while the next value is greater than stack's top value.
-			 */
+			// Keep on popping while the next value is greater than stack's top value.
 			while (!s.isEmpty() && pre[i] > s.peek().data) {
 				temp = s.pop();
 			}
@@ -45,7 +42,7 @@ public class ConstructBSTFromPreOrderTraversalIterativeWay {
 	}
 
 	// A utility function to print inorder traversal of a Binary Tree
-	void printInorder(Node node) {
+	private void printInorder(Node node) {
 		if (node == null) {
 			return;
 		}

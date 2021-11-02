@@ -1,11 +1,12 @@
 package com.hs.bst;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MergeTwoBalancedBinarySearchTree {
 
 	// Utility function for inorder traversal of the tree
-	void inorder(Node root) {
+	private void inorder(Node root) {
 		if (root == null)
 			return;
 
@@ -15,7 +16,7 @@ public class MergeTwoBalancedBinarySearchTree {
 	}
 
 	// A Utility Method that stores inorder traversal of a tree
-	public ArrayList<Integer> storeInorderUtil(Node node, ArrayList<Integer> list) {
+	private List<Integer> storeInorderUtil(Node node, List<Integer> list) {
 		if (node == null)
 			return list;
 
@@ -32,16 +33,16 @@ public class MergeTwoBalancedBinarySearchTree {
 	}
 
 	// Method that stores inorder traversal of a tree
-	ArrayList<Integer> storeInorder(Node node) {
-		ArrayList<Integer> list1 = new ArrayList<>();
-		ArrayList<Integer> list2 = storeInorderUtil(node, list1);
+	private List<Integer> storeInorder(Node node) {
+		List<Integer> list1 = new ArrayList<>();
+		List<Integer> list2 = storeInorderUtil(node, list1);
 		return list2;
 	}
 
 	// Method that merges two ArrayLists into one.
-	ArrayList<Integer> merge(ArrayList<Integer> list1, ArrayList<Integer> list2, int m, int n) {
+	List<Integer> merge(List<Integer> list1, List<Integer> list2, int m, int n) {
 		// list3 will contain the merge of list1 and list2
-		ArrayList<Integer> list3 = new ArrayList<>();
+		List<Integer> list3 = new ArrayList<>();
 		int i = 0;
 		int j = 0;
 
@@ -72,7 +73,7 @@ public class MergeTwoBalancedBinarySearchTree {
 	}
 
 	// Method that converts an ArrayList to a BST
-	Node ALtoBST(ArrayList<Integer> list, int start, int end) {
+	Node ALtoBST(List<Integer> list, int start, int end) {
 		// Base case
 		if (start > end)
 			return null;
@@ -97,13 +98,13 @@ public class MergeTwoBalancedBinarySearchTree {
 	// Method that merges two trees into a single one.
 	Node mergeTrees(Node node1, Node node2) {
 		// Stores Inorder of tree1 to list1
-		ArrayList<Integer> list1 = storeInorder(node1);
+		List<Integer> list1 = storeInorder(node1);
 
 		// Stores Inorder of tree2 to list2
-		ArrayList<Integer> list2 = storeInorder(node2);
+		List<Integer> list2 = storeInorder(node2);
 
 		// Merges both list1 and list2 into list3
-		ArrayList<Integer> list3 = merge(list1, list2, list1.size(), list2.size());
+		List<Integer> list3 = merge(list1, list2, list1.size(), list2.size());
 
 		// Eventually converts the merged list into resultant BST
 		Node node = ALtoBST(list3, 0, list3.size() - 1);

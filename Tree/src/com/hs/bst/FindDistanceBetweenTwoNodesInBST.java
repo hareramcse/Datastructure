@@ -2,10 +2,7 @@ package com.hs.bst;
 
 public class FindDistanceBetweenTwoNodesInBST {
 
-	// This function returns distance of x from
-	// root. This function assumes that x exists
-	// in BST and BST is not NULL.
-	static int distanceFromRoot(Node root, int x) {
+	private static int distanceFromRoot(Node root, int x) {
 		if (root.data == x)
 			return 0;
 		else if (root.data > x)
@@ -13,10 +10,7 @@ public class FindDistanceBetweenTwoNodesInBST {
 		return 1 + distanceFromRoot(root.right, x);
 	}
 
-	// Returns minimum distance beween a and b.
-	// This function assumes that a and b exist
-	// in BST.
-	static int distanceBetween2(Node root, int a, int b) {
+	private static int distanceBetween2(Node root, int a, int b) {
 		if (root == null)
 			return 0;
 
@@ -36,9 +30,7 @@ public class FindDistanceBetweenTwoNodesInBST {
 		return 0;
 	}
 
-	// This function make sure that a is smaller
-	// than b before making a call to findDistWrapper()
-	static int findDistWrapper(Node root, int a, int b) {
+	private static int findDistWrapper(Node root, int a, int b) {
 		int temp = 0;
 		if (a > b) {
 			temp = a;

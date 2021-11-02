@@ -31,7 +31,7 @@ public class LargestBSTInBinaryTree {
 	// Returns Information about subtree. The
 	// Information also includes size of largest
 	// subtree which is a BST.
-	Info largestBSTBT(Node root) {
+	private Info largestBSTBT(Node root) {
 		// Base cases : When tree is empty or it has
 		// one child.
 		if (root == null)
