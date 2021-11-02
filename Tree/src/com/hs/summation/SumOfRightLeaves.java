@@ -2,7 +2,6 @@ package com.hs.summation;
 
 class SumOfRightLeaves {
 
-	// sum
 	private int sum = 0;
 
 	// utility function to calculate sum of right leaf nodes

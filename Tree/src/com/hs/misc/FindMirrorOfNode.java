@@ -2,12 +2,8 @@ package com.hs.misc;
 
 public class FindMirrorOfNode {
 
-	// recursive function to find mirror of Node
-	static int findMirrorRec(int target, Node left, Node right) {
-		/*
-		 * if any of the Node is none then Node itself and decendent have no mirror, so
-		 * return none, no need to further explore!
-		 */
+	private static int findMirrorRec(int target, Node left, Node right) {
+
 		if (left == null || right == null)
 			return 0;
 
@@ -30,8 +26,7 @@ public class FindMirrorOfNode {
 		return findMirrorRec(target, left.right, right.left);
 	}
 
-	// interface for mirror search
-	static int findMirror(Node root, int target) {
+	private static int findMirror(Node root, int target) {
 		if (root == null)
 			return 0;
 		if (root.data == target)

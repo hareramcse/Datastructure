@@ -1,12 +1,10 @@
 package com.hs.misc;
 
+/*
+ * the number of nodes along the longest path from the root node down to the farthest leaf node.*/
 class MaximumDepthOfTree {
 
-	/*
-	 * Compute the "maxDepth" of a tree -- the number of nodes along the longest
-	 * path from the root node down to the farthest leaf node.
-	 */
-	int maxDepth(Node node) {
+	private int maxDepth(Node node) {
 		if (node == null)
 			return 0;
 		else {

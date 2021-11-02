@@ -1,11 +1,20 @@
 package com.hs.lca;
 
+/*The distance between two nodes can be obtained in terms of lowest common ancestor. 
+ * Following is the formula. 
+ * 
+ * Dist(n1, n2) = Dist(root, n1) + Dist(root, n2) - 2*Dist(root, lca) 
+'n1' and 'n2' are the two given keys
+'root' is root of given Binary Tree.
+'lca' is lowest common ancestor of n1 and n2
+Dist(n1, n2) is the distance between n1 and n2.
+ * */
 public class DistanceBetweenTwoNodes {
 
 	private static Node LCA(Node root, int n1, int n2) {
 		if (root == null)
 			return root;
-		
+
 		if (root.data == n1 || root.data == n2)
 			return root;
 

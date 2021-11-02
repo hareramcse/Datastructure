@@ -1,12 +1,12 @@
-package com.hs.misc;
+package com.hs.summation.hard;
 
 public class Node {
 	int data;
-	Node left, right, next, nextRight;
+	Node left, right, next;
 
 	public Node(int item) {
 		data = item;
-		left = right = next = nextRight = null;
+		left = right = next = null;
 	}
 
 	public void setLeft(Node left) {
@@ -15,5 +15,9 @@ public class Node {
 
 	public void setRight(Node right) {
 		this.right = right;
+	}
+
+	public Node() {
+
 	}
 }

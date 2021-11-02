@@ -1,10 +1,7 @@
 package com.hs.summation;
 
 class SumOfAllNode {
-
-	/*
-	 * Function to find sum of all the elements
-	 */
+	
 	private int sum(Node root) {
 		if (root == null)
 			return 0;

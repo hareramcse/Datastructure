@@ -2,7 +2,6 @@ package com.hs.lca;
 
 class AncestorOfGivenNode {
 
-	/* If target is present in tree, then prints the ancestors and returns true, otherwise returns false. */
 	private boolean printAncestors(Node root, int target) {
 		/* base cases */
 		if (root == null)
@@ -27,9 +26,6 @@ class AncestorOfGivenNode {
 	public static void main(String args[]) {
 		AncestorOfGivenNode tree = new AncestorOfGivenNode();
 
-		/*
-		 * Construct the following binary tree 1 / \ 2 3 / \ 4 5 / 7
-		 */
 		Node root = new Node(1);
 		root.left = new Node(2);
 		root.right = new Node(3);

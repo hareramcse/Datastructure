@@ -3,7 +3,7 @@ package com.hs.misc;
 public class LongestConsecutiveSequence {
 
 	// Utility method to return length of longest consecutive sequence of tree
-	void longestConsecutiveUtil(Node root, int curLength, int expected, int res) {
+	private void longestConsecutiveUtil(Node root, int curLength, int expected, int res) {
 		if (root == null)
 			return;
 
@@ -16,14 +16,13 @@ public class LongestConsecutiveSequence {
 		// update the maximum by current length
 		res = Math.max(res, curLength);
 
-		// recursively call left and right subtree with
-		// expected value 1 more than root data
+		// recursively call left and right subtree with expected value 1 more than root
+		// data
 		longestConsecutiveUtil(root.left, curLength, root.data + 1, res);
 		longestConsecutiveUtil(root.right, curLength, root.data + 1, res);
 	}
 
-	// method returns length of longest consecutive
-	// sequence rooted at node root
+	// method returns length of longest consecutive sequence rooted at node root
 	int longestConsecutive(Node root) {
 		if (root == null)
 			return 0;

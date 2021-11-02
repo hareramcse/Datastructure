@@ -1,35 +1,20 @@
 package com.hs.summation;
 
 class SumOfAllLeftLeaves {
-
-	// A utility function to check if a given node is leaf or not
-	private boolean isLeaf(Node node) {
-		if (node == null)
-			return false;
-		if (node.left == null && node.right == null)
-			return true;
-		return false;
-	}
+	private static int sum = 0;
 
 	// This function returns sum of all left leaves in a given binary tree
-	private int leftLeavesSum(Node node) {
-		// Initialize result
-		int res = 0;
+	private void leftLeavesSum(Node node, boolean isleft) {
+		if (node == null)
+			return;
 
-		// Update result if root is not NULL
-		if (node != null) {
-			// If left of root is NULL, then add key of left child
-			if (isLeaf(node.left))
-				res += node.left.data;
-			else // Else recur for left child of root
-				res += leftLeavesSum(node.left);
+		// Check whether this node is a leaf node and is left.
+		if (node.left == null && node.right == null && isleft)
+			sum = sum + node.data;
 
-			// Recur for right child of root and update res
-			res += leftLeavesSum(node.right);
-		}
-
-		// return result
-		return res;
+		// Pass true for left and false for right
+		leftLeavesSum(node.left, true);
+		leftLeavesSum(node.right, false);
 	}
 
 	// Driver program
@@ -45,6 +30,7 @@ class SumOfAllLeftLeaves {
 		root.left.right.right = new Node(12);
 		root.right.right.left = new Node(50);
 
-		System.out.println("The sum of leaves is " + tree.leftLeavesSum(root));
+		tree.leftLeavesSum(root, false);
+		System.out.println("The sum of leaves is " + sum);
 	}
 }

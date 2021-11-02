@@ -5,13 +5,12 @@ import java.util.Queue;
 
 class IterativeWayToFindHightOfTree {
 
-	// Iterative method to find height of Bianry Tree
-	int treeHeight(Node node) {
+	private int treeHeight(Node node) {
 		// Base Case
 		if (node == null)
 			return 0;
 
-		// Create an empty queue for level order tarversal
+		// Create an empty queue for level order traversal
 		Queue<Node> q = new LinkedList<Node>();
 
 		// Enqueue Root and initialize height

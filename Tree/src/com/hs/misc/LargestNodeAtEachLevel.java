@@ -5,8 +5,7 @@ import java.util.Queue;
 
 public class LargestNodeAtEachLevel {
 
-	// function to print largest value in each level of Binary Tree
-	static void largestValueInEachLevel(Node root) {
+	private static void largestValueInEachLevel(Node root) {
 		// if tree is empty
 		if (root == null)
 			return;
@@ -26,8 +25,7 @@ public class LargestNodeAtEachLevel {
 			if (nodeCount == 0)
 				break;
 
-			// maximum element for the current
-			// level
+			// maximum element for the current level
 			max = Integer.MIN_VALUE;
 
 			while (nodeCount != 0) {

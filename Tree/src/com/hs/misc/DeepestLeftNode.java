@@ -7,12 +7,12 @@ class Level {
 
 public class DeepestLeftNode {
 	// Node to store resultant node after left traversal
-	Node result;
+	private Node result;
 
 	// A utility function to find deepest leaf node.
 	// lvl: level of current node.
 	// isLeft: A bool indicate that this node is left child
-	void deepestLeftLeafUtil(Node node, int lvl, Level level, boolean isLeft) {
+	private void deepestLeftLeafUtil(Node node, int lvl, Level level, boolean isLeft) {
 		// Base case
 		if (node == null)
 			return;
@@ -30,7 +30,7 @@ public class DeepestLeftNode {
 	}
 
 	// A wrapper over deepestLeftLeafUtil().
-	void deepestLeftLeaf(Node node) {
+	private void deepestLeftLeaf(Node node) {
 		Level level = new Level();
 		deepestLeftLeafUtil(node, 0, level, false);
 	}

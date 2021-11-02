@@ -1,5 +1,8 @@
 package com.hs.misc;
+/* diameter of a tree is nothing but maximum value of (left_height + right_height + 1) for each 
+ * node.*/
 
+// O(n)
 class DiameterOfBinaryTree {
 
 	static class A {
@@ -7,7 +10,7 @@ class DiameterOfBinaryTree {
 	}
 
 	/* Function to find height of a tree */
-	int height(Node root, A a) {
+	private int height(Node root, A a) {
 		if (root == null)
 			return 0;
 
@@ -26,7 +29,7 @@ class DiameterOfBinaryTree {
 	/*
 	 * Computes the diameter of binary tree with given root.
 	 */
-	int diameter(Node root) {
+	private int diameter(Node root) {
 		if (root == null)
 			return 0;
 

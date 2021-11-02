@@ -2,11 +2,7 @@ package com.hs.misc;
 
 public class FindLevelOfNode {
 
-	/*
-	 * Helper function for getLevel(). It returns level of the data if data is
-	 * present in tree, otherwise returns 0.
-	 */
-	int getLevelUtil(Node node, int data, int level) {
+	private int getLevelUtil(Node node, int data, int level) {
 		if (node == null)
 			return 0;
 
@@ -21,16 +17,13 @@ public class FindLevelOfNode {
 		return downlevel;
 	}
 
-	/* Returns level of given data value */
-	int getLevel(Node node, int data) {
+	private int getLevel(Node node, int data) {
 		return getLevelUtil(node, data, 1);
 	}
 
-	/* Driver function to test above functions */
 	public static void main(String[] args) {
 		FindLevelOfNode tree = new FindLevelOfNode();
 
-		/* Constructing tree given in the above figure */
 		Node root = new Node(3);
 		root.left = new Node(2);
 		root.right = new Node(5);

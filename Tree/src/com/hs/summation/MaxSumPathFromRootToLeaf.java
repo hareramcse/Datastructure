@@ -5,20 +5,19 @@ class Maximum {
 }
 
 class MaxSumPathFromRootToLeaf {
-	Maximum max = new Maximum();
-	Node target_leaf = null;
+	private Maximum max = new Maximum();
+	private Node targetLeaf = null;
 
-	// A utility function that prints all nodes on the
-	// path from root to target_leaf
-	boolean printPath(Node node, Node target_leaf) {
+	// A utility function that prints all nodes on the path from root to target_leaf
+	private boolean printPath(Node root, Node targetLeaf) {
 		// base case
-		if (node == null)
+		if (root == null)
 			return false;
 
 		// return true if this node is the target_leaf or
 		// target leaf is present in one of its descendants
-		if (node == target_leaf || printPath(node.left, target_leaf) || printPath(node.right, target_leaf)) {
-			System.out.print(node.data + " ");
+		if (root == targetLeaf || printPath(root.left, targetLeaf) || printPath(root.right, targetLeaf)) {
+			System.out.print(root.data + " ");
 			return true;
 		}
 
@@ -26,35 +25,30 @@ class MaxSumPathFromRootToLeaf {
 	}
 
 	// This function Sets the target_leaf_ref to refer
-	// the leaf node of the maximum path sum. Also,
-	// returns the max_sum using max_sum_ref
-	void getTargetLeaf(Node node, Maximum max_sum_ref, int curr_sum) {
-		if (node == null)
+	// the leaf node of the maximum path sum.
+	private void getTargetLeaf(Node root, Maximum max_sum_ref, int curr_sum) {
+		if (root == null)
 			return;
 
-		// Update current sum to hold sum of nodes on
-		// path from root to this node
-		curr_sum = curr_sum + node.data;
+		// Update current sum to hold sum of nodes on path from root to this node
+		curr_sum = curr_sum + root.data;
 
 		// If this is a leaf node and path to this node
-		// has maximum sum so far, the n make this node
-		// target_leaf
-		if (node.left == null && node.right == null) {
+		// has maximum sum so far, then make this node target_leaf
+		if (root.left == null && root.right == null) {
 			if (curr_sum > max_sum_ref.max_no) {
 				max_sum_ref.max_no = curr_sum;
-				target_leaf = node;
+				targetLeaf = root;
 			}
 		}
 
-		// If this is not a leaf node, then recur down
-		// to find the target_leaf
-		getTargetLeaf(node.left, max_sum_ref, curr_sum);
-		getTargetLeaf(node.right, max_sum_ref, curr_sum);
+		// If this is not a leaf node, then recur down to find the target_leaf
+		getTargetLeaf(root.left, max_sum_ref, curr_sum);
+		getTargetLeaf(root.right, max_sum_ref, curr_sum);
 	}
 
-	// Returns the maximum sum and prints the nodes on
-	// max sum path
-	int maxSumPath(Node root) {
+	// Returns the maximum sum and prints the nodes on max sum path
+	private int maxSumPath(Node root) {
 		// base case
 		if (root == null)
 			return 0;
@@ -63,7 +57,7 @@ class MaxSumPathFromRootToLeaf {
 		getTargetLeaf(root, max, 0);
 
 		// print the path from root to the target leaf
-		printPath(root, target_leaf);
+		printPath(root, targetLeaf);
 		return max.max_no; // return maximum sum
 	}
 
@@ -75,7 +69,7 @@ class MaxSumPathFromRootToLeaf {
 		root.right = new Node(7);
 		root.left.left = new Node(8);
 		root.left.right = new Node(-4);
-		System.out.println("Following are the nodes " + "on maximum sum path");
+		System.out.println("Following are the nodes on maximum sum path");
 		int sum = tree.maxSumPath(root);
 		System.out.println("");
 		System.out.println("Sum of nodes is : " + sum);

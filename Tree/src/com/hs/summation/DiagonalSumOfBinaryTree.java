@@ -5,8 +5,10 @@ import java.util.Map;
 
 public class DiagonalSumOfBinaryTree {
 
-	// Traverses the tree in Inoorder form and builds a hashMap map that contains
-	// the vertical sum
+	/*
+	 * Traverses the tree in Inoorder form and builds a hashMap map that contains
+	 * the vertical sum
+	 */
 	private void diagonalSumUtil(Node root, Map<Integer, Integer> map, int d) {
 
 		// base case
@@ -14,7 +16,7 @@ public class DiagonalSumOfBinaryTree {
 			return;
 		}
 
-		// Store the values in hM for left subtree
+		// Store the values in map for left subtree
 		diagonalSumUtil(root.left, map, d + 1);
 
 		// Update vertical sum for hD of this node
@@ -35,8 +37,7 @@ public class DiagonalSumOfBinaryTree {
 		// Creates an empty hashMap hM
 		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
 
-		// Calls the VerticalSumUtil() to store the
-		// vertical sum values in hM
+		// Calls the VerticalSumUtil() to store the vertical sum values in hM
 		diagonalSumUtil(root, map, 0);
 
 		// Prints the values stored by VerticalSumUtil()

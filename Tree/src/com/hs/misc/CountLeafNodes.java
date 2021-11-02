@@ -2,7 +2,7 @@ package com.hs.misc;
 
 public class CountLeafNodes {
 
-	int getLeafCount(Node root) {
+	private int getLeafCount(Node root) {
 		if (root == null)
 			return 0;
 		if (root.left == null && root.right == null)

@@ -2,11 +2,7 @@ package com.hs.misc;
 
 class DeleteBinaryTree {
 
-	/*
-	 * This function traverses tree in post order to delete each and every node of
-	 * the tree
-	 */
-	void deleteTree(Node root) {
+	private void deleteTree(Node root) {
 		if (root == null) {
 			return;
 		}
