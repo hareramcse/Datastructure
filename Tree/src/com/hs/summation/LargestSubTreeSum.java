@@ -1,53 +1,50 @@
 package com.hs.summation;
 
-/* Approach : Do post order traversal of the binary tree. At every node, find left subtree value and right 
+/* Approach : Do post order traversal of the binary tree(we can do any traversal approach). At every node, find left subtree value and right 
  * subtree value recursively. The value of subtree rooted at current node is equal to sum of current 
  * node value, left node subtree sum and right node subtree sum. Compare current subtree sum with overall 
  * maximum subtree sum so far.*/
 public class LargestSubTreeSum {
 
-	static class INT {
-		int v;
-
-		INT(int a) {
-			v = a;
-		}
+	class Result {
+		int maxSum = Integer.MIN_VALUE;
 	}
 
 	// Helper function to find largest subtree sum recursively.
-	private static int findLargestSubtreeSumUtil(Node root, INT ans) {
+	private int findLargestSubtreeSumUtil(Node root, Result result) {
 		// If current node is null then return 0 to parent node.
 		if (root == null)
 			return 0;
 
 		// Subtree sum rooted at current node.
-		int currSum = root.data + findLargestSubtreeSumUtil(root.left, ans)
-				+ findLargestSubtreeSumUtil(root.right, ans);
+		int currSum = root.data + findLargestSubtreeSumUtil(root.left, result)
+				+ findLargestSubtreeSumUtil(root.right, result);
 
 		// Update answer if current subtree sum is greater than answer so far.
-		ans.v = Math.max(ans.v, currSum);
+		result.maxSum = Math.max(result.maxSum, currSum);
 
 		// Return current subtree sum to its parent node.
 		return currSum;
 	}
 
 	// Function to find largest subtree sum.
-	private static int findLargestSubtreeSum(Node root) {
+	private int findLargestSubtreeSum(Node root) {
 		// If tree does not exist, then answer is 0.
 		if (root == null)
 			return 0;
 
 		// Variable to store maximum subtree sum.
-		INT ans = new INT(-9999999);
+		Result result = new Result();
 
 		// Call to recursive function to find maximum subtree sum.
-		findLargestSubtreeSumUtil(root, ans);
+		findLargestSubtreeSumUtil(root, result);
 
-		return ans.v;
+		return result.maxSum;
 	}
 
 	// Driver Code
 	public static void main(String args[]) {
+		LargestSubTreeSum tree = new LargestSubTreeSum();
 
 		Node root = new Node(1);
 		root.left = new Node(-2);
@@ -57,6 +54,6 @@ public class LargestSubTreeSum {
 		root.right.left = new Node(-6);
 		root.right.right = new Node(2);
 
-		System.out.println(findLargestSubtreeSum(root));
+		System.out.println(tree.findLargestSubtreeSum(root));
 	}
 }

@@ -1,24 +1,23 @@
 package com.hs.misc;
 
 public class FindLevelOfNode {
-
-	private int getLevelUtil(Node node, int data, int level) {
-		if (node == null)
-			return 0;
-
-		if (node.data == data)
-			return level;
-
-		int downlevel = getLevelUtil(node.left, data, level + 1);
-		if (downlevel != 0)
-			return downlevel;
-
-		downlevel = getLevelUtil(node.right, data, level + 1);
-		return downlevel;
+	private int getLevel(Node root, int data) {
+		return getLevelUtil(root, data, 1);
 	}
 
-	private int getLevel(Node node, int data) {
-		return getLevelUtil(node, data, 1);
+	private int getLevelUtil(Node root, int data, int level) {
+		if (root == null)
+			return 0;
+
+		if (root.data == data)
+			return level;
+
+		int downLevel = getLevelUtil(root.left, data, level + 1);
+		if (downLevel != 0)
+			return downLevel;
+
+		downLevel = getLevelUtil(root.right, data, level + 1);
+		return downLevel;
 	}
 
 	public static void main(String[] args) {

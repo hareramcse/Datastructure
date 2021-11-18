@@ -2,79 +2,12 @@ package com.hs.checkandprint;
 
 public class PrintLongestRootToLeafPath {
 
-	private static int ans, lh, rh, f;
-	private static Node k;
+	private int ans, lh, rh, f;
+	private Node k;
 	private Node root;
 
-	// Function to find height of a tree
-	private static int height(Node root) {
-		if (root == null)
-			return 0;
-		int left_height = height(root.left);
-		int right_height = height(root.right);
-
-		// update the answer, because diameter of a
-		// tree is nothing but maximum value of
-		// (left_height + right_height + 1) for each node
-		if (ans < 1 + left_height + right_height) {
-			ans = 1 + left_height + right_height;
-
-			// save the root, this will help us finding the
-			// left and the right part of the diameter
-			k = root;
-
-			// save the height of left & right subtree as well.
-			lh = left_height;
-			rh = right_height;
-		}
-		return 1 + Math.max(left_height, right_height);
-
-	}
-
-	// prints the root to leaf path
-	private static void printArray(int[] ints, int len) {
-		int i;
-
-		// print left part of the path in reverse order
-		if (f == 0) {
-			for (i = len - 1; i >= 0; i--) {
-				System.out.print(ints[i] + " ");
-			}
-		} else if (f == 1) {
-			for (i = 0; i < len; i++) {
-				System.out.print(ints[i] + " ");
-			}
-		}
-	}
-
-	// this function finds out all the root to leaf paths
-	private static void printPathsRecur(Node node, int[] path, int pathLen, int max) {
-		if (node == null)
-			return;
-
-		// append this node to the path array
-		path[pathLen] = node.data;
-		pathLen++;
-
-		// If it's a leaf, so print the path that led to here
-		if (node.left == null && node.right == null) {
-
-			// print only one path which is equal to the
-			// height of the tree.
-			if (pathLen == max && (f == 0 || f == 1)) {
-				printArray(path, pathLen);
-				f = 2;
-			}
-		} else {
-
-			// otherwise try both subtrees
-			printPathsRecur(node.left, path, pathLen, max);
-			printPathsRecur(node.right, path, pathLen, max);
-		}
-	}
-
 	// Computes the diameter of a binary tree with given root.
-	private static void diameter(Node root) {
+	private void diameter(Node root) {
 		if (root == null)
 			return;
 
@@ -102,6 +35,73 @@ public class PrintLongestRootToLeafPath {
 		printPathsRecur(k.right, rPath, pathlen, rh);
 	}
 
+	// Function to find height of a tree
+	private int height(Node root) {
+		if (root == null)
+			return 0;
+		int left_height = height(root.left);
+		int right_height = height(root.right);
+
+		// update the answer, because diameter of a
+		// tree is nothing but maximum value of
+		// (left_height + right_height + 1) for each node
+		if (ans < 1 + left_height + right_height) {
+			ans = 1 + left_height + right_height;
+
+			// save the root, this will help us finding the
+			// left and the right part of the diameter
+			k = root;
+
+			// save the height of left & right subtree as well.
+			lh = left_height;
+			rh = right_height;
+		}
+		return 1 + Math.max(left_height, right_height);
+
+	}
+
+	// prints the root to leaf path
+	private void printArray(int[] ints, int len) {
+		int i;
+
+		// print left part of the path in reverse order
+		if (f == 0) {
+			for (i = len - 1; i >= 0; i--) {
+				System.out.print(ints[i] + " ");
+			}
+		} else if (f == 1) {
+			for (i = 0; i < len; i++) {
+				System.out.print(ints[i] + " ");
+			}
+		}
+	}
+
+	// this function finds out all the root to leaf paths
+	private void printPathsRecur(Node node, int[] path, int pathLen, int max) {
+		if (node == null)
+			return;
+
+		// append this node to the path array
+		path[pathLen] = node.data;
+		pathLen++;
+
+		// If it's a leaf, so print the path that led to here
+		if (node.left == null && node.right == null) {
+
+			// print only one path which is equal to the
+			// height of the tree.
+			if (pathLen == max && (f == 0 || f == 1)) {
+				printArray(path, pathLen);
+				f = 2;
+			}
+		} else {
+
+			// otherwise try both subtrees
+			printPathsRecur(node.left, path, pathLen, max);
+			printPathsRecur(node.right, path, pathLen, max);
+		}
+	}
+
 	// Driver code
 	public static void main(String[] args) {
 
@@ -115,7 +115,7 @@ public class PrintLongestRootToLeafPath {
 		tree.root.left.right.right = new Node(7);
 		tree.root.left.left.right = new Node(8);
 		tree.root.left.left.right.left = new Node(9);
-		diameter(tree.root);
+		tree.diameter(tree.root);
 
 	}
 

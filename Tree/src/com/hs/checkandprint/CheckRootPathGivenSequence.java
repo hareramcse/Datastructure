@@ -4,7 +4,7 @@ public class CheckRootPathGivenSequence {
 
 	// function to check given sequence of root to leaf path exist in tree or not.
 	// index represents current element in sequence of root to leaf path
-	private static boolean existPath(Node root, int arr[], int index) {
+	private boolean existPath(Node root, int arr[], int index) {
 		// If root is NULL, then there must not be any element in array.
 		if (root == null) {
 			return arr.length == 0;
@@ -25,6 +25,7 @@ public class CheckRootPathGivenSequence {
 	}
 
 	public static void main(String args[]) {
+		CheckRootPathGivenSequence tree = new CheckRootPathGivenSequence();
 		// arr[] is sequence of root to leaf path
 		int arr[] = { 5, 8, 6, 7 };
 		Node root = new Node(5);
@@ -36,7 +37,7 @@ public class CheckRootPathGivenSequence {
 		root.right.left = new Node(6);
 		root.right.left.right = new Node(7);
 
-		if (existPath(root, arr, 0)) {
+		if (tree.existPath(root, arr, 0)) {
 			System.out.print("Path Exists");
 		} else {
 			System.out.print("Path does not Exist");

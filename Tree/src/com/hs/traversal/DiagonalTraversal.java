@@ -3,7 +3,6 @@ package com.hs.traversal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Vector;
 
 public class DiagonalTraversal {
@@ -47,9 +46,7 @@ public class DiagonalTraversal {
 		printDiagonal(root, map, 0);
 
 		System.out.println("Diagonal Traversal of Binnary Tree");
-		for (Entry<Integer, List<Integer>> entry : map.entrySet()) {
-			System.out.println(entry.getValue());
-		}
+		System.out.println(map.values());
 	}
 
 	// Driver program

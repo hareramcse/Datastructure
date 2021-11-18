@@ -2,7 +2,7 @@ package com.hs.avltree;
 
 public class AVLTree {
 
-	private static Node root;
+	private Node root;
 
 	// A utility function to get height of the tree
 	private int height(Node root) {
@@ -218,11 +218,11 @@ public class AVLTree {
 		tree.insert(40);
 		tree.insert(45);
 		tree.insert(20);
-		System.out.println("height of the tree before deletion is " + tree.height(root));
+		System.out.println("height of the tree before deletion is " + tree.height(tree.root));
 		tree.delete(20);
 
 		System.out.println("The level order traversal of constructed tree is : ");
-		tree.levelOrderTraversal(root);
-		System.out.println("Height of the tree is " + root.height);
+		tree.levelOrderTraversal(tree.root);
+		System.out.println("Height of the tree is " + tree.root.height);
 	}
 }

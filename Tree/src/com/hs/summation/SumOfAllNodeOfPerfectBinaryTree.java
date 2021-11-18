@@ -4,7 +4,7 @@ import java.util.Vector;
 
 class SumOfAllNodeOfPerfectBinaryTree {
 
-	private static int sumNodes(int l) {
+	private int sumNodes(int l) {
 		// no of leaf nodes
 		int leafNodeCount = (int) Math.pow(2, l - 1);
 
@@ -23,7 +23,8 @@ class SumOfAllNodeOfPerfectBinaryTree {
 		for (int i = l - 2; i >= 0; i--) {
 			int k = 0;
 
-			// loop to claculate values of parent nodes from the children nodes of lower level
+			// loop to calculate values of parent nodes from the children nodes of lower
+			// level
 			while (k < vec.get(i + 1).size() - 1) {
 
 				// store the value of parent node as sum of children nodes
@@ -45,8 +46,9 @@ class SumOfAllNodeOfPerfectBinaryTree {
 
 	// Driver Code
 	public static void main(String args[]) {
-		int l = 3;
+		SumOfAllNodeOfPerfectBinaryTree tree = new SumOfAllNodeOfPerfectBinaryTree();
 
-		System.out.println(sumNodes(l));
+		int l = 5;
+		System.out.println(tree.sumNodes(l));
 	}
 }

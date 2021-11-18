@@ -10,21 +10,21 @@ leaflevel is passed to all calls. The value of leafLevel is initialized as 0 to 
 
 // O(n)
 class Leaf {
-	int leafLevel = 0;
+	int firstTimeLeafLevel = 0;
 }
 
 class CheckIfAllLeavesAreAtSameLevel {
 
-	private Leaf mylevel = new Leaf();
+	private Leaf leaf = new Leaf();
 
 	/* The main function to check if all leafs are at same level. */
 	private boolean check(Node root) {
 		int level = 0;
-		return checkUtil(root, level, mylevel);
+		return checkUtil(root, level, leaf);
 	}
 
 	// Recursive function which checks whether all leaves are at same level
-	private boolean checkUtil(Node root, int level, Leaf leafLevel) {
+	private boolean checkUtil(Node root, int level, Leaf leaf) {
 		// Base case
 		if (root == null)
 			return true;
@@ -32,18 +32,18 @@ class CheckIfAllLeavesAreAtSameLevel {
 		// If a leaf node is encountered
 		if (root.left == null && root.right == null) {
 			// When a leaf node is found first time
-			if (leafLevel.leafLevel == 0) {
+			if (leaf.firstTimeLeafLevel == 0) {
 				// Set first found leaf's level
-				leafLevel.leafLevel = level;
+				leaf.firstTimeLeafLevel = level;
 				return true;
 			}
 
 			// If this is not first leaf node, compare its level with first leaf's level
-			return (level == leafLevel.leafLevel);
+			return (leaf.firstTimeLeafLevel == level);
 		}
 
 		// If this node is not leaf, recursively check left and right subtrees
-		return checkUtil(root.left, level + 1, leafLevel) && checkUtil(root.right, level + 1, leafLevel);
+		return checkUtil(root.left, level + 1, leaf) && checkUtil(root.right, level + 1, leaf);
 	}
 
 	public static void main(String args[]) {

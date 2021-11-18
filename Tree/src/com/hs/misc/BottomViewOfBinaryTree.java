@@ -1,39 +1,39 @@
 package com.hs.misc;
 
+import java.util.LinkedList;
 import java.util.Map;
+import java.util.Queue;
 import java.util.TreeMap;
 
 public class BottomViewOfBinaryTree {
 
-	private void printBottomViewUtil(Node root, int curr, int hd, Map<Integer, int[]> map) {
-		if (root == null)
+	public void printBottomView(Node root) {
+		if (root == null) {
 			return;
-
-		if (!map.containsKey(hd)) {
-			map.put(hd, new int[] { root.data, curr });
 		}
 
-		// Compare height for already present node at similar horizontal distance
-		else {
-			int[] pair = map.get(hd);
-			if (pair[1] <= curr) {
-				pair[1] = curr;
-				pair[0] = root.data;
+		Map<Integer, Integer> m = new TreeMap<Integer, Integer>();
+
+		Queue<Node> q = new LinkedList<Node>();
+		q.add(root);
+
+		while (!q.isEmpty()) {
+			Node temp = q.remove();
+			int hd = temp.height;
+
+			m.put(hd, temp.data);
+
+			if (temp.left != null) {
+				temp.left.height = hd - 1;
+				q.add(temp.left);
 			}
-			map.put(hd, pair);
+
+			if (temp.right != null) {
+				temp.right.height = hd + 1;
+				q.add(temp.right);
+			}
 		}
-
-		printBottomViewUtil(root.left, curr + 1, hd - 1, map);
-		printBottomViewUtil(root.right, curr + 1, hd + 1, map);
-	}
-
-	private void printBottomView(Node root) {
-		Map<Integer, int[]> map = new TreeMap<>();
-
-		printBottomViewUtil(root, 0, 0, map);
-		for (int val[] : map.values()) {
-			System.out.print(val[0] + " ");
-		}
+		System.out.println(m.values());
 	}
 
 	public static void main(String[] args) {

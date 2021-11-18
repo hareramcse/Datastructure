@@ -1,6 +1,15 @@
 package com.hs.lca;
 
 public class CommonAncestor {
+	// Function to find nodes common to given two nodes
+	private boolean findCommonNodes(Node root, int first, int second) {
+		Node LCA = findLCA(root, first, second);
+		if (LCA == null)
+			return false;
+
+		printAncestors(root, LCA.data);
+		return true;
+	}
 
 	// Utility function to find the LCA of two given values n1 and n2.
 	private Node findLCA(Node root, int n1, int n2) {
@@ -20,13 +29,12 @@ public class CommonAncestor {
 		Node rightLca = findLCA(root.right, n1, n2);
 
 		// If both of the above calls return Non-NULL, then
-		// one key is present in once subtree and other is
+		// one key is present in one subtree and other is
 		// present in other, So this node is the LCA
 		if (leftLca != null && rightLca != null)
 			return root;
 
-		// Otherwise check if left subtree or right
-		// subtree is LCA
+		// Otherwise check if left subtree or right subtree is LCA
 		return (leftLca != null) ? leftLca : rightLca;
 	}
 
@@ -50,16 +58,6 @@ public class CommonAncestor {
 			return true;
 		}
 		return false;
-	}
-
-	// Function to find nodes common to given two nodes
-	private boolean findCommonNodes(Node root, int first, int second) {
-		Node LCA = findLCA(root, first, second);
-		if (LCA == null)
-			return false;
-
-		printAncestors(root, LCA.data);
-		return true;
 	}
 
 	public static void main(String args[]) {

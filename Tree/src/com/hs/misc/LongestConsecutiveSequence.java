@@ -1,6 +1,18 @@
 package com.hs.misc;
 
 public class LongestConsecutiveSequence {
+	// method returns length of longest consecutive sequence rooted at node root
+	private int longestConsecutive(Node root) {
+		if (root == null)
+			return 0;
+
+		int res = 0;
+
+		// call utility method with current length 0
+		longestConsecutiveUtil(root, 0, root.data, res);
+
+		return res;
+	}
 
 	// Utility method to return length of longest consecutive sequence of tree
 	private void longestConsecutiveUtil(Node root, int curLength, int expected, int res) {
@@ -20,19 +32,6 @@ public class LongestConsecutiveSequence {
 		// data
 		longestConsecutiveUtil(root.left, curLength, root.data + 1, res);
 		longestConsecutiveUtil(root.right, curLength, root.data + 1, res);
-	}
-
-	// method returns length of longest consecutive sequence rooted at node root
-	int longestConsecutive(Node root) {
-		if (root == null)
-			return 0;
-
-		int res = 0;
-
-		// call utility method with current length 0
-		longestConsecutiveUtil(root, 0, root.data, res);
-
-		return res;
 	}
 
 	public static void main(String[] args) {

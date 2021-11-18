@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class BinarySearchTree {
-	public static Node root = null;
+	public Node root = null;
 
 	public void insert(int data) {
 		root = insert(root, data);
@@ -160,22 +160,22 @@ public class BinarySearchTree {
 	}
 
 	public static void main(String[] args) {
-		BinarySearchTree bst = new BinarySearchTree();
-		bst.insert(6);
-		bst.insert(11);
-		bst.insert(9);
-		bst.insert(3);
-		bst.insert(14);
-		bst.printDataInOrder(root);
-		System.out.println("data found ? " + bst.search(5));
-		System.out.println("min element in the tree is " + bst.findMinInBST(root).data);
-		System.out.println("max element in the tree is " + bst.findMaxInBST(root));
-		System.out.println("height of the tree is " + bst.findHeightOfTree(root));
-		bst.delete(11);
-		bst.printDataPreOrder(root);
+		BinarySearchTree tree = new BinarySearchTree();
+		tree.insert(6);
+		tree.insert(11);
+		tree.insert(9);
+		tree.insert(3);
+		tree.insert(14);
+		tree.printDataInOrder(tree.root);
+		System.out.println("data found ? " + tree.search(5));
+		System.out.println("min element in the tree is " + tree.findMinInBST(tree.root).data);
+		System.out.println("max element in the tree is " + tree.findMaxInBST(tree.root));
+		System.out.println("height of the tree is " + tree.findHeightOfTree(tree.root));
+		tree.delete(11);
+		tree.printDataPreOrder(tree.root);
 		System.out.println("Print data by level order traversal");
-		bst.levelOrderTraversal(root);
+		tree.levelOrderTraversal(tree.root);
 		System.out.println("print data in post order");
-		bst.printDataPostOrder(root);
+		tree.printDataPostOrder(tree.root);
 	}
 }

@@ -18,18 +18,15 @@ class IterativeWayToFindHightOfTree {
 		int height = 0;
 
 		while (true) {
-			// nodeCount (queue size) indicates number of nodes
-			// at current level.
+			// nodeCount (queue size) indicates number of nodes at current level.
 			int nodeCount = q.size();
 			if (nodeCount == 0)
 				return height;
 			height++;
 
-			// Dequeue all nodes of current level and Enqueue all
-			// nodes of next level
+			// Dequeue all nodes of current level and Enqueue all nodes of next level
 			while (nodeCount > 0) {
-				Node newnode = q.peek();
-				q.remove();
+				Node newnode = q.poll();
 				if (newnode.left != null)
 					q.add(newnode.left);
 				if (newnode.right != null)

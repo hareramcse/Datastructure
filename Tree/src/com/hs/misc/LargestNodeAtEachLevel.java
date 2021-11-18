@@ -5,7 +5,7 @@ import java.util.Queue;
 
 public class LargestNodeAtEachLevel {
 
-	private static void largestValueInEachLevel(Node root) {
+	private void largestValueInEachLevel(Node root) {
 		// if tree is empty
 		if (root == null)
 			return;
@@ -20,8 +20,7 @@ public class LargestNodeAtEachLevel {
 			// node count for the current level
 			nodeCount = q.size();
 
-			// if true then all the nodes of
-			// the tree have been traversed
+			// if true then all the nodes of the tree have been traversed
 			if (nodeCount == 0)
 				break;
 
@@ -31,10 +30,7 @@ public class LargestNodeAtEachLevel {
 			while (nodeCount != 0) {
 
 				// get the front element from 'q'
-				Node front = q.peek();
-
-				// remove front element from 'q'
-				q.remove();
+				Node front = q.poll();
 
 				// if true, then update 'max'
 				if (max < front.data)
@@ -56,6 +52,7 @@ public class LargestNodeAtEachLevel {
 	}
 
 	public static void main(String[] args) {
+		LargestNodeAtEachLevel tree = new LargestNodeAtEachLevel();
 		Node root = null;
 		root = new Node(4);
 		root.left = new Node(9);
@@ -64,6 +61,6 @@ public class LargestNodeAtEachLevel {
 		root.left.right = new Node(5);
 		root.right.right = new Node(7);
 
-		largestValueInEachLevel(root);
+		tree.largestValueInEachLevel(root);
 	}
 }

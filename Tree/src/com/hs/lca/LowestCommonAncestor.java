@@ -2,7 +2,24 @@ package com.hs.lca;
 
 public class LowestCommonAncestor {
 
-	private static boolean v1 = false, v2 = false;
+	private boolean v1 = false, v2 = false;
+
+	// Finds lca of n1 and n2 under the subtree rooted with 'node'
+	private Node findLCA(Node root, int n1, int n2) {
+		// Initialize n1 and n2 as not visited
+		v1 = false;
+		v2 = false;
+
+		// Find lca of n1 and n2 using the technique discussed above
+		Node lca = findLCAUtil(root, n1, n2);
+
+		// Return LCA only if both n1 and n2 are present in tree
+		if (v1 && v2)
+			return lca;
+
+		// Else return NULL
+		return null;
+	}
 
 	// This function returns pointer to LCA of two given values n1 and n2.
 	// v1 is set as true by this function if n1 is found
@@ -43,23 +60,6 @@ public class LowestCommonAncestor {
 
 		// Otherwise check if left subtree or right subtree is LCA
 		return (left_lca != null) ? left_lca : right_lca;
-	}
-
-	// Finds lca of n1 and n2 under the subtree rooted with 'node'
-	private Node findLCA(Node root, int n1, int n2) {
-		// Initialize n1 and n2 as not visited
-		v1 = false;
-		v2 = false;
-
-		// Find lca of n1 and n2 using the technique discussed above
-		Node lca = findLCAUtil(root, n1, n2);
-
-		// Return LCA only if both n1 and n2 are present in tree
-		if (v1 && v2)
-			return lca;
-
-		// Else return NULL
-		return null;
 	}
 
 	/* Driver program to test above functions */

@@ -2,7 +2,7 @@ package com.hs.bst;
 
 public class KthLargestNodeInBST {
 
-	private static int count = 0;
+	private int count = 0;
 
 	private void kthLargest(Node node, int k) {
 		// Base cases, the second condition is important to

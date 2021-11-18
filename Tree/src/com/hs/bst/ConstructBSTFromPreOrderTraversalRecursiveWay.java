@@ -1,13 +1,16 @@
 package com.hs.bst;
 
 class Index {
-
 	int index = 0;
 }
 
 public class ConstructBSTFromPreOrderTraversalRecursiveWay {
 
 	Index index = new Index();
+
+	private Node constructTree(int pre[], int size) {
+		return constructTreeUtil(pre, index, pre[0], Integer.MIN_VALUE, Integer.MAX_VALUE, size);
+	}
 
 	// A recursive function to construct BST from pre[]. preIndex is used
 	// to keep track of index in pre[].
@@ -42,10 +45,6 @@ public class ConstructBSTFromPreOrderTraversalRecursiveWay {
 		}
 
 		return root;
-	}
-
-	private Node constructTree(int pre[], int size) {
-		return constructTreeUtil(pre, index, pre[0], Integer.MIN_VALUE, Integer.MAX_VALUE, size);
 	}
 
 	// A utility function to print inorder traversal of a Binary Tree

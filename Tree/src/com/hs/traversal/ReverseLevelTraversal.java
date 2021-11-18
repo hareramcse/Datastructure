@@ -32,7 +32,7 @@ class ReverseLevelTraversal {
 		}
 
 		// Now pop all items from stack one by one and print them
-		while (stack.empty() == false) {
+		while (!stack.empty()) {
 			Node tmp = stack.pop();
 			System.out.print(tmp.data + " ");
 		}

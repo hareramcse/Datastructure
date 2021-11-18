@@ -12,11 +12,10 @@ public class VerticalSumOfBinaryTree {
 			return;
 		}
 
-		// Creates an empty hashMap hM
+		// Creates an empty hashMap map
 		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
 
-		// Calls the VerticalSumUtil() to store the
-		// vertical sum values in hM
+		// Calls the VerticalSumUtil() to store the vertical sum values in map
 		verticalSumUtil(root, map, 0);
 
 		// Prints the values stored by VerticalSumUtil()
@@ -25,7 +24,8 @@ public class VerticalSumOfBinaryTree {
 		}
 	}
 
-	// Traverses the tree in Inoorder form and builds a hashMap map that contains the vertical sum
+	// Traverses the tree in Inoorder form and builds a hashMap map that contains
+	// the vertical sum
 	private void verticalSumUtil(Node root, Map<Integer, Integer> map, int d) {
 
 		// base case

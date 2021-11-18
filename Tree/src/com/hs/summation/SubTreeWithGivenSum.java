@@ -4,34 +4,30 @@ package com.hs.summation;
  * First calculate the sum of left subtree then right subtree and check if 
  * sum_left + sum_right + cur_node = sum is satisfying the condition that means any subtree with given 
  * sum exist*/
+
+class Result {
+	int sum = Integer.MIN_VALUE;
+}
+
 public class SubTreeWithGivenSum {
-
-	static class INT {
-		int v;
-
-		INT(int a) {
-			v = a;
-		}
-	}
-
-	private static boolean sumSubtreeUtil(Node ptr, INT cur_sum, int sum) {
-		// base condition
-		if (ptr == null) {
-			cur_sum = new INT(0);
-			return false;
-		}
-
-		INT sum_left = new INT(0), sum_right = new INT(0);
-		return (sumSubtreeUtil(ptr.left, sum_left, sum) || sumSubtreeUtil(ptr.right, sum_right, sum)
-				|| ((cur_sum.v = sum_left.v + sum_right.v + ptr.data) == sum));
-	}
-
 	// Wrapper over sumSubtreeUtil()
 	private static boolean sumSubtree(Node root, int sum) {
 		// Initialize sum of subtree with root
-		INT cur_sum = new INT(0);
+		Result cur_sum = new Result();
 
 		return sumSubtreeUtil(root, cur_sum, sum);
+	}
+
+	private static boolean sumSubtreeUtil(Node root, Result cur_sum, int sum) {
+		// base condition
+		if (root == null) {
+			cur_sum.sum = 0;
+			return false;
+		}
+
+		Result sumLeft = new Result(), sumRight = new Result();
+		return (sumSubtreeUtil(root.left, sumLeft, sum) || sumSubtreeUtil(root.right, sumRight, sum)
+				|| ((cur_sum.sum = sumLeft.sum + sumRight.sum + root.data) == sum));
 	}
 
 	// Driver Code

@@ -2,19 +2,23 @@ package com.hs.summation;
 
 public class CountSubTreeWithGivenSum {
 
-	private static int count = 0;
-	private static Node ptr;
+	private int count = 0;
+	private Node ptr;
 
-	private int countSubtreesWithSumXUtil(Node root, int x) {
-		int l = 0, r = 0;
+	private int countSubtrees(Node root, int x) {
+		int leftSum = 0, rightSum = 0;
 		if (root == null)
 			return 0;
-		l += countSubtreesWithSumXUtil(root.left, x);
-		r += countSubtreesWithSumXUtil(root.right, x);
-		if (l + r + root.data == x)
+
+		leftSum += countSubtrees(root.left, x);
+		rightSum += countSubtrees(root.right, x);
+
+		if (leftSum + rightSum + root.data == x)
 			count++;
+
 		if (ptr != root)
-			return l + root.data + r;
+			return leftSum + root.data + rightSum;
+
 		return count;
 	}
 
@@ -28,7 +32,7 @@ public class CountSubTreeWithGivenSum {
 		root.right.left = new Node(-4);
 		root.right.right = new Node(7);
 		int x = 7;
-		ptr = root; // assigning global value of ptr
-		System.out.println("Count = " + tree.countSubtreesWithSumXUtil(root, x));
+		tree.ptr = root; // assigning global value of ptr
+		System.out.println("Count = " + tree.countSubtrees(root, x));
 	}
 }

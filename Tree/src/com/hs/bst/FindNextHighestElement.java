@@ -1,7 +1,7 @@
 package com.hs.bst;
 
 public class FindNextHighestElement {
-	public static Node root = null;
+	public Node root = null;
 
 	public void insert(int data) {
 		root = insert(root, data);
@@ -80,19 +80,19 @@ public class FindNextHighestElement {
 	}
 
 	public static void main(String[] args) {
-		FindNextHighestElement bst = new FindNextHighestElement();
-		bst.insert(6);
-		bst.insert(11);
-		bst.insert(9);
-		bst.insert(3);
-		bst.insert(14);
-		bst.insert(1);
-		bst.insert(15);
+		FindNextHighestElement tree = new FindNextHighestElement();
+		tree.insert(6);
+		tree.insert(11);
+		tree.insert(9);
+		tree.insert(3);
+		tree.insert(14);
+		tree.insert(1);
+		tree.insert(15);
 
-		bst.printDataInOrder(root);
+		tree.printDataInOrder(tree.root);
 
 		System.out.print("Next highest element of 9 is ");
-		System.out.println(bst.searchNextHighestElement(9).data);
+		System.out.println(tree.searchNextHighestElement(9).data);
 
 		System.out.println();
 	}

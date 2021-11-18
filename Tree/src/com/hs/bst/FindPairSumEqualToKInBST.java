@@ -4,12 +4,17 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class FindPairSumEqualToKInBST {
+	private void findPair(Node root, int sum) {
+		Set<Integer> set = new HashSet<>();
+		if (!findpairUtil(root, set, sum))
+			System.out.println();
+	}
 
-	private boolean findpairUtil(Node root, int sum, Set<Integer> set) {
+	private boolean findpairUtil(Node root, Set<Integer> set, int sum) {
 		if (root == null)
 			return false;
 
-		if (findpairUtil(root.left, sum, set))
+		if (findpairUtil(root.left, set, sum))
 			return true;
 
 		if (set.contains(sum - root.data)) {
@@ -18,13 +23,7 @@ public class FindPairSumEqualToKInBST {
 		} else
 			set.add(root.data);
 
-		return findpairUtil(root.right, sum, set);
-	}
-
-	private void findPair(Node root, int sum) {
-		Set<Integer> set = new HashSet<>();
-		if (!findpairUtil(root, sum, set))
-			System.out.println();
+		return findpairUtil(root.right, set, sum);
 	}
 
 	public static void main(String[] args) {

@@ -18,8 +18,52 @@ class Passing {
 public class CheckIfTreeIsSubTreeOfAnotherTree {
 
 	Passing p = new Passing();
+	
+	/* This function returns true if S is a subtree of T, otherwise false */
+	private boolean isSubtree(Node T, Node S) {
+		/* base cases */
+		if (S == null) {
+			return true;
+		}
+		if (T == null) {
+			return false;
+		}
 
-	private String strstr(String haystack, String needle) {
+		// Store Inorder traversals of T and S in inT[0..m-1] and inS[0..n-1]
+		// respectively
+		int inT[] = new int[100];
+		String op1 = String.valueOf(inT);
+		int inS[] = new int[100];
+		String op2 = String.valueOf(inS);
+		storeInorder(T, inT, p);
+		storeInorder(S, inS, p);
+		inT[p.m] = '\0';
+		inS[p.m] = '\0';
+
+		// If inS[] is not a substring of preS[], return false
+		if (chekSubString(op1, op2) != null) {
+			return false;
+		}
+
+		// Store Preorder traversals of T and S in inT[0..m-1]
+		// and inS[0..n-1] respectively
+		p.m = 0;
+		p.n = 0;
+		int preT[] = new int[100];
+		int preS[] = new int[100];
+		String op3 = String.valueOf(preT);
+		String op4 = String.valueOf(preS);
+		storePreOrder(T, preT, p);
+		storePreOrder(S, preS, p);
+		preT[p.m] = '\0';
+		preS[p.n] = '\0';
+
+		// If inS[] is not a substring of preS[], return false
+		// Else return true
+		return (chekSubString(op3, op4) != null);
+	}
+
+	private String chekSubString(String haystack, String needle) {
 		if (haystack == null || needle == null) {
 			return null;
 		}
@@ -71,49 +115,7 @@ public class CheckIfTreeIsSubTreeOfAnotherTree {
 		storePreOrder(node.right, arr, i);
 	}
 
-	/* This function returns true if S is a subtree of T, otherwise false */
-	private boolean isSubtree(Node T, Node S) {
-		/* base cases */
-		if (S == null) {
-			return true;
-		}
-		if (T == null) {
-			return false;
-		}
-
-		// Store Inorder traversals of T and S in inT[0..m-1] and inS[0..n-1]
-		// respectively
-		int inT[] = new int[100];
-		String op1 = String.valueOf(inT);
-		int inS[] = new int[100];
-		String op2 = String.valueOf(inS);
-		storeInorder(T, inT, p);
-		storeInorder(S, inS, p);
-		inT[p.m] = '\0';
-		inS[p.m] = '\0';
-
-		// If inS[] is not a substring of preS[], return false
-		if (strstr(op1, op2) != null) {
-			return false;
-		}
-
-		// Store Preorder traversals of T and S in inT[0..m-1]
-		// and inS[0..n-1] respectively
-		p.m = 0;
-		p.n = 0;
-		int preT[] = new int[100];
-		int preS[] = new int[100];
-		String op3 = String.valueOf(preT);
-		String op4 = String.valueOf(preS);
-		storePreOrder(T, preT, p);
-		storePreOrder(S, preS, p);
-		preT[p.m] = '\0';
-		preS[p.n] = '\0';
-
-		// If inS[] is not a substring of preS[], return false
-		// Else return true
-		return (strstr(op3, op4) != null);
-	}
+	
 
 	// Driver program to test above functions
 	public static void main(String args[]) {

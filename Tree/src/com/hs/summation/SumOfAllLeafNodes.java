@@ -2,10 +2,10 @@ package com.hs.summation;
 
 public class SumOfAllLeafNodes {
 
-	private static int sum;
+	private int sum;
 
 	// utility function which calculates sum of all leaf nodes
-	private static void leafSum(Node root) {
+	private void leafSum(Node root) {
 		if (root == null)
 			return;
 
@@ -20,6 +20,8 @@ public class SumOfAllLeafNodes {
 
 	// driver program
 	public static void main(String args[]) {
+
+		SumOfAllLeafNodes tree = new SumOfAllLeafNodes();
 		// contruct binary tree
 		Node root = new Node(1);
 		root.left = new Node(2);
@@ -31,8 +33,8 @@ public class SumOfAllLeafNodes {
 		root.right.left.right = new Node(8);
 
 		// variable to store sum of leaf nodes
-		sum = 0;
-		leafSum(root);
-		System.out.println(sum);
+		tree.sum = 0;
+		tree.leafSum(root);
+		System.out.println(tree.sum);
 	}
 }

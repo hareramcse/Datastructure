@@ -1,6 +1,13 @@
 package com.hs.misc;
 
 public class FindMirrorOfNode {
+	private static int findMirror(Node root, int target) {
+		if (root == null)
+			return 0;
+		if (root.data == target)
+			return target;
+		return findMirrorRec(target, root.left, root.right);
+	}
 
 	private static int findMirrorRec(int target, Node left, Node right) {
 
@@ -24,14 +31,6 @@ public class FindMirrorOfNode {
 
 		// if no mirror found, recur internal Nodes
 		return findMirrorRec(target, left.right, right.left);
-	}
-
-	private static int findMirror(Node root, int target) {
-		if (root == null)
-			return 0;
-		if (root.data == target)
-			return target;
-		return findMirrorRec(target, root.left, root.right);
 	}
 
 	// Driver

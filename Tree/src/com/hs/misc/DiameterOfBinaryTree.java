@@ -5,38 +5,35 @@ package com.hs.misc;
 // O(n)
 class DiameterOfBinaryTree {
 
-	static class A {
+	class Result {
 		int ans = Integer.MIN_VALUE;
 	}
 
-	/* Function to find height of a tree */
-	private int height(Node root, A a) {
-		if (root == null)
-			return 0;
-
-		int left_height = height(root.left, a);
-
-		int right_height = height(root.right, a);
-
-		// update the answer, because diameter of a
-		// tree is nothing but maximum value of
-		// (left_height + right_height + 1) for each node
-		a.ans = Math.max(a.ans, 1 + left_height + right_height);
-
-		return 1 + Math.max(left_height, right_height);
-	}
-
-	/*
-	 * Computes the diameter of binary tree with given root.
-	 */
+	// Computes the diameter of binary tree with given root.
 	private int diameter(Node root) {
 		if (root == null)
 			return 0;
 
 		// This will store the final answer
-		A a = new A();
-		height(root, a);
-		return a.ans;
+		Result result = new Result();
+		maxHeightOfEachNode(root, result);
+		return result.ans;
+	}
+
+	/* Function to find height of a tree */
+	private int maxHeightOfEachNode(Node root, Result result) {
+		if (root == null)
+			return 0;
+
+		int leftHeight = maxHeightOfEachNode(root.left, result);
+
+		int rightHeight = maxHeightOfEachNode(root.right, result);
+
+		// update the answer, because diameter of a tree is nothing but maximum value of
+		// (left_height + right_height + 1) for each node
+		result.ans = Math.max(result.ans, 1 + leftHeight + rightHeight);
+
+		return 1 + Math.max(leftHeight, rightHeight);
 	}
 
 	public static void main(String[] args) {

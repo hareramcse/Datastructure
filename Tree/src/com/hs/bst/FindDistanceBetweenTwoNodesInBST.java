@@ -1,26 +1,27 @@
 package com.hs.bst;
 
 public class FindDistanceBetweenTwoNodesInBST {
-
-	private static int distanceFromRoot(Node root, int x) {
-		if (root.data == x)
-			return 0;
-		else if (root.data > x)
-			return 1 + distanceFromRoot(root.left, x);
-		return 1 + distanceFromRoot(root.right, x);
+	private int findDistanceBetweenTwoNodes(Node root, int a, int b) {
+		int temp = 0;
+		if (a > b) {
+			temp = a;
+			a = b;
+			b = temp;
+		}
+		return distanceBetweenTwoNodes(root, a, b);
 	}
 
-	private static int distanceBetween2(Node root, int a, int b) {
+	private int distanceBetweenTwoNodes(Node root, int a, int b) {
 		if (root == null)
 			return 0;
 
 		// Both keys lie in left
 		if (root.data > a && root.data > b)
-			return distanceBetween2(root.left, a, b);
+			return distanceBetweenTwoNodes(root.left, a, b);
 
 		// Both keys lie in right
 		if (root.data < a && root.data < b) // same path
-			return distanceBetween2(root.right, a, b);
+			return distanceBetweenTwoNodes(root.right, a, b);
 
 		// Lie in opposite directions (Root is
 		// LCA of two nodes)
@@ -30,17 +31,16 @@ public class FindDistanceBetweenTwoNodesInBST {
 		return 0;
 	}
 
-	private static int findDistWrapper(Node root, int a, int b) {
-		int temp = 0;
-		if (a > b) {
-			temp = a;
-			a = b;
-			b = temp;
-		}
-		return distanceBetween2(root, a, b);
+	private int distanceFromRoot(Node root, int x) {
+		if (root.data == x)
+			return 0;
+		else if (root.data > x)
+			return 1 + distanceFromRoot(root.left, x);
+		return 1 + distanceFromRoot(root.right, x);
 	}
 
 	public static void main(String[] args) {
+		FindDistanceBetweenTwoNodesInBST tree = new FindDistanceBetweenTwoNodesInBST();
 		Node root = new Node(50);
 		root.left = new Node(30);
 		root.left.left = new Node(20);
@@ -48,6 +48,6 @@ public class FindDistanceBetweenTwoNodesInBST {
 		root.right = new Node(70);
 		root.right.left = new Node(60);
 		root.right.right = new Node(80);
-		System.out.println(findDistWrapper(root, 30, 80));
+		System.out.println(tree.findDistanceBetweenTwoNodes(root, 30, 80));
 	}
 }

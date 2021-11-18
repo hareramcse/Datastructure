@@ -1,6 +1,18 @@
 package com.hs.bst;
 
 public class CheckIfGivenSortedSubSequenceExistInBST {
+	// A wrapper over seqExistUtil. It returns true if seq[0..n-1] exists in tree.
+	private boolean seqExist(Node root, int seq[], int n) {
+		// Initialize index in seq[]
+		int index = 0;
+
+		// Do an inorder traversal and find if all elements of seq[] were present
+		seqExistUtil(root, seq, index);
+
+		// index would become n if all elements of seq[] were present
+		return (index == n);
+	}
+
 	private void seqExistUtil(Node root, int seq[], int index) {
 		if (root == null)
 			return;
@@ -8,28 +20,12 @@ public class CheckIfGivenSortedSubSequenceExistInBST {
 		// We traverse left subtree first in Inorder
 		seqExistUtil(root.left, seq, index);
 
-		// If current node matches with se[index] then move
-		// forward in sub-sequence
+		// If current node matches with se[index] then move forward in sub-sequence
 		if (root.data == seq[index])
 			index++;
 
 		// We traverse left subtree in the end in Inorder
 		seqExistUtil(root.right, seq, index);
-	}
-
-	// A wrapper over seqExistUtil. It returns true
-	// if seq[0..n-1] exists in tree.
-	private boolean seqExist(Node root, int seq[], int n) {
-		// Initialize index in seq[]
-		int index = 0;
-
-		// Do an inorder traversal and find if all
-		// elements of seq[] were present
-		seqExistUtil(root, seq, index);
-
-		// index would become n if all elements of
-		// seq[] were present
-		return (index == n);
 	}
 
 	public static void main(String[] args) {

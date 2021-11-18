@@ -2,18 +2,15 @@ package com.hs.summation;
 
 public class SumOfNodesOnLongestPathFromRootToLeaf {
 
-	private int maxLen;
-	private int maxSum;
+	private int maxLen = Integer.MIN_VALUE;
+	private int maxSum = Integer.MIN_VALUE;
 
 	// utility function to find the sum of nodes on the longest path from root to
 	// leaf node
-	private int sumOfLongRootToLeafPathUtil(Node root) {
+	private int sumOfLongestRootToLeafPath(Node root) {
 		// if tree is NULL, then sum is 0
 		if (root == null)
 			return 0;
-
-		maxSum = Integer.MIN_VALUE;
-		maxLen = 0;
 
 		// finding the maximum sum 'maxSum' for the maximum length root to leaf path
 		longestPathFromRootToLeafNode(root, 0, 0);
@@ -50,6 +47,6 @@ public class SumOfNodesOnLongestPathFromRootToLeaf {
 		root.right.right = new Node(3);
 		root.left.right.left = new Node(6);
 
-		System.out.println("Sum = " + tree.sumOfLongRootToLeafPathUtil(root));
+		System.out.println("Sum = " + tree.sumOfLongestRootToLeafPath(root));
 	}
 }

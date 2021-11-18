@@ -1,7 +1,7 @@
 package com.hs.misc;
 
 public class Node {
-	int data;
+	int data, height;
 	Node left, right, next, nextRight;
 
 	public Node(int item) {

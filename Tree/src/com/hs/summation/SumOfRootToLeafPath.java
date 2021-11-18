@@ -3,24 +3,24 @@ package com.hs.summation;
 public class SumOfRootToLeafPath {
 
 	private boolean hasPathSum(Node root, int sum) {
-		if (root == null) {
+		if (root == null)
 			return (sum == 0);
-		} else {
-			boolean ans = false;
 
-			/* otherwise check both subtrees */
-			int subSum = sum - root.data;
-			if (subSum == 0 && root.left == null && root.right == null) {
-				return true;
-			}
-			if (root.left != null) {
-				ans = ans || hasPathSum(root.left, subSum);
-			}
-			if (root.right != null) {
-				ans = ans || hasPathSum(root.right, subSum);
-			}
-			return ans;
+		boolean ans = false;
+
+		/* otherwise check both subtrees */
+		int subSum = sum - root.data;
+		if (subSum == 0 && root.left == null && root.right == null) {
+			return true;
 		}
+		if (root.left != null) {
+			ans = ans || hasPathSum(root.left, subSum);
+		}
+		if (root.right != null) {
+			ans = ans || hasPathSum(root.right, subSum);
+		}
+		return ans;
+
 	}
 
 	public static void main(String args[]) {

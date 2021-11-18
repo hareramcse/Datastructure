@@ -10,7 +10,7 @@ public class ConnectNodeAtSameLevel {
 		connectRecur(p);
 	}
 
-	// Set next right of all descendents of p. Assumption: p is a compete binary
+	// Set next right of all descendants of p. Assumption: p is a compete binary
 	// tree
 	private static void connectRecur(Node p) {
 		// Base case

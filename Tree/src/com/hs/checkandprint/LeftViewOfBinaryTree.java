@@ -4,7 +4,7 @@ package com.hs.checkandprint;
  * The left view contains all nodes that are first nodes in their levels. A simple 
  * solution is to do level order traversal and print the first node in every level.
  * */
-class PrintLeftViewOfBinaryTree {
+class LeftViewOfBinaryTree {
 	private int max_level;
 
 	// recursive function to print left view
@@ -27,7 +27,7 @@ class PrintLeftViewOfBinaryTree {
 	/* testing for example nodes */
 	public static void main(String args[]) {
 		/* creating a binary tree and entering the nodes */
-		PrintLeftViewOfBinaryTree tree = new PrintLeftViewOfBinaryTree();
+		LeftViewOfBinaryTree tree = new LeftViewOfBinaryTree();
 		Node root = new Node(12);
 		root.left = new Node(10);
 		root.right = new Node(30);

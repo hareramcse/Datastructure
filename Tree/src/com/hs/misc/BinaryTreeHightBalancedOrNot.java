@@ -23,6 +23,7 @@ class BinaryTreeHightBalancedOrNot {
 		Height lheight = new Height(), rheight = new Height();
 		boolean l = isBalanced(root.left, lheight);
 		boolean r = isBalanced(root.right, rheight);
+
 		int lh = lheight.height, rh = rheight.height;
 
 		// Height of current node is max of heights of left and right subtrees plus 1

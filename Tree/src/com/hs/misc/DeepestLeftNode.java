@@ -2,12 +2,18 @@ package com.hs.misc;
 
 class Level {
 	// maxlevel: gives the value of level of maximum left leaf
-	int maxlevel = 0;
+	int maxLevel = 0;
 }
 
 public class DeepestLeftNode {
 	// Node to store resultant node after left traversal
 	private Node result;
+
+	// A wrapper over deepestLeftLeafUtil().
+	private void deepestLeftLeaf(Node node) {
+		Level level = new Level();
+		deepestLeftLeafUtil(node, 0, level, false);
+	}
 
 	// A utility function to find deepest leaf node.
 	// lvl: level of current node.
@@ -19,20 +25,14 @@ public class DeepestLeftNode {
 
 		// Update result if this node is left leaf and its level is more
 		// than the maxl level of the current result
-		if (isLeft != false && node.left == null && node.right == null && lvl > level.maxlevel) {
+		if (isLeft && node.left == null && node.right == null && lvl > level.maxLevel) {
 			result = node;
-			level.maxlevel = lvl;
+			level.maxLevel = lvl;
 		}
 
 		// Recur for left and right subtrees
 		deepestLeftLeafUtil(node.left, lvl + 1, level, true);
 		deepestLeftLeafUtil(node.right, lvl + 1, level, false);
-	}
-
-	// A wrapper over deepestLeftLeafUtil().
-	private void deepestLeftLeaf(Node node) {
-		Level level = new Level();
-		deepestLeftLeafUtil(node, 0, level, false);
 	}
 
 	// Driver program to test above functions

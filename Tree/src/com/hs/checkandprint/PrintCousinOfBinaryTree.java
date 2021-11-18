@@ -11,7 +11,7 @@ class PrintCousinOfBinaryTree {
 	/*
 	 * It returns level of the node if it is present in tree, otherwise returns 0.
 	 */
-	private static int getLevel(Node root, Node node, int level) {
+	private int getLevel(Node root, Node node, int level) {
 		// base cases
 		if (root == null)
 			return 0;
@@ -31,7 +31,7 @@ class PrintCousinOfBinaryTree {
 	 * Print nodes at a given level such that sibling of node is not printed if it
 	 * exists
 	 */
-	private static void printGivenLevel(Node root, Node node, int level) {
+	private void printGivenLevel(Node root, Node node, int level) {
 		// Base cases
 		if (root == null || level < 2)
 			return;
@@ -54,7 +54,7 @@ class PrintCousinOfBinaryTree {
 	}
 
 	// This function prints cousins of a given node
-	private static void printCousins(Node root, Node node) {
+	private void printCousins(Node root, Node node) {
 		// Get level of given node
 		int level = getLevel(root, node, 1);
 
@@ -64,6 +64,7 @@ class PrintCousinOfBinaryTree {
 
 	// Driver Program to test above functions
 	public static void main(String[] args) {
+		PrintCousinOfBinaryTree tree = new PrintCousinOfBinaryTree();
 		Node root = new Node(1);
 		root.left = new Node(2);
 		root.right = new Node(3);
@@ -74,6 +75,6 @@ class PrintCousinOfBinaryTree {
 		root.right.right = new Node(7);
 		root.right.left.right = new Node(8);
 
-		printCousins(root, root.left.right);
+		tree.printCousins(root, root.left.right);
 	}
 }

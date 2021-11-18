@@ -2,61 +2,44 @@ package com.hs.checkandprint;
 
 import java.util.LinkedList;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Queue;
 import java.util.TreeMap;
 
 class PrintTopViewOfBinaryTree {
 
-	// function should print the topView of the binary tree
-	private void topView(Node root) {
-		class QueueObj {
-			Node node;
-			int d;
-
-			QueueObj(Node node, int d) {
-				this.node = node;
-				this.d = d;
-			}
-		}
-		Queue<QueueObj> queue = new LinkedList<QueueObj>();
-		Map<Integer, Node> map = new TreeMap<Integer, Node>();
-
-		if (root == null) {
+	public void topView(Node node) {
+		if (node == null) {
 			return;
-		} else {
-			queue.add(new QueueObj(root, 0));
 		}
 
-		System.out.println("The top view of the tree is : ");
+		Map<Integer, Integer> m = new TreeMap<Integer, Integer>();
 
-		// count function returns 1 if the container
-		// contains an element whose key is equivalent
-		// to d, or returns zero otherwise.
-		while (!queue.isEmpty()) {
-			QueueObj tmpNode = queue.poll();
-			if (!map.containsKey(tmpNode.d)) {
-				map.put(tmpNode.d, tmpNode.node);
+		Queue<Node> q = new LinkedList<Node>();
+		q.add(node);
+
+		while (!q.isEmpty()) {
+			Node temp = q.remove();
+			int hd = temp.height;
+
+			if (m.get(hd) == null) {
+				m.put(hd, temp.data);
 			}
 
-			if (tmpNode.node.left != null) {
-				queue.add(new QueueObj(tmpNode.node.left, tmpNode.d - 1));
-			}
-			if (tmpNode.node.right != null) {
-				queue.add(new QueueObj(tmpNode.node.right, tmpNode.d + 1));
+			if (temp.left != null) {
+				temp.left.height = hd - 1;
+				q.add(temp.left);
 			}
 
+			if (temp.right != null) {
+				temp.right.height = hd + 1;
+				q.add(temp.right);
+			}
 		}
-		for (Entry<Integer, Node> entry : map.entrySet()) {
-			System.out.print(entry.getValue().data);
-		}
+		System.out.println(m.values());
 	}
 
 	// Driver Program to test above functions
 	public static void main(String[] args) {
-		/*
-		 * Create following Binary Tree 1 / \ 2 3 \ 4 \ 5 \ 6
-		 */
 		PrintTopViewOfBinaryTree tree = new PrintTopViewOfBinaryTree();
 		Node root = new Node(1);
 		root.left = new Node(2);

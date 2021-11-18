@@ -1,9 +1,14 @@
 package com.hs.checkandprint;
 
-/*The idea is to find level of one of the nodes. Using the found level, check if ‘a’ 
+/* The idea is to find level of one of the nodes. Using the found level, check if ‘a’ 
  * and ‘b’ are at this level. If ‘a’ and ‘b’ are at given level, then finally check if 
  * they are not children of same parent.*/
 class CheckIfTwoNodesAreCousin {
+	// Returns 1 if a and b are cousins, otherwise 0
+	private boolean isCousin(Node root, Node a, Node b) {
+		return ((level(root, a, 1) == level(root, b, 1)) && (!isSibling(root, a, b)));
+	}
+
 	// Recursive function to check if two Nodes are siblings
 	private boolean isSibling(Node root, Node a, Node b) {
 		// Base case
@@ -30,11 +35,6 @@ class CheckIfTwoNodesAreCousin {
 
 		// Else search in right subtree
 		return level(root.right, ptr, level + 1);
-	}
-
-	// Returns 1 if a and b are cousins, otherwise 0
-	private boolean isCousin(Node node, Node a, Node b) {
-		return ((level(node, a, 1) == level(node, b, 1)) && (!isSibling(node, a, b)));
 	}
 
 	// Driver program to test above functions

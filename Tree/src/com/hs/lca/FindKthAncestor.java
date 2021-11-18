@@ -4,11 +4,11 @@ public class FindKthAncestor {
 
 	// temporary node to keep track of Node returned
 	// from previous recursive call during backtrack
-	private static Node temp = null;
-	private static int k;
+	private Node temp = null;
+	private int k;
 
 	// recursive function to calculate Kth ancestor
-	private static Node kthAncestorDFS(Node root, int node) {
+	private Node kthAncestorDFS(Node root, int node) {
 		// Base case
 		if (root == null)
 			return null;
@@ -34,18 +34,18 @@ public class FindKthAncestor {
 
 	// Driver code
 	public static void main(String args[]) {
-		// Let us create binary tree shown in above diagram
+		FindKthAncestor tree = new FindKthAncestor();
 		Node root = new Node(1);
 		root.left = new Node(2);
 		root.right = new Node(3);
 		root.left.left = new Node(4);
 		root.left.right = new Node(5);
 
-		k = 2;
+		tree.k = 2;
 		int node = 5;
 
 		// print kth ancestor of given node
-		Node parent = kthAncestorDFS(root, node);
+		Node parent = tree.kthAncestorDFS(root, node);
 
 		// check if parent is not null, it means
 		// there is no Kth ancestor of the node

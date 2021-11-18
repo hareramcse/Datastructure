@@ -1,8 +1,7 @@
 package com.hs.bst;
 
 public class BinarySearchCountOccurrence {
-	private int binarySearchCountOccurrence(int arr[], int data,
-			boolean searchFirst) {
+	private int binarySearchCountOccurrence(int arr[], int data, boolean searchFirst) {
 		int length = arr.length;
 		int low = 0, high = length - 1, result = -1;
 		while (low <= high) {
@@ -24,13 +23,11 @@ public class BinarySearchCountOccurrence {
 	}
 
 	public static void main(String[] args) {
-		BinarySearchCountOccurrence binarySearch = new BinarySearchCountOccurrence();
+		BinarySearchCountOccurrence tree = new BinarySearchCountOccurrence();
 		// array should be strictly sorted
 		int arr[] = { 12, 34, 45, 45, 45, 65, 67, 87, 98 };
-		int firstIndex = binarySearch
-				.binarySearchCountOccurrence(arr, 45, true);
-		int lastIndex = binarySearch
-				.binarySearchCountOccurrence(arr, 45, false);
+		int firstIndex = tree.binarySearchCountOccurrence(arr, 45, true);
+		int lastIndex = tree.binarySearchCountOccurrence(arr, 45, false);
 		int count = lastIndex - firstIndex + 1;
 		if (firstIndex == -1) {
 			System.out.println("element doesnt exist in the array");

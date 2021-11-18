@@ -1,7 +1,7 @@
 package com.hs.summation;
 
 class SumOfAllLeftLeaves {
-	private static int sum = 0;
+	private int sum = 0;
 
 	// This function returns sum of all left leaves in a given binary tree
 	private void leftLeavesSum(Node node, boolean isleft) {
@@ -31,6 +31,6 @@ class SumOfAllLeftLeaves {
 		root.right.right.left = new Node(50);
 
 		tree.leftLeavesSum(root, false);
-		System.out.println("The sum of leaves is " + sum);
+		System.out.println("The sum of leaves is " + tree.sum);
 	}
 }

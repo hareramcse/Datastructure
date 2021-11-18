@@ -2,19 +2,19 @@ package com.hs.checkandprint;
 
 /*Below is an idea to check whether a given Binary Tree is perfect or not.  
 
-1) Find depth of any node. Let this depth be d. Now recursively traverse the tree and check for following two conditions. Every 
-internal node should have both children non-empty 
+1) Find depth of any node. Let this depth be d. Now recursively traverse the tree and check 
+for following two conditions. Every internal node should have both children non-empty 
 2) All leaves are at depth ‘d’*/
 // O(n) 
 class CheckIfBinaryTreeIsPerfect {
 
-	private static boolean isPerfect(Node root) {
+	private boolean isPerfect(Node root) {
 		int depth = findLeftDepth(root);
 		return isPerfectTree(root, 0, depth);
 	}
 
 	// Returns depth of leftmost leaf.
-	private static int findLeftDepth(Node root) {
+	private int findLeftDepth(Node root) {
 		int d = 0;
 		while (root != null) {
 			d++;
@@ -23,7 +23,7 @@ class CheckIfBinaryTreeIsPerfect {
 		return d;
 	}
 
-	private static boolean isPerfectTree(Node root, int level, int depth) {
+	private boolean isPerfectTree(Node root, int level, int depth) {
 		// An empty tree is perfect
 		if (root == null)
 			return true;
@@ -42,6 +42,7 @@ class CheckIfBinaryTreeIsPerfect {
 
 	// Driver Program
 	public static void main(String args[]) {
+		CheckIfBinaryTreeIsPerfect tree = new CheckIfBinaryTreeIsPerfect();
 		Node root = new Node(10);
 		root.left = new Node(20);
 		root.right = new Node(30);
@@ -50,7 +51,7 @@ class CheckIfBinaryTreeIsPerfect {
 		root.right.left = new Node(60);
 		root.right.right = new Node(70);
 
-		if (isPerfect(root) == true)
+		if (tree.isPerfect(root) == true)
 			System.out.println("Yes");
 		else
 			System.out.println("No");

@@ -1,7 +1,7 @@
 package com.hs.checkandprint;
 
 public class Node {
-	int data;
+	int data, height;
 	Node left, right, next;
 
 	public Node(int item) {

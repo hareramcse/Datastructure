@@ -6,7 +6,6 @@ import java.util.Queue;
 public class FindLevelMaximumSum {
 
 	private static int maxLevelSum(Node root) {
-
 		// Base case
 		if (root == null)
 			return 0;
