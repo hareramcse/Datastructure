@@ -1,15 +1,17 @@
 package com.hs.array.arrangement;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class SubArraySumWithNegativeNumber {
 
-	public static void subArraySum(int[] arr, int n, int value) {
+	private void subArraySum(int[] arr, int value) {
+		int n = arr.length;
 		// cur_sum to keep track of cumulative sum till that point
 		int cur_sum = 0;
 		int start = 0;
 		int end = -1;
-		HashMap<Integer, Integer> hashMap = new HashMap<>();
+		Map<Integer, Integer> hashMap = new HashMap<>();
 
 		for (int i = 0; i < n; i++) {
 			cur_sum = cur_sum + arr[i];
@@ -41,10 +43,9 @@ public class SubArraySumWithNegativeNumber {
 	}
 
 	public static void main(String[] args) {
+		SubArraySumWithNegativeNumber array = new SubArraySumWithNegativeNumber();
 		int[] arr = { 10, 2, -2, -20, 10 };
-		int n = arr.length;
 		int sum = 0;
-		subArraySum(arr, n, sum);
-
+		array.subArraySum(arr, sum);
 	}
 }

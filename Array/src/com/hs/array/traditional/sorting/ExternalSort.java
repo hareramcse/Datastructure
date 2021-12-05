@@ -1,4 +1,4 @@
-package com.hs.sorting;
+package com.hs.array.traditional.sorting;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

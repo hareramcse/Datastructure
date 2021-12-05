@@ -3,7 +3,7 @@ package com.hs.array.arrangement;
 import java.util.Arrays;
 
 public class QuickSortDoublePivot {
-	public void sort(int[] input) {
+	private void sort(int[] input) {
 		sort(input, 0, input.length - 1);
 	}
 

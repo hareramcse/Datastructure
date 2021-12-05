@@ -5,12 +5,12 @@ import java.util.HashMap;
 public class LargestSubArrayWithEqualNoOfZeroAndOne {
 
 	// Returns largest sub array with equal number of 0s and 1s
-	int maxLen(int arr[], int n) {
+	private int maxLen(int arr[]) {
+		int n = arr.length;
 		for (int i = 0; i < n; i++) {
 			arr[i] = (arr[i] == 0) ? -1 : 1;
 		}
 
-		// int l1 = maxLenFirstWay(arr, n);
 		int l2 = maxLenSecondWay(arr);
 
 		for (int i = 0; i < n; i++) {
@@ -20,30 +20,7 @@ public class LargestSubArrayWithEqualNoOfZeroAndOne {
 		return l2;
 	}
 
-	static int maxLenFirstWay(int arr[], int n) {
-		int max_len = 0;
-		int i,j=0;
-
-		// Pick a starting point
-		for (i = 0; i < n; i++) {
-			// Initialize curr_sum for every
-			// starting point
-			int curr_sum = 0;
-
-			// try all subarrays starting with 'i'
-			for (j = i; j < n; j++) {
-				curr_sum += arr[j];
-
-				// If curr_sum becomes 0, then update
-				// max_len
-				if (curr_sum == 0)
-					max_len = Math.max(max_len, j - i + 1);
-			}
-		}
-		return max_len;
-	}
-
-	static int maxLenSecondWay(int arr[]) {
+	private int maxLenSecondWay(int arr[]) {
 		// Creates an empty hashMap hM
 		HashMap<Integer, Integer> hM = new HashMap<Integer, Integer>();
 
@@ -77,10 +54,8 @@ public class LargestSubArrayWithEqualNoOfZeroAndOne {
 
 	/* Driver program to test the above functions */
 	public static void main(String[] args) {
-		LargestSubArrayWithEqualNoOfZeroAndOne sub = new LargestSubArrayWithEqualNoOfZeroAndOne();
+		LargestSubArrayWithEqualNoOfZeroAndOne array = new LargestSubArrayWithEqualNoOfZeroAndOne();
 		int arr[] = { 0, 0, 0, 1, 0, 1, 1 };
-		int n = arr.length;
-
-		System.out.println(sub.maxLen(arr, n));
+		System.out.println(array.maxLen(arr));
 	}
 }

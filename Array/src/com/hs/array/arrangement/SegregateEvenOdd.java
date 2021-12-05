@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class SegregateEvenOdd {
 
-	static void segregateEvenOdd(int arr[]) {
+	private void segregateEvenOdd(int arr[]) {
 		/* Initialize left and right indexes */
 		int start = 0, end = arr.length - 1;
 		while (start < end) {
@@ -29,8 +29,9 @@ public class SegregateEvenOdd {
 
 	/* Driver program to test above functions */
 	public static void main(String[] args) {
+		SegregateEvenOdd array = new SegregateEvenOdd();
 		int arr[] = { 12, 34, 45, 9, 8, 90, 3 };
-		segregateEvenOdd(arr);
+		array.segregateEvenOdd(arr);
 		System.out.println(Arrays.toString(arr));
 	}
 }

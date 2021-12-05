@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class ThreeWayPartitioningOnGivenRange {
 
 	// Partitions arr[0..n-1] around [lowVal..highVal]
-	public static void threeWayPartition(int[] arr, int lowVal, int highVal) {
+	private void threeWayPartition(int[] arr, int lowVal, int highVal) {
 
 		int n = arr.length;
 
@@ -38,10 +38,11 @@ public class ThreeWayPartitioningOnGivenRange {
 	}
 
 	public static void main(String[] args) {
+		ThreeWayPartitioningOnGivenRange array = new ThreeWayPartitioningOnGivenRange();
 		int arr[] = { 1, 14, 5, 25, 4, 34, 22};
 		int low = 10;
 		int high = 20;
-		threeWayPartition(arr, low, high);
+		array.threeWayPartition(arr, low, high);
 		System.out.println(Arrays.toString(arr));
 	}
 }

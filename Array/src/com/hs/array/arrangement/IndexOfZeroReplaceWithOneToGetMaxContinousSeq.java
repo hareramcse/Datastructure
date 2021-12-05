@@ -5,7 +5,8 @@ public class IndexOfZeroReplaceWithOneToGetMaxContinousSeq {
 	// Returns index of 0 to be replaced with 1 to get longest
 	// continuous sequence of 1s. If there is no 0 in array, then
 	// it returns -1.
-	static int maxOnesIndex(int arr[], int n) {
+	private int maxOnesIndex(int arr[]) {
+		int n = arr.length;
 		int max_count = 0; // for maximum number of 1 around a zero
 		int max_index = 0; // for storing result
 		int prev_zero = -1; // index of previous zero
@@ -38,8 +39,8 @@ public class IndexOfZeroReplaceWithOneToGetMaxContinousSeq {
 
 	// Driver program to test above function
 	public static void main(String[] args) {
+		IndexOfZeroReplaceWithOneToGetMaxContinousSeq array = new IndexOfZeroReplaceWithOneToGetMaxContinousSeq();
 		int arr[] = { 1, 0, 1, 1, 1, 0, 1, 1, 0, 1 };
-		int n = arr.length;
-		System.out.println("Index of 0 to be replaced is " + maxOnesIndex(arr, n));
+		System.out.println("Index of 0 to be replaced is " + array.maxOnesIndex(arr));
 	}
 }

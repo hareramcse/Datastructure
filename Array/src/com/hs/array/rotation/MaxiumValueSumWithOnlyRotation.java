@@ -1,8 +1,8 @@
 package com.hs.array.rotation;
 
-public class FiveMaxiumValueSumWithOnlyRotation {
+public class MaxiumValueSumWithOnlyRotation {
 
-	private static void findMaxSum(int arr[]) {
+	private void findMaxSum(int arr[]) {
 		int arrSum = 0; // Stores sum of arr[i]
 		int currVal = 0; // Stores sum of i*arr[i]
 		for (int i = 0; i < arr.length; i++) {
@@ -23,7 +23,8 @@ public class FiveMaxiumValueSumWithOnlyRotation {
 	}
 
 	public static void main(String[] args) {
+		MaxiumValueSumWithOnlyRotation array = new MaxiumValueSumWithOnlyRotation();
 		int arr[] = { 10, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-		findMaxSum(arr);
+		array.findMaxSum(arr);
 	}
 }

@@ -1,14 +1,14 @@
 package com.hs.array.rotation;
 
-public class SevenFindRotationCount {
-	
-	private static int rotationCount(int arr[], int low, int high) {
-		int length = arr.length;
+public class FindRotationCount {
+	// here goal is to find out the minimum value index in the array
+	private int rotationCount(int arr[], int low, int high) {
+		int n = arr.length;
 		int mid = low + (high - low) / 2;
 
 		// this modulo property is for circular array
-		int next = (mid + 1) % length;
-		int prev = (mid + length - 1) % length;
+		int next = (mid + 1) % n;
+		int prev = (mid - 1 + n) % n;
 
 		// means whole array is all ready sorted
 		if (arr[low] <= arr[high]) {
@@ -25,11 +25,12 @@ public class SevenFindRotationCount {
 	}
 
 	public static void main(String[] args) {
+		FindRotationCount array = new FindRotationCount();
+
 		int arr[] = { 3, 4, 5, 1, 2 };
-		
 		int low = 0;
 		int high = arr.length - 1;
-		int count2 = rotationCount(arr, low, high);
-		System.out.println(count2);
+		int count = array.rotationCount(arr, low, high);
+		System.out.println(count);
 	}
 }

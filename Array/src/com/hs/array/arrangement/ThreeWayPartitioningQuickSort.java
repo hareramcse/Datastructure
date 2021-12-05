@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class ThreeWayPartitioningQuickSort {
 
-	public void sort(int[] input) {
+	private void sort(int[] input) {
 		// input=shuffle(input);
 		sort(input, 0, input.length - 1);
 	}
@@ -42,8 +42,8 @@ public class ThreeWayPartitioningQuickSort {
 	}
 
 	public static void main(String[] args) {
-		int arr[] = { 1, 14, 5, 25, 4, 34, 22 };
 		ThreeWayPartitioningQuickSort twp = new ThreeWayPartitioningQuickSort();
+		int arr[] = { 1, 14, 5, 25, 4, 34, 22 };
 		twp.sort(arr);
 		System.out.println(Arrays.toString(arr));
 	}

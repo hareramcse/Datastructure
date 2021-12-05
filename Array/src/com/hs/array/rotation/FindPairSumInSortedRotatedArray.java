@@ -1,8 +1,9 @@
 package com.hs.array.rotation;
 
-public class FourFindPairSumInSortedRotatedArray {
+public class FindPairSumInSortedRotatedArray {
 
-	private static boolean findSum(int arr[], int value, int n) {
+	private boolean findSum(int arr[], int value) {
+		int n = arr.length;
 		int i;
 		for (i = 0; i < n; i++) {
 			if (arr[i] > arr[i + 1]) {
@@ -27,12 +28,12 @@ public class FourFindPairSumInSortedRotatedArray {
 	}
 
 	public static void main(String[] args) {
+		FindPairSumInSortedRotatedArray array = new FindPairSumInSortedRotatedArray();
 		int arr[] = { 11, 15, 6, 8, 9, 10 };
 		int sum = 17;
-		int n = arr.length;
 
-		boolean b2 = findSum(arr, sum, n);
-		System.out.println(b2);
+		boolean found = array.findSum(arr, sum);
+		System.out.println(found);
 
 	}
 }

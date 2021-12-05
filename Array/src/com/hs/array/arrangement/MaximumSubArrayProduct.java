@@ -2,12 +2,12 @@ package com.hs.array.arrangement;
 
 public class MaximumSubArrayProduct {
 	// Utility functions to get minimum of two integers
-	static int min(int x, int y) {
+	private int min(int x, int y) {
 		return x < y ? x : y;
 	}
 
 	// Utility functions to get maximum of two integers
-	static int max(int x, int y) {
+	private int max(int x, int y) {
 		return x > y ? x : y;
 	}
 
@@ -15,7 +15,7 @@ public class MaximumSubArrayProduct {
 	 * Returns the product of max product sub array. Assumes that the given array
 	 * always has a sub array with product more than 1
 	 */
-	static int maxSubarrayProduct(int arr[]) {
+	private int maxSubarrayProduct(int arr[]) {
 		int n = arr.length;
 		// max positive product ending at the current position
 		int max_ending_here = 1;
@@ -73,8 +73,8 @@ public class MaximumSubArrayProduct {
 	}
 
 	public static void main(String[] args) {
-
+		MaximumSubArrayProduct array = new MaximumSubArrayProduct();
 		int arr[] = { 1, -2, -3, 0, 7, -8, -2 };
-		System.out.println("Maximum Sub array product is " + maxSubarrayProduct(arr));
+		System.out.println("Maximum Sub array product is " + array.maxSubarrayProduct(arr));
 	}
 }

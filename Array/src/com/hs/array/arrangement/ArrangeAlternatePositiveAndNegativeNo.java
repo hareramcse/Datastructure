@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 public class ArrangeAlternatePositiveAndNegativeNo {
 
-	private static void rearrange(int arr[], int n) {
-
+	private void rearrange(int arr[]) {
+		int n = arr.length;
 		int i = -1, temp = 0;
 		for (int j = 0; j < n; j++) {
 			if (arr[j] < 0) {
@@ -31,8 +31,9 @@ public class ArrangeAlternatePositiveAndNegativeNo {
 	}
 
 	public static void main(String[] args) {
+		ArrangeAlternatePositiveAndNegativeNo array = new ArrangeAlternatePositiveAndNegativeNo();
 		int arr[] = { -1, 2, -3, 4, 5, 6, -7, 8, 9 };
-		rearrange(arr, arr.length - 1);
+		array.rearrange(arr);
 		System.out.println(Arrays.toString(arr));
 
 	}

@@ -8,14 +8,11 @@ import java.util.List;
 
 public class ArrangeGivenNoForBiggestNumber {
 
-	// The main function that prints the arrangement with the largest 
-	// value the function accepts a vector of strings
-	void printLargest(List<String> list) {
+	private void printLargest(List<String> list) {
 
 		Collections.sort(list, new Comparator<String>() {
 
-			// A comparison function which is used by
-			// sort() in printLargest()
+			// A comparison function which is used by sort() in printLargest()
 			@Override
 			public int compare(String X, String Y) {
 
@@ -38,7 +35,7 @@ public class ArrangeGivenNoForBiggestNumber {
 	}
 
 	public static void main(String[] args) {
-		ArrangeGivenNoForBiggestNumber agnfbn=new ArrangeGivenNoForBiggestNumber();
+		ArrangeGivenNoForBiggestNumber array = new ArrangeGivenNoForBiggestNumber();
 
 		List<String> arr = new ArrayList<String>();
 
@@ -47,6 +44,6 @@ public class ArrangeGivenNoForBiggestNumber {
 		arr.add("546");
 		arr.add("548");
 		arr.add("60");
-		agnfbn.printLargest(arr);
+		array.printLargest(arr);
 	}
 }

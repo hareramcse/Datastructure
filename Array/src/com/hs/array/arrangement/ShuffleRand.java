@@ -6,7 +6,8 @@ import java.util.Random;
 public class ShuffleRand {
 
 	// A Function to generate a random permutation of arr[]
-	static void randomize(int arr[], int n) {
+	private void randomize(int arr[]) {
+		int n = arr.length;
 		// Creating a object for Random class
 		Random r = new Random();
 
@@ -28,8 +29,8 @@ public class ShuffleRand {
 
 	// Driver Program to test above function
 	public static void main(String[] args) {
+		ShuffleRand array = new ShuffleRand();
 		int[] arr = { 1, 2, 3, 4, 5, 6, 7, 8 };
-		int n = arr.length;
-		randomize(arr, n);
+		array.randomize(arr);
 	}
 }

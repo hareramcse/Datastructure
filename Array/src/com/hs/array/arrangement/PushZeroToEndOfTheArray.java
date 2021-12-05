@@ -2,7 +2,8 @@ package com.hs.array.arrangement;
 
 class PushZeroToEndOfTheArray {
 	// Function which pushes all zeros to end of an array.
-	static void pushZerosToEnd(int arr[], int n) {
+	private void pushZerosToEnd(int arr[]) {
+		int n = arr.length;
 		int count = 0; // Count of non-zero elements
 
 		// Traverse the array. If element encountered is
@@ -22,9 +23,10 @@ class PushZeroToEndOfTheArray {
 
 	/* Driver function to check for above functions */
 	public static void main(String[] args) {
+		PushZeroToEndOfTheArray array = new PushZeroToEndOfTheArray();
 		int arr[] = { 1, 9, 8, 4, 0, 0, 2, 7, 0, 6, 0, 9 };
 		int n = arr.length;
-		pushZerosToEnd(arr, n);
+		array.pushZerosToEnd(arr);
 		System.out.println("Array after pushing zeros to the back: ");
 		for (int i = 0; i < n; i++)
 			System.out.print(arr[i] + " ");

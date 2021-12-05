@@ -3,7 +3,8 @@ package com.hs.array.arrangement;
 import java.util.Arrays;
 
 public class MaximumSumOfConsecutiveDiff {
-	static int maxSum(int arr[], int n) {
+	private int maxSum(int arr[]) {
+		int n = arr.length;
 		int sum = 0;
 
 		// Sorting the array.
@@ -28,8 +29,8 @@ public class MaximumSumOfConsecutiveDiff {
 
 	// Driver Program
 	public static void main(String[] args) {
+		MaximumSumOfConsecutiveDiff array = new MaximumSumOfConsecutiveDiff();
 		int arr[] = { 4, 2, 1, 8 };
-		int n = arr.length;
-		System.out.println(maxSum(arr, n));
+		System.out.println(array.maxSum(arr));
 	}
 }

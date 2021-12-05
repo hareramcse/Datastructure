@@ -1,9 +1,0 @@
-Sort a nearly sorted (or K sorted) array
-Construction of Longest Increasing Subsequence (N log N)
-Sort elements by frequency | Set 2
-Merge k sorted arrays | Set 1
-SortArrayOrderDefinedByOtherArray
-Rearrange an array such that ‘arr[j]’ becomes ‘i’ if ‘arr[i]’ is ‘j’
-Minimum number of swaps required for arranging pairs adjacent to each other
-Reorder an array according to given indexes
-Form minimum number from given sequence

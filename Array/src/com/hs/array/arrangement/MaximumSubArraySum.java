@@ -3,7 +3,7 @@ package com.hs.array.arrangement;
 public class MaximumSubArraySum {
 
 	// Returns sum of maximum subarray sum in aa[l..h]
-	static int maxSubArraySum(int arr[], int start, int end) {
+	private int maxSubArraySum(int arr[], int start, int end) {
 		// Base Case: Only one element
 		if (start == end)
 			return arr[start];
@@ -21,7 +21,7 @@ public class MaximumSubArraySum {
 
 	// Find the maximum possible sum in arr[]
 	// such that arr[mid] is part of it
-	static int maxCrossingSum(int arr[], int start, int mid, int end) {
+	private int maxCrossingSum(int arr[], int start, int mid, int end) {
 		// Include elements which is left of mid.
 		int sum = 0;
 		int left_sum = Integer.MIN_VALUE;
@@ -45,9 +45,10 @@ public class MaximumSubArraySum {
 	}
 
 	public static void main(String[] args) {
+		MaximumSubArraySum array = new MaximumSubArraySum();
 		int arr[] = { 2, 3, 4, 5, 7 };
 		int n = arr.length;
-		int max_sum = maxSubArraySum(arr, 0, n - 1);
+		int max_sum = array.maxSubArraySum(arr, 0, n - 1);
 
 		System.out.println("Maximum contiguous sum is " + max_sum);
 	}

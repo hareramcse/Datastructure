@@ -1,9 +1,9 @@
 package com.hs.array.rotation;
 
-public class EightLeftRotate {
+public class LeftRotate {
 
 	// Fills temp[] with two copies of arr[]
-	static void preprocess(int arr[], int n, int temp[]) {
+	private void preProcess(int arr[], int n, int temp[]) {
 		// Store arr[] elements at i and i + n
 		for (int i = 0; i < n; i++) {
 			temp[i + n] = arr[i];
@@ -12,7 +12,7 @@ public class EightLeftRotate {
 	}
 
 	// Function to left rotate an array k time
-	static void leftRotate(int arr[], int n, int k, int temp[]) {
+	private void leftRotate(int arr[], int n, int k, int temp[]) {
 		// Starting position of array after k
 		// rotations in temp[] will be k % n
 		int start = k % n;
@@ -26,13 +26,14 @@ public class EightLeftRotate {
 
 	// Driver program
 	public static void main(String[] args) {
+		LeftRotate array = new LeftRotate();
 		int arr[] = { 1, 3, 5, 7, 9 };
 		int n = arr.length;
 
 		int temp[] = new int[2 * n];
-		preprocess(arr, n, temp);
+		array.preProcess(arr, n, temp);
 
 		int k = 2;
-		leftRotate(arr, n, k, temp);
+		array.leftRotate(arr, n, k, temp);
 	}
 }

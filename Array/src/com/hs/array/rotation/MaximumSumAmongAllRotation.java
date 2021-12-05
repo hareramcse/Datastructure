@@ -1,8 +1,9 @@
 package com.hs.array.rotation;
 
-public class SixMaximumSumAmongAllRotation {
+// Maximum sum of i*arr[i] among all rotations of a given array
+public class MaximumSumAmongAllRotation {
 
-	private static int findMaximumSum(int arr[]) {
+	private int findMaximumSum(int arr[]) {
 		// Compute sum of all array elements
 		int arrSum = 0;
 		int n = arr.length;
@@ -45,8 +46,9 @@ public class SixMaximumSumAmongAllRotation {
 	}
 
 	public static void main(String[] args) {
+		MaximumSumAmongAllRotation array = new MaximumSumAmongAllRotation();
 		int arr[] = { 3, 2, 1 };
-		int maxSum = findMaximumSum(arr);
+		int maxSum = array.findMaximumSum(arr);
 		System.out.println("max sum is " + maxSum);
 	}
 }

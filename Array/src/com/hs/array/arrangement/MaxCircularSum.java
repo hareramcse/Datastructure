@@ -3,7 +3,7 @@ package com.hs.array.arrangement;
 public class MaxCircularSum {
 
 	// The function returns maximum circular contiguous sum in a[]
-	static int maxCircularSum(int arr[]) {
+	private int maxCircularSum(int arr[]) {
 		int n = arr.length;
 
 		// Case 1: get the maximum sum using standard kadane's algorithm
@@ -25,7 +25,7 @@ public class MaxCircularSum {
 	}
 
 	// Standard Kadane's algorithm to find maximum subarray sum
-	static int kadane(int arr[]) {
+	private int kadane(int arr[]) {
 		int n = arr.length;
 		int max_so_far = 0, max_ending_here = 0;
 		for (int i = 0; i < n; i++) {
@@ -39,7 +39,8 @@ public class MaxCircularSum {
 	}
 
 	public static void main(String[] args) {
+		MaxCircularSum array = new MaxCircularSum();
 		int a[] = { 11, 10, -20, 5, -3, -5, 8, -13, 10 };
-		System.out.println("Maximum circular sum is " + maxCircularSum(a));
+		System.out.println("Maximum circular sum is " + array.maxCircularSum(a));
 	}
 }

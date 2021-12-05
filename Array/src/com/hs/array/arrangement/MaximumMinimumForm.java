@@ -4,7 +4,8 @@ import java.util.Arrays;
 
 public class MaximumMinimumForm {
 
-	private static int[] alternateMaxMin(int arr[], int n) {
+	private int[] alternateMaxMin(int arr[]) {
+		int n = arr.length;
 		// initialize index of first minimum and first maximum element
 		int max_idx = n - 1, min_idx = 0;
 
@@ -33,7 +34,8 @@ public class MaximumMinimumForm {
 	}
 
 	public static void main(String[] args) {
+		MaximumMinimumForm array = new MaximumMinimumForm();
 		int arr[] = { 1, 3, 4, 6, 7, 8, 12 };
-		System.out.println(Arrays.toString(alternateMaxMin(arr, arr.length)));
+		System.out.println(Arrays.toString(array.alternateMaxMin(arr)));
 	}
 }

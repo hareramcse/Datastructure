@@ -9,7 +9,8 @@ public class LongestBitonicSubSequence {
 	 * lis[i] ==> Longest Increasing subsequence ending with arr[i] lds[i] ==>
 	 * Longest decreasing subsequence starting with arr[i]
 	 */
-	static int longesBitonicSequence(int arr[], int n) {
+	private int longesBitonicSequence(int arr[]) {
+		int n = arr.length;
 		int i, j;
 
 		/*
@@ -40,7 +41,7 @@ public class LongestBitonicSubSequence {
 
 		/* Return the maximum value of lis[i] + lds[i] - 1 */
 		int max = longestIncreasingSequence[0] + longestDecreasingSequence[0] - 1;
-		
+
 		for (i = 1; i < n; i++)
 			if (longestIncreasingSequence[i] + longestDecreasingSequence[i] - 1 > max)
 				max = longestIncreasingSequence[i] + longestDecreasingSequence[i] - 1;
@@ -49,8 +50,8 @@ public class LongestBitonicSubSequence {
 	}
 
 	public static void main(String[] args) {
-		int arr[] = {12, 4, 78, 90, 45, 23};
-		int n = arr.length;
-		System.out.println("Length of longest bitonic sequence is " + longesBitonicSequence(arr, n));
+		LongestBitonicSubSequence array = new LongestBitonicSubSequence();
+		int arr[] = { 12, 4, 78, 90, 45, 23 };
+		System.out.println("Length of longest bitonic sequence is " + array.longesBitonicSequence(arr));
 	}
 }

@@ -7,7 +7,7 @@ import java.util.Set;
 public class RearrangeAnArraySuchThatArrOfiEqualToi {
 
 	// Function to rearrange an array such that arr[i] = i.
-	public static int[] fix(int[] a) {
+	private int[] reArrange(int[] a) {
 		Set<Integer> set = new HashSet<Integer>();
 
 		// Storing all the values in the HashSet
@@ -26,8 +26,8 @@ public class RearrangeAnArraySuchThatArrOfiEqualToi {
 	}
 
 	public static void main(String[] args) {
+		RearrangeAnArraySuchThatArrOfiEqualToi array = new RearrangeAnArraySuchThatArrOfiEqualToi();
 		int A[] = { -1, -1, 6, 1, 9, 3, 2, -1, 4, -1 };
-
-		System.out.println(Arrays.toString(fix(A)));
+		System.out.println(Arrays.toString(array.reArrange(A)));
 	}
 }

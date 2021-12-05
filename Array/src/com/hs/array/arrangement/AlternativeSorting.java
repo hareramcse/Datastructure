@@ -4,7 +4,8 @@ import java.util.Arrays;
 
 public class AlternativeSorting {
 	// Function to print alternate sorted values
-	private static void alternateSort(int arr[], int n) {
+	private void alternateSort(int[] arr) {
+		int n = arr.length;
 		Arrays.sort(arr);
 
 		// Printing the last element of array
@@ -25,8 +26,8 @@ public class AlternativeSorting {
 
 	/* Driver program to test above functions */
 	public static void main(String[] args) {
+		AlternativeSorting array = new AlternativeSorting();
 		int arr[] = { 1, 12, 4, 6, 7, 10, 14 };
-		int n = arr.length;
-		alternateSort(arr, n);
+		array.alternateSort(arr);
 	}
 }

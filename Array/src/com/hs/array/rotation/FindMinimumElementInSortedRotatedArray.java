@@ -2,9 +2,8 @@ package com.hs.array.rotation;
 
 public class FindMinimumElementInSortedRotatedArray {
 
-	static int findMin(int arr[], int low, int high) {
-		// This condition is needed to handle the case when array
-		// is not rotated at all
+	private int findMin(int arr[], int low, int high) {
+		// This condition is needed to handle the case when array is not rotated at all
 		if (high < low)
 			return arr[0];
 
@@ -31,8 +30,9 @@ public class FindMinimumElementInSortedRotatedArray {
 	}
 
 	public static void main(String[] args) {
-		int arr1[] = { 5, 6, 1, 2, 3, 4 };
-		int n1 = arr1.length;
-		System.out.println("The minimum element is " + findMin(arr1, 0, n1 - 1));
+		FindMinimumElementInSortedRotatedArray array = new FindMinimumElementInSortedRotatedArray();
+		int arr[] = { 5, 6, 1, 2, 3, 4 };
+		int n = arr.length;
+		System.out.println("The minimum element is " + array.findMin(arr, 0, n - 1));
 	}
 }

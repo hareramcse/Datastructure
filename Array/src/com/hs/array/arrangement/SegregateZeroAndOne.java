@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class SegregateZeroAndOne {
 
-	static int[] segregateZeroAndOne(int arr[]) {
+	private int[] segregateZeroAndOne(int arr[]) {
 		/* Initialize left and right indexes */
 		int left = 0, right = arr.length - 1;
 		while (left < right) {
@@ -30,8 +30,9 @@ public class SegregateZeroAndOne {
 	}
 
 	public static void main(String[] args) {
+		SegregateZeroAndOne array = new SegregateZeroAndOne();
 		int arr[] = { 0, 1, 0, 1, 0, 0, 1, 1, 1, 0 };
-		int temp[] = segregateZeroAndOne(arr);
+		int temp[] = array.segregateZeroAndOne(arr);
 		System.out.println(Arrays.toString(temp));
 	}
 }

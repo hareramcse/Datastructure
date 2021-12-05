@@ -1,4 +1,4 @@
-package com.hs.sorting;
+package com.hs.array.traditional.sorting;
 
 public class CountingSort {
 	private static void countingSort(int arr[]) {

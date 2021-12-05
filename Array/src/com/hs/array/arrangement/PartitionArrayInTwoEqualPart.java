@@ -1,9 +1,9 @@
 package com.hs.array.arrangement;
 
 public class PartitionArrayInTwoEqualPart {
-	// Returns true if arr[] can be partitioned in two subsets of
-	// equal sum, otherwise false
-	static boolean findPartition(int arr[], int n) {
+	// Returns true if arr[] can be partitioned in two subsets of equal sum, otherwise false
+	private boolean findPartition(int arr[]) {
+		int n = arr.length;
 		int sum = 0;
 		int i, j;
 
@@ -36,9 +36,9 @@ public class PartitionArrayInTwoEqualPart {
 	}
 
 	public static void main(String[] args) {
+		PartitionArrayInTwoEqualPart array = new PartitionArrayInTwoEqualPart();
 		int arr[] = { 3, 1, 1, 2, 2, 1 };
-		int n = arr.length;
-		if (findPartition(arr, n) == true)
+		if (array.findPartition(arr) == true)
 			System.out.println("Can be divided into two subsets of equal sum");
 		else
 			System.out.println("Can not be divided into two subsets of equal sum");

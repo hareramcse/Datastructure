@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class PrintArrayInZigZagFashion {
 
 	// Method for zig-zag conversion of array
-	static void zigZag(int[] arr) {
+	private void zigZag(int[] arr) {
 		// Flag true indicates relation "<" is expected,
 		// else ">" is expected. The first expected relation
 		// is "<"
@@ -43,8 +43,9 @@ public class PrintArrayInZigZagFashion {
 	}
 
 	public static void main(String[] args) {
+		PrintArrayInZigZagFashion array = new PrintArrayInZigZagFashion();
 		int arr[] = new int[] { 4, 3, 7, 8, 6, 2, 1 };
-		zigZag(arr);
+		array.zigZag(arr);
 		System.out.println(Arrays.toString(arr));
 	}
 }

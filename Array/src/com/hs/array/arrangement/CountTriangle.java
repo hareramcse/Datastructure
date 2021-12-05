@@ -3,9 +3,8 @@ package com.hs.array.arrangement;
 import java.util.Arrays;
 
 public class CountTriangle {
-	// Function to count all possible triangles with arr[]
-	// elements
-	static int findNumberOfTriangles(int arr[]) {
+	// Function to count all possible triangles with arr[] elements
+	private int findNumberOfTriangles(int arr[]) {
 		int n = arr.length;
 		// Sort the array elements in non-decreasing order
 		Arrays.sort(arr);
@@ -46,7 +45,8 @@ public class CountTriangle {
 	}
 
 	public static void main(String[] args) {
+		CountTriangle array = new CountTriangle();
 		int arr[] = { 10, 21, 22, 100, 101, 200, 300 };
-		System.out.println("Total number of triangles is " + findNumberOfTriangles(arr));
+		System.out.println("Total number of triangles is " + array.findNumberOfTriangles(arr));
 	}
 }

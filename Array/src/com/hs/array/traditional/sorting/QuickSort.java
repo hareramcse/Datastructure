@@ -1,4 +1,4 @@
-package com.hs.sorting;
+package com.hs.array.traditional.sorting;
 
 import java.util.Arrays;
 import java.util.Random;

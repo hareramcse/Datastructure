@@ -1,10 +1,25 @@
 package com.hs.array.arrangement;
 
 public class SplitArrayInTwoPartWithEqualSum {
+	// Prints two parts after finding split point using findSplitPoint()
+	private void printTwoParts(int arr[]) {
+		int n = arr.length;
+		int splitPoint = findSplitPoint(arr, n);
+
+		if (splitPoint == -1 || splitPoint == n) {
+			System.out.println("Not Possible");
+			return;
+		}
+		for (int i = 0; i < n; i++) {
+			if (splitPoint == i)
+				System.out.println();
+
+			System.out.print(arr[i] + " ");
+		}
+	}
 
 	// Returns split point. If not possible, then return -1.
-	static int findSplitPoint(int arr[], int n) {
-
+	private int findSplitPoint(int arr[], int n) {
 		// traverse array element and compute sum
 		// of whole array
 		int leftSum = 0;
@@ -28,34 +43,14 @@ public class SplitArrayInTwoPartWithEqualSum {
 				return i;
 		}
 
-		// if it is not possible to split array
-		// into two parts.
+		// if it is not possible to split array into two parts.
 		return -1;
 	}
 
-	// Prints two parts after finding split
-	// point using findSplitPoint()
-	static void printTwoParts(int arr[], int n) {
-		int splitPoint = findSplitPoint(arr, n);
-
-		if (splitPoint == -1 || splitPoint == n) {
-			System.out.println("Not Possible");
-			return;
-		}
-		for (int i = 0; i < n; i++) {
-			if (splitPoint == i)
-				System.out.println();
-
-			System.out.print(arr[i] + " ");
-		}
-	}
-
 	public static void main(String[] args) {
-
+		SplitArrayInTwoPartWithEqualSum array = new SplitArrayInTwoPartWithEqualSum();
 		int arr[] = { 1, 2, 3, 4, 5, 5 };
-		int n = arr.length;
-
-		printTwoParts(arr, n);
+		array.printTwoParts(arr);
 
 	}
 }

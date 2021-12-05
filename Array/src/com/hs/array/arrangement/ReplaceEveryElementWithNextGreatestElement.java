@@ -1,11 +1,9 @@
 package com.hs.array.arrangement;
 
 public class ReplaceEveryElementWithNextGreatestElement {
-	/*
-	 * Function to replace every element with the next greatest element
-	 */
-	static void nextGreatest(int arr[], int n) {
-
+	// Function to replace every element with the next greatest element
+	private void nextGreatest(int arr[]) {
+		int n = arr.length;
 		// Initialize the next greatest element
 		int max_from_right = arr[n - 1];
 
@@ -29,9 +27,9 @@ public class ReplaceEveryElementWithNextGreatestElement {
 	}
 
 	public static void main(String[] args) {
+		ReplaceEveryElementWithNextGreatestElement array = new ReplaceEveryElementWithNextGreatestElement();
 		int arr[] = { 16, 17, 4, 3, 5, 2 };
-		int n = arr.length;
-		nextGreatest(arr, n);
+		array.nextGreatest(arr);
 		System.out.println("The modified array:");
 		for (int i = 0; i < arr.length; i++)
 			System.out.print(arr[i] + " ");
