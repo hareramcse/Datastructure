@@ -4,7 +4,7 @@ import java.util.PriorityQueue;
 
 class KthLargestSumContiguousSubArray {
 	// function to calculate kth largest element in contiguous subarray sum
-	static int kthLargestSum(int arr[], int n, int k) {
+	private int kthLargestSum(int arr[], int n, int k) {
 		// array to store predix sums
 		int sum[] = new int[n + 1];
 		sum[0] = 0;
@@ -20,7 +20,7 @@ class KthLargestSumContiguousSubArray {
 		for (int i = 1; i <= n; i++) {
 
 			// loop to traverse all positions that
-			//form contiguous subarray
+			// form contiguous subarray
 			for (int j = i; j <= n; j++) {
 				// calculates the contiguous subarray
 				// sum from j to i index
@@ -51,10 +51,11 @@ class KthLargestSumContiguousSubArray {
 	}
 
 	public static void main(String[] args) {
+		KthLargestSumContiguousSubArray array = new KthLargestSumContiguousSubArray();
 		int a[] = new int[] { 10, -10, 20, -40 };
 		int n = a.length;
 		int k = 6;
 
-		System.out.println(kthLargestSum(a, n, k));
+		System.out.println(array.kthLargestSum(a, n, k));
 	}
 }

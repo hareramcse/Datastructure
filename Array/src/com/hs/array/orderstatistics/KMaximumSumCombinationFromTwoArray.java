@@ -6,7 +6,7 @@ import java.util.PriorityQueue;
 class KMaximumSumCombinationFromTwoArray {
 
 	// function to display first K maximum sum combinations
-	static void KMaxCombinations(int a[], int b[], int n, int k) {
+	private void KMaxCombinations(int a[], int b[], int n, int k) {
 		// max heap.
 		PriorityQueue<Integer> pq = new PriorityQueue<Integer>(Collections.reverseOrder());
 
@@ -26,11 +26,12 @@ class KMaximumSumCombinationFromTwoArray {
 	}
 
 	public static void main(String[] args) {
+		KMaximumSumCombinationFromTwoArray array = new KMaximumSumCombinationFromTwoArray();
 		int A[] = { 4, 2, 5, 1 };
 		int B[] = { 8, 0, 5, 3 };
 		int N = A.length;
 		int K = 3;
 
-		KMaxCombinations(A, B, N, K);
+		array.KMaxCombinations(A, B, N, K);
 	}
 }

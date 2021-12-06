@@ -2,7 +2,7 @@ package com.hs.array.orderstatistics;
 
 class CountStrictlyIncreasingSubArray {
 
-	static int countIncreasing(int[] arr, int n) {
+	private int countIncreasing(int[] arr, int n) {
 		int count = 0; // Initialize result
 
 		// Initialize length of current increasing subarray
@@ -30,7 +30,8 @@ class CountStrictlyIncreasingSubArray {
 	}
 
 	public static void main(String[] args) {
+		CountStrictlyIncreasingSubArray array = new CountStrictlyIncreasingSubArray();
 		int arr[] = new int[] { 1, 2, 2, 4 };
-		System.out.println("Count of strictly increasing subarrays is " + countIncreasing(arr, arr.length));
+		System.out.println("Count of strictly increasing subarrays is " + array.countIncreasing(arr, arr.length));
 	}
 }

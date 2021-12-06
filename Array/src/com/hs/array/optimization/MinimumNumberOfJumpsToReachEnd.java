@@ -1,7 +1,7 @@
 package com.hs.array.optimization;
 
 class MinimumNumberOfJumpsToReachEnd {
-	static int minJumps(int arr[]) {
+	private int minJumps(int arr[]) {
 		if (arr.length <= 1)
 			return 0;
 
@@ -46,8 +46,10 @@ class MinimumNumberOfJumpsToReachEnd {
 	}
 
 	public static void main(String[] args) {
+		MinimumNumberOfJumpsToReachEnd array = new MinimumNumberOfJumpsToReachEnd();
+		// Given an array of integers where each element represents the max number of
+		// steps that can be made forward from that element
 		int arr[] = new int[] { 1, 3, 5, 8, 9, 2, 6, 7, 6, 8, 9 };
-
-		System.out.println(minJumps(arr));
+		System.out.println(array.minJumps(arr));
 	}
 }

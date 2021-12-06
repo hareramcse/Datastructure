@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 class FindMeanAndMedian {
 	// Function for calculating mean
-	public static double findMean(int a[], int n) {
+	private double findMean(int a[], int n) {
 		int sum = 0;
 		for (int i = 0; i < n; i++)
 			sum += a[i];
@@ -13,7 +13,7 @@ class FindMeanAndMedian {
 	}
 
 	// Function for calculating median
-	public static double findMedian(int a[], int n) {
+	private double findMedian(int a[], int n) {
 		// First we sort the array
 		Arrays.sort(a);
 
@@ -25,9 +25,10 @@ class FindMeanAndMedian {
 	}
 
 	public static void main(String args[]) {
+		FindMeanAndMedian array = new FindMeanAndMedian();
 		int a[] = { 1, 3, 4, 2, 7, 5, 8, 6 };
 		int n = a.length;
-		System.out.println("Mean = " + findMean(a, n));
-		System.out.println("Median = " + findMedian(a, n));
+		System.out.println("Mean = " + array.findMean(a, n));
+		System.out.println("Median = " + array.findMedian(a, n));
 	}
 }

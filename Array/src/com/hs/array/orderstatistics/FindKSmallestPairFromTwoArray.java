@@ -4,7 +4,7 @@ public class FindKSmallestPairFromTwoArray {
 
 	// Function to find k pairs with least sum such that one element of a pair is
 	// from arr1[] and other element is from arr2[]
-	private static void kSmallestPair(int arr1[], int n1, int arr2[], int n2, int k) {
+	private void kSmallestPair(int arr1[], int n1, int arr2[], int n2, int k) {
 		if (k > n1 * n2) {
 			System.out.print("k pairs don't exist");
 			return;
@@ -44,6 +44,7 @@ public class FindKSmallestPairFromTwoArray {
 
 	// Driver code
 	public static void main(String[] args) {
+		FindKSmallestPairFromTwoArray array = new FindKSmallestPairFromTwoArray();
 		int arr1[] = { 1, 3, 11 };
 		int n1 = arr1.length;
 
@@ -51,6 +52,6 @@ public class FindKSmallestPairFromTwoArray {
 		int n2 = arr2.length;
 
 		int k = 4;
-		kSmallestPair(arr1, n1, arr2, n2, k);
+		array.kSmallestPair(arr1, n1, arr2, n2, k);
 	}
 }

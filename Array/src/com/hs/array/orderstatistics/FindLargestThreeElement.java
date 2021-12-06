@@ -2,7 +2,7 @@ package com.hs.array.orderstatistics;
 
 class FindLargestThreeElement {
 	/* Function to print three largest elements */
-	static void print2largest(int arr[], int arr_size) {
+	private void print3largest(int arr[], int arr_size) {
 		int i, first, second, third;
 
 		/* There should be atleast two elements */
@@ -39,9 +39,9 @@ class FindLargestThreeElement {
 
 	/* Driver program to test above function */
 	public static void main(String[] args) {
+		FindLargestThreeElement array = new FindLargestThreeElement();
 		int arr[] = { 12, 13, 1, 10, 34, 1 };
 		int n = arr.length;
-		print2largest(arr, n);
+		array.print3largest(arr, n);
 	}
 }
-/* This code is contributed by Prakriti Gupta */

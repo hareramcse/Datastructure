@@ -8,7 +8,7 @@ public class MaximumDiffBetweenTwoElements {
 	 * function returns a negative value if the array is sorted in decreasing order
 	 * and returns 0 if elements are equal
 	 */
-	static int maxDiff(int arr[], int n) {
+	private int maxDiff(int arr[], int n) {
 		// Initialize diff, current
 		// sum and max sum
 		int diff = arr[1] - arr[0];
@@ -34,10 +34,11 @@ public class MaximumDiffBetweenTwoElements {
 	}
 
 	public static void main(String[] args) {
+		MaximumDiffBetweenTwoElements array = new MaximumDiffBetweenTwoElements();
 		int arr[] = { 80, 2, 6, 3, 100 };
 		int n = arr.length;
 
 		// Function calling
-		System.out.print("Maximum difference is " + maxDiff(arr, n));
+		System.out.print("Maximum difference is " + array.maxDiff(arr, n));
 	}
 }

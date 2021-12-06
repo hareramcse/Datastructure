@@ -8,7 +8,7 @@ public class NextGreaterElement {
 	 * prints element and next greater element pair for all elements of arr[] of
 	 * size n
 	 */
-	static void printNextGreaterElement(int arr[], int n) {
+	private void printNextGreaterElement(int arr[], int n) {
 		Stack<Integer> s = new Stack<Integer>();
 		int element, next;
 
@@ -61,8 +61,9 @@ public class NextGreaterElement {
 	}
 
 	public static void main(String[] args) {
+		NextGreaterElement array = new NextGreaterElement();
 		int arr[] = { 11, 13, 21, 3 };
 		int n = arr.length;
-		printNextGreaterElement(arr, n);
+		array.printNextGreaterElement(arr, n);
 	}
 }

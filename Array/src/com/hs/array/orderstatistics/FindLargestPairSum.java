@@ -6,7 +6,7 @@ class FindLargestPairSum {
 	 * Method to return largest pair sum. Assumes that there are at-least two
 	 * elements in arr[]
 	 */
-	static int findLargestSumPair(int[] arr) {
+	private int findLargestSumPair(int[] arr) {
 		// Initialize first and second largest element
 		int first, second;
 		if (arr[0] > arr[1]) {
@@ -36,9 +36,10 @@ class FindLargestPairSum {
 	}
 
 	public static void main(String[] args) {
+		FindLargestPairSum array = new FindLargestPairSum();
 		int arr[] = new int[] { 12, 34, 10, 6, 40 };
 
-		System.out.println("Max Pair Sum is " + findLargestSumPair(arr));
+		System.out.println("Max Pair Sum is " + array.findLargestSumPair(arr));
 
 	}
 }

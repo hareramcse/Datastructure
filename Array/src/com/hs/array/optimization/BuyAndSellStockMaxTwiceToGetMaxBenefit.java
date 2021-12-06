@@ -3,7 +3,7 @@ package com.hs.array.optimization;
 class BuyAndSellStockMaxTwiceToGetMaxBenefit {
 	// Returns maximum profit with two transactions on a given
 	// list of stock prices, price[0..n-1]
-	static int maxProfit(int price[], int n) {
+	private int maxProfit(int price[], int n) {
 		// Create profit array and initialize it as 0
 		int profit[] = new int[n];
 		for (int i = 0; i < n; i++)
@@ -47,9 +47,10 @@ class BuyAndSellStockMaxTwiceToGetMaxBenefit {
 	}
 
 	public static void main(String args[]) {
+		BuyAndSellStockMaxTwiceToGetMaxBenefit array = new BuyAndSellStockMaxTwiceToGetMaxBenefit();
 		int price[] = { 2, 30, 15, 10, 8, 25, 80 };
 		int n = price.length;
-		System.out.println("Maximum Profit = " + maxProfit(price, n));
+		System.out.println("Maximum Profit = " + array.maxProfit(price, n));
 	}
 
 }

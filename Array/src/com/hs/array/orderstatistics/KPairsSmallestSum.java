@@ -4,7 +4,7 @@ class KPairsSmallestSum {
 	// Function to find k pairs with least sum such
 	// that one elemennt of a pair is from arr1[] and
 	// other element is from arr2[]
-	static void kSmallestPair(int arr1[], int arr2[], int n1, int n2, int k) {
+	private void kSmallestPair(int arr1[], int arr2[], int n1, int n2, int k) {
 		if (k > n1 * n2) {
 			System.out.print("k pairs don't exist");
 			return;
@@ -48,6 +48,7 @@ class KPairsSmallestSum {
 	}
 
 	public static void main(String[] args) {
+		KPairsSmallestSum array = new KPairsSmallestSum();
 		int arr1[] = { 1, 3, 11 };
 		int n1 = arr1.length;
 
@@ -55,6 +56,6 @@ class KPairsSmallestSum {
 		int n2 = arr2.length;
 
 		int k = 4;
-		kSmallestPair(arr1, arr2, n1, n2, k);
+		array.kSmallestPair(arr1, arr2, n1, n2, k);
 	}
 }

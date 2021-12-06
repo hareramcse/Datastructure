@@ -2,7 +2,7 @@ package com.hs.array.optimization;
 
 class LargestContiguosSubArraySum {
 
-	static int maxSubArraySum(int a[], int size) {
+	private int maxSubArraySum(int a[], int size) {
 		int max_so_far = a[0];
 		int curr_max = a[0];
 
@@ -14,9 +14,10 @@ class LargestContiguosSubArraySum {
 	}
 
 	public static void main(String[] args) {
+		LargestContiguosSubArraySum array = new LargestContiguosSubArraySum();
 		int a[] = { -2, -3, 4, -1, -2, 1, 5, -3 };
 		int n = a.length;
-		int max_sum = maxSubArraySum(a, n);
+		int max_sum = array.maxSubArraySum(a, n);
 		System.out.println("Maximum contiguous sum is " + max_sum);
 	}
 }

@@ -3,7 +3,7 @@ package com.hs.array.orderstatistics;
 public class KSmallestNumberInOrderAsInGivenArray {
 
 	// Function to print smallest k numbers in arr[0..n-1]
-	public static void printSmall(int arr[], int n, int k) {
+	private void printSmall(int arr[], int n, int k) {
 		// For each arr[i] find whether
 		// it is a part of n-smallest
 		// with insertion sort concept
@@ -36,10 +36,11 @@ public class KSmallestNumberInOrderAsInGivenArray {
 	}
 
 	public static void main(String argc[]) {
+		KSmallestNumberInOrderAsInGivenArray array = new KSmallestNumberInOrderAsInGivenArray();
 		int[] arr = { 1, 5, 8, 9, 6, 7, 3, 4, 2, 0 };
 		int n = 10;
 		int k = 5;
-		printSmall(arr, n, k);
+		array.printSmall(arr, n, k);
 	}
 
 }

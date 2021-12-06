@@ -2,7 +2,7 @@ package com.hs.array.orderstatistics;
 
 public class SmallestMissingNumber {
 
-	int findFirstMissing(int array[], int start, int end) {
+	private int findFirstMissing(int array[], int start, int end) {
 		if (start > end)
 			return end + 1;
 

@@ -2,27 +2,18 @@ package com.hs.array.optimization;
 
 class SmallestSubArraySumGreaterThanGivenValue {
 
-	// Returns length of smallest
-	// subarray with sum greater
-	// than x. If there is no
-	// subarray with given sum,
-	// then returns n+1
-	static int smallestSubWithSum(int arr[], int n, int x) {
-		// Initialize current
-		// sum and minimum length
+	// Returns length of smallest subarray with sum greater
+	// than x. If there is no subarray with given sum, then returns n+1
+	private int smallestSubWithSum(int arr[], int n, int x) {
+		// Initialize current sum and minimum length
 		int curr_sum = 0, min_len = n + 1;
 
-		// Initialize starting
-		// and ending indexes
+		// Initialize starting and ending indexes
 		int start = 0, end = 0;
 		while (end < n) {
-			// Keep adding array
-			// elements while current
-			// sum is smaller than x
+			// Keep adding array elements while current sum is smaller than x
 			while (curr_sum <= x && end < n) {
-				// Ignore subarrays with
-				// negative sum if x is
-				// positive.
+				// Ignore subarrays with negative sum if x is positive.
 				if (curr_sum <= 0 && x > 0) {
 					start = end;
 					curr_sum = 0;
@@ -31,11 +22,9 @@ class SmallestSubArraySumGreaterThanGivenValue {
 				curr_sum += arr[end++];
 			}
 
-			// If current sum becomes
-			// greater than x.
+			// If current sum becomes greater than x.
 			while (curr_sum > x && start < n) {
-				// Update minimum
-				// length if needed
+				// Update minimum length if needed
 				if (end - start < min_len)
 					min_len = end - start;
 
@@ -47,10 +36,11 @@ class SmallestSubArraySumGreaterThanGivenValue {
 	}
 
 	public static void main(String[] args) {
+		SmallestSubArraySumGreaterThanGivenValue array = new SmallestSubArraySumGreaterThanGivenValue();
 		int arr1[] = { -8, 1, 4, 2, -6 };
 		int x = 6;
 		int n1 = arr1.length;
-		int res1 = smallestSubWithSum(arr1, n1, x);
+		int res1 = array.smallestSubWithSum(arr1, n1, x);
 		if (res1 == n1 + 1)
 			System.out.println("Not possible");
 		else

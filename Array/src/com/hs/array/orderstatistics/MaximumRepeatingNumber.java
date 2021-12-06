@@ -4,7 +4,7 @@ class MaximumRepeatingNumber {
 
 	// Returns maximum repeating element in arr[0..n-1].
 	// The array elements are in range from 0 to k-1
-	static int maxRepeating(int arr[], int n, int k) {
+	private int maxRepeating(int arr[], int n, int k) {
 		// Iterate though input array, for every element
 		// arr[i], increment arr[arr[i]%k] by k
 		for (int i = 0; i < n; i++)
@@ -29,10 +29,10 @@ class MaximumRepeatingNumber {
 	}
 
 	public static void main(String[] args) {
-
+		MaximumRepeatingNumber array = new MaximumRepeatingNumber();
 		int arr[] = { 2, 3, 3, 5, 3, 4, 1, 7 };
 		int n = arr.length;
 		int k = 8;
-		System.out.println("Maximum repeating element is: " + maxRepeating(arr, n, k));
+		System.out.println("Maximum repeating element is: " + array.maxRepeating(arr, n, k));
 	}
 }

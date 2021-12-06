@@ -2,10 +2,8 @@ package com.hs.array.orderstatistics;
 
 public class NextGreaterElement1 {
 
-	/*
-	 * prints element and NGE pair for all elements of arr[] of size n
-	 */
-	static void printNGE(int arr[], int n) {
+	// prints element and NGE pair for all elements of arr[] of size n
+	private void printNGE(int arr[], int n) {
 		int next, i, j;
 		for (i = 0; i < n; i++) {
 			next = -1;
@@ -20,8 +18,9 @@ public class NextGreaterElement1 {
 	}
 
 	public static void main(String args[]) {
+		NextGreaterElement1 array = new NextGreaterElement1();
 		int arr[] = { 11, 13, 21, 3 };
 		int n = arr.length;
-		printNGE(arr, n);
+		array.printNGE(arr, n);
 	}
 }
