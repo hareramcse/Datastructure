@@ -6,7 +6,7 @@ import java.util.Map.Entry;
 
 class MostFrequentElement {
 
-	private static int mostFrequent(int arr[], int n) {
+	private int mostFrequent(int arr[], int n) {
 
 		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
 
@@ -32,8 +32,9 @@ class MostFrequentElement {
 	}
 
 	public static void main(String[] args) {
+		MostFrequentElement array = new MostFrequentElement();
 		int arr[] = { 1, 5, 2, 1, 3, 2, 1 };
 		int n = arr.length;
-		System.out.println("most frequent element is " + mostFrequent(arr, n));
+		System.out.println("most frequent element is " + array.mostFrequent(arr, n));
 	}
 }

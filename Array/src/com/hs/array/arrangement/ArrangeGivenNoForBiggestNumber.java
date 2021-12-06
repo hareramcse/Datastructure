@@ -37,13 +37,13 @@ public class ArrangeGivenNoForBiggestNumber {
 	public static void main(String[] args) {
 		ArrangeGivenNoForBiggestNumber array = new ArrangeGivenNoForBiggestNumber();
 
-		List<String> arr = new ArrayList<String>();
+		List<String> list = new ArrayList<String>();
 
 		// output should be 6054854654
-		arr.add("54");
-		arr.add("546");
-		arr.add("548");
-		arr.add("60");
-		array.printLargest(arr);
+		list.add("54");
+		list.add("546");
+		list.add("548");
+		list.add("60");
+		array.printLargest(list);
 	}
 }

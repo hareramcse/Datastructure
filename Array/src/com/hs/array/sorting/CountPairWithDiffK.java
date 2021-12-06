@@ -4,10 +4,11 @@ import java.util.Arrays;
 
 public class CountPairWithDiffK {
 
-	private static int countPairsWithDiffK(int arr[], int n, int k) {
-		int count = 0;
+	private int countPairsWithDiffK(int arr[], int k) {
+		int n = arr.length;
 		Arrays.sort(arr);
 
+		int count = 0;
 		int start = 0;
 		int end = 0;
 		while (end < n) {
@@ -24,9 +25,9 @@ public class CountPairWithDiffK {
 	}
 
 	public static void main(String[] args) {
+		CountPairWithDiffK array = new CountPairWithDiffK();
 		int arr[] = { 1, 5, 3, 4, 2 };
-		int n = arr.length;
 		int k = 3;
-		System.out.println("Count of pairs with given diff is " + countPairsWithDiffK(arr, n, k));
+		System.out.println("Count of pairs with given diff is " + array.countPairsWithDiffK(arr, k));
 	}
 }

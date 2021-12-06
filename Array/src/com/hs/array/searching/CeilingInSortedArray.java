@@ -1,11 +1,13 @@
 package com.hs.array.searching;
 
+/*
+ * the ceiling of x is the smallest element in array greater than or equal to x, 
+ * and the floor is the greatest element smaller than or equal to x.
+ * */
 public class CeilingInSortedArray {
 
-	/*
-	 * Function to get index of ceiling of x in arr[low..high]
-	 */
-	static int ceilSearch(int arr[], int low, int high, int x) {
+	// Function to get index of ceiling of x in arr[low..high]
+	private int ceilSearch(int arr[], int low, int high, int x) {
 		int mid;
 
 		/*
@@ -15,20 +17,14 @@ public class CeilingInSortedArray {
 		if (x <= arr[low])
 			return low;
 
-		/*
-		 * If x is greater than the last element, then return -1
-		 */
+		// If x is greater than the last element, then return -1
 		if (x > arr[high])
 			return -1;
 
-		/*
-		 * get the index of middle element of arr[low..high]
-		 */
+		// get the index of middle element of arr[low..high]
 		mid = (low + high) / 2; /* low + (high - low)/2 */
 
-		/*
-		 * If x is same as middle element, then return mid
-		 */
+		// If x is same as middle element, then return mid
 		if (arr[mid] == x)
 			return mid;
 
@@ -56,10 +52,11 @@ public class CeilingInSortedArray {
 	}
 
 	public static void main(String[] args) {
+		CeilingInSortedArray array = new CeilingInSortedArray();
 		int arr[] = { 1, 2, 8, 10, 10, 12, 19 };
 		int n = arr.length;
 		int x = 8;
-		int index = ceilSearch(arr, 0, n - 1, x);
+		int index = array.ceilSearch(arr, 0, n - 1, x);
 		if (index == -1)
 			System.out.println("Ceiling of " + x + " doesn't exist in array");
 		else

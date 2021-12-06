@@ -2,7 +2,8 @@ package com.hs.array.searching;
 
 class FindElementThatAppearsOnce {
 
-	private static int findSingle(int arr[], int n) {
+	private int findSingle(int arr[]) {
+		int n = arr.length;
 		// Do XOR of all elements and return
 		int res = arr[0];
 		for (int i = 1; i < n; i++)
@@ -12,8 +13,8 @@ class FindElementThatAppearsOnce {
 	}
 
 	public static void main(String[] args) {
+		FindElementThatAppearsOnce array = new FindElementThatAppearsOnce();
 		int arr[] = { 2, 3, 5, 4, 5, 3, 4 };
-		int n = arr.length;
-		System.out.println("Element occurring once is " + findSingle(arr, n) + " ");
+		System.out.println("Element occurring once is " + array.findSingle(arr) + " ");
 	}
 }

@@ -5,7 +5,7 @@ import java.util.Map;
 
 class MinimumNoOfSwapToSortBinaryArray {
 
-	private static int findMinSwaps(int arr[], int n) {
+	private int findMinSwaps(int arr[], int n) {
 		Map<Integer, Integer> map = new HashMap<>();
 		int count = 0;
 		for (int i = n - 1; i > 0; i--) {
@@ -25,7 +25,8 @@ class MinimumNoOfSwapToSortBinaryArray {
 	}
 
 	public static void main(String args[]) {
+		MinimumNoOfSwapToSortBinaryArray array = new MinimumNoOfSwapToSortBinaryArray();
 		int arr[] = { 0, 0, 1, 0, 1, 0, 1, 1, 0 };
-		System.out.println(findMinSwaps(arr, arr.length));
+		System.out.println(array.findMinSwaps(arr, arr.length));
 	}
 }

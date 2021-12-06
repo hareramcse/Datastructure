@@ -4,15 +4,9 @@ import java.util.Arrays;
 
 public class SortArrayInWaveForm {
 
-	private static void swap(int arr[], int a, int b) {
-		int temp = arr[a];
-		arr[a] = arr[b];
-		arr[b] = temp;
-	}
-
 	// This function sorts arr[0..n-1] in wave form, i.e.,
 	// arr[0] >= arr[1] <= arr[2] >= arr[3] <= arr[4]....
-	private static void sortInWave(int arr[], int n) {
+	private void sortInWave(int arr[], int n) {
 		// Traverse all even elements
 		for (int i = 0; i < n; i += 2) {
 			// If current even index element is smaller than previous
@@ -26,8 +20,15 @@ public class SortArrayInWaveForm {
 		System.out.println(Arrays.toString(arr));
 	}
 
+	private void swap(int arr[], int a, int b) {
+		int temp = arr[a];
+		arr[a] = arr[b];
+		arr[b] = temp;
+	}
+
 	public static void main(String[] args) {
+		SortArrayInWaveForm array = new SortArrayInWaveForm();
 		int arr[] = { 100, 90, 49, 2, 1, 5, 23 };
-		sortInWave(arr, arr.length);
+		array.sortInWave(arr, arr.length);
 	}
 }

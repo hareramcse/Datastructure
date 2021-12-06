@@ -1,40 +1,59 @@
 package com.hs.array.arrangement;
 
+// Time Complexity: O(n) 
+// Auxiliary Space: O(1)
 public class IndexOfZeroReplaceWithOneToGetMaxContinousSeq {
 
-	// Returns index of 0 to be replaced with 1 to get longest
-	// continuous sequence of 1s. If there is no 0 in array, then
-	// it returns -1.
+	// Returns index of 0 to be replaced with 1 to get longest continuous
+	// sequence of 1s. If there is no 0 in array, then it returns -1.
 	private int maxOnesIndex(int arr[]) {
 		int n = arr.length;
-		int max_count = 0; // for maximum number of 1 around a zero
-		int max_index = 0; // for storing result
-		int prev_zero = -1; // index of previous zero
-		int prev_prev_zero = -1; // index of previous to previous zero
+		// To store starting point of sliding window.
+		int start = 0;
 
-		// Traverse the input array
-		for (int curr = 0; curr < n; ++curr) {
-			// If current element is 0, then calculate the difference
-			// between curr and prev_prev_zero
-			if (arr[curr] == 0) {
-				// If the difference between curr and prev_prev_zero is more than maximum so
-				// far, then update the maximum.
-				if (curr - prev_prev_zero > max_count) {
-					max_count = curr - prev_prev_zero;
-					max_index = prev_zero;
-				}
+		// To store ending point of sliding window.
+		int end = 0;
 
-				// Update for next iteration
-				prev_prev_zero = prev_zero;
-				prev_zero = curr;
+		// Index of zero with maximum number of ones around it.
+		int maxIndex = -1;
+
+		// Index of last zero element seen
+		int lastIndex = -1;
+
+		// Count of ones if zero at index maxInd is replaced by one.
+		int maxCnt = 0;
+
+		while (end < n) {
+
+			// Keep increasing ending point of sliding window until one is
+			// present in input array.
+			while (end < n && arr[end] == 1) {
+				end++;
 			}
+
+			// If this is not first zero element then number of ones obtained by
+			// replacing zero at lastInd is equal to length of window.
+			// Compare this with maximum number of ones in a previous window so far.
+			if (maxCnt < end - start && lastIndex != -1) {
+				maxCnt = end - start;
+				maxIndex = lastIndex;
+			}
+
+			// The new starting point of next window is from index position next to last
+			// zero which is stored in lastInd.
+			start = lastIndex + 1;
+			lastIndex = end;
+			end++;
 		}
 
-		// Check for the last encountered zero
-		if (n - prev_prev_zero > max_count)
-			max_index = prev_zero;
+		// For the case when only one zero is present in input array and is at
+		// last position.
+		if (maxCnt < end - start && lastIndex != -1) {
+			maxCnt = end - start;
+			maxIndex = lastIndex;
+		}
 
-		return max_index;
+		return maxIndex;
 	}
 
 	// Driver program to test above function

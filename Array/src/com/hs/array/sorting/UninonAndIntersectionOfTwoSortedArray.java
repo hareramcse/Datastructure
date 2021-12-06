@@ -2,7 +2,7 @@ package com.hs.array.sorting;
 
 public class UninonAndIntersectionOfTwoSortedArray {
 
-	static void printUnion(int arr1[], int arr2[]) {
+	private void printUnion(int arr1[], int arr2[]) {
 		// Taking max element present in either array
 		int m = arr1[arr1.length - 1];
 		int n = arr2[arr2.length - 1];
@@ -14,8 +14,8 @@ public class UninonAndIntersectionOfTwoSortedArray {
 		} else
 			ans = n;
 
-		// Finding elements from 1st array(non duplicates only). 
-		// Using another array for storing union elements of 
+		// Finding elements from 1st array(non duplicates only).
+		// Using another array for storing union elements of
 		// both arrays Assuming max element present
 		// in array is not more than 10^7
 		int newtable[] = new int[ans + 1];
@@ -48,7 +48,7 @@ public class UninonAndIntersectionOfTwoSortedArray {
 		}
 	}
 
-	static void printIntersection(int arr1[], int arr2[], int m, int n) {
+	private void printIntersection(int arr1[], int arr2[], int m, int n) {
 		int i = 0, j = 0;
 		while (i < m && j < n) {
 			if (arr1[i] < arr2[j])
@@ -63,11 +63,11 @@ public class UninonAndIntersectionOfTwoSortedArray {
 	}
 
 	public static void main(String args[]) {
+		UninonAndIntersectionOfTwoSortedArray array = new UninonAndIntersectionOfTwoSortedArray();
 		int arr1[] = { 1, 2, 2, 2, 3 };
 		int arr2[] = { 2, 3, 4, 5 };
-
-		printUnion(arr1, arr2);
+		array.printUnion(arr1, arr2);
 		System.out.println();
-		printIntersection(arr1, arr2, arr1.length, arr2.length);
+		array.printIntersection(arr1, arr2, arr1.length, arr2.length);
 	}
 }

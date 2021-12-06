@@ -1,7 +1,7 @@
 package com.hs.array.searching;
 
 public class FindComonElementIn3Array {
-	void findCommon(int arr1[], int arr2[], int arr3[]) {
+	private void findCommon(int arr1[], int arr2[], int arr3[]) {
 		// Initialize starting indexes for arr1[], arr2[] and arr3[]
 		int i = 0, j = 0, k = 0;
 
@@ -32,13 +32,13 @@ public class FindComonElementIn3Array {
 
 	// Driver code to test above
 	public static void main(String arrgs[]) {
-		FindComonElementIn3Array fc = new FindComonElementIn3Array();
+		FindComonElementIn3Array array = new FindComonElementIn3Array();
 
 		int arr1[] = { 1, 5, 10, 20, 40, 80 };
 		int arr2[] = { 6, 7, 20, 80, 100 };
 		int arr3[] = { 3, 4, 15, 20, 30, 70, 80, 120 };
 
 		System.out.print("Common elements arre ");
-		fc.findCommon(arr1, arr2, arr3);
+		array.findCommon(arr1, arr2, arr3);
 	}
 }

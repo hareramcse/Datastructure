@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class SortByFrequencyOfElement {
 
-	private static void sortByFrequency(int[] arr) {
+	private void sortByFrequency(int[] arr) {
 		Map<Integer, Integer> map = new HashMap<>();
 		List<Integer> outputArray = new ArrayList<>();
 
@@ -48,7 +48,8 @@ public class SortByFrequencyOfElement {
 	}
 
 	public static void main(String[] args) {
+		SortByFrequencyOfElement array = new SortByFrequencyOfElement();
 		int[] arr = { 4, 4, 2, 2, 2, 2, 3, 3, 1, 1, 6, 7, 5 };
-		sortByFrequency(arr);
+		array.sortByFrequency(arr);
 	}
 }

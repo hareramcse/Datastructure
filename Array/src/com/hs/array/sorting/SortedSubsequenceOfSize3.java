@@ -2,7 +2,7 @@ package com.hs.array.sorting;
 
 public class SortedSubsequenceOfSize3 {
 	// A function to find a sorted subsequence of size 3
-	static void find3Numbers(int arr[]) {
+	private void find3Numbers(int arr[]) {
 		int n = arr.length;
 		int maxIndex = n - 1; // Index of maximum element from right side
 		int minIndex = 0; // Index of minimum element from left side
@@ -49,7 +49,8 @@ public class SortedSubsequenceOfSize3 {
 	}
 
 	public static void main(String[] args) {
+		SortedSubsequenceOfSize3 array = new SortedSubsequenceOfSize3();
 		int arr[] = { 12, 11, 10, 5, 6, 2, 30 };
-		find3Numbers(arr);
+		array.find3Numbers(arr);
 	}
 }

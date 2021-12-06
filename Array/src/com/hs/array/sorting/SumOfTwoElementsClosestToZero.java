@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class SumOfTwoElementsClosestToZero {
 
-	static void minAbsSumPair(int arr[], int n) {
+	private void minAbsSumPair(int arr[], int n) {
 		// Variables to keep track of current sum and minimum sum
 		int sum, min_sum = 0;
 
@@ -38,12 +38,13 @@ public class SumOfTwoElementsClosestToZero {
 				end--;
 		}
 
-		System.out.println("The two elements whose " + "sum is minimum are " + arr[min_start] + " and " + arr[min_end]);
+		System.out.println("The two elements whose sum is minimum are " + arr[min_start] + " and " + arr[min_end]);
 	}
 
 	public static void main(String[] args) {
+		SumOfTwoElementsClosestToZero array = new SumOfTwoElementsClosestToZero();
 		int arr[] = { 1, 60, -10, 70, -80, 85 };
 		int n = arr.length;
-		minAbsSumPair(arr, n);
+		array.minAbsSumPair(arr, n);
 	}
 }

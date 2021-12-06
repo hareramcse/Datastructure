@@ -3,6 +3,10 @@ package com.hs.array.searching;
 import java.util.HashMap;
 import java.util.Map;
 
+/*
+ * A majority element in an array A[] of size n is an element that appears more than n/2 times 
+ * (and hence there is at most one such element)
+ * */
 public class MajorityElement {
 
 	private static void findMajority(int[] arr) {

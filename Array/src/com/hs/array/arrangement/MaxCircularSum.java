@@ -16,12 +16,12 @@ public class MaxCircularSum {
 			arr[i] = -arr[i]; // invert the array (change sign)
 		}
 
-		// max sum with corner elements will be:
-		// arraySum - (-max subarray sum of inverted array)
+		// max sum with corner elements will be: arraySum - (-max subarray sum of
+		// inverted array)
 		max_arr_sum = max_arr_sum + kadane(arr);
 
 		// The maximum circular sum will be maximum of two sums
-		return (max_arr_sum > max_kadane) ? max_arr_sum : max_kadane;
+		return max_arr_sum > max_kadane ? max_arr_sum : max_kadane;
 	}
 
 	// Standard Kadane's algorithm to find maximum subarray sum
@@ -41,6 +41,6 @@ public class MaxCircularSum {
 	public static void main(String[] args) {
 		MaxCircularSum array = new MaxCircularSum();
 		int a[] = { 11, 10, -20, 5, -3, -5, 8, -13, 10 };
-		System.out.println("Maximum circular sum is " + array.maxCircularSum(a));
+		System.out.println("Maximum circular sum is: " + array.maxCircularSum(a));
 	}
 }

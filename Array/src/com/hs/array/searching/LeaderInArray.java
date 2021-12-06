@@ -1,8 +1,12 @@
 package com.hs.array.searching;
 
+/*
+ * An element is leader if it is greater than all the elements to its right side. 
+ * And the rightmost element is always a leader.
+ * */
 public class LeaderInArray {
 
-	private static void  printLeaders(int arr[], int n) {
+	private void printLeaders(int arr[], int n) {
 		int max_from_right = arr[n - 1];
 
 		/* Rightmost element is always leader */
@@ -17,8 +21,9 @@ public class LeaderInArray {
 	}
 
 	public static void main(String[] args) {
+		LeaderInArray array = new LeaderInArray();
 		int arr[] = new int[] { 16, 17, 4, 3, 5, 2 };
 		int n = arr.length;
-		printLeaders(arr, n);
+		array.printLeaders(arr, n);
 	}
 }

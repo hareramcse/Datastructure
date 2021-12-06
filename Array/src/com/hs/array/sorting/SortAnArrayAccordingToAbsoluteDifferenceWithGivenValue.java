@@ -6,8 +6,8 @@ import java.util.TreeMap;
 
 public class SortAnArrayAccordingToAbsoluteDifferenceWithGivenValue {
 
-	private static void sortWithAbsoluteDiff(int arr[], int n, int value) {
-
+	private void sortWithAbsoluteDiff(int arr[], int value) {
+		int n = arr.length;
 		Map<Integer, String> map = new TreeMap<>();
 
 		for (int i = 0; i < n; i++) {
@@ -31,9 +31,9 @@ public class SortAnArrayAccordingToAbsoluteDifferenceWithGivenValue {
 	}
 
 	public static void main(String[] args) {
+		SortAnArrayAccordingToAbsoluteDifferenceWithGivenValue array = new SortAnArrayAccordingToAbsoluteDifferenceWithGivenValue();
 		int arr[] = { 10, 5, 3, 9, 2 };
 		int value = 7;
-		int n = arr.length;
-		sortWithAbsoluteDiff(arr, n, value);
+		array.sortWithAbsoluteDiff(arr, value);
 	}
 }
