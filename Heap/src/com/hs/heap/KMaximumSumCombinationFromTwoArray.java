@@ -7,7 +7,7 @@ import java.util.PriorityQueue;
 
 public class KMaximumSumCombinationFromTwoArray {
 
-	public static void MaxPairSum(Integer[] A, Integer[] B, int N, int K) {
+	public void maxPairSum(Integer[] A, Integer[] B, int N, int K) {
 		// sort both arrays A and B
 		Arrays.sort(A);
 		Arrays.sort(B);
@@ -73,13 +73,14 @@ public class KMaximumSumCombinationFromTwoArray {
 
 	// Driver Code
 	public static void main(String[] args) {
+		KMaximumSumCombinationFromTwoArray array = new KMaximumSumCombinationFromTwoArray();
 		Integer A[] = { 1, 4, 2, 3 };
 		Integer B[] = { 2, 5, 1, 6 };
 		int N = A.length;
 		int K = 4;
 
 		// Function Call
-		MaxPairSum(A, B, N, K);
+		array.maxPairSum(A, B, N, K);
 	}
 
 	public static class Pair {

@@ -5,9 +5,8 @@ import java.util.Set;
 
 public class FindIfSubArraySumIsZero {
 
-	// Returns true if arr[]
-	// has a subarray with sero sum
-	static Boolean subArrayExists(int arr[]) {
+	// Returns true if arr[] has a subarray with sero sum
+	private Boolean subArrayExists(int arr[]) {
 		// Creates an empty hashset hs
 		Set<Integer> hs = new HashSet<Integer>();
 
@@ -37,8 +36,9 @@ public class FindIfSubArraySumIsZero {
 
 	// Driver code
 	public static void main(String arg[]) {
+		FindIfSubArraySumIsZero array = new FindIfSubArraySumIsZero();
 		int arr[] = { -3, 2, 3, 1, 6 };
-		if (subArrayExists(arr))
+		if (array.subArrayExists(arr))
 			System.out.println("Found a subarray with 0 sum");
 		else
 			System.out.println("No Such Sub Array Exists!");

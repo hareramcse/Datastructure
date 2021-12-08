@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 public class LongestIncreasingConsecutiveSubSequence {
 
-	static int LongIncrConseqSubseq(int arr[], int n) {
+	private int longestIncrConseqSubseq(int arr[], int n) {
 		// create hashmap to save latest consequent
 		// number as "key" and its length as "value"
 		HashMap<Integer, Integer> map = new HashMap<>();
@@ -36,9 +36,10 @@ public class LongestIncreasingConsecutiveSubSequence {
 
 	// driver code
 	public static void main(String args[]) {
+		LongestIncreasingConsecutiveSubSequence array = new LongestIncreasingConsecutiveSubSequence();
 		// Take input from user
 		int arr[] = { 11, 12, 13, 21, 3, 7 };
-		System.out.println(LongIncrConseqSubseq(arr, arr.length));
+		System.out.println(array.longestIncrConseqSubseq(arr, arr.length));
 	}
 
 }
