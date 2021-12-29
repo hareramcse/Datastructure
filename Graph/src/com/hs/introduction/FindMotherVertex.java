@@ -5,25 +5,25 @@ import java.util.LinkedList;
 
 public class FindMotherVertex {
 
-	int noOfVertices;
-	LinkedList<Integer> adj[];
+	private int noOfVertices;
+	private LinkedList<Integer> adj[];
 	boolean visited[];
 
+	@SuppressWarnings("unchecked")
 	FindMotherVertex(int noOfVertices) {
 		this.noOfVertices = noOfVertices;
 		adj = new LinkedList[noOfVertices];
 		visited = new boolean[noOfVertices];
 
-		for (int i = 0; i < noOfVertices; i++) {
+		for (int i = 0; i < noOfVertices; i++)
 			adj[i] = new LinkedList<>();
-		}
 	}
 
-	public void addEdge(int source, int destination) {
+	private void addEdge(int source, int destination) {
 		adj[source].addFirst(destination);
 	}
 
-	public void DFSUtil(int source, boolean visited[]) {
+	private void DFSUtil(int source, boolean visited[]) {
 		visited[source] = true;
 		Iterator<Integer> iterator = adj[source].listIterator();
 		while (iterator.hasNext()) {
@@ -33,7 +33,7 @@ public class FindMotherVertex {
 		}
 	}
 
-	public int findMother() {
+	private int findMother() {
 		int index = 0;
 
 		// Do a DFS traversal and find the last finished vertex
@@ -60,16 +60,16 @@ public class FindMotherVertex {
 	}
 
 	public static void main(String[] args) {
-		FindMotherVertex g = new FindMotherVertex(7);
-		g.addEdge(0, 1);
-		g.addEdge(0, 2);
-		g.addEdge(1, 3);
-		g.addEdge(4, 1);
-		g.addEdge(6, 4);
-		g.addEdge(5, 6);
-		g.addEdge(5, 2);
-		g.addEdge(6, 0);
+		FindMotherVertex graph = new FindMotherVertex(7);
+		graph.addEdge(0, 1);
+		graph.addEdge(0, 2);
+		graph.addEdge(1, 3);
+		graph.addEdge(4, 1);
+		graph.addEdge(6, 4);
+		graph.addEdge(5, 6);
+		graph.addEdge(5, 2);
+		graph.addEdge(6, 0);
 
-		System.out.println(g.findMother());
+		System.out.println(graph.findMother());
 	}
 }

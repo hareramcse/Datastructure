@@ -1,7 +1,5 @@
 package com.hs.shortestpath;
 
-import com.hs.introduction.Graph;
-
 public class BellmanFordAlgorithm {
 
 	// A class to represent a weighted edge in graph

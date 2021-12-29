@@ -3,8 +3,6 @@ package com.hs.connectivity;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-import com.hs.introduction.Graph;
-
 public class FindIfThereIsPathBetweenTwoVertices {
 
 	private int V; // No. of vertices

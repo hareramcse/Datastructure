@@ -16,9 +16,8 @@ public class WaterJugProblemUsingBFS {
 		}
 	}
 
-	void BFS(int a, int b, int target) {
-		// This 2d array is used as a hashmap
-		// to keep track of already visited
+	private void BFS(int a, int b, int target) {
+		// This 2d array is used as a hashmap to keep track of already visited
 		// values and avoid repetition
 		int m[][] = new int[1000][1000];
 		for (int[] i : m) {
@@ -77,8 +76,7 @@ public class WaterJugProblemUsingBFS {
 				break;
 			}
 
-			// if we have not reached final state
-			// then, start developing intermediate
+			// if we have not reached final state then, start developing intermediate
 			// states to reach solution state
 			q.add(new Pair(u.first, b)); // fill Jug2
 			q.add(new Pair(a, u.second)); // fill Jug1
@@ -111,16 +109,12 @@ public class WaterJugProblemUsingBFS {
 			System.out.print("No solution");
 	}
 
-	// Driver code
 	public static void main(String args[]) {
-		int Jug1 = 4, Jug2 = 3, target = 2;
-
-		System.out.println("Path from initial state to solution state ::");
-
 		WaterJugProblemUsingBFS object = new WaterJugProblemUsingBFS();
 
-		object.BFS(Jug1, Jug2, target);
-
+		int jug1 = 4, jug2 = 3, target = 2;
+		System.out.println("Path from initial state to solution state ::");
+		object.BFS(jug1, jug2, target);
 	}
 
 }

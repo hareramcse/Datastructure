@@ -1,67 +1,69 @@
 package com.hs.introduction;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Transpose {
 
 	// Total number of vertices
-	private static int vertices = 5;
+	private int noOfVertices = 5;
 
 	// Find transpose of graph represented by adj
-	private static ArrayList<Integer>[] adj = new ArrayList[vertices];
+	private List<Integer>[] adj = new ArrayList[noOfVertices];
 
 	// Store the transpose of graph represented by tr
-	private static ArrayList<Integer>[] tr = new ArrayList[vertices];
+	private List<Integer>[] transpose = new ArrayList[noOfVertices];
 
 	// Function to add an edge from source vertex u to
 	// destination vertex v, if choice is false the edge is added
 	// to adj otherwise the edge is added to tr
-	public static void addedge(int u, int v, boolean choice) {
+	private void addedge(int u, int v, boolean choice) {
 		if (!choice)
 			adj[u].add(v);
 		else
-			tr[u].add(v);
+			transpose[u].add(v);
 	}
 
 	// Function to print the graph representation
-	public static void printGraph() {
-		for (int i = 0; i < vertices; i++) {
+	private void printGraph() {
+		for (int i = 0; i < noOfVertices; i++) {
 			System.out.print(i + "--> ");
-			for (int j = 0; j < tr[i].size(); j++)
-				System.out.print(tr[i].get(j) + " ");
+			for (int j = 0; j < transpose[i].size(); j++)
+				System.out.print(transpose[i].get(j) + " ");
 			System.out.println();
 		}
 	}
 
 	// Function to print the transpose of
 	// the graph represented as adj and store it in tr
-	public static void getTranspose() {
+	private void getTranspose() {
 
 		// Traverse the graph and for each edge u, v
 		// in graph add the edge v, u in transpose
-		for (int i = 0; i < vertices; i++)
+		for (int i = 0; i < noOfVertices; i++)
 			for (int j = 0; j < adj[i].size(); j++)
 				addedge(adj[i].get(j), i, true);
 	}
 
-	public static void main(String[] args) throws java.lang.Exception {
-		for (int i = 0; i < vertices; i++) {
-			adj[i] = new ArrayList<Integer>();
-			tr[i] = new ArrayList<Integer>();
+	public static void main(String[] args) {
+		Transpose graph = new Transpose();
+		for (int i = 0; i < graph.noOfVertices; i++) {
+			graph.adj[i] = new ArrayList<Integer>();
+			graph.transpose[i] = new ArrayList<Integer>();
 		}
-		addedge(0, 1, false);
-		addedge(0, 4, false);
-		addedge(0, 3, false);
-		addedge(2, 0, false);
-		addedge(3, 2, false);
-		addedge(4, 1, false);
-		addedge(4, 3, false);
+		graph.addedge(0, 1, false);
+		graph.addedge(0, 4, false);
+		graph.addedge(0, 3, false);
+		graph.addedge(2, 0, false);
+		graph.addedge(3, 2, false);
+		graph.addedge(4, 1, false);
+		graph.addedge(4, 3, false);
 
 		// Finding transpose of the graph
-		getTranspose();
+		graph.getTranspose();
 
 		// Printing the graph representation
-		printGraph();
+		graph.printGraph();
 	}
 
 }

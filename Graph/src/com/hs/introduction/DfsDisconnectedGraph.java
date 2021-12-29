@@ -4,12 +4,12 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class DFS {
+public class DfsDisconnectedGraph {
 	private int noOfVertices;
 	private Queue<Integer> adj[];
 
 	@SuppressWarnings("unchecked")
-	DFS(int noOfVertices) {
+	DfsDisconnectedGraph(int noOfVertices) {
 		this.noOfVertices = noOfVertices;
 		adj = new LinkedList[noOfVertices];
 		for (int i = 0; i < noOfVertices; i++)
@@ -26,8 +26,11 @@ public class DFS {
 		// Mark all the vertices as not visited(set as false by default in java)
 		boolean visited[] = new boolean[noOfVertices];
 
-		// Call the recursive helper function to print DFS traversal
-		DFSUtil(source, visited);
+		// Call the recursive helper function to print DFS traversal starting from all
+		// vertices one by one
+		for (int i = 0; i < noOfVertices; ++i)
+			if (visited[i] == false)
+				DFSUtil(i, visited);
 	}
 
 	// A function used by DFS
@@ -45,9 +48,8 @@ public class DFS {
 		}
 	}
 
-	// Driver Code
 	public static void main(String args[]) {
-		DFS graph = new DFS(4);
+		DfsDisconnectedGraph graph = new DfsDisconnectedGraph(4);
 
 		graph.addEdge(0, 1);
 		graph.addEdge(0, 2);
@@ -56,8 +58,9 @@ public class DFS {
 		graph.addEdge(2, 3);
 		graph.addEdge(3, 3);
 
-		System.out.println("Following is Depth First Traversal " + "(starting from vertex 2)");
+		System.out.println("Following is Depth First Traversal starting from vertex 2");
 
 		graph.dfsTraversl(2);
 	}
+
 }
