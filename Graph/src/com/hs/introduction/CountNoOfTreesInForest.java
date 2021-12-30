@@ -38,12 +38,12 @@ public class CountNoOfTreesInForest {
 	}
 
 	// A function used by DFS
-	private void DFSUtil(int v, boolean visited[]) {
+	private void DFSUtil(int source, boolean visited[]) {
 		// Mark the current node as visited and print it
-		visited[v] = true;
+		visited[source] = true;
 
 		// Recur for all the vertices adjacent to this vertex
-		Iterator<Integer> iterator = adj[v].iterator();
+		Iterator<Integer> iterator = adj[source].iterator();
 		while (iterator.hasNext()) {
 			int vertex = iterator.next();
 			if (!visited[vertex]) {

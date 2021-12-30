@@ -2,10 +2,11 @@ package com.hs.introduction;
 
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Queue;
 
 public class TransitiveClosure {
 	private int noOfVertices;
-	private LinkedList<Integer> adj[];
+	private Queue<Integer> adj[];
 	private int transitiveClosure[][];
 
 	@SuppressWarnings("unchecked")
@@ -26,7 +27,7 @@ public class TransitiveClosure {
 	}
 
 	private void addEdge(int source, int destination) {
-		adj[source].addFirst(destination);
+		adj[source].add(destination);
 	}
 
 	private void getTransitiveClosure() {
@@ -43,7 +44,7 @@ public class TransitiveClosure {
 
 	private void DFSUtil(int source, int destination) {
 		transitiveClosure[source][destination] = 1;
-		Iterator<Integer> iterator = adj[destination].listIterator();
+		Iterator<Integer> iterator = adj[destination].iterator();
 		while (iterator.hasNext()) {
 			int value = iterator.next();
 			if (transitiveClosure[source][value] == 0) {

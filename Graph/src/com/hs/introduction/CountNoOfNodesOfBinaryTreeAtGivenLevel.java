@@ -1,5 +1,6 @@
 package com.hs.introduction;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -7,7 +8,7 @@ public class CountNoOfNodesOfBinaryTreeAtGivenLevel {
 
 	private int noOfVertices;
 	private Queue<Integer> adj[];
-	boolean[] visited;
+	private boolean[] visited;
 
 	@SuppressWarnings("unchecked")
 	CountNoOfNodesOfBinaryTreeAtGivenLevel(int noOfVertices) {
@@ -26,14 +27,10 @@ public class CountNoOfNodesOfBinaryTreeAtGivenLevel {
 		adj[destination].add(source);
 	}
 
-	private int BFS(int start, int givenLevel) {
-
-		// Mark all the vertices as not visited
-		boolean[] visited = new boolean[noOfVertices];
+	private int BFS(int source, int givenLevel) {
 		int[] level = new int[noOfVertices];
 
 		for (int i = 0; i < noOfVertices; i++) {
-			visited[i] = false;
 			level[i] = 0;
 		}
 
@@ -41,24 +38,24 @@ public class CountNoOfNodesOfBinaryTreeAtGivenLevel {
 		Queue<Integer> queue = new LinkedList<>();
 
 		// Mark the current node as visited and enqueue it
-		visited[start] = true;
-		queue.add(start);
-		level[start] = 0;
+		visited[source] = true;
+		queue.add(source);
+		level[source] = 0;
 		int count = 0;
 		while (!queue.isEmpty()) {
 
 			// Dequeue a vertex from queue and print it
-			start = queue.peek();
-			queue.poll();
+			source = queue.poll();
 
-			Queue<Integer> list = adj[start];
-			// Get all adjacent vertices of the dequeued vertex start.
+			Iterator<Integer> it = adj[source].iterator();
+			// Get all adjacent vertices of the dequeued vertex source.
 			// If a adjacent has not been visited, then mark it visited and enqueue it
-			for (int i : list) {
-				if (!visited[i]) {
-					visited[i] = true;
-					level[i] = level[start] + 1;
-					queue.add(i);
+			while (it.hasNext()) {
+				Integer vertex = it.next();
+				if (!visited[vertex]) {
+					visited[vertex] = true;
+					queue.add(vertex);
+					level[vertex] = level[source] + 1;
 				}
 			}
 

@@ -2,11 +2,12 @@ package com.hs.introduction;
 
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Queue;
 
 public class FindMotherVertex {
 
 	private int noOfVertices;
-	private LinkedList<Integer> adj[];
+	private Queue<Integer> adj[];
 	boolean visited[];
 
 	@SuppressWarnings("unchecked")
@@ -20,27 +21,17 @@ public class FindMotherVertex {
 	}
 
 	private void addEdge(int source, int destination) {
-		adj[source].addFirst(destination);
+		adj[source].add(destination);
 	}
 
-	private void DFSUtil(int source, boolean visited[]) {
-		visited[source] = true;
-		Iterator<Integer> iterator = adj[source].listIterator();
-		while (iterator.hasNext()) {
-			int value = iterator.next();
-			if (!visited[value])
-				DFSUtil(value, visited);
-		}
-	}
-
-	private int findMother() {
-		int index = 0;
+	private int findMotherVertex() {
+		int lastIndex = 0;
 
 		// Do a DFS traversal and find the last finished vertex
 		for (int i = 0; i < noOfVertices; i++) {
 			if (visited[i] == false) {
 				DFSUtil(i, visited);
-				index = i;
+				lastIndex = i;
 			}
 		}
 
@@ -48,7 +39,7 @@ public class FindMotherVertex {
 			visited[i] = false;
 		}
 
-		DFSUtil(index, visited);
+		DFSUtil(lastIndex, visited);
 
 		for (int i = 0; i < noOfVertices; i++) {
 			if (visited[i] == false) {
@@ -56,7 +47,17 @@ public class FindMotherVertex {
 			}
 		}
 
-		return index;
+		return lastIndex;
+	}
+
+	private void DFSUtil(int source, boolean visited[]) {
+		visited[source] = true;
+		Iterator<Integer> iterator = adj[source].iterator();
+		while (iterator.hasNext()) {
+			int value = iterator.next();
+			if (!visited[value])
+				DFSUtil(value, visited);
+		}
 	}
 
 	public static void main(String[] args) {
@@ -70,6 +71,6 @@ public class FindMotherVertex {
 		graph.addEdge(5, 2);
 		graph.addEdge(6, 0);
 
-		System.out.println(graph.findMother());
+		System.out.println(graph.findMotherVertex());
 	}
 }

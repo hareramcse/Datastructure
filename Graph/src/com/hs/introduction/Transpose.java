@@ -17,11 +17,11 @@ public class Transpose {
 	// Function to add an edge from source vertex u to
 	// destination vertex v, if choice is false the edge is added
 	// to adj otherwise the edge is added to tr
-	private void addedge(int u, int v, boolean choice) {
+	private void addEdge(int source, int destination, boolean choice) {
 		if (!choice)
-			adj[u].add(v);
+			adj[source].add(destination);
 		else
-			transpose[u].add(v);
+			transpose[source].add(destination);
 	}
 
 	// Function to print the graph representation
@@ -34,15 +34,15 @@ public class Transpose {
 		}
 	}
 
-	// Function to print the transpose of
-	// the graph represented as adj and store it in tr
+	// Function to print the transpose of the graph represented as adj and store it
+	// in transpose
 	private void getTranspose() {
 
-		// Traverse the graph and for each edge u, v
-		// in graph add the edge v, u in transpose
+		// Traverse the graph and for each edge u, v in graph add the edge v, u in
+		// transpose
 		for (int i = 0; i < noOfVertices; i++)
 			for (int j = 0; j < adj[i].size(); j++)
-				addedge(adj[i].get(j), i, true);
+				addEdge(adj[i].get(j), i, true);
 	}
 
 	public static void main(String[] args) {
@@ -51,13 +51,13 @@ public class Transpose {
 			graph.adj[i] = new ArrayList<Integer>();
 			graph.transpose[i] = new ArrayList<Integer>();
 		}
-		graph.addedge(0, 1, false);
-		graph.addedge(0, 4, false);
-		graph.addedge(0, 3, false);
-		graph.addedge(2, 0, false);
-		graph.addedge(3, 2, false);
-		graph.addedge(4, 1, false);
-		graph.addedge(4, 3, false);
+		graph.addEdge(0, 1, false);
+		graph.addEdge(0, 4, false);
+		graph.addEdge(0, 3, false);
+		graph.addEdge(2, 0, false);
+		graph.addEdge(3, 2, false);
+		graph.addEdge(4, 1, false);
+		graph.addEdge(4, 3, false);
 
 		// Finding transpose of the graph
 		graph.getTranspose();

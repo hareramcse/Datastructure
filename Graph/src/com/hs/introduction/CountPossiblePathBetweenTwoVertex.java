@@ -27,8 +27,7 @@ public class CountPossiblePathBetweenTwoVertex {
 
 		// Call the recursive method to count all paths
 		int pathCount = 0;
-		pathCount = countPathsUtil(source, destination, pathCount);
-		return pathCount;
+		return countPathsUtil(source, destination, pathCount);
 	}
 
 	// A recursive method to count all paths from 'source' to 'destination'.
@@ -43,8 +42,8 @@ public class CountPossiblePathBetweenTwoVertex {
 		else {
 			Iterator<Integer> iterator = adj[source].iterator();
 			while (iterator.hasNext()) {
-				int node = iterator.next();
-				pathCount = countPathsUtil(node, destination, pathCount);
+				source = iterator.next();
+				pathCount = countPathsUtil(source, destination, pathCount);
 			}
 		}
 		return pathCount;
