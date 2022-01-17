@@ -6,17 +6,34 @@ import java.util.List;
 public class Transpose {
 
 	// Total number of vertices
-	private int noOfVertices = 5;
+	private int noOfVertices;
 
 	// Find transpose of graph represented by adj
-	private List<Integer>[] adj = new ArrayList[noOfVertices];
+	private List<Integer>[] adj;
 
 	// Store the transpose of graph represented by tr
-	private List<Integer>[] transpose = new ArrayList[noOfVertices];
+	private List<Integer>[] transpose;
+
+	Transpose(int noOfVertices) {
+		this.noOfVertices = noOfVertices;
+		adj = new ArrayList[noOfVertices];
+		transpose = new ArrayList[noOfVertices];
+	}
+
+	// Function to print the transpose of the graph represented as adj and store it
+	// in transpose
+	private void getTranspose() {
+
+		// Traverse the graph and for each edge u, v in graph add the edge v, u in
+		// transpose
+		for (int i = 0; i < noOfVertices; i++)
+			for (int j = 0; j < adj[i].size(); j++)
+				addEdge(adj[i].get(j), i, true);
+	}
 
 	// Function to add an edge from source vertex u to
 	// destination vertex v, if choice is false the edge is added
-	// to adj otherwise the edge is added to tr
+	// to adj otherwise the edge is added to transpose
 	private void addEdge(int source, int destination, boolean choice) {
 		if (!choice)
 			adj[source].add(destination);
@@ -34,19 +51,8 @@ public class Transpose {
 		}
 	}
 
-	// Function to print the transpose of the graph represented as adj and store it
-	// in transpose
-	private void getTranspose() {
-
-		// Traverse the graph and for each edge u, v in graph add the edge v, u in
-		// transpose
-		for (int i = 0; i < noOfVertices; i++)
-			for (int j = 0; j < adj[i].size(); j++)
-				addEdge(adj[i].get(j), i, true);
-	}
-
 	public static void main(String[] args) {
-		Transpose graph = new Transpose();
+		Transpose graph = new Transpose(5);
 		for (int i = 0; i < graph.noOfVertices; i++) {
 			graph.adj[i] = new ArrayList<Integer>();
 			graph.transpose[i] = new ArrayList<Integer>();

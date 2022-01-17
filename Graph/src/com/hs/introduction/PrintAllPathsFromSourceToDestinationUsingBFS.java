@@ -1,28 +1,30 @@
 package com.hs.introduction;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
 public class PrintAllPathsFromSourceToDestinationUsingBFS {
 	private int noOfVertices;
-	private List<ArrayList<Integer>> adj;
+	private Queue<Integer>[] adj;
 
+	@SuppressWarnings("unchecked")
 	PrintAllPathsFromSourceToDestinationUsingBFS(int noOfVertices) {
 		this.noOfVertices = noOfVertices;
-		adj = new ArrayList<ArrayList<Integer>>(noOfVertices);
+		adj = new LinkedList[noOfVertices];
 		for (int i = 0; i < 4; i++) {
-			adj.add(new ArrayList<>());
+			adj[i] = new LinkedList<>();
 		}
 	}
 
 	private void addEdges(int source, int destination) {
-		adj.get(source).add(destination);
+		adj[source].add(destination);
 	}
 
 	// Utility function for finding paths in graph from source to destination
-	private void findPaths(List<ArrayList<Integer>> graph, int src, int dst, int noOfVertices) {
+	private void findPaths(int src, int dst) {
 
 		// Create a queue which stores the paths
 		Queue<List<Integer>> queue = new LinkedList<>();
@@ -38,16 +40,18 @@ public class PrintAllPathsFromSourceToDestinationUsingBFS {
 
 			// If last vertex is the desired destination then print the path
 			if (last == dst) {
-				printPath(path);
+				System.out.println(path);
 			}
 
 			// Traverse to all the nodes connected to current vertex and push new path to
 			// queue
-			List<Integer> lastNode = graph.get(last);
-			for (int i = 0; i < lastNode.size(); i++) {
-				if (isNotVisited(lastNode.get(i), path)) {
+			Iterator<Integer> it = adj[last].iterator();
+
+			while (it.hasNext()) {
+				Integer vertex = it.next();
+				if (isNotPresentInPath(path, vertex)) {
 					List<Integer> newPath = new ArrayList<>(path);
-					newPath.add(lastNode.get(i));
+					newPath.add(vertex);
 					queue.add(newPath);
 				}
 			}
@@ -55,26 +59,16 @@ public class PrintAllPathsFromSourceToDestinationUsingBFS {
 	}
 
 	// Utility function to check if current vertex is already present in path
-	private boolean isNotVisited(int x, List<Integer> path) {
+	private boolean isNotPresentInPath(List<Integer> path, int vertex) {
 		for (int i = 0; i < path.size(); i++)
-			if (path.get(i) == x)
+			if (path.get(i) == vertex)
 				return false;
 
 		return true;
 	}
 
-	// utility function for printing the found path in graph
-	private void printPath(List<Integer> path) {
-		for (Integer v : path) {
-			System.out.print(v + " ");
-		}
-		System.out.println();
-	}
-
 	public static void main(String[] args) {
 		PrintAllPathsFromSourceToDestinationUsingBFS graph = new PrintAllPathsFromSourceToDestinationUsingBFS(4);
-		List<ArrayList<Integer>> adj = graph.adj;
-
 		graph.addEdges(0, 3);
 		graph.addEdges(0, 1);
 		graph.addEdges(0, 2);
@@ -86,7 +80,7 @@ public class PrintAllPathsFromSourceToDestinationUsingBFS {
 		System.out.println("path from source " + src + " to destination " + dst + " are ");
 
 		// Function for finding the paths
-		graph.findPaths(adj, src, dst, graph.noOfVertices);
+		graph.findPaths(src, dst);
 	}
 
 }

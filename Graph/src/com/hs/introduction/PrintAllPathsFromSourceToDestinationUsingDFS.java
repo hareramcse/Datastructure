@@ -1,63 +1,44 @@
 package com.hs.introduction;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class PrintAllPathsFromSourceToDestinationUsingDFS {
 
-	// No. of vertices in graph
 	private int noOfVertices;
+	private Queue<Integer>[] adjList;
 
-	// adjacency list
-	private ArrayList<Integer>[] adjList;
-
-	// Constructor
 	public PrintAllPathsFromSourceToDestinationUsingDFS(int noOfVertices) {
-
-		// initialise vertex count
 		this.noOfVertices = noOfVertices;
-
-		// initialise adjacency list
-		initAdjList();
-	}
-
-	// utility method to initialise
-	// adjacency list
-	@SuppressWarnings("unchecked")
-	private void initAdjList() {
-		adjList = new ArrayList[noOfVertices];
-
+		adjList = new LinkedList[noOfVertices];
 		for (int i = 0; i < noOfVertices; i++) {
-			adjList[i] = new ArrayList<>();
+			adjList[i] = new LinkedList<>();
 		}
 	}
 
-	// add edge from u to v
+	// add edge from source to destination
 	private void addEdge(int source, int destination) {
-		// Add v to u's list.
 		adjList[source].add(destination);
 	}
 
-	// Prints all paths from
-	// 's' to 'd'
+	// Prints all paths from 'source' to 'destination'
 	public void printAllPaths(int source, int destination) {
-		boolean[] isVisited = new boolean[noOfVertices];
-		ArrayList<Integer> pathList = new ArrayList<>();
+		boolean[] visited = new boolean[noOfVertices];
+		List<Integer> pathList = new ArrayList<>();
 
 		// add source to path[]
 		pathList.add(source);
 
 		// Call recursive utility
-		printAllPathsUtil(source, destination, isVisited, pathList);
+		printAllPathsUtil(source, destination, visited, pathList);
 	}
 
-	// A recursive function to print
-	// all paths from 'u' to 'd'.
-	// isVisited[] keeps track of
-	// vertices in current path.
-	// localPathList<> stores actual
-	// vertices in the current path
-	private void printAllPathsUtil(Integer source, Integer destination, boolean[] isVisited,
+	// A recursive function to print all paths from 'source' to 'destination'.
+	// isVisited[] keeps track of vertices in current path.
+	// localPathList<> stores actual vertices in the current path
+	private void printAllPathsUtil(Integer source, Integer destination, boolean[] visited,
 			List<Integer> localPathList) {
 
 		if (source.equals(destination)) {
@@ -67,28 +48,24 @@ public class PrintAllPathsFromSourceToDestinationUsingDFS {
 		}
 
 		// Mark the current node
-		isVisited[source] = true;
+		visited[source] = true;
 
-		// Recur for all the vertices
-		// adjacent to current vertex
+		// Recur for all the vertices adjacent to current vertex
 		for (Integer i : adjList[source]) {
-			if (!isVisited[i]) {
-				// store current node
-				// in path[]
+			if (!visited[i]) {
+				// store current node in path[]
 				localPathList.add(i);
-				printAllPathsUtil(i, destination, isVisited, localPathList);
+				printAllPathsUtil(i, destination, visited, localPathList);
 
-				// remove current node
-				// in path[]
+				// remove current node in path[]
 				localPathList.remove(i);
 			}
 		}
 
 		// Mark the current node
-		isVisited[source] = false;
+		visited[source] = false;
 	}
 
-	// Driver program
 	public static void main(String[] args) {
 		// Create a sample graph
 		PrintAllPathsFromSourceToDestinationUsingDFS graph = new PrintAllPathsFromSourceToDestinationUsingDFS(4);

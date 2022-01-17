@@ -18,12 +18,6 @@ public class TransitiveClosure {
 		for (int i = 0; i < noOfVertices; i++) {
 			adj[i] = new LinkedList<>();
 		}
-
-		for (int i = 0; i < noOfVertices; i++) {
-			for (int j = 0; j < noOfVertices; j++) {
-				transitiveClosure[i][j] = 0;
-			}
-		}
 	}
 
 	private void addEdge(int source, int destination) {
@@ -44,6 +38,7 @@ public class TransitiveClosure {
 
 	private void DFSUtil(int source, int destination) {
 		transitiveClosure[source][destination] = 1;
+		// Find all the vertices reachable through destination
 		Iterator<Integer> iterator = adj[destination].iterator();
 		while (iterator.hasNext()) {
 			int value = iterator.next();
