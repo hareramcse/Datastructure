@@ -2,28 +2,28 @@ package com.hs.backtracking;
 
 public class NQueenProblem {
 
-	static int N = 4;
+	private int N = 4;
 
 	/*
 	 * ld is an array where its indices indicate row-col+N-1 (N-1) is for shifting
 	 * the difference to store negative indices
 	 */
-	static int[] ld = new int[30];
+	private int[] ld = new int[30];
 
 	/*
 	 * rd is an array where its indices indicate row+col and used to check whether a
 	 * queen can be placed on right diagonal or not
 	 */
-	static int[] rd = new int[30];
+	private int[] rd = new int[30];
 
 	/*
 	 * column array where its indices indicates column and used to check whether a
 	 * queen can be placed in that row or not
 	 */
-	static int[] cl = new int[30];
+	private int[] cl = new int[30];
 
 	/* A utility function to print solution */
-	static void printSolution(int board[][]) {
+	private void printSolution(int board[][]) {
 		for (int i = 0; i < N; i++) {
 			for (int j = 0; j < N; j++)
 				System.out.printf(" %d ", board[i][j]);
@@ -31,19 +31,13 @@ public class NQueenProblem {
 		}
 	}
 
-	/*
-	 * A recursive utility function to solve N Queen problem
-	 */
-	static boolean solveNQUtil(int board[][], int col) {
-		/*
-		 * base case: If all queens are placed then return true
-		 */
+	// A recursive utility function to solve N Queen problem
+	private boolean solveNQUtil(int board[][], int col) {
+		// base case: If all queens are placed then return true
 		if (col >= N)
 			return true;
 
-		/*
-		 * Consider this column and try placing this queen in all rows one by one
-		 */
+		// Consider this column and try placing this queen in all rows one by one
 		for (int i = 0; i < N; i++) {
 
 			/*
@@ -59,7 +53,7 @@ public class NQueenProblem {
 				board[i][col] = 1;
 				ld[i - col + N - 1] = rd[i + col] = cl[i] = 1;
 
-				/* recur to place rest of the queens */
+				// recur to place rest of the queens
 				if (solveNQUtil(board, col + 1))
 					return true;
 
@@ -72,9 +66,7 @@ public class NQueenProblem {
 			}
 		}
 
-		/*
-		 * If the queen cannot be placed in any row in this colum col then return false
-		 */
+		// If the queen cannot be placed in any row in this colum col then return false
 		return false;
 	}
 
@@ -85,7 +77,7 @@ public class NQueenProblem {
 	 * 1s. Please note that there may be more than one solutions, this function
 	 * prints one of the feasible solutions.
 	 */
-	static boolean solveNQ() {
+	private boolean solveNQ() {
 		int board[][] = { { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 } };
 
 		if (solveNQUtil(board, 0) == false) {
@@ -97,9 +89,9 @@ public class NQueenProblem {
 		return true;
 	}
 
-// Driver Code
 	public static void main(String[] args) {
-		solveNQ();
+		NQueenProblem graph = new NQueenProblem();
+		graph.solveNQ();
 	}
 
 }

@@ -2,19 +2,15 @@ package com.hs.backtracking;
 
 public class KnightTourProblem {
 
-	static int N = 8;
+	private int N = 8;
 
-	/*
-	 * A utility function to check if i,j are valid indexes for N*N chessboard
-	 */
-	static boolean isSafe(int x, int y, int sol[][]) {
+	// A utility function to check if i,j are valid indexes for N*N chess board
+	private boolean isSafe(int x, int y, int sol[][]) {
 		return (x >= 0 && x < N && y >= 0 && y < N && sol[x][y] == -1);
 	}
 
-	/*
-	 * A utility function to print solution matrix sol[N][N]
-	 */
-	static void printSolution(int sol[][]) {
+	// A utility function to print solution matrix sol[N][N]
+	private void printSolution(int sol[][]) {
 		for (int x = 0; x < N; x++) {
 			for (int y = 0; y < N; y++)
 				System.out.print(sol[x][y] + " ");
@@ -29,7 +25,7 @@ public class KnightTourProblem {
 	 * Please note that there may be more than one solutions, this function prints
 	 * one of the feasible solutions.
 	 */
-	static boolean solveKT() {
+	private boolean solveKT() {
 		int sol[][] = new int[8][8];
 
 		/* Initialization of solution matrix */
@@ -47,9 +43,7 @@ public class KnightTourProblem {
 		// Since the Knight is initially at the first block
 		sol[0][0] = 0;
 
-		/*
-		 * Start from 0,0 and explore all tours using solveKTUtil()
-		 */
+		// Start from 0,0 and explore all tours using solveKTUtil()
 		if (!solveKTUtil(0, 0, 1, sol, xMove, yMove)) {
 			System.out.println("Solution does not exist");
 			return false;
@@ -59,17 +53,13 @@ public class KnightTourProblem {
 		return true;
 	}
 
-	/*
-	 * A recursive utility function to solve Knight Tour problem
-	 */
-	static boolean solveKTUtil(int x, int y, int movei, int sol[][], int xMove[], int yMove[]) {
+	// A recursive utility function to solve Knight Tour problem
+	private boolean solveKTUtil(int x, int y, int movei, int sol[][], int xMove[], int yMove[]) {
 		int k, next_x, next_y;
 		if (movei == N * N)
 			return true;
 
-		/*
-		 * Try all next moves from the current coordinate x, y
-		 */
+		// Try all next moves from the current coordinate x, y
 		for (k = 0; k < 8; k++) {
 			next_x = x + xMove[k];
 			next_y = y + yMove[k];
@@ -87,8 +77,8 @@ public class KnightTourProblem {
 
 	/* Driver Code */
 	public static void main(String args[]) {
-		// Function Call
-		solveKT();
+		KnightTourProblem graph = new KnightTourProblem();
+		graph.solveKT();
 	}
 
 }

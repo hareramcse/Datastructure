@@ -2,46 +2,27 @@ package com.hs.mst;
 
 import java.util.Comparator;
 import java.util.LinkedList;
+import java.util.Queue;
 import java.util.TreeSet;
 
 public class PrimsAlgorithAdjacencyList {
 
-	class node1 {
+	private int noOfVertices;
+	private Queue<Pair> adj[];
 
-		// Stores destination vertex in adjacency list
-		int dest;
-
-		// Stores weight of a vertex in the adjacency list
-		int weight;
-
-		// Constructor
-		node1(int a, int b) {
-			dest = a;
-			weight = b;
-		}
-	}
-
-	static class Graph {
-
-		// Number of vertices in the graph
-		int V;
-
-		// List of adjacent nodes of a given vertex
-		LinkedList<node1>[] adj;
-
-		// Constructor
-		Graph(int e) {
-			V = e;
-			adj = new LinkedList[V];
-			for (int o = 0; o < V; o++)
-				adj[o] = new LinkedList<>();
+	@SuppressWarnings("unchecked")
+	PrimsAlgorithAdjacencyList(int noOfVertices) {
+		this.noOfVertices = noOfVertices;
+		adj = new LinkedList[noOfVertices];
+		for (int i = 0; i < noOfVertices; ++i) {
+			adj[i] = new LinkedList<Pair>();
 		}
 	}
 
 	// class to represent a node in PriorityQueue
 	// Stores a vertex and its corresponding
 	// key value
-	class node {
+	class Node {
 		int vertex;
 		int key;
 	}
@@ -50,85 +31,83 @@ public class PrimsAlgorithAdjacencyList {
 	// returns 1 if node0.key > node1.key
 	// returns 0 if node0.key < node1.key and
 	// returns -1 otherwise
-	class comparator implements Comparator<node> {
+	class comparator implements Comparator<Node> {
 
 		@Override
-		public int compare(node node0, node node1) {
+		public int compare(Node node0, Node node1) {
 			return node0.key - node1.key;
 		}
 	}
 
-	// method to add an edge
-	// between two vertices
-	void addEdge(Graph graph, int src, int dest, int weight) {
-
-		node1 node0 = new node1(dest, weight);
-		node1 node = new node1(src, weight);
-		graph.adj[src].addLast(node0);
-		graph.adj[dest].addLast(node);
+	// method to add an edge between two vertices
+	private void addEdge(int src, int dest, int weight) {
+		Pair node0 = new Pair(dest, weight);
+		Pair node = new Pair(src, weight);
+		adj[src].add(node0);
+		adj[dest].add(node);
 	}
 
 	// method used to find the mst
-	void prims_mst(Graph graph) {
+	private void primsMST() {
 
 		// Whether a vertex is in PriorityQueue or not
-		Boolean[] mstset = new Boolean[graph.V];
-		node[] e = new node[graph.V];
+		boolean[] mstSet = new boolean[noOfVertices];
+		Node[] node = new Node[noOfVertices];
 
 		// Stores the parents of a vertex
-		int[] parent = new int[graph.V];
+		int[] parent = new int[noOfVertices];
 
-		for (int o = 0; o < graph.V; o++)
-			e[o] = new node();
+		for (int i = 0; i < noOfVertices; i++)
+			node[i] = new Node();
 
-		for (int o = 0; o < graph.V; o++) {
+		for (int i = 0; i < noOfVertices; i++) {
 
 			// Initialize to false
-			mstset[o] = false;
+			mstSet[i] = false;
 
 			// Initialize key values to infinity
-			e[o].key = Integer.MAX_VALUE;
-			e[o].vertex = o;
-			parent[o] = -1;
+			node[i].key = Integer.MAX_VALUE;
+			node[i].vertex = i;
+			parent[i] = -1;
 		}
 
 		// Include the source vertex in mstset
-		mstset[0] = true;
+		mstSet[0] = true;
 
 		// Set key value to 0
 		// so that it is extracted first
 		// out of PriorityQueue
-		e[0].key = 0;
+		node[0].key = 0;
 
 		// Use TreeSet instead of PriorityQueue as the remove function of the PQ is O(n)
 		// in java.
-		TreeSet<node> queue = new TreeSet<node>(new comparator());
+		TreeSet<Node> queue = new TreeSet<Node>(new comparator());
 
-		for (int o = 0; o < graph.V; o++)
-			queue.add(e[o]);
+		for (int i = 0; i < noOfVertices; i++)
+			queue.add(node[i]);
 
 		// Loops until the queue is not empty
 		while (!queue.isEmpty()) {
 
 			// Extracts a node with min key value
-			node node0 = queue.pollFirst();
+			Node node0 = queue.pollFirst();
 
 			// Include that node into mstset
-			mstset[node0.vertex] = true;
+			mstSet[node0.vertex] = true;
 
 			// For all adjacent vertex of the extracted vertex V
-			for (node1 iterator : graph.adj[node0.vertex]) {
+			for (Pair iterator : adj[node0.vertex]) {
 
 				// If V is in queue
-				if (mstset[iterator.dest] == false) {
+				if (mstSet[iterator.dest] == false) {
 					// If the key value of the adjacent vertex is
 					// more than the extracted key
 					// update the key value of adjacent vertex
 					// to update first remove and add the updated vertex
-					if (e[iterator.dest].key > iterator.weight) {
-						queue.remove(e[iterator.dest]);
-						e[iterator.dest].key = iterator.weight;
-						queue.add(e[iterator.dest]);
+					if (node[iterator.dest].key > iterator.weight) {
+						queue.remove(node[iterator.dest]);
+						node[iterator.dest].key = iterator.weight;
+						queue.add(node[iterator.dest]);
 						parent[iterator.dest] = node0.vertex;
 					}
 				}
@@ -136,34 +115,30 @@ public class PrimsAlgorithAdjacencyList {
 		}
 
 		// Prints the vertex pair of mst
-		for (int o = 1; o < graph.V; o++)
+		for (int o = 1; o < noOfVertices; o++)
 			System.out.println(parent[o] + " " + "-" + " " + o);
 	}
 
 	public static void main(String[] args) {
-		int V = 9;
+		PrimsAlgorithAdjacencyList graph = new PrimsAlgorithAdjacencyList(9);
 
-		Graph graph = new Graph(V);
-
-		PrimsAlgorithAdjacencyList e = new PrimsAlgorithAdjacencyList();
-
-		e.addEdge(graph, 0, 1, 4);
-		e.addEdge(graph, 0, 7, 8);
-		e.addEdge(graph, 1, 2, 8);
-		e.addEdge(graph, 1, 7, 11);
-		e.addEdge(graph, 2, 3, 7);
-		e.addEdge(graph, 2, 8, 2);
-		e.addEdge(graph, 2, 5, 4);
-		e.addEdge(graph, 3, 4, 9);
-		e.addEdge(graph, 3, 5, 14);
-		e.addEdge(graph, 4, 5, 10);
-		e.addEdge(graph, 5, 6, 2);
-		e.addEdge(graph, 6, 7, 1);
-		e.addEdge(graph, 6, 8, 6);
-		e.addEdge(graph, 7, 8, 7);
+		graph.addEdge(0, 1, 4);
+		graph.addEdge(0, 7, 8);
+		graph.addEdge(1, 2, 8);
+		graph.addEdge(1, 7, 11);
+		graph.addEdge(2, 3, 7);
+		graph.addEdge(2, 8, 2);
+		graph.addEdge(2, 5, 4);
+		graph.addEdge(3, 4, 9);
+		graph.addEdge(3, 5, 14);
+		graph.addEdge(4, 5, 10);
+		graph.addEdge(5, 6, 2);
+		graph.addEdge(6, 7, 1);
+		graph.addEdge(6, 8, 6);
+		graph.addEdge(7, 8, 7);
 
 		// Method invoked
-		e.prims_mst(graph);
+		graph.primsMST();
 	}
 
 }
