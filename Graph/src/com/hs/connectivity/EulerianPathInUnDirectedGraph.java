@@ -5,10 +5,9 @@ import java.util.Vector;
 
 public class EulerianPathInUnDirectedGraph {
 
-	// Function to find out the path
-	// It takes the adjacency matrix
+	// Function to find out the path It takes the adjacency matrix
 	// representation of the graph as input
-	static void findpath(int[][] graph, int n) {
+	private void findpath(int[][] graph, int n) {
 		Vector<Integer> numofadj = new Vector<>();
 
 		// Find out number of edges each vertex has
@@ -72,7 +71,7 @@ public class EulerianPathInUnDirectedGraph {
 		System.out.println(cur);
 	}
 
-	static int accumulate(int[] arr, int sum) {
+	private int accumulate(int[] arr, int sum) {
 		for (int i : arr)
 			sum += i;
 		return sum;
@@ -80,24 +79,25 @@ public class EulerianPathInUnDirectedGraph {
 
 	// Driver Code
 	public static void main(String[] args) {
+		EulerianPathInUnDirectedGraph graph = new EulerianPathInUnDirectedGraph();
 
 		// Test case 1
 		int[][] graph1 = { { 0, 1, 0, 0, 1 }, { 1, 0, 1, 1, 0 }, { 0, 1, 0, 1, 0 }, { 0, 1, 1, 0, 0 },
 				{ 1, 0, 0, 0, 0 } };
 		int n = graph1.length;
-		findpath(graph1, n);
+		graph.findpath(graph1, n);
 
 		// Test case 2
 		int[][] graph2 = { { 0, 1, 0, 1, 1 }, { 1, 0, 1, 0, 1 }, { 0, 1, 0, 1, 1 }, { 1, 1, 1, 0, 0 },
 				{ 1, 0, 1, 0, 0 } };
 		n = graph2.length;
-		findpath(graph2, n);
+		graph.findpath(graph2, n);
 
 		// Test case 3
 		int[][] graph3 = { { 0, 1, 0, 0, 1 }, { 1, 0, 1, 1, 1 }, { 0, 1, 0, 1, 0 }, { 0, 1, 1, 0, 1 },
 				{ 1, 1, 0, 1, 0 } };
 		n = graph3.length;
-		findpath(graph3, n);
+		graph.findpath(graph3, n);
 	}
 
 }

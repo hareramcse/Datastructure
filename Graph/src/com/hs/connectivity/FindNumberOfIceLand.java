@@ -2,10 +2,9 @@ package com.hs.connectivity;
 
 public class FindNumberOfIceLand {
 
-	// A utility function to do DFS for a 2D
-	// boolean matrix. It only considers
-	// the 8 neighbours as adjacent vertices
-	static void DFS(int[][] M, int i, int j, int ROW, int COL) {
+	// A utility function to do DFS for a 2D boolean matrix. It only considers the 8
+	// neighbours as adjacent vertices
+	private void DFS(int[][] M, int i, int j, int ROW, int COL) {
 
 		// Base condition
 		// if i less than 0 or j less than 0 or i greater than ROW-1 or j greater than
@@ -27,7 +26,7 @@ public class FindNumberOfIceLand {
 		}
 	}
 
-	static int countIslands(int[][] M) {
+	private int countIslands(int[][] M) {
 		int ROW = M.length;
 		int COL = M[0].length;
 		int count = 0;
@@ -50,11 +49,13 @@ public class FindNumberOfIceLand {
 		return count;
 	}
 
-//Driver code
+	// Driver code
 	public static void main(String[] args) {
-		int[][] M = { { 1, 1, 0, 0, 0 }, { 0, 1, 0, 0, 1 }, { 1, 0, 0, 1, 1 }, { 0, 0, 0, 0, 0 }, { 1, 0, 1, 0, 1 } };
+		FindNumberOfIceLand fnoi = new FindNumberOfIceLand();
+		int[][] graph = { { 1, 1, 0, 0, 0 }, { 0, 1, 0, 0, 1 }, { 1, 0, 0, 1, 1 }, { 0, 0, 0, 0, 0 },
+				{ 1, 0, 1, 0, 1 } };
 
-		System.out.print("Number of islands is: " + countIslands(M));
+		System.out.print("Number of islands is: " + fnoi.countIslands(graph));
 	}
 
 }

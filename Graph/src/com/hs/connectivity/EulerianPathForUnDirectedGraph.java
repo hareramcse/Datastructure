@@ -2,66 +2,61 @@ package com.hs.connectivity;
 
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Queue;
 
 public class EulerianPathForUnDirectedGraph {
 
-	private int V; // No. of vertices
+	private int noOfVertices;
+	private Queue<Integer> adj[];
 
-	// Array of lists for Adjacency List Representation
-	private LinkedList<Integer> adj[];
-
-	// Constructor
-	EulerianPathForUnDirectedGraph(int v)
-	{
-		V = v;
-		adj = new LinkedList[v];
-		for (int i=0; i<v; ++i)
-			adj[i] = new LinkedList();
+	@SuppressWarnings("unchecked")
+	EulerianPathForUnDirectedGraph(int noOfVertices) {
+		this.noOfVertices = noOfVertices;
+		adj = new LinkedList[noOfVertices];
+		for (int i = 0; i < noOfVertices; ++i)
+			adj[i] = new LinkedList<>();
 	}
 
-	// Function to add an edge into the graph
-	void addEdge(int v, int w) {
-		adj[v].add(w);// Add w to v's list.
-		adj[w].add(v); // The graph is undirected
+	private void addEdge(int source, int destination) {
+		adj[source].add(destination);
+		adj[destination].add(source);
 	}
 
 	// A function used by DFS
-	void DFSUtil(int v, boolean visited[]) {
+	private void DFSUtil(int source, boolean visited[]) {
 		// Mark the current node as visited
-		visited[v] = true;
+		visited[source] = true;
 
 		// Recur for all the vertices adjacent to this vertex
-		Iterator<Integer> i = adj[v].listIterator();
-		while (i.hasNext()) {
-			int n = i.next();
-			if (!visited[n])
-				DFSUtil(n, visited);
+		Iterator<Integer> it = adj[source].iterator();
+		while (it.hasNext()) {
+			int currentAdj = it.next();
+			if (!visited[currentAdj])
+				DFSUtil(currentAdj, visited);
 		}
 	}
 
 	// Method to check if all non-zero degree vertices are
 	// connected. It mainly does DFS traversal starting from
-	boolean isConnected() {
+	private boolean isConnected() {
 		// Mark all the vertices as not visited
-		boolean visited[] = new boolean[V];
+		boolean visited[] = new boolean[noOfVertices];
 		int i;
-		for (i = 0; i < V; i++)
-			visited[i] = false;
 
 		// Find a vertex with non-zero degree
-		for (i = 0; i < V; i++)
+		for (i = 0; i < noOfVertices; i++)
 			if (adj[i].size() != 0)
 				break;
 
 		// If there are no edges in the graph, return true
-		if (i == V)
+		if (i == noOfVertices)
 			return true;
 
 		// Start DFS traversal from a vertex with non-zero degree
 		DFSUtil(i, visited);
 
 		// Check if all non-zero degree vertices are visited
-		for (i = 0; i < V; i++)
+		for (i = 0; i < noOfVertices; i++)
 			if (visited[i] == false && adj[i].size() > 0)
 				return false;
 
@@ -73,14 +68,14 @@ public class EulerianPathForUnDirectedGraph {
 	 * Eulerian 1 --> If graph has an Euler path (Semi-Eulerian) 2 --> If graph has
 	 * an Euler Circuit (Eulerian)
 	 */
-	int isEulerian() {
+	private int isEulerian() {
 		// Check if all non-zero degree vertices are connected
 		if (isConnected() == false)
 			return 0;
 
 		// Count vertices with odd degree
 		int odd = 0;
-		for (int i = 0; i < V; i++)
+		for (int i = 0; i < noOfVertices; i++)
 			if (adj[i].size() % 2 != 0)
 				odd++;
 
@@ -95,7 +90,7 @@ public class EulerianPathForUnDirectedGraph {
 	}
 
 	// Function to run test cases
-	void test() {
+	private void test() {
 		int res = isEulerian();
 		if (res == 0)
 			System.out.println("graph is not Eulerian");

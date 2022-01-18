@@ -2,91 +2,82 @@ package com.hs.connectivity;
 
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Queue;
 
 public class EulerCircuitDirectedGraph {
-
-	private int V; // No. of vertices
-	private LinkedList<Integer> adj[];// Adjacency List
+	private int noOfVertices;
+	private Queue<Integer> adj[];
 	private int in[]; // maintaining in degree
 
-	// Constructor
-	EulerCircuitDirectedGraph(int v) {
-		V = v;
-		adj = new LinkedList[v];
-		in = new int[V];
-		for (int i = 0; i < v; ++i) {
-			adj[i] = new LinkedList();
-			in[i] = 0;
-		}
+	@SuppressWarnings("unchecked")
+	EulerCircuitDirectedGraph(int noOfVertices) {
+		this.noOfVertices = noOfVertices;
+		adj = new LinkedList[noOfVertices];
+		in = new int[noOfVertices];
+		for (int i = 0; i < noOfVertices; ++i)
+			adj[i] = new LinkedList<>();
 	}
 
-	// Function to add an edge into the graph
-	void addEdge(int v, int w) {
-		adj[v].add(w);
-		in[w]++;
+	private void addEdge(int source, int destination) {
+		adj[source].add(destination);
+		in[destination]++;
 	}
 
 	// A recursive function to print DFS starting from v
-	void DFSUtil(int v, Boolean visited[]) {
+	private void DFSUtil(int source, boolean visited[]) {
 		// Mark the current node as visited
-		visited[v] = true;
-
-		int n;
+		visited[source] = true;
 
 		// Recur for all the vertices adjacent to this vertex
-		Iterator<Integer> i = adj[v].iterator();
-		while (i.hasNext()) {
-			n = i.next();
-			if (!visited[n])
-				DFSUtil(n, visited);
+		Iterator<Integer> it = adj[source].iterator();
+		while (it.hasNext()) {
+			int currentAdj = it.next();
+			if (!visited[currentAdj])
+				DFSUtil(currentAdj, visited);
 		}
 	}
 
 	// Function that returns reverse (or transpose) of this graph
-	EulerCircuitDirectedGraph getTranspose() {
-		EulerCircuitDirectedGraph g = new EulerCircuitDirectedGraph(V);
-		for (int v = 0; v < V; v++) {
+	private EulerCircuitDirectedGraph getTranspose() {
+		EulerCircuitDirectedGraph graph = new EulerCircuitDirectedGraph(noOfVertices);
+		for (int i = 0; i < noOfVertices; i++) {
 			// Recur for all the vertices adjacent to this vertex
-			Iterator<Integer> i = adj[v].listIterator();
-			while (i.hasNext()) {
-				g.adj[i.next()].add(v);
-				(g.in[v])++;
+			Iterator<Integer> it = adj[i].iterator();
+			while (it.hasNext()) {
+				graph.adj[it.next()].add(i);
+				(graph.in[i])++;
 			}
 		}
-		return g;
+		return graph;
 	}
 
-	// The main function that returns true if graph is strongly
-	// connected
-	Boolean isSC() {
-		// Step 1: Mark all the vertices as not visited (For
-		// first DFS)
-		Boolean visited[] = new Boolean[V];
-		for (int i = 0; i < V; i++)
-			visited[i] = false;
+	// The main function that returns true if graph is strongly connected
+	private Boolean isSC() {
+		// Step 1: Mark all the vertices as not visited (For first DFS)
+		boolean visited[] = new boolean[noOfVertices];
 
 		// Step 2: Do DFS traversal starting from the first vertex.
 		DFSUtil(0, visited);
 
 		// If DFS traversal doesn't visit all vertices, then return false.
-		for (int i = 0; i < V; i++)
+		for (int i = 0; i < noOfVertices; i++)
 			if (visited[i] == false)
 				return false;
 
 		// Step 3: Create a reversed graph
-		EulerCircuitDirectedGraph gr = getTranspose();
+		EulerCircuitDirectedGraph graph = getTranspose();
 
 		// Step 4: Mark all the vertices as not visited (For second DFS)
-		for (int i = 0; i < V; i++)
+		for (int i = 0; i < noOfVertices; i++)
 			visited[i] = false;
 
 		// Step 5: Do DFS for reversed graph starting from first vertex.
 		// Starting Vertex must be same starting point of first DFS
-		gr.DFSUtil(0, visited);
+		graph.DFSUtil(0, visited);
 
 		// If all vertices are not visited in second DFS, then
 		// return false
-		for (int i = 0; i < V; i++)
+		for (int i = 0; i < noOfVertices; i++)
 			if (visited[i] == false)
 				return false;
 
@@ -97,13 +88,13 @@ public class EulerCircuitDirectedGraph {
 	 * This function returns true if the directed graph has a eulerian cycle,
 	 * otherwise returns false
 	 */
-	Boolean isEulerianCycle() {
+	private Boolean isEulerianCycle() {
 		// Check if all non-zero degree vertices are connected
 		if (isSC() == false)
 			return false;
 
 		// Check if in degree and out degree of every vertex is same
-		for (int i = 0; i < V; i++)
+		for (int i = 0; i < noOfVertices; i++)
 			if (adj[i].size() != in[i])
 				return false;
 
