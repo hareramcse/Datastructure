@@ -3,50 +3,29 @@ package com.hs.cycle;
 import java.util.Arrays;
 
 public class DetectNegativeCycleBelmanFord {
+	// A structure to represent a connected, directed and weighted graph
+	private int noOfVertices, noOfEdges;
+	private Edge edge[];
 
-	// A structure to represent a weighted
-	// edge in graph
-	static class Edge {
-		int src, dest, weight;
-	}
+	// Creates a graph with noOfVertices vertices and noOfEdges edges
+	DetectNegativeCycleBelmanFord(int noOfVertices, int noOfEdges) {
+		this.noOfVertices = noOfVertices;
+		this.noOfEdges = noOfEdges;
+		edge = new Edge[noOfEdges];
 
-	// A structure to represent a connected,
-	// directed and weighted graph
-	static class Graph {
-
-		// V-> Number of vertices,
-		// E-> Number of edges
-		int V, E;
-
-		// Graph is represented as
-		// an array of edges.
-		Edge edge[];
-	}
-
-	// Creates a graph with V vertices and E edges
-	static Graph createGraph(int V, int E) {
-		Graph graph = new Graph();
-		graph.V = V;
-		graph.E = E;
-		graph.edge = new Edge[graph.E];
-
-		for (int i = 0; i < graph.E; i++) {
-			graph.edge[i] = new Edge();
+		for (int i = 0; i < noOfEdges; i++) {
+			edge[i] = new Edge();
 		}
-
-		return graph;
 	}
 
-	// The main function that finds shortest distances
-	// from src to all other vertices using Bellman-
-	// Ford algorithm. The function also detects
-	// negative weight cycle
-	static boolean isNegCycleBellmanFord(Graph graph, int src, int dist[]) {
-		int V = graph.V;
-		int E = graph.E;
+	// The main function that finds shortest distances from src to all other
+	// vertices using Bellman-Ford algorithm. The function also detects negative
+	// weight cycle
+	private boolean isNegCycleBellmanFord(int src, int dist[]) {
+		int V = noOfVertices;
+		int E = noOfEdges;
 
-		// Step 1: Initialize distances from src
-		// to all other vertices as INFINITE
+		// Step 1: Initialize distances from src to all other vertices as INFINITE
 		for (int i = 0; i < V; i++)
 			dist[i] = Integer.MAX_VALUE;
 
@@ -54,13 +33,12 @@ public class DetectNegativeCycleBelmanFord {
 
 		// Step 2: Relax all edges |V| - 1 times.
 		// A simple shortest path from src to any
-		// other vertex can have at-most |V| - 1
-		// edges
+		// other vertex can have at-most |V| - 1 edges
 		for (int i = 1; i <= V - 1; i++) {
 			for (int j = 0; j < E; j++) {
-				int u = graph.edge[j].src;
-				int v = graph.edge[j].dest;
-				int weight = graph.edge[j].weight;
+				int u = edge[j].src;
+				int v = edge[j].dest;
+				int weight = edge[j].weight;
 
 				if (dist[u] != Integer.MAX_VALUE && dist[u] + weight < dist[v])
 					dist[v] = dist[u] + weight;
@@ -70,12 +48,11 @@ public class DetectNegativeCycleBelmanFord {
 		// Step 3: check for negative-weight cycles.
 		// The above step guarantees shortest distances
 		// if graph doesn't contain negative weight cycle.
-		// If we get a shorter path, then there
-		// is a cycle.
+		// If we get a shorter path, then there is a cycle.
 		for (int i = 0; i < E; i++) {
-			int u = graph.edge[i].src;
-			int v = graph.edge[i].dest;
-			int weight = graph.edge[i].weight;
+			int u = edge[i].src;
+			int v = edge[i].dest;
+			int weight = edge[i].weight;
 
 			if (dist[u] != Integer.MAX_VALUE && dist[u] + weight < dist[v])
 				return true;
@@ -84,30 +61,26 @@ public class DetectNegativeCycleBelmanFord {
 		return false;
 	}
 
-	// Returns true if given graph has negative weight
-	// cycle.
-	static boolean isNegCycleDisconnected(Graph graph) {
-		int V = graph.V;
+	// Returns true if given graph has negative weight cycle.
+	private boolean isNegCycleDisconnected() {
+		int V = noOfVertices;
 
-		// To keep track of visited vertices
-		// to avoid recomputations.
+		// To keep track of visited vertices to avoid recomputations.
 		boolean visited[] = new boolean[V];
 		Arrays.fill(visited, false);
 
 		// This array is filled by Bellman-Ford
 		int dist[] = new int[V];
 
-		// Call Bellman-Ford for all those vertices
-		// that are not visited
+		// Call Bellman-Ford for all those vertices that are not visited
 		for (int i = 0; i < V; i++) {
 			if (visited[i] == false) {
 
 				// If cycle found
-				if (isNegCycleBellmanFord(graph, i, dist))
+				if (isNegCycleBellmanFord(i, dist))
 					return true;
 
-				// Mark all vertices that are visited
-				// in above call.
+				// Mark all vertices that are visited in above call.
 				for (int j = 0; j < V; j++)
 					if (dist[j] != Integer.MAX_VALUE)
 						visited[j] = true;
@@ -118,8 +91,7 @@ public class DetectNegativeCycleBelmanFord {
 
 	// Driver Code
 	public static void main(String[] args) {
-		int V = 5, E = 8;
-		Graph graph = createGraph(V, E);
+		DetectNegativeCycleBelmanFord graph = new DetectNegativeCycleBelmanFord(5, 8);
 
 		// Add edge 0-1 (or A-B in above figure)
 		graph.edge[0].src = 0;
@@ -161,7 +133,7 @@ public class DetectNegativeCycleBelmanFord {
 		graph.edge[7].dest = 3;
 		graph.edge[7].weight = -3;
 
-		if (isNegCycleDisconnected(graph))
+		if (graph.isNegCycleDisconnected())
 			System.out.println("Yes");
 		else
 			System.out.println("No");

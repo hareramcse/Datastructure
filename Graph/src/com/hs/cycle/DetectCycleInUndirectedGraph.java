@@ -1,84 +1,93 @@
 package com.hs.cycle;
 
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class DetectCycleInUndirectedGraph {
-	int noOfVertices, noOfEdges; // V-> no. of vertices & E->no.of edges
-	Edge edge[]; // /collection of all edges
 
-	class Edge {
-		int source, destination;
-	};
+	private int noOfVertices;
+	private Queue<Integer> adj[];
 
-	// Creates a graph with V vertices and E edges
-	DetectCycleInUndirectedGraph(int noOfVertices, int noOfEdges) {
+	@SuppressWarnings("unchecked")
+	DetectCycleInUndirectedGraph(int noOfVertices) {
 		this.noOfVertices = noOfVertices;
-		this.noOfEdges = noOfEdges;
-		edge = new Edge[noOfEdges];
-		for (int i = 0; i < noOfEdges; ++i)
-			edge[i] = new Edge();
+		adj = new LinkedList[noOfVertices];
+		for (int i = 0; i < noOfVertices; ++i)
+			adj[i] = new LinkedList<>();
 	}
 
-	// A utility function to find the subset of an element i
-	int find(int parent[], int i) {
-		if (parent[i] == -1)
-			return i;
-		return find(parent, parent[i]);
+	// Function to add an edge into the graph
+	private void addEdge(int source, int destination) {
+		adj[source].add(destination);
+		adj[destination].add(source);
 	}
 
-	// A utility function to do union of two subsets
-	void Union(int parent[], int x, int y) {
-		int xset = find(parent, x);
-		int yset = find(parent, y);
-		parent[xset] = yset;
-	}
+	// Returns true if the graph contains a cycle, else false.
+	private Boolean isCyclic() {
 
-	// The main function to check whether a given graph
-	// contains cycle or not
-	int isCycle(DetectCycleInUndirectedGraph graph) {
-		// Allocate memory for creating V subsets
-		int parent[] = new int[graph.noOfVertices];
+		// Mark all the vertices as not visited and not part of recursion stack
+		boolean visited[] = new boolean[noOfVertices];
 
-		// Initialize all subsets as single element sets
-		for (int i = 0; i < graph.noOfVertices; ++i)
-			parent[i] = -1;
-
-		// Iterate through all edges of graph, find subset of both
-		// vertices of every edge, if both subsets are same, then
-		// there is cycle in graph.
-		for (int i = 0; i < graph.noOfEdges; ++i) {
-			int x = graph.find(parent, graph.edge[i].source);
-			int y = graph.find(parent, graph.edge[i].destination);
-
-			if (x == y)
-				return 1;
-
-			graph.Union(parent, x, y);
+		// Call the recursive helper function to detect cycle in different DFS trees
+		for (int i = 0; i < noOfVertices; i++) {
+			if (!visited[i]) {
+				if (isCyclicUtil(i, visited, -1)) {
+					return true;
+				}
+			}
 		}
-		return 0;
+
+		return false;
 	}
 
-	// Driver Method
-	public static void main(String[] args) {
-		/*
-		 * Let us create following graph 0 | \ | \ 1-----2
-		 */
-		int V = 3, E = 3;
-		DetectCycleInUndirectedGraph graph = new DetectCycleInUndirectedGraph(V, E);
+	// A recursive function that uses visited[] and parent to detect
+	// cycle in subgraph reachable from vertex v.
+	private Boolean isCyclicUtil(int source, boolean visited[], int parent) {
+		// Mark the current node as visited
+		visited[source] = true;
 
-		// add edge 0-1
-		graph.edge[0].source = 0;
-		graph.edge[0].destination = 1;
+		// Recur for all the vertices adjacent to this vertex
+		Iterator<Integer> it = adj[source].iterator();
+		while (it.hasNext()) {
+			Integer vertex = it.next();
 
-		// add edge 1-2
-		graph.edge[1].source = 1;
-		graph.edge[1].destination = 2;
+			// If an adjacent is not visited, then recur for that adjacent
+			if (!visited[vertex]) {
+				if (isCyclicUtil(vertex, visited, source)) {
+					return true;
+				}
+			}
 
-		// add edge 0-2
-		graph.edge[2].source = 0;
-		graph.edge[2].destination = 2;
+			// If an adjacent is visited and not parent of current
+			// vertex, then there is a cycle.
+			else if (vertex != parent) {
+				return true;
+			}
+		}
+		return false;
+	}
 
-		if (graph.isCycle(graph) == 1)
-			System.out.println("graph contains cycle");
+	// Driver method to test above methods
+	public static void main(String args[]) {
+
+		DetectCycleInUndirectedGraph g1 = new DetectCycleInUndirectedGraph(5);
+		g1.addEdge(1, 0);
+		g1.addEdge(0, 2);
+		g1.addEdge(2, 1);
+		g1.addEdge(0, 3);
+		g1.addEdge(3, 4);
+		if (g1.isCyclic())
+			System.out.println("Graph contains cycle");
 		else
-			System.out.println("graph doesn't contain cycle");
+			System.out.println("Graph doesn't contains cycle");
+
+		DetectCycleInUndirectedGraph g2 = new DetectCycleInUndirectedGraph(3);
+		g2.addEdge(0, 1);
+		g2.addEdge(1, 2);
+		if (g2.isCyclic())
+			System.out.println("Graph contains cycle");
+		else
+			System.out.println("Graph doesn't contains cycle");
 	}
 }

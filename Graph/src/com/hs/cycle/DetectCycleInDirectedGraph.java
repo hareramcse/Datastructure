@@ -2,27 +2,27 @@ package com.hs.cycle;
 
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Queue;
 
 public class DetectCycleInDirectedGraph {
-	int noOfVertices;
-	LinkedList<Integer> adj[];
-	boolean visited[];
+	private int noOfVertices;
+	private Queue<Integer> adj[];
 
+	@SuppressWarnings("unchecked")
 	DetectCycleInDirectedGraph(int noOfVertices) {
 		this.noOfVertices = noOfVertices;
 		adj = new LinkedList[noOfVertices];
-		visited = new boolean[noOfVertices];
 
 		for (int i = 0; i < noOfVertices; i++) {
 			adj[i] = new LinkedList<>();
 		}
 	}
 
-	public void addEdge(int source, int destination) {
+	private void addEdge(int source, int destination) {
 		adj[source].add(destination);
 	}
 
-	public boolean isCyclic(int source) {
+	private boolean isCyclic(int source) {
 		boolean visited[] = new boolean[noOfVertices];
 		boolean recStack[] = new boolean[noOfVertices];
 
@@ -34,14 +34,14 @@ public class DetectCycleInDirectedGraph {
 		return false;
 	}
 
-	public boolean isCyclicUtil(int source, boolean visited[], boolean recStack[]) {
+	private boolean isCyclicUtil(int source, boolean visited[], boolean recStack[]) {
 		if (visited[source] == false) {
 			// Mark the current node as visited and part of recursion stack
 			visited[source] = true;
 			recStack[source] = true;
 
 			// Recur for all the vertices adjacent to this vertex
-			Iterator<Integer> iterator = adj[source].listIterator();
+			Iterator<Integer> iterator = adj[source].iterator();
 			while (iterator.hasNext()) {
 				int value = iterator.next();
 				if (!visited[value] && isCyclicUtil(value, visited, recStack))

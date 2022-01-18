@@ -3,17 +3,14 @@ package com.hs.cycle;
 public class DetectNegativeCycleFloyedWarshall {
 
 	// Number of vertices in the graph
-	static final int V = 4;
+	private int V = 4;
 
-	/*
-	 * Define Infinite as a large enough value. This value will be used for vertices
-	 * not connected to each other
-	 */
-	static final int INF = 99999;
+	// Define Infinite as a large enough value. This value will be used for vertices
+	// not connected to each other
+	private int INF = Integer.MAX_VALUE;
 
-	// Returns true if graph has negative weight cycle
-	// else false.
-	static boolean negCyclefloydWarshall(int graph[][]) {
+	// Returns true if graph has negative weight cycle else false.
+	private boolean negCyclefloydWarshall(int graph[][]) {
 
 		/*
 		 * dist[][] will be the output matrix that will finally have the shortest
@@ -56,8 +53,7 @@ public class DetectNegativeCycleFloyedWarshall {
 		}
 
 		// If distance of any vertex from itself
-		// becomes negative, then there is a negative
-		// weight cycle.
+		// becomes negative, then there is a negative weight cycle.
 		for (i = 0; i < V; i++)
 			if (dist[i][i] < 0)
 				return true;
@@ -67,15 +63,11 @@ public class DetectNegativeCycleFloyedWarshall {
 
 	// Driver code
 	public static void main(String[] args) {
+		DetectNegativeCycleFloyedWarshall graph = new DetectNegativeCycleFloyedWarshall();
+		int graph1[][] = { { 0, 1, graph.INF, graph.INF }, { graph.INF, 0, -1, graph.INF },
+				{ graph.INF, graph.INF, 0, -1 }, { -1, graph.INF, graph.INF, 0 } };
 
-		/*
-		 * Let us create the following weighted graph 1 (0)----------->(1) /|\ | | | -1
-		 * | | -1 | \|/ (3)<-----------(2) -1
-		 */
-
-		int graph[][] = { { 0, 1, INF, INF }, { INF, 0, -1, INF }, { INF, INF, 0, -1 }, { -1, INF, INF, 0 } };
-
-		if (negCyclefloydWarshall(graph))
+		if (graph.negCyclefloydWarshall(graph1))
 			System.out.print("Yes");
 		else
 			System.out.print("No");

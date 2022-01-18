@@ -1,123 +1,93 @@
 package com.hs.topologicalsort;
 
-import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class LongestPathInDirectedAcyclicGraph {
 
-	// Graph is represented using adjacency list. Every
-	// node of adjacency list contains vertex number of
-	// the vertex to which edge connects. It also
-	// contains weight of the edge
-	static class AdjListNode {
-		int v;
-		int weight;
+	private int noOfVertices;
+	private Queue<Pair> adj[];
 
-		AdjListNode(int _v, int _w) {
-			v = _v;
-			weight = _w;
-		}
-
-		int getV() {
-			return v;
-		}
-
-		int getWeight() {
-			return weight;
+	@SuppressWarnings("unchecked")
+	LongestPathInDirectedAcyclicGraph(int noOfVertices) {
+		this.noOfVertices = noOfVertices;
+		adj = new LinkedList[noOfVertices];
+		for (int i = 0; i < noOfVertices; i++) {
+			adj[i] = new LinkedList<Pair>();
 		}
 	}
 
-	// Class to represent a graph using adjacency list
-	// representation
-	static class Graph {
-		int V; // No. of vertices'
+	// Function to add an edge into the graph
+	private void addEdge(int source, Pair destination) {
+		adj[source].add(destination);
+	}
 
-		// Pointer to an array containing adjacency lists
-		ArrayList<ArrayList<AdjListNode>> adj;
+	// A recursive function used by longestPath.
+	private void topologicalSortUtil(int source, boolean visited[], Stack<Integer> stack) {
+		// Mark the current node as visited
+		visited[source] = true;
 
-		Graph(int V) // Constructor
-		{
-			this.V = V;
-			adj = new ArrayList<ArrayList<AdjListNode>>(V);
-
-			for (int i = 0; i < V; i++) {
-				adj.add(new ArrayList<AdjListNode>());
-			}
+		Iterator<Pair> it = adj[source].iterator();
+		while (it.hasNext()) {
+			Pair node = it.next();
+			if (!visited[node.vertex])
+				topologicalSortUtil(node.vertex, visited, stack);
 		}
+		// Push current vertex to stack which stores topological
+		// sort
+		stack.push(source);
+	}
 
-		void addEdge(int u, int v, int weight) {
-			AdjListNode node = new AdjListNode(v, weight);
-			adj.get(u).add(node); // Add v to u's list
-		}
+	// The function to find longest distances from a given vertex.
+	// It uses recursive topologicalSortUtil() to get topological
+	// sorting.
+	private void longestPath(int source) {
+		Stack<Integer> stack = new Stack<Integer>();
+		int dist[] = new int[noOfVertices];
 
-		// A recursive function used by longestPath. See below
-		// link for details
-		// https:// www.geeksforgeeks.org/topological-sorting/
-		void topologicalSortUtil(int v, boolean visited[], Stack<Integer> stack) {
-			// Mark the current node as visited
-			visited[v] = true;
+		// Mark all the vertices as not visited
+		boolean visited[] = new boolean[noOfVertices];
 
-			// Recur for all the vertices adjacent to this vertex
-			for (int i = 0; i < adj.get(v).size(); i++) {
-				AdjListNode node = adj.get(v).get(i);
-				if (!visited[node.getV()])
-					topologicalSortUtil(node.getV(), visited, stack);
-			}
+		// Call the recursive helper function to store Topological
+		// Sort starting from all vertices one by one
+		for (int i = 0; i < noOfVertices; i++)
+			if (visited[i] == false)
+				topologicalSortUtil(i, visited, stack);
 
-			// Push current vertex to stack which stores topological
-			// sort
-			stack.push(v);
-		}
+		// Initialize distances to all vertices as infinite and
+		// distance to source as 0
+		for (int i = 0; i < noOfVertices; i++)
+			dist[i] = Integer.MIN_VALUE;
 
-		// The function to find longest distances from a given vertex.
-		// It uses recursive topologicalSortUtil() to get topological
-		// sorting.
-		void longestPath(int s) {
-			Stack<Integer> stack = new Stack<Integer>();
-			int dist[] = new int[V];
+		dist[source] = 0;
 
-			// Mark all the vertices as not visited
-			boolean visited[] = new boolean[V];
-			for (int i = 0; i < V; i++)
-				visited[i] = false;
+		// Process vertices in topological order
+		while (stack.isEmpty() == false) {
 
-			// Call the recursive helper function to store Topological
-			// Sort starting from all vertices one by one
-			for (int i = 0; i < V; i++)
-				if (visited[i] == false)
-					topologicalSortUtil(i, visited, stack);
+			// Get the next vertex from topological order
+			int nextVertex = stack.peek();
+			stack.pop();
 
-			// Initialize distances to all vertices as infinite and
-			// distance to source as 0
-			for (int i = 0; i < V; i++)
-				dist[i] = Integer.MIN_VALUE;
-
-			dist[s] = 0;
-
-			// Process vertices in topological order
-			while (stack.isEmpty() == false) {
-
-				// Get the next vertex from topological order
-				int u = stack.peek();
-				stack.pop();
-
-				// Update distances of all adjacent vertices ;
-				if (dist[u] != Integer.MIN_VALUE) {
-					for (int i = 0; i < adj.get(u).size(); i++) {
-						AdjListNode node = adj.get(u).get(i);
-						if (dist[node.getV()] < dist[u] + node.getWeight())
-							dist[node.getV()] = dist[u] + node.getWeight();
+			// Update distances of all adjacent vertices ;
+			if (dist[nextVertex] != Integer.MIN_VALUE) {
+				Iterator<Pair> it = adj[nextVertex].iterator();
+				while (it.hasNext()) {
+					Pair node = it.next();
+					if (dist[node.vertex] < dist[nextVertex] + node.weight) {
+						dist[node.vertex] = dist[nextVertex] + node.weight;
 					}
 				}
 			}
-
-			// Print the calculated longest distances
-			for (int i = 0; i < V; i++)
-				if (dist[i] == Integer.MIN_VALUE)
-					System.out.print("INF ");
-				else
-					System.out.print(dist[i] + " ");
 		}
+
+		// Print the calculated longest distances
+		for (int i = 0; i < noOfVertices; i++)
+			if (dist[i] == Integer.MIN_VALUE)
+				System.out.print("INF ");
+			else
+				System.out.print(dist[i] + " ");
 	}
 
 	// Driver program to test above functions
@@ -126,22 +96,22 @@ public class LongestPathInDirectedAcyclicGraph {
 		// Here vertex numbers are 0, 1, 2, 3, 4, 5 with
 		// following mappings:
 		// 0=r, 1=s, 2=t, 3=x, 4=y, 5=z
-		Graph g = new Graph(6);
-		g.addEdge(0, 1, 5);
-		g.addEdge(0, 2, 3);
-		g.addEdge(1, 3, 6);
-		g.addEdge(1, 2, 2);
-		g.addEdge(2, 4, 4);
-		g.addEdge(2, 5, 2);
-		g.addEdge(2, 3, 7);
-		g.addEdge(3, 5, 1);
-		g.addEdge(3, 4, -1);
-		g.addEdge(4, 5, -2);
+		LongestPathInDirectedAcyclicGraph graph = new LongestPathInDirectedAcyclicGraph(6);
 
-		int s = 1;
-		System.out.print("Following are longest distances from source vertex " + s + " \n");
-		g.longestPath(s);
+		graph.addEdge(0, new Pair(1, 5));
+		graph.addEdge(0, new Pair(2, 3));
+		graph.addEdge(1, new Pair(3, 6));
+		graph.addEdge(1, new Pair(2, 2));
+		graph.addEdge(2, new Pair(4, 4));
+		graph.addEdge(2, new Pair(5, 2));
+		graph.addEdge(2, new Pair(3, 7));
+		graph.addEdge(3, new Pair(5, 1));
+		graph.addEdge(3, new Pair(4, -1));
+		graph.addEdge(4, new Pair(5, -2));
 
+		int source = 1;
+		System.out.println("Following are longest distances from source vertex " + source);
+		graph.longestPath(source);
 	}
 
 }
