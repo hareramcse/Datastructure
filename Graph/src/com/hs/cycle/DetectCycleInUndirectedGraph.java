@@ -41,8 +41,8 @@ public class DetectCycleInUndirectedGraph {
 		return false;
 	}
 
-	// A recursive function that uses visited[] and parent to detect
-	// cycle in subgraph reachable from vertex v.
+	// function that uses visited[] and parent to detect cycle in subgraph reachable
+	// from vertex v.
 	private Boolean isCyclicUtil(int source, boolean visited[], int parent) {
 		// Mark the current node as visited
 		visited[source] = true;
@@ -50,18 +50,17 @@ public class DetectCycleInUndirectedGraph {
 		// Recur for all the vertices adjacent to this vertex
 		Iterator<Integer> it = adj[source].iterator();
 		while (it.hasNext()) {
-			Integer vertex = it.next();
+			Integer currentAdjNode = it.next();
 
 			// If an adjacent is not visited, then recur for that adjacent
-			if (!visited[vertex]) {
-				if (isCyclicUtil(vertex, visited, source)) {
+			if (!visited[currentAdjNode]) {
+				if (isCyclicUtil(currentAdjNode, visited, source)) {
 					return true;
 				}
 			}
 
-			// If an adjacent is visited and not parent of current
-			// vertex, then there is a cycle.
-			else if (vertex != parent) {
+			// If an adjacent is visited and not parent of current vertex, then there is a cycle.
+			else if (currentAdjNode != parent) {
 				return true;
 			}
 		}

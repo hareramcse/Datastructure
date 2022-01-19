@@ -2,29 +2,27 @@ package com.hs.cycle;
 
 public class DetectNegativeCycleFloyedWarshall {
 
-	// Number of vertices in the graph
-	private int V = 4;
+	private int noOfVertices = 4;
 
-	// Define Infinite as a large enough value. This value will be used for vertices
-	// not connected to each other
+	// This value will be used for vertices not connected to each other
 	private int INF = Integer.MAX_VALUE;
 
 	// Returns true if graph has negative weight cycle else false.
-	private boolean negCyclefloydWarshall(int graph[][]) {
+	private boolean hasNegativeCyclefloydWarshall(int graph[][]) {
 
 		/*
 		 * dist[][] will be the output matrix that will finally have the shortest
 		 * distances between every pair of vertices
 		 */
-		int dist[][] = new int[V][V], i, j, k;
+		int dist[][] = new int[noOfVertices][noOfVertices];
 
 		/*
 		 * Initialize the solution matrix same as input graph matrix. Or we can say the
 		 * initial values of shortest distances are based on shortest paths considering
 		 * no intermediate vertex.
 		 */
-		for (i = 0; i < V; i++)
-			for (j = 0; j < V; j++)
+		for (int i = 0; i < noOfVertices; i++)
+			for (int j = 0; j < noOfVertices; j++)
 				dist[i][j] = graph[i][j];
 
 		/*
@@ -35,14 +33,13 @@ public class DetectNegativeCycleFloyedWarshall {
 		 * iteration, vertex no. k is added to the set of intermediate vertices and the
 		 * set becomes {0, 1, 2, .. k}
 		 */
-		for (k = 0; k < V; k++) {
+		for (int k = 0; k < noOfVertices; k++) {
 
 			// Pick all vertices as source one by one
-			for (i = 0; i < V; i++) {
+			for (int i = 0; i < noOfVertices; i++) {
 
-				// Pick all vertices as destination for the
-				// above picked source
-				for (j = 0; j < V; j++) {
+				// Pick all vertices as destination for the above picked source
+				for (int j = 0; j < noOfVertices; j++) {
 
 					// If vertex k is on the shortest path from
 					// i to j, then update the value of dist[i][j]
@@ -52,9 +49,9 @@ public class DetectNegativeCycleFloyedWarshall {
 			}
 		}
 
-		// If distance of any vertex from itself
-		// becomes negative, then there is a negative weight cycle.
-		for (i = 0; i < V; i++)
+		// If distance of any vertex from itself becomes negative, then there is a
+		// negative weight cycle.
+		for (int i = 0; i < noOfVertices; i++)
 			if (dist[i][i] < 0)
 				return true;
 
@@ -67,7 +64,7 @@ public class DetectNegativeCycleFloyedWarshall {
 		int graph1[][] = { { 0, 1, graph.INF, graph.INF }, { graph.INF, 0, -1, graph.INF },
 				{ graph.INF, graph.INF, 0, -1 }, { -1, graph.INF, graph.INF, 0 } };
 
-		if (graph.negCyclefloydWarshall(graph1))
+		if (graph.hasNegativeCyclefloydWarshall(graph1))
 			System.out.print("Yes");
 		else
 			System.out.print("No");
