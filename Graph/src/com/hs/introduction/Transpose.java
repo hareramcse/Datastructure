@@ -5,30 +5,15 @@ import java.util.List;
 
 public class Transpose {
 
-	// Total number of vertices
 	private int noOfVertices;
-
-	// Find transpose of graph represented by adj
 	private List<Integer>[] adj;
-
-	// Store the transpose of graph represented by tr
 	private List<Integer>[] transpose;
 
+	@SuppressWarnings("unchecked")
 	Transpose(int noOfVertices) {
 		this.noOfVertices = noOfVertices;
 		adj = new ArrayList[noOfVertices];
 		transpose = new ArrayList[noOfVertices];
-	}
-
-	// Function to print the transpose of the graph represented as adj and store it
-	// in transpose
-	private void getTranspose() {
-
-		// Traverse the graph and for each edge u, v in graph add the edge v, u in
-		// transpose
-		for (int i = 0; i < noOfVertices; i++)
-			for (int j = 0; j < adj[i].size(); j++)
-				addEdge(adj[i].get(j), i, true);
 	}
 
 	// Function to add an edge from source vertex u to
@@ -39,6 +24,15 @@ public class Transpose {
 			adj[source].add(destination);
 		else
 			transpose[source].add(destination);
+	}
+
+	// print the transpose of the graph represented as adj and store it in transpose
+	private void getTranspose() {
+
+		// for each edge u, v in graph add the edge v, u in transpose
+		for (int i = 0; i < noOfVertices; i++)
+			for (int j = 0; j < adj[i].size(); j++)
+				addEdge(adj[i].get(j), i, true);
 	}
 
 	// Function to print the graph representation

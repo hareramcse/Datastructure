@@ -4,12 +4,12 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class DfsDisconnectedGraph {
+public class DFSDisconnectedGraph {
 	private int noOfVertices;
 	private Queue<Integer> adj[];
 
 	@SuppressWarnings("unchecked")
-	DfsDisconnectedGraph(int noOfVertices) {
+	DFSDisconnectedGraph(int noOfVertices) {
 		this.noOfVertices = noOfVertices;
 		adj = new LinkedList[noOfVertices];
 		for (int i = 0; i < noOfVertices; i++)
@@ -42,14 +42,14 @@ public class DfsDisconnectedGraph {
 		// Recur for all the vertices adjacent to this vertex
 		Iterator<Integer> iterator = adj[source].iterator();
 		while (iterator.hasNext()) {
-			int vetex = iterator.next();
-			if (!visited[vetex])
-				DFSUtil(vetex, visited);
+			int currentAdjNode = iterator.next();
+			if (!visited[currentAdjNode])
+				DFSUtil(currentAdjNode, visited);
 		}
 	}
 
 	public static void main(String args[]) {
-		DfsDisconnectedGraph graph = new DfsDisconnectedGraph(4);
+		DFSDisconnectedGraph graph = new DFSDisconnectedGraph(4);
 
 		graph.addEdge(0, 1);
 		graph.addEdge(0, 2);

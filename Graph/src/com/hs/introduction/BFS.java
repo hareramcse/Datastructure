@@ -43,10 +43,10 @@ public class BFS {
 			// If a adjacent has not been visited, then mark it visited and enqueue it
 			Iterator<Integer> iterator = adj[source].iterator();
 			while (iterator.hasNext()) {
-				int vertex = iterator.next();
-				if (!visited[vertex]) {
-					visited[vertex] = true;
-					queue.add(vertex);
+				int currentAdjNode = iterator.next();
+				if (!visited[currentAdjNode]) {
+					visited[currentAdjNode] = true;
+					queue.add(currentAdjNode);
 				}
 			}
 		}

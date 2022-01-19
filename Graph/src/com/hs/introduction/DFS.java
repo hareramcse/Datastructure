@@ -39,9 +39,9 @@ public class DFS {
 		// Recur for all the vertices adjacent to this vertex
 		Iterator<Integer> iterator = adj[source].iterator();
 		while (iterator.hasNext()) {
-			int vetex = iterator.next();
-			if (!visited[vetex])
-				DFSUtil(vetex, visited);
+			int currentAdjNode = iterator.next();
+			if (!visited[currentAdjNode])
+				DFSUtil(currentAdjNode, visited);
 		}
 	}
 

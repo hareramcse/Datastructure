@@ -8,7 +8,7 @@ public class FindMotherVertex {
 
 	private int noOfVertices;
 	private Queue<Integer> adj[];
-	boolean visited[];
+	private boolean visited[];
 
 	@SuppressWarnings("unchecked")
 	FindMotherVertex(int noOfVertices) {
@@ -54,9 +54,9 @@ public class FindMotherVertex {
 		visited[source] = true;
 		Iterator<Integer> iterator = adj[source].iterator();
 		while (iterator.hasNext()) {
-			int value = iterator.next();
-			if (!visited[value])
-				DFSUtil(value, visited);
+			int currentAdjNode = iterator.next();
+			if (!visited[currentAdjNode])
+				DFSUtil(currentAdjNode, visited);
 		}
 	}
 

@@ -4,14 +4,14 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class CountNoOfNodesOfBinaryTreeAtGivenLevel {
+public class CountNodesOfBinaryTreeAtGivenLevel {
 
 	private int noOfVertices;
 	private Queue<Integer> adj[];
 	private boolean[] visited;
 
 	@SuppressWarnings("unchecked")
-	CountNoOfNodesOfBinaryTreeAtGivenLevel(int noOfVertices) {
+	CountNodesOfBinaryTreeAtGivenLevel(int noOfVertices) {
 		this.noOfVertices = noOfVertices;
 		adj = new LinkedList[noOfVertices];
 		visited = new boolean[noOfVertices];
@@ -21,8 +21,7 @@ public class CountNoOfNodesOfBinaryTreeAtGivenLevel {
 	}
 
 	private void addEdge(int source, int destination) {
-		// because graph is non directed graph so we need to add src to dest and
-		// vice-versa
+		// graph is non directed graph so we need to add src to dest and vice-versa
 		adj[source].add(destination);
 		adj[destination].add(source);
 	}
@@ -36,7 +35,7 @@ public class CountNoOfNodesOfBinaryTreeAtGivenLevel {
 		// Mark the current node as visited and enqueue it
 		visited[source] = true;
 		queue.add(source);
-		
+
 		level[source] = 0;
 		while (!queue.isEmpty()) {
 
@@ -47,25 +46,25 @@ public class CountNoOfNodesOfBinaryTreeAtGivenLevel {
 			// Get all adjacent vertices of the dequeued vertex source.
 			// If a adjacent has not been visited, then mark it visited and enqueue it
 			while (it.hasNext()) {
-				Integer vertex = it.next();
-				if (!visited[vertex]) {
-					visited[vertex] = true;
-					queue.add(vertex);
-					level[vertex] = level[source] + 1;
+				Integer currentAdjNode = it.next();
+				if (!visited[currentAdjNode]) {
+					visited[currentAdjNode] = true;
+					queue.add(currentAdjNode);
+					level[currentAdjNode] = level[source] + 1;
 				}
 			}
 		}
-		
+
 		int count = 0;
 		for (int i = 0; i < noOfVertices; i++)
 			if (level[i] == givenLevel)
 				count++;
-		
+
 		return count;
 	}
 
 	public static void main(String[] args) {
-		CountNoOfNodesOfBinaryTreeAtGivenLevel graph = new CountNoOfNodesOfBinaryTreeAtGivenLevel(7);
+		CountNodesOfBinaryTreeAtGivenLevel graph = new CountNodesOfBinaryTreeAtGivenLevel(7);
 		graph.addEdge(0, 1);
 		graph.addEdge(0, 2);
 		graph.addEdge(1, 3);

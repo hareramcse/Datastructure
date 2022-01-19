@@ -24,14 +24,14 @@ public class PrintAllPathsFromSourceToDestinationUsingBFS {
 	}
 
 	// Utility function for finding paths in graph from source to destination
-	private void findPaths(int src, int dst) {
+	private void findPaths(int source, int destination) {
 
 		// Create a queue which stores the paths
 		Queue<List<Integer>> queue = new LinkedList<>();
 
 		// Path vector to store the current path
 		List<Integer> path = new ArrayList<>();
-		path.add(src);
+		path.add(source);
 		queue.add(path);
 
 		while (!queue.isEmpty()) {
@@ -39,19 +39,18 @@ public class PrintAllPathsFromSourceToDestinationUsingBFS {
 			int last = path.get(path.size() - 1);
 
 			// If last vertex is the desired destination then print the path
-			if (last == dst) {
+			if (last == destination) {
 				System.out.println(path);
 			}
 
-			// Traverse to all the nodes connected to current vertex and push new path to
-			// queue
+			// Traverse nodes connected to current vertex and push new path to queue
 			Iterator<Integer> it = adj[last].iterator();
 
 			while (it.hasNext()) {
-				Integer vertex = it.next();
-				if (isNotPresentInPath(path, vertex)) {
+				Integer currentAdjNode = it.next();
+				if (isNotPresentInPath(path, currentAdjNode)) {
 					List<Integer> newPath = new ArrayList<>(path);
-					newPath.add(vertex);
+					newPath.add(currentAdjNode);
 					queue.add(newPath);
 				}
 			}
@@ -59,9 +58,9 @@ public class PrintAllPathsFromSourceToDestinationUsingBFS {
 	}
 
 	// Utility function to check if current vertex is already present in path
-	private boolean isNotPresentInPath(List<Integer> path, int vertex) {
+	private boolean isNotPresentInPath(List<Integer> path, int currentAdjNode) {
 		for (int i = 0; i < path.size(); i++)
-			if (path.get(i) == vertex)
+			if (path.get(i) == currentAdjNode)
 				return false;
 
 		return true;
@@ -76,11 +75,11 @@ public class PrintAllPathsFromSourceToDestinationUsingBFS {
 		graph.addEdges(2, 0);
 		graph.addEdges(2, 1);
 
-		int src = 2, dst = 3;
-		System.out.println("path from source " + src + " to destination " + dst + " are ");
+		int source = 2, destination = 3;
+		System.out.println("path from source " + source + " to destination " + destination + " are ");
 
 		// Function for finding the paths
-		graph.findPaths(src, dst);
+		graph.findPaths(source, destination);
 	}
 
 }

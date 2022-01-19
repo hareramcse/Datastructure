@@ -22,19 +22,19 @@ public class CountNoOfTreesInForest {
 	}
 
 	private int countTrees() {
-		// Mark all the vertices as not visited(set as false by default in java)
+		// Mark all the vertices as not visited
 		boolean visited[] = new boolean[noOfVertices];
-		int res = 0;
+		int count = 0;
 
 		// Call the recursive helper function to print DFS traversal
 		// starting from all vertices one by one
 		for (int i = 0; i < noOfVertices; i++) {
 			if (visited[i] == false) {
 				DFSUtil(i, visited);
-				res++;
+				count++;
 			}
 		}
-		return res;
+		return count;
 	}
 
 	// A function used by DFS
@@ -45,9 +45,9 @@ public class CountNoOfTreesInForest {
 		// Recur for all the vertices adjacent to this vertex
 		Iterator<Integer> iterator = adj[source].iterator();
 		while (iterator.hasNext()) {
-			int vertex = iterator.next();
-			if (!visited[vertex]) {
-				DFSUtil(vertex, visited);
+			int currentAdjNode = iterator.next();
+			if (!visited[currentAdjNode]) {
+				DFSUtil(currentAdjNode, visited);
 			}
 		}
 	}

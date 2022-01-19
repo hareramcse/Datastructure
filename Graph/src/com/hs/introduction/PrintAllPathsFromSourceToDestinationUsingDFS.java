@@ -8,41 +8,41 @@ import java.util.Queue;
 public class PrintAllPathsFromSourceToDestinationUsingDFS {
 
 	private int noOfVertices;
-	private Queue<Integer>[] adjList;
+	private Queue<Integer>[] adj;
 
+	@SuppressWarnings("unchecked")
 	public PrintAllPathsFromSourceToDestinationUsingDFS(int noOfVertices) {
 		this.noOfVertices = noOfVertices;
-		adjList = new LinkedList[noOfVertices];
+		adj = new LinkedList[noOfVertices];
 		for (int i = 0; i < noOfVertices; i++) {
-			adjList[i] = new LinkedList<>();
+			adj[i] = new LinkedList<>();
 		}
 	}
 
 	// add edge from source to destination
 	private void addEdge(int source, int destination) {
-		adjList[source].add(destination);
+		adj[source].add(destination);
 	}
 
 	// Prints all paths from 'source' to 'destination'
 	public void printAllPaths(int source, int destination) {
 		boolean[] visited = new boolean[noOfVertices];
-		List<Integer> pathList = new ArrayList<>();
+		List<Integer> path = new ArrayList<>();
 
 		// add source to path[]
-		pathList.add(source);
+		path.add(source);
 
 		// Call recursive utility
-		printAllPathsUtil(source, destination, visited, pathList);
+		printAllPathsUtil(source, destination, visited, path);
 	}
 
 	// A recursive function to print all paths from 'source' to 'destination'.
-	// isVisited[] keeps track of vertices in current path.
+	// visited[] keeps track of vertices in current path.
 	// localPathList<> stores actual vertices in the current path
-	private void printAllPathsUtil(Integer source, Integer destination, boolean[] visited,
-			List<Integer> localPathList) {
+	private void printAllPathsUtil(Integer source, Integer destination, boolean[] visited, List<Integer> path) {
 
 		if (source.equals(destination)) {
-			System.out.println(localPathList);
+			System.out.println(path);
 			// if match found then no need to traverse more till depth
 			return;
 		}
@@ -51,14 +51,14 @@ public class PrintAllPathsFromSourceToDestinationUsingDFS {
 		visited[source] = true;
 
 		// Recur for all the vertices adjacent to current vertex
-		for (Integer i : adjList[source]) {
-			if (!visited[i]) {
+		for (Integer currentAdjNode : adj[source]) {
+			if (!visited[currentAdjNode]) {
 				// store current node in path[]
-				localPathList.add(i);
-				printAllPathsUtil(i, destination, visited, localPathList);
+				path.add(currentAdjNode);
+				printAllPathsUtil(currentAdjNode, destination, visited, path);
 
 				// remove current node in path[]
-				localPathList.remove(i);
+				path.remove(currentAdjNode);
 			}
 		}
 

@@ -7,16 +7,7 @@ import java.util.Vector;
 
 public class WaterJugProblemUsingBFS {
 
-	class Pair {
-		int first, second;
-
-		Pair(int f, int s) {
-			first = f;
-			second = s;
-		}
-	}
-
-	private void BFS(int a, int b, int target) {
+	private void BFS(int source, int destination, int target) {
 		// This 2d array is used as a hashmap to keep track of already visited
 		// values and avoid repetition
 		int m[][] = new int[1000][1000];
@@ -27,46 +18,41 @@ public class WaterJugProblemUsingBFS {
 		boolean isSolvable = false;
 		Vector<Pair> path = new Vector<Pair>();
 
-		Queue<Pair> q = new LinkedList<Pair>(); // queue to maintain states
-		q.add(new Pair(0, 0)); // Initialing with initial state
+		Queue<Pair> queue = new LinkedList<Pair>(); // queue to maintain states
+		queue.add(new Pair(0, 0)); // Initialing with initial state
 
-		while (!q.isEmpty()) {
+		while (!queue.isEmpty()) {
 
-			Pair u = q.peek(); // current state
-
-			q.poll(); // pop off used state
+			Pair currentQuantity = queue.poll(); // current state
 
 			// doesn't met jug constraints
-			if ((u.first > a || u.second > b || u.first < 0 || u.second < 0))
+			if ((currentQuantity.first > source || currentQuantity.second > destination || currentQuantity.first < 0
+					|| currentQuantity.second < 0))
 				continue;
 
 			// if this state is already visited
-			if (m[u.first][u.second] > -1)
+			if (m[currentQuantity.first][currentQuantity.second] > -1)
 				continue;
 
-			// filling the vector for constructing
-			// the solution path
-			path.add(new Pair(u.first, u.second));
+			// filling the vector for constructing the solution path
+			path.add(new Pair(currentQuantity.first, currentQuantity.second));
 
 			// marking current state as visited
-
-			m[u.first][u.second] = 1;
-
-			// System.out.println(m.get(new Pair(u.first, u.second)));
+			m[currentQuantity.first][currentQuantity.second] = 1;
 
 			// if we reach solution state, put ans=1
-			if (u.first == target || u.second == target) {
+			if (currentQuantity.first == target || currentQuantity.second == target) {
 				isSolvable = true;
-				if (u.first == target) {
-					if (u.second != 0)
+				if (currentQuantity.first == target) {
+					if (currentQuantity.second != 0)
 
 						// fill final state
-						path.add(new Pair(u.first, 0));
+						path.add(new Pair(currentQuantity.first, 0));
 				} else {
-					if (u.first != 0)
+					if (currentQuantity.first != 0)
 
 						// fill final state
-						path.add(new Pair(0, u.second));
+						path.add(new Pair(0, currentQuantity.second));
 				}
 
 				// print the solution path
@@ -78,30 +64,30 @@ public class WaterJugProblemUsingBFS {
 
 			// if we have not reached final state then, start developing intermediate
 			// states to reach solution state
-			q.add(new Pair(u.first, b)); // fill Jug2
-			q.add(new Pair(a, u.second)); // fill Jug1
+			queue.add(new Pair(currentQuantity.first, destination)); // fill Jug2
+			queue.add(new Pair(source, currentQuantity.second)); // fill Jug1
 
-			for (int ap = 0; ap <= Math.max(a, b); ap++) {
+			for (int amount = 0; amount <= Math.max(source, destination); amount++) {
 
 				// pour amount ap from Jug2 to Jug1
-				int c = u.first + ap;
-				int d = u.second - ap;
+				int c = currentQuantity.first + amount;
+				int d = currentQuantity.second - amount;
 
 				// check if this state is possible or not
-				if (c == a || (d == 0 && d >= 0))
-					q.add(new Pair(c, d));
+				if (c == source || (d == 0 && d >= 0))
+					queue.add(new Pair(c, d));
 
 				// Pour amount ap from Jug 1 to Jug2
-				c = u.first - ap;
-				d = u.second + ap;
+				c = currentQuantity.first - amount;
+				d = currentQuantity.second + amount;
 
 				// check if this state is possible or not
-				if ((c == 0 && c >= 0) || d == b)
-					q.add(new Pair(c, d));
+				if ((c == 0 && c >= 0) || d == destination)
+					queue.add(new Pair(c, d));
 			}
 
-			q.add(new Pair(a, 0)); // Empty Jug2
-			q.add(new Pair(0, b)); // Empty Jug1
+			queue.add(new Pair(source, 0)); // Empty Jug2
+			queue.add(new Pair(0, destination)); // Empty Jug1
 		}
 
 		// No, solution exists if ans=0

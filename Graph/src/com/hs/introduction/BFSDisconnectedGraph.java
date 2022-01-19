@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 
-public class BfsDisconnectedGraph {
+public class BFSDisconnectedGraph {
 
 	// Implementing graph using HashMap
 	private Map<Integer, LinkedList<Integer>> graph = new HashMap<>();
@@ -63,10 +63,10 @@ public class BfsDisconnectedGraph {
 				// if an adjacent has not been visited, then mark it visited and enqueue it
 
 				while (iterator.hasNext()) {
-					int node = iterator.next();
-					if (!visited.get(node)) {
-						visited.set(node, true);
-						queue.add(node);
+					int currentAdjNode = iterator.next();
+					if (!visited.get(currentAdjNode)) {
+						visited.set(currentAdjNode, true);
+						queue.add(currentAdjNode);
 					}
 				}
 			}
@@ -75,7 +75,7 @@ public class BfsDisconnectedGraph {
 	}
 
 	public static void main(String[] args) {
-		BfsDisconnectedGraph graph = new BfsDisconnectedGraph();
+		BFSDisconnectedGraph graph = new BFSDisconnectedGraph();
 		graph.addEdge(0, 4);
 		graph.addEdge(1, 2);
 		graph.addEdge(1, 3);

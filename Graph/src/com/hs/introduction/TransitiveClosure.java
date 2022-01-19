@@ -41,9 +41,9 @@ public class TransitiveClosure {
 		// Find all the vertices reachable through destination
 		Iterator<Integer> iterator = adj[destination].iterator();
 		while (iterator.hasNext()) {
-			int value = iterator.next();
-			if (transitiveClosure[source][value] == 0) {
-				DFSUtil(source, value);
+			int currentAdjNode = iterator.next();
+			if (transitiveClosure[source][currentAdjNode] == 0) {
+				DFSUtil(source, currentAdjNode);
 			}
 		}
 	}
