@@ -24,52 +24,47 @@ public class KahnAlgoForTopologicalSorting {
 
 	// prints a Topological Sort of the complete graph
 	public void topologicalSort() {
-		// Create a array to store indegrees of all
-		// vertices. Initialize all indegrees as 0.
+		// Initialize all indegrees as 0.
 		int indegree[] = new int[noOfVertices];
 
-		// Traverse adjacency lists to fill indegrees of
-		// vertices. This step takes O(V+E) time
+		// Traverse adjacency lists to fill indegrees of vertices
 		for (int i = 0; i < noOfVertices; i++) {
-			Queue<Integer> temp = adj[i];
-			for (int node : temp) {
-				indegree[node]++;
+			for (int j : adj[i]) {
+				indegree[j]++;
 			}
 		}
 
 		// Create a queue and enqueue all vertices with indegree 0
-		Queue<Integer> q = new LinkedList<Integer>();
+		Queue<Integer> queue = new LinkedList<Integer>();
 		for (int i = 0; i < noOfVertices; i++) {
 			if (indegree[i] == 0) {
-				q.add(i);
+				queue.add(i);
 			}
 		}
 
 		// Initialize count of visited vertices
-		int cnt = 0;
+		int count = 0;
 
 		// Create a vector to store result
-		// (A topological ordering of the vertices)
 		Vector<Integer> topOrder = new Vector<Integer>();
-		while (!q.isEmpty()) {
-			// Extract front of queue (or perform dequeue)
-			// and add it to topological order
-			int u = q.poll();
+		while (!queue.isEmpty()) {
+			// perform dequeue and add it to topological order
+			int u = queue.poll();
 			topOrder.add(u);
 
 			// Iterate through all its neighbouring nodes of dequeued node u and decrease
 			// their in-degree by 1
-			for (int node : adj[u]) {
+			for (int currentAdjNode : adj[u]) {
 				// If in-degree becomes zero, add it to queue
-				if (--indegree[node] == 0) {
-					q.add(node);
+				if (--indegree[currentAdjNode] == 0) {
+					queue.add(currentAdjNode);
 				}
 			}
-			cnt++;
+			count++;
 		}
 
 		// Check if there was a cycle
-		if (cnt != noOfVertices) {
+		if (count != noOfVertices) {
 			System.out.println("There exists a cycle in the graph");
 			return;
 		}

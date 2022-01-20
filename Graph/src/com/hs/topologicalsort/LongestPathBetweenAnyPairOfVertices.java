@@ -7,7 +7,7 @@ import java.util.Queue;
 public class LongestPathBetweenAnyPairOfVertices {
 
 	// maximum length of cable among the connected cities
-	private int max_len = Integer.MIN_VALUE;
+	private int maxLen = Integer.MIN_VALUE;
 	private int noOfVertices;
 	private Queue<Pair> adj[];
 
@@ -37,38 +37,37 @@ public class LongestPathBetweenAnyPairOfVertices {
 			DFS(i, 0, visited);
 		}
 
-		return max_len;
+		return maxLen;
 	}
 
-	private void DFS(int src, int prev_len, boolean[] visited) {
+	private void DFS(int source, int prevLen, boolean[] visited) {
 
 		// Mark the src node visited
-		visited[src] = true;
+		visited[source] = true;
 
 		// curr_len is for length of cable from src city to its adjacent city
-		int curr_len = 0;
+		int currLen = 0;
 
 		// Adjacent is pair type which stores destination city and cable length
-
-		Iterator<Pair> it = adj[src].iterator();
+		Iterator<Pair> it = adj[source].iterator();
 		while (it.hasNext()) {
 			Pair adjacent = it.next();
 			// If node or city is not visited
 			if (!visited[adjacent.vertex]) {
 				// Total length of cable from src city to its adjacent
-				curr_len = prev_len + adjacent.weight;
+				currLen = prevLen + adjacent.weight;
 
 				// Call DFS for adjacent city
-				DFS(adjacent.vertex, curr_len, visited);
+				DFS(adjacent.vertex, currLen, visited);
 			}
 
 			// If total cable length till now greater than previous length then update it
-			if (max_len < curr_len) {
-				max_len = curr_len;
+			if (maxLen < currLen) {
+				maxLen = currLen;
 			}
 
 			// make curr_len = 0 for next adjacent
-			curr_len = 0;
+			currLen = 0;
 		}
 
 	}

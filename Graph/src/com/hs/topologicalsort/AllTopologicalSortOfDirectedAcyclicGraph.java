@@ -2,6 +2,7 @@ package com.hs.topologicalsort;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 public class AllTopologicalSortOfDirectedAcyclicGraph {
@@ -19,8 +20,8 @@ public class AllTopologicalSortOfDirectedAcyclicGraph {
 	}
 
 	// Utility function to add edge
-	public void addEdge(int src, int dest) {
-		adj[src].add(dest);
+	public void addEdge(int source, int destination) {
+		adj[source].add(destination);
 	}
 
 	// The function does all Topological Sort.It uses recursive
@@ -29,40 +30,40 @@ public class AllTopologicalSortOfDirectedAcyclicGraph {
 		// Mark all the vertices as not visited
 		boolean[] visited = new boolean[noOfVertices];
 
-		int[] inDegree = new int[noOfVertices];
+		int[] indegree = new int[noOfVertices];
 
 		for (int i = 0; i < noOfVertices; i++) {
-			for (int var : adj[i]) {
-				inDegree[var]++;
+			for (int j : adj[i]) {
+				indegree[j]++;
 			}
 		}
 
-		ArrayList<Integer> stack = new ArrayList<>();
-		allTopologicalSortsUtil(visited, inDegree, stack);
+		List<Integer> stack = new ArrayList<>();
+		allTopologicalSortsUtil(visited, indegree, stack);
 	}
 
 	// Main recursive function to print all possible topological sorts
-	private void allTopologicalSortsUtil(boolean[] visited, int[] inDegree, ArrayList<Integer> stack) {
+	private void allTopologicalSortsUtil(boolean[] visited, int[] indegree, List<Integer> stack) {
 		// To indicate whether all topological are found or not
 		boolean flag = false;
 
 		for (int i = 0; i < noOfVertices; i++) {
 			// If indegree is 0 and not yet visited then only choose that vertex
-			if (!visited[i] && inDegree[i] == 0) {
+			if (!visited[i] && indegree[i] == 0) {
 
 				// including in result
 				visited[i] = true;
 				stack.add(i);
 				for (int adjacent : adj[i]) {
-					inDegree[adjacent]--;
+					indegree[adjacent]--;
 				}
-				allTopologicalSortsUtil(visited, inDegree, stack);
+				allTopologicalSortsUtil(visited, indegree, stack);
 
 				// resetting visited, res and indegree for backtracking
 				visited[i] = false;
 				stack.remove(stack.size() - 1);
 				for (int adjacent : adj[i]) {
-					inDegree[adjacent]++;
+					indegree[adjacent]++;
 				}
 
 				flag = true;
