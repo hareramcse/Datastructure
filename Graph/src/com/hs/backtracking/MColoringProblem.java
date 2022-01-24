@@ -5,11 +5,10 @@ public class MColoringProblem {
 	private int color[];
 
 	/*
-	 * This function solves the m Coloring problem using Backtracking. It mainly
-	 * uses graphColoringUtil() to solve the problem. It returns false if the m
-	 * colors cannot be assigned, otherwise return true and prints assignments of
-	 * colors to all vertices. Please note that there may be more than one
-	 * solutions, this function prints one of the feasible solutions.
+	 * This function solves the m Coloring problem using Backtracking. It returns
+	 * false if the m colors cannot be assigned, otherwise return true and prints
+	 * assignments of colors to all vertices. Please note that there may be more
+	 * than one solutions, this function prints one of the feasible solutions.
 	 */
 	private boolean graphColoring(int graph[][], int m) {
 		// Initialize all color values as 0. This initialization

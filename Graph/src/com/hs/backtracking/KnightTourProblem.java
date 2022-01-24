@@ -4,23 +4,8 @@ public class KnightTourProblem {
 
 	private int N = 8;
 
-	// A utility function to check if i,j are valid indexes for N*N chess board
-	private boolean isSafe(int x, int y, int sol[][]) {
-		return (x >= 0 && x < N && y >= 0 && y < N && sol[x][y] == -1);
-	}
-
-	// A utility function to print solution matrix sol[N][N]
-	private void printSolution(int sol[][]) {
-		for (int x = 0; x < N; x++) {
-			for (int y = 0; y < N; y++)
-				System.out.print(sol[x][y] + " ");
-			System.out.println();
-		}
-	}
-
 	/*
-	 * This function solves the Knight Tour problem using Backtracking. This
-	 * function mainly uses solveKTUtil() to solve the problem. It returns false if
+	 * This function solves the Knight Tour problem using Backtracking. It returns false if
 	 * no complete tour is possible, otherwise return true and prints the tour.
 	 * Please note that there may be more than one solutions, this function prints
 	 * one of the feasible solutions.
@@ -73,6 +58,20 @@ public class KnightTourProblem {
 		}
 
 		return false;
+	}
+
+	// A utility function to check if i,j are valid indexes for N*N chess board
+	private boolean isSafe(int x, int y, int sol[][]) {
+		return (x >= 0 && x < N && y >= 0 && y < N && sol[x][y] == -1);
+	}
+
+	// A utility function to print solution matrix sol[N][N]
+	private void printSolution(int sol[][]) {
+		for (int x = 0; x < N; x++) {
+			for (int y = 0; y < N; y++)
+				System.out.print(sol[x][y] + " ");
+			System.out.println();
+		}
 	}
 
 	/* Driver Code */

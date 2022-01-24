@@ -2,72 +2,66 @@ package com.hs.shortestpath;
 
 public class PrintAllDijkstrahShortestPath {
 
-	private final int NO_PARENT = -1;
-
-	// Function that implements Dijkstra's single source shortest path
-	// algorithm for a graph represented using adjacency matrix representation
-	private void dijkstra(int[][] adjacencyMatrix, int startVertex) {
-		int nVertices = adjacencyMatrix[0].length;
+	private void dijkstra(int[][] adjMatrix, int source) {
+		int noOfVertices = adjMatrix[0].length;
 
 		// shortestDistances[i] will hold the shortest distance from src to i
-		int[] shortestDistances = new int[nVertices];
+		int[] distance = new int[noOfVertices];
 
-		// added[i] will true if vertex i is included / in shortest path tree
-		// or shortest distance from src to i is finalized
-		boolean[] added = new boolean[nVertices];
+		// spt[i] will true if vertex i is included in shortest path tree
+		boolean[] spt = new boolean[noOfVertices];
 
 		// Initialize all distances as INFINITE and added[] as false
-		for (int vertexIndex = 0; vertexIndex < nVertices; vertexIndex++) {
-			shortestDistances[vertexIndex] = Integer.MAX_VALUE;
-			added[vertexIndex] = false;
+		for (int vertexIndex = 0; vertexIndex < noOfVertices; vertexIndex++) {
+			distance[vertexIndex] = Integer.MAX_VALUE;
 		}
 
 		// Distance of source vertex from itself is always 0
-		shortestDistances[startVertex] = 0;
+		distance[source] = 0;
 
 		// Parent array to store shortest path tree
-		int[] parents = new int[nVertices];
+		int[] parents = new int[noOfVertices];
 
 		// The starting vertex does not have a parent
-		parents[startVertex] = NO_PARENT;
+		parents[source] = -1;
 
 		// Find shortest path for all vertices
-		for (int i = 1; i < nVertices; i++) {
+		for (int i = 1; i < noOfVertices; i++) {
 
 			// Pick the minimum distance vertex from the set of vertices not yet
 			// processed. nearestVertex is always equal to startNode in first iteration.
 			int nearestVertex = -1;
 			int shortestDistance = Integer.MAX_VALUE;
-			for (int vertexIndex = 0; vertexIndex < nVertices; vertexIndex++) {
-				if (!added[vertexIndex] && shortestDistances[vertexIndex] < shortestDistance) {
+			for (int vertexIndex = 0; vertexIndex < noOfVertices; vertexIndex++) {
+				if (!spt[vertexIndex] && distance[vertexIndex] < shortestDistance) {
 					nearestVertex = vertexIndex;
-					shortestDistance = shortestDistances[vertexIndex];
+					shortestDistance = distance[vertexIndex];
 				}
 			}
 
 			// Mark the picked vertex as processed
-			added[nearestVertex] = true;
+			spt[nearestVertex] = true;
 
 			// Update dist value of the adjacent vertices of the picked vertex.
-			for (int vertexIndex = 0; vertexIndex < nVertices; vertexIndex++) {
-				int edgeDistance = adjacencyMatrix[nearestVertex][vertexIndex];
+			for (int vertexIndex = 0; vertexIndex < noOfVertices; vertexIndex++) {
+				int edgeDistance = adjMatrix[nearestVertex][vertexIndex];
 
-				if (edgeDistance > 0 && ((shortestDistance + edgeDistance) < shortestDistances[vertexIndex])) {
+				if (edgeDistance > 0 && ((shortestDistance + edgeDistance) < distance[vertexIndex])) {
 					parents[vertexIndex] = nearestVertex;
-					shortestDistances[vertexIndex] = shortestDistance + edgeDistance;
+					distance[vertexIndex] = shortestDistance + edgeDistance;
 				}
 			}
 		}
 
-		printSolution(startVertex, shortestDistances, parents);
+		printSolution(source, distance, parents);
 	}
 
 	// function to print the constructed distances array and shortest paths
 	private void printSolution(int startVertex, int[] distances, int[] parents) {
-		int nVertices = distances.length;
+		int noOfVertices = distances.length;
 		System.out.print("Vertex\t\t Distance\tPath");
 
-		for (int vertexIndex = 0; vertexIndex < nVertices; vertexIndex++) {
+		for (int vertexIndex = 0; vertexIndex < noOfVertices; vertexIndex++) {
 			if (vertexIndex != startVertex) {
 				System.out.print("\n" + startVertex + " -> ");
 				System.out.print(vertexIndex + " \t\t ");
@@ -81,7 +75,7 @@ public class PrintAllDijkstrahShortestPath {
 	private void printPath(int currentVertex, int[] parents) {
 
 		// Base case : Source node has been processed
-		if (currentVertex == NO_PARENT) {
+		if (currentVertex == -1) {
 			return;
 		}
 		printPath(parents[currentVertex], parents);

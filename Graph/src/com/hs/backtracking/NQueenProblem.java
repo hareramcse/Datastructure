@@ -22,13 +22,20 @@ public class NQueenProblem {
 	 */
 	private int[] cl = new int[30];
 
-	/* A utility function to print solution */
-	private void printSolution(int board[][]) {
-		for (int i = 0; i < N; i++) {
-			for (int j = 0; j < N; j++)
-				System.out.printf(" %d ", board[i][j]);
-			System.out.printf("\n");
+	/*
+	 * This function solves the N Queen problem using Backtracking. It returns false if queens cannot be
+	 * placed, otherwise, return true and prints placement of queens in the form of
+	 * 1s. Please note that there may be more than one solutions, this function
+	 * prints one of the feasible solutions.
+	 */
+	private boolean solveNQ(int[][] board) {
+		if (solveNQUtil(board, 0) == false) {
+			System.out.printf("Solution does not exist");
+			return false;
 		}
+
+		printSolution(board);
+		return true;
 	}
 
 	// A recursive utility function to solve N Queen problem
@@ -44,7 +51,7 @@ public class NQueenProblem {
 			 * Check if the queen can be placed on board[i][col]
 			 */
 			/*
-			 * A check if a queen can be placed on board[row][col].We just need to check
+			 * check if a queen can be placed on board[row][col].We just need to check
 			 * ld[row-col+n-1] and rd[row+coln] where ld and rd are for left and right
 			 * diagonal respectively
 			 */
@@ -70,28 +77,19 @@ public class NQueenProblem {
 		return false;
 	}
 
-	/*
-	 * This function solves the N Queen problem using Backtracking. It mainly uses
-	 * solveNQUtil() to solve the problem. It returns false if queens cannot be
-	 * placed, otherwise, return true and prints placement of queens in the form of
-	 * 1s. Please note that there may be more than one solutions, this function
-	 * prints one of the feasible solutions.
-	 */
-	private boolean solveNQ() {
-		int board[][] = { { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 } };
-
-		if (solveNQUtil(board, 0) == false) {
-			System.out.printf("Solution does not exist");
-			return false;
+	/* A utility function to print solution */
+	private void printSolution(int board[][]) {
+		for (int i = 0; i < N; i++) {
+			for (int j = 0; j < N; j++)
+				System.out.printf(" %d ", board[i][j]);
+			System.out.printf("\n");
 		}
-
-		printSolution(board);
-		return true;
 	}
 
 	public static void main(String[] args) {
 		NQueenProblem graph = new NQueenProblem();
-		graph.solveNQ();
+		int board[][] = { { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 } };
+		graph.solveNQ(board);
 	}
 
 }

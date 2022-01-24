@@ -5,7 +5,6 @@ import java.util.Queue;
 
 public class MinDistanceFromaGuardInBank {
 
-	// Store dimensions of the matrix
 	private int M = 5;
 	private int N = 5;
 

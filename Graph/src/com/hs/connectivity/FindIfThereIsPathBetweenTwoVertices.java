@@ -40,7 +40,7 @@ public class FindIfThereIsPathBetweenTwoVertices {
 
 			Iterator<Integer> it = adj[source].iterator();
 
-			// Get all adjacent vertices of the dequeued vertex s
+			// Get all adjacent vertices of the dequeued vertex source
 			// If a adjacent has not been visited, then mark it
 			// visited and enqueue it
 			while (it.hasNext()) {

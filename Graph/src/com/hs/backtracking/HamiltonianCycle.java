@@ -7,10 +7,9 @@ public class HamiltonianCycle {
 
 	/*
 	 * This function solves the Hamiltonian Cycle problem using Backtracking. It
-	 * mainly uses hamCycleUtil() to solve the problem. It returns false if there is
-	 * no Hamiltonian Cycle possible, otherwise return true and prints the path.
-	 * Please note that there may be more than one solutions, this function prints
-	 * one of the feasible solutions.
+	 * returns false if there is no Hamiltonian Cycle possible, otherwise return
+	 * true and prints the path. Please note that there may be more than one
+	 * solutions, this function prints one of the feasible solutions.
 	 */
 	private int hamCycle(int graph[][]) {
 		path = new int[V];

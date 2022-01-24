@@ -7,7 +7,7 @@ import java.util.Queue;
 public class FindPathMoreThanKLengthFromSource {
 
 	private int noOfVertices;
-	private Queue<AdjListNode> adj[];
+	private Queue<Edge> adj[];
 
 	@SuppressWarnings("unchecked")
 	FindPathMoreThanKLengthFromSource(int noOfVertices) {
@@ -20,12 +20,12 @@ public class FindPathMoreThanKLengthFromSource {
 	}
 
 	// Utility function to an edge (u, v) of weight w
-	private void addEdge(int u, int v, int weight) {
-		AdjListNode node1 = new AdjListNode(v, weight);
-		adj[u].add(node1); // Add v to u's list
-
-		AdjListNode node2 = new AdjListNode(u, weight);
-		adj[v].add(node2); // Add u to v's list
+	private void addEdge(int source, int destination, int weight) {
+		Edge edge = new Edge(source, destination, weight);
+		adj[source].add(edge);
+		
+		edge = new Edge(destination, source, weight);
+		adj[destination].add(edge);
 	}
 
 	// Returns true if graph has path more than k length
@@ -49,9 +49,9 @@ public class FindPathMoreThanKLengthFromSource {
 
 		// Get all adjacent vertices of source vertex src and
 		// recursively explore all paths from src.
-		Iterator<AdjListNode> it = adj[source].iterator();
+		Iterator<Edge> it = adj[source].iterator();
 		while (it.hasNext()) {
-			AdjListNode vertex = it.next();
+			Edge vertex = it.next();
 
 			// Get adjacent vertex and weight of edge
 			int v = vertex.destination;
@@ -62,7 +62,7 @@ public class FindPathMoreThanKLengthFromSource {
 			if (path[v] == true)
 				continue;
 
-			// If weight of is more than k, return true
+			// If weight of vertex is more than k, return true
 			if (w >= k)
 				return true;
 

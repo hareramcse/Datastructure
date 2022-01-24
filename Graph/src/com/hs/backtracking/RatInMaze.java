@@ -5,27 +5,11 @@ public class RatInMaze {
 	// Size of the maze
 	private int N;
 
-	// A utility function to print solution matrix sol[N][N]
-	private void printSolution(int sol[][]) {
-		for (int i = 0; i < N; i++) {
-			for (int j = 0; j < N; j++)
-				System.out.print(" " + sol[i][j] + " ");
-			System.out.println();
-		}
-	}
-
-	// A utility function to check if x, y is valid index for N*N maze
-	private boolean isSafe(int maze[][], int x, int y) {
-		// if (x, y outside maze) return false
-		return (x >= 0 && x < N && y >= 0 && y < N && maze[x][y] == 1);
-	}
-
 	/*
-	 * This function solves the Maze problem using Backtracking. It mainly uses
-	 * solveMazeUtil() to solve the problem. It returns false if no path is
-	 * possible, otherwise return true and prints the path in the form of 1s. Please
-	 * note that there may be more than one solutions, this function prints one of
-	 * the feasible solutions.
+	 * This function solves the Maze problem using Backtracking. It returns false if
+	 * no path is possible, otherwise return true and prints the path in the form of
+	 * 1s. Please note that there may be more than one solutions, this function
+	 * prints one of the feasible solutions.
 	 */
 	private boolean solveMaze(int maze[][]) {
 		int sol[][] = new int[N][N];
@@ -64,20 +48,38 @@ public class RatInMaze {
 			if (solveMazeUtil(maze, x, y + 1, sol))
 				return true;
 
-			// If moving in y direction doesn't give solution then Move backwards in x direction
+			// If moving in y direction doesn't give solution then Move backwards in x
+			// direction
 			if (solveMazeUtil(maze, x - 1, y, sol))
 				return true;
 
-			// If moving backwards in x direction doesn't give solution then Move upwards in y direction
+			// If moving backwards in x direction doesn't give solution then Move upwards in
+			// y direction
 			if (solveMazeUtil(maze, x, y - 1, sol))
 				return true;
 
-			// If none of the above movements works then BACKTRACK: unmark x, y as part of  solution path
+			// If none of the above movements works then BACKTRACK: unmark x, y as part of
+			// solution path
 			sol[x][y] = 0;
 			return false;
 		}
 
 		return false;
+	}
+
+	// A utility function to check if x, y is valid index for N*N maze
+	private boolean isSafe(int maze[][], int x, int y) {
+		// if (x, y outside maze) return false
+		return (x >= 0 && x < N && y >= 0 && y < N && maze[x][y] == 1);
+	}
+
+	// A utility function to print solution matrix sol[N][N]
+	private void printSolution(int sol[][]) {
+		for (int i = 0; i < N; i++) {
+			for (int j = 0; j < N; j++)
+				System.out.print(" " + sol[i][j] + " ");
+			System.out.println();
+		}
 	}
 
 	public static void main(String args[]) {

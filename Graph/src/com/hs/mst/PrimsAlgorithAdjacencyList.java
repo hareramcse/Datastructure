@@ -1,122 +1,90 @@
 package com.hs.mst;
 
-import java.util.Comparator;
 import java.util.LinkedList;
+import java.util.PriorityQueue;
 import java.util.Queue;
-import java.util.TreeSet;
 
 public class PrimsAlgorithAdjacencyList {
 
 	private int noOfVertices;
-	private Queue<Pair> adj[];
+	private Queue<Edge> adj[];
 
 	@SuppressWarnings("unchecked")
 	PrimsAlgorithAdjacencyList(int noOfVertices) {
 		this.noOfVertices = noOfVertices;
 		adj = new LinkedList[noOfVertices];
 		for (int i = 0; i < noOfVertices; ++i) {
-			adj[i] = new LinkedList<Pair>();
-		}
-	}
-
-	// class to represent a node in PriorityQueue
-	// Stores a vertex and its corresponding
-	// key value
-	class Node {
-		int vertex;
-		int key;
-	}
-
-	// Comparator class created for PriorityQueue
-	// returns 1 if node0.key > node1.key
-	// returns 0 if node0.key < node1.key and
-	// returns -1 otherwise
-	class comparator implements Comparator<Node> {
-
-		@Override
-		public int compare(Node node0, Node node1) {
-			return node0.key - node1.key;
+			adj[i] = new LinkedList<Edge>();
 		}
 	}
 
 	// method to add an edge between two vertices
-	private void addEdge(int src, int dest, int weight) {
-		Pair node0 = new Pair(dest, weight);
-		Pair node = new Pair(src, weight);
-		adj[src].add(node0);
-		adj[dest].add(node);
+	private void addEdge(int source, int destination, int weight) {
+		Edge edge = new Edge(source, destination, weight);
+		adj[source].add(edge);
+
+		edge = new Edge(destination, source, weight);
+		adj[destination].add(edge);
 	}
 
 	// method used to find the mst
 	private void primsMST() {
 
-		// Whether a vertex is in PriorityQueue or not
-		boolean[] mstSet = new boolean[noOfVertices];
-		Node[] node = new Node[noOfVertices];
-
 		// Stores the parents of a vertex
 		int[] parent = new int[noOfVertices];
+		// Whether a vertex is included in mst or not
+		boolean[] mst = new boolean[noOfVertices];
+
+		Edge[] result = new Edge[noOfVertices];
 
 		for (int i = 0; i < noOfVertices; i++)
-			node[i] = new Node();
+			result[i] = new Edge();
 
 		for (int i = 0; i < noOfVertices; i++) {
-
-			// Initialize to false
-			mstSet[i] = false;
-
-			// Initialize key values to infinity
-			node[i].key = Integer.MAX_VALUE;
-			node[i].vertex = i;
+			result[i].weight = Integer.MAX_VALUE;
+			result[i].destination = i;
 			parent[i] = -1;
 		}
 
 		// Include the source vertex in mstset
-		mstSet[0] = true;
+		mst[0] = true;
 
-		// Set key value to 0
-		// so that it is extracted first
-		// out of PriorityQueue
-		node[0].key = 0;
+		// Set weight value to 0 so that it is extracted first out of PriorityQueue
+		result[0].weight = 0;
 
-		// Use TreeSet instead of PriorityQueue as the remove function of the PQ is O(n)
-		// in java.
-		TreeSet<Node> queue = new TreeSet<Node>(new comparator());
+		Queue<Edge> pq = new PriorityQueue<>();
 
 		for (int i = 0; i < noOfVertices; i++)
-			queue.add(node[i]);
+			pq.add(result[i]);
 
 		// Loops until the queue is not empty
-		while (!queue.isEmpty()) {
+		while (!pq.isEmpty()) {
 
-			// Extracts a node with min key value
-			Node node0 = queue.pollFirst();
+			// Extracts a node with min weight value
+			Edge minWeightEdge = pq.poll();
 
 			// Include that node into mstset
-			mstSet[node0.vertex] = true;
+			mst[minWeightEdge.destination] = true;
 
-			// For all adjacent vertex of the extracted vertex V
-			for (Pair iterator : adj[node0.vertex]) {
+			// For all adjacent vertex of the extracted vertex
+			for (Edge currentAdjEdge : adj[minWeightEdge.destination]) {
 
-				// If V is in queue
-				if (mstSet[iterator.dest] == false) {
-					// If the key value of the adjacent vertex is
-					// more than the extracted key
+				if (mst[currentAdjEdge.destination] == false) {
+					// If the key value of the adjacent vertex is more than the extracted key
 					// update the key value of adjacent vertex
 					// to update first remove and add the updated vertex
-					if (node[iterator.dest].key > iterator.weight) {
-						queue.remove(node[iterator.dest]);
-						node[iterator.dest].key = iterator.weight;
-						queue.add(node[iterator.dest]);
-						parent[iterator.dest] = node0.vertex;
+					if (currentAdjEdge.weight < result[currentAdjEdge.destination].weight) {
+						pq.remove(result[currentAdjEdge.destination]);
+						result[currentAdjEdge.destination].weight = currentAdjEdge.weight;
+						pq.add(result[currentAdjEdge.destination]);
+						parent[currentAdjEdge.destination] = minWeightEdge.destination;
 					}
 				}
 			}
 		}
 
-		// Prints the vertex pair of mst
-		for (int o = 1; o < noOfVertices; o++)
-			System.out.println(parent[o] + " " + "-" + " " + o);
+		for (int i = 1; i < noOfVertices; i++)
+			System.out.println(parent[i] + " " + "-" + " " + i);
 	}
 
 	public static void main(String[] args) {

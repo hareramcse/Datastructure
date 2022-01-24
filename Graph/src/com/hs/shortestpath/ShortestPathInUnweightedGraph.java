@@ -25,20 +25,20 @@ public class ShortestPathInUnweightedGraph {
 	}
 
 	// print the shortest distance and path between source and destination
-	private void printShortestDistance(int s, int dest) {
-		// predecessor[i] array stores predecessor of
-		// i and distance array stores distance of i from s
+	private void printShortestDistance(int source, int destination) {
+		// predecessor[i] array stores predecessor of i 
+		// distance array stores distance of i from s
 		int pred[] = new int[noOfVertices];
 		int dist[] = new int[noOfVertices];
 
-		if (BFS(s, dest, pred, dist) == false) {
-			System.out.println("Given source and destination" + "are not connected");
+		if (BFS(source, destination, pred, dist) == false) {
+			System.out.println("Given source and destination are not connected");
 			return;
 		}
 
 		// LinkedList to store path
 		LinkedList<Integer> path = new LinkedList<Integer>();
-		int crawl = dest;
+		int crawl = destination;
 		path.add(crawl);
 		while (pred[crawl] != -1) {
 			path.add(pred[crawl]);
@@ -46,7 +46,7 @@ public class ShortestPathInUnweightedGraph {
 		}
 
 		// Print distance
-		System.out.println("Shortest path length is: " + dist[dest]);
+		System.out.println("Shortest path length is: " + dist[destination]);
 
 		// Print path
 		System.out.println("Path is ::");
@@ -96,8 +96,7 @@ public class ShortestPathInUnweightedGraph {
 					pred[node] = u;
 					queue.add(node);
 
-					// stopping condition (when we find
-					// our destination)
+					// stopping condition (when we find our destination)
 					if (node == dest)
 						return true;
 				}
@@ -110,10 +109,6 @@ public class ShortestPathInUnweightedGraph {
 	public static void main(String args[]) {
 		ShortestPathInUnweightedGraph graph = new ShortestPathInUnweightedGraph(8);
 
-		// Creating graph given in the above diagram.
-		// add_edge function takes adjacency list, source
-		// and destination vertex as argument and forms
-		// an edge between them.
 		graph.addEdge(0, 1);
 		graph.addEdge(0, 3);
 		graph.addEdge(1, 2);

@@ -21,18 +21,6 @@ public class FindNonReachableNodes {
 		adj[destination].add(source);
 	}
 
-	private void DFSUtil(int source, boolean[] visited) {
-
-		// Mark the current node as visited and print it
-		visited[source] = true;
-
-		// Recur for all the vertices adjacent to this vertex
-		for (int i : (LinkedList<Integer>) adj[source]) {
-			if (!visited[i])
-				DFSUtil(i, visited);
-		}
-	}
-
 	// Returns count of not reachable nodes from vertex v.
 	private int countNotReach(int source) {
 
@@ -50,6 +38,18 @@ public class FindNonReachableNodes {
 				count++;
 		}
 		return count;
+	}
+
+	private void DFSUtil(int source, boolean[] visited) {
+
+		// Mark the current node as visited and print it
+		visited[source] = true;
+
+		// Recur for all the vertices adjacent to this vertex
+		for (int i : (LinkedList<Integer>) adj[source]) {
+			if (!visited[i])
+				DFSUtil(i, visited);
+		}
 	}
 
 	// Driver Code
