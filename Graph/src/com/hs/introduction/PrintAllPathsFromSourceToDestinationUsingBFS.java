@@ -48,7 +48,7 @@ public class PrintAllPathsFromSourceToDestinationUsingBFS {
 
 			while (it.hasNext()) {
 				Integer currentAdjNode = it.next();
-				if (isNotPresentInPath(path, currentAdjNode)) {
+				if (!isPresentInPath(path, currentAdjNode)) {
 					List<Integer> newPath = new ArrayList<>(path);
 					newPath.add(currentAdjNode);
 					queue.add(newPath);
@@ -58,12 +58,12 @@ public class PrintAllPathsFromSourceToDestinationUsingBFS {
 	}
 
 	// Utility function to check if current vertex is already present in path
-	private boolean isNotPresentInPath(List<Integer> path, int currentAdjNode) {
+	private boolean isPresentInPath(List<Integer> path, int currentAdjNode) {
 		for (int i = 0; i < path.size(); i++)
 			if (path.get(i) == currentAdjNode)
-				return false;
+				return true;
 
-		return true;
+		return false;
 	}
 
 	public static void main(String[] args) {

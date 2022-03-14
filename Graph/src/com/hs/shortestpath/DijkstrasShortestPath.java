@@ -1,22 +1,25 @@
 package com.hs.shortestpath;
 
 public class DijkstrasShortestPath {
+	private int noOfVertices;
+	private int[] dist;
+	private boolean[] spt;
 
-	private int noOfVertices = 9;
+	private DijkstrasShortestPath(int noOfVertices) {
+		this.noOfVertices = noOfVertices;
+		// The output array. dist[i] will hold the shortest distance from src to i
+		dist = new int[noOfVertices];
 
-	private void dijkstra(int graph[][], int src) {
-		// The output array. dist[i] will hold
-		// the shortest distance from src to i
-		int dist[] = new int[noOfVertices];
+		// spt[i] will be true if vertex i is included in shortest path tree
+		spt = new boolean[noOfVertices];
 
-		// spt[i] will be true if vertex i is included in shortest
-		// path tree or shortest distance from src to i is finalized
-		boolean spt[] = new boolean[noOfVertices];
-
-		// Initialize all distances as INFINITE and stp[] as false
+		// Initialize all distances as INFINITE
 		for (int i = 0; i < noOfVertices; i++) {
 			dist[i] = Integer.MAX_VALUE;
 		}
+	}
+
+	private void dijkstra(int graph[][], int src) {
 
 		// Distance of source vertex from itself is always 0
 		dist[src] = 0;
@@ -34,9 +37,11 @@ public class DijkstrasShortestPath {
 			// Update dist value of the adjacent vertices of the picked vertex.
 			for (int v = 0; v < noOfVertices; v++)
 
-				// Update dist[v] only if is not in sptSet, there is an
-				// edge from u to v, and total weight of path from src to
-				// v through u is smaller than current value of dist[v]
+				// Update dist[v] only if
+				// is not in spt
+				// there is an edge from u to v
+				// and total weight of path from src to v through u is smaller than current
+				// value of dist[v]
 				if (!spt[v] && graph[u][v] != 0 && dist[u] != Integer.MAX_VALUE && dist[u] + graph[u][v] < dist[v])
 					dist[v] = dist[u] + graph[u][v];
 		}
@@ -67,7 +72,7 @@ public class DijkstrasShortestPath {
 
 	// Driver method
 	public static void main(String[] args) {
-		DijkstrasShortestPath dij = new DijkstrasShortestPath();
+		DijkstrasShortestPath dij = new DijkstrasShortestPath(9);
 		int graph[][] = new int[][] { { 0, 4, 0, 0, 0, 0, 0, 8, 0 }, { 4, 0, 8, 0, 0, 0, 0, 11, 0 },
 				{ 0, 8, 0, 7, 0, 4, 0, 0, 2 }, { 0, 0, 7, 0, 9, 14, 0, 0, 0 }, { 0, 0, 0, 9, 0, 10, 0, 0, 0 },
 				{ 0, 0, 4, 14, 10, 0, 2, 0, 0 }, { 0, 0, 0, 0, 0, 2, 0, 1, 6 }, { 8, 11, 0, 0, 0, 0, 1, 0, 7 },

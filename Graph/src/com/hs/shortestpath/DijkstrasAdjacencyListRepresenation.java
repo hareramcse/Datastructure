@@ -27,16 +27,16 @@ public class DijkstrasAdjacencyListRepresenation {
 	// Function to find the shortest distance of all the vertices from the source
 	private int[] dijkstra(int source) {
 		distance[source] = 0;
-		Queue<Edge> queue = new PriorityQueue<>();
-		queue.add(new Edge());
+		Queue<Edge> pq = new PriorityQueue<>();
+		pq.add(new Edge());
 
-		while (queue.size() > 0) {
-			Edge minWeightEdge = queue.poll();
+		while (pq.size() > 0) {
+			Edge minWeightEdge = pq.poll();
 
 			for (Edge adjEdge : adj[minWeightEdge.destination]) {
 				if (distance[minWeightEdge.destination] + adjEdge.weight < distance[adjEdge.destination]) {
 					distance[adjEdge.destination] = adjEdge.weight + distance[minWeightEdge.destination];
-					queue.add(new Edge(adjEdge.source, adjEdge.destination, distance[adjEdge.destination]));
+					pq.add(new Edge(adjEdge.source, adjEdge.destination, distance[adjEdge.destination]));
 				}
 			}
 		}

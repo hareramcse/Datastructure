@@ -19,9 +19,9 @@ public class CountNodesOfBinaryTreeAtGivenLevel {
 			adj[i] = new LinkedList<>();
 		}
 	}
-
+	
+	// graph is non directed graph so we need to add src to dest and vice-versa
 	private void addEdge(int source, int destination) {
-		// graph is non directed graph so we need to add src to dest and vice-versa
 		adj[source].add(destination);
 		adj[destination].add(source);
 	}
@@ -39,7 +39,7 @@ public class CountNodesOfBinaryTreeAtGivenLevel {
 		level[source] = 0;
 		while (!queue.isEmpty()) {
 
-			// Dequeue a vertex from queue and print it
+			// Dequeue a vertex from queue
 			source = queue.poll();
 
 			Iterator<Integer> it = adj[source].iterator();

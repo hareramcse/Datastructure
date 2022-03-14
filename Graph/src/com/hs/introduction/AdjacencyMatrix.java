@@ -15,7 +15,7 @@ public class AdjacencyMatrix {
 		matrix[source][destination] = 1;
 	}
 
-	// A utility function to print the adjacency list representation of graph
+	// A utility function to print the adjacency matrix representation of graph
 	private void printGraph(int[][] adj) {
 		for (int i = 0; i < noOfVertices; i++) {
 			for (int j = 0; j < noOfVertices; j++) {

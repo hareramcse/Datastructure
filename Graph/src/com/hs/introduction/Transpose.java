@@ -14,6 +14,11 @@ public class Transpose {
 		this.noOfVertices = noOfVertices;
 		adj = new ArrayList[noOfVertices];
 		transpose = new ArrayList[noOfVertices];
+		
+		for (int i = 0; i < noOfVertices; i++) {
+			adj[i] = new ArrayList<Integer>();
+			transpose[i] = new ArrayList<Integer>();
+		}
 	}
 
 	// Function to add an edge from source vertex u to
@@ -47,10 +52,7 @@ public class Transpose {
 
 	public static void main(String[] args) {
 		Transpose graph = new Transpose(5);
-		for (int i = 0; i < graph.noOfVertices; i++) {
-			graph.adj[i] = new ArrayList<Integer>();
-			graph.transpose[i] = new ArrayList<Integer>();
-		}
+		
 		graph.addEdge(0, 1, false);
 		graph.addEdge(0, 4, false);
 		graph.addEdge(0, 3, false);

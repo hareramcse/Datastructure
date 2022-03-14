@@ -1,33 +1,38 @@
 package com.hs.mst;
 
 public class PrimsAlgorithmMST {
-
 	private int noOfVertices = 5;
+	private int parent[];
+	private int weight[];
+	private boolean mst[];
 
-	// construct and print MST for a graph represented using adjacency matrix
-	private void primsMST(int graph[][]) {
+	private PrimsAlgorithmMST(int noOfVertices) {
 		// Array to store constructed MST
-		int parent[] = new int[noOfVertices];
+		parent = new int[noOfVertices];
 
 		// weight values used to pick minimum weight edge in cut
-		int weight[] = new int[noOfVertices];
+		weight = new int[noOfVertices];
 
 		// To represent set of vertices included in MST
-		boolean mst[] = new boolean[noOfVertices];
+		mst = new boolean[noOfVertices];
 
 		// Initialize all keys as INFINITE
 		for (int i = 0; i < noOfVertices; i++) {
 			weight[i] = Integer.MAX_VALUE;
 		}
+	}
 
+	// construct and print MST for a graph represented using adjacency matrix
+	private void primsMST(int graph[][]) {
 		// Always include first 1st vertex in MST.
 		// Make weight 0 so that this vertex is picked as first vertex
 		weight[0] = 0;
 		parent[0] = -1; // First node is always root of MST
 
 		// The MST will have V vertices
-		for (int count = 0; count < noOfVertices - 1; count++) {
-			// Pick the minimum weight vertex from the set of vertices not yet included in MST
+		for (int i = 0; i < noOfVertices - 1; i++) {
+			// Pick the minimum weight vertex from the set of vertices not yet included in
+			// MST
 			int u = minWeightVertex(weight, mst);
 
 			// Add the picked vertex to the MST Set
@@ -53,12 +58,12 @@ public class PrimsAlgorithmMST {
 
 	// A utility function to find the vertex with minimum weight
 	// from the set of vertices not yet included in MST
-	private int minWeightVertex(int weight[], boolean mstSet[]) {
+	private int minWeightVertex(int weight[], boolean mst[]) {
 		// Initialize min value
 		int min = Integer.MAX_VALUE, minIndex = -1;
 
 		for (int v = 0; v < noOfVertices; v++)
-			if (mstSet[v] == false && weight[v] < min) {
+			if (mst[v] == false && weight[v] < min) {
 				min = weight[v];
 				minIndex = v;
 			}
@@ -66,7 +71,7 @@ public class PrimsAlgorithmMST {
 		return minIndex;
 	}
 
-	// A utility function to print the constructed MST stored in parent[]
+	// print the constructed MST stored in parent[]
 	private void printMST(int parent[], int graph[][]) {
 		System.out.println("Edge \tWeight");
 		for (int i = 1; i < noOfVertices; i++)
@@ -75,7 +80,7 @@ public class PrimsAlgorithmMST {
 
 	public static void main(String[] args) {
 
-		PrimsAlgorithmMST mst = new PrimsAlgorithmMST();
+		PrimsAlgorithmMST mst = new PrimsAlgorithmMST(5);
 		int graph[][] = new int[][] { { 0, 2, 0, 6, 0 }, { 2, 0, 3, 8, 5 }, { 0, 3, 0, 0, 7 }, { 6, 8, 0, 0, 9 },
 				{ 0, 5, 7, 9, 0 } };
 
