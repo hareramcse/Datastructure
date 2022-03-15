@@ -7,7 +7,7 @@ import java.util.Queue;
 public class PrimsAlgorithAdjacencyList {
 	private int noOfVertices;
 	private int[] parent;
-	private boolean[] mst;
+	private boolean[] visited;
 	private Edge[] edge;
 	private Queue<Edge> adj[];
 
@@ -15,7 +15,7 @@ public class PrimsAlgorithAdjacencyList {
 	PrimsAlgorithAdjacencyList(int noOfVertices) {
 		this.noOfVertices = noOfVertices;
 		parent = new int[noOfVertices];
-		mst = new boolean[noOfVertices];
+		visited = new boolean[noOfVertices];
 		edge = new Edge[noOfVertices];
 		adj = new LinkedList[noOfVertices];
 		for (int i = 0; i < noOfVertices; ++i) {
@@ -39,8 +39,8 @@ public class PrimsAlgorithAdjacencyList {
 	// method used to find the mst
 	private void primsMST() {
 
-		// Include the source vertex in mst
-		mst[0] = true;
+		// mark the source vertex as visited
+		visited[0] = true;
 
 		// Set weight value to 0 so that it is extracted first out of PriorityQueue
 		edge[0].weight = 0;
@@ -56,13 +56,13 @@ public class PrimsAlgorithAdjacencyList {
 			// Extracts a node with min weight value
 			Edge minWeightEdge = pq.poll();
 
-			// Include that node into mst
-			mst[minWeightEdge.destination] = true;
+			// mark the node as visited
+			visited[minWeightEdge.destination] = true;
 
 			// For all adjacent vertex of the extracted vertex
 			for (Edge currentAdjEdge : adj[minWeightEdge.destination]) {
 
-				if (mst[currentAdjEdge.destination] == false) {
+				if (visited[currentAdjEdge.destination] == false) {
 					// If the weight of the adjacent vertex is more than the extracted key
 					// update the weight of adjacent vertex
 					// to update first remove and add the updated vertex

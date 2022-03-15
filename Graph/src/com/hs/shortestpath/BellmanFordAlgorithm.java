@@ -28,8 +28,8 @@ public class BellmanFordAlgorithm {
 		// Step 2: Relax all edges |V| - 1 times. A simple
 		// shortest path from src to any other vertex can
 		// have at-most |V| - 1 edges
-		for (int i = 1; i < noOfVertices; ++i) {
-			for (int j = 0; j < noOfEdges; ++j) {
+		for (int i = 0; i < noOfVertices; i++) {
+			for (int j = 0; j < noOfEdges; j++) {
 				int src = edge[j].source;
 				int dest = edge[j].destination;
 				int weight = edge[j].weight;
@@ -42,7 +42,7 @@ public class BellmanFordAlgorithm {
 		// step guarantees shortest distances if graph doesn't
 		// contain negative weight cycle. If we get a shorter
 		// path, then there is a cycle.
-		for (int j = 0; j < noOfEdges; ++j) {
+		for (int j = 0; j < noOfEdges; j++) {
 			int src = edge[j].source;
 			int dest = edge[j].destination;
 			int weight = edge[j].weight;
@@ -65,42 +65,42 @@ public class BellmanFordAlgorithm {
 	public static void main(String[] args) {
 		BellmanFordAlgorithm graph = new BellmanFordAlgorithm(5, 8);
 
-		// add edge 0-1 (or A-B in above figure)
+		// add edge 0-1
 		graph.edge[0].source = 0;
 		graph.edge[0].destination = 1;
 		graph.edge[0].weight = -1;
 
-		// add edge 0-2 (or A-C in above figure)
+		// add edge 0-2
 		graph.edge[1].source = 0;
 		graph.edge[1].destination = 2;
 		graph.edge[1].weight = 4;
 
-		// add edge 1-2 (or B-C in above figure)
+		// add edge 1-2
 		graph.edge[2].source = 1;
 		graph.edge[2].destination = 2;
 		graph.edge[2].weight = 3;
 
-		// add edge 1-3 (or B-D in above figure)
+		// add edge 1-3
 		graph.edge[3].source = 1;
 		graph.edge[3].destination = 3;
 		graph.edge[3].weight = 2;
 
-		// add edge 1-4 (or A-E in above figure)
+		// add edge 1-4
 		graph.edge[4].source = 1;
 		graph.edge[4].destination = 4;
 		graph.edge[4].weight = 2;
 
-		// add edge 3-2 (or D-C in above figure)
+		// add edge 3-2
 		graph.edge[5].source = 3;
 		graph.edge[5].destination = 2;
 		graph.edge[5].weight = 5;
 
-		// add edge 3-1 (or D-B in above figure)
+		// add edge 3-1
 		graph.edge[6].source = 3;
 		graph.edge[6].destination = 1;
 		graph.edge[6].weight = 1;
 
-		// add edge 4-3 (or E-D in above figure)
+		// add edge 4-3
 		graph.edge[7].source = 4;
 		graph.edge[7].destination = 3;
 		graph.edge[7].weight = -3;

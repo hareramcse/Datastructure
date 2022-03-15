@@ -48,9 +48,9 @@ public class FloyedWarshallAlgorithm {
 	}
 
 	private void printSolution(int dist[][]) {
-		System.out.println("The following matrix shows the shortest " + "distances between every pair of vertices");
-		for (int i = 0; i < noOfVertices; ++i) {
-			for (int j = 0; j < noOfVertices; ++j) {
+		System.out.println("The following matrix shows the shortest distances between every pair of vertices");
+		for (int i = 0; i < noOfVertices; i++) {
+			for (int j = 0; j < noOfVertices; j++) {
 				if (dist[i][j] == INF)
 					System.out.print("INF ");
 				else
@@ -63,7 +63,7 @@ public class FloyedWarshallAlgorithm {
 	// Driver program to test above function
 	public static void main(String[] args) {
 		FloyedWarshallAlgorithm marshal = new FloyedWarshallAlgorithm(4);
-		int graph[][] = { { 0, 5, INF, 10 }, { INF, 0, 3, INF }, { INF, INF, 0, 1 }, { INF, INF, INF, 0 } };
+		int graph[][] = { { 0, 3, INF, 5 }, { 2, 0, INF, 4 }, { INF, 1, 0, INF }, { INF, INF, 2, 0 } };
 
 		// Print the solution
 		marshal.floydWarshall(graph);

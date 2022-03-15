@@ -1,12 +1,13 @@
 package com.hs.mst;
 
 public class PrimsAlgorithmMST {
-	private int noOfVertices = 5;
+	private int noOfVertices;
 	private int parent[];
 	private int weight[];
-	private boolean mst[];
+	private boolean visited[];
 
-	private PrimsAlgorithmMST(int noOfVertices) {
+	private PrimsAlgorithmMST(int graph[][]) {
+		this.noOfVertices = graph.length;
 		// Array to store constructed MST
 		parent = new int[noOfVertices];
 
@@ -14,7 +15,7 @@ public class PrimsAlgorithmMST {
 		weight = new int[noOfVertices];
 
 		// To represent set of vertices included in MST
-		mst = new boolean[noOfVertices];
+		visited = new boolean[noOfVertices];
 
 		// Initialize all keys as INFINITE
 		for (int i = 0; i < noOfVertices; i++) {
@@ -33,20 +34,20 @@ public class PrimsAlgorithmMST {
 		for (int i = 0; i < noOfVertices - 1; i++) {
 			// Pick the minimum weight vertex from the set of vertices not yet included in
 			// MST
-			int u = minWeightVertex(weight, mst);
+			int u = minWeightVertex(weight, visited);
 
-			// Add the picked vertex to the MST Set
-			mst[u] = true;
+			// mark the node as visited
+			visited[u] = true;
 
 			// Update key value and parent index of the adjacent
 			// vertices of the picked vertex. Consider only those
-			// vertices which are not yet included in MST
+			// vertices which are not yet visited
 			for (int v = 0; v < noOfVertices; v++)
 
 				// graph[u][v] is non zero only for adjacent vertices of u
-				// mstSet[v] is false for vertices not yet included in MST
+				// mstSet[v] is false for vertices not yet visited
 				// Update the weight only if graph[u][v] is smaller than weight[v]
-				if (graph[u][v] != 0 && mst[v] == false && graph[u][v] < weight[v]) {
+				if (graph[u][v] != 0 && visited[v] == false && graph[u][v] < weight[v]) {
 					parent[v] = u;
 					weight[v] = graph[u][v];
 				}
@@ -58,12 +59,12 @@ public class PrimsAlgorithmMST {
 
 	// A utility function to find the vertex with minimum weight
 	// from the set of vertices not yet included in MST
-	private int minWeightVertex(int weight[], boolean mst[]) {
+	private int minWeightVertex(int weight[], boolean visited[]) {
 		// Initialize min value
 		int min = Integer.MAX_VALUE, minIndex = -1;
 
 		for (int v = 0; v < noOfVertices; v++)
-			if (mst[v] == false && weight[v] < min) {
+			if (visited[v] == false && weight[v] < min) {
 				min = weight[v];
 				minIndex = v;
 			}
@@ -80,10 +81,10 @@ public class PrimsAlgorithmMST {
 
 	public static void main(String[] args) {
 
-		PrimsAlgorithmMST mst = new PrimsAlgorithmMST(5);
 		int graph[][] = new int[][] { { 0, 2, 0, 6, 0 }, { 2, 0, 3, 8, 5 }, { 0, 3, 0, 0, 7 }, { 6, 8, 0, 0, 9 },
 				{ 0, 5, 7, 9, 0 } };
 
+		PrimsAlgorithmMST mst = new PrimsAlgorithmMST(graph);
 		// Print the solution
 		mst.primsMST(graph);
 	}

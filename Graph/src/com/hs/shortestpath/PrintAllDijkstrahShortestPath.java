@@ -1,26 +1,33 @@
 package com.hs.shortestpath;
 
 public class PrintAllDijkstrahShortestPath {
+	private int noOfVertices;
+	private int[] distance;
+	private int[] parents;
+	private boolean[] visited;
 
-	private void dijkstra(int[][] adjMatrix, int source) {
-		int noOfVertices = adjMatrix[0].length;
+	private PrintAllDijkstrahShortestPath(int[][] graph) {
+		this.noOfVertices = graph.length;
 
 		// shortestDistances[i] will hold the shortest distance from src to i
-		int[] distance = new int[noOfVertices];
+		distance = new int[noOfVertices];
 
-		// spt[i] will true if vertex i is included in shortest path tree
-		boolean[] spt = new boolean[noOfVertices];
+		// visited[i] will true if vertex i is included in shortest path tree
+		visited = new boolean[noOfVertices];
 
 		// Initialize all distances as INFINITE and added[] as false
-		for (int vertexIndex = 0; vertexIndex < noOfVertices; vertexIndex++) {
-			distance[vertexIndex] = Integer.MAX_VALUE;
+		for (int i = 0; i < noOfVertices; i++) {
+			distance[i] = Integer.MAX_VALUE;
 		}
+
+		// Parent array to store shortest path tree
+		parents = new int[noOfVertices];
+	}
+
+	private void dijkstra(int[][] graph, int source) {
 
 		// Distance of source vertex from itself is always 0
 		distance[source] = 0;
-
-		// Parent array to store shortest path tree
-		int[] parents = new int[noOfVertices];
 
 		// The starting vertex does not have a parent
 		parents[source] = -1;
@@ -33,18 +40,18 @@ public class PrintAllDijkstrahShortestPath {
 			int nearestVertex = -1;
 			int shortestDistance = Integer.MAX_VALUE;
 			for (int vertexIndex = 0; vertexIndex < noOfVertices; vertexIndex++) {
-				if (!spt[vertexIndex] && distance[vertexIndex] < shortestDistance) {
+				if (!visited[vertexIndex] && distance[vertexIndex] < shortestDistance) {
 					nearestVertex = vertexIndex;
 					shortestDistance = distance[vertexIndex];
 				}
 			}
 
 			// Mark the picked vertex as processed
-			spt[nearestVertex] = true;
+			visited[nearestVertex] = true;
 
 			// Update dist value of the adjacent vertices of the picked vertex.
 			for (int vertexIndex = 0; vertexIndex < noOfVertices; vertexIndex++) {
-				int edgeDistance = adjMatrix[nearestVertex][vertexIndex];
+				int edgeDistance = graph[nearestVertex][vertexIndex];
 
 				if (edgeDistance > 0 && ((shortestDistance + edgeDistance) < distance[vertexIndex])) {
 					parents[vertexIndex] = nearestVertex;
@@ -84,12 +91,12 @@ public class PrintAllDijkstrahShortestPath {
 
 	// Driver Code
 	public static void main(String[] args) {
-		PrintAllDijkstrahShortestPath dij = new PrintAllDijkstrahShortestPath();
-		int[][] adjacencyMatrix = { { 0, 4, 0, 0, 0, 0, 0, 8, 0 }, { 4, 0, 8, 0, 0, 0, 0, 11, 0 },
-				{ 0, 8, 0, 7, 0, 4, 0, 0, 2 }, { 0, 0, 7, 0, 9, 14, 0, 0, 0 }, { 0, 0, 0, 9, 0, 10, 0, 0, 0 },
-				{ 0, 0, 4, 0, 10, 0, 2, 0, 0 }, { 0, 0, 0, 14, 0, 2, 0, 1, 6 }, { 8, 11, 0, 0, 0, 0, 1, 0, 7 },
-				{ 0, 0, 2, 0, 0, 0, 6, 7, 0 } };
-		dij.dijkstra(adjacencyMatrix, 0);
+
+		int[][] graph = { { 0, 4, 0, 0, 0, 0, 0, 8, 0 }, { 4, 0, 8, 0, 0, 0, 0, 11, 0 }, { 0, 8, 0, 7, 0, 4, 0, 0, 2 },
+				{ 0, 0, 7, 0, 9, 14, 0, 0, 0 }, { 0, 0, 0, 9, 0, 10, 0, 0, 0 }, { 0, 0, 4, 0, 10, 0, 2, 0, 0 },
+				{ 0, 0, 0, 14, 0, 2, 0, 1, 6 }, { 8, 11, 0, 0, 0, 0, 1, 0, 7 }, { 0, 0, 2, 0, 0, 0, 6, 7, 0 } };
+		PrintAllDijkstrahShortestPath dij = new PrintAllDijkstrahShortestPath(graph);
+		dij.dijkstra(graph, 0);
 	}
 
 }

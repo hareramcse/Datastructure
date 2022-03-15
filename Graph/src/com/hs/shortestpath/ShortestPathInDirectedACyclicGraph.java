@@ -9,11 +9,17 @@ public class ShortestPathInDirectedACyclicGraph {
 	private int INF = Integer.MAX_VALUE;
 
 	private int noOfVertices;
+	private int[] dist;
 	private LinkedList<Edge> adj[];
 
 	@SuppressWarnings("unchecked")
 	ShortestPathInDirectedACyclicGraph(int noOfVertices) {
 		this.noOfVertices = noOfVertices;
+		dist = new int[noOfVertices];
+		// Initialize distances to all vertices as infinite and distance to source as 0
+		for (int i = 0; i < noOfVertices; i++)
+			dist[i] = INF;
+
 		adj = new LinkedList[noOfVertices];
 		for (int i = 0; i < noOfVertices; ++i) {
 			adj[i] = new LinkedList<Edge>();
@@ -30,7 +36,6 @@ public class ShortestPathInDirectedACyclicGraph {
 	// sorting of given graph.
 	private void shortestPath(int source) {
 		Stack<Integer> stack = new Stack<>();
-		int dist[] = new int[noOfVertices];
 
 		// Mark all the vertices as not visited
 		boolean visited[] = new boolean[noOfVertices];
@@ -41,9 +46,6 @@ public class ShortestPathInDirectedACyclicGraph {
 			if (visited[i] == false)
 				topologicalSortUtil(i, visited, stack);
 
-		// Initialize distances to all vertices as infinite and distance to source as 0
-		for (int i = 0; i < noOfVertices; i++)
-			dist[i] = INF;
 		dist[source] = 0;
 
 		// Process vertices in topological order
@@ -55,9 +57,9 @@ public class ShortestPathInDirectedACyclicGraph {
 			if (dist[u] != INF) {
 				Iterator<Edge> it = adj[u].iterator();
 				while (it.hasNext()) {
-					Edge i = it.next();
-					if (dist[i.destination] > dist[u] + i.weight)
-						dist[i.destination] = dist[u] + i.weight;
+					Edge edge = it.next();
+					if (dist[edge.destination] > dist[u] + edge.weight)
+						dist[edge.destination] = dist[u] + edge.weight;
 				}
 			}
 		}
