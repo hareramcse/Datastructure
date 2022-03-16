@@ -5,31 +5,34 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class LongestPathBetweenAnyPairOfVertices {
-
 	// maximum length of cable among the connected cities
 	private int maxLen = Integer.MIN_VALUE;
 	private int noOfVertices;
-	private Queue<Pair> adj[];
+	private Queue<Edge> adj[];
 
 	@SuppressWarnings("unchecked")
 	LongestPathBetweenAnyPairOfVertices(int noOfVertices) {
 		this.noOfVertices = noOfVertices;
 		adj = new LinkedList[noOfVertices];
 		for (int i = 0; i < noOfVertices; i++) {
-			adj[i] = new LinkedList<Pair>();
+			adj[i] = new LinkedList<Edge>();
 		}
 	}
 
 	// Function to add an edge into the graph
-	private void addEdge(int source, Pair destination) {
-		adj[source].add(destination);
+	private void addEdge(int source, int destination, int weight) {
+		Edge edge = new Edge(source, destination, weight);
+		adj[source].add(edge);
+
+		edge = new Edge(destination, source, weight);
+		adj[destination].add(edge);
 	}
 
 	// n is number of cities or nodes in graph cable_lines
 	// is total cable_lines among the cities or edges in graph
 	private int longestCable(int noOfVertices) {
 		// call DFS for each city to find maximum length of cable
-		for (int i = 1; i <= noOfVertices; i++) {
+		for (int i = 0; i <= noOfVertices; i++) {
 			// initialize visited array with 0
 			boolean[] visited = new boolean[noOfVertices + 1];
 
@@ -49,16 +52,16 @@ public class LongestPathBetweenAnyPairOfVertices {
 		int currLen = 0;
 
 		// Adjacent is pair type which stores destination city and cable length
-		Iterator<Pair> it = adj[source].iterator();
+		Iterator<Edge> it = adj[source].iterator();
 		while (it.hasNext()) {
-			Pair adjacent = it.next();
+			Edge adjacent = it.next();
 			// If node or city is not visited
-			if (!visited[adjacent.vertex]) {
+			if (!visited[adjacent.destination]) {
 				// Total length of cable from src city to its adjacent
 				currLen = prevLen + adjacent.weight;
 
 				// Call DFS for adjacent city
-				DFS(adjacent.vertex, currLen, visited);
+				DFS(adjacent.destination, currLen, visited);
 			}
 
 			// If total cable length till now greater than previous length then update it
@@ -73,30 +76,16 @@ public class LongestPathBetweenAnyPairOfVertices {
 	}
 
 	public static void main(String[] args) {
-		// n is number of cities
-		LongestPathBetweenAnyPairOfVertices graph = new LongestPathBetweenAnyPairOfVertices(7);
+		int n = 6;
+		LongestPathBetweenAnyPairOfVertices graph = new LongestPathBetweenAnyPairOfVertices(n+1);
 
-		// create undirected graph first edge
-		graph.addEdge(1, new Pair(2, 3));
-		graph.addEdge(2, new Pair(1, 3));
+		graph.addEdge(1, 2, 3);
+		graph.addEdge(2, 3, 4);
+		graph.addEdge(2, 6, 2);
+		graph.addEdge(4, 6, 6);
+		graph.addEdge(5, 6, 5);
 
-		// second edge
-		graph.addEdge(2, new Pair(3, 4));
-		graph.addEdge(3, new Pair(2, 4));
-
-		// third edge
-		graph.addEdge(2, new Pair(6, 2));
-		graph.addEdge(6, new Pair(2, 2));
-
-		// fourth edge
-		graph.addEdge(4, new Pair(6, 6));
-		graph.addEdge(6, new Pair(4, 6));
-
-		// fifth edge
-		graph.addEdge(5, new Pair(6, 5));
-		graph.addEdge(6, new Pair(5, 5));
-
-		System.out.print("Maximum length of cable = " + graph.longestCable(6));
+		System.out.print("Maximum length of cable = " + graph.longestCable(n));
 	}
 
 }

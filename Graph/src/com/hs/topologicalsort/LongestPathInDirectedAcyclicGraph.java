@@ -6,27 +6,29 @@ import java.util.Queue;
 import java.util.Stack;
 
 public class LongestPathInDirectedAcyclicGraph {
-
 	private int noOfVertices;
-	private Queue<Pair> adj[];
+	private int[] distance;
+	private Queue<Edge> adj[];
 
 	@SuppressWarnings("unchecked")
 	LongestPathInDirectedAcyclicGraph(int noOfVertices) {
 		this.noOfVertices = noOfVertices;
+		distance = new int[noOfVertices];
 		adj = new LinkedList[noOfVertices];
 		for (int i = 0; i < noOfVertices; i++) {
-			adj[i] = new LinkedList<Pair>();
+			adj[i] = new LinkedList<Edge>();
+			distance[i] = Integer.MIN_VALUE;
 		}
 	}
 
 	// Function to add an edge into the graph
-	private void addEdge(int source, Pair destination) {
-		adj[source].add(destination);
+	private void addEdge(int source, int destination, int weight) {
+		Edge edge = new Edge(source, destination, weight);
+		adj[source].add(edge);
 	}
 
 	private void longestPath(int source) {
 		Stack<Integer> stack = new Stack<Integer>();
-		int distance[] = new int[noOfVertices];
 
 		// Mark all the vertices as not visited
 		boolean visited[] = new boolean[noOfVertices];
@@ -37,26 +39,21 @@ public class LongestPathInDirectedAcyclicGraph {
 			if (visited[i] == false)
 				topologicalSortUtil(i, visited, stack);
 
-		// Initialize distances to all vertices as infinite and distance to source as 0
-		for (int i = 0; i < noOfVertices; i++)
-			distance[i] = Integer.MIN_VALUE;
-
 		distance[source] = 0;
 
 		// Process vertices in topological order
-		while (stack.isEmpty() == false) {
+		while (!stack.isEmpty()) {
 
 			// Get the next vertex from topological order
-			int nextVertex = stack.peek();
-			stack.pop();
+			int nextVertex = stack.pop();
 
 			// Update distances of all adjacent vertices ;
 			if (distance[nextVertex] != Integer.MIN_VALUE) {
-				Iterator<Pair> it = adj[nextVertex].iterator();
+				Iterator<Edge> it = adj[nextVertex].iterator();
 				while (it.hasNext()) {
-					Pair node = it.next();
-					if (distance[node.vertex] < distance[nextVertex] + node.weight) {
-						distance[node.vertex] = distance[nextVertex] + node.weight;
+					Edge node = it.next();
+					if (distance[node.destination] < distance[nextVertex] + node.weight) {
+						distance[node.destination] = distance[nextVertex] + node.weight;
 					}
 				}
 			}
@@ -75,11 +72,11 @@ public class LongestPathInDirectedAcyclicGraph {
 		// Mark the current node as visited
 		visited[source] = true;
 
-		Iterator<Pair> it = adj[source].iterator();
+		Iterator<Edge> it = adj[source].iterator();
 		while (it.hasNext()) {
-			Pair node = it.next();
-			if (!visited[node.vertex])
-				topologicalSortUtil(node.vertex, visited, stack);
+			Edge node = it.next();
+			if (!visited[node.destination])
+				topologicalSortUtil(node.destination, visited, stack);
 		}
 		// Push current vertex to stack which stores topological sort
 		stack.push(source);
@@ -89,16 +86,16 @@ public class LongestPathInDirectedAcyclicGraph {
 	public static void main(String args[]) {
 		LongestPathInDirectedAcyclicGraph graph = new LongestPathInDirectedAcyclicGraph(6);
 
-		graph.addEdge(0, new Pair(1, 5));
-		graph.addEdge(0, new Pair(2, 3));
-		graph.addEdge(1, new Pair(3, 6));
-		graph.addEdge(1, new Pair(2, 2));
-		graph.addEdge(2, new Pair(4, 4));
-		graph.addEdge(2, new Pair(5, 2));
-		graph.addEdge(2, new Pair(3, 7));
-		graph.addEdge(3, new Pair(5, 1));
-		graph.addEdge(3, new Pair(4, -1));
-		graph.addEdge(4, new Pair(5, -2));
+		graph.addEdge(0, 1, 5);
+		graph.addEdge(0, 2, 3);
+		graph.addEdge(1, 3, 6);
+		graph.addEdge(1, 2, 2);
+		graph.addEdge(2, 4, 4);
+		graph.addEdge(2, 5, 2);
+		graph.addEdge(2, 3, 7);
+		graph.addEdge(3, 5, 1);
+		graph.addEdge(3, 4, -1);
+		graph.addEdge(4, 5, -2);
 
 		int source = 1;
 		System.out.println("Following are longest distances from source vertex " + source);

@@ -6,7 +6,6 @@ import java.util.Queue;
 import java.util.Stack;
 
 public class TopologicalSort {
-
 	private int noOfVertices;
 	private Queue<Integer> adj[];
 
@@ -24,7 +23,7 @@ public class TopologicalSort {
 		adj[source].add(destination);
 	}
 
-	// The function to do Topological Sort. It uses recursive topologicalSortUtil()
+	// The function to do Topological Sort.
 	private void topologicalSort() {
 		Stack<Integer> stack = new Stack<Integer>();
 
@@ -38,7 +37,7 @@ public class TopologicalSort {
 				topologicalSortUtil(i, visited, stack);
 
 		// Print contents of stack
-		while (stack.empty() == false)
+		while (!stack.empty())
 			System.out.print(stack.pop() + " ");
 	}
 
@@ -47,12 +46,12 @@ public class TopologicalSort {
 		// Mark the current node as visited.
 		visited[source] = true;
 
-		// Recur for all the vertices adjacent to thisvertex
+		// Recur for all the vertices adjacent to this vertex
 		Iterator<Integer> it = adj[source].iterator();
 		while (it.hasNext()) {
-			Integer i = it.next();
-			if (!visited[i])
-				topologicalSortUtil(i, visited, stack);
+			Integer vertex = it.next();
+			if (!visited[vertex])
+				topologicalSortUtil(vertex, visited, stack);
 		}
 
 		// Push current vertex to stack which stores result

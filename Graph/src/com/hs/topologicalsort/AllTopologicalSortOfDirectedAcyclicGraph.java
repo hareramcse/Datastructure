@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Queue;
 
 public class AllTopologicalSortOfDirectedAcyclicGraph {
-
 	private int noOfVertices;
 	private Queue<Integer> adj[];
 
@@ -24,8 +23,7 @@ public class AllTopologicalSortOfDirectedAcyclicGraph {
 		adj[source].add(destination);
 	}
 
-	// The function does all Topological Sort.It uses recursive
-	// alltopologicalSortUtil()
+	// The function finds all the Topological Sort.
 	public void allTopologicalSorts() {
 		// Mark all the vertices as not visited
 		boolean[] visited = new boolean[noOfVertices];
@@ -38,12 +36,12 @@ public class AllTopologicalSortOfDirectedAcyclicGraph {
 			}
 		}
 
-		List<Integer> stack = new ArrayList<>();
-		allTopologicalSortsUtil(visited, indegree, stack);
+		List<Integer> result = new ArrayList<>();
+		allTopologicalSortsUtil(visited, indegree, result);
 	}
 
 	// Main recursive function to print all possible topological sorts
-	private void allTopologicalSortsUtil(boolean[] visited, int[] indegree, List<Integer> stack) {
+	private void allTopologicalSortsUtil(boolean[] visited, int[] indegree, List<Integer> result) {
 		// To indicate whether all topological are found or not
 		boolean flag = false;
 
@@ -53,15 +51,15 @@ public class AllTopologicalSortOfDirectedAcyclicGraph {
 
 				// including in result
 				visited[i] = true;
-				stack.add(i);
+				result.add(i);
 				for (int adjacent : adj[i]) {
 					indegree[adjacent]--;
 				}
-				allTopologicalSortsUtil(visited, indegree, stack);
+				allTopologicalSortsUtil(visited, indegree, result);
 
-				// resetting visited, res and indegree for backtracking
+				// resetting visited, list and indegree for backtracking
 				visited[i] = false;
-				stack.remove(stack.size() - 1);
+				result.remove(result.size() - 1);
 				for (int adjacent : adj[i]) {
 					indegree[adjacent]++;
 				}
@@ -69,9 +67,9 @@ public class AllTopologicalSortOfDirectedAcyclicGraph {
 				flag = true;
 			}
 		}
-		// We reach here if all vertices are visited. So we print the solution here
+		// We reach here if all vertices are visited. So we print the solution
 		if (!flag) {
-			stack.forEach(i -> System.out.print(i + " "));
+			result.forEach(i -> System.out.print(i + " "));
 			System.out.println();
 		}
 
@@ -79,8 +77,6 @@ public class AllTopologicalSortOfDirectedAcyclicGraph {
 
 	// Driver code
 	public static void main(String[] args) {
-
-		// Create a graph given in the above diagram
 		AllTopologicalSortOfDirectedAcyclicGraph graph = new AllTopologicalSortOfDirectedAcyclicGraph(6);
 		graph.addEdge(5, 2);
 		graph.addEdge(5, 0);

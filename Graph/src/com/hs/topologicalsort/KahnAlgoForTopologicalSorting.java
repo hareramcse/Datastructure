@@ -5,7 +5,6 @@ import java.util.Queue;
 import java.util.Vector;
 
 public class KahnAlgoForTopologicalSorting {
-
 	private int noOfVertices;
 	private Queue<Integer> adj[];
 
@@ -46,17 +45,18 @@ public class KahnAlgoForTopologicalSorting {
 		int count = 0;
 
 		// Create a vector to store result
-		Vector<Integer> topOrder = new Vector<Integer>();
+		Vector<Integer> result = new Vector<Integer>();
 		while (!queue.isEmpty()) {
 			// perform dequeue and add it to topological order
 			int u = queue.poll();
-			topOrder.add(u);
+			result.add(u);
 
 			// Iterate through all its neighbouring nodes of dequeued node u and decrease
 			// their in-degree by 1
 			for (int currentAdjNode : adj[u]) {
 				// If in-degree becomes zero, add it to queue
-				if (--indegree[currentAdjNode] == 0) {
+				indegree[currentAdjNode]--;
+				if (indegree[currentAdjNode] == 0) {
 					queue.add(currentAdjNode);
 				}
 			}
@@ -70,7 +70,7 @@ public class KahnAlgoForTopologicalSorting {
 		}
 
 		// Print topological order
-		for (int i : topOrder) {
+		for (int i : result) {
 			System.out.print(i + " ");
 		}
 	}
