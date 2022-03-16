@@ -1,21 +1,17 @@
 package com.hs.cycle;
 
 public class DetectNegativeCycleFloyedWarshall {
-
-	private int noOfVertices = 4;
-
-	// This value will be used for vertices not connected to each other
 	private int INF = Integer.MAX_VALUE;
+	private int noOfVertices;
+	private int[][] dist;
+
+	DetectNegativeCycleFloyedWarshall(int noOfVertices) {
+		this.noOfVertices = noOfVertices;
+		dist = new int[noOfVertices][noOfVertices];
+	}
 
 	// Returns true if graph has negative weight cycle else false.
 	private boolean hasNegativeCyclefloydWarshall(int graph[][]) {
-
-		/*
-		 * dist[][] will be the output matrix that will finally have the shortest
-		 * distances between every pair of vertices
-		 */
-		int dist[][] = new int[noOfVertices][noOfVertices];
-
 		/*
 		 * Initialize the solution matrix same as input graph matrix. Or we can say the
 		 * initial values of shortest distances are based on shortest paths considering
@@ -60,11 +56,11 @@ public class DetectNegativeCycleFloyedWarshall {
 
 	// Driver code
 	public static void main(String[] args) {
-		DetectNegativeCycleFloyedWarshall graph = new DetectNegativeCycleFloyedWarshall();
-		int graph1[][] = { { 0, 1, graph.INF, graph.INF }, { graph.INF, 0, -1, graph.INF },
-				{ graph.INF, graph.INF, 0, -1 }, { -1, graph.INF, graph.INF, 0 } };
+		DetectNegativeCycleFloyedWarshall dncfw = new DetectNegativeCycleFloyedWarshall(4);
+		int graph[][] = { { 0, 1, dncfw.INF, dncfw.INF }, { dncfw.INF, 0, -1, dncfw.INF },
+				{ dncfw.INF, dncfw.INF, 0, -1 }, { -1, dncfw.INF, dncfw.INF, 0 } };
 
-		if (graph.hasNegativeCyclefloydWarshall(graph1))
+		if (dncfw.hasNegativeCyclefloydWarshall(graph))
 			System.out.print("Yes");
 		else
 			System.out.print("No");

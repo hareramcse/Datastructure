@@ -5,7 +5,6 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class DetectCycleInUndirectedGraph {
-
 	private int noOfVertices;
 	private Queue<Integer> adj[];
 
@@ -32,6 +31,7 @@ public class DetectCycleInUndirectedGraph {
 		// Call the recursive helper function to detect cycle in different DFS trees
 		for (int i = 0; i < noOfVertices; i++) {
 			if (!visited[i]) {
+				// parent of source vertex is -1
 				if (isCyclicUtil(i, visited, -1)) {
 					return true;
 				}
