@@ -4,16 +4,11 @@ public class KnightTourProblem {
 
 	private int N = 8;
 
-	/*
-	 * This function solves the Knight Tour problem using Backtracking. It returns false if
-	 * no complete tour is possible, otherwise return true and prints the tour.
-	 * Please note that there may be more than one solutions, this function prints
-	 * one of the feasible solutions.
-	 */
+	// It returns false if no complete tour is possible, otherwise return true
 	private boolean solveKT() {
-		int sol[][] = new int[8][8];
+		int sol[][] = new int[N][N];
 
-		/* Initialization of solution matrix */
+		// Initialization of solution matrix
 		for (int x = 0; x < N; x++)
 			for (int y = 0; y < N; y++)
 				sol[x][y] = -1;

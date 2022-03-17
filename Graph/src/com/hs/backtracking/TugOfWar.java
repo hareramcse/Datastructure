@@ -2,28 +2,26 @@ package com.hs.backtracking;
 
 public class TugOfWar {
 
-	private int minDiff;
+	private int minDiff = Integer.MAX_VALUE;;
 
 	private void tugOfWar(int arr[]) {
 		int n = arr.length;
 
 		// the boolean array that contains the inclusion and exclusion of an element
 		// in current set. The number excluded automatically form the other set
-		boolean[] curr_elements = new boolean[n];
+		boolean[] currElements = new boolean[n];
 
 		// The inclusion/exclusion array for final solution
 		boolean[] soln = new boolean[n];
 
-		minDiff = Integer.MAX_VALUE;
-
 		int sum = 0;
 		for (int i = 0; i < n; i++) {
 			sum += arr[i];
-			curr_elements[i] = soln[i] = false;
+			currElements[i] = soln[i] = false;
 		}
 
 		// Find the solution using recursive function TOWUtil()
-		TOWUtil(arr, n, curr_elements, 0, soln, sum, 0, 0);
+		TOWUtil(arr, n, currElements, 0, soln, sum, 0, 0);
 
 		// Print the solution
 		System.out.print("The first subset is: ");
@@ -41,7 +39,7 @@ public class TugOfWar {
 	// function that tries every possible solution by calling itself recursively
 	private void TOWUtil(int arr[], int n, boolean currElements[], int noOfSelectedElements, boolean soln[], int sum,
 			int currSum, int currPosition) {
-		// checks whether the it is going out of bound
+		// checks whether it is going out of bound
 		if (currPosition == n)
 			return;
 
@@ -78,8 +76,8 @@ public class TugOfWar {
 	// Driver program to test above functions
 	public static void main(String[] args) {
 		int arr[] = { 23, 45, -34, 12, 0, 98, -99, 4, 189, -1, 4 };
-		TugOfWar a = new TugOfWar();
-		a.tugOfWar(arr);
+		TugOfWar tugOfWar = new TugOfWar();
+		tugOfWar.tugOfWar(arr);
 	}
 
 }

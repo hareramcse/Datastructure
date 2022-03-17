@@ -6,10 +6,8 @@ public class RatInMaze {
 	private int N;
 
 	/*
-	 * This function solves the Maze problem using Backtracking. It returns false if
-	 * no path is possible, otherwise return true and prints the path in the form of
-	 * 1s. Please note that there may be more than one solutions, this function
-	 * prints one of the feasible solutions.
+	 * It returns false if no path is possible, otherwise return true and prints the
+	 * path in the form of 1s.
 	 */
 	private boolean solveMaze(int maze[][]) {
 		int sol[][] = new int[N][N];

@@ -1,4 +1,4 @@
-package com.hs.connectivity;
+package com.hs.introduction;
 
 import java.util.Iterator;
 import java.util.LinkedList;

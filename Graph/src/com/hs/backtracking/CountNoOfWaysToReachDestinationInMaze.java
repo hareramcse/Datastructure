@@ -1,7 +1,6 @@
 package com.hs.backtracking;
 
 public class CountNoOfWaysToReachDestinationInMaze {
-
 	private int R = 4;
 	private int C = 4;
 

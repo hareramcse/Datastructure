@@ -5,7 +5,6 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class FindPathMoreThanKLengthFromSource {
-
 	private int noOfVertices;
 	private Queue<Edge> adj[];
 
@@ -29,7 +28,7 @@ public class FindPathMoreThanKLengthFromSource {
 	}
 
 	// Returns true if graph has path more than k length
-	private boolean findPathMoreThanK(int source, int k) {
+	private boolean findPathMoreThanKLength(int source, int k) {
 
 		// Create a path array with nothing included in path
 		boolean path[] = new boolean[noOfVertices];
@@ -37,11 +36,11 @@ public class FindPathMoreThanKLengthFromSource {
 		// Add source vertex to path
 		path[source] = true;
 
-		return pathMoreThanKUtil(source, k, path);
+		return pathMoreThanKLengthUtil(source, k, path);
 	}
 
 	// Prints shortest paths from src to all other vertices
-	private boolean pathMoreThanKUtil(int source, int k, boolean[] path) {
+	private boolean pathMoreThanKLengthUtil(int source, int k, boolean[] path) {
 
 		// If k is 0 or negative, return true;
 		if (k <= 0)
@@ -70,7 +69,7 @@ public class FindPathMoreThanKLengthFromSource {
 			path[v] = true;
 
 			// If this adjacent can provide a path longer than k, return true.
-			if (pathMoreThanKUtil(v, k - w, path))
+			if (pathMoreThanKLengthUtil(v, k - w, path))
 				return true;
 
 			// Backtrack
@@ -100,15 +99,9 @@ public class FindPathMoreThanKLengthFromSource {
 		graph.addEdge(7, 8, 7);
 
 		int src = 0;
-		int k = 62;
 
-		if (graph.findPathMoreThanK(src, k))
-			System.out.println("YES");
-		else
-			System.out.println("NO");
-
-		k = 60;
-		if (graph.findPathMoreThanK(src, k))
+		int k = 60;
+		if (graph.findPathMoreThanKLength(src, k))
 			System.out.println("YES");
 		else
 			System.out.println("NO");
