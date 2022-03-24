@@ -3,11 +3,11 @@ package com.hs.recursion;
 import java.util.Stack;
 
 public class SortStack {
-	private void print(Stack<Integer> s) {
+	private void sort(Stack<Integer> s) {
 		if (s.isEmpty())
 			return;
 		int temp = s.pop();
-		print(s);
+		sort(s);
 		insert(s, temp);
 	}
 
@@ -29,7 +29,7 @@ public class SortStack {
 		s.push(8);
 		s.push(3);
 		s.push(2);
-		sortStack.print(s);
+		sortStack.sort(s);
 		for (int x : s) {
 			System.out.println(x);
 		}
