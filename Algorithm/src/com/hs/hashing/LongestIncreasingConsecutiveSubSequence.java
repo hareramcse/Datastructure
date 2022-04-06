@@ -1,4 +1,4 @@
-package com.hs.hashing.easy;
+package com.hs.hashing;
 
 import java.util.Collections;
 import java.util.HashMap;
