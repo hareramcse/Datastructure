@@ -1,246 +1,204 @@
 package com.hs.btree;
 
-public class BTree<Key extends Comparable<Key>, Value>  {
-    // max children per B-tree node = M-1
-    // (must be even and greater than 2)
-    private static final int M = 4;
+public class BTree {
+	private Node root; // root of the tree.
+	private int t = 3; // value of parameter t.
 
-    private Node root;       // root of the B-tree
-    private int height;      // height of the B-tree
-    private int n;           // number of key-value pairs in the B-tree
+	// Just shift elements as we do in InsertSort.
+	private void insertData(Node node, int data) {
+		int index = node.size;
+		for (int i = node.size - 1; i > -1; i--) {
+			if (data <= node.data[i]) {
+				node.data[i + 1] = node.data[i];
+				index = i;
+			} else {
+				break;
+			}
+		}
+		node.data[index] = data;
+		node.size++;
+	}
 
-    // helper B-tree node data type
-    private static final class Node {
-        private int m;                             // number of children
-        private Entry[] children = new Entry[M];   // the array of children
+	// function to split the node if it is completely filled. i.e node.data.size ==
+	// 2*t-1
+	private Node splitNode(Node node, int key) {
+		System.out.println("Splitting Node...");
+		int mid = node.size / 2;
+		Node node1 = new Node(t);
+		Node node2 = new Node(t);
+		Node parent = node.parent;
 
-        // create a node with k children
-        private Node(int k) {
-            m = k;
-        }
-    }
+		for (int i = 0; i < mid; i++) {
+			node1.data[i] = node.data[i];
+			node1.children[i] = node.children[i];
+			node1.size++;
+		}
+		node1.children[mid] = node.children[mid];
 
-    // internal nodes: only use key and next
-    // external nodes: only use key and value
-    private static class Entry {
-        private Comparable key;
-        private final Object val;
-        private Node next;     // helper field to iterate over array entries
-        public Entry(Comparable key, Object val, Node next) {
-            this.key  = key;
-            this.val  = val;
-            this.next = next;
-        }
-    }
+		int j = 0;
+		for (int i = mid + 1; i < node.size; i++) {
+			node2.data[j] = node.data[i];
+			node2.children[j] = node.children[i];
+			node2.size++;
+			j++;
+		}
+		node2.children[mid] = node.children[node.size];
 
-    /**
-     * Initializes an empty B-tree.
-     */
-    public BTree() {
-        root = new Node(0);
-    }
- 
-    /**
-     * Returns true if this symbol table is empty.
-     * @return {@code true} if this symbol table is empty; {@code false} otherwise
-     */
-    public boolean isEmpty() {
-        return size() == 0;
-    }
+		node1.leaf = node.leaf;
+		node2.leaf = node.leaf;
 
-    /**
-     * Returns the number of key-value pairs in this symbol table.
-     * @return the number of key-value pairs in this symbol table
-     */
-    public int size() {
-        return n;
-    }
+		if (parent == null) {
+			int temp = node.data[mid];
+			node.data = new int[2 * t - 1];
+			node.data[0] = temp;
+			node.size = 1;
+			node.leaf = false;
+			node.children[0] = node1;
+			node.children[1] = node2;
+			node1.parent = node;
+			node2.parent = node;
+			if (key > temp) {
+				return node2;
+			}
+			return node1;
+		}
 
-    /**
-     * Returns the height of this B-tree (for debugging).
-     *
-     * @return the height of this B-tree
-     */
-    public int height() {
-        return height;
-    }
+		int index = parent.size;
+		int data = node.data[mid];
+		for (int i = parent.size - 1; i > -1; i--) {
+			if (data < parent.data[i]) {
+				parent.data[i + 1] = parent.data[i];
+				parent.children[i + 2] = parent.children[i + 1];
+				index = i;
+			} else {
+				break;
+			}
+		}
 
+		parent.data[index] = data;
+		parent.children[index] = node1;
+		parent.children[index + 1] = node2;
+		parent.size++;
+		node1.parent = parent;
+		node2.parent = parent;
+		if (key > data) {
+			return node2;
+		}
+		return node1;
+	}
 
-    /**
-     * Returns the value associated with the given key.
-     *
-     * @param  key the key
-     * @return the value associated with the given key if the key is in the symbol table
-     *         and {@code null} if the key is not in the symbol table
-     * @throws IllegalArgumentException if {@code key} is {@code null}
-     */
-    public Value get(Key key) {
-        if (key == null) throw new IllegalArgumentException("argument to get() is null");
-        return search(root, key, height);
-    }
+	// function to add new data values in the Tree.
+	private void add(int data) {
+		System.out.println("\nInserting Data : " + data);
+		if (root == null) {
+			Node node = new Node(t);
+			insertData(node, data);
+			root = node;
+			return;
+		}
 
-    private Value search(Node x, Key key, int ht) {
-        Entry[] children = x.children;
+		Node temp = root;
+		while (!temp.leaf || (temp.size == 2 * t - 1 && temp.children[0] == null)) {
+			if (temp.size == 2 * t - 1) {
+				temp = splitNode(temp, data);
+				continue;
+			}
+			if (data < temp.data[0]) {
+				temp = temp.children[0];
+				continue;
+			}
+			if (data > temp.data[temp.size - 1]) {
+				temp = temp.children[temp.size];
+				continue;
+			}
+			for (int i = 1; i < temp.size; i++) {
+				if (data < temp.data[i]) {
+					temp = temp.children[i];
+					break;
+				}
+			}
+		}
+		insertData(temp, data);
+	}
 
-        // external node
-        if (ht == 0) {
-            for (int j = 0; j < x.m; j++) {
-                if (eq(key, children[j].key)) return (Value) children[j].val;
-            }
-        }
+	// level indicates the level at which the node is
+	private void display(Node node, int level) {
+		if (node == null) {
+			return;
+		}
+		System.out.print("Level : " + level + " " + "Data : ");
+		for (int i = 0; i < node.size; i++) {
+			System.out.print(node.data[i] + " ");
+		}
+		System.out.println();
+		if (node.leaf) {
+			return;
+		}
+		for (int i = 0; i < node.size + 1; i++) {
+			display(node.children[i], level + 1);
+		}
+	}
 
-        // internal node
-        else {
-            for (int j = 0; j < x.m; j++) {
-                if (j+1 == x.m || less(key, children[j+1].key))
-                    return search(children[j].next, key, ht-1);
-            }
-        }
-        return null;
-    }
+	public static void main(String[] args) {
+		BTree btree = new BTree();
+		btree.add(10);
+		btree.display(btree.root, 1);
 
+		btree.add(20);
+		btree.display(btree.root, 1);
 
-    /**
-     * Inserts the key-value pair into the symbol table, overwriting the old value
-     * with the new value if the key is already in the symbol table.
-     * If the value is {@code null}, this effectively deletes the key from the symbol table.
-     *
-     * @param  key the key
-     * @param  val the value
-     * @throws IllegalArgumentException if {@code key} is {@code null}
-     */
-    public void put(Key key, Value val) {
-        if (key == null) throw new IllegalArgumentException("argument key to put() is null");
-        Node u = insert(root, key, val, height); 
-        n++;
-        if (u == null) return;
+		btree.add(5);
+		btree.display(btree.root, 1);
 
-        // need to split root
-        Node t = new Node(2);
-        t.children[0] = new Entry(root.children[0].key, null, root);
-        t.children[1] = new Entry(u.children[0].key, null, u);
-        root = t;
-        height++;
-    }
+		btree.add(1);
+		btree.display(btree.root, 1);
 
-    private Node insert(Node h, Key key, Value val, int ht) {
-        int j;
-        Entry t = new Entry(key, val, null);
+		btree.add(30);
+		btree.display(btree.root, 1);
 
-        // external node
-        if (ht == 0) {
-            for (j = 0; j < h.m; j++) {
-                if (less(key, h.children[j].key)) break;
-            }
-        }
+		btree.add(15);
+		btree.display(btree.root, 1);
 
-        // internal node
-        else {
-            for (j = 0; j < h.m; j++) {
-                if ((j+1 == h.m) || less(key, h.children[j+1].key)) {
-                    Node u = insert(h.children[j++].next, key, val, ht-1);
-                    if (u == null) return null;
-                    t.key = u.children[0].key;
-                    t.next = u;
-                    break;
-                }
-            }
-        }
+		btree.add(25);
+		btree.display(btree.root, 1);
 
-        for (int i = h.m; i > j; i--)
-            h.children[i] = h.children[i-1];
-        h.children[j] = t;
-        h.m++;
-        if (h.m < M) return null;
-        else         return split(h);
-    }
+		btree.add(26);
+		btree.display(btree.root, 1);
 
-    // split node in half
-    private Node split(Node h) {
-        Node t = new Node(M/2);
-        h.m = M/2;
-        for (int j = 0; j < M/2; j++)
-            t.children[j] = h.children[M/2+j]; 
-        return t;    
-    }
+		btree.add(27);
+		btree.display(btree.root, 1);
 
-    /**
-     * Returns a string representation of this B-tree (for debugging).
-     *
-     * @return a string representation of this B-tree.
-     */
-    public String toString() {
-        return toString(root, height, "") + "\n";
-    }
+		btree.add(28);
+		btree.display(btree.root, 1);
 
-    private String toString(Node h, int ht, String indent) {
-        StringBuilder s = new StringBuilder();
-        Entry[] children = h.children;
+		btree.add(29);
+		btree.display(btree.root, 1);
 
-        if (ht == 0) {
-            for (int j = 0; j < h.m; j++) {
-                s.append(indent + children[j].key + " " + children[j].val + "\n");
-            }
-        }
-        else {
-            for (int j = 0; j < h.m; j++) {
-                if (j > 0) s.append(indent + "(" + children[j].key + ")\n");
-                s.append(toString(children[j].next, ht-1, indent + "     "));
-            }
-        }
-        return s.toString();
-    }
+		btree.add(24);
+		btree.display(btree.root, 1);
 
+		btree.add(31);
+		btree.display(btree.root, 1);
 
-    // comparison functions - make Comparable instead of Key to avoid casts
-    private boolean less(Comparable k1, Comparable k2) {
-        return k1.compareTo(k2) < 0;
-    }
+		btree.add(40);
+		btree.display(btree.root, 1);
 
-    private boolean eq(Comparable k1, Comparable k2) {
-        return k1.compareTo(k2) == 0;
-    }
+		btree.add(41);
+		btree.display(btree.root, 1);
 
+		btree.add(42);
+		btree.display(btree.root, 1);
 
-    /**
-     * Unit tests the {@code BTree} data type.
-     *
-     * @param args the command-line arguments
-     */
-    public static void main(String[] args) {
-        BTree<String, String> st = new BTree<String, String>();
+		btree.add(43);
+		btree.display(btree.root, 1);
 
-        st.put("www.cs.princeton.edu", "128.112.136.12");
-        st.put("www.cs.princeton.edu", "128.112.136.11");
-        st.put("www.princeton.edu",    "128.112.128.15");
-        st.put("www.yale.edu",         "130.132.143.21");
-        st.put("www.simpsons.com",     "209.052.165.60");
-        st.put("www.apple.com",        "17.112.152.32");
-        st.put("www.amazon.com",       "207.171.182.16");
-        st.put("www.ebay.com",         "66.135.192.87");
-        st.put("www.cnn.com",          "64.236.16.20");
-        st.put("www.google.com",       "216.239.41.99");
-        st.put("www.nytimes.com",      "199.239.136.200");
-        st.put("www.microsoft.com",    "207.126.99.140");
-        st.put("www.dell.com",         "143.166.224.230");
-        st.put("www.slashdot.org",     "66.35.250.151");
-        st.put("www.espn.com",         "199.181.135.201");
-        st.put("www.weather.com",      "63.111.66.11");
-        st.put("www.yahoo.com",        "216.109.118.65");
+		btree.add(44);
+		btree.display(btree.root, 1);
 
+		btree.add(45);
+		btree.display(btree.root, 1);
 
-        System.out.println("cs.princeton.edu:  " + st.get("www.cs.princeton.edu"));
-        System.out.println("hardvardsucks.com: " + st.get("www.harvardsucks.com"));
-        System.out.println("simpsons.com:      " + st.get("www.simpsons.com"));
-        System.out.println("apple.com:         " + st.get("www.apple.com"));
-        System.out.println("ebay.com:          " + st.get("www.ebay.com"));
-        System.out.println("dell.com:          " + st.get("www.dell.com"));
-        System.out.println();
-
-        System.out.println("size:    " + st.size());
-        System.out.println("height:  " + st.height());
-        System.out.println(st);
-        System.out.println();
-    }
-
+		btree.add(46);
+		btree.display(btree.root, 1);
+	}
 }

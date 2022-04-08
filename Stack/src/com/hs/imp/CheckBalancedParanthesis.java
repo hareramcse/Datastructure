@@ -1,4 +1,4 @@
-package com.hs.stack.madeeasy;
+package com.hs.imp;
 
 import java.util.Stack;
 

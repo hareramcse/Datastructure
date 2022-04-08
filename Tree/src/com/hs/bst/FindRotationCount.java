@@ -1,19 +1,19 @@
-package com.hs.array.rotation;
+package com.hs.bst;
 
 public class FindRotationCount {
 	// here goal is to find out the minimum value index in the array
 	private int rotationCount(int arr[], int low, int high) {
+		// means whole array is all ready sorted
+		if (arr[low] <= arr[high]) {
+			return low;
+		}
+
 		int n = arr.length;
 		int mid = low + (high - low) / 2;
 
 		// this modulo property is for circular array
 		int next = (mid + 1) % n;
 		int prev = (mid - 1 + n) % n;
-
-		// means whole array is all ready sorted
-		if (arr[low] <= arr[high]) {
-			return low;
-		}
 
 		if (arr[mid] < arr[prev] && arr[mid] < arr[next]) {
 			return mid;

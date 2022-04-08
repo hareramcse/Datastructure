@@ -1,10 +1,10 @@
-package com.hs.stack.madeeasy;
+package com.hs.imp;
 
 import java.util.Stack;
 
 public class SortStack {
 
-	public Stack<Integer> sort(Stack<Integer> stack) {
+	private Stack<Integer> sort(Stack<Integer> stack) {
 		Stack<Integer> rstk = new Stack<Integer>();
 		while (!stack.isEmpty()) {
 			int tmp = stack.pop();
