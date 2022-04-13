@@ -42,8 +42,8 @@ public class AnagramCount {
 	}
 
 	public static void main(String[] args) {
-		String pattern = "abaa";
 		String str = "abaacdfghaabagjjkkbaaalhfmaaab";
+		String pattern = "abaa";
 		AnagramCount ac = new AnagramCount();
 		int count = ac.findAnagrams(str, pattern);
 		System.out.println(count);

@@ -31,6 +31,7 @@ public class FirstNegativeNumberInWindowsSizeK {
 	public static void main(String[] args) {
 		FirstNegativeNumberInWindowsSizeK fnniwsk = new FirstNegativeNumberInWindowsSizeK();
 		int arr[] = { 12, -1, -7, 8, -15, 30, 13, 28 };
-		fnniwsk.solve(arr, 3);
+		int k = 3;
+		fnniwsk.solve(arr, k);
 	}
 }
