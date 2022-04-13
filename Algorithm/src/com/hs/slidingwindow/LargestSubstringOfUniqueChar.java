@@ -3,9 +3,9 @@ package com.hs.slidingwindow;
 import java.util.HashMap;
 import java.util.Map;
 
-public class LongestSubArrayOfUniqueChar {
+public class LargestSubstringOfUniqueChar {
 
-	int solve(String s) {
+	private int solve(String s) {
 		Map<Character, Integer> map = new HashMap<>();
 		int i = 0, j = 0, ans = 0;
 
@@ -28,7 +28,7 @@ public class LongestSubArrayOfUniqueChar {
 	}
 
 	public static void main(String[] args) {
-		LongestSubArrayOfUniqueChar mwsok = new LongestSubArrayOfUniqueChar();
+		LargestSubstringOfUniqueChar mwsok = new LargestSubstringOfUniqueChar();
 		String str = "aabacbebebe";
 		int maxWindowsSize = mwsok.solve(str);
 		System.out.println(maxWindowsSize);

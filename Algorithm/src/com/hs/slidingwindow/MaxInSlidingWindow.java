@@ -1,51 +1,48 @@
 package com.hs.slidingwindow;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Deque;
 import java.util.LinkedList;
-import java.util.List;
 
 public class MaxInSlidingWindow {
-	private List<Integer> maxSlidingWindow(int[] nums, int k) {
-		List<Integer> result = new ArrayList<>();
+
+	private int[] maxSlidingWindow(int[] nums, int k) {
+		int n = nums.length;
+		int[] result = new int[n - k + 1];
 		Deque<Integer> queue = new LinkedList<>();
 
 		int i = 0;
 		int j = 0;
-
-		while (j < nums.length) {
-			// calculation
-			if (queue.size() == 0) {
-				queue.add(nums[j]);
-			} else {
-				while (queue.size() > 0 && queue.peekLast() < nums[j]) {
-					queue.removeLast();
-				}
-				queue.add(nums[j]);
+		int m = 0;
+		while (j < n) {
+			// calculations
+			while (queue.size() > 0 && queue.peekLast() < nums[j]) {
+				queue.removeLast();
 			}
-			// now move j pointer
-			if (j - i + 1 < k)
-				j++;
-			// if we hit the window size
-			else if (j - i + 1 == k) {
-				// answer -> calculation;
-				result.add(queue.peek());
-				// slide the window calculation
-				if (nums[i] == queue.peek()) {
+			queue.add(nums[j]);
+
+			if (j - i + 1 == k) {
+				// find the answer from calculation
+				result[m++] = queue.peek();
+
+				// remove the ith index as we need to move the window
+				if (queue.peek() == nums[i]) {
 					queue.removeFirst();
 				}
-				// now slide the pointer
+
+				// move the window
 				i++;
-				j++;
 			}
+			j++;
 		}
 		return result;
 	}
 
 	public static void main(String[] args) {
-		MaxInSlidingWindow minsw = new MaxInSlidingWindow();
-		int arr[] = { 12, -1, -7, 8, -15, 30, 16, 28 };
-		List<Integer> max = minsw.maxSlidingWindow(arr, 3);
-		System.out.println(max);
+		MaxInSlidingWindow sw = new MaxInSlidingWindow();
+		int[] nums = { 1, 3, -1, -3, 5, 3, 6, 7 };
+		int k = 3;
+		int[] max = sw.maxSlidingWindow(nums, k);
+		System.out.println(Arrays.toString(max));
 	}
 }

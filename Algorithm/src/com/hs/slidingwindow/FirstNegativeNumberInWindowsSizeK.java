@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class FirstNegativeNumberInWindowsSizeK {
-
+	
 	private void solve(int arr[], int K) {
 		int i = 0;
 		int j = 0;
@@ -30,7 +30,7 @@ public class FirstNegativeNumberInWindowsSizeK {
 
 	public static void main(String[] args) {
 		FirstNegativeNumberInWindowsSizeK fnniwsk = new FirstNegativeNumberInWindowsSizeK();
-		int arr[] = { 12, -1, -7, 8, -15, 30, 16, 28 };
+		int arr[] = { 12, -1, -7, 8, -15, 30, 13, 28 };
 		fnniwsk.solve(arr, 3);
 	}
 }

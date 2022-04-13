@@ -3,7 +3,7 @@ package com.hs.slidingwindow;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MaxWindowsSizeOfUniqueCharK {
+public class LargestSubstringOfKUniqueChar {
 
 	private int solve(String s, int k) {
 		Map<Character, Integer> map = new HashMap<>();
@@ -29,7 +29,7 @@ public class MaxWindowsSizeOfUniqueCharK {
 	}
 
 	public static void main(String[] args) {
-		MaxWindowsSizeOfUniqueCharK mwsok = new MaxWindowsSizeOfUniqueCharK();
+		LargestSubstringOfKUniqueChar mwsok = new LargestSubstringOfKUniqueChar();
 		String str = "aabacbebebe";
 		int k = 3;
 		int maxWindowsSize = mwsok.solve(str, k);

@@ -1,17 +1,14 @@
 package com.hs.slidingwindow;
 
-public class MaxWindowsSizeOfSumK {
+public class LargestSubaArrayOfSumK {
 
 	private int solve(int[] arr, int k) {
 		int n = arr.length;
 		int i = 0, j = 0, max = Integer.MIN_VALUE, sum = 0;
 		while (j < n) {
 			sum += arr[j];
-			if (sum < k) {
-				j++;
-			} else if (sum == k) {
+			if (sum == k) {
 				max = Math.max(max, j - i + 1);
-				j++;
 			} else {
 				while (sum > k) {
 					sum = sum - arr[i];
@@ -20,14 +17,14 @@ public class MaxWindowsSizeOfSumK {
 						max = Math.max(max, j - i + 1);
 					}
 				}
-				j++;
 			}
+			j++;
 		}
 		return max;
 	}
 
 	public static void main(String[] args) {
-		MaxWindowsSizeOfSumK mwsok = new MaxWindowsSizeOfSumK();
+		LargestSubaArrayOfSumK mwsok = new LargestSubaArrayOfSumK();
 		int arr[] = { 2, 4, 6, 1, 3, 9, 7, 5, 8 };
 		int k = 13;
 		int maxWindowsSize = mwsok.solve(arr, k);

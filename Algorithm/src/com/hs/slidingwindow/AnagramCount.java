@@ -11,32 +11,28 @@ public class AnagramCount {
 
 		// put all elements of pattern and its count
 		for (int i = 0; i < pattern.length(); i++) {
-			if (map.containsKey(pattern.charAt(i)))
-				map.put(pattern.charAt(i), map.get(pattern.charAt(i)) + 1);
-			else
-				map.put(pattern.charAt(i), 1);
+			map.put(pattern.charAt(i), map.getOrDefault(pattern.charAt(i), 0) + 1);
 		}
 
-		int count = map.size();
+		int size = map.size();
 		int i = 0, j = 0;
 		while (j < str.length()) {
 			// calculations
 			if (map.containsKey(str.charAt(j))) {
 				map.put(str.charAt(j), map.get(str.charAt(j)) - 1);
 				if (map.get(str.charAt(j)) == 0) {
-					count--;
+					size--;
 				}
 			}
 			if (j - i + 1 == pattern.length()) {
 				// ans calculate
-				if (count == 0) {
+				if (size == 0) {
 					ans++;
-					// remove ans of i before sliding
 				}
 				if (map.containsKey(str.charAt(i))) {
 					map.put(str.charAt(i), map.get(str.charAt(i)) + 1);
 					if (map.get(str.charAt(i)) == 1)
-						count++;
+						size++;
 				}
 				i++;
 			}

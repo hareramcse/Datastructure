@@ -19,7 +19,7 @@ public class MaximumSubArraySumOfSizeK {
 
 	public static void main(String[] args) {
 		MaximumSubArraySumOfSizeK msask = new MaximumSubArraySumOfSizeK();
-		int arr[] = { 2, 4, 6, 1, 3, 9, 7, 5, 8 };
+		int arr[] = { 2, 5, 1, 8, 2, 9, 1 };
 
 		int sum = msask.solve(arr, 3);
 		System.out.println(sum);
