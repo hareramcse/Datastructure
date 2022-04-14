@@ -5,7 +5,9 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
+import java.util.Queue;
 
+// Leetcode MEDIUM
 public class KMostFrequentElement {
 
 	private int[] topKFrequent(int[] nums, int k) {
@@ -15,7 +17,7 @@ public class KMostFrequentElement {
 			map.put(nums[i], map.getOrDefault(nums[i], 0) + 1);
 		}
 
-		PriorityQueue<Pair> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
+		Queue<Pair> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
 		for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
 			maxHeap.add(new Pair(entry.getValue(), entry.getKey()));
 		}
@@ -28,10 +30,10 @@ public class KMostFrequentElement {
 	}
 
 	public static void main(String[] args) {
-		KMostFrequentElement heap = new KMostFrequentElement();
-		int arr[] = { 3, 1, 4, 4, 5, 2, 2, 2, 2, 6, 1, 1 };
+		KMostFrequentElement sol = new KMostFrequentElement();
+		int[] nums = { 1, 1, 1, 2, 2, 3 };
 		int k = 2;
-		int[] topKFrequent = heap.topKFrequent(arr, k);
+		int[] topKFrequent = sol.topKFrequent(nums, k);
 		System.out.println(Arrays.toString(topKFrequent));
 	}
 }

@@ -1,12 +1,12 @@
 package com.hs.heap;
 
 import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class KLargestElement {
 
-	public static void kLargestElement(int arr[], int k) {
-
-		PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+	private void kLargestElement(int arr[], int k) {
+		Queue<Integer> minHeap = new PriorityQueue<>();
 		for (int i = 0; i < arr.length; i++) {
 			minHeap.add(arr[i]);
 			if (minHeap.size() > k) {
@@ -17,8 +17,9 @@ public class KLargestElement {
 	}
 
 	public static void main(String[] args) {
+		KLargestElement sol = new KLargestElement();
 		int arr[] = { 11, 3, 2, 1, 15, 5, 4, 45, 88, 96, 50, 45 };
 		int k = 4;
-		kLargestElement(arr, k);
+		sol.kLargestElement(arr, k);
 	}
 }

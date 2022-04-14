@@ -1,45 +1,41 @@
 package com.hs.heap;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class KClosestPointToOrigin {
-	private int[][] kClosest(int[][] arr, int K) {
+	private int[][] kClosest(int[][] points, int k) {
+		Queue<Pair> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
 
-		PriorityQueue<Pair> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
-
-		for (int i = 0; i < arr.length; i++) {
-			Integer square = takeSquare(arr[i]);
-			maxHeap.offer(new Pair(i, square));
-			if (maxHeap.size() > K)
+		for (int i = 0; i < points.length; i++) {
+			Integer square = takeSquare(points[i]);
+			maxHeap.add(new Pair(square, i));
+			if (maxHeap.size() > k)
 				maxHeap.poll();
 		}
 
-		int rst[][] = new int[maxHeap.size()][2];
+		int res[][] = new int[maxHeap.size()][2];
 		int row = 0;
-		while (maxHeap.size() != 0) {
-			Pair p1 = maxHeap.poll();
-			rst[row][0] = arr[p1.getKey()][0];
-			rst[row][1] = arr[p1.getKey()][1];
+		while (!maxHeap.isEmpty()) {
+			Pair pair = maxHeap.poll();
+			res[row][0] = points[pair.value][0];
+			res[row][1] = points[pair.value][1];
 			row++;
 		}
-		return rst;
+		return res;
 	}
 
-	private Integer takeSquare(int[] arr) {
-		return ((arr[0] * arr[0]) + (arr[1] * arr[1]));
+	private Integer takeSquare(int[] points) {
+		return ((points[0] * points[0]) + (points[1] * points[1]));
 	}
 
 	public static void main(String[] args) {
 		KClosestPointToOrigin heap = new KClosestPointToOrigin();
-		int[][] arr = { { 1, 3 }, { -2, 2 }, { 5, 8 }, { 0, 2 } };
-		int K = 2;
-		int[][] kClosest = heap.kClosest(arr, K);
-		for (int i = 0; i < kClosest.length; i++) {
-			for (int j = 0; j < kClosest.length; j++) {
-				System.out.print(kClosest[i][j] + " ");
-			}
-			System.out.println();
-		}
+		int[][] points = { { 1, 3 }, { -2, 2 } };
+		int k = 1;
+		points = heap.kClosest(points, k);
+		System.out.println(Arrays.deepToString(points));
 	}
 }

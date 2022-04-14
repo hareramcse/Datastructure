@@ -1,24 +1,26 @@
 package com.hs.heap;
 
 import java.util.PriorityQueue;
+import java.util.Queue;
 
+// Leetcode MEDIUM
 public class KthLargestElement {
-	private int kthSmallest(int[] arr, int k) {
-		PriorityQueue<Integer> queue = new PriorityQueue<>();
-		for (int i = 0; i < arr.length; i++) {
-			queue.add(arr[i]);
-			if (queue.size() > k) {
-				queue.poll();
-			}
-		}
-		return queue.peek();
-	}
-
-	public static void main(String[] args) {
-		KthLargestElement queue = new KthLargestElement();
-		int arr[] = { 11, 3, 2, 1, 15, 5, 4, 45, 88, 96, 50, 45 };
-		int k = 3;
-		int kthSmallest = queue.kthSmallest(arr, k);
-		System.out.println(kthSmallest);
-	}
+	private int findKthLargest(int[] nums, int k) {
+        Queue<Integer> minHeap = new PriorityQueue<>();
+        for(int i = 0; i< nums.length; i++){
+        	minHeap.add(nums[i]);
+            if(minHeap.size() > k){
+            	minHeap.poll();
+            }
+        }
+        return minHeap.peek();
+    }
+    
+    public static void main(String[] args){
+    	KthLargestElement sol = new KthLargestElement();
+        int[] nums = {3, 2, 1, 5, 6, 4};
+        int k = 2;
+        int res = sol.findKthLargest(nums, k);
+        System.out.println(res);
+    }
 }
