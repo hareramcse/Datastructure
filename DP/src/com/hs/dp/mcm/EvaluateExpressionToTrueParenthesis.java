@@ -1,6 +1,11 @@
 package com.hs.dp.mcm;
 
 public class EvaluateExpressionToTrueParenthesis {
+	private int solve(String s) {
+		int i = 0, j = s.length() - 1;
+		return solve(s, i, j, true);
+	}
+
 	private int solve(String str, int i, int j, boolean isTrue) {
 		if (i > j)
 			return 0;
@@ -39,7 +44,6 @@ public class EvaluateExpressionToTrueParenthesis {
 				else
 					ans += lt * rt + lf * rf;
 			}
-
 		}
 		return ans;
 	}
@@ -47,8 +51,7 @@ public class EvaluateExpressionToTrueParenthesis {
 	public static void main(String[] args) {
 		EvaluateExpressionToTrueParenthesis abcd = new EvaluateExpressionToTrueParenthesis();
 		String s = "T|F&T^T";
-		int i = 0, j = s.length() - 1;
-		int count = abcd.solve(s, i, j, true);
+		int count = abcd.solve(s);
 		System.out.println(count);
 	}
 }

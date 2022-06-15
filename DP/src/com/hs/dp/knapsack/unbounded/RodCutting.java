@@ -2,16 +2,17 @@ package com.hs.dp.knapsack.unbounded;
 
 public class RodCutting {
 	private int knapsack(int[] length, int[] price, int N) {
-		int[][] dp = new int[length.length + 1][N + 1];
+		int n = length.length;
+		int[][] dp = new int[n + 1][N + 1];
 
-		for (int i = 0; i < length.length; i++) {
-			for (int j = 0; j < N; j++) {
+		for (int i = 0; i <= n; i++) {
+			for (int j = 0; j <= N; j++) {
 				if (i == 0 || j == 0)
 					dp[i][j] = 0;
 			}
 		}
 
-		for (int i = 1; i <= length.length; i++) {
+		for (int i = 1; i <= n; i++) {
 			for (int j = 1; j <= N; j++) {
 				if (length[i - 1] <= j) {
 					dp[i][j] = Math.max(price[i - 1] + dp[i][j - length[i - 1]], dp[i - 1][j]);
@@ -21,7 +22,7 @@ public class RodCutting {
 
 			}
 		}
-		return dp[length.length][N];
+		return dp[n][N];
 	}
 
 	public static void main(String[] args) {

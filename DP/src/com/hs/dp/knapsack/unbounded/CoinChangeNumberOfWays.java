@@ -1,31 +1,40 @@
 package com.hs.dp.knapsack.unbounded;
 
+// 518. Coin Change 2 Leetcode 
 public class CoinChangeNumberOfWays {
-	private int knapsack(int[] coin, int N) {
-		int[][] dp = new int[coin.length + 1][N + 1];
+	private int change(int amount, int[] coins) {
+		int n = coins.length;
+		int[][] dp = new int[n + 1][amount + 1];
 
-		for (int i = 0; i < coin.length; i++) {
-			dp[i][0] = 1;
+		for (int i = 0; i <= n; i++) {
+			for (int j = 0; j <= amount; j++) {
+				if (i == 0) {
+					dp[i][j] = 0;
+				}
+				if (j == 0) {
+					dp[i][j] = 1;
+				}
+			}
 		}
 
-		for (int i = 1; i <= coin.length; i++) {
-			for (int j = 1; j <= N; j++) {
-				if (coin[i - 1] <= j) {
-					dp[i][j] = dp[i][j - coin[i - 1]] + dp[i - 1][j];
+		for (int i = 1; i <= n; i++) {
+			for (int j = 1; j <= amount; j++) {
+				if (coins[i - 1] <= j) {
+					dp[i][j] = dp[i][j - coins[i - 1]] + dp[i - 1][j];
 				} else {
 					dp[i][j] = dp[i - 1][j];
 				}
 
 			}
 		}
-		return dp[coin.length][N];
+		return dp[n][amount];
 	}
 
 	public static void main(String[] args) {
 		CoinChangeNumberOfWays kbu = new CoinChangeNumberOfWays();
-		int[] coin = new int[] { 5, 4, 6, 3 };
-		int N = 10;
-		int maxGain = kbu.knapsack(coin, N);
+		int[] coins = new int[] { 1, 2, 5 };
+		int amount = 5;
+		int maxGain = kbu.change(amount, coins);
 		System.out.println(maxGain);
 	}
 }

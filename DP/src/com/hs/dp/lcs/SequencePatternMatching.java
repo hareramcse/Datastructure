@@ -1,9 +1,17 @@
 package com.hs.dp.lcs;
 
-// 1143. Longest Common Subsequence Leetcode
-public class LCSTabulation {
+// 392. Is Subsequence Leetcode
+public class SequencePatternMatching {
+	private boolean isSubsequence(String x, String y) {
+		int length = lcs(x, y);
+		if (x.length() == length) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
-	private int longestCommonSubsequence(String text1, String text2) {
+	private int lcs(String text1, String text2) {
 		int m = text1.length();
 		int n = text2.length();
 
@@ -24,11 +32,10 @@ public class LCSTabulation {
 	}
 
 	public static void main(String[] args) {
-		LCSTabulation lcsrm = new LCSTabulation();
-		String x = "abcdgh";
-		String y = "abedfhr";
-
-		int count = lcsrm.longestCommonSubsequence(x, y);
-		System.out.println(count);
+		SequencePatternMatching lcsRecursive = new SequencePatternMatching();
+		String x = "abc";
+		String y = "ahbgdc";
+		boolean found = lcsRecursive.isSubsequence(x, y);
+		System.out.println(found);
 	}
 }

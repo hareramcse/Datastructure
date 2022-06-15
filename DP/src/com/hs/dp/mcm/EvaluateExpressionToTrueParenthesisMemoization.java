@@ -5,7 +5,12 @@ import java.util.Map;
 
 public class EvaluateExpressionToTrueParenthesisMemoization {
 	private static Map<String, Integer> map = new HashMap<String, Integer>();
-	
+
+	private int solve(String s) {
+		int i = 0, j = s.length() - 1;
+		return solve(s, i, j, true);
+	}
+
 	private int solve(String str, int i, int j, boolean isTrue) {
 		if (i > j)
 			return 0;
@@ -22,10 +27,10 @@ public class EvaluateExpressionToTrueParenthesisMemoization {
 					return 0;
 			}
 		}
-		String key = ""+i+j+isTrue;
-		if(map.containsKey(key))
+		String key = "" + i + j + isTrue;
+		if (map.containsKey(key))
 			return map.get(key);
-		
+
 		int ans = 0;
 		for (int k = i + 1; k < j; k += 2) {
 			int lt = solve(str, i, k - 1, true);
@@ -57,8 +62,7 @@ public class EvaluateExpressionToTrueParenthesisMemoization {
 	public static void main(String[] args) {
 		EvaluateExpressionToTrueParenthesisMemoization abcd = new EvaluateExpressionToTrueParenthesisMemoization();
 		String s = "T|F&T^T";
-		int i = 0, j = s.length() - 1;
-		int count = abcd.solve(s, i, j, true);
+		int count = abcd.solve(s);
 		System.out.println(count);
 	}
 }

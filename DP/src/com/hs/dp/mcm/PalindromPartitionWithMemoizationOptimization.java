@@ -3,10 +3,18 @@ package com.hs.dp.mcm;
 import java.util.Arrays;
 
 public class PalindromPartitionWithMemoizationOptimization {
-	private static int[][] dp;
 
-	private int solve(String str, int i, int j) {
-		if (i >= j || isPalindrome(str, i, j)) {
+	public int minCut(String str) {
+        int i = 0;
+		int j = str.length() - 1;
+        int[][] dp = new int[str.length()][str.length()];
+		for (int[] row : dp)
+			Arrays.fill(row, -1);
+        return solve(str, dp, i, j);
+    }
+    
+    private int solve(String str, int[][] dp, int i, int j){
+        if (i >= j || isPolindrome(str, i, j)) {
 			return 0;
 		}
 
@@ -21,43 +29,38 @@ public class PalindromPartitionWithMemoizationOptimization {
 			if (dp[i][k] != -1) {
 				left = dp[i][k];
 			} else {
-				left = solve(str, i, k);
+				left = solve(str, dp, i, k);
 				dp[i][k] = left;
 			}
 
 			if (dp[k + 1][j] != -1) {
 				right = dp[k + 1][j];
 			} else {
-				right = solve(str, k + 1, j);
+				right = solve(str, dp, k + 1, j);
 				dp[k + 1][j] = right;
 			}
 			int count = left + right + 1;
 			min = Math.min(min, count);
 		}
 		return dp[i][j] = min;
-	}
-
-	private boolean isPalindrome(String string, int i, int j) {
-		while (i < j) {
-			if (string.charAt(i) != string.charAt(j))
-				return false;
-			i++;
-			j--;
-		}
-		return true;
-	}
+    }
+    
+    private boolean isPolindrome(String str, int i, int j){
+        while(i < j){
+            if(str.charAt(i) != str.charAt(j)){
+                return false;
+            }
+            i++; 
+            j--;
+        }
+        return true;
+    }
 
 	public static void main(String[] args) {
 		PalindromPartitionWithMemoizationOptimization mcm = new PalindromPartitionWithMemoizationOptimization();
 		String str = "ababbbabbababa";
 
-		int i = 0;
-		int j = str.length() - 1;
-		dp = new int[100][100];
-		for (int[] row : dp)
-			Arrays.fill(row, -1);
-
-		int minCount = mcm.solve(str, i, j);
+		int minCount = mcm.minCut(str);
 		System.out.println("Min cuts needed for Palindrome Partitioning is " + minCount);
 	}
 }

@@ -8,17 +8,11 @@ public class LCSubstring {
 		int[][] dp = new int[m + 1][n + 1];
 
 		int count = 0;
-		for (int i = 0; i < m + 1; i++) {
-			for (int j = 0; j < n + 1; j++) {
+		for (int i = 0; i <= m; i++) {
+			for (int j = 0; j <= n; j++) {
 				if (i == 0 || j == 0) {
 					dp[i][j] = 0;
-				}
-			}
-		}
-
-		for (int i = 1; i < m + 1; i++) {
-			for (int j = 1; j < n + 1; j++) {
-				if (x.charAt(i - 1) == y.charAt(j - 1)) {
+				} else if (x.charAt(i - 1) == y.charAt(j - 1)) {
 					dp[i][j] = 1 + dp[i - 1][j - 1];
 					count = Math.max(dp[i][j], count);
 				} else {
@@ -37,5 +31,4 @@ public class LCSubstring {
 		int count = lcsrm.lcs(x, y);
 		System.out.println(count);
 	}
-
 }
