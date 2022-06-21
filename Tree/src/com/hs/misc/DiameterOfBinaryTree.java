@@ -9,8 +9,7 @@ class DiameterOfBinaryTree {
 		int ans = Integer.MIN_VALUE;
 	}
 
-	// Computes the diameter of binary tree with given root.
-	private int diameter(Node root) {
+	public int diameterOfBinaryTree(Node root) {
 		if (root == null)
 			return 0;
 
@@ -31,7 +30,7 @@ class DiameterOfBinaryTree {
 
 		// update the answer, because diameter of a tree is nothing but maximum value of
 		// (left_height + right_height + 1) for each node
-		result.ans = Math.max(result.ans, 1 + leftHeight + rightHeight);
+		result.ans = Math.max(result.ans, leftHeight + rightHeight);
 
 		return 1 + Math.max(leftHeight, rightHeight);
 	}
@@ -44,6 +43,6 @@ class DiameterOfBinaryTree {
 		root.left.left = new Node(4);
 		root.left.right = new Node(5);
 
-		System.out.println("Diameter is " + tree.diameter(root));
+		System.out.println("Diameter is " + tree.diameterOfBinaryTree(root));
 	}
 }
