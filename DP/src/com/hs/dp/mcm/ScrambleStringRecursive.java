@@ -1,18 +1,10 @@
 package com.hs.dp.mcm;
 
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
-// 87. Scramble String Leetcode
-class ScrambleStringMemoized {
+class ScrambleStringRecursive {
 
-	public boolean isScramble(String s1, String s2) {
-		Map<String, Boolean> map = new HashMap<String, Boolean>();
-		return isScramble(s1, s2, map);
-	}
-
-	private boolean isScramble(String s1, String s2, Map<String, Boolean> map) {
+	private boolean isScramble(String s1, String s2) {
 
 		// Strings of non-equal length cant' be scramble strings
 		if (s1.length() != s2.length()) {
@@ -39,14 +31,6 @@ class ScrambleStringMemoized {
 			return false;
 		}
 
-		// make key of type string for search in map
-		String key = (s1 + " " + s2);
-		if (map.containsKey(key)) {
-			return map.get(key);
-		}
-
-		// declaring flag variable to store result
-		boolean flag = false;
 		for (int i = 1; i < s1.length(); i++) {
 			String s11 = s1.substring(0, i);
 			String s12 = s1.substring(i, s1.length());
@@ -56,27 +40,24 @@ class ScrambleStringMemoized {
 			String s24 = s2.substring(s2.length() - i, s2.length());
 
 			// if there is no swapping
-			if (isScramble(s11, s21, map) && isScramble(s12, s22, map)) {
-				flag = true;
+			if (isScramble(s11, s21) && isScramble(s12, s22)) {
 				return true;
 			}
 
 			// if there is swapping
-			if (isScramble(s11, s24, map) && isScramble(s12, s23, map)) {
-				flag = true;
+			if (isScramble(s11, s24) && isScramble(s12, s23)) {
 				return true;
 			}
 
 		}
-		map.put(key, flag);
 		// If none of the above conditions are satisfied
 		return false;
 	}
 
 	public static void main(String[] args) {
-		ScrambleStringMemoized abc = new ScrambleStringMemoized();
-		String S1 = "eebaacbcbcadaaedceaaacadccd";
-		String S2 = "eadcaacabaddaceacbceaabeccd";
+		ScrambleStringRecursive abc = new ScrambleStringRecursive();
+		String S1 = "coder";
+		String S2 = "ocred";
 
 		if (abc.isScramble(S1, S2)) {
 			System.out.println("Yes");

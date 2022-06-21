@@ -23,21 +23,21 @@ public class EvaluateExpressionToTrueParenthesis {
 			}
 		}
 		int ans = 0;
-		for (int k = i + 1; k < j; k += 2) {
+		for (int k = i + 1; k < j; k = k + 2) {
 			int lt = solve(str, i, k - 1, true);
 			int lf = solve(str, i, k - 1, false);
 			int rt = solve(str, k + 1, j, true);
 			int rf = solve(str, k + 1, j, false);
 			if (str.charAt(k) == '&') {
 				if (isTrue == true)
-					ans = ans + lt * rt;
+					ans += lt * rt;
 				else
-					ans = ans + lf * rf + lf * rt + lt * rf;
+					ans += lf * rf + lf * rt + lt * rf;
 			} else if (str.charAt(k) == '|') {
 				if (isTrue == true)
-					ans += (lt * rt) + (lt * rf) + (lf * rt);
+					ans += lt * rt + lt * rf + lf * rt;
 				else
-					ans += (lf * rf);
+					ans += lf * rf;
 			} else if (str.charAt(k) == '^') {
 				if (isTrue == true)
 					ans += lt * rf + rt * lf;

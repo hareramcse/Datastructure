@@ -12,13 +12,13 @@ public class FindAllPalindromPartition {
 			return result;
 		}
 
-		ArrayList<String> partition = new ArrayList<String>();// track each possible partition
+		List<String> partition = new ArrayList<String>();// track each possible partition
 		addPalindrome(s, 0, partition, result);
 
 		return result;
 	}
 
-	private void addPalindrome(String s, int start, ArrayList<String> partition, List<List<String>> result) {
+	private void addPalindrome(String s, int start, List<String> partition, List<List<String>> result) {
 		// stop condition
 		if (start == s.length()) {
 			ArrayList<String> temp = new ArrayList<String>(partition);

@@ -4,14 +4,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class EvaluateExpressionToTrueParenthesisMemoization {
-	private static Map<String, Integer> map = new HashMap<String, Integer>();
 
 	private int solve(String s) {
 		int i = 0, j = s.length() - 1;
-		return solve(s, i, j, true);
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		return solve(s, i, j, true, map);
 	}
 
-	private int solve(String str, int i, int j, boolean isTrue) {
+	private int solve(String str, int i, int j, boolean isTrue, Map<String, Integer> map) {
 		if (i > j)
 			return 0;
 		if (i == j) {
@@ -33,10 +33,10 @@ public class EvaluateExpressionToTrueParenthesisMemoization {
 
 		int ans = 0;
 		for (int k = i + 1; k < j; k += 2) {
-			int lt = solve(str, i, k - 1, true);
-			int lf = solve(str, i, k - 1, false);
-			int rt = solve(str, k + 1, j, true);
-			int rf = solve(str, k + 1, j, false);
+			int lt = solve(str, i, k - 1, true, map);
+			int lf = solve(str, i, k - 1, false, map);
+			int rt = solve(str, k + 1, j, true, map);
+			int rf = solve(str, k + 1, j, false, map);
 			if (str.charAt(k) == '&') {
 				if (isTrue == true)
 					ans = ans + lt * rt;
