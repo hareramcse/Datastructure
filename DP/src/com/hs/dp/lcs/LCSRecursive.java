@@ -6,7 +6,7 @@ public class LCSRecursive {
 			return 0;
 		}
 
-		if (x.charAt(m - 1) == y.charAt(m - 1)) {
+		if (x.charAt(m - 1) == y.charAt(n - 1)) {
 			return 1 + lcs(x, y, m - 1, n - 1);
 		} else {
 			return Math.max(lcs(x, y, m, n - 1), lcs(x, y, m - 1, n));

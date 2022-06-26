@@ -2,10 +2,14 @@ package com.hs.dp.lcs;
 
 public class MinNoOfInsertionToConvertIntoPolindrom {
 
+	private int minInsertion(String x) {
+		int lps = lps(x);
+		return x.length() - lps;
+	}
+
 	private int lps(String x) {
 		String y = reverse(x);
-		int lcs = lcs(x, y);
-		return x.length() - lcs;
+		return lcs(x, y);
 	}
 
 	private int lcs(String x, String y) {
@@ -37,7 +41,7 @@ public class MinNoOfInsertionToConvertIntoPolindrom {
 		MinNoOfInsertionToConvertIntoPolindrom lcsrm = new MinNoOfInsertionToConvertIntoPolindrom();
 		String x = "aggtab";
 
-		int noOfInsertion = lcsrm.lps(x);
+		int noOfInsertion = lcsrm.minInsertion(x);
 
 		System.out.println("Minimum no of insertion " + noOfInsertion);
 	}

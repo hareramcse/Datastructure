@@ -5,6 +5,11 @@ public class SCSSTabulation {
 	private int scs(String x, String y) {
 		int m = x.length();
 		int n = y.length();
+		int lcsCount = lcs(x, y, m, n);
+		return m + n - lcsCount;
+	}
+
+	private int lcs(String x, String y, int m, int n) {
 		int dp[][] = new int[m + 1][n + 1];
 
 		for (int i = 0; i <= m; i++) {
@@ -18,7 +23,7 @@ public class SCSSTabulation {
 				}
 			}
 		}
-		return m + n - dp[m][n];
+		return dp[m][n];
 	}
 
 	public static void main(String[] args) {

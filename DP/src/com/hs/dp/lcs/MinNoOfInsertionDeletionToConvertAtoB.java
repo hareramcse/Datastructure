@@ -29,8 +29,8 @@ public class MinNoOfInsertionDeletionToConvertAtoB {
 
 	public static void main(String[] args) {
 		MinNoOfInsertionDeletionToConvertAtoB lcsrm = new MinNoOfInsertionDeletionToConvertAtoB();
-		String x = "aggtab";
-		String y = "gxtxayb";
+		String x = "heap";
+		String y = "pea";
 		lcsrm.scs(x, y);
 	}
 }

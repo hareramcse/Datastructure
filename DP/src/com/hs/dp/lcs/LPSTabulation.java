@@ -4,6 +4,10 @@ public class LPSTabulation {
 
 	private int lps(String x) {
 		String y = reverse(x);
+		return lcs(x, y);
+	}
+
+	private int lcs(String x, String y) {
 		int m = x.length();
 		int n = y.length();
 		int[][] dp = new int[m + 1][n + 1];
@@ -12,7 +16,7 @@ public class LPSTabulation {
 			for (int j = 0; j <= n; j++) {
 				if (i == 0 || j == 0) {
 					dp[i][j] = 0;
-				}else if (x.charAt(i - 1) == y.charAt(j - 1)) {
+				} else if (x.charAt(i - 1) == y.charAt(j - 1)) {
 					dp[i][j] = 1 + dp[i - 1][j - 1];
 				} else {
 					dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
