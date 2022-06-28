@@ -9,12 +9,18 @@ public class EggDroppingTabular {
 	}
 
 	private int eggDrop(int[][] dp, int k, int n) {
-		if (n <= 1)
-			return 1;
+		// If there are no floors, then no trials needed.
+		// OR if there is one floor, one trial needed.
+		if (n == 0 || n == 1)
+			return n;
+
+		// We need n trials for one egg and n floors
 		if (k == 1)
 			return n;
+
 		if (dp[k][n] > 0)
 			return dp[k][n];
+
 		int res = n;
 		int low = 1, high = n;
 		while (low < high) {

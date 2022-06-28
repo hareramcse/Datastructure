@@ -48,7 +48,6 @@ class ScrambleStringRecursive {
 			if (isScramble(s11, s24) && isScramble(s12, s23)) {
 				return true;
 			}
-
 		}
 		// If none of the above conditions are satisfied
 		return false;

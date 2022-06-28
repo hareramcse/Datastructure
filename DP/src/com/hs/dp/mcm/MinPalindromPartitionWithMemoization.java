@@ -3,9 +3,17 @@ package com.hs.dp.mcm;
 import java.util.Arrays;
 
 public class MinPalindromPartitionWithMemoization {
-	private static int[][] dp;
 
-	private int solve(String str, int i, int j) {
+	private int solve(String str) {
+		int i = 0;
+		int j = str.length() - 1;
+		int[][] dp = new int[str.length()][str.length()];
+		for (int[] row : dp)
+			Arrays.fill(row, -1);
+		return solve(dp, str, i, j);
+	}
+
+	private int solve(int[][] dp, String str, int i, int j) {
 		if (i >= j || isPalindrome(str, i, j)) {
 			return 0;
 		}
@@ -17,7 +25,7 @@ public class MinPalindromPartitionWithMemoization {
 		int min = Integer.MAX_VALUE;
 
 		for (int k = i; k < j; k++) {
-			int count = 1 + solve(str, i, k) + solve(str, k + 1, j);
+			int count = 1 + solve(dp, str, i, k) + solve(dp, str, k + 1, j);
 			min = Math.min(min, count);
 		}
 		return dp[i][j] = min;
@@ -36,14 +44,7 @@ public class MinPalindromPartitionWithMemoization {
 	public static void main(String[] args) {
 		MinPalindromPartitionWithMemoization mcm = new MinPalindromPartitionWithMemoization();
 		String str = "ababbbabbababa";
-
-		int i = 0;
-		int j = str.length() - 1;
-		dp = new int[100][100];
-		for (int[] row : dp)
-			Arrays.fill(row, -1);
-
-		int minCount = mcm.solve(str, i, j);
+		int minCount = mcm.solve(str);
 		System.out.println("Min cuts needed for Palindrome Partitioning is " + minCount);
 	}
 }

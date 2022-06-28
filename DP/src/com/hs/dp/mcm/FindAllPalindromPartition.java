@@ -21,7 +21,7 @@ public class FindAllPalindromPartition {
 	private void addPalindrome(String s, int start, List<String> partition, List<List<String>> result) {
 		// stop condition
 		if (start == s.length()) {
-			ArrayList<String> temp = new ArrayList<String>(partition);
+			List<String> temp = new ArrayList<String>(partition);
 			result.add(temp);
 			return;
 		}
@@ -37,18 +37,16 @@ public class FindAllPalindromPartition {
 	}
 
 	private boolean isPalindrome(String str) {
-		int left = 0;
-		int right = str.length() - 1;
+		int i = 0;
+		int j = str.length() - 1;
 
-		while (left < right) {
-			if (str.charAt(left) != str.charAt(right)) {
+		while (i < j) {
+			if (str.charAt(i) != str.charAt(j)) {
 				return false;
 			}
-
-			left++;
-			right--;
+			i++;
+			j--;
 		}
-
 		return true;
 	}
 

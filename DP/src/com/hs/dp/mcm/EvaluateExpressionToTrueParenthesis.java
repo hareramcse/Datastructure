@@ -9,6 +9,8 @@ public class EvaluateExpressionToTrueParenthesis {
 	private int solve(String str, int i, int j, boolean isTrue) {
 		if (i > j)
 			return 0;
+		
+		//it means there is only char and that can be T or F
 		if (i == j) {
 			if (isTrue) {
 				if (str.charAt(i) == 'T')
