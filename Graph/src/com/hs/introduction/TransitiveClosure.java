@@ -1,6 +1,5 @@
 package com.hs.introduction;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -39,9 +38,7 @@ public class TransitiveClosure {
 	private void DFSUtil(int source, int destination) {
 		transitiveClosure[source][destination] = 1;
 		// Find all the vertices reachable through destination
-		Iterator<Integer> iterator = adj[destination].iterator();
-		while (iterator.hasNext()) {
-			int currentAdjNode = iterator.next();
+		for (int currentAdjNode : adj[destination]) {
 			if (transitiveClosure[source][currentAdjNode] == 0) {
 				DFSUtil(source, currentAdjNode);
 			}

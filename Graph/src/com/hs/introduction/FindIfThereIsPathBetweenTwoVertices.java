@@ -1,6 +1,5 @@
 package com.hs.introduction;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -38,14 +37,10 @@ public class FindIfThereIsPathBetweenTwoVertices {
 			// Dequeue a vertex from queue and print it
 			source = queue.poll();
 
-			Iterator<Integer> it = adj[source].iterator();
-
 			// Get all adjacent vertices of the dequeued vertex source
 			// If a adjacent has not been visited, then mark it
 			// visited and enqueue it
-			while (it.hasNext()) {
-				int node = it.next();
-
+			for (int node : adj[source]) {
 				// If this adjacent node is the destination node, then return true
 				if (node == destination)
 					return true;
@@ -57,7 +52,6 @@ public class FindIfThereIsPathBetweenTwoVertices {
 				}
 			}
 		}
-
 		// If BFS is complete without visited d
 		return false;
 	}

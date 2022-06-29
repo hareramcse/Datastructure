@@ -1,7 +1,6 @@
 package com.hs.introduction;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -36,18 +35,15 @@ public class PrintAllPathsFromSourceToDestinationUsingBFS {
 
 		while (!queue.isEmpty()) {
 			path = queue.poll();
-			int last = path.get(path.size() - 1);
+			int lastVertex = path.get(path.size() - 1);
 
 			// If last vertex is the desired destination then print the path
-			if (last == destination) {
+			if (lastVertex == destination) {
 				System.out.println(path);
 			}
 
 			// Traverse nodes connected to current vertex and push new path to queue
-			Iterator<Integer> it = adj[last].iterator();
-
-			while (it.hasNext()) {
-				Integer currentAdjNode = it.next();
+			for (Integer currentAdjNode : adj[lastVertex]) {
 				if (!isPresentInPath(path, currentAdjNode)) {
 					List<Integer> newPath = new ArrayList<>(path);
 					newPath.add(currentAdjNode);

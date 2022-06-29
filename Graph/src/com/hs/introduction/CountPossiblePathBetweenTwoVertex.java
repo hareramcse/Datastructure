@@ -1,6 +1,5 @@
 package com.hs.introduction;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -34,13 +33,8 @@ public class CountPossiblePathBetweenTwoVertex {
 		// If current node is same as destination, then increment count
 		if (source == destination) {
 			count++;
-		}
-
-		// Recur for all the vertices adjacent to this vertex
-		else {
-			Iterator<Integer> iterator = adj[source].iterator();
-			while (iterator.hasNext()) {
-				int currentAdjNode = iterator.next();
+		} else {
+			for (int currentAdjNode : adj[source]) {
 				count = countPathsUtil(currentAdjNode, destination, count);
 			}
 		}

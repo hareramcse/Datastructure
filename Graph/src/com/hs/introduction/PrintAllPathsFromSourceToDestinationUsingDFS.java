@@ -41,7 +41,7 @@ public class PrintAllPathsFromSourceToDestinationUsingDFS {
 	// localPathList<> stores actual vertices in the current path
 	private void printAllPathsUtil(Integer source, Integer destination, boolean[] visited, List<Integer> path) {
 
-		if (source.equals(destination)) {
+		if (source == destination) {
 			System.out.println(path);
 			// if match found then no need to traverse more till depth
 			return;

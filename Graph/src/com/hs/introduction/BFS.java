@@ -1,6 +1,5 @@
 package com.hs.introduction;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -41,9 +40,7 @@ public class BFS {
 
 			// Get all adjacent vertices of the dequeued vertex source
 			// If a adjacent has not been visited, then mark it visited and enqueue it
-			Iterator<Integer> iterator = adj[source].iterator();
-			while (iterator.hasNext()) {
-				int currentAdjNode = iterator.next();
+			for (int currentAdjNode : adj[source]) {
 				if (!visited[currentAdjNode]) {
 					visited[currentAdjNode] = true;
 					queue.add(currentAdjNode);

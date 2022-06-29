@@ -1,6 +1,5 @@
 package com.hs.introduction;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -28,7 +27,7 @@ public class DFSDisconnectedGraph {
 
 		// Call the recursive helper function to print DFS traversal starting from all
 		// vertices one by one
-		for (int i = 0; i < noOfVertices; ++i)
+		for (int i = 0; i < noOfVertices; i++)
 			if (visited[i] == false)
 				DFSUtil(i, visited);
 	}
@@ -40,9 +39,7 @@ public class DFSDisconnectedGraph {
 		System.out.print(source + " ");
 
 		// Recur for all the vertices adjacent to this vertex
-		Iterator<Integer> iterator = adj[source].iterator();
-		while (iterator.hasNext()) {
-			int currentAdjNode = iterator.next();
+		for (int currentAdjNode : adj[source]) {
 			if (!visited[currentAdjNode])
 				DFSUtil(currentAdjNode, visited);
 		}
@@ -62,5 +59,4 @@ public class DFSDisconnectedGraph {
 
 		graph.dfsTraversl(2);
 	}
-
 }

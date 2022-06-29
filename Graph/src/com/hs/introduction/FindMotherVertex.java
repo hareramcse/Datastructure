@@ -1,6 +1,5 @@
 package com.hs.introduction;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -52,9 +51,7 @@ public class FindMotherVertex {
 
 	private void DFSUtil(int source, boolean visited[]) {
 		visited[source] = true;
-		Iterator<Integer> iterator = adj[source].iterator();
-		while (iterator.hasNext()) {
-			int currentAdjNode = iterator.next();
+		for (int currentAdjNode : adj[source]) {
 			if (!visited[currentAdjNode])
 				DFSUtil(currentAdjNode, visited);
 		}
