@@ -1,6 +1,5 @@
 package com.hs.cycle;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -37,7 +36,6 @@ public class DetectCycleInUndirectedGraph {
 				}
 			}
 		}
-
 		return false;
 	}
 
@@ -48,10 +46,7 @@ public class DetectCycleInUndirectedGraph {
 		visited[source] = true;
 
 		// Recur for all the vertices adjacent to this vertex
-		Iterator<Integer> it = adj[source].iterator();
-		while (it.hasNext()) {
-			Integer currentAdjNode = it.next();
-
+		for (int currentAdjNode : adj[source]) {
 			// If an adjacent is not visited, then recur for that adjacent
 			if (!visited[currentAdjNode]) {
 				if (isCyclicUtil(currentAdjNode, visited, source)) {
@@ -59,7 +54,8 @@ public class DetectCycleInUndirectedGraph {
 				}
 			}
 
-			// If an adjacent is visited and not parent of current vertex, then there is a cycle.
+			// If an adjacent is visited and not parent of current vertex, then there is a
+			// cycle.
 			else if (currentAdjNode != parent) {
 				return true;
 			}
@@ -77,14 +73,6 @@ public class DetectCycleInUndirectedGraph {
 		g1.addEdge(0, 3);
 		g1.addEdge(3, 4);
 		if (g1.isCyclic())
-			System.out.println("Graph contains cycle");
-		else
-			System.out.println("Graph doesn't contains cycle");
-
-		DetectCycleInUndirectedGraph g2 = new DetectCycleInUndirectedGraph(3);
-		g2.addEdge(0, 1);
-		g2.addEdge(1, 2);
-		if (g2.isCyclic())
 			System.out.println("Graph contains cycle");
 		else
 			System.out.println("Graph doesn't contains cycle");

@@ -16,7 +16,7 @@ public class LongestPathInDirectedAcyclicGraph {
 		distance = new int[noOfVertices];
 		adj = new LinkedList[noOfVertices];
 		for (int i = 0; i < noOfVertices; i++) {
-			adj[i] = new LinkedList<Edge>();
+			adj[i] = new LinkedList<>();
 			distance[i] = Integer.MIN_VALUE;
 		}
 	}
@@ -49,9 +49,7 @@ public class LongestPathInDirectedAcyclicGraph {
 
 			// Update distances of all adjacent vertices ;
 			if (distance[nextVertex] != Integer.MIN_VALUE) {
-				Iterator<Edge> it = adj[nextVertex].iterator();
-				while (it.hasNext()) {
-					Edge node = it.next();
+				for (Edge node : adj[nextVertex]) {
 					if (distance[node.destination] < distance[nextVertex] + node.weight) {
 						distance[node.destination] = distance[nextVertex] + node.weight;
 					}

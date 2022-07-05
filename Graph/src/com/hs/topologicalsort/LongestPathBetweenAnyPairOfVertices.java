@@ -1,6 +1,5 @@
 package com.hs.topologicalsort;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -15,7 +14,7 @@ public class LongestPathBetweenAnyPairOfVertices {
 		this.noOfVertices = noOfVertices;
 		adj = new LinkedList[noOfVertices];
 		for (int i = 0; i < noOfVertices; i++) {
-			adj[i] = new LinkedList<Edge>();
+			adj[i] = new LinkedList<>();
 		}
 	}
 
@@ -52,9 +51,7 @@ public class LongestPathBetweenAnyPairOfVertices {
 		int currLen = 0;
 
 		// Adjacent is pair type which stores destination city and cable length
-		Iterator<Edge> it = adj[source].iterator();
-		while (it.hasNext()) {
-			Edge adjacent = it.next();
+		for (Edge adjacent : adj[source]) {
 			// If node or city is not visited
 			if (!visited[adjacent.destination]) {
 				// Total length of cable from src city to its adjacent
@@ -72,12 +69,11 @@ public class LongestPathBetweenAnyPairOfVertices {
 			// make curr_len = 0 for next adjacent
 			currLen = 0;
 		}
-
 	}
 
 	public static void main(String[] args) {
 		int n = 6;
-		LongestPathBetweenAnyPairOfVertices graph = new LongestPathBetweenAnyPairOfVertices(n+1);
+		LongestPathBetweenAnyPairOfVertices graph = new LongestPathBetweenAnyPairOfVertices(n + 1);
 
 		graph.addEdge(1, 2, 3);
 		graph.addEdge(2, 3, 4);

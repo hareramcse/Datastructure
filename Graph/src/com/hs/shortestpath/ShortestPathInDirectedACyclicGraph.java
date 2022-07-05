@@ -78,9 +78,7 @@ public class ShortestPathInDirectedACyclicGraph {
 		visited[source] = true;
 
 		// Recur for all the vertices adjacent to this vertex
-		Iterator<Edge> it = adj[source].iterator();
-		while (it.hasNext()) {
-			Edge node = it.next();
+		for (Edge node : adj[source]) {
 			if (!visited[node.destination])
 				topologicalSortUtil(node.destination, visited, stack);
 		}

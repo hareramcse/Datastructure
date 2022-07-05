@@ -1,6 +1,5 @@
 package com.hs.topologicalsort;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
@@ -14,7 +13,7 @@ public class TopologicalSort {
 		this.noOfVertices = noOfVertices;
 		adj = new LinkedList[noOfVertices];
 		for (int i = 0; i < noOfVertices; ++i) {
-			adj[i] = new LinkedList<Integer>();
+			adj[i] = new LinkedList<>();
 		}
 	}
 
@@ -47,13 +46,10 @@ public class TopologicalSort {
 		visited[source] = true;
 
 		// Recur for all the vertices adjacent to this vertex
-		Iterator<Integer> it = adj[source].iterator();
-		while (it.hasNext()) {
-			Integer vertex = it.next();
+		for(Integer vertex : adj[source]) {
 			if (!visited[vertex])
 				topologicalSortUtil(vertex, visited, stack);
 		}
-
 		// Push current vertex to stack which stores result
 		stack.push(source);
 	}

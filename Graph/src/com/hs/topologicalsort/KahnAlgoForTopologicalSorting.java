@@ -13,7 +13,7 @@ public class KahnAlgoForTopologicalSorting {
 		this.noOfVertices = noOfVertices;
 		adj = new LinkedList[noOfVertices];
 		for (int i = 0; i < noOfVertices; i++)
-			adj[i] = new LinkedList<Integer>();
+			adj[i] = new LinkedList<>();
 	}
 
 	// Function to add an edge to graph

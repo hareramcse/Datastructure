@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-public class PrimsAlgorithAdjacencyList {
+public class PrimsAlgorithmAdjacencyList {
 	private int noOfVertices;
 	private int[] parent;
 	private boolean[] visited;
@@ -12,17 +12,19 @@ public class PrimsAlgorithAdjacencyList {
 	private Queue<Edge> adj[];
 
 	@SuppressWarnings("unchecked")
-	PrimsAlgorithAdjacencyList(int noOfVertices) {
+	PrimsAlgorithmAdjacencyList(int noOfVertices) {
 		this.noOfVertices = noOfVertices;
 		parent = new int[noOfVertices];
 		visited = new boolean[noOfVertices];
 		edge = new Edge[noOfVertices];
 		adj = new LinkedList[noOfVertices];
+
+		// initialize all vertex's weight with infinity
 		for (int i = 0; i < noOfVertices; ++i) {
 			adj[i] = new LinkedList<Edge>();
 			edge[i] = new Edge();
-			edge[i].weight = Integer.MAX_VALUE;
 			edge[i].destination = i;
+			edge[i].weight = Integer.MAX_VALUE;
 			parent[i] = -1;
 		}
 	}
@@ -42,7 +44,7 @@ public class PrimsAlgorithAdjacencyList {
 		// mark the source vertex as visited
 		visited[0] = true;
 
-		// Set weight value to 0 so that it is extracted first out of PriorityQueue
+		// Set weight of source vertex to 0 so that it is extracted first
 		edge[0].weight = 0;
 
 		Queue<Edge> pq = new PriorityQueue<>(noOfVertices);
@@ -63,8 +65,8 @@ public class PrimsAlgorithAdjacencyList {
 			for (Edge currentAdjEdge : adj[minWeightEdge.destination]) {
 
 				if (visited[currentAdjEdge.destination] == false) {
-					// If the weight of the adjacent vertex is more than the extracted key
-					// update the weight of adjacent vertex
+					// If the weight of the adjacent vertex is more than the extracted vertex
+					// then update the weight of adjacent vertex
 					// to update first remove and add the updated vertex
 					if (currentAdjEdge.weight < edge[currentAdjEdge.destination].weight) {
 						pq.remove(edge[currentAdjEdge.destination]);
@@ -82,7 +84,7 @@ public class PrimsAlgorithAdjacencyList {
 	}
 
 	public static void main(String[] args) {
-		PrimsAlgorithAdjacencyList graph = new PrimsAlgorithAdjacencyList(9);
+		PrimsAlgorithmAdjacencyList graph = new PrimsAlgorithmAdjacencyList(9);
 
 		graph.addEdge(0, 1, 4);
 		graph.addEdge(0, 7, 8);

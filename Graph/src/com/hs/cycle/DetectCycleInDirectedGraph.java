@@ -1,6 +1,5 @@
 package com.hs.cycle;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -41,9 +40,7 @@ public class DetectCycleInDirectedGraph {
 		recStack[source] = true;
 
 		// Recur for all the vertices adjacent to this vertex
-		Iterator<Integer> iterator = adj[source].iterator();
-		while (iterator.hasNext()) {
-			int currentAdjNode = iterator.next();
+		for(int currentAdjNode : adj[source]) {
 			if (!visited[currentAdjNode]) {
 				if (isCyclicUtil(currentAdjNode, visited, recStack)) {
 					return true;

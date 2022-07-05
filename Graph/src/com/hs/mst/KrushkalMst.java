@@ -68,10 +68,10 @@ public class KrushkalMst {
 
 	private void printGraph(List<Edge> result) {
 		int minimumCost = 0;
+		System.out.println("Edge \tWeight ");
 		for (int i = 0; i < result.size(); i++) {
 			Edge edge = result.get(i);
-			System.out.println("Edge-" + i + " source: " + edge.source + " destination: " + edge.destination
-					+ " weight: " + edge.weight);
+			System.out.println(edge.source + "->" + edge.destination + "\t" + edge.weight);
 			minimumCost = minimumCost + edge.weight;
 		}
 		System.out.println("Minimum cost is " + minimumCost);
