@@ -1,16 +1,23 @@
 package com.hs.array.rotation;
 
+// 189. Rotate Array Leetcode
 public class RightRotation {
 
 	// Function to right rotate arr[] of size n by d
-	private void rightRotate(int arr[], int d, int n) {
-		reverseArray(arr, 0, n - 1);
-		reverseArray(arr, 0, d - 1);
-		reverseArray(arr, d, n - 1);
+	public void rotate(int[] nums, int k) {
+		int n = nums.length;
+		k = k % n;
+		int a = nums.length - k;
+		reverseArray(nums, 0, a - 1);
+		reverseArray(nums, a, n - 1);
+		reverseArray(nums, 0, n - 1);
 	}
 
-	// Function to reverse arr[] from index start to end
 	private void reverseArray(int arr[], int start, int end) {
+		if (arr == null || arr.length == 1) {
+			return;
+		}
+
 		while (start < end) {
 			int temp = arr[start];
 			arr[start] = arr[end];
@@ -33,7 +40,7 @@ public class RightRotation {
 		int n = arr.length;
 		int k = 3;
 
-		array.rightRotate(arr, k, n);
+		array.rotate(arr, k);
 		array.printArray(arr, n);
 
 	}
