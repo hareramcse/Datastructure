@@ -7,15 +7,15 @@ import java.util.Queue;
 public class PrimsAlgorithmAdjacencyList {
 	private int noOfVertices;
 	private Queue<Edge> adj[];
-	private int[] parent;
 	private Edge[] edge;
+	private int[] parent;
 
 	@SuppressWarnings("unchecked")
 	PrimsAlgorithmAdjacencyList(int noOfVertices) {
 		this.noOfVertices = noOfVertices;
+		adj = new LinkedList[noOfVertices];
 		parent = new int[noOfVertices];
 		edge = new Edge[noOfVertices];
-		adj = new LinkedList[noOfVertices];
 
 		// initialize all vertex's weight with infinity
 		for (int i = 0; i < noOfVertices; i++) {

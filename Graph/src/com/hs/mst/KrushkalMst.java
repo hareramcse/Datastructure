@@ -12,15 +12,15 @@ public class KrushkalMst {
 
 	KrushkalMst(int noOfVertices) {
 		this.noOfVertices = noOfVertices;
+		edges = new ArrayList<>();
 		// create `n` disjoint sets (one for each vertex)
 		parent = new int[noOfVertices];
 		for (int i = 0; i < noOfVertices; i++) {
 			parent[i] = i;
 		}
-		edges = new ArrayList<>();
 	}
 
-	private void addEgde(int source, int destination, int weight) {
+	private void addEdge(int source, int destination, int weight) {
 		Edge edge = new Edge(source, destination, weight);
 		edges.add(edge);
 	}
@@ -80,11 +80,11 @@ public class KrushkalMst {
 
 	public static void main(String[] args) {
 		KrushkalMst graph = new KrushkalMst(4);
-		graph.addEgde(0, 1, 10);
-		graph.addEgde(0, 2, 6);
-		graph.addEgde(0, 3, 5);
-		graph.addEgde(1, 3, 15);
-		graph.addEgde(2, 3, 4);
+		graph.addEdge(0, 1, 10);
+		graph.addEdge(0, 2, 6);
+		graph.addEdge(0, 3, 5);
+		graph.addEdge(1, 3, 15);
+		graph.addEdge(2, 3, 4);
 		graph.kruskalMST();
 	}
 }

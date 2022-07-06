@@ -1,24 +1,32 @@
 package com.hs.shortestpath;
 
-public class BellmanFordAlgorithm {
+import java.util.LinkedList;
+import java.util.Queue;
 
-	private int noOfVertices, noOfEdges;
-	private Edge[] edge;
+import com.hs.mst.Edge;
+
+public class BellmanFordAlgorithm {
+	private int noOfVertices;
+	private Queue<Edge> adj[];
 	private int[] distance;
 
-	// Creates a graph with V vertices and E edges
-	BellmanFordAlgorithm(int noOfVertices, int noOfEdges) {
+	@SuppressWarnings("unchecked")
+	BellmanFordAlgorithm(int noOfVertices) {
 		this.noOfVertices = noOfVertices;
-		this.noOfEdges = noOfEdges;
 		distance = new int[noOfVertices];
-		edge = new Edge[noOfEdges];
-		for (int i = 0; i < noOfEdges; i++) {
-			edge[i] = new Edge();
-		}
-		// Step 1: Initialize distances from src to all other vertices as INFINITE
+		adj = new LinkedList[noOfVertices];
 		for (int i = 0; i < noOfVertices; i++) {
+			adj[i] = new LinkedList<>();
 			distance[i] = Integer.MAX_VALUE;
 		}
+	}
+
+	private void addEdge(int source, int destination, int weight) {
+		Edge edge = new Edge(source, destination, weight);
+		adj[source].add(edge);
+
+		edge = new Edge(destination, source, weight);
+		adj[destination].add(edge);
 	}
 
 	// The function also detects negative weight cycle
@@ -29,12 +37,14 @@ public class BellmanFordAlgorithm {
 		// shortest path from src to any other vertex can
 		// have at-most |V| - 1 edges
 		for (int i = 0; i < noOfVertices; i++) {
-			for (int j = 0; j < noOfEdges; j++) {
-				int src = edge[j].source;
-				int dest = edge[j].destination;
-				int weight = edge[j].weight;
-				if (distance[src] != Integer.MAX_VALUE && distance[src] + weight < distance[dest])
-					distance[dest] = distance[src] + weight;
+			for (int j = 0; j < noOfVertices; j++) {
+				for (Edge edge : adj[j]) {
+					int src = edge.source;
+					int dest = edge.destination;
+					int weight = edge.weight;
+					if (distance[src] != Integer.MAX_VALUE && distance[src] + weight < distance[dest])
+						distance[dest] = distance[src] + weight;
+				}
 			}
 		}
 
@@ -42,13 +52,15 @@ public class BellmanFordAlgorithm {
 		// step guarantees shortest distances if graph doesn't
 		// contain negative weight cycle. If we get a shorter
 		// path, then there is a cycle.
-		for (int j = 0; j < noOfEdges; j++) {
-			int src = edge[j].source;
-			int dest = edge[j].destination;
-			int weight = edge[j].weight;
-			if (distance[src] != Integer.MAX_VALUE && distance[src] + weight < distance[dest]) {
-				System.out.println("Graph contains negative weight cycle");
-				return;
+		for (int j = 0; j < noOfVertices; j++) {
+			for (Edge edge : adj[j]) {
+				int src = edge.source;
+				int dest = edge.destination;
+				int weight = edge.weight;
+				if (distance[src] != Integer.MAX_VALUE && distance[src] + weight < distance[dest]) {
+					System.out.println("Graph contains negative weight cycle");
+					return;
+				}
 			}
 		}
 		printArr(distance, noOfVertices);
@@ -63,49 +75,20 @@ public class BellmanFordAlgorithm {
 
 	// Driver method to test above function
 	public static void main(String[] args) {
-		BellmanFordAlgorithm graph = new BellmanFordAlgorithm(5, 8);
-
-		// add edge 0-1
-		graph.edge[0].source = 0;
-		graph.edge[0].destination = 1;
-		graph.edge[0].weight = -1;
-
-		// add edge 0-2
-		graph.edge[1].source = 0;
-		graph.edge[1].destination = 2;
-		graph.edge[1].weight = 4;
-
-		// add edge 1-2
-		graph.edge[2].source = 1;
-		graph.edge[2].destination = 2;
-		graph.edge[2].weight = 3;
-
-		// add edge 1-3
-		graph.edge[3].source = 1;
-		graph.edge[3].destination = 3;
-		graph.edge[3].weight = 2;
-
-		// add edge 1-4
-		graph.edge[4].source = 1;
-		graph.edge[4].destination = 4;
-		graph.edge[4].weight = 2;
-
-		// add edge 3-2
-		graph.edge[5].source = 3;
-		graph.edge[5].destination = 2;
-		graph.edge[5].weight = 5;
-
-		// add edge 3-1
-		graph.edge[6].source = 3;
-		graph.edge[6].destination = 1;
-		graph.edge[6].weight = 1;
-
-		// add edge 4-3
-		graph.edge[7].source = 4;
-		graph.edge[7].destination = 3;
-		graph.edge[7].weight = -3;
-
+		BellmanFordAlgorithm graph = new BellmanFordAlgorithm(8);
+		graph.addEdge(0, 1, 4);
+		graph.addEdge(0, 2, 4);
+		graph.addEdge(2, 4, 4);
+		graph.addEdge(2, 5, -2);
+		graph.addEdge(3, 0, 3);
+		graph.addEdge(3, 2, 2);
+		graph.addEdge(4, 3, 1);
+		graph.addEdge(4, 6, -2);
+		graph.addEdge(5, 1, 3);
+		graph.addEdge(5, 4, -3);
+		graph.addEdge(6, 5, 2);
+		graph.addEdge(6, 7, 2);
+		graph.addEdge(7, 4, -2);
 		graph.bellmanFord(0);
 	}
-
 }
