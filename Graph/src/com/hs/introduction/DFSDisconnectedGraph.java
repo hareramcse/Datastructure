@@ -39,24 +39,21 @@ public class DFSDisconnectedGraph {
 		System.out.print(source + " ");
 
 		// Recur for all the vertices adjacent to this vertex
-		for (int currentAdjNode : adj[source]) {
-			if (!visited[currentAdjNode])
-				DFSUtil(currentAdjNode, visited);
+		for (int adjNode : adj[source]) {
+			if (!visited[adjNode])
+				DFSUtil(adjNode, visited);
 		}
 	}
 
 	public static void main(String args[]) {
 		DFSDisconnectedGraph graph = new DFSDisconnectedGraph(4);
-
 		graph.addEdge(0, 1);
 		graph.addEdge(0, 2);
 		graph.addEdge(1, 2);
 		graph.addEdge(2, 0);
 		graph.addEdge(2, 3);
 		graph.addEdge(3, 3);
-
 		System.out.println("Following is Depth First Traversal starting from vertex 2");
-
 		graph.dfsTraversl(2);
 	}
 }

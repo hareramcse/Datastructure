@@ -4,7 +4,6 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class CountPossiblePathBetweenTwoVertex {
-
 	private int noOfVertices;
 	private Queue<Integer> adj[];
 
@@ -34,8 +33,8 @@ public class CountPossiblePathBetweenTwoVertex {
 		if (source == destination) {
 			count++;
 		} else {
-			for (int currentAdjNode : adj[source]) {
-				count = countPathsUtil(currentAdjNode, destination, count);
+			for (int adjNode : adj[source]) {
+				count = countPathsUtil(adjNode, destination, count);
 			}
 		}
 		return count;
@@ -54,5 +53,4 @@ public class CountPossiblePathBetweenTwoVertex {
 		int source = 0, destination = 3;
 		System.out.println(graph.countPaths(source, destination));
 	}
-
 }

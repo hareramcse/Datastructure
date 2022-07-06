@@ -1,11 +1,9 @@
 package com.hs.introduction;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class CountNoOfTreesInForest {
-
 	private int noOfVertices;
 	private Queue<Integer> adj[];
 
@@ -43,23 +41,18 @@ public class CountNoOfTreesInForest {
 		visited[source] = true;
 
 		// Recur for all the vertices adjacent to this vertex
-		Iterator<Integer> iterator = adj[source].iterator();
-		while (iterator.hasNext()) {
-			int currentAdjNode = iterator.next();
-			if (!visited[currentAdjNode]) {
-				DFSUtil(currentAdjNode, visited);
+		for (Integer adjNode : adj[source]) {
+			if (!visited[adjNode]) {
+				DFSUtil(adjNode, visited);
 			}
 		}
 	}
 
 	public static void main(String args[]) {
 		CountNoOfTreesInForest graph = new CountNoOfTreesInForest(5);
-
 		graph.addEdge(0, 1);
 		graph.addEdge(0, 2);
 		graph.addEdge(3, 4);
-
 		System.out.println(graph.countTrees());
 	}
-
 }

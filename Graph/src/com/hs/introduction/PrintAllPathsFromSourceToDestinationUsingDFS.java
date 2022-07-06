@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Queue;
 
 public class PrintAllPathsFromSourceToDestinationUsingDFS {
-
 	private int noOfVertices;
 	private Queue<Integer>[] adj;
 
@@ -37,10 +36,7 @@ public class PrintAllPathsFromSourceToDestinationUsingDFS {
 	}
 
 	// A recursive function to print all paths from 'source' to 'destination'.
-	// visited[] keeps track of vertices in current path.
-	// localPathList<> stores actual vertices in the current path
 	private void printAllPathsUtil(Integer source, Integer destination, boolean[] visited, List<Integer> path) {
-
 		if (source == destination) {
 			System.out.println(path);
 			// if match found then no need to traverse more till depth
@@ -51,14 +47,14 @@ public class PrintAllPathsFromSourceToDestinationUsingDFS {
 		visited[source] = true;
 
 		// Recur for all the vertices adjacent to current vertex
-		for (Integer currentAdjNode : adj[source]) {
-			if (!visited[currentAdjNode]) {
+		for (Integer adjNode : adj[source]) {
+			if (!visited[adjNode]) {
 				// store current node in path[]
-				path.add(currentAdjNode);
-				printAllPathsUtil(currentAdjNode, destination, visited, path);
+				path.add(adjNode);
+				printAllPathsUtil(adjNode, destination, visited, path);
 
 				// remove current node in path[]
-				path.remove(currentAdjNode);
+				path.remove(adjNode);
 			}
 		}
 
@@ -85,5 +81,4 @@ public class PrintAllPathsFromSourceToDestinationUsingDFS {
 		System.out.println("Following are all different paths from " + source + " to " + destination);
 		graph.printAllPaths(source, destination);
 	}
-
 }

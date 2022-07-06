@@ -53,7 +53,6 @@ public class TransitiveClosure {
 		graph.addEdge(2, 0);
 		graph.addEdge(2, 3);
 		graph.addEdge(3, 3);
-
 		graph.getTransitiveClosure();
 	}
 }

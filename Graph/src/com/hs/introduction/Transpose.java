@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Transpose {
-
 	private int noOfVertices;
 	private List<Integer>[] adj;
 	private List<Integer>[] transpose;
@@ -60,12 +59,7 @@ public class Transpose {
 		graph.addEdge(3, 2, false);
 		graph.addEdge(4, 1, false);
 		graph.addEdge(4, 3, false);
-
-		// Finding transpose of the graph
 		graph.getTranspose();
-
-		// Printing the graph representation
 		graph.printGraph();
 	}
-
 }

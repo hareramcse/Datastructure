@@ -40,10 +40,10 @@ public class BFS {
 
 			// Get all adjacent vertices of the dequeued vertex source
 			// If a adjacent has not been visited, then mark it visited and enqueue it
-			for (int currentAdjNode : adj[source]) {
-				if (!visited[currentAdjNode]) {
-					visited[currentAdjNode] = true;
-					queue.add(currentAdjNode);
+			for (int adjNode : adj[source]) {
+				if (!visited[adjNode]) {
+					visited[adjNode] = true;
+					queue.add(adjNode);
 				}
 			}
 		}

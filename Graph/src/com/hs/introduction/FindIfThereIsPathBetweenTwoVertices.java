@@ -4,7 +4,6 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class FindIfThereIsPathBetweenTwoVertices {
-
 	private int noOfVertices;
 	private Queue<Integer> adj[];
 
@@ -32,33 +31,29 @@ public class FindIfThereIsPathBetweenTwoVertices {
 		visited[source] = true;
 		queue.add(source);
 
-		// 'it' will be used to get all adjacent vertices of a vertex
 		while (queue.size() != 0) {
-			// Dequeue a vertex from queue and print it
+			// Dequeue a vertex from queue
 			source = queue.poll();
 
 			// Get all adjacent vertices of the dequeued vertex source
-			// If a adjacent has not been visited, then mark it
-			// visited and enqueue it
-			for (int node : adj[source]) {
+			// If a adjacent has not been visited, then mark it visited and enqueue it
+			for (int adjNode : adj[source]) {
 				// If this adjacent node is the destination node, then return true
-				if (node == destination)
+				if (adjNode == destination)
 					return true;
 
 				// Else, continue to do BFS
-				if (!visited[node]) {
-					visited[node] = true;
-					queue.add(node);
+				if (!visited[adjNode]) {
+					visited[adjNode] = true;
+					queue.add(adjNode);
 				}
 			}
 		}
-		// If BFS is complete without visited d
 		return false;
 	}
 
 	// Driver method
 	public static void main(String args[]) {
-		// Create a graph given in the above diagram
 		FindIfThereIsPathBetweenTwoVertices graph = new FindIfThereIsPathBetweenTwoVertices(4);
 		graph.addEdge(0, 1);
 		graph.addEdge(0, 2);
@@ -81,5 +76,4 @@ public class FindIfThereIsPathBetweenTwoVertices {
 		else
 			System.out.println("There is no path from " + source + " to " + destination);
 	}
-
 }

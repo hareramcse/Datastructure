@@ -1,25 +1,21 @@
 package com.hs.introduction;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class CountNodesOfBinaryTreeAtGivenLevel {
-
 	private int noOfVertices;
 	private Queue<Integer> adj[];
-	private boolean[] visited;
 
 	@SuppressWarnings("unchecked")
 	CountNodesOfBinaryTreeAtGivenLevel(int noOfVertices) {
 		this.noOfVertices = noOfVertices;
 		adj = new LinkedList[noOfVertices];
-		visited = new boolean[noOfVertices];
 		for (int i = 0; i < adj.length; i++) {
 			adj[i] = new LinkedList<>();
 		}
 	}
-	
+
 	// graph is non directed graph so we need to add src to dest and vice-versa
 	private void addEdge(int source, int destination) {
 		adj[source].add(destination);
@@ -27,7 +23,7 @@ public class CountNodesOfBinaryTreeAtGivenLevel {
 	}
 
 	private int BFS(int source, int givenLevel) {
-		int[] level = new int[noOfVertices];
+		boolean[] visited = new boolean[noOfVertices];
 
 		// Create a queue for BFS
 		Queue<Integer> queue = new LinkedList<>();
@@ -36,21 +32,20 @@ public class CountNodesOfBinaryTreeAtGivenLevel {
 		visited[source] = true;
 		queue.add(source);
 
+		int[] level = new int[noOfVertices];
 		level[source] = 0;
 		while (!queue.isEmpty()) {
 
 			// Dequeue a vertex from queue
 			source = queue.poll();
 
-			Iterator<Integer> it = adj[source].iterator();
 			// Get all adjacent vertices of the dequeued vertex source.
 			// If a adjacent has not been visited, then mark it visited and enqueue it
-			while (it.hasNext()) {
-				Integer currentAdjNode = it.next();
-				if (!visited[currentAdjNode]) {
-					visited[currentAdjNode] = true;
-					queue.add(currentAdjNode);
-					level[currentAdjNode] = level[source] + 1;
+			for (Integer adjNode : adj[source]) {
+				if (!visited[adjNode]) {
+					visited[adjNode] = true;
+					queue.add(adjNode);
+					level[adjNode] = level[source] + 1;
 				}
 			}
 		}
@@ -74,5 +69,4 @@ public class CountNodesOfBinaryTreeAtGivenLevel {
 		int level = 2;
 		System.out.print(graph.BFS(0, level));
 	}
-
 }

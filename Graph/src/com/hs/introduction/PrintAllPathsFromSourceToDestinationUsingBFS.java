@@ -13,7 +13,7 @@ public class PrintAllPathsFromSourceToDestinationUsingBFS {
 	PrintAllPathsFromSourceToDestinationUsingBFS(int noOfVertices) {
 		this.noOfVertices = noOfVertices;
 		adj = new LinkedList[noOfVertices];
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < noOfVertices; i++) {
 			adj[i] = new LinkedList<>();
 		}
 	}
@@ -24,7 +24,6 @@ public class PrintAllPathsFromSourceToDestinationUsingBFS {
 
 	// Utility function for finding paths in graph from source to destination
 	private void findPaths(int source, int destination) {
-
 		// Create a queue which stores the paths
 		Queue<List<Integer>> queue = new LinkedList<>();
 
@@ -43,10 +42,10 @@ public class PrintAllPathsFromSourceToDestinationUsingBFS {
 			}
 
 			// Traverse nodes connected to current vertex and push new path to queue
-			for (Integer currentAdjNode : adj[lastVertex]) {
-				if (!isPresentInPath(path, currentAdjNode)) {
+			for (Integer adjNode : adj[lastVertex]) {
+				if (!isPresentInPath(path, adjNode)) {
 					List<Integer> newPath = new ArrayList<>(path);
-					newPath.add(currentAdjNode);
+					newPath.add(adjNode);
 					queue.add(newPath);
 				}
 			}
@@ -54,9 +53,9 @@ public class PrintAllPathsFromSourceToDestinationUsingBFS {
 	}
 
 	// Utility function to check if current vertex is already present in path
-	private boolean isPresentInPath(List<Integer> path, int currentAdjNode) {
+	private boolean isPresentInPath(List<Integer> path, int adjNode) {
 		for (int i = 0; i < path.size(); i++)
-			if (path.get(i) == currentAdjNode)
+			if (path.get(i) == adjNode)
 				return true;
 
 		return false;
@@ -70,12 +69,8 @@ public class PrintAllPathsFromSourceToDestinationUsingBFS {
 		graph.addEdges(1, 3);
 		graph.addEdges(2, 0);
 		graph.addEdges(2, 1);
-
 		int source = 2, destination = 3;
 		System.out.println("path from source " + source + " to destination " + destination + " are ");
-
-		// Function for finding the paths
 		graph.findPaths(source, destination);
 	}
-
 }
