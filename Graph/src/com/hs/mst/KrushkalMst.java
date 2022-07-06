@@ -6,20 +6,18 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class KrushkalMst {
-
 	private int noOfVertices;
-	private int[] parent;
 	private List<Edge> edges;
-	private List<Edge> mst;
+	private int[] parent;
 
 	KrushkalMst(int noOfVertices) {
 		this.noOfVertices = noOfVertices;
+		// create `n` disjoint sets (one for each vertex)
 		parent = new int[noOfVertices];
 		for (int i = 0; i < noOfVertices; i++) {
 			parent[i] = i;
 		}
 		edges = new ArrayList<>();
-		mst = new ArrayList<>();
 	}
 
 	private void addEgde(int source, int destination, int weight) {
@@ -28,6 +26,7 @@ public class KrushkalMst {
 	}
 
 	private void kruskalMST() {
+		List<Edge> mst = new ArrayList<>();
 		Queue<Edge> pq = new PriorityQueue<>(edges.size());
 
 		// add all the edges to priority queue
@@ -36,68 +35,56 @@ public class KrushkalMst {
 		while (!pq.isEmpty()) {
 			Edge edge = pq.poll();
 			// check if adding this edge creates a cycle
-			int x = find(parent, edge.source);
-			int y = find(parent, edge.destination);
+			int x = find(edge.source);
+			int y = find(edge.destination);
 
 			// here parents are diff it means both belongs to diff sets
 			if (x != y) {
 				mst.add(edge);
-				union(parent, x, y);
+				union(x, y);
 			}
-
 		}
 		// print MST
 		System.out.println("Minimum Spanning Tree: ");
 		printGraph(mst);
 	}
 
-	private int find(int[] parent, int vertex) {
-		// chain of parent pointers from x upwards through the tree
-		// until an element is reached whose parent is itself
-		if (parent[vertex] != vertex)
-			return find(parent, parent[vertex]);
-		return vertex;
+	// Find the root of the set in which element `k` belongs
+	private int find(int k) {
+		// if `k` is root
+		if (parent[k] == k) {
+			return k;
+		}
+		// recur for the parent until we find the root
+		return find(parent[k]);
 	}
 
-	private void union(int[] parent, int x, int y) {
-		int x_parent = find(parent, x);
-		int y_parent = find(parent, y);
-		// make x as parent of y
-		parent[y_parent] = x_parent;
+	// Perform Union of two subsets
+	private void union(int a, int b) {
+		// find the root of the sets in which elements `x` and `y` belongs
+		int x = find(a);
+		int y = find(b);
+		parent[x] = y;
 	}
 
-	private void printGraph(List<Edge> result) {
+	private void printGraph(List<Edge> mst) {
 		int minimumCost = 0;
 		System.out.println("Edge \tWeight ");
-		for (int i = 0; i < result.size(); i++) {
-			Edge edge = result.get(i);
+		for (int i = 0; i < mst.size(); i++) {
+			Edge edge = mst.get(i);
 			System.out.println(edge.source + "->" + edge.destination + "\t" + edge.weight);
 			minimumCost = minimumCost + edge.weight;
 		}
 		System.out.println("Minimum cost is " + minimumCost);
 	}
 
-	// Driver Code
 	public static void main(String[] args) {
 		KrushkalMst graph = new KrushkalMst(4);
-
-		// add edge 0-1
 		graph.addEgde(0, 1, 10);
-
-		// add edge 0-2
 		graph.addEgde(0, 2, 6);
-
-		// add edge 0-3
 		graph.addEgde(0, 3, 5);
-
-		// add edge 1-3
 		graph.addEgde(1, 3, 15);
-
-		// add edge 2-3
 		graph.addEgde(2, 3, 4);
-
-		// Function call
 		graph.kruskalMST();
 	}
-
 }
