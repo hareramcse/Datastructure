@@ -1,4 +1,4 @@
-package com.hs.checkandprint;
+package com.hs.misc;
 
 class RightViewOfBinaryTree {
 

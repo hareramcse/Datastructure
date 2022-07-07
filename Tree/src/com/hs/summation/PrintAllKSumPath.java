@@ -1,4 +1,4 @@
-package com.hs.summation.hard;
+package com.hs.summation;
 
 import java.util.Stack;
 import java.util.Vector;

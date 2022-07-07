@@ -1,11 +1,11 @@
-package com.hs.checkandprint;
+package com.hs.misc;
 
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
 import java.util.TreeMap;
 
-class PrintTopViewOfBinaryTree {
+class TopViewOfBinaryTree {
 
 	public void topView(Node node) {
 		if (node == null) {
@@ -40,7 +40,7 @@ class PrintTopViewOfBinaryTree {
 
 	// Driver Program to test above functions
 	public static void main(String[] args) {
-		PrintTopViewOfBinaryTree tree = new PrintTopViewOfBinaryTree();
+		TopViewOfBinaryTree tree = new TopViewOfBinaryTree();
 		Node root = new Node(1);
 		root.left = new Node(2);
 		root.right = new Node(3);

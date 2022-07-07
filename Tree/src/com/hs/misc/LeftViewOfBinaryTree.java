@@ -1,4 +1,4 @@
-package com.hs.checkandprint;
+package com.hs.misc;
 
 /*
  * The left view contains all nodes that are first nodes in their levels. A simple 
