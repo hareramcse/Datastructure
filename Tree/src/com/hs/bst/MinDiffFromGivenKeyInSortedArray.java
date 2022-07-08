@@ -7,6 +7,7 @@ public class MinDiffFromGivenKeyInSortedArray {
 		int res = -1;
 		while (low <= high) {
 			int mid = low + (high - low) / 2;
+			// if key is present it means this element only will give min diff
 			if (key == arr[mid]) {
 				res = arr[mid];
 				return arr[mid];

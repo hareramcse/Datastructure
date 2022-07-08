@@ -1,9 +1,8 @@
 package com.hs.bst;
 
+// 235. Lowest Common Ancestor of a Binary Search Tree Leetcode
 public class CommonAncestorInBST {
-
-	// Function to find LCA of n1 and n2. The function assumes that both n1 and n2
-	// are present in BST
+	// Function to find LCA of n1 and n2.
 	private Node lca(Node root, int n1, int n2) {
 		if (root == null)
 			return null;
@@ -43,6 +42,5 @@ public class CommonAncestorInBST {
 		n2 = 22;
 		t = tree.lca(root, n1, n2);
 		System.out.println("LCA of " + n1 + " and " + n2 + " is " + t.data);
-
 	}
 }

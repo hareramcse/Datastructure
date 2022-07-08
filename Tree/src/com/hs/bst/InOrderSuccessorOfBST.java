@@ -1,35 +1,23 @@
 package com.hs.bst;
 
+// 285. Inorder successor in BST Leetcode
 public class InOrderSuccessorOfBST {
 
 	private Node inOrderSuccessor(Node root, Node k) {
-		// step 1 of the above algorithm
-		if (k.right != null)
-			return findMinNode(k.right);
-
-		Node successor = null;
-
-		// Start from root and search for successor down the tree
-		while (root != null) {
-			if (k.data < root.data) {
-				successor = root;
-				root = root.left;
-			} else if (k.data > root.data)
-				root = root.right;
-			else
-				break;
-		}
-
-		return successor;
-	}
-
-	private Node findMinNode(Node root) {
 		if (root == null)
-			return root;
-		while (root.left != null) {
-			root = root.left;
+			return null;
+
+		Node current = root;
+		Node prev = null;
+		while (current != null) {
+			if (current.data > k.data) {
+				prev = current;
+				current = current.left;
+			} else {
+				current = current.right;
+			}
 		}
-		return root;
+		return prev;
 	}
 
 	public static void main(String[] args) {

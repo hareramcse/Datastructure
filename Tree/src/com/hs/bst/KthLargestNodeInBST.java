@@ -1,30 +1,29 @@
 package com.hs.bst;
 
+// 230. Kth Smallest Element in a BST Leetcode
 public class KthLargestNodeInBST {
 
 	private int count = 0;
 
-	private void kthLargest(Node node, int k) {
-		// Base cases, the second condition is important to
-		// avoid unnecessary recursive calls
-		if (node == null)
-			return;
+	private Node kthLargest(Node root, int k) {
+		if (root == null)
+			return null;
 
-		// Follow reverse inorder traversal so that the
-		// largest element is visited first
-		this.kthLargest(node.right, k);
+		// reverse inorder traversal so that largest element is visited first
+		Node right = kthLargest(root.right, k);
+		if(right != null) {
+			return right;
+		}
 
 		// Increment count of visited nodes
 		count++;
 
-		// If c becomes k now, then this is the k'th largest
+		// If count becomes k now, then this is the k'th largest
 		if (count == k) {
-			System.out.println(k + "th largest element is " + node.data);
-			return;
+			return root;
 		}
 
-		// Recur for left subtree
-		this.kthLargest(node.left, k);
+		return kthLargest(root.left, k);
 	}
 
 	public static void main(String[] args) {
@@ -38,6 +37,7 @@ public class KthLargestNodeInBST {
 		root.right.left = new Node(60);
 		root.right.right = new Node(80);
 
-		tree.kthLargest(root, 4);
+		Node kthNode = tree.kthLargest(root, 4);
+		System.out.println("4th largest node is: " + kthNode.data);
 	}
 }

@@ -1,5 +1,6 @@
 package com.hs.bst;
 
+// Nearly sorted array means the element which should have present at ith index is presnt at (i-1)th or ith or (i+1)th index
 public class NearlySortedArraySearch {
 	private int binarySearch(int arr[], int low, int high, int value) {
 		if (high >= low) {
@@ -14,10 +15,14 @@ public class NearlySortedArraySearch {
 				return (mid + 1);
 
 			// If element is smaller than mid, then it can only be present in left subarray
+			// we have already searched in mid - 1 index in above steps. so will check it
+			// from mid - 2 index
 			if (arr[mid] > value)
 				return binarySearch(arr, low, mid - 2, value);
 
 			// Else the element can only be present in right subarray
+			// we have already searched in mid - 1 index in above steps. so will check it
+			// from mid + 2 index
 			return binarySearch(arr, mid + 2, high, value);
 		}
 

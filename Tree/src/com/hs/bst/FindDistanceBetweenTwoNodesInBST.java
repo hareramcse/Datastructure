@@ -15,16 +15,15 @@ public class FindDistanceBetweenTwoNodesInBST {
 		if (root == null)
 			return 0;
 
-		// Both keys lie in left
+		// Both keys lies in left
 		if (root.data > a && root.data > b)
 			return distanceBetweenTwoNodes(root.left, a, b);
 
-		// Both keys lie in right
-		if (root.data < a && root.data < b) // same path
+		// Both keys lies in right
+		if (root.data < a && root.data < b)
 			return distanceBetweenTwoNodes(root.right, a, b);
 
-		// Lie in opposite directions (Root is
-		// LCA of two nodes)
+		// Lies in opposite directions (Root is LCA of two nodes)
 		if (root.data >= a && root.data <= b)
 			return distanceFromRoot(root, a) + distanceFromRoot(root, b);
 
