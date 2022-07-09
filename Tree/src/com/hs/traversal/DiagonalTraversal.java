@@ -4,8 +4,23 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 public class DiagonalTraversal {
+
+	// Print diagonal traversal of given binary tree
+	private List<List<Integer>> diagonalPrint(Node root) {
+		// create a map of list to store Diagonal elements
+		Map<Integer, List<Integer>> map = new HashMap<>();
+		printDiagonal(root, map, 0);
+
+		System.out.println("Diagonal Traversal of Binnary Tree");
+		List<List<Integer>> list = new ArrayList<>();
+		for (Entry<Integer, List<Integer>> entrySet : map.entrySet()) {
+			list.add(entrySet.getValue());
+		}
+		return list;
+	}
 
 	// root - root of the binary tree
 	// d - distance of current line from rightmost topmost slope.
@@ -38,16 +53,6 @@ public class DiagonalTraversal {
 		printDiagonal(root.right, map, d);
 	}
 
-	// Print diagonal traversal of given binary tree
-	private void diagonalPrint(Node root) {
-		// create a map of list to store Diagonal elements
-		Map<Integer, List<Integer>> map = new HashMap<>();
-		printDiagonal(root, map, 0);
-
-		System.out.println("Diagonal Traversal of Binnary Tree");
-		System.out.println(map.values());
-	}
-
 	// Driver program
 	public static void main(String[] args) {
 		DiagonalTraversal tree = new DiagonalTraversal();
@@ -61,6 +66,7 @@ public class DiagonalTraversal {
 		root.left.right.left = new Node(4);
 		root.left.right.right = new Node(7);
 
-		tree.diagonalPrint(root);
+		List<List<Integer>> list = tree.diagonalPrint(root);
+		System.out.println(list);
 	}
 }
