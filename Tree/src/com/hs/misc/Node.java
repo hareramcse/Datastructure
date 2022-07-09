@@ -1,12 +1,12 @@
 package com.hs.misc;
 
 public class Node {
-	int data, height;
-	Node left, right, next, nextRight;
+	public int data;
+	public Node left, right;
 
 	public Node(int item) {
 		data = item;
-		left = right = next = nextRight = null;
+		left = right = null;
 	}
 
 	public void setLeft(Node left) {

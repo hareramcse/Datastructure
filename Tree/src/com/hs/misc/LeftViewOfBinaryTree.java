@@ -1,27 +1,40 @@
 package com.hs.misc;
 
-/*
- * The left view contains all nodes that are first nodes in their levels. A simple 
- * solution is to do level order traversal and print the first node in every level.
- * */
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
+// do level order traversal and print the first node in every level
 class LeftViewOfBinaryTree {
-	private int max_level;
-
-	// recursive function to print left view
-	private void leftView(Node root, int level) {
-		// Base Case
+	private List<Integer> leftView(Node root) {
+		List<Integer> list = new ArrayList<>();
 		if (root == null)
-			return;
+			return list;
 
-		// If this is the first node of its level
-		if (max_level < level) {
-			System.out.print(" " + root.data);
-			max_level = level;
+		Queue<Node> queue = new LinkedList<>();
+		queue.add(root);
+
+		while (!queue.isEmpty()) {
+			int level = queue.size();
+			for (int i = 0; i < level; i++) {
+				Node tempNode = queue.poll();
+				if (i == 0) {
+					list.add(tempNode.data);
+				}
+
+				/* Enqueue left child */
+				if (tempNode.left != null) {
+					queue.add(tempNode.left);
+				}
+
+				/* Enqueue right child */
+				if (tempNode.right != null) {
+					queue.add(tempNode.right);
+				}
+			}
 		}
-
-		// Recur for left and right subtrees
-		leftView(root.left, level + 1);
-		leftView(root.right, level + 1);
+		return list;
 	}
 
 	/* testing for example nodes */
@@ -34,6 +47,7 @@ class LeftViewOfBinaryTree {
 		root.right.left = new Node(25);
 		root.right.right = new Node(40);
 
-		tree.leftView(root, 1);
+		List<Integer> list = tree.leftView(root);
+		System.out.println(list);
 	}
 }

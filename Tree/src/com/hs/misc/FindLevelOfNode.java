@@ -12,12 +12,11 @@ public class FindLevelOfNode {
 		if (root.data == data)
 			return level;
 
-		int downLevel = getLevelUtil(root.left, data, level + 1);
-		if (downLevel != 0)
-			return downLevel;
+		int leftLevel = getLevelUtil(root.left, data, level + 1);
+		if (leftLevel != 0)
+			return leftLevel;
 
-		downLevel = getLevelUtil(root.right, data, level + 1);
-		return downLevel;
+		return getLevelUtil(root.right, data, level + 1);
 	}
 
 	public static void main(String[] args) {

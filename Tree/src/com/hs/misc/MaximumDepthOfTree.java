@@ -1,26 +1,23 @@
 package com.hs.misc;
 
-/*
- * the number of nodes along the longest path from the root node down to the farthest leaf node.*/
+// number of nodes along the longest path from the root node down to the farthest leaf node.
 class MaximumDepthOfTree {
 
-	private int maxDepth(Node node) {
-		if (node == null)
+	public int maxDepth(Node root) {
+		if (root == null)
 			return 0;
 
-		/* compute the depth of each subtree */
-		int lDepth = maxDepth(node.left);
-		int rDepth = maxDepth(node.right);
+		int lDepth = maxDepth(root.left);
+		int rDepth = maxDepth(root.right);
 
-		/* use the larger one */
+		// use the larger one
 		if (lDepth > rDepth)
-			return (lDepth + 1);
+			return lDepth + 1;
 		else
-			return (rDepth + 1);
-
+			return rDepth + 1;
 	}
 
-	/* Driver program to test above functions */
+	// Driver program to test above functions
 	public static void main(String[] args) {
 		MaximumDepthOfTree tree = new MaximumDepthOfTree();
 

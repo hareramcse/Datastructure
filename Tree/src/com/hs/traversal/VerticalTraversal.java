@@ -14,7 +14,6 @@ public class VerticalTraversal {
 
 		List<List<Integer>> list = new ArrayList<>();
 		for (Entry<Integer, List<Integer>> entry : map.entrySet()) {
-			System.out.println(entry.getValue());
 			list.add(entry.getValue());
 		}
 		return list;
@@ -49,6 +48,7 @@ public class VerticalTraversal {
 		root.right.left.right = new Node(8);
 		root.right.right.right = new Node(9);
 
-		tree.verticalTraversal(root);
+		List<List<Integer>> list = tree.verticalTraversal(root);
+		System.out.println(list);
 	}
 }

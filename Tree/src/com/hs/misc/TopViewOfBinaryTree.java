@@ -1,41 +1,43 @@
 package com.hs.misc;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 import java.util.TreeMap;
 
 class TopViewOfBinaryTree {
 
-	public void topView(Node node) {
-		if (node == null) {
-			return;
-		}
-
-		Map<Integer, Integer> m = new TreeMap<Integer, Integer>();
-
-		Queue<Node> q = new LinkedList<Node>();
-		q.add(node);
-
-		while (!q.isEmpty()) {
-			Node temp = q.remove();
-			int hd = temp.height;
-
-			if (m.get(hd) == null) {
-				m.put(hd, temp.data);
+	public List<Integer> topView(Node root) {
+		List<Integer> ans = new ArrayList<>();
+		if (root == null)
+			return ans;
+		
+		Map<Integer, Integer> map = new TreeMap<>();
+		Queue<Pair> queue = new LinkedList<Pair>();
+		queue.add(new Pair(root, 0));
+		while (!queue.isEmpty()) {
+			Pair pair = queue.poll();
+			int hd = pair.hd;
+			Node tempNode = pair.node;
+			if (map.get(hd) == null) {
+				map.put(hd, tempNode.data);
 			}
-
-			if (temp.left != null) {
-				temp.left.height = hd - 1;
-				q.add(temp.left);
+				
+			if (tempNode.left != null) {
+				queue.add(new Pair(tempNode.left, hd - 1));
 			}
-
-			if (temp.right != null) {
-				temp.right.height = hd + 1;
-				q.add(temp.right);
+			
+			if (tempNode.right != null) {
+				queue.add(new Pair(tempNode.right, hd + 1));
 			}
 		}
-		System.out.println(m.values());
+
+		for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+			ans.add(entry.getValue());
+		}
+		return ans;
 	}
 
 	// Driver Program to test above functions
@@ -48,6 +50,7 @@ class TopViewOfBinaryTree {
 		root.left.right.right = new Node(5);
 		root.left.right.right.right = new Node(6);
 		System.out.println("Following are nodes in top view of Binary Tree");
-		tree.topView(root);
+		List<Integer> list = tree.topView(root);
+		System.out.println(list);
 	}
 }

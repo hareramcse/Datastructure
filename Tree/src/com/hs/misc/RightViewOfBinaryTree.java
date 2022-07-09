@@ -1,25 +1,40 @@
 package com.hs.misc;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 class RightViewOfBinaryTree {
 
-	private int max_level;
-
-	// Recursive function to print right view of a binary
-	private void rightView(Node root, int level) {
-
-		// Base Case
+	private List<Integer> rightView(Node root) {
+		List<Integer> list = new ArrayList<>();
 		if (root == null)
-			return;
+			return list;
 
-		// If this is the last Node of its level
-		if (max_level < level) {
-			System.out.print(root.data + " ");
-			max_level = level;
+		Queue<Node> queue = new LinkedList<>();
+		queue.add(root);
+
+		while (!queue.isEmpty()) {
+			int level = queue.size();
+			for (int i = 0; i < level; i++) {
+				Node tempNode = queue.poll();
+				if (i == 0) {
+					list.add(tempNode.data);
+				}
+
+				/* Enqueue right child */
+				if (tempNode.right != null) {
+					queue.add(tempNode.right);
+				}
+
+				/* Enqueue left child */
+				if (tempNode.left != null) {
+					queue.add(tempNode.left);
+				}
+			}
 		}
-
-		// Recur for right subtree first, then left subtree
-		rightView(root.right, level + 1);
-		rightView(root.left, level + 1);
+		return list;
 	}
 
 	// Driver program to test the above functions
@@ -34,7 +49,7 @@ class RightViewOfBinaryTree {
 		root.right.right = new Node(7);
 		root.right.left.right = new Node(8);
 
-		tree.rightView(root, 1);
-
+		List<Integer> list = tree.rightView(root);
+		System.out.println(list);
 	}
 }

@@ -1,39 +1,46 @@
 package com.hs.misc;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 import java.util.TreeMap;
 
+
+// The logic for top view and bottom view is exactly same. 
+// Just use map.putIfAbsent(line,node.val) for Top view and map.put(line,node.val) for Bottom view. 
+// In top view we put on the map only once because all other nodes on lower level are hidden. 
+// In bottom view we replace because we got another node on lower node that hides the upper node.
 public class BottomViewOfBinaryTree {
 
-	public void printBottomView(Node root) {
-		if (root == null) {
-			return;
-		}
-
-		Map<Integer, Integer> m = new TreeMap<Integer, Integer>();
-
-		Queue<Node> q = new LinkedList<Node>();
-		q.add(root);
-
-		while (!q.isEmpty()) {
-			Node temp = q.remove();
-			int hd = temp.height;
-
-			m.put(hd, temp.data);
-
-			if (temp.left != null) {
-				temp.left.height = hd - 1;
-				q.add(temp.left);
+	public List<Integer> printBottomView(Node root) {
+		List<Integer> ans = new ArrayList<>();
+		if (root == null)
+			return ans;
+		
+		Map<Integer, Integer> map = new TreeMap<>();
+		Queue<Pair> queue = new LinkedList<Pair>();
+		queue.add(new Pair(root, 0));
+		while (!queue.isEmpty()) {
+			Pair pair = queue.poll();
+			int hd = pair.hd;
+			Node tempNode = pair.node;
+			map.put(hd, tempNode.data);
+				
+			if (tempNode.left != null) {
+				queue.add(new Pair(tempNode.left, hd - 1));
 			}
-
-			if (temp.right != null) {
-				temp.right.height = hd + 1;
-				q.add(temp.right);
+			
+			if (tempNode.right != null) {
+				queue.add(new Pair(tempNode.right, hd + 1));
 			}
 		}
-		System.out.println(m.values());
+
+		for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+			ans.add(entry.getValue());
+		}
+		return ans;
 	}
 
 	public static void main(String[] args) {
@@ -47,6 +54,7 @@ public class BottomViewOfBinaryTree {
 		root.right.right = new Node(25);
 		root.left.right.left = new Node(10);
 		root.left.right.right = new Node(14);
-		tree.printBottomView(root);
+		List<Integer> list = tree.printBottomView(root);
+		System.out.println(list);
 	}
 }
