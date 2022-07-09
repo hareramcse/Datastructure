@@ -4,10 +4,10 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
-class ReverseLevelTraversal {
+class ReverseLevelOrderTraversal {
 
-	/* Given a binary tree, print its nodes in reverse level order */
-	private void reverseLevelOrder(Node root) {
+	// Given a binary tree, print its nodes in reverse level order
+	public void reverseLevelOrderTraversal(Node root) {
 		Stack<Node> stack = new Stack<Node>();
 		Queue<Node> queue = new LinkedList<Node>();
 		queue.add(root);
@@ -17,16 +17,16 @@ class ReverseLevelTraversal {
 		// 1) Instead of printing a node, we push the node to stack
 		// 2) Right subtree is visited before left subtree
 		while (!queue.isEmpty()) {
-			/* Dequeue node and make it root */
+			// Dequeue node and make it root
 			Node temp = queue.poll();
 			stack.push(temp);
 
-			/* Enqueue right child */
+			// NOTE: RIGHT CHILD IS ENQUEUED BEFORE LEFT
+			// Enqueue right child
 			if (temp.right != null)
-				// NOTE: RIGHT CHILD IS ENQUEUED BEFORE LEFT
 				queue.add(temp.right);
 
-			/* Enqueue left child */
+			// Enqueue left child
 			if (temp.left != null)
 				queue.add(temp.left);
 		}
@@ -40,7 +40,7 @@ class ReverseLevelTraversal {
 
 	// Driver program to test above functions
 	public static void main(String args[]) {
-		ReverseLevelTraversal tree = new ReverseLevelTraversal();
+		ReverseLevelOrderTraversal tree = new ReverseLevelOrderTraversal();
 
 		// Let us create trees shown in above diagram
 		Node root = new Node(1);
@@ -52,7 +52,6 @@ class ReverseLevelTraversal {
 		root.right.right = new Node(7);
 
 		System.out.println("Level Order traversal of binary tree is :");
-		tree.reverseLevelOrder(root);
-
+		tree.reverseLevelOrderTraversal(root);
 	}
 }

@@ -3,12 +3,12 @@ package com.hs.traversal;
 class LevelOrderTraversalInSpiralForm {
 
 	// Function to print the spiral traversal of tree
-	private void printSpiral(Node root) {
+	public void printSpiral(Node root) {
 		int h = height(root);
 
 		/*
 		 * ltr -> left to right. If this variable is set then the given label is
-		 * transversed from left to right
+		 * traversed from left to right
 		 */
 		boolean ltr = false;
 		for (int i = 1; i <= h; i++) {
@@ -17,28 +17,25 @@ class LevelOrderTraversalInSpiralForm {
 			/* Revert ltr to traverse next level in opposite order */
 			ltr = !ltr;
 		}
-
 	}
 
 	private int height(Node root) {
 		if (root == null)
 			return 0;
-		else {
+		
+		/* compute height of each subtree */
+		int lHeight = height(root.left);
+		int rHeight = height(root.right);
 
-			/* compute the height of each subtree */
-			int lheight = height(root.left);
-			int rheight = height(root.right);
-
-			/* use the larger one */
-			if (lheight > rheight)
-				return (lheight + 1);
-			else
-				return (rheight + 1);
-		}
+		/* use the larger one */
+		if (lHeight > rHeight)
+			return lHeight + 1;
+		else
+			return rHeight + 1;
 	}
 
 	/* Print nodes at a given level */
-	void printGivenLevel(Node root, int level, boolean ltr) {
+	private void printGivenLevel(Node root, int level, boolean ltr) {
 		if (root == null)
 			return;
 		if (level == 1)

@@ -5,7 +5,7 @@ import java.util.Queue;
 
 class LevelOrderTraversal2 {
 
-	private void printLevelOrder(Node root) {
+	public void levelOrderTraversal(Node root) {
 		Queue<Node> queue = new LinkedList<Node>();
 		queue.add(root);
 		while (!queue.isEmpty()) {
@@ -25,7 +25,7 @@ class LevelOrderTraversal2 {
 	}
 
 	public static void main(String args[]) {
-		LevelOrderTraversal2 tree_level = new LevelOrderTraversal2();
+		LevelOrderTraversal2 tree = new LevelOrderTraversal2();
 		Node root = new Node(1);
 		root.left = new Node(2);
 		root.right = new Node(3);
@@ -33,6 +33,6 @@ class LevelOrderTraversal2 {
 		root.left.right = new Node(5);
 
 		System.out.println("Level order traversal of binary tree is:");
-		tree_level.printLevelOrder(root);
+		tree.levelOrderTraversal(root);
 	}
 }

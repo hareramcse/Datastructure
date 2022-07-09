@@ -8,10 +8,19 @@ import java.util.TreeMap;
 
 public class VerticalTraversal {
 
-	private void printVerticalUtil(Node root, Map<Integer, List<Integer>> map, int d) {
+	public void verticalTraversal(Node root) {
+		Map<Integer, List<Integer>> map = new TreeMap<>();
+		verticalTraversalUtil(root, map, 0);
+
+		for (Entry<Integer, List<Integer>> entry : map.entrySet()) {
+			System.out.println(entry.getValue());
+		}
+	}
+
+	private void verticalTraversalUtil(Node root, Map<Integer, List<Integer>> map, int d) {
 		if (root == null)
 			return;
-		
+
 		List<Integer> list = map.get(d);
 		if (list == null) {
 			list = new ArrayList<Integer>();
@@ -19,20 +28,11 @@ public class VerticalTraversal {
 		} else {
 			list.add(root.data);
 		}
-		
+
 		map.put(d, list);
-		
-		printVerticalUtil(root.left, map, d - 1);
-		printVerticalUtil(root.right, map, d + 1);
-	}
 
-	private void printVertical(Node root) {
-		Map<Integer, List<Integer>> map = new TreeMap<>();
-		printVerticalUtil(root, map, 0);
-
-		for (Entry<Integer, List<Integer>> entry : map.entrySet()) {
-			System.out.println(entry.getValue());
-		}
+		verticalTraversalUtil(root.left, map, d - 1);
+		verticalTraversalUtil(root.right, map, d + 1);
 	}
 
 	public static void main(String[] args) {
@@ -47,6 +47,6 @@ public class VerticalTraversal {
 		root.right.left.right = new Node(8);
 		root.right.right.right = new Node(9);
 
-		tree.printVertical(root);
+		tree.verticalTraversal(root);
 	}
 }

@@ -2,49 +2,8 @@ package com.hs.traversal;
 
 class BoundryTraversal {
 
-	// A simple function to print leaf nodes of a binary tree
-	private void printLeaves(Node root) {
-		if (root == null) {
-			return;
-		}
-		printLeaves(root.left);
-		if (root.left == null && root.right == null) {
-			System.out.print(root.data + " ");
-		}
-		printLeaves(root.right);
-	}
-
-	// A function to print all left boundary nodes, except a leaf node.
-	// Print the nodes in TOP DOWN manner
-	private void printBoundaryLeft(Node root) {
-		if (root == null) {
-			return;
-		}
-		if (root.left != null) {
-			// to ensure top down order, print the node before calling itself for left
-			// subtree
-			System.out.print(root.data + " ");
-			printBoundaryLeft(root.left);
-		}
-
-	}
-
-	// A function to print all right boundary nodes, except a leaf node
-	// Print the nodes in BOTTOM UP manner
-	private void printBoundaryRight(Node root) {
-		if (root == null) {
-			return;
-		}
-		if (root.right != null) {
-			// to ensure bottom up order, first call for right subtree, then print this node
-			printBoundaryRight(root.right);
-			System.out.print(root.data + " ");
-		}
-
-	}
-
 	// A function to do boundary traversal of a given binary tree
-	private void printBoundary(Node root) {
+	public void printBoundary(Node root) {
 		if (root == null) {
 			return;
 		}
@@ -59,7 +18,45 @@ class BoundryTraversal {
 
 		// Print the right boundary in bottom-up manner
 		printBoundaryRight(root.right);
-	
+	}
+
+	// A function to print all left boundary nodes, except a leaf node.
+	// Print the nodes in TOP DOWN manner
+	private void printBoundaryLeft(Node root) {
+		if (root == null) {
+			return;
+		}
+		if (root.left != null) {
+			// to ensure top down order, print the node before calling itself for left
+			// subtree
+			System.out.print(root.data + " ");
+			printBoundaryLeft(root.left);
+		}
+	}
+
+	// A simple function to print leaf nodes of a binary tree
+	private void printLeaves(Node root) {
+		if (root == null) {
+			return;
+		}
+		printLeaves(root.left);
+		if (root.left == null && root.right == null) {
+			System.out.print(root.data + " ");
+		}
+		printLeaves(root.right);
+	}
+
+	// A function to print all right boundary nodes, except a leaf node
+	// Print the nodes in BOTTOM UP manner
+	private void printBoundaryRight(Node root) {
+		if (root == null) {
+			return;
+		}
+		if (root.right != null) {
+			// to ensure bottom up order, first call for right subtree, then print this node
+			printBoundaryRight(root.right);
+			System.out.print(root.data + " ");
+		}
 	}
 
 	// Driver program to test above functions

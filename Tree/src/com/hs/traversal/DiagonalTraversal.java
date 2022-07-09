@@ -1,18 +1,16 @@
 package com.hs.traversal;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Vector;
 
 public class DiagonalTraversal {
 
-	/*
-	 * root - root of the binary tree 
-	 * d - distance of current line from rightmost topmost slope. 
-	 * diagonalPrint - HashMap to store Diagonal elements (Passed by Reference)
-	 */
-	private static void printDiagonal(Node root, Map<Integer, List<Integer>> map, int d) {
+	// root - root of the binary tree
+	// d - distance of current line from rightmost topmost slope.
+	// diagonalPrint - Map to store Diagonal elements
+	public void printDiagonal(Node root, Map<Integer, List<Integer>> map, int d) {
 
 		// Base case
 		if (root == null)
@@ -21,9 +19,10 @@ public class DiagonalTraversal {
 		// get the list at the particular d value
 		List<Integer> list = map.get(d);
 
-		// if list is null then create a list else update the list and store the data 
+		// if list is null then create a list and add data into it
+		// else add the data into existing list
 		if (list == null) {
-			list = new Vector<>();
+			list = new ArrayList<>();
 			list.add(root.data);
 		} else {
 			list.add(root.data);
@@ -40,7 +39,7 @@ public class DiagonalTraversal {
 	}
 
 	// Print diagonal traversal of given binary tree
-	private static void diagonalPrint(Node root) {
+	private void diagonalPrint(Node root) {
 		// create a map of list to store Diagonal elements
 		Map<Integer, List<Integer>> map = new HashMap<>();
 		printDiagonal(root, map, 0);
@@ -51,7 +50,7 @@ public class DiagonalTraversal {
 
 	// Driver program
 	public static void main(String[] args) {
-
+		DiagonalTraversal tree = new DiagonalTraversal();
 		Node root = new Node(8);
 		root.left = new Node(3);
 		root.right = new Node(10);
@@ -62,6 +61,6 @@ public class DiagonalTraversal {
 		root.left.right.left = new Node(4);
 		root.left.right.right = new Node(7);
 
-		diagonalPrint(root);
+		tree.diagonalPrint(root);
 	}
 }

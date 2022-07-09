@@ -3,7 +3,7 @@ package com.hs.traversal;
 public class BinaryTreeTraversal {
 
 	 // Given a binary tree, print its nodes according to the "bottom-up" postorder traversal.
-	private void printPostorder(Node root) {
+	public void printPostorder(Node root) {
 		if (root == null)
 			return;
 

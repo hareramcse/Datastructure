@@ -3,11 +3,11 @@ package com.hs.traversal;
 class LevelOrderTraversal1 {
 
 	/* function to print level order traversal of tree */
-	private void printLevelOrder(Node root) {
+	public void levelOrderTraversal(Node root) {
 		int h = height(root);
 		for (int i = 1; i <= h; i++) {
 			printGivenLevel(root, i);
-			
+
 			// add bellow line to print the data line by line
 			System.out.println();
 		}
@@ -16,17 +16,16 @@ class LevelOrderTraversal1 {
 	private int height(Node root) {
 		if (root == null)
 			return 0;
-		else {
-			/* compute height of each subtree */
-			int lHeight = height(root.left);
-			int rHeight = height(root.right);
+		
+		/* compute height of each subtree */
+		int lHeight = height(root.left);
+		int rHeight = height(root.right);
 
-			/* use the larger one */
-			if (lHeight > rHeight)
-				return (lHeight + 1);
-			else
-				return (rHeight + 1);
-		}
+		/* use the larger one */
+		if (lHeight > rHeight)
+			return lHeight + 1;
+		else
+			return rHeight + 1;
 	}
 
 	/* Print nodes at the given level */
@@ -51,6 +50,6 @@ class LevelOrderTraversal1 {
 		root.left.right = new Node(5);
 
 		System.out.println("Level order traversal of binary tree is ");
-		tree.printLevelOrder(root);
+		tree.levelOrderTraversal(root);
 	}
 }

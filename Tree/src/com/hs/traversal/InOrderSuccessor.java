@@ -15,13 +15,13 @@ public class InOrderSuccessor {
 	}
 
 	// do the reverse inorder traversal
-	private void inOrderSuccessorOfBinaryTree(Node root, PreviousNode pre, int searchNode) {
+	public void inOrderSuccessor(Node root, PreviousNode pre, int searchNode) {
 		if (root == null)
 			return;
 
 		// Case1: If right child is not NULL
 		if (root.right != null)
-			inOrderSuccessorOfBinaryTree(root.right, pre, searchNode);
+			inOrderSuccessor(root.right, pre, searchNode);
 
 		// Case2: If root data is equal to search node
 		if (root.data == searchNode)
@@ -31,7 +31,7 @@ public class InOrderSuccessor {
 		pre.previous = root;
 
 		if (root.left != null)
-			inOrderSuccessorOfBinaryTree(root.left, pre, searchNode);
+			inOrderSuccessor(root.left, pre, searchNode);
 	}
 
 	// Given a binary tree, print its nodes in inorder
@@ -39,13 +39,8 @@ public class InOrderSuccessor {
 		if (root == null)
 			return;
 
-		/* first recur on left child */
 		printInorder(root.left);
-
-		/* then print the data of node */
 		System.out.print(root.data + " ");
-
-		/* now recur on right child */
 		printInorder(root.right);
 	}
 
@@ -65,15 +60,15 @@ public class InOrderSuccessor {
 		System.out.println();
 
 		// Case 1
-		tree.inOrderSuccessorOfBinaryTree(root, new PreviousNode(), 3);
+		tree.inOrderSuccessor(root, new PreviousNode(), 3);
 
 		// Case 2
-		tree.inOrderSuccessorOfBinaryTree(root, new PreviousNode(), 4);
+		tree.inOrderSuccessor(root, new PreviousNode(), 4);
 
 		// Case 3
-		tree.inOrderSuccessorOfBinaryTree(root, new PreviousNode(), 6);
+		tree.inOrderSuccessor(root, new PreviousNode(), 6);
 
 		// Case 4
-		tree.inOrderSuccessorOfBinaryTree(root, new PreviousNode(), 5);
+		tree.inOrderSuccessor(root, new PreviousNode(), 5);
 	}
 }
