@@ -21,6 +21,8 @@ public class MinDiffFromGivenKeyInSortedArray {
 		if (res != -1) {
 			return res;
 		} else {
+			// if key is not present in the arr then low and high will be the neighbors of
+			// the key. 
 			return Math.min(Math.abs(arr[low] - key), Math.abs(arr[high] - key));
 		}
 	}

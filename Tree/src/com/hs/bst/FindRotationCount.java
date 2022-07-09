@@ -16,9 +16,11 @@ public class FindRotationCount {
 		int prev = (mid - 1 + n) % n;
 		int next = (mid + 1) % n;
 
+		// we will always get the min element in unsorted half.
 		if (arr[mid] < arr[prev] && arr[mid] < arr[next]) {
 			return mid;
-		} else if (arr[mid] < arr[high]) {
+		} else if (arr[mid] < arr[high]) { // it means mid to high part is sorted
+			// and low to mid-1 part is unsorted. so high will be mid-1
 			return rotationCount(arr, low, mid - 1);
 		} else {
 			return rotationCount(arr, mid + 1, high);

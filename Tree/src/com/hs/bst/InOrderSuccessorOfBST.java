@@ -29,9 +29,7 @@ public class InOrderSuccessorOfBST {
 		root.right = new Node(70);
 		root.right.left = new Node(60);
 		root.right.right = new Node(80);
-
 		Node temp = root.left.right;
-
 		System.out.println(tree.inOrderSuccessor(root, temp).data);
 	}
 }

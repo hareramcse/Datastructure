@@ -2,32 +2,23 @@ package com.hs.bst;
 
 public class FindDistanceBetweenTwoNodesInBST {
 	private int findDistanceBetweenTwoNodes(Node root, int a, int b) {
-		int temp = 0;
-		if (a > b) {
-			temp = a;
-			a = b;
-			b = temp;
-		}
-		return distanceBetweenTwoNodes(root, a, b);
+		Node lca = lca(root, a, b);
+		int d1 = distanceFromRoot(lca, a);
+		int d2 = distanceFromRoot(lca, b);
+		return d1 + d2;
 	}
 
-	private int distanceBetweenTwoNodes(Node root, int a, int b) {
+	private Node lca(Node root, int n1, int n2) {
 		if (root == null)
-			return 0;
+			return null;
 
-		// Both keys lies in left
-		if (root.data > a && root.data > b)
-			return distanceBetweenTwoNodes(root.left, a, b);
-
-		// Both keys lies in right
-		if (root.data < a && root.data < b)
-			return distanceBetweenTwoNodes(root.right, a, b);
-
-		// Lies in opposite directions (Root is LCA of two nodes)
-		if (root.data >= a && root.data <= b)
-			return distanceFromRoot(root, a) + distanceFromRoot(root, b);
-
-		return 0;
+		if (n1 < root.data && n2 < root.data)
+			return lca(root.left, n1, n2);
+		else if (n1 > root.data && n2 > root.data)
+			return lca(root.right, n1, n2);
+		else {
+			return root;
+		}
 	}
 
 	private int distanceFromRoot(Node root, int x) {

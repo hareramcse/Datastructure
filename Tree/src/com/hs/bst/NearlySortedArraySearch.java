@@ -21,7 +21,7 @@ public class NearlySortedArraySearch {
 				return binarySearch(arr, low, mid - 2, value);
 
 			// Else the element can only be present in right subarray
-			// we have already searched in mid - 1 index in above steps. so will check it
+			// we have already searched in mid + 1 index in above steps. so will check it
 			// from mid + 2 index
 			return binarySearch(arr, mid + 2, high, value);
 		}

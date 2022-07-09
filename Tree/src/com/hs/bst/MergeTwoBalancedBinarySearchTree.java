@@ -87,7 +87,7 @@ public class MergeTwoBalancedBinarySearchTree {
 			return null;
 
 		// Get the middle element and make it root
-		int mid = (low + high) / 2;
+		int mid = low + (high - low) / 2;
 		Node node = new Node(list.get(mid));
 		node.left = arrayListTOBST(list, low, mid - 1);
 		node.right = arrayListTOBST(list, mid + 1, high);

@@ -9,15 +9,15 @@ public class FloorInSortedArray {
 		while (low <= high) {
 			int mid = low + (high - low) / 2;
 
-			if (value == arr[mid]) {
+			if (value == arr[mid])
 				return value;
-			}
-			if (value < arr[mid]) {
+			
+			if (value < arr[mid])
 				high = mid - 1;
-			}
+			
 			if (value > arr[mid]) {
-				low = mid + 1;
 				res = arr[mid];
+				low = mid + 1;
 			}
 		}
 		return res;
