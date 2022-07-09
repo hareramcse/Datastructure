@@ -1,13 +1,11 @@
 package com.hs.traversal;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.TreeMap;
 
-// 987. Vertical Order Traversal of a Binary Tree
 public class VerticalTraversal {
 
 	public List<List<Integer>> verticalTraversal(Node root) {
@@ -33,8 +31,6 @@ public class VerticalTraversal {
 		} else {
 			list.add(root.data);
 		}
-
-		Collections.sort(list);
 		map.put(d, list);
 
 		verticalTraversalUtil(root.left, map, d - 1);
