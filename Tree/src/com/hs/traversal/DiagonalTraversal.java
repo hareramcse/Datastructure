@@ -13,8 +13,7 @@ public class DiagonalTraversal {
 		// create a map of list to store Diagonal elements
 		Map<Integer, List<Integer>> map = new HashMap<>();
 		printDiagonal(root, map, 0);
-
-		System.out.println("Diagonal Traversal of Binnary Tree");
+		
 		List<List<Integer>> list = new ArrayList<>();
 		for (Entry<Integer, List<Integer>> entrySet : map.entrySet()) {
 			list.add(entrySet.getValue());
@@ -66,6 +65,7 @@ public class DiagonalTraversal {
 		root.left.right.left = new Node(4);
 		root.left.right.right = new Node(7);
 
+		System.out.println("Diagonal Traversal of Binnary Tree");
 		List<List<Integer>> list = tree.diagonalPrint(root);
 		System.out.println(list);
 	}

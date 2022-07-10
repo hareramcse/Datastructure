@@ -75,6 +75,5 @@ public class CommonAncestor {
 
 		if (tree.findCommonNodes(root, 9, 7) == false)
 			System.out.println("No Common nodes");
-
 	}
 }

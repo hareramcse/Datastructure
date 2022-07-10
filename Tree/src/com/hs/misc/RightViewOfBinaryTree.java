@@ -16,8 +16,8 @@ class RightViewOfBinaryTree {
 		queue.add(root);
 
 		while (!queue.isEmpty()) {
-			int level = queue.size();
-			for (int i = 0; i < level; i++) {
+			int levelSize = queue.size();
+			for (int i = 0; i < levelSize; i++) {
 				Node tempNode = queue.poll();
 				if (i == 0) {
 					list.add(tempNode.data);

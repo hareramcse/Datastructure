@@ -17,9 +17,9 @@ public class LargestNodeAtEachLevel {
 		queue.add(root);
 
 		while (!queue.isEmpty()) {
-			int level = queue.size();
+			int levelSize = queue.size();
 			int max = Integer.MIN_VALUE;
-			for (int i = 0; i < level; i++) {
+			for (int i = 0; i < levelSize; i++) {
 				Node tempNode = queue.poll();
 				max = Math.max(max, tempNode.data);
 

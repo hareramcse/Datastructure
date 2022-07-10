@@ -1,22 +1,39 @@
 package com.hs.misc;
 
-public class FindLevelOfNode {
-	private int getLevel(Node root, int data) {
-		return getLevelUtil(root, data, 1);
-	}
+import java.util.LinkedList;
+import java.util.Queue;
 
-	private int getLevelUtil(Node root, int data, int level) {
+public class FindLevelOfNode {
+
+	public int getLevel(Node root, int data) {
 		if (root == null)
 			return 0;
 
-		if (root.data == data)
-			return level;
+		Queue<Node> queue = new LinkedList<>();
+		queue.add(root);
 
-		int leftLevel = getLevelUtil(root.left, data, level + 1);
-		if (leftLevel != 0)
-			return leftLevel;
+		int level = 0;
+		while (!queue.isEmpty()) {
+			level++;
+			int levelSize = queue.size();
+			for (int i = 0; i < levelSize; i++) {
+				Node tempNode = queue.poll();
+				if (tempNode.data == data) {
+					return level;
+				}
 
-		return getLevelUtil(root.right, data, level + 1);
+				/* Enqueue left child */
+				if (tempNode.left != null) {
+					queue.add(tempNode.left);
+				}
+
+				/* Enqueue right child */
+				if (tempNode.right != null) {
+					queue.add(tempNode.right);
+				}
+			}
+		}
+		return -1;
 	}
 
 	public static void main(String[] args) {

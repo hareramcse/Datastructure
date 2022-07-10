@@ -18,9 +18,9 @@ class ReverseLevelOrderTraversal {
 		Queue<Node> queue = new LinkedList<>();
 		queue.add(root);
 		while (!queue.isEmpty()) {
-			int level = queue.size();
+			int levelSize = queue.size();
 			List<Integer> subList = new ArrayList<>();
-			for (int i = 0; i < level; i++) {
+			for (int i = 0; i < levelSize; i++) {
 				Node tempNode = queue.poll();
 				subList.add(tempNode.data);
                 

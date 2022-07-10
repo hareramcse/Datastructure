@@ -1,23 +1,30 @@
 package com.hs.summation;
 
+// 404. Sum of Left Leaves Leetcode
 class SumOfAllLeftLeaves {
-	private int sum = 0;
+	int sum = 0;
 
-	// This function returns sum of all left leaves in a given binary tree
-	private void leftLeavesSum(Node node, boolean isleft) {
-		if (node == null)
-			return;
+	public int sumOfLeftLeaves(Node root) {
+		if (root == null)
+			return sum;
 
-		// Check whether this node is a leaf node and is left.
-		if (node.left == null && node.right == null && isleft)
-			sum = sum + node.data;
-
-		// Pass true for left and false for right
-		leftLeavesSum(node.left, true);
-		leftLeavesSum(node.right, false);
+		boolean isLeft = false;
+		sumOfLeftLeavesUtil(root, isLeft);
+		return sum;
 	}
 
-	// Driver program
+	private void sumOfLeftLeavesUtil(Node root, boolean isLeft) {
+		if (root.left == null && root.right == null && isLeft)
+			sum = sum + root.data;
+
+		// Pass true for left and false for right
+		if (root.left != null)
+			sumOfLeftLeavesUtil(root.left, true);
+
+		if (root.right != null)
+			sumOfLeftLeavesUtil(root.right, false);
+	}
+
 	public static void main(String args[]) {
 		SumOfAllLeftLeaves tree = new SumOfAllLeftLeaves();
 		Node root = new Node(20);
@@ -30,7 +37,7 @@ class SumOfAllLeftLeaves {
 		root.left.right.right = new Node(12);
 		root.right.right.left = new Node(50);
 
-		tree.leftLeavesSum(root, false);
+		tree.sumOfLeftLeaves(root);
 		System.out.println("The sum of leaves is " + tree.sum);
 	}
 }
