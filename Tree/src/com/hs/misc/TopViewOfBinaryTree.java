@@ -7,6 +7,8 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.TreeMap;
 
+import com.hs.tree.Node;
+
 class TopViewOfBinaryTree {
 
 	public List<Integer> topView(Node root) {

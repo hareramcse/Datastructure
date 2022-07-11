@@ -1,5 +1,7 @@
 package com.hs.traversal;
 
+import com.hs.tree.Node;
+
 class LevelOrderTraversalInSpiralForm {
 
 	// Function to print the spiral traversal of tree

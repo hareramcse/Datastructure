@@ -1,40 +1,45 @@
 package com.hs.checkandprint;
 
+import com.hs.tree.Node;
+
 /* The idea is to find level of one of the nodes. Using the found level, check if ‘a’ 
  * and ‘b’ are at this level. If ‘a’ and ‘b’ are at given level, then finally check if 
  * they are not children of same parent.*/
+
+// 993. Cousins in Binary Tree Leetcode
 class CheckIfTwoNodesAreCousin {
 	// Returns 1 if a and b are cousins, otherwise 0
-	private boolean isCousin(Node root, Node a, Node b) {
-		return ((level(root, a, 1) == level(root, b, 1)) && (!isSibling(root, a, b)));
+	public boolean isCousins(Node root, int x, int y) {
+		int levelA = findLevel(root, x, 1);
+		int levelB = findLevel(root, y, 1);
+
+		if ((levelA == levelB) && !isSibling(root, x, y)) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
-	// Recursive function to check if two Nodes are siblings
-	private boolean isSibling(Node root, Node a, Node b) {
-		// Base case
+	private boolean isSibling(Node root, int x, int y) {
 		if (root == null)
 			return false;
 
-		return ((root.left == a && root.right == b) || (root.left == b && root.right == a) || isSibling(root.left, a, b)
-				|| isSibling(root.right, a, b));
+		if (root.left != null && root.right != null)
+			return ((root.left.data == x && root.right.data == y) || (root.left.data == y && root.right.data == x)
+					|| isSibling(root.left, x, y) || isSibling(root.right, x, y));
+		return false;
 	}
 
-	// Recursive function to find level of Node 'ptr' in a binary tree
-	private int level(Node root, Node ptr, int level) {
-		// base cases
+	private int findLevel(Node root, int data, int level) {
 		if (root == null)
 			return 0;
-
-		if (root == ptr)
+		if (root.data == data)
 			return level;
-
-		// Return level if Node is present in left subtree
-		int l = level(root.left, ptr, level + 1);
-		if (l != 0)
-			return l;
-
-		// Else search in right subtree
-		return level(root.right, ptr, level + 1);
+		int left = findLevel(root.left, data, level + 1);
+		if (left != 0) {
+			return left;
+		}
+		return findLevel(root.right, data, level + 1);
 	}
 
 	// Driver program to test above functions
@@ -50,10 +55,7 @@ class CheckIfTwoNodesAreCousin {
 		root.right.right = new Node(7);
 		root.right.left.right = new Node(8);
 
-		Node Node1, Node2;
-		Node1 = root.left.left;
-		Node2 = root.right.right;
-		if (tree.isCousin(root, Node1, Node2))
+		if (tree.isCousins(root, 4, 7))
 			System.out.println("Yes");
 		else
 			System.out.println("No");

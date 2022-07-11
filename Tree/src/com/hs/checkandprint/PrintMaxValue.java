@@ -1,5 +1,7 @@
 package com.hs.checkandprint;
 
+import com.hs.tree.Node;
+
 class PrintMaxValue {
 
 	// Returns the max value in a binary tree
@@ -18,7 +20,6 @@ class PrintMaxValue {
 		return res;
 	}
 
-	/* Driver program to test above functions */
 	public static void main(String args[]) {
 		PrintMaxValue tree = new PrintMaxValue();
 		Node root = new Node(2);

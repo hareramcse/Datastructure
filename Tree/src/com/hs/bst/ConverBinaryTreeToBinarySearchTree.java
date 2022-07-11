@@ -4,6 +4,8 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
 
+import com.hs.tree.Node;
+
 public class ConverBinaryTreeToBinarySearchTree {
 
 	// Function to convert a binary tree to BST by maintaining its original

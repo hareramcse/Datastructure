@@ -1,5 +1,7 @@
 package com.hs.construction;
 
+import com.hs.tree.Node;
+
 /*
  * If we observe carefully we can see that if parent node is at index i in the array 
  * then the left child of that node is at index (2*i + 1) and right child is at 
@@ -8,7 +10,7 @@ package com.hs.construction;
  * the array as the root node at level 0 in the tree and start traversing the array and 
  * for every node i we will insert its both childs left and right in the tree. */
 // O(n)
-public class ConstructCompleteBinaryTreeFromGivenArrayInLevelOrder {
+public class ConstructTreeFromArray {
 
 	private Node insertLevelOrder(int[] arr, Node root, int i) {
 		// Base case for recursion
@@ -36,7 +38,7 @@ public class ConstructCompleteBinaryTreeFromGivenArrayInLevelOrder {
 
 	// Driver program to test above function
 	public static void main(String args[]) {
-		ConstructCompleteBinaryTreeFromGivenArrayInLevelOrder t2 = new ConstructCompleteBinaryTreeFromGivenArrayInLevelOrder();
+		ConstructTreeFromArray t2 = new ConstructTreeFromArray();
 		int arr[] = { 1, 2, 3, 4, 5, 6, 6, 6, 6 };
 		Node root = t2.insertLevelOrder(arr, null, 0);
 		t2.inOrder(root);

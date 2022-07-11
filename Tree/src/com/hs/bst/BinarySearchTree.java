@@ -2,6 +2,7 @@ package com.hs.bst;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import com.hs.tree.Node;
 
 public class BinarySearchTree {
 	public Node root = null;

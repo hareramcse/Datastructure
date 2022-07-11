@@ -1,5 +1,7 @@
 package com.hs.misc;
 
+import com.hs.tree.Node;
+
 // number of nodes along the longest path from the root node down to the farthest leaf node.
 class MaximumDepthOfTree {
 

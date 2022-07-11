@@ -1,56 +1,54 @@
 package com.hs.construction;
 
-/*Do a traversal of the given tree. In the traversal, store the old value of the current 
- * node, recursively call for left and right subtrees and change the value of current 
- * node as sum of the values returned by the recursive calls. Finally return the sum of 
- * new value and value (which is sum of values in the subtree rooted with this node). */
+import com.hs.tree.Node;
+
 // O(n) 
 class ConvertBinaryTreeToSumTree {
 
-	// Convert a given tree to a tree where every node contains sum of
-	// values of nodes in left and right subtrees in the original tree
-	private int toSumTree(Node root) {
-		// Base case
-		if (root == null)
+	private int convertTree(Node root) {
+		if (root == null) {
 			return 0;
+		}
 
-		// Store the old value
-		int old_val = root.data;
+		// convert the left and right subtree before processing the root node
+		int left = convertTree(root.left);
+		int right = convertTree(root.right);
 
-		// Recursively call for left and right subtrees and store the sum
-		// as new value of this node
-		root.data = toSumTree(root.left) + toSumTree(root.right);
+		// stores the current value of the root node
+		int old = root.data;
 
-		// Return the sum of values of nodes in left and right subtrees
-		// and old_value of this node
-		return root.data + old_val;
+		// update root to the sum of left and right subtree
+		root.data = left + right;
+
+		// return the updated value + the old value (sum of the tree rooted at
+		// the root node)
+		return root.data + old;
 	}
 
-	// A utility function to print inorder traversal of a Binary Tree
-	private void printInorder(Node root) {
+	private void printPreorder(Node root) {
 		if (root == null)
 			return;
-		printInorder(root.left);
+		
 		System.out.print(root.data + " ");
-		printInorder(root.right);
+		printPreorder(root.left);
+		printPreorder(root.right);
 	}
 
-	/* Driver function to test above functions */
 	public static void main(String args[]) {
 		ConvertBinaryTreeToSumTree tree = new ConvertBinaryTreeToSumTree();
 
-		/* Constructing tree given in the above figure */
-		Node root = new Node(10);
-		root.left = new Node(-2);
-		root.right = new Node(6);
-		root.left.left = new Node(8);
-		root.left.right = new Node(-4);
-		root.right.left = new Node(7);
-		root.right.right = new Node(5);
+		Node root = new Node(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+        root.left.right = new Node(4);
+        root.right.left = new Node(5);
+        root.right.right = new Node(6);
+        root.right.left.left = new Node(7);
+        root.right.left.right = new Node(8);
 
-		tree.toSumTree(root);
+		tree.convertTree(root);
 
 		System.out.println("Inorder Traversal of the resultant tree is:");
-		tree.printInorder(root);
+		tree.printPreorder(root);
 	}
 }

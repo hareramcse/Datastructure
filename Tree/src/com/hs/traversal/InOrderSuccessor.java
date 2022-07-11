@@ -1,5 +1,7 @@
 package com.hs.traversal;
 
+import com.hs.tree.Node;
+
 /*
  * Inorder Successor of a node in binary tree is the next node in Inorder traversal of the 
  * Binary Tree. Inorder Successor is NULL for the last node in Inorder traversal.*/

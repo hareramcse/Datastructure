@@ -1,7 +1,8 @@
 package com.hs.checkandprint;
 
-/*Below is an idea to check whether a given Binary Tree is perfect or not.  
+import com.hs.tree.Node;
 
+/*
 1) Find depth of any node. Let this depth be d. Now recursively traverse the tree and check 
 for following two conditions. Every internal node should have both children non-empty 
 2) All leaves are at depth ‘d’*/

@@ -1,5 +1,7 @@
 package com.hs.bst;
 
+import com.hs.tree.Node;
+
 // 285. Inorder successor in BST Leetcode
 public class InOrderSuccessorOfBST {
 

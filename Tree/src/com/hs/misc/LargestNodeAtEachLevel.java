@@ -5,6 +5,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
+import com.hs.tree.Node;
+
 // 515. Find Largest Value in Each Tree Row Leetcode
 public class LargestNodeAtEachLevel {
 

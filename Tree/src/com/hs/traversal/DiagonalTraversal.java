@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.hs.tree.Node;
+
 public class DiagonalTraversal {
 
 	// Print diagonal traversal of given binary tree

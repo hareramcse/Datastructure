@@ -3,6 +3,8 @@ package com.hs.misc;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import com.hs.tree.Node;
+
 public class FindLevelOfNode {
 
 	public int getLevel(Node root, int data) {

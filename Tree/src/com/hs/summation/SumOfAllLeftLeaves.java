@@ -1,5 +1,7 @@
 package com.hs.summation;
 
+import com.hs.tree.Node;
+
 // 404. Sum of Left Leaves Leetcode
 class SumOfAllLeftLeaves {
 	int sum = 0;

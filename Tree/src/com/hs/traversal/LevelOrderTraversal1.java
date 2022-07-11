@@ -1,5 +1,7 @@
 package com.hs.traversal;
 
+import com.hs.tree.Node;
+
 class LevelOrderTraversal1 {
 
 	/* function to print level order traversal of tree */

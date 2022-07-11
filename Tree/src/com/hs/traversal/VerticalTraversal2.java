@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import com.hs.tree.Node;
+
 // 987. Vertical Order Traversal of a Binary Tree
 public class VerticalTraversal2 {
 

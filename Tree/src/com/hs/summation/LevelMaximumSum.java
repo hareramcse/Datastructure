@@ -3,6 +3,8 @@ package com.hs.summation;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import com.hs.tree.Node;
+
 //1161. Maximum Level Sum of a Binary Tree Leetcode
 public class LevelMaximumSum {
 

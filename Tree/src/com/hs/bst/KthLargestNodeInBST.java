@@ -1,5 +1,7 @@
 package com.hs.bst;
 
+import com.hs.tree.Node;
+
 // 230. Kth Smallest Element in a BST Leetcode
 public class KthLargestNodeInBST {
 

@@ -6,6 +6,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.TreeMap;
 
+import com.hs.tree.Node;
+
 public class VerticalTraversal {
 
 	public List<List<Integer>> verticalTraversal(Node root) {

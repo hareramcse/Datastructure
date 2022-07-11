@@ -3,6 +3,8 @@ package com.hs.bst;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.hs.tree.Node;
+
 // 653. Two Sum IV - Input is a BST Leetcode
 public class FindPairSumEqualToKInBST {
 	public boolean findPair(Node root, int sum) {

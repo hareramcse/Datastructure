@@ -1,5 +1,7 @@
 package com.hs.traversal;
 
+import com.hs.tree.Node;
+
 class BoundryTraversal {
 
 	// A function to do boundary traversal of a given binary tree

@@ -1,25 +1,29 @@
 package com.hs.checkandprint;
 
+import com.hs.tree.Node;
+
 /* To identify if two trees are identical, we need to traverse both trees simultaneously, 
  * and while traversing we need to compare data and children of the trees. */
-class CheckIfTwoTreesAreIdentical {
-	/* Given two trees, return true if they are structurally identical */
+
+// 100. Same Tree
+class CheckIfTwoTreesAreSame {
+	
 	private boolean identicalTrees(Node a, Node b) {
-		/* 1. both empty */
+		// 1. both empty
 		if (a == null && b == null)
 			return true;
 
-		/* 2. both non-empty -> compare them */
+		// 2. both non-empty -> compare them
 		if (a != null && b != null)
-			return (a.data == b.data && identicalTrees(a.left, b.left) && identicalTrees(a.right, b.right));
+			return (a.data == b.data) && identicalTrees(a.left, b.left) && identicalTrees(a.right, b.right);
 
-		/* 3. one empty, one not -> false */
+		// 3. one empty, one not -> false
 		return false;
 	}
 
 	/* Driver program to test identicalTrees() function */
 	public static void main(String[] args) {
-		CheckIfTwoTreesAreIdentical tree = new CheckIfTwoTreesAreIdentical();
+		CheckIfTwoTreesAreSame tree = new CheckIfTwoTreesAreSame();
 
 		Node root1 = new Node(1);
 		root1.left = new Node(2);

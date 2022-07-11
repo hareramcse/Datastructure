@@ -3,6 +3,8 @@ package com.hs.summation;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.hs.tree.Node;
+
 // 112. Path Sum Leetcode
 public class HasPathWithSumK {
 

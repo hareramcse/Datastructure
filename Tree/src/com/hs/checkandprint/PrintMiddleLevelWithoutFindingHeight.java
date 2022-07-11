@@ -1,10 +1,11 @@
 package com.hs.checkandprint;
 
+import com.hs.tree.Node;
+
 public class PrintMiddleLevelWithoutFindingHeight {
 
 	// Takes two parameters - same initially and calls recursively
 	private void printMiddleLevel(Node a, Node b) {
-		// Base case e
 		if (a == null || b == null)
 			return;
 
@@ -14,7 +15,6 @@ public class PrintMiddleLevelWithoutFindingHeight {
 			return;
 		}
 
-		// Recursive call
 		// root.left.left and root.left.right will print same value
 		// root.right.left and root.right.right will print same value
 		// So we use any one of the condition

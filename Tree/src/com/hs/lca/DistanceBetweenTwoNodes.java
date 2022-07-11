@@ -1,5 +1,7 @@
 package com.hs.lca;
 
+import com.hs.tree.Node;
+
 /*The distance between two nodes can be obtained in terms of lowest common ancestor. 
  * Following is the formula. 
  * 
@@ -11,8 +13,8 @@ Dist(n1, n2) is the distance between n1 and n2.
  * */
 public class DistanceBetweenTwoNodes {
 
-	private int findDistance(Node root, int a, int b) {
-		Node lca = LCA(root, a, b);
+	private int findDistance(Node root, Node a, Node b) {
+		Node lca = lowestCommonAncestor(root, a, b);
 
 		int d1 = findLevel(lca, a, 0);
 		int d2 = findLevel(lca, b, 0);
@@ -20,34 +22,36 @@ public class DistanceBetweenTwoNodes {
 		return d1 + d2;
 	}
 
-	private Node LCA(Node root, int n1, int n2) {
+	public Node lowestCommonAncestor(Node root, Node a, Node b) {
 		if (root == null)
+			return null;
+
+		if (root == a || root == b)
 			return root;
 
-		if (root.data == n1 || root.data == n2)
-			return root;
+		Node left = lowestCommonAncestor(root.left, a, b);
+		Node right = lowestCommonAncestor(root.right, a, b);
 
-		Node left = LCA(root.left, n1, n2);
-		Node right = LCA(root.right, n1, n2);
-
-		if (left != null && right != null)
+		if (left == null) {
+			return right;
+		} else if (right == null) {
+			return left;
+		} else { // both left and right are not null, we found our result
 			return root;
-		if (left != null)
-			return LCA(root.left, n1, n2);
-		else
-			return LCA(root.right, n1, n2);
+		}
 	}
 
 	// Returns level of key k if it is present in tree, otherwise returns -1
-	private int findLevel(Node root, int a, int level) {
+	private int findLevel(Node root, Node a, int level) {
 		if (root == null)
 			return -1;
-		if (root.data == a)
+		if (root.data == a.data)
 			return level;
 		int left = findLevel(root.left, a, level + 1);
-		if (left == -1)
-			return findLevel(root.right, a, level + 1);
-		return left;
+		if (left != -1) {
+			return left;
+		}
+		return findLevel(root.right, a, level + 1);
 	}
 
 	// Driver program to test above functions
@@ -61,15 +65,15 @@ public class DistanceBetweenTwoNodes {
 		root.right.left = new Node(6);
 		root.right.right = new Node(7);
 		root.right.left.right = new Node(8);
-		System.out.println("Dist(4, 5) = " + tree.findDistance(root, 4, 5));
+		System.out.println("Dist(4, 5) = " + tree.findDistance(root, root.left.left, root.left.right));
 
-		System.out.println("Dist(4, 6) = " + tree.findDistance(root, 4, 6));
+		System.out.println("Dist(4, 6) = " + tree.findDistance(root, root.left.left, root.right.left));
 
-		System.out.println("Dist(3, 4) = " + tree.findDistance(root, 3, 4));
+		System.out.println("Dist(3, 4) = " + tree.findDistance(root, root.right, root.left.left));
 
-		System.out.println("Dist(2, 4) = " + tree.findDistance(root, 2, 4));
+		System.out.println("Dist(2, 4) = " + tree.findDistance(root, root.left, root.left.left));
 
-		System.out.println("Dist(8, 5) = " + tree.findDistance(root, 8, 5));
+		System.out.println("Dist(8, 5) = " + tree.findDistance(root, root.right.left.right, root.left.right));
 
 	}
 }

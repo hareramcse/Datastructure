@@ -1,5 +1,7 @@
 package com.hs.bst;
 
+import com.hs.tree.Node;
+
 //98. Validate Binary Search Tree Leetcode
 public class CheckBinaryTreeIsBinarySearchTree {
 

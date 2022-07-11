@@ -1,5 +1,7 @@
 package com.hs.summation;
 
+import com.hs.tree.Node;
+
 public class SumOfAllLeafNodes {
 
 	private int sum;

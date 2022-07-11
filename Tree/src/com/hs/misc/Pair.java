@@ -1,5 +1,7 @@
 package com.hs.misc;
 
+import com.hs.tree.Node;
+
 public class Pair {
 	public Node node;
 	public int hd;

@@ -3,6 +3,8 @@ package com.hs.bst;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.hs.tree.Node;
+
 public class MergeTwoBalancedBinarySearchTree {
 	// Method that merges two trees into a single one.
 	public Node mergeTrees(Node node1, Node node2) {

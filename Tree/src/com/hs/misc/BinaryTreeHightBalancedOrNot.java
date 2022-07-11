@@ -1,5 +1,7 @@
 package com.hs.misc;
 
+import com.hs.tree.Node;
+
 /*
  * To check if a tree is height-balanced, get the height of left and right subtrees. 
  * Return true if difference between heights is not more than 1 and left and right subtrees 

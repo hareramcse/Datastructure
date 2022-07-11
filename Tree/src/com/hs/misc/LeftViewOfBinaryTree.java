@@ -5,6 +5,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
+import com.hs.tree.Node;
+
 // do level order traversal and print the first node in every level
 class LeftViewOfBinaryTree {
 	private List<Integer> leftView(Node root) {

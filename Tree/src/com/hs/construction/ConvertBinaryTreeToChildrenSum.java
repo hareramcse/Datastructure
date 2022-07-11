@@ -1,78 +1,46 @@
 package com.hs.construction;
 
-/*Algorithm: 
-Traverse the given tree in post order to convert it, i.e., first change left and right 
-children to hold the children sum property then change the parent node. 
-Let difference between node’s data and children sum be diff. 
-
-If diff is 0 then nothing needs to be done. 
-If diff > 0 ( node’s data is smaller than node’s children sum) increment the node’s
-data by diff.
-If diff < 0 (node’s data is greater than the node’s children sum) then increment one 
-child’s data. We can choose to increment either left or right child if they both are 
-not NULL. Let us always first increment the left child. Incrementing a child changes 
-the subtree’s children sum property so we need to change left subtree also. So we 
-recursively increment the left child. If left child is empty then we recursively call 
-increment() for right child.
-*/
+import com.hs.tree.Node;
 
 // O(n^2), Worst case complexity is for a skewed tree such that nodes are in decreasing order from root to leaf.
 public class ConvertBinaryTreeToChildrenSum {
 
-	// This function changes a tree to hold children sum property
-	private void convertTree(Node root) {
-		int left_data = 0, right_data = 0, diff;
-
-		// If tree is empty or it's a leaf node then return true
-		if (root == null || (root.left == null && root.right == null))
+	// Function to convert a given binary tree to satisfy the children-sum property
+	public void convertTree(Node root) {
+		if (root == null)
 			return;
-		else {
-			/* convert left and right subtrees */
-			convertTree(root.left);
-			convertTree(root.right);
 
-			// If left child is not present then 0 is used as data of left child
-			if (root.left != null)
-				left_data = root.left.data;
+		if (root.left == null && root.right == null) {
+			return;
+		}
 
-			// If right child is not present then 0 is used as data of right child
-			if (root.right != null)
-				right_data = root.right.data;
+		convertTree(root.left);
+		convertTree(root.right);
 
-			/* get the diff of node's data and children sum */
-			diff = left_data + right_data - root.data;
+		// calculate the difference between the root and its children
+		int diff = root.data - findChildrenSum(root);
 
-			/* If node's children sum is greater than the node's data */
-			if (diff > 0)
-				root.data = root.data + diff;
+		// if the root is less than the children's sum, increment it by `abs(diff)`
+		if (diff < 0) {
+			root.data += Math.abs(diff);
+		}
 
-			/*
-			 * THIS IS TRICKY --> If node's data is greater than children sum, then
-			 * increment subtree by diff
-			 */
-			if (diff < 0)
-				// -diff is used to make diff positive
-				increment(root, -diff);
+		// if the root is greater than the children's sum, fix the root by
+		// either updating the left or right subtree by `diff`
+		else if (diff > 0) {
+			Node subtree = root.left != null ? root.left : root.right;
+			subtree.data += diff;
+			convertTree(subtree);
 		}
 	}
 
-	// This function is used to increment subtree by diff
-	private void increment(Node root, int diff) {
-		/* If left child is not NULL then increment it */
-		if (root.left != null) {
-			root.left.data = root.left.data + diff;
+	private int findChildrenSum(Node node) {
+		int left = node.left != null ? node.left.data : 0;
+		int right = node.right != null ? node.right.data : 0;
 
-			// Recursively call to fix the descendants of node->left
-			increment(root.left, diff);
-		} else if (root.right != null) { // Else increment right child
-			root.right.data = root.right.data + diff;
-
-			// Recursively call to fix the descendants of node->right
-			increment(root.right, diff);
-		}
+		return left + right;
 	}
 
-	// Given a binary tree, printInorder() prints out its inorder traversal
 	private void printInorder(Node node) {
 		if (node == null)
 			return;
@@ -82,7 +50,6 @@ public class ConvertBinaryTreeToChildrenSum {
 		printInorder(node.right);
 	}
 
-	// Driver program to test above functions
 	public static void main(String args[]) {
 		ConvertBinaryTreeToChildrenSum tree = new ConvertBinaryTreeToChildrenSum();
 		Node root = new Node(50);
@@ -101,6 +68,5 @@ public class ConvertBinaryTreeToChildrenSum {
 
 		System.out.println("Inorder traversal after conversion is :");
 		tree.printInorder(root);
-
 	}
 }

@@ -1,5 +1,7 @@
 package com.hs.traversal;
 
+import com.hs.tree.Node;
+
 public class BinaryTreeTraversal {
 
 	 // Given a binary tree, print its nodes according to the "bottom-up" postorder traversal.

@@ -1,5 +1,7 @@
 package com.hs.checkandprint;
 
+import com.hs.tree.Node;
+
 class PrintAllNodeAtDistanceK {
 
 	private void printKDistant(Node root, int k) {
@@ -14,7 +16,6 @@ class PrintAllNodeAtDistanceK {
 		printKDistant(root.right, k - 1);
 	}
 
-	/* Driver program to test above functions */
 	public static void main(String args[]) {
 		PrintAllNodeAtDistanceK tree = new PrintAllNodeAtDistanceK();
 		Node root = new Node(1);

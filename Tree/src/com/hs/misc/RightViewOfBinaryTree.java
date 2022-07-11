@@ -5,6 +5,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
+import com.hs.tree.Node;
+
 class RightViewOfBinaryTree {
 
 	private List<Integer> rightView(Node root) {

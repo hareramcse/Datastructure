@@ -7,6 +7,8 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.TreeMap;
 
+import com.hs.tree.Node;
+
 
 // The logic for top view and bottom view is exactly same. 
 // Just use map.putIfAbsent(line,node.val) for Top view and map.put(line,node.val) for Bottom view. 

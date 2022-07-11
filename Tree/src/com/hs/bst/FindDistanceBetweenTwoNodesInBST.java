@@ -1,5 +1,7 @@
 package com.hs.bst;
 
+import com.hs.tree.Node;
+
 public class FindDistanceBetweenTwoNodesInBST {
 	private int findDistanceBetweenTwoNodes(Node root, int a, int b) {
 		Node lca = lca(root, a, b);

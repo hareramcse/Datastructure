@@ -1,5 +1,7 @@
 package com.hs.construction;
 
+import com.hs.tree.Node;
+
 class ConvertBinaryTreeToItsMirrorTree {
 
 	private Node mirror(Node node) {

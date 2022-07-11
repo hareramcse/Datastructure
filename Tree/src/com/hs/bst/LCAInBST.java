@@ -1,5 +1,7 @@
 package com.hs.bst;
 
+import com.hs.tree.Node;
+
 // 235. Lowest Common Ancestor of a Binary Search Tree Leetcode
 public class LCAInBST {
 	// Function to find LCA of n1 and n2.
