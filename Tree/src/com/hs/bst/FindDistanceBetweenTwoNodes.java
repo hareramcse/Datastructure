@@ -2,8 +2,8 @@ package com.hs.bst;
 
 import com.hs.tree.Node;
 
-public class FindDistanceBetweenTwoNodesInBST {
-	private int findDistanceBetweenTwoNodes(Node root, int a, int b) {
+public class FindDistanceBetweenTwoNodes {
+	public int findDistanceBetweenTwoNodes(Node root, int a, int b) {
 		Node lca = lca(root, a, b);
 		int d1 = distanceFromRoot(lca, a);
 		int d2 = distanceFromRoot(lca, b);
@@ -32,7 +32,7 @@ public class FindDistanceBetweenTwoNodesInBST {
 	}
 
 	public static void main(String[] args) {
-		FindDistanceBetweenTwoNodesInBST tree = new FindDistanceBetweenTwoNodesInBST();
+		FindDistanceBetweenTwoNodes tree = new FindDistanceBetweenTwoNodes();
 		Node root = new Node(50);
 		root.left = new Node(30);
 		root.left.left = new Node(20);

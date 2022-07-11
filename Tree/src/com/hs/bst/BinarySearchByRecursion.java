@@ -1,7 +1,7 @@
 package com.hs.bst;
 
 public class BinarySearchByRecursion {
-	private int search(int arr[], int low, int high, int value) {
+	public int search(int arr[], int low, int high, int value) {
 		int mid = low + (high - low) / 2;
 		if (low > high) {
 			return -1;

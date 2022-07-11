@@ -1,9 +1,8 @@
 package com.hs.bst;
 
 public class MinDiffFromGivenKeyInSortedArray {
-	private int search(int[] arr, int key) {
-		int lenght = arr.length;
-		int low = 0, high = lenght - 1;
+	public int search(int[] arr, int key) {
+		int low = 0, high = arr.length - 1;
 		int res = -1;
 		while (low <= high) {
 			int mid = low + (high - low) / 2;

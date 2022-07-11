@@ -10,9 +10,9 @@ public class NearlySortedArraySearch {
 			if (arr[mid] == value)
 				return mid;
 			if (mid > low && arr[mid - 1] == value)
-				return (mid - 1);
+				return mid - 1;
 			if (mid < high && arr[mid + 1] == value)
-				return (mid + 1);
+				return mid + 1;
 
 			// If element is smaller than mid, then it can only be present in left subarray
 			// we have already searched in mid - 1 index in above steps. so will check it

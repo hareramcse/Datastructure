@@ -1,9 +1,8 @@
 package com.hs.bst;
 
 public class BinarySearchOnReverseSortedArray {
-	private int search(int arr[], int value) {
-		int length = arr.length;
-		int low = 0, high = length - 1;
+	public int search(int arr[], int value) {
+		int low = 0, high = arr.length - 1;
 		while (low <= high) {
 			int mid = low + (high - low) / 2;
 			if (value == arr[mid]) {

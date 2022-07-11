@@ -6,19 +6,19 @@ import java.util.Set;
 import com.hs.tree.Node;
 
 // 653. Two Sum IV - Input is a BST Leetcode
-public class FindPairSumEqualToKInBST {
+public class FindPairSumEqualToK {
 	public boolean findPair(Node root, int sum) {
 		Set<Integer> set = new HashSet<>();
-		if (findpairUtil(root, sum, set))
+		if (findPairUtil(root, sum, set))
 			return true;
 		return false;
 	}
 
-	private boolean findpairUtil(Node root, int sum, Set<Integer> set) {
+	private boolean findPairUtil(Node root, int sum, Set<Integer> set) {
 		if (root == null)
 			return false;
 
-		if (findpairUtil(root.left, sum, set))
+		if (findPairUtil(root.left, sum, set))
 			return true;
 
 		if (set.contains(sum - root.data))
@@ -26,11 +26,11 @@ public class FindPairSumEqualToKInBST {
 		else
 			set.add(root.data);
 
-		return findpairUtil(root.right, sum, set);
+		return findPairUtil(root.right, sum, set);
 	}
 
 	public static void main(String[] args) {
-		FindPairSumEqualToKInBST tree = new FindPairSumEqualToKInBST();
+		FindPairSumEqualToK tree = new FindPairSumEqualToK();
 		Node root = new Node(50);
 		root.left = new Node(30);
 		root.left.left = new Node(20);

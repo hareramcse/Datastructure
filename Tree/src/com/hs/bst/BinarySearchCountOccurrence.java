@@ -1,9 +1,9 @@
 package com.hs.bst;
 
+// 34. Find First and Last Position of Element in Sorted Array Leetcode
 public class BinarySearchCountOccurrence {
-	private int findCount(int arr[], int value, boolean searchFirst) {
-		int length = arr.length;
-		int low = 0, high = length - 1, result = -1;
+	public int findCount(int arr[], int value, boolean searchFirst) {
+		int low = 0, high = arr.length - 1, result = -1;
 		while (low <= high) {
 			int mid = low + (high - low) / 2;
 			if (value == arr[mid]) {

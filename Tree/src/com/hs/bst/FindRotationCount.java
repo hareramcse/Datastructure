@@ -2,8 +2,8 @@ package com.hs.bst;
 
 // 153. Find Minimum in Rotated Sorted Array Leetcode
 public class FindRotationCount {
-	// here goal is to find out the minimum value index in the array
-	private int rotationCount(int arr[], int low, int high) {
+	// here goal is to find out the minimum value index
+	public int rotationCount(int arr[], int low, int high) {
 		// means whole array is all ready sorted
 		if (arr[low] <= arr[high]) {
 			return low;

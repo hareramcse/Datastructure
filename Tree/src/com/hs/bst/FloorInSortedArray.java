@@ -1,9 +1,8 @@
 package com.hs.bst;
 
 public class FloorInSortedArray {
-	private int findFloor(int[] arr, int value) {
-		int n = arr.length;
-		int low = 0, high = n - 1;
+	public int findFloor(int[] arr, int value) {
+		int low = 0, high = arr.length - 1;
 		int res = 0;
 
 		while (low <= high) {

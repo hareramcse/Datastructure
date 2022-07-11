@@ -1,12 +1,12 @@
 package com.hs.bst;
 
 public class BinarySearchInInfiniteArray {
-	private int search(int arr[], int key) {
+	public int search(int arr[], int key) {
 		int low = 0, high = 1;
 		int val = arr[0];
 
 		// Find high to do binary search
-		while (val < key) {
+		while (key > val) {
 			low = high;
 			if (2 * high < arr.length - 1)
 				high = 2 * high;
@@ -16,7 +16,7 @@ public class BinarySearchInInfiniteArray {
 			val = arr[high];
 		}
 
-		// at this point we have updated low and high indices, 
+		// at this point we have updated low and high indices,
 		// thus use binary search between them
 		return binarySearch(arr, low, high, key);
 	}

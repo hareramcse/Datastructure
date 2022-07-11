@@ -3,9 +3,8 @@ package com.hs.bst;
 //744. Find Smallest Letter Greater Than Target Leetcode
 public class NextGreaterLetter {
 	private char nextGreatestLetter(char[] arr, char value) {
-		int n = arr.length;
 		int low = 0;
-		int high = n - 1;
+		int high = arr.length - 1;
 		char res = arr[0];
 		while (low <= high) {
 			int mid = low + (high - low) / 2;

@@ -6,10 +6,9 @@ import java.util.TreeSet;
 
 import com.hs.tree.Node;
 
-public class ConverBinaryTreeToBinarySearchTree {
+public class ConvertBinaryTreeToBinarySearchTree {
 
-	// Function to convert a binary tree to BST by maintaining its original
-	// structure
+	// converts a binary tree to BST by maintaining its original structure
 	public void convertToBST(Node root) {
 		// traverse the binary tree and store its keys in a set
 		Set<Integer> set = new TreeSet<>();
@@ -21,7 +20,7 @@ public class ConverBinaryTreeToBinarySearchTree {
 	}
 
 	// Function to traverse the binary tree and store its values in a set
-	public void extractValues(Node root, Set<Integer> set) {
+	private void extractValues(Node root, Set<Integer> set) {
 		if (root == null) {
 			return;
 		}
@@ -30,9 +29,8 @@ public class ConverBinaryTreeToBinarySearchTree {
 		extractValues(root.right, set);
 	}
 
-	// Function to put values back into a set in their correct order in the BST
-	// by doing inorder traversal
-	public void convertToBST(Node root, Iterator<Integer> it) {
+	// put values back into a set in their correct order in the BST
+	private void convertToBST(Node root, Iterator<Integer> it) {
 		if (root == null) {
 			return;
 		}
@@ -41,7 +39,7 @@ public class ConverBinaryTreeToBinarySearchTree {
 		convertToBST(root.right, it);
 	}
 
-	public void inorder(Node root) {
+	private void inorder(Node root) {
 		if (root == null) {
 			return;
 		}
@@ -51,7 +49,7 @@ public class ConverBinaryTreeToBinarySearchTree {
 	}
 
 	public static void main(String[] args) {
-		ConverBinaryTreeToBinarySearchTree tree = new ConverBinaryTreeToBinarySearchTree();
+		ConvertBinaryTreeToBinarySearchTree tree = new ConvertBinaryTreeToBinarySearchTree();
 		Node root = new Node(8);
 		root.left = new Node(3);
 		root.right = new Node(5);

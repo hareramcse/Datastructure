@@ -5,9 +5,9 @@ import com.hs.tree.Node;
 // 230. Kth Smallest Element in a BST Leetcode
 public class KthLargestNodeInBST {
 
-	private int count = 0;
+	int count = 0;
 
-	private Node kthLargest(Node root, int k) {
+	public Node kthLargest(Node root, int k) {
 		if (root == null)
 			return null;
 

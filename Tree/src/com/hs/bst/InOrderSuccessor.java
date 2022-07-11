@@ -3,9 +3,9 @@ package com.hs.bst;
 import com.hs.tree.Node;
 
 // 285. Inorder successor in BST Leetcode
-public class InOrderSuccessorOfBST {
+public class InOrderSuccessor {
 
-	private Node inOrderSuccessor(Node root, Node k) {
+	public Node inOrderSuccessor(Node root, Node k) {
 		if (root == null)
 			return null;
 
@@ -23,7 +23,7 @@ public class InOrderSuccessorOfBST {
 	}
 
 	public static void main(String[] args) {
-		InOrderSuccessorOfBST tree = new InOrderSuccessorOfBST();
+		InOrderSuccessor tree = new InOrderSuccessor();
 		Node root = new Node(50);
 		root.left = new Node(30);
 		root.left.left = new Node(20);
