@@ -7,9 +7,10 @@ import java.util.Queue;
 
 import com.hs.tree.Node;
 
+// 199. Binary Tree Right Side View Leetcode
 class RightViewOfBinaryTree {
 
-	private List<Integer> rightView(Node root) {
+	public List<Integer> rightView(Node root) {
 		List<Integer> list = new ArrayList<>();
 		if (root == null)
 			return list;
@@ -25,7 +26,7 @@ class RightViewOfBinaryTree {
 					list.add(tempNode.data);
 				}
 
-				/* Enqueue right child */
+				// Enqueue right child
 				if (tempNode.right != null) {
 					queue.add(tempNode.right);
 				}

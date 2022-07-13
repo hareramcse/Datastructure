@@ -47,7 +47,7 @@ class MaximumPathSumFromRootToLeaf {
 		root.right.right = new Node(7);
 		root.right.left.left = new Node(8);
 		root.right.right.right = new Node(9);
-		System.out.println("Maximum path sum is : ");
+		System.out.println("Maximum path sum is: ");
 		int maxPathSum = tree.maxPathSum(root);
 		System.out.println(maxPathSum);
 	}

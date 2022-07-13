@@ -2,7 +2,8 @@ package com.hs.misc;
 
 import com.hs.tree.Node;
 
-// diameter of a tree is maximum value of (left_height + right_height + 1) for each node
+// this is also called as longest distance from any 2 nodes.
+// diameter of a tree is maximum value of (left_height + right_height) for each node + 1
 // 543. Diameter of Binary Tree Leetcode
 class DiameterOfBinaryTree {
 

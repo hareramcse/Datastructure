@@ -40,6 +40,6 @@ class SumOfAllLeftLeaves {
 		root.right.right.left = new Node(50);
 
 		tree.sumOfLeftLeaves(root);
-		System.out.println("The sum of leaves is " + tree.sum);
+		System.out.println("The sum of leaves is: " + tree.sum);
 	}
 }

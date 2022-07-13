@@ -11,7 +11,7 @@ import com.hs.tree.Node;
 public class DiagonalTraversal {
 
 	// Print diagonal traversal of given binary tree
-	private List<List<Integer>> diagonalPrint(Node root) {
+	public List<List<Integer>> diagonalPrint(Node root) {
 		// create a map of list to store Diagonal elements
 		Map<Integer, List<Integer>> map = new HashMap<>();
 		printDiagonal(root, map, 0);
@@ -26,7 +26,7 @@ public class DiagonalTraversal {
 	// root - root of the binary tree
 	// d - distance of current line from rightmost topmost slope.
 	// diagonalPrint - Map to store Diagonal elements
-	public void printDiagonal(Node root, Map<Integer, List<Integer>> map, int d) {
+	private void printDiagonal(Node root, Map<Integer, List<Integer>> map, int d) {
 
 		// Base case
 		if (root == null)

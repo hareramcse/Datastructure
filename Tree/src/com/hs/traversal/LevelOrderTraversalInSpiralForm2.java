@@ -26,12 +26,12 @@ class LevelOrderTraversalInSpiralForm2 {
 				Node tempNode = queue.poll();
 				subList.add(tempNode.data);
 
-				/* Enqueue left child */
+				// Enqueue left child
 				if (tempNode.left != null) {
 					queue.add(tempNode.left);
 				}
 
-				/* Enqueue right child */
+				// Enqueue right child
 				if (tempNode.right != null) {
 					queue.add(tempNode.right);
 				}
@@ -45,7 +45,7 @@ class LevelOrderTraversalInSpiralForm2 {
 		return list;
 	}
 
-	/* Driver program to test the above functions */
+	// Driver program to test the above functions
 	public static void main(String[] args) {
 		LevelOrderTraversalInSpiralForm2 tree = new LevelOrderTraversalInSpiralForm2();
 		Node root = new Node(1);

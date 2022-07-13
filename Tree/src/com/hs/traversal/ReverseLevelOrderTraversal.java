@@ -26,12 +26,12 @@ class ReverseLevelOrderTraversal {
 				Node tempNode = queue.poll();
 				subList.add(tempNode.data);
                 
-				/* Enqueue left child */
+				// Enqueue left child
 				if (tempNode.left != null) {
 					queue.add(tempNode.left);
 				}		
                 
-                /* Enqueue right child */
+                // Enqueue right child
 				if (tempNode.right != null) {
 					queue.add(tempNode.right);
 				}

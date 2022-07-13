@@ -25,12 +25,12 @@ class LeftViewOfBinaryTree {
 					list.add(tempNode.data);
 				}
 
-				/* Enqueue left child */
+				// Enqueue left child
 				if (tempNode.left != null) {
 					queue.add(tempNode.left);
 				}
 
-				/* Enqueue right child */
+				// Enqueue right child
 				if (tempNode.right != null) {
 					queue.add(tempNode.right);
 				}
@@ -39,9 +39,8 @@ class LeftViewOfBinaryTree {
 		return list;
 	}
 
-	/* testing for example nodes */
+	// testing for example nodes
 	public static void main(String args[]) {
-		/* creating a binary tree and entering the nodes */
 		LeftViewOfBinaryTree tree = new LeftViewOfBinaryTree();
 		Node root = new Node(12);
 		root.left = new Node(10);

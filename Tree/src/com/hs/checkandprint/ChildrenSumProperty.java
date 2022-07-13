@@ -2,10 +2,6 @@ package com.hs.checkandprint;
 
 import com.hs.tree.Node;
 
-/*Algorithm: 
-For each node check (recursively) if the node and both its children satisfy the Children Sum Property, 
-if so then return true else return false.*/
-
 // 2236. Root Equals Sum of Children Leetcode
 class ChildrenSumProperty {
 

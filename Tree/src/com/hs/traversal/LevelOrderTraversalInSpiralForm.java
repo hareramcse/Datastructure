@@ -16,7 +16,7 @@ class LevelOrderTraversalInSpiralForm {
 		for (int i = 1; i <= h; i++) {
 			printGivenLevel(root, i, ltr);
 
-			/* Revert ltr to traverse next level in opposite order */
+			// Revert ltr to traverse next level in opposite order
 			ltr = !ltr;
 		}
 	}
@@ -25,18 +25,18 @@ class LevelOrderTraversalInSpiralForm {
 		if (root == null)
 			return 0;
 		
-		/* compute height of each subtree */
+		// compute height of each subtree
 		int lHeight = height(root.left);
 		int rHeight = height(root.right);
 
-		/* use the larger one */
+		// use the larger one
 		if (lHeight > rHeight)
 			return lHeight + 1;
 		else
 			return rHeight + 1;
 	}
 
-	/* Print nodes at a given level */
+	// Print nodes at a given level
 	private void printGivenLevel(Node root, int level, boolean ltr) {
 		if (root == null)
 			return;
@@ -53,7 +53,7 @@ class LevelOrderTraversalInSpiralForm {
 		}
 	}
 
-	/* Driver program to test the above functions */
+	// Driver program to test the above functions
 	public static void main(String[] args) {
 		LevelOrderTraversalInSpiralForm tree = new LevelOrderTraversalInSpiralForm();
 		Node root = new Node(1);

@@ -2,28 +2,22 @@ package com.hs.construction;
 
 import com.hs.tree.Node;
 
-/*
- * If we observe carefully we can see that if parent node is at index i in the array 
- * then the left child of that node is at index (2*i + 1) and right child is at 
- * index (2*i + 2) in the array. using this concept, we can easily insert the left and 
- * right nodes by choosing its parent node. We will insert the first element present in 
- * the array as the root node at level 0 in the tree and start traversing the array and 
- * for every node i we will insert its both childs left and right in the tree. */
 // O(n)
 public class ConstructTreeFromArray {
 
 	private Node insertLevelOrder(int[] arr, Node root, int i) {
 		// Base case for recursion
-		if (i < arr.length) {
-			Node temp = new Node(arr[i]);
-			root = temp;
+		if (i > arr.length - 1)
+			return null;
 
-			// insert left child
-			root.left = insertLevelOrder(arr, root.left, 2 * i + 1);
+		Node temp = new Node(arr[i]);
+		root = temp;
 
-			// insert right child
-			root.right = insertLevelOrder(arr, root.right, 2 * i + 2);
-		}
+		// insert left child
+		root.left = insertLevelOrder(arr, root.left, 2 * i + 1);
+
+		// insert right child
+		root.right = insertLevelOrder(arr, root.right, 2 * i + 2);
 		return root;
 	}
 

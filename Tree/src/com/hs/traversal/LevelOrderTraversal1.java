@@ -4,7 +4,7 @@ import com.hs.tree.Node;
 
 class LevelOrderTraversal1 {
 
-	/* function to print level order traversal of tree */
+	// function to print level order traversal of tree
 	public void levelOrderTraversal(Node root) {
 		int h = height(root);
 		for (int i = 1; i <= h; i++) {
@@ -19,18 +19,18 @@ class LevelOrderTraversal1 {
 		if (root == null)
 			return 0;
 		
-		/* compute height of each subtree */
+		// compute height of each subtree
 		int lHeight = height(root.left);
 		int rHeight = height(root.right);
 
-		/* use the larger one */
+		// use the larger one
 		if (lHeight > rHeight)
 			return lHeight + 1;
 		else
 			return rHeight + 1;
 	}
 
-	/* Print nodes at the given level */
+	// Print nodes at the given level
 	private void printGivenLevel(Node root, int level) {
 		if (root == null)
 			return;
@@ -42,7 +42,7 @@ class LevelOrderTraversal1 {
 		}
 	}
 
-	/* Driver program to test above functions */
+	// Driver program to test above functions
 	public static void main(String args[]) {
 		LevelOrderTraversal1 tree = new LevelOrderTraversal1();
 		Node root = new Node(1);

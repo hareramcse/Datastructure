@@ -9,7 +9,7 @@ for following two conditions. Every internal node should have both children non-
 // O(n) 
 class CheckIfBinaryTreeIsPerfect {
 
-	private boolean isPerfect(Node root) {
+	public boolean isPerfect(Node root) {
 		int depth = findLeftDepth(root);
 		return isPerfectTree(root, 0, depth);
 	}

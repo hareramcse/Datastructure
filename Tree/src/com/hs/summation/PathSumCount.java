@@ -17,7 +17,7 @@ public class PathSumCount {
 		return count;
 	}
 
-	public void pathSumUtil(Node root, List<Integer> path, int targetSum) {
+	private void pathSumUtil(Node root, List<Integer> path, int targetSum) {
 		path.add(root.data);
 		
 		// Here we need to check every node not only leaf node

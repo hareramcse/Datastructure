@@ -4,7 +4,7 @@ import com.hs.tree.Node;
 
 public class PrintAncestors {
 
-	private boolean printAncestors(Node node, int target) {
+	public boolean printAncestors(Node node, int target) {
 		if (node == null)
 			return false;
 

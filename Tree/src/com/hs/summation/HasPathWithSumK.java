@@ -19,7 +19,7 @@ public class HasPathWithSumK {
 		return isPath;
 	}
 
-	public void pathSumUtil(Node root, List<Integer> path, int targetSum) {
+	private void pathSumUtil(Node root, List<Integer> path, int targetSum) {
 		path.add(root.data);
 		if (root.left == null && root.right == null) {
 			int sum = 0;

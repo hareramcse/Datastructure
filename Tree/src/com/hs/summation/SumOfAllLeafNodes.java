@@ -4,9 +4,9 @@ import com.hs.tree.Node;
 
 public class SumOfAllLeafNodes {
 
-	private int sum;
+	int sum;
 
-	private void leafSum(Node root) {
+	public void leafSum(Node root) {
 		if (root == null)
 			return;
 

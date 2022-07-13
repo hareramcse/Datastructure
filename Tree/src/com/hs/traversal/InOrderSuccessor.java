@@ -22,8 +22,7 @@ public class InOrderSuccessor {
 			return;
 
 		// Case1: If right child is not NULL
-		if (root.right != null)
-			inOrderSuccessor(root.right, pre, searchNode);
+		inOrderSuccessor(root.right, pre, searchNode);
 
 		// Case2: If root data is equal to search node
 		if (root.data == searchNode)
@@ -31,9 +30,7 @@ public class InOrderSuccessor {
 					+ (pre.previous != null ? pre.previous.data : "null"));
 
 		pre.previous = root;
-
-		if (root.left != null)
-			inOrderSuccessor(root.left, pre, searchNode);
+		inOrderSuccessor(root.left, pre, searchNode);
 	}
 
 	// Given a binary tree, print its nodes in inorder

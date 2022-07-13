@@ -41,10 +41,12 @@ class BoundryTraversal {
 		if (root == null) {
 			return;
 		}
-		printLeaves(root.left);
+		
 		if (root.left == null && root.right == null) {
 			System.out.print(root.data + " ");
 		}
+		
+		printLeaves(root.left);
 		printLeaves(root.right);
 	}
 
