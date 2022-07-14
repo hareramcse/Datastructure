@@ -6,7 +6,7 @@ import com.hs.basic.Node;
 public class ReArrangeLinkedListInZigZagFashion {
 
 	// This function distributes the Node in zigzag fashion
-	private void zigZagList(Node head) {
+	public void zigZagList(Node head) {
 		// If flag is true, then next node should be greater in the desired output.
 		boolean flag = true;
 
@@ -39,7 +39,7 @@ public class ReArrangeLinkedListInZigZagFashion {
 
 			current = current.next;
 
-			/* flip flag for reverse checking */
+			// flip flag for reverse checking
 			flag = !flag;
 		}
 	}

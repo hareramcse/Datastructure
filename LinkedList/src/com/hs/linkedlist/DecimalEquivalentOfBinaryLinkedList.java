@@ -2,10 +2,11 @@ package com.hs.linkedlist;
 
 import com.hs.basic.Node;
 
+// 1290. Convert Binary Number in a Linked List to Integer Leetcode
 public class DecimalEquivalentOfBinaryLinkedList {
 
 	// Returns decimal value of binary linked list
-	private int decimalValue(Node head) {
+	public int decimalValue(Node head) {
 		// Initialized result
 		int res = 0;
 

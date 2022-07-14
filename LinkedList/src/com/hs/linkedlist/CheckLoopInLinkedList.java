@@ -2,9 +2,10 @@ package com.hs.linkedlist;
 
 import com.hs.basic.Node;
 
+// 141. Linked List Cycle Leetcode
 public class CheckLoopInLinkedList {
 
-	private boolean detectLoop(Node head) {
+	public boolean detectLoop(Node head) {
 		if (head == null)
 			return false;
 
@@ -33,7 +34,7 @@ public class CheckLoopInLinkedList {
 		head.next.next.next.next.next.next = new Node(70);
 		head.next.next.next.next.next.next.next = new Node(80);
 
-		/* Create loop for testing */
+		// Create loop for testing
 		head.next.next.next.next.next.next.next = head.next.next;
 
 		boolean b = list.detectLoop(head);

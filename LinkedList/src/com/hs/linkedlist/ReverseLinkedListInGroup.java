@@ -5,52 +5,55 @@ import com.hs.basic.Node;
 
 public class ReverseLinkedListInGroup {
 
-	Node reverse(Node head, int k) {
-		Node current = head;
-		Node next = null;
-		Node prev = null;
+	public Node reverseKGroup(Node head, int k) {
+		if (head == null || head.next == null)
+			return head;
 
-		int count = 0;
+		int length = length(head);
 
-		/* Reverse first k nodes of linked list */
-		while (count < k && current != null) {
-			next = current.next;
-			current.next = prev;
-			prev = current;
-			current = next;
-			count++;
+		Node dummyHead = new Node();
+		dummyHead.next = head;
+
+		Node pre = dummyHead;
+		Node cur;
+		Node nex;
+
+		while (length >= k) {
+			cur = pre.next;
+			nex = cur.next;
+			for (int i = 1; i < k; i++) {
+				cur.next = nex.next;
+				nex.next = pre.next;
+				pre.next = nex;
+				nex = cur.next;
+			}
+			pre = cur;
+			length -= k;
 		}
-
-		/*
-		 * next is now a pointer to (k+1)th node Recursively call for the list starting
-		 * from current. And make rest of the list as next of first node
-		 */
-		if (next != null)
-			head.next = reverse(next, k);
-
-		// prev is now head of input list
-		return prev;
+		return dummyHead.next;
 	}
 
-	public static void main(String args[]) {
+	private int length(Node head) {
+		int length = 0;
+		while (head != null) {
+			length++;
+			head = head.next;
+		}
+		return length;
+	}
+
+	public static void main(String[] args) {
 		ReverseLinkedListInGroup list = new ReverseLinkedListInGroup();
+		Node head = new Node(10);
+		head.next = new Node(4);
+		head.next.next = new Node(15);
+		head.next.next.next = new Node(20);
+		head.next.next.next.next = new Node(20);
+		head.next.next.next.next.next = new Node(50);
+		head.next.next.next.next.next.next = new Node(25);
+		head.next.next.next.next.next.next.next = new Node(30);
 
-		Node head = LinkedListUtil.addLast(null, 9);
-		head = LinkedListUtil.addLast(head, 8);
-		head = LinkedListUtil.addLast(head, 7);
-		head = LinkedListUtil.addLast(head, 6);
-		head = LinkedListUtil.addLast(head, 5);
-		head = LinkedListUtil.addLast(head, 4);
-		head = LinkedListUtil.addLast(head, 3);
-		head = LinkedListUtil.addLast(head, 2);
-		head = LinkedListUtil.addLast(head, 1);
-
-		System.out.println("Given Linked List");
-		LinkedListUtil.printLinkedList(head);
-
-		head = list.reverse(head, 3);
-
-		System.out.println("Reversed list");
-		LinkedListUtil.printLinkedList(head);
+		Node rev = list.reverseKGroup(head, 3);
+		LinkedListUtil.printLinkedList(rev);
 	}
 }

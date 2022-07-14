@@ -3,34 +3,23 @@ package com.hs.linkedlist;
 import com.hs.basic.LinkedListUtil;
 import com.hs.basic.Node;
 
-class RemoveDuplicateFromSortedList {
+// 83. Remove Duplicates from Sorted List Leetcode
+class RemoveDuplicateFromSortedList1 {
 
-	private void removeDuplicates(Node head) {
-		/* do nothing if the list is empty */
-		if (head == null)
-			return;
-		
-		/* Another reference to head */
+	public Node removeDuplicates(Node head) {
 		Node current = head;
-
-		/* Pointer to store the next pointer of a node to be deleted */
-		Node next_next;
-
-		/* Traverse list till the last node */
 		while (current != null && current.next != null) {
-
-			/* Compare current node with the next node */
 			if (current.data == current.next.data) {
-				next_next = current.next.next;
-				current.next = null;
-				current.next = next_next;
-			} else // advance if no deletion
+				current.next = current.next.next;
+			} else {
 				current = current.next;
+			}
 		}
+		return head;
 	}
 
 	public static void main(String args[]) {
-		RemoveDuplicateFromSortedList list = new RemoveDuplicateFromSortedList();
+		RemoveDuplicateFromSortedList1 list = new RemoveDuplicateFromSortedList1();
 
 		Node head = LinkedListUtil.addLast(null, 20);
 		head = LinkedListUtil.addLast(head, 13);

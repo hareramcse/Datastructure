@@ -3,20 +3,31 @@ package com.hs.linkedlist;
 import com.hs.basic.LinkedListUtil;
 import com.hs.basic.Node;
 
+// 61. Rotate List Leetcode
 public class RightRotateByKTimes {
 
-	private Node rightRotateKTimes(Node head, int k) {
-		Node temp = head;
-		while (k-- > 0 && temp != null) {
-			temp = temp.next;
+	public Node rightRotateKTimes(Node head, int k) {
+		if (head == null || head.next == null || k == 0)
+			return head;
+
+		Node current = head;
+
+		int length = 1;
+		while (current.next != null) {
+			length++;
+			current = current.next;
 		}
-		Node kthNode = temp;
-		while (temp.next != null) {
-			temp = temp.next;
+
+		current.next = head;
+		k = k % length;
+		k = length - k;
+		while (k > 0) {
+			k--;
+			current = current.next;
 		}
-		temp.next = head;
-		head = kthNode.next;
-		kthNode.next = null;
+
+		head = current.next;
+		current.next = null;
 		return head;
 	}
 

@@ -5,7 +5,7 @@ import com.hs.basic.Node;
 
 public class AddOneToLinkedList {
 	// carry after all nodes are processed.
-	private int addWithCarry(Node head) {
+	public int addWithCarry(Node head) {
 
 		// If linked list is empty, then return carry
 		if (head == null)

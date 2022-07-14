@@ -1,58 +1,30 @@
 package com.hs.linkedlist;
 
+import java.util.PriorityQueue;
+import java.util.Queue;
+
 import com.hs.basic.LinkedListUtil;
 import com.hs.basic.Node;
 
+// 23. Merge k Sorted Lists Leetcode
 public class MergeKSortedLinkedList {
-	/*
-	 * Takes two lists sorted in increasing order, and merge their nodes together to
-	 * make one big sorted list. Below function takes O(Log n) extra space for
-	 * recursive calls, but it can be easily modified to work with same time and
-	 * O(1) extra space
-	 */
-	private Node sortedMerge(Node head1, Node head2) {
-		Node result = null;
-		/* Base cases */
-		if (head1 == null)
-			return head2;
-		else if (head2 == null)
-			return head1;
 
-		/* Pick either a or b, and recur */
-		if (head1.data <= head2.data) {
-			result = head1;
-			result.next = sortedMerge(head1.next, head2);
-		} else {
-			result = head2;
-			result.next = sortedMerge(head1, head2.next);
-		}
-
-		return result;
-	}
-
-	// The main function that takes an array of lists
-	// arr[0..last] and generates the sorted output
-	public Node mergeKLists(Node arr[], int noOfList) {
-		// repeat until only one list is left
-		while (noOfList != 0) {
-			int i = 0, j = noOfList;
-
-			// (i, j) forms a pair
-			while (i < j) {
-				// merge List i with List j and store merged list in List i
-				arr[i] = sortedMerge(arr[i], arr[j]);
-
-				// consider next pair
-				i++;
-				j--;
-
-				// If all pairs are merged, update last
-				if (i >= j)
-					noOfList = j;
+	public Node mergeKLists(Node[] lists) {
+		Queue<Integer> minHeap = new PriorityQueue<>();
+		for (Node head : lists) {
+			while (head != null) {
+				minHeap.add(head.data);
+				head = head.next;
 			}
 		}
 
-		return arr[0];
+		Node dummy = new Node();
+		Node head = dummy;
+		while (!minHeap.isEmpty()) {
+			head.next = new Node(minHeap.remove());
+			head = head.next;
+		}
+		return dummy.next;
 	}
 
 	public static void main(String args[]) {
@@ -78,7 +50,7 @@ public class MergeKSortedLinkedList {
 		arr[2].next.next.next = new Node(11);
 
 		// Merge all lists
-		Node head = list.mergeKLists(arr, k - 1);
+		Node head = list.mergeKLists(arr);
 		LinkedListUtil.printLinkedList(head);
 	}
 }

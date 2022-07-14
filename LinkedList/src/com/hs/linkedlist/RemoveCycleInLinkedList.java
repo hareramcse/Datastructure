@@ -5,7 +5,7 @@ import com.hs.basic.Node;
 
 public class RemoveCycleInLinkedList {
 
-	private void detectAndRemoveLoop(Node head) {
+	public void detectAndRemoveLoop(Node head) {
 		Node slow = head;
 		Node fast = head.next;
 

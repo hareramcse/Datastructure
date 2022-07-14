@@ -1,37 +1,34 @@
 package com.hs.linkedlist;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import com.hs.basic.Node;
 
+// 160. Intersection of Two Linked Lists Leetcode
 class IntersectionOfTwoLinkedList {
 
-	private int length(Node list) {
-		int lenght = 0;
-		Node tmp = list;
-		while (tmp != null) {
-			lenght++;
-			tmp = tmp.next;
-		}
-		return lenght;
-	}
+	public Node findMergePoint(Node head1, Node head2) {
+		Set<Node> nodes = new HashSet<>();
 
-	private Node findMergePoint(Node head1, Node head2) {
-		int firstLength = length(head1);
-        int secondLength = length(head2);
-        int diff = secondLength - firstLength;
-        if (diff <  0) {
-            Node tmp = head1;
-            head1 = head2;
-            head2 = tmp;
-            diff = firstLength - secondLength;
-        }
-        for (int i = 0; i < diff; i++) {
-            head2 = head2.next;
-        }
-        while (head1.data != head2.data) {
-            head1 = head1.next;
-            head2 = head2.next;
-        }
-        return head1;
+		// traverse the first list and insert the address of each node into the set
+		while (head1 != null) {
+			nodes.add(head1);
+			head1 = head1.next;
+		}
+
+		// now traverse the second list and find the first node that is
+		// already present in the set
+		while (head2 != null) {
+			// return the current node if it is found in the set
+			if (nodes.contains(head2)) {
+				return head2;
+			}
+			head2 = head2.next;
+		}
+
+		// we reach here if lists do not intersect
+		return null;
 	}
 
 	public static void main(String[] args) {

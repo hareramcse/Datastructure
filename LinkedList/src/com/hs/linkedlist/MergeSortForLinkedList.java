@@ -3,29 +3,10 @@ package com.hs.linkedlist;
 import com.hs.basic.LinkedListUtil;
 import com.hs.basic.Node;
 
+// 148. Sort List Leetcode
 public class MergeSortForLinkedList {
 
-	private Node sortedMerge(Node head1, Node head2) {
-		Node result = null;
-		/* Base cases */
-		if (head1 == null)
-			return head2;
-		else if (head2 == null)
-			return head1;
-
-		/* Pick either a or b, and recur */
-		if (head1.data <= head2.data) {
-			result = head1;
-			result.next = sortedMerge(head1.next, head2);
-		} else {
-			result = head2;
-			result.next = sortedMerge(head1, head2.next);
-		}
-
-		return result;
-	}
-
-	private Node mergeSort(Node head) {
+	public Node mergeSort(Node head) {
 		// Base case : if head is null
 		if (head == null || head.next == null) {
 			return head;
@@ -45,7 +26,7 @@ public class MergeSortForLinkedList {
 		Node right = mergeSort(nextOfMiddle);
 
 		// Merge the left and right lists
-		Node sortedlist = sortedMerge(left, right);
+		Node sortedlist = merge(left, right);
 		return sortedlist;
 	}
 
@@ -64,6 +45,25 @@ public class MergeSortForLinkedList {
 			fast = fast.next.next;
 		}
 		return slow;
+	}
+
+	private Node merge(Node head1, Node head2) {
+		Node result = null;
+		// Base cases
+		if (head1 == null)
+			return head2;
+		else if (head2 == null)
+			return head1;
+
+		// Pick either a or b, and recur
+		if (head1.data <= head2.data) {
+			result = head1;
+			result.next = merge(head1.next, head2);
+		} else {
+			result = head2;
+			result.next = merge(head1, head2.next);
+		}
+		return result;
 	}
 
 	public static void main(String[] args) {

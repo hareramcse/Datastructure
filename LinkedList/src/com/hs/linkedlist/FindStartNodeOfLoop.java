@@ -2,9 +2,10 @@ package com.hs.linkedlist;
 
 import com.hs.basic.Node;
 
+// 142. Linked List Cycle II Leetcode
 public class FindStartNodeOfLoop {
 
-	private Node findStartNode(Node head) {
+	public Node findStartNode(Node head) {
 		Node slow = head;
 		Node fast = head;
 		boolean loopExist = false;

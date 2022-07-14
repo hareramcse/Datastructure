@@ -7,9 +7,8 @@ import java.util.LinkedList;
 import java.util.Set;
 
 public class CountPairsInTwoListWhoseSumIsGivenValue {
-	// method to count all pairs from both the linked lists whose sum is equal to a
-	// given value
-	private int countPairs(LinkedList<Integer> head1, LinkedList<Integer> head2, int x) {
+	// count all pairs from both the lists whose sum is equal to a given value
+	public int countPairs(LinkedList<Integer> head1, LinkedList<Integer> head2, int x) {
 		int count = 0;
 
 		Set<Integer> set = new HashSet<Integer>();
@@ -28,7 +27,6 @@ public class CountPairsInTwoListWhoseSumIsGivenValue {
 				count++;
 			}
 		}
-
 		return count;
 	}
 

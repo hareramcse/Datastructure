@@ -3,9 +3,10 @@ package com.hs.linkedlist;
 import com.hs.basic.LinkedListUtil;
 import com.hs.basic.Node;
 
+// 234. Palindrome Linked List Leetcode
 public class CheckIfLinkedListPolindrom {
 
-	private boolean checkIfPolindrom(Node head) {
+	public boolean checkIfPolindrom(Node head) {
 		Node mid = LinkedListUtil.findMiddle(head);
 		Node reverse = LinkedListUtil.reverseByRecursion(mid);
 		while (head != mid && reverse != null) {

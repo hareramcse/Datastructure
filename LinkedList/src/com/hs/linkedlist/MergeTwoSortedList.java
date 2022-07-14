@@ -3,27 +3,33 @@ package com.hs.linkedlist;
 import com.hs.basic.LinkedListUtil;
 import com.hs.basic.Node;
 
-public class MergeTwoSortedListInto3rdSortedListWithRecursion {
+// 21. Merge Two Sorted Lists Leetcode
+public class MergeTwoSortedList {
 
-	private Node mergeTwoList(Node head1, Node head2, Node result) {
-		if (head1 == null) {
-			return head2;
+	public Node mergeTwoLists(Node list1, Node list2) {
+		Node result = new Node();
+        return mergeTwoListsUtil(list1, list2, result);
+    }
+    
+    private Node mergeTwoListsUtil(Node list1, Node list2, Node result){
+         if (list1 == null) {
+			return list2;
 		}
-		if (head2 == null) {
-			return head1;
+		if (list2 == null) {
+			return list1;
 		}
-		if (head1.data > head2.data) {
-			result = head2;
-			result.next = mergeTwoList(head1, head2.next, result);
+		if (list1.data > list2.data) {
+			result = list2;
+			result.next = mergeTwoListsUtil(list1, list2.next, result);
 		} else {
-			result = head1;
-			result.next = mergeTwoList(head1.next, head2, result);
+			result = list1;
+			result.next = mergeTwoListsUtil(list1.next, list2, result);
 		}
 		return result;
-	}
+    }
 
 	public static void main(String[] args) {
-		MergeTwoSortedListInto3rdSortedListWithRecursion list = new MergeTwoSortedListInto3rdSortedListWithRecursion();
+		MergeTwoSortedList list = new MergeTwoSortedList();
 		
 		Node head1 = LinkedListUtil.addLast(null, 10);
 		head1 = LinkedListUtil.addLast(head1, 20);
@@ -38,9 +44,7 @@ public class MergeTwoSortedListInto3rdSortedListWithRecursion {
 		head2 = LinkedListUtil.addLast(head2, 80);
 		head2 = LinkedListUtil.addLast(head2, 90);
 
-		Node result = new Node();
-
-		Node mergeTwoList = list.mergeTwoList(head1, head2, result);
+		Node mergeTwoList = list.mergeTwoLists(head1, head2);
 		LinkedListUtil.printLinkedList(mergeTwoList);
 	}
 }

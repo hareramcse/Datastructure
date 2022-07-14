@@ -3,12 +3,13 @@ package com.hs.linkedlist;
 import com.hs.basic.LinkedListUtil;
 import com.hs.basic.Node;
 
+// 143. Reorder List Leetcode
 public class ReorderLinkedList {
 
 	// find the mid element
 	// reverse the second half of the element
 	// add alternatively from the 1st list and 2nd list into dummy node
-	private Node reorderList(Node head) {
+	public Node reorderList(Node head) {
 		Node mid = LinkedListUtil.findMiddle(head);
 		Node nextOfMid = mid.next;
 		mid.next = null;
