@@ -2,12 +2,22 @@ package com.hs.imp;
 
 import java.util.Stack;
 
+// 85. Maximal Rectangle Leetcode
 public class MaxRectangleAreaInBinaryMatrix {
 
-	private int maxBianryHistrogram(int row, int col, int[][] matrix) {
+	public int maxBianryHistrogram(char[][] input) {
+		int row = input.length;
+		int column = input[0].length;
+		int[][] matrix = new int[row][column];
+		for (int i = 0; i < row; i++) {
+			for (int j = 0; j < column; j++) {
+				matrix[i][j] = input[i][j] - '0';
+			}
+		}
+
 		int result = maxHistogram(matrix[0]);
 		for (int i = 1; i < row; i++) {
-			for (int j = 0; j < col; j++) {
+			for (int j = 0; j < column; j++) {
 				if (matrix[i][j] == 1)
 					matrix[i][j] += matrix[i - 1][j];
 			}
@@ -82,10 +92,9 @@ public class MaxRectangleAreaInBinaryMatrix {
 
 	public static void main(String[] args) {
 		MaxRectangleAreaInBinaryMatrix stack = new MaxRectangleAreaInBinaryMatrix();
-		int row = 4;
-		int col = 4;
-		int[][] matrix = { { 0, 1, 1, 0 }, { 1, 1, 1, 1 }, { 1, 1, 1, 1 }, { 1, 1, 0, 0 } };
-		int max = stack.maxBianryHistrogram(row, col, matrix);
+		char[][] matrix = { { '1', '0', '1', '0', '0' }, { '1', '0', '1', '1', '1' }, { '1', '1', '1', '1', '1' },
+				{ '1', '0', '0', '1', '0' } };
+		int max = stack.maxBianryHistrogram(matrix);
 		System.out.println(max);
 	}
 }

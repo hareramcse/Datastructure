@@ -4,7 +4,7 @@ import java.util.Stack;
 
 public class SortStack {
 
-	private Stack<Integer> sort(Stack<Integer> stack) {
+	public Stack<Integer> sort(Stack<Integer> stack) {
 		Stack<Integer> rstk = new Stack<Integer>();
 		while (!stack.isEmpty()) {
 			int tmp = stack.pop();

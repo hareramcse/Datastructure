@@ -2,12 +2,12 @@ package com.hs.imp;
 
 import java.util.Stack;
 
+// 20. Valid Parentheses Leetcode
 public class CheckBalancedParanthesis {
 	// checks if parentheses are balanced or not
-	public boolean balancedparantheses(String exp) {
+	public boolean balancedparantheses(String s) {
 		Stack<Character> stack = new Stack<Character>();
-		for (int i = 0; i < exp.length(); i++) {
-			char charValue = exp.charAt(i);
+		for (char charValue : s.toCharArray()) {
 			if (charValue == '[' || charValue == '(' || charValue == '{') {
 				stack.push(charValue);
 			} else if (charValue == ']') {

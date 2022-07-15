@@ -2,6 +2,7 @@ package com.hs.imp;
 
 import java.util.Stack;
 
+// 84. Largest Rectangle in Histogram Leetcode
 public class MaxRectangleAreaInHistogram {
 	private int maxHistogram(int[] input) {
 		if (input.length == 1) {

@@ -1,6 +1,6 @@
 package com.hs.basic;
 
-public class MyStackWithLinkedList {
+public class StackUsingLinkedList {
 	private int length;
 	private Node head;
 
@@ -48,7 +48,7 @@ public class MyStackWithLinkedList {
 	}
 
 	public static void main(String[] args) {
-		MyStackWithLinkedList myStackList = new MyStackWithLinkedList();
+		StackUsingLinkedList myStackList = new StackUsingLinkedList();
 		myStackList.push(10);
 		myStackList.push(20);
 		myStackList.push(30);

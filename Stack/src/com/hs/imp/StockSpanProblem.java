@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Stack;
 
 public class StockSpanProblem {
-	private int[] nearestGreatestToRight(int[] arr) {
+	public int[] nearestGreatestToRight(int[] arr) {
 		Stack<Pair> st = new Stack<Pair>();
 		int n = arr.length;
 		int[] res = new int[n];

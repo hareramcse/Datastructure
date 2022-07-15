@@ -3,7 +3,7 @@ package com.hs.imp;
 import java.util.Stack;
 
 public class StackReversal {
-	private void reverseStack(Stack<Integer> stack) {
+	public void reverseStack(Stack<Integer> stack) {
 		if (stack.isEmpty()) {
 			return;
 		}

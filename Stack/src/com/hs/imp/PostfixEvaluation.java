@@ -3,7 +3,7 @@ package com.hs.imp;
 import java.util.Stack;
 
 public class PostfixEvaluation {
-	private Integer expressionEvaluation(String token) {
+	public Integer expressionEvaluation(String token) {
 		Stack<Integer> stack = new Stack<>();
 		for (Character ch : token.toCharArray()) {
 			if (ch.equals('+')) {

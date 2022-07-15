@@ -1,17 +1,17 @@
 package com.hs.basic;
 
-public class MyStackWithDynamicArray {
+public class StackUsingDynamicArray {
 	private static final int CAPACITY = 2;
 	private static final int MINCAPACITY = 1 << 15;
 	private int stack[];
 	private int capacity;
 	private int top;
 
-	public MyStackWithDynamicArray() {
+	public StackUsingDynamicArray() {
 		this(CAPACITY);
 	}
 
-	public MyStackWithDynamicArray(int cap) {
+	public StackUsingDynamicArray(int cap) {
 		capacity = cap;
 		stack = new int[capacity];
 		top = -1;
@@ -85,7 +85,7 @@ public class MyStackWithDynamicArray {
 	}
 
 	public static void main(String[] args) {
-		MyStackWithDynamicArray stack = new MyStackWithDynamicArray();
+		StackUsingDynamicArray stack = new StackUsingDynamicArray();
 		try {
 			stack.push(10);
 			stack.push(20);
