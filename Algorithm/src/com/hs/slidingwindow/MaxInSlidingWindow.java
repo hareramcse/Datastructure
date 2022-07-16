@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Deque;
 import java.util.LinkedList;
 
-// Leetcode HARD
+// 239. Sliding Window Maximum Leetcode
 public class MaxInSlidingWindow {
 
 	private int[] maxSlidingWindow(int[] nums, int k) {
