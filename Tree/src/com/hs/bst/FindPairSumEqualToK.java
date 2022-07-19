@@ -9,24 +9,19 @@ import com.hs.tree.Node;
 public class FindPairSumEqualToK {
 	public boolean findPair(Node root, int sum) {
 		Set<Integer> set = new HashSet<>();
-		if (findPairUtil(root, sum, set))
-			return true;
-		return false;
+		return findPairUtil(root, sum, set);
 	}
 
 	private boolean findPairUtil(Node root, int sum, Set<Integer> set) {
 		if (root == null)
 			return false;
 
-		if (findPairUtil(root.left, sum, set))
-			return true;
-
 		if (set.contains(sum - root.data))
 			return true;
 		else
 			set.add(root.data);
 
-		return findPairUtil(root.right, sum, set);
+		return findPairUtil(root.left, sum, set) || findPairUtil(root.right, sum, set);
 	}
 
 	public static void main(String[] args) {
@@ -38,7 +33,7 @@ public class FindPairSumEqualToK {
 		root.right = new Node(70);
 		root.right.left = new Node(60);
 		root.right.right = new Node(80);
-		boolean found = tree.findPair(root, 60);
+		boolean found = tree.findPair(root, 80);
 		System.out.println(found);
 	}
 }

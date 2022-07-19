@@ -17,20 +17,22 @@ public class InOrderSuccessor {
 	}
 
 	// do the reverse inorder traversal
-	public void inOrderSuccessor(Node root, PreviousNode pre, int searchNode) {
+	public Node inOrderSuccessor(Node root, PreviousNode pre, int searchNode) {
 		if (root == null)
-			return;
+			return root;
 
 		// Case1: If right child is not NULL
-		inOrderSuccessor(root.right, pre, searchNode);
+		Node right = inOrderSuccessor(root.right, pre, searchNode);
+		if (right != null) {
+			return right;
+		}
 
 		// Case2: If root data is equal to search node
 		if (root.data == searchNode)
-			System.out.println("inorder successor of " + searchNode + " is: "
-					+ (pre.previous != null ? pre.previous.data : "null"));
+			return pre.previous;
 
 		pre.previous = root;
-		inOrderSuccessor(root.left, pre, searchNode);
+		return inOrderSuccessor(root.left, pre, searchNode);
 	}
 
 	// Given a binary tree, print its nodes in inorder
@@ -59,15 +61,35 @@ public class InOrderSuccessor {
 		System.out.println();
 
 		// Case 1
-		tree.inOrderSuccessor(root, new PreviousNode(), 3);
+		Node inOrderSuccessor = tree.inOrderSuccessor(root, new PreviousNode(), 3);
+		if (inOrderSuccessor != null) {
+			System.out.println(inOrderSuccessor.data);
+		} else {
+			System.out.println("null");
+		}
 
 		// Case 2
-		tree.inOrderSuccessor(root, new PreviousNode(), 4);
+		inOrderSuccessor = tree.inOrderSuccessor(root, new PreviousNode(), 4);
+		if (inOrderSuccessor != null) {
+			System.out.println(inOrderSuccessor.data);
+		} else {
+			System.out.println("null");
+		}
 
 		// Case 3
-		tree.inOrderSuccessor(root, new PreviousNode(), 6);
+		inOrderSuccessor = tree.inOrderSuccessor(root, new PreviousNode(), 6);
+		if (inOrderSuccessor != null) {
+			System.out.println(inOrderSuccessor.data);
+		} else {
+			System.out.println("null");
+		}
 
 		// Case 4
-		tree.inOrderSuccessor(root, new PreviousNode(), 5);
+		inOrderSuccessor = tree.inOrderSuccessor(root, new PreviousNode(), 5);
+		if (inOrderSuccessor != null) {
+			System.out.println(inOrderSuccessor.data);
+		} else {
+			System.out.println("null");
+		}
 	}
 }

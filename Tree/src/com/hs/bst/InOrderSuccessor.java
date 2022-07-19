@@ -12,7 +12,7 @@ public class InOrderSuccessor {
 		Node current = root;
 		Node prev = null;
 		while (current != null) {
-			if (current.data > k.data) {
+			if (k.data < current.data) {
 				prev = current;
 				current = current.left;
 			} else {

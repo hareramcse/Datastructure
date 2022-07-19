@@ -10,11 +10,11 @@ public class LCAInBST {
 			return null;
 
 		// If both n1 and n2 are smaller than root, then LCA lies in left
-		if (root.data > n1 && root.data > n2)
+		if (n1 < root.data && n2 < root.data)
 			return lca(root.left, n1, n2);
 
 		// If both n1 and n2 are greater than root, then LCA lies in right
-		else if (root.data < n1 && root.data < n2)
+		else if (n1 > root.data && n2 > root.data)
 			return lca(root.right, n1, n2);
 
 		// n1 is less than root and n2 is greater than root or vice-versa
