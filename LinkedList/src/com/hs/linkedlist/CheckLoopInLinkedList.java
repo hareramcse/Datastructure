@@ -4,13 +4,12 @@ import com.hs.basic.Node;
 
 // 141. Linked List Cycle Leetcode
 public class CheckLoopInLinkedList {
-
 	public boolean detectLoop(Node head) {
 		if (head == null)
 			return false;
 
 		Node slow = head;
-		Node fast = head.next;
+		Node fast = head;
 
 		while (fast != null && fast.next != null) {
 			slow = slow.next;

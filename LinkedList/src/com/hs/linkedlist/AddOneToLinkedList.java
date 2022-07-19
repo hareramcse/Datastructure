@@ -4,21 +4,6 @@ import com.hs.basic.LinkedListUtil;
 import com.hs.basic.Node;
 
 public class AddOneToLinkedList {
-	// carry after all nodes are processed.
-	public int addWithCarry(Node head) {
-
-		// If linked list is empty, then return carry
-		if (head == null)
-			return 1;
-
-		// Add carry returned be next node call
-		int res = head.data + addWithCarry(head.next);
-
-		// Update data and return new carry
-		head.data = res % 10;
-		return res / 10;
-	}
-
 	// This function mainly uses addWithCarry().
 	private Node addOne(Node head) {
 
@@ -32,8 +17,23 @@ public class AddOneToLinkedList {
 			newNode.next = head;
 			return newNode; // New node becomes head now
 		}
-
 		return head;
+	}
+
+	// carry after all nodes are processed.
+	public int addWithCarry(Node head) {
+
+		// If linked list is empty, then return carry
+		if (head == null)
+			return 1;
+
+		// Add carry returned be next node call
+		int res = head.data + addWithCarry(head.next);
+
+		// Update data
+		head.data = res % 10;
+		// return new carry
+		return res / 10;
 	}
 
 	public static void main(String[] args) {

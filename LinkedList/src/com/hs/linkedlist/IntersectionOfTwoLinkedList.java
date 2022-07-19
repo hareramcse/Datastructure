@@ -7,7 +7,6 @@ import com.hs.basic.Node;
 
 // 160. Intersection of Two Linked Lists Leetcode
 class IntersectionOfTwoLinkedList {
-
 	public Node findMergePoint(Node head1, Node head2) {
 		Set<Node> nodes = new HashSet<>();
 
@@ -47,6 +46,5 @@ class IntersectionOfTwoLinkedList {
 		head2.next.next = new Node(30);
 
 		System.out.println("The node of intersection is " + list.findMergePoint(head1, head2).data);
-
 	}
 }

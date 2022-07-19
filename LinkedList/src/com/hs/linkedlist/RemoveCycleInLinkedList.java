@@ -9,24 +9,26 @@ public class RemoveCycleInLinkedList {
 		Node slow = head;
 		Node fast = head.next;
 
+		boolean loopExist = false;
 		while (fast != null && fast.next != null) {
 			if (slow == fast) {
+				loopExist = true;
 				break;
 			}
 			slow = slow.next;
 			fast = fast.next.next;
 		}
 
-		/* If loop exists */
-		if (slow == fast) {
+		// If loop exists
+		if (loopExist) {
 			slow = head;
 			while (slow != fast.next) {
 				slow = slow.next;
 				fast = fast.next;
 			}
 
-			/* since fast->next is the looping point */
-			fast.next = null; /* remove loop */
+			// since fast->next is the looping point
+			fast.next = null; // remove loop
 		}
 	}
 

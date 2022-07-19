@@ -16,21 +16,21 @@ public class ReorderLinkedList {
 
 		Node head1 = head;
 		Node head2 = LinkedListUtil.reverseByRecursion(nextOfMid);
-		Node result = new Node(); // result node
+		Node dummy = new Node(); // result node
 
 		while (head1 != null || head2 != null) {
 
 			// First add the element from first list
 			if (head1 != null) {
-				result.next = head1;
-				result = result.next;
+				dummy.next = head1;
+				dummy = dummy.next;
 				head1 = head1.next;
 			}
 
 			// Then add the element from second list
 			if (head2 != null) {
-				result.next = head2;
-				result = result.next;
+				dummy.next = head2;
+				dummy = dummy.next;
 				head2 = head2.next;
 			}
 		}

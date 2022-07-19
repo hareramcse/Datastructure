@@ -17,12 +17,13 @@ class RemoveDuplicateFromSortedList2 {
 
 		while (current != null) {
 			if (current.next != null && current.data == current.next.data) {
+				// skip the nodes whose values are equal to current node
 				while (current.next != null && current.data == current.next.data) {
 					current = current.next;
 				}
 				pre.next = current.next;
 			} else {
-				pre = current;
+				pre = pre.next;
 			}
 			current = current.next;
 		}
