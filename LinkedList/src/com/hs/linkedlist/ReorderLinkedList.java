@@ -41,6 +41,7 @@ public class ReorderLinkedList {
 
 	public static void main(String[] args) {
 		ReorderLinkedList list = new ReorderLinkedList();
+		
 		Node head = new Node(10);
 		head.next = new Node(4);
 		head.next.next = new Node(15);

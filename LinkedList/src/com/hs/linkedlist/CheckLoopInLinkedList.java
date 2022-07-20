@@ -33,7 +33,7 @@ public class CheckLoopInLinkedList {
 		head.next.next.next.next.next.next = new Node(70);
 		head.next.next.next.next.next.next.next = new Node(80);
 
-		// Create loop for testing
+		// Creating a loop for testing
 		head.next.next.next.next.next.next.next = head.next.next;
 
 		boolean b = list.detectLoop(head);

@@ -24,12 +24,12 @@ public class RemoveElements {
 	public static void main(String args[]) {
 		RemoveElements list = new RemoveElements();
 
-		Node head = LinkedListUtil.addLast(null, 20);
-		head = LinkedListUtil.addLast(head, 13);
-		head = LinkedListUtil.addLast(head, 13);
-		head = LinkedListUtil.addLast(head, 11);
-		head = LinkedListUtil.addLast(head, 11);
-		head = LinkedListUtil.addLast(head, 11);
+		Node head = new Node(20);
+		head.next = new Node(13);
+		head.next.next = new Node(13);
+		head.next.next.next = new Node(11);
+		head.next.next.next.next = new Node(11);
+		head.next.next.next.next.next = new Node(11);
 
 		System.out.println("List before removal of duplicates");
 		LinkedListUtil.printLinkedList(head);

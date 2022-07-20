@@ -4,13 +4,13 @@ import com.hs.basic.Node;
 
 // 19. Remove Nth Node From End of List Leetcode
 public class DeleteKthNodeFromTail {
-	private Node deleteKthNodeFromEnd(Node head, int k) {
-		Node dummy = new Node();
-		dummy.next = head;
-		Node slow = dummy;
-		Node fast = dummy;
+	private Node deleteKthNodeFromEnd(Node head, int n) {
+		Node start = new Node();
+		start.next = head;
+		Node slow = head;
+		Node fast = head;
 
-		for (int i = 0; i <= k; i++) {
+		for (int i = 0; i <= n; i++) {
 			fast = fast.next;
 		}
 
@@ -20,7 +20,7 @@ public class DeleteKthNodeFromTail {
 		}
 
 		slow.next = slow.next.next;
-		return head;
+		return start.next;
 	}
 
 	public static void main(String[] args) {
@@ -32,6 +32,9 @@ public class DeleteKthNodeFromTail {
 		head.next.next.next.next = new Node(50);
 
 		Node node = list.deleteKthNodeFromEnd(head, 3);
-		System.out.println(node.data);
+		while (node != null) {
+			System.out.println(node.data);
+			node = node.next;
+		}
 	}
 }

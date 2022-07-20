@@ -5,40 +5,45 @@ import com.hs.basic.Node;
 class FindLengthOfLoop {
 	// count number of nodes in the loop
 	public int countNodesInLoop(Node head) {
-		Node slow = head, fast = head.next;
+		Node slow = head;
+		Node fast = head;
 
+		boolean loopExist = false;
 		while (fast != null && fast.next != null) {
-			if (slow == fast)
-				return countNodes(slow);
 			slow = slow.next;
 			fast = fast.next.next;
+			if (slow == fast) {
+				loopExist = true;
+				break;
+			}
 		}
 
-		// Return 0 to indicate that there is no loop
-		return 0;
-	}
-
-	// Returns count of nodes present in loop.
-	private int countNodes(Node head) {
-		int count = 1;
-		Node temp = head;
-		while (temp.next != head) {
-			count++;
-			temp = temp.next;
+		int count = 0;
+		if (loopExist) {
+			count = 1;
+			Node temp = slow;
+			while (temp.next != slow) {
+				count++;
+				temp = temp.next;
+			}
 		}
 		return count;
 	}
 
 	public static void main(String[] args) {
 		FindLengthOfLoop list = new FindLengthOfLoop();
-		Node head = new Node(1);
-		head.next = new Node(2);
-		head.next.next = new Node(3);
-		head.next.next.next = new Node(4);
-		head.next.next.next.next = new Node(5);
+		
+		Node head = new Node(10);
+		head.next = new Node(20);
+		head.next.next = new Node(30);
+		head.next.next.next = new Node(40);
+		head.next.next.next.next = new Node(50);
+		head.next.next.next.next.next = new Node(60);
+		head.next.next.next.next.next.next = new Node(70);
+		head.next.next.next.next.next.next.next = new Node(80);
 
-		// Create a loop for testing
-		head.next.next.next.next.next = head.next;
+		// Creating a loop for testing
+		head.next.next.next.next.next.next.next = head.next.next;
 
 		System.out.println(list.countNodesInLoop(head));
 	}

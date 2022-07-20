@@ -13,23 +13,17 @@ public class ReArrangeLinkedListInZigZagFashion {
 		// Traverse linked list starting from head.
 		Node current = head;
 		while (current != null && current.next != null) {
-			if (flag == true) /* "<" relation expected */
-			{
-				/*
-				 * If we have a situation like A > B > C where A, B and C are consecutive Nodes
-				 * in list we get A > B < C by swapping B and C
-				 */
+			if (flag == true) {
+				// If we have a situation like A > B > C where A, B and C are consecutive Nodes
+				// then we get A > B < C by swapping B and C
 				if (current.data > current.next.data) {
 					int temp = current.data;
 					current.data = current.next.data;
 					current.next.data = temp;
 				}
-			} else /* ">" relation expected */
-			{
-				/*
-				 * If we have a situation like A < B < C where A, B and C are consecutive Nodes
-				 * in list we get A < C > B by swapping B and C
-				 */
+			} else {
+				// If we have a situation like A < B < C where A, B and C are consecutive Nodes
+				// in list we get A < C > B by swapping B and C
 				if (current.data < current.next.data) {
 					int temp = current.data;
 					current.data = current.next.data;
@@ -46,17 +40,13 @@ public class ReArrangeLinkedListInZigZagFashion {
 
 	public static void main(String[] args) {
 		ReArrangeLinkedListInZigZagFashion list = new ReArrangeLinkedListInZigZagFashion();
-
-		// create a list 4 -> 3 -> 7 -> 8 -> 6 -> 2 -> 1
-		// answer should be -> 3 7 4 8 2 6 1
-
-		Node head = LinkedListUtil.addLast(null, 1);
-		head = LinkedListUtil.addLast(head, 2);
-		head = LinkedListUtil.addLast(head, 6);
-		head = LinkedListUtil.addLast(head, 8);
-		head = LinkedListUtil.addLast(head, 7);
-		head = LinkedListUtil.addLast(head, 3);
-		head = LinkedListUtil.addLast(head, 4);
+		Node head = new Node(1);
+		head.next = new Node(2);
+		head.next.next = new Node(6);
+		head.next.next.next = new Node(8);
+		head.next.next.next.next = new Node(7);
+		head.next.next.next.next.next = new Node(3);
+		head.next.next.next.next.next.next = new Node(4);
 
 		System.out.println("Given linked list ");
 		LinkedListUtil.printLinkedList(head);

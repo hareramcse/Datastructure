@@ -27,18 +27,19 @@ public class RearrangeEvenAndOdd {
 
 	public static void main(String args[]) {
 		RearrangeEvenAndOdd list = new RearrangeEvenAndOdd();
-		Node head = LinkedListUtil.addLast(null, 8);
-		head = LinkedListUtil.addLast(head, 7);
-		head = LinkedListUtil.addLast(head, 6);
-		head = LinkedListUtil.addLast(head, 3);
-		head = LinkedListUtil.addLast(head, 5);
-		head = LinkedListUtil.addLast(head, 1);
-		head = LinkedListUtil.addLast(head, 2);
-		head = LinkedListUtil.addLast(head, 10);
+		Node head = new Node(1);
+		head.next = new Node(2);
+		head.next.next = new Node(3);
+		head.next.next.next = new Node(4);
+		head.next.next.next.next = new Node(5);
+		head.next.next.next.next.next = new Node(6);
+		head.next.next.next.next.next.next = new Node(7);
+		head.next.next.next.next.next.next.next = new Node(8);
+		head.next.next.next.next.next.next.next.next = new Node(9);
 
-		System.out.println("Linked List:");
+		System.out.println("Linked list before arrange:");
 		LinkedListUtil.printLinkedList(head);
-		System.out.println("Rearranged List");
+		System.out.println("Rearranged List:");
 		head = list.rearrange(head);
 		LinkedListUtil.printLinkedList(head);
 	}
