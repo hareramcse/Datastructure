@@ -1,45 +1,43 @@
 package com.hs.linkedlist;
 
-import java.util.Arrays;
 import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.Set;
+
+import com.hs.basic.Node;
 
 public class CountPairsInTwoListWhoseSumIsGivenValue {
 	// count all pairs from both the lists whose sum is equal to a given value
-	public int countPairs(LinkedList<Integer> head1, LinkedList<Integer> head2, int x) {
+	public int countPairs(Node head1, Node head2, int x) {
 		int count = 0;
 
 		Set<Integer> set = new HashSet<Integer>();
-
-		// insert all the elements of 1st list in the hash table(unordered_set 'set')
-		Iterator<Integer> itr = head1.iterator();
-		while (itr.hasNext()) {
-			set.add(itr.next());
+		while (head1 != null) {
+			set.add(head1.data);
+			head1 = head1.next;
 		}
 
-		itr = head2.iterator();
-		// for each element of 2nd list
-		while (itr.hasNext()) {
+		while (head2 != null) {
 			// find (x - head2->data) in 'set'
-			if (set.contains(x - itr.next())) {
+			if (set.contains(x - head2.data)) {
 				count++;
 			}
+			head2 = head2.next;
 		}
 		return count;
 	}
 
 	public static void main(String[] args) {
 		CountPairsInTwoListWhoseSumIsGivenValue list = new CountPairsInTwoListWhoseSumIsGivenValue();
-		Integer arr1[] = { 3, 1, 5, 7 };
-		Integer arr2[] = { 8, 2, 5, 3 };
 
-		// create linked list1 3->1->5->7
-		LinkedList<Integer> head1 = new LinkedList<>(Arrays.asList(arr1));
+		Node head1 = new Node(3);
+		head1.next = new Node(1);
+		head1.next.next = new Node(5);
+		head1.next.next.next = new Node(7);
 
-		// create linked list2 8->2->5->3
-		LinkedList<Integer> head2 = new LinkedList<>(Arrays.asList(arr2));
+		Node head2 = new Node(8);
+		head2.next = new Node(2);
+		head2.next.next = new Node(5);
+		head2.next.next.next = new Node(3);
 
 		int x = 10;
 

@@ -3,43 +3,47 @@ package com.hs.linkedlist;
 import com.hs.basic.LinkedListUtil;
 import com.hs.basic.Node;
 
+// 25. Reverse Nodes in k-Group Leetcode
 public class ReverseLinkedListInGroup {
 
 	public Node reverseKGroup(Node head, int k) {
 		if (head == null || head.next == null)
 			return head;
 
-		int length = length(head);
+		Node current = head;
+		Node prev = null;
+		Node next = null;
 
-		Node dummyHead = new Node();
-		dummyHead.next = head;
-
-		Node pre = dummyHead;
-		Node cur;
-		Node nex;
-
-		while (length >= k) {
-			cur = pre.next;
-			nex = cur.next;
-			for (int i = 1; i < k; i++) {
-				cur.next = nex.next;
-				nex.next = pre.next;
-				pre.next = nex;
-				nex = cur.next;
-			}
-			pre = cur;
-			length -= k;
+		// this case is only for if length of linkedlist size is not divisible by k
+		boolean isCheck = check(head, k);
+		if (isCheck) {
+			return head;
 		}
-		return dummyHead.next;
+
+		int count = 0;
+		while (current != null && count < k) {
+			next = current.next;
+			current.next = prev;
+			prev = current;
+			current = next;
+			count++;
+		}
+
+		if (next != null) {
+			head.next = reverseKGroup(next, k);
+		}
+
+		return prev;
 	}
 
-	private int length(Node head) {
-		int length = 0;
-		while (head != null) {
-			length++;
-			head = head.next;
+	private boolean check(Node head, int k) {
+		Node temp = head;
+		int count = 0;
+		while (temp != null) {
+			temp = temp.next;
+			count++;
 		}
-		return length;
+		return count < k ? true : false;
 	}
 
 	public static void main(String[] args) {
@@ -48,9 +52,9 @@ public class ReverseLinkedListInGroup {
 		head.next = new Node(4);
 		head.next.next = new Node(15);
 		head.next.next.next = new Node(20);
-		head.next.next.next.next = new Node(20);
+		head.next.next.next.next = new Node(25);
 		head.next.next.next.next.next = new Node(50);
-		head.next.next.next.next.next.next = new Node(25);
+		head.next.next.next.next.next.next = new Node(35);
 		head.next.next.next.next.next.next.next = new Node(30);
 
 		Node rev = list.reverseKGroup(head, 3);

@@ -8,11 +8,11 @@ public class MergeTwoSortedList {
 
 	public Node mergeTwoLists(Node list1, Node list2) {
 		Node result = new Node();
-        return mergeTwoListsUtil(list1, list2, result);
-    }
-    
-    private Node mergeTwoListsUtil(Node list1, Node list2, Node result){
-         if (list1 == null) {
+		return mergeTwoListsUtil(list1, list2, result);
+	}
+
+	private Node mergeTwoListsUtil(Node list1, Node list2, Node result) {
+		if (list1 == null) {
 			return list2;
 		}
 		if (list2 == null) {
@@ -26,11 +26,11 @@ public class MergeTwoSortedList {
 			result.next = mergeTwoListsUtil(list1.next, list2, result);
 		}
 		return result;
-    }
+	}
 
 	public static void main(String[] args) {
 		MergeTwoSortedList list = new MergeTwoSortedList();
-		
+
 		Node head1 = LinkedListUtil.addLast(null, 10);
 		head1 = LinkedListUtil.addLast(head1, 20);
 		head1 = LinkedListUtil.addLast(head1, 30);
