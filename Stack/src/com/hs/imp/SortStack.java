@@ -4,17 +4,40 @@ import java.util.Stack;
 
 public class SortStack {
 
-	public Stack<Integer> sort(Stack<Integer> stack) {
-		Stack<Integer> result = new Stack<Integer>();
-		while (!stack.isEmpty()) {
-			int tmp = stack.pop();
-			while (!result.isEmpty() && result.peek() > tmp) {
-				stack.push(result.pop());
-			}
-			result.push(tmp);
+	public void sort(Stack<Integer> stack) {
+		// base case: stack is empty
+		if (stack.isEmpty()) {
+			return;
 		}
 
-		return result;
+		// remove the top element
+		int top = stack.pop();
+
+		// recur for the remaining elements in the stack
+		sort(stack);
+
+		// insert the popped element back into the sorted stack
+		sortedInsert(stack, top);
+	}
+
+	private void sortedInsert(Stack<Integer> stack, int key) {
+		// base case: if the stack is empty or
+		// the key is greater than all elements in the stack
+		if (stack.isEmpty() || key > stack.peek()) {
+			stack.push(key);
+			return;
+		}
+
+		// We reach here when the key is smaller than the top element
+
+		// remove the top element
+		int top = stack.pop();
+
+		// recur for the remaining elements in the stack
+		sortedInsert(stack, key);
+
+		// insert the popped element back into the stack
+		stack.push(top);
 	}
 
 	public static void main(String[] args) {
@@ -27,9 +50,9 @@ public class SortStack {
 		stack.add(14);
 		stack.add(9);
 		stack.add(11);
-		Stack<Integer> sort = st.sort(stack);
-		while (!sort.isEmpty()) {
-			System.out.println(sort.pop());
+		st.sort(stack);
+		while (!stack.isEmpty()) {
+			System.out.println(stack.pop());
 		}
 	}
 }

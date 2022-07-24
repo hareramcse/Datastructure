@@ -1,25 +1,25 @@
-package com.hs.recursion;
+package com.hs.imp;
 
 import java.util.Stack;
 
 public class DeleteMidElementInStack {
-	private void midDelete(Stack<Integer> s) {
-		if (s.isEmpty())
+	public void midDelete(Stack<Integer> stack) {
+		if (stack.isEmpty())
 			return;
 
-		int k = (s.size() / 2) + 1;
-		solve(s, k);
+		int k = (stack.size() / 2) + 1;
+		solve(stack, k);
 	}
 
-	private void solve(Stack<Integer> s, int k) {
+	private void solve(Stack<Integer> stack, int k) {
 		if (k == 1) {
-			s.pop();
+			stack.pop();
 			return;
 		}
-		Integer x = s.peek();
-		s.pop();
-		solve(s, k-1);
-		s.push(x);
+		Integer x = stack.peek();
+		stack.pop();
+		solve(stack, k-1);
+		stack.push(x);
 	}
 
 	public static void main(String[] args) {
