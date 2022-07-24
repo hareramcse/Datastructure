@@ -14,9 +14,9 @@ public class MaxRectangleAreaInHistogram {
 		int width[] = new int[input.length];
 		for (int i = 0; i < input.length; i++) {
 			width[i] = NSR[i] - NSL[i] - 1;
-			int count = width[i] * input[i];
-			if (count > max) {
-				max = count;
+			int area = width[i] * input[i];
+			if (area > max) {
+				max = area;
 			}
 		}
 		return max;

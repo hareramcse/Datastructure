@@ -5,16 +5,16 @@ import java.util.Stack;
 public class SortStack {
 
 	public Stack<Integer> sort(Stack<Integer> stack) {
-		Stack<Integer> rstk = new Stack<Integer>();
+		Stack<Integer> result = new Stack<Integer>();
 		while (!stack.isEmpty()) {
 			int tmp = stack.pop();
-			while (!rstk.isEmpty() && rstk.peek() > tmp) {
-				stack.push(rstk.pop());
+			while (!result.isEmpty() && result.peek() > tmp) {
+				stack.push(result.pop());
 			}
-			rstk.push(tmp);
+			result.push(tmp);
 		}
 
-		return rstk;
+		return result;
 	}
 
 	public static void main(String[] args) {

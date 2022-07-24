@@ -1,50 +1,37 @@
 package com.hs.linkedlist;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import com.hs.basic.Node;
 
 // 160. Intersection of Two Linked Lists Leetcode
 class IntersectionOfTwoLinkedList {
 	public Node findMergePoint(Node head1, Node head2) {
-		Set<Node> nodes = new HashSet<>();
-
-		// traverse the first list and insert the address of each node into the set
-		while (head1 != null) {
-			nodes.add(head1);
-			head1 = head1.next;
+		Node temp1 = head1;
+		Node temp2 = head2;
+		while (temp1 != temp2) {
+			temp1 = temp1 == null ? head2 : temp1.next;
+			temp2 = temp2 == null ? head1 : temp2.next;
 		}
-
-		// now traverse the second list and find the first node that is
-		// already present in the set
-		while (head2 != null) {
-			// return the current node if it is found in the set
-			if (nodes.contains(head2)) {
-				return head2;
-			}
-			head2 = head2.next;
-		}
-
-		// we reach here if lists do not intersect
-		return null;
+		return temp1;
 	}
 
 	public static void main(String[] args) {
 		IntersectionOfTwoLinkedList list = new IntersectionOfTwoLinkedList();
 
 		// creating first linked list
-		Node head1 = new Node(3);
-		head1.next = new Node(6);
-		head1.next.next = new Node(15);
-		head1.next.next.next = new Node(15);
-		head1.next.next.next.next = new Node(30);
+		Node head1 = new Node(4);
+		head1.next = new Node(1);
+		head1.next.next = new Node(8);
+		head1.next.next.next = new Node(4);
+		head1.next.next.next.next = new Node(5);
 
 		// creating second linked list
-		Node head2 = new Node(10);
-		head2.next = new Node(15);
-		head2.next.next = new Node(30);
-
-		System.out.println("The node of intersection is " + list.findMergePoint(head1, head2).data);
+		Node head2 = new Node(5);
+		head2.next = new Node(6);
+		head2.next.next = new Node(1);
+		head2.next.next.next = new Node(8);
+		head2.next.next.next.next = new Node(4);
+		head2.next.next.next.next.next = new Node(5);
+		Node findMergePoint = list.findMergePoint(head1, head2);
+		System.out.println("The node of intersection is " + findMergePoint.data);
 	}
 }

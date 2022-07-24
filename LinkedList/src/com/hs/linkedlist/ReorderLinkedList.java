@@ -16,23 +16,15 @@ public class ReorderLinkedList {
 
 		Node head1 = head;
 		Node head2 = LinkedListUtil.reverseByRecursion(nextOfMid);
-		Node dummy = new Node(); // result node
 
-		while (head1 != null || head2 != null) {
-
-			// First add the element from first list
-			if (head1 != null) {
-				dummy.next = head1;
-				dummy = dummy.next;
-				head1 = head1.next;
-			}
-
-			// Then add the element from second list
-			if (head2 != null) {
-				dummy.next = head2;
-				dummy = dummy.next;
-				head2 = head2.next;
-			}
+		// iterate till last node of the list
+		while (head2 != null) {
+			Node temp1 = head1.next;
+			Node temp2 = head2.next;
+			head1.next = head2;
+			head2.next = temp1;
+			head1 = temp1;
+			head2 = temp2;
 		}
 
 		// Assign the head of the new list to head pointer
@@ -41,7 +33,7 @@ public class ReorderLinkedList {
 
 	public static void main(String[] args) {
 		ReorderLinkedList list = new ReorderLinkedList();
-		
+
 		Node head = new Node(10);
 		head.next = new Node(4);
 		head.next.next = new Node(15);

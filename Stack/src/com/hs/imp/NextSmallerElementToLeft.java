@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Stack;
 
 public class NextSmallerElementToLeft {
-	public int[] nearestSmallerToRight(int[] arr) {
+	public int[] nearestSmallerToLeft(int[] arr) {
 		Stack<Integer> stack = new Stack<>();
 		int n = arr.length;
 		int[] res = new int[n];
@@ -32,7 +32,7 @@ public class NextSmallerElementToLeft {
 	public static void main(String[] args) {
 		int[] arr = { 5, 2, 1, 6, 3, 4, 8, 7 };
 		NextSmallerElementToLeft stack = new NextSmallerElementToLeft();
-		int[] res = stack.nearestSmallerToRight(arr);
+		int[] res = stack.nearestSmallerToLeft(arr);
 		System.out.println(Arrays.toString(res));
 	}
 }

@@ -92,8 +92,8 @@ public class MaxRectangleAreaInBinaryMatrix {
 
 	public static void main(String[] args) {
 		MaxRectangleAreaInBinaryMatrix stack = new MaxRectangleAreaInBinaryMatrix();
-		char[][] matrix = { { '1', '0', '1', '0', '0' }, { '1', '0', '1', '1', '1' }, { '1', '1', '1', '1', '1' },
-				{ '1', '0', '0', '1', '0' } };
+		char[][] matrix = { { '0', '1', '1', '0' }, { '1', '1', '1', '1' }, { '1', '1', '1', '1' },
+				{ '1', '1', '0', '0' } };
 		int max = stack.maxBianryHistrogram(matrix);
 		System.out.println(max);
 	}

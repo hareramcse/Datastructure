@@ -2,14 +2,15 @@ package com.hs.imp;
 
 import java.util.Stack;
 
-public class MinStack {
+// 155. Min Stack Leetcode
+public class MinStack1 {
 	private Stack<Integer> stack;
 	private Stack<Integer> minStack;
 
-	public MinStack() {
-		this.stack = new Stack<>();
+	public MinStack1() {
+        this.stack = new Stack<>();
 		this.minStack = new Stack<>();
-	}
+    }
 
 	public void push(int x) {
 		if (minStack.isEmpty() || x <= minStack.peek()) {
@@ -34,7 +35,7 @@ public class MinStack {
 	}
 
 	public static void main(String[] args) {
-		MinStack stack = new MinStack();
+		MinStack1 stack = new MinStack1();
 		stack.push(34);
 		stack.push(4);
 		stack.push(21);
