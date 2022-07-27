@@ -29,7 +29,6 @@ public class SortStack {
 		}
 
 		// We reach here when the key is smaller than the top element
-
 		// remove the top element
 		int top = stack.pop();
 

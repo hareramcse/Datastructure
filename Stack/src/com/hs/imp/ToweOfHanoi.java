@@ -17,7 +17,6 @@ public class ToweOfHanoi {
 		ToweOfHanoi rev = new ToweOfHanoi();
 		int n = 3;
 		String source = "source", helper = "helper", dest = "dest";
-
 		rev.towerOfHanoi(source, dest, helper, n);
 	}
 }

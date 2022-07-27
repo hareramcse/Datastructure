@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class AnagramCount {
 
-	private int findAnagrams(String str, String pattern) {
+	public int findAnagrams(String str, String pattern) {
 		int ans = 0;
 		Map<Character, Integer> map = new HashMap<>();
 

@@ -5,7 +5,7 @@ import java.util.Queue;
 
 public class FirstNegativeNumberInWindowsSizeK {
 	
-	private void solve(int arr[], int K) {
+	public void solve(int arr[], int K) {
 		int i = 0;
 		int j = 0;
 		Queue<Integer> queue = new LinkedList<>();

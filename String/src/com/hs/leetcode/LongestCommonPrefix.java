@@ -1,6 +1,6 @@
 package com.hs.leetcode;
 
-// 14. Longest Common Prefix Leetcode
+// 14. Longest Common Prefix Leetcode Easy
 public class LongestCommonPrefix {
 	public String longestCommonPrefix(String[] strs) {
 		String lcp = "";

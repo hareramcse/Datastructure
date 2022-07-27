@@ -9,8 +9,7 @@ public class SortAnArray {
 			return;
 		}
 
-		int temp = list.get(list.size() - 1);
-		list.remove(list.size() - 1);
+		Integer temp = list.remove(list.size() - 1);
 		sort(list);
 		insert(list, temp);
 	}
@@ -21,8 +20,7 @@ public class SortAnArray {
 			return;
 		}
 
-		Integer t = list.get(list.size() - 1);
-		list.remove(list.size() - 1);
+		Integer t = list.remove(list.size() - 1);
 		insert(list, temp);
 		list.add(t);
 	}

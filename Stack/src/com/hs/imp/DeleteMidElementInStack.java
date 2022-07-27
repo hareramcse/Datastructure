@@ -16,8 +16,7 @@ public class DeleteMidElementInStack {
 			stack.pop();
 			return;
 		}
-		Integer x = stack.peek();
-		stack.pop();
+		Integer x = stack.pop();
 		solve(stack, k-1);
 		stack.push(x);
 	}

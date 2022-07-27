@@ -3,7 +3,7 @@ package com.hs.leetcode;
 import java.util.Arrays;
 import java.util.Comparator;
 
-// 179. Largest Number Leetcode
+// 179. Largest Number Leetcode Medium
 public class ArrangeGivenNoForBiggestNumber {
 
 	public String largestNumber(int[] nums) {

@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class LargestSubstringOfKUniqueChar {
 
-	private int solve(String s, int k) {
+	public int solve(String s, int k) {
 		Map<Character, Integer> map = new HashMap<>();
 		int j = 0;
 		int i = 0;

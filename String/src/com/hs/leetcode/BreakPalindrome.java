@@ -13,6 +13,9 @@ public class BreakPalindrome {
 				return new String(chars);
 			}
 		}
+		
+		// for middle char if we change middle char, still it will be palindrome
+		// so we need to change it last char of the string with b
 		chars[palindrome.length() - 1] = 'b';
 		return new String(chars);
 	}

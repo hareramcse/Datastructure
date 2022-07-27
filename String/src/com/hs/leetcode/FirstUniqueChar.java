@@ -3,28 +3,21 @@ package com.hs.leetcode;
 import java.util.HashMap;
 import java.util.Map;
 
-// 387. First Unique Character in a String Leetcode
+// 387. First Unique Character in a String Leetcode Easy
 public class FirstUniqueChar {
 	public int firstUniqChar(String s) {
 		Map<Character, Integer> map = new HashMap<>();
-		for (int i = 0; i < s.length(); i++) {
-			char ch = s.charAt(i);
-			if (map.containsKey(ch)) {
-				map.put(ch, -1);
-			} else {
-				map.put(ch, i);
-			}
+		for (char ch : s.toCharArray()) {
+			map.put(ch, map.getOrDefault(ch, 0) + 1);
 		}
 
-		Integer min = Integer.MAX_VALUE;
-		for (char ch : map.keySet()) {
-			if (map.get(ch) > -1 && map.get(ch) < min) {
-				min = map.get(ch);
-			}
+		for (int i = 0; i < s.length(); i++) {
+			if (map.get(s.charAt(i)) == 1)
+				return i;
 		}
-		return min == Integer.MAX_VALUE ? -1 : min;
+		return -1;
 	}
-	
+
 	public static void main(String[] args) {
 		FirstUniqueChar obj = new FirstUniqueChar();
 		String input = "loveleetcode";
