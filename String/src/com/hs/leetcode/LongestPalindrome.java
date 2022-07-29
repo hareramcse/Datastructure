@@ -23,6 +23,7 @@ public class LongestPalindrome {
 			}
 		}
 
+		// this is for middle element of the palindrome
 		if (oddFound)
 			result++;
 

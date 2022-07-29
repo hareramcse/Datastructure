@@ -8,9 +8,15 @@ public class ReverseCharOfWords {
 		for (int j = 0; j < chars.length; j++) {
 			if (chars[j] == ' ') {
 				reverse(chars, i, j - 1);
+
+				// jth char is white space so next non white space char will start from j + 1th
+				// index
 				i = j + 1;
 			}
 		}
+
+		// this will to reverse the last word
+		// as there will be no white space after last word
 		reverse(chars, i, chars.length - 1);
 		return new String(chars);
 	}

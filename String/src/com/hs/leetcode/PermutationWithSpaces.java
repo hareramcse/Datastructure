@@ -1,7 +1,7 @@
 package com.hs.leetcode;
 
 public class PermutationWithSpaces {
-	private void permuationWithSpaces(String ip, String op) {
+	public void permuationWithSpaces(String ip, String op) {
 		op = op + ip.charAt(0);
 		ip = ip.substring(1);
 		solve(ip, op);

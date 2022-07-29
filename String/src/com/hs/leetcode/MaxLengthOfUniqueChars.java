@@ -1,5 +1,6 @@
 package com.hs.leetcode;
 
+import java.util.ArrayList;
 import java.util.List;
 
 // 1239. Maximum Length of a Concatenated String with Unique Characters Leetcode Medium
@@ -33,6 +34,13 @@ public class MaxLengthOfUniqueChars {
 	}
 
 	public static void main(String[] args) {
-
+		MaxLengthOfUniqueChars obj = new MaxLengthOfUniqueChars();
+		List<String> list = new ArrayList<>();
+		list.add("cha");
+		list.add("r");
+		list.add("act");
+		list.add("ers");
+		int maxLength = obj.maxLength(list);
+		System.out.println(maxLength);
 	}
 }

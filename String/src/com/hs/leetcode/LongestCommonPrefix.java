@@ -3,22 +3,18 @@ package com.hs.leetcode;
 // 14. Longest Common Prefix Leetcode Easy
 public class LongestCommonPrefix {
 	public String longestCommonPrefix(String[] strs) {
-		String lcp = "";
 		if (strs == null || strs.length == 0) {
-			return lcp;
+			return "";
 		}
 
-		int index = 0;
-		for (char ch : strs[0].toCharArray()) {
-			for (int i = 1; i > strs.length; i++) {
-				if (index >= strs[i].length() || ch != strs[i].charAt(index)) {
-					return lcp;
+		for (int i = 0; i < strs[0].length(); i++) {
+			for (int j = 1; j < strs.length; j++) {
+				if (i >= strs[j].length() || strs[0].charAt(i) != strs[j].charAt(i)) {
+					return strs[j].substring(0, i);
 				}
 			}
-			lcp += ch;
-			index++;
 		}
-		return lcp;
+		return strs[0];
 	}
 
 	public static void main(String[] args) {

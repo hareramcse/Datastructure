@@ -26,6 +26,8 @@ public class PrintWordsVertically {
 		return res;
 	}
 
+	// removes the white space from right till we dont get any char other than
+	// white space
 	private String trimRight(String word) {
 		int pointer = word.length();
 		while (--pointer > -1) {
@@ -35,10 +37,10 @@ public class PrintWordsVertically {
 		}
 		return null;
 	}
-	
+
 	public static void main(String[] args) {
 		PrintWordsVertically obj = new PrintWordsVertically();
-		String input = "HOW ARE YOU";
+		String input = "TO BE OR NOT TO BE";
 		List<String> printVertically = obj.printVertically(input);
 		System.out.println(printVertically);
 	}

@@ -15,9 +15,11 @@ public class PalindromicSubstrings {
 		return count;
 	}
 
-	private int isPalindrome(char[] chars, int i, int j) {
+	private int isPalindrome(char[] chars, int left, int right) {
 		int count = 0;
-		while (i >= 0 && j < chars.length && chars[i--] == chars[j++]) {
+		while (left >= 0 && right < chars.length && chars[left] == chars[right]) {
+			left--;
+			right++;
 			count++;
 		}
 		return count;

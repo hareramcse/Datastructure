@@ -1,6 +1,6 @@
 package com.hs.leetcode;
 
-//32. Longest Valid Parentheses Leetcode
+//32. Longest Valid Parentheses Leetcode Hard
 public class LongestValidParanthesis {
 	public int longestValidParentheses(String s) {
 		int open = 0;
@@ -43,7 +43,7 @@ public class LongestValidParanthesis {
 
 	public static void main(String[] args) {
 		LongestValidParanthesis obj = new LongestValidParanthesis();
-		String input = "(((()";
+		String input = ")()())";
 		int count = obj.longestValidParentheses(input);
 		System.out.println(count);
 	}

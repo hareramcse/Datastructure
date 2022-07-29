@@ -12,7 +12,8 @@ public class SortCharacterByFrequency {
 		for (char ch : s.toCharArray()) {
 			map.put(ch, map.getOrDefault(ch, 0) + 1);
 		}
-
+		
+		// sort map by values
 		Queue<Character> maxHeap = new PriorityQueue<>((a, b) -> map.get(b) - map.get(a));
 		maxHeap.addAll(map.keySet());
 

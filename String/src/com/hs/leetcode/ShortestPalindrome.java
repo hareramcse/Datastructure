@@ -21,7 +21,7 @@ public class ShortestPalindrome {
 
 	public static void main(String[] args) {
 		ShortestPalindrome obj = new ShortestPalindrome();
-		String input = "aacecaaa";
+		String input = "abcd";
 		String shortestPalindrome = obj.shortestPalindrome(input);
 		System.out.println(shortestPalindrome);
 	}

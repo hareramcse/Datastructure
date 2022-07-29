@@ -9,7 +9,7 @@ public class PermutationWithCaseChange {
 		String op1 = op;
 		String op2 = op;
 
-		op1 = op1 + ip.substring(0, 1);
+		op1 = op1 + ip.charAt(0);
 		op2 = op2 + Character.toUpperCase(ip.charAt(0));
 		ip = ip.substring(1);
 		permuationWithCaseChange(ip, op1);

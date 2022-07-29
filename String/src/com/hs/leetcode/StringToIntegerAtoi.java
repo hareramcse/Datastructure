@@ -3,49 +3,37 @@ package com.hs.leetcode;
 // 8. String to Integer (atoi) Leetcode
 public class StringToIntegerAtoi {
 	public int myAtoi(String s) {
-		s = s.trim();
-		if (s == null || s.length() == 0) {
+		if (s.isEmpty()) {
 			return 0;
 		}
-		double result = 0;
 
-		// check for positive or negative sign
-		boolean isNegative = false;
-		int startIndex = 0;
+		int sign = 1, i = 0, n = s.length();
+		
+		// move till we dont get char
+		while (i < n && s.charAt(i) == ' ') {
+			i++;
+		}
+		
+		// if whole string is white space only
+		if (i >= n)
+			return 0;
 
-		if (s.charAt(0) == '+' || s.charAt(0) == '-') {
-			++startIndex;
+		// find the sign and get the index of the 1st digit
+		if (s.charAt(i) == '+' || s.charAt(i) == '-') {
+			sign = s.charAt(i) == '+' ? 1 : -1;
+			i++;
 		}
 
-		if (s.charAt(0) == '-') {
-			isNegative = true;
-		}
-
-		// handle numeric case = "123"
-		for (int i = startIndex; i < s.length(); i++) {
-			// handle for non numeric characters
-			if (s.charAt(i) < '0' || s.charAt(i) > '9') {
-				break;
+		long res = 0;
+		while (i < n && Character.isDigit(s.charAt(i))) {
+			res = res * 10 + (s.charAt(i) - '0');
+			i++;
+			if (res * sign > Integer.MAX_VALUE || res * sign < Integer.MIN_VALUE) {
+				return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
 			}
-			int digitValue = (int) (s.charAt(i) - '0');
-			result = result * 10 + digitValue;
 		}
 
-		// toggle result in case of negative is true
-		if (isNegative) {
-			result = -result;
-		}
-
-		// handle underflow
-		if (result < Integer.MIN_VALUE) {
-			return Integer.MIN_VALUE;
-		}
-		// handle overflow
-		if (result > Integer.MAX_VALUE) {
-			return Integer.MAX_VALUE;
-		}
-		// return result
-		return (int) result;
+		return (int) res * sign;
 	}
 
 	public static void main(String[] args) {

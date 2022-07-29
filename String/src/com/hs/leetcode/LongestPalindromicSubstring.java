@@ -20,12 +20,12 @@ public class LongestPalindromicSubstring {
 		return longest;
 	}
 
-	private String expand(String s, int begin, int end) {
-		while (begin >= 0 && end <= s.length() - 1 && s.charAt(begin) == s.charAt(end)) {
-			begin--;
-			end++;
+	private String expand(String s, int left, int right) {
+		while (left >= 0 && right <= s.length() - 1 && s.charAt(left) == s.charAt(right)) {
+			left--;
+			right++;
 		}
-		return s.substring(begin + 1, end);
+		return s.substring(left + 1, right);
 	}
 
 	public static void main(String[] args) {
