@@ -13,17 +13,17 @@ public class FrequencySort {
 			map.put(nums[i], map.getOrDefault(nums[i], 0) + 1);
 		}
 
-		Queue<Pair> minHeap = new PriorityQueue<>();
-		for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-			minHeap.add(new Pair(entry.getValue(), entry.getKey()));
-		}
+		Queue<Integer> minHeap = new PriorityQueue<>((a, b) -> map.get(b) - map.get(a));
+		minHeap.addAll(map.keySet());
 
 		int[] res = new int[nums.length];
 		int j = 0;
 		while (!minHeap.isEmpty()) {
-			Pair pair = minHeap.poll();
-			for (int i = 0; i < pair.key; i++) {
-				res[j++] = pair.value;
+			int key = minHeap.poll();
+			Integer count = map.get(key);
+			while (count > 0) {
+				res[j++] = key;
+				count--;
 			}
 		}
 		return res;

@@ -1,7 +1,6 @@
 package com.hs.heap;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
@@ -17,14 +16,11 @@ public class KMostFrequentElement {
 			map.put(nums[i], map.getOrDefault(nums[i], 0) + 1);
 		}
 
-		Queue<Pair> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
-		for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-			maxHeap.add(new Pair(entry.getValue(), entry.getKey()));
-		}
+		Queue<Integer> maxHeap = new PriorityQueue<>((a, b) -> map.get(b) - map.get(a));
+		maxHeap.addAll(map.keySet());
 
 		for (int i = 0; i < k; i++) {
-			Pair pair = maxHeap.poll();
-			res[i] = pair.value;
+			res[i] = maxHeap.poll();
 		}
 		return res;
 	}
