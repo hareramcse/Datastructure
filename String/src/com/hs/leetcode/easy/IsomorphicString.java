@@ -1,23 +1,31 @@
 package com.hs.leetcode.easy;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class IsomorphicString {
 	public boolean isIsomorphic(String s, String t) {
-		if (s == null || t == null || s.length() != t.length())
+		if (s.length() != t.length()) {
 			return false;
+		}
+		
+		Map<Character, Character> sTMap = new HashMap<>();
+		Map<Character, Character> tSMap = new HashMap<>();
+		for (int i = 0; i < s.length(); i++) {
+			Character sChar = s.charAt(i);
+			Character tChar = t.charAt(i);
 
-		int[] m1 = new int[256];
-		int[] m2 = new int[256];
+			if (sTMap.containsKey(sChar)) {
+				if (sTMap.get(sChar) != tChar)
+					return false;
+			}
+			if (tSMap.containsKey(tChar)) {
+				if (tSMap.get(tChar) != sChar)
+					return false;
+			}
 
-		int n = s.length();
-		for (int i = 0; i < n; i++) {
-			char c1 = s.charAt(i);
-			char c2 = t.charAt(i);
-
-			if (m1[c1] != m2[c2])
-				return false;
-
-			m1[c1] = i + 1;
-			m2[c2] = i + 1;
+			sTMap.put(sChar, tChar);
+			tSMap.put(tChar, sChar);
 		}
 
 		return true;

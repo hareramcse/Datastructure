@@ -4,31 +4,30 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-// 1002. Find Common Characters Leetcode Easy
 public class CommonCharFromNString {
 	public List<String> commonChars(String[] words) {
-		List<String> commonChars = new ArrayList<>();
-		int[] minFrequencies = new int[26];
-		Arrays.fill(minFrequencies, Integer.MAX_VALUE);
+		int[] common = new int[26];
+		Arrays.fill(common, Integer.MAX_VALUE);
 
 		for (String word : words) {
-			int[] charFrequencies = new int[26];
+			int[] frequencies = new int[26];
 			for (char ch : word.toCharArray()) {
-				charFrequencies[ch - 'a']++;
+				frequencies[ch - 'a']++;
 			}
 
 			for (int i = 0; i < 26; i++) {
-				minFrequencies[i] = Math.min(minFrequencies[i], charFrequencies[i]);
+				common[i] = Math.min(common[i], frequencies[i]);
 			}
 		}
 
+		List<String> ans = new ArrayList<>();
 		for (int i = 0; i < 26; i++) {
-			while (minFrequencies[i] > 0) {
-				commonChars.add("" + (char) (i + 'a'));
-				minFrequencies[i]--;
+			while (common[i] > 0) {
+				ans.add("" + (char) (i + 'a'));
+				common[i]--;
 			}
 		}
-		return commonChars;
+		return ans;
 	}
 
 	public static void main(String[] args) {

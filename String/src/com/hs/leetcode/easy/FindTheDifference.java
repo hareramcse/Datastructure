@@ -1,23 +1,17 @@
 package com.hs.leetcode.easy;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class FindTheDifference {
 	public char findTheDifference(String s, String t) {
-		Map<Character, Integer> map = new HashMap<>();
-		for (char ch : s.toCharArray()) {
-			map.put(ch, map.getOrDefault(ch, 0) + 1);
+		char ans = '0';
+		for (char c : s.toCharArray()) {
+			ans ^= c;
+		}
+		for (char c : t.toCharArray()) {
+			ans ^= c;
 		}
 
-		for (char ch : t.toCharArray()) {
-			if (map.containsKey(ch) && map.get(ch) == 0 || !map.containsKey(ch)) {
-				return ch;
-			} else {
-				map.put(ch, map.get(ch) - 1);
-			}
-		}
-		return '|';
+		ans ^= '0';
+		return ans;
 	}
 
 	public static void main(String[] args) {

@@ -3,12 +3,11 @@ package com.hs.leetcode.easy;
 import java.util.HashMap;
 import java.util.Map;
 
-// 290. Word Pattern Leetcode
 public class WordPattern {
 	public boolean wordPattern(String pattern, String str) {
 		String[] arr = str.split(" ");
-
-		// prevent out of boundary problem
+		
+		// if both string are not of same length return false
 		if (arr.length != pattern.length())
 			return false;
 

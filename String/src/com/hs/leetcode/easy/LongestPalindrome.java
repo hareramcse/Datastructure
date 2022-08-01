@@ -3,7 +3,6 @@ package com.hs.leetcode.easy;
 import java.util.HashMap;
 import java.util.Map;
 
-// 409. Longest Palindrome Leetcode Easy
 public class LongestPalindrome {
 	public int longestPalindrome(String s) {
 		Map<Character, Integer> map = new HashMap<>();

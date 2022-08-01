@@ -7,24 +7,36 @@ public class UniqueEmailAdress {
 	public int numUniqueEmails(String[] emails) {
 		Set<String> set = new HashSet<>();
 		for (String email : emails) {
-			StringBuilder address = new StringBuilder();
-			for (int i = 0; i < email.length(); i++) {
-				char ch = email.charAt(i);
-				if (ch == '.') {
-					continue;
-				} else if (ch == '+') {
-					while (email.charAt(i) != '@') {
-						i++;
-					}
-					address.append(email.substring(i + 1));
-				} else {
-					address.append(ch);
-				}
+			String updatedEmail = getUpdatedEmail(email);
+			set.add(updatedEmail);
+		}
+		return set.size();
+	}
+
+	private String getUpdatedEmail(String email) {
+		String localName = "";
+		int len = email.length();
+		char[] chars = email.toCharArray();
+		int i = 0;
+		while (i < chars.length && chars[i] != '@') {
+			if (chars[i] == '.')
+				i++;
+			else if (chars[i] == '+') {
+				while (chars[i] != '@')
+					i++;
+			} else {
+				localName += chars[i];
+				i++;
 			}
-			set.add(address.toString());
 		}
 
-		return set.size();
+		i++;
+		String domainName = "";
+		while (i < len) {
+			domainName += chars[i];
+			i++;
+		}
+		return localName + "@" + domainName;
 	}
 
 	public static void main(String[] args) {

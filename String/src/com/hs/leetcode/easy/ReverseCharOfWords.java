@@ -1,6 +1,5 @@
 package com.hs.leetcode.easy;
 
-// 557. Reverse Words in a String III Leetcode easy
 public class ReverseCharOfWords {
 	public String reverseWords(String s) {
 		char[] chars = s.toCharArray();
@@ -15,7 +14,7 @@ public class ReverseCharOfWords {
 			}
 		}
 
-		// this will to reverse the last word
+		// this is to reverse the last word
 		// as there will be no white space after last word
 		reverse(chars, i, chars.length - 1);
 		return new String(chars);

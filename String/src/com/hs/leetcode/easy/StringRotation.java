@@ -1,6 +1,5 @@
 package com.hs.leetcode.easy;
 
-// 796. Rotate String Leetcode Easy
 public class StringRotation {
 	public boolean rotateString(String s, String goal) {
 		return (s.length() == goal.length()) && (s + s).contains(goal);

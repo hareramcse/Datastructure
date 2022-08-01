@@ -4,25 +4,48 @@ import java.util.Arrays;
 
 public class ShortestDistanceToChar {
 	public int[] shortestToChar(String s, char c) {
-		int n = s.length();
-		int[] output = new int[n];
-		int position = -n;
+		int len = s.length();
 
-		for (int i = 0; i < n; i++) {
+		int[] leftDis = new int[len];
+		int[] rightDis = new int[len];
+
+		Arrays.fill(leftDis, Integer.MAX_VALUE);
+		Arrays.fill(rightDis, Integer.MAX_VALUE);
+
+		int runningDis = Integer.MAX_VALUE;
+
+		// left to right direction
+		for (int i = 0; i < len; i++) {
 			if (s.charAt(i) == c) {
-				position = i;
+				runningDis = 0;
+				rightDis[i] = runningDis;
+			} else {
+				if (runningDis != Integer.MAX_VALUE) {
+					runningDis++;
+					rightDis[i] = runningDis;
+				}
 			}
-			output[i] = i - position;
+		}
+		runningDis = Integer.MAX_VALUE;
+
+		// right to left direction
+		for (int i = len - 1; i >= 0; i--) {
+			if (s.charAt(i) == c) {
+				runningDis = 0;
+				leftDis[i] = runningDis;
+			} else {
+				if (runningDis != Integer.MAX_VALUE) {
+					runningDis++;
+					leftDis[i] = runningDis;
+				}
+			}
 		}
 
-		for (int i = n - 1; i >= 0; i--) {
-			if (s.charAt(i) == c) {
-				position = i;
-			}
-			output[i] = Math.min(output[i], Math.abs(i - position));
+		int[] ans = new int[len];
+		for (int i = 0; i < len; i++) {
+			ans[i] = Math.min(rightDis[i], leftDis[i]);
 		}
-
-		return output;
+		return ans;
 	}
 
 	public static void main(String[] args) {

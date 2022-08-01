@@ -1,36 +1,22 @@
 package com.hs.leetcode.easy;
 
-import java.util.Stack;
-
 public class BackspaceStringCompare {
 	public boolean backspaceCompare(String s, String t) {
-		Stack<Character> sStack = new Stack<>();
-		for (char ch : s.toCharArray()) {
-			if (ch != '#') {
-				sStack.push(ch);
-			} else if (!sStack.isEmpty()) {
-				sStack.pop();
-			}
-		}
-
-		Stack<Character> tStack = new Stack<>();
-		for (char ch : t.toCharArray()) {
-			if (ch != '#') {
-				tStack.push(ch);
-			} else if (!tStack.isEmpty()) {
-				tStack.pop();
-			}
-		}
-
-		while (!sStack.isEmpty()) {
-			char current = sStack.pop();
-			if (tStack.isEmpty() || tStack.pop() != current) {
-				return false;
-			}
-		}
-
-		return sStack.isEmpty() && tStack.isEmpty();
-	}
+        String a = backspaceCompareUtil(s);
+        String b = backspaceCompareUtil(t);
+        return a.equals(b);
+    }
+    
+    private String backspaceCompareUtil(String s){
+        StringBuilder ans = new StringBuilder();
+        for(char ch : s.toCharArray()){
+            if(ch != '#')
+                ans.append(ch);
+            else if(ans.length() != 0)
+                ans.deleteCharAt(ans.length() - 1);
+        }
+        return ans.toString();
+    }
 
 	public static void main(String[] args) {
 		BackspaceStringCompare obj = new BackspaceStringCompare();

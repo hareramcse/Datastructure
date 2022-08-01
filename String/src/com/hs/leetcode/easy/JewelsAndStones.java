@@ -10,12 +10,12 @@ public class JewelsAndStones {
 			jSet.add(ch);
 		}
 
-		int numJewels = 0;
+		int ans = 0;
 		for (char ch : stones.toCharArray()) {
 			if (jSet.contains(ch))
-				numJewels++;
+				ans++;
 		}
-		return numJewels;
+		return ans;
 	}
 
 	public static void main(String[] args) {

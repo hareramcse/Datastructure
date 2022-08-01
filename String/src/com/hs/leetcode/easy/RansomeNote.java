@@ -15,6 +15,8 @@ public class RansomeNote {
 				return false;
 			}
 
+			// we should not use the char which is used once
+			// so we will remove that char so it will not be available
 			map.put(ch, map.get(ch) - 1);
 		}
 		return true;

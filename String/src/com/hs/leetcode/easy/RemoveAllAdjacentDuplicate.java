@@ -3,21 +3,23 @@ package com.hs.leetcode.easy;
 public class RemoveAllAdjacentDuplicate {
 
 	public String removeDuplicates(String s) {
-		char[] stack = new char[s.length()];
+		char[] chars = new char[s.length()];
+		
+		// this is to point the result index
 		int i = 0;
 
 		for (int j = 0; j < s.length(); j++) {
 			char curr = s.charAt(j);
 
-			if (i > 0 && stack[i - 1] == curr) {
+			if (i > 0 && chars[i - 1] == curr) {
 				i--;
 			} else {
-				stack[i] = curr;
-				i += 1;
+				chars[i] = curr;
+				i++;
 			}
 		}
 
-		return new String(stack, 0, i);
+		return new String(chars, 0, i);
 	}
 
 	public static void main(String[] args) {

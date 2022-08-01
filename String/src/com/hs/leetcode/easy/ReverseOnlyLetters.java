@@ -2,21 +2,24 @@ package com.hs.leetcode.easy;
 
 public class ReverseOnlyLetters {
 	public String reverseOnlyLetters(String s) {
-		char[] characters = s.toCharArray();
+		char[] chars = s.toCharArray();
 		int i = 0;
-		int j = s.length() - 1;
+		int j = chars.length - 1;
+
 		while (i < j) {
-			while (i < j && !Character.isLetter(s.charAt(i)))
+			while (i < j && !Character.isLetter(chars[i]))
 				i++;
-			while (j > i && !Character.isLetter(s.charAt(i)))
+			while (j > i && !Character.isLetter(chars[j]))
 				j--;
 
-			char temp = characters[i];
-			characters[i++] = characters[j];
-			characters[j--] = temp;
+			char temp = chars[i];
+			chars[i] = chars[j];
+			chars[j] = temp;
+			i++;
+			j--;
 		}
 
-		return new String(characters);
+		return new String(chars);
 	}
 
 	public static void main(String[] args) {
