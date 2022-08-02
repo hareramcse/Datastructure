@@ -30,6 +30,7 @@ public class UniqueEmailAdress {
 			}
 		}
 
+		// this i++ is to skip the '@'
 		i++;
 		String domainName = "";
 		while (i < len) {

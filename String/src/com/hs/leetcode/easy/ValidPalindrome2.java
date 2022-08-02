@@ -7,7 +7,7 @@ public class ValidPalindrome2 {
 
 		while (i < j) {
 			if (s.charAt(i) != s.charAt(j)) {
-				return isPalindrome(s, i + 1, j) || isPalindrome(s, i, j - 1);
+				return isPalindrome(s, i, j - 1) || isPalindrome(s, i + 1, j);
 			}
 			i++;
 			j--;

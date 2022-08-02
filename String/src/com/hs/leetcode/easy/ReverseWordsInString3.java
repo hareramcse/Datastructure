@@ -1,6 +1,6 @@
 package com.hs.leetcode.easy;
 
-public class ReverseCharOfWords {
+public class ReverseWordsInString3 {
 	public String reverseWords(String s) {
 		char[] chars = s.toCharArray();
 		int i = 0;
@@ -31,7 +31,7 @@ public class ReverseCharOfWords {
 	}
 
 	public static void main(String[] args) {
-		ReverseCharOfWords obj = new ReverseCharOfWords();
+		ReverseWordsInString3 obj = new ReverseWordsInString3();
 		String input = "Let's take LeetCode contest";
 		String reverseWords = obj.reverseWords(input);
 		System.out.println(reverseWords);

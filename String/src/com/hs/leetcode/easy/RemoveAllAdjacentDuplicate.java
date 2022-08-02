@@ -1,25 +1,27 @@
 package com.hs.leetcode.easy;
 
+import java.util.Stack;
+
 public class RemoveAllAdjacentDuplicate {
 
 	public String removeDuplicates(String s) {
-		char[] chars = new char[s.length()];
-		
-		// this is to point the result index
-		int i = 0;
+		Stack<Character> stack = new Stack<>();
 
 		for (int j = 0; j < s.length(); j++) {
 			char curr = s.charAt(j);
 
-			if (i > 0 && chars[i - 1] == curr) {
-				i--;
+			if (stack.size() > 0 && stack.peek() == curr) {
+				stack.pop();
 			} else {
-				chars[i] = curr;
-				i++;
+				stack.push(curr);
 			}
 		}
 
-		return new String(chars, 0, i);
+		StringBuilder res = new StringBuilder();
+		while (!stack.isEmpty()) {
+			res.append(stack.pop());
+		}
+		return res.reverse().toString();
 	}
 
 	public static void main(String[] args) {

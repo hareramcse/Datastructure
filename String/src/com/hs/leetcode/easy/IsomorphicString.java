@@ -8,24 +8,23 @@ public class IsomorphicString {
 		if (s.length() != t.length()) {
 			return false;
 		}
-		
-		Map<Character, Character> sTMap = new HashMap<>();
-		Map<Character, Character> tSMap = new HashMap<>();
+
+		Map<Character, Character> sMap = new HashMap<>();
 		for (int i = 0; i < s.length(); i++) {
 			Character sChar = s.charAt(i);
 			Character tChar = t.charAt(i);
 
-			if (sTMap.containsKey(sChar)) {
-				if (sTMap.get(sChar) != tChar)
-					return false;
-			}
-			if (tSMap.containsKey(tChar)) {
-				if (tSMap.get(tChar) != sChar)
+			if (sMap.containsKey(sChar)) {
+				if (sMap.get(sChar) != tChar)
 					return false;
 			}
 
-			sTMap.put(sChar, tChar);
-			tSMap.put(tChar, sChar);
+			// if map does not contains sChar key but contains tchar as value and vice-versa
+			if (sMap.containsValue(tChar) && !sMap.containsKey(sChar)) {
+				return false;
+			} else {
+				sMap.put(sChar, tChar);
+			}
 		}
 
 		return true;
@@ -33,8 +32,8 @@ public class IsomorphicString {
 
 	public static void main(String[] args) {
 		IsomorphicString obj = new IsomorphicString();
-		String s = "egg";
-		String t = "add";
+		String s = "badc";
+		String t = "baba";
 		boolean result = obj.isIsomorphic(s, t);
 		System.out.println(result);
 	}
