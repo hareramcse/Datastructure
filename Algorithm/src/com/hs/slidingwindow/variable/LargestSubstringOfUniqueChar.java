@@ -1,10 +1,12 @@
-package com.hs.slidingwindow;
+package com.hs.slidingwindow.variable;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class LongestSubstringWithoutRepeatingChar {
-	public int lengthOfLongestSubstring(String s) {
+// 3. Longest Substring Without Repeating Characters Leetcode
+public class LargestSubstringOfUniqueChar {
+
+	private int solve(String s) {
 		Map<Character, Integer> map = new HashMap<>();
 		int i = 0, j = 0, ans = 0;
 
@@ -27,9 +29,9 @@ public class LongestSubstringWithoutRepeatingChar {
 	}
 
 	public static void main(String[] args) {
-		LongestSubstringWithoutRepeatingChar obj = new LongestSubstringWithoutRepeatingChar();
-		String str = "abcabcbb";
-		int length = obj.lengthOfLongestSubstring(str);
-		System.out.println(length);
+		LargestSubstringOfUniqueChar mwsok = new LargestSubstringOfUniqueChar();
+		String str = "aabacbebebe";
+		int maxWindowsSize = mwsok.solve(str);
+		System.out.println(maxWindowsSize);
 	}
 }

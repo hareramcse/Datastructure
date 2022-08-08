@@ -1,4 +1,4 @@
-package com.hs.slidingwindow;
+package com.hs.slidingwindow.fixed;
 
 import java.util.Arrays;
 import java.util.Deque;

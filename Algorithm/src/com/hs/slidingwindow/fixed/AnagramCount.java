@@ -1,4 +1,4 @@
-package com.hs.slidingwindow;
+package com.hs.slidingwindow.fixed;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -42,10 +42,10 @@ public class AnagramCount {
 	}
 
 	public static void main(String[] args) {
-		String str = "abaacdfghaabagjjkkbaaalhfmaaab";
-		String pattern = "abaa";
-		AnagramCount ac = new AnagramCount();
-		int count = ac.findAnagrams(str, pattern);
-		System.out.println(count);
+		String str = "cbaebabacd";
+		String pattern = "abc";
+		AnagramCount obj = new AnagramCount();
+		int result = obj.findAnagrams(str, pattern);
+		System.out.println(result);
 	}
 }

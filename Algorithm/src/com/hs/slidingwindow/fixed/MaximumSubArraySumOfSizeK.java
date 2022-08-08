@@ -1,4 +1,4 @@
-package com.hs.slidingwindow;
+package com.hs.slidingwindow.fixed;
 
 public class MaximumSubArraySumOfSizeK {
 
