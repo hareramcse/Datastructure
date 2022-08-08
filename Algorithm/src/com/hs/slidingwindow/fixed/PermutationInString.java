@@ -1,43 +1,27 @@
 package com.hs.slidingwindow.fixed;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Arrays;
 
 public class PermutationInString {
 	public boolean checkInclusion(String s1, String s2) {
-		Map<Character, Integer> dict = new HashMap<>();
-		for (int i = 0; i < s1.length(); i++) {
-			char ch = s1.charAt(i);
-			dict.put(ch, dict.getOrDefault(ch, 0) + 1);
+		int[] s1Arr = new int[26];
+		int[] s2Arr = new int[26];
+		for (char ch : s1.toCharArray()) {
+			s1Arr[ch - 'a']++;
 		}
 
-		Map<Character, Integer> temp = new HashMap<>();
-		int i = 0;
-		for (int j = 0; j < s2.length(); j++) {
-			if (!dict.containsKey(s2.charAt(j))) {
-				i = j + 1;
-				temp.clear(); // clear counter
-				continue;
-			}
+		int i = 0, j = 0;
+		while (j < s2.length()) {
+			char ch = s2.charAt(j);
+			s2Arr[ch - 'a']++;
 
-			int count = temp.getOrDefault(s2.charAt(j), 0);
-			if (count == 0 || count < dict.get(s2.charAt(j))) {
-				temp.put(s2.charAt(j), count + 1);
-
-				if (j - i + 1 == s1.length()) {
+			if (j - i + 1 == s1.length()) {
+				if (Arrays.equals(s1Arr, s2Arr))
 					return true;
-				}
-			} else {
-				while (i < j) {
-					if (s2.charAt(i) == s2.charAt(j)) {
-						i++;
-						break;
-					}
-
-					temp.put(s2.charAt(i), temp.get(s2.charAt(i)) - 1);
-					i++;
-				}
+				s2Arr[s2.charAt(i) - 'a']--;
+				i++;
 			}
+			j++;
 		}
 		return false;
 	}

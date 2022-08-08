@@ -1,5 +1,6 @@
 package com.hs.slidingwindow.variable;
 
+// This will work only for +ve numbers in input
 public class LargestSubaArrayOfSumK {
 
 	private int solve(int[] arr, int k) {

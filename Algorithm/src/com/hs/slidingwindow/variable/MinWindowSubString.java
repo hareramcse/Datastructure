@@ -3,7 +3,6 @@ package com.hs.slidingwindow.variable;
 import java.util.HashMap;
 import java.util.Map;
 
-// Leetcode HARD
 public class MinWindowSubString {
 
 	private String minWindow(String s, String t) {
