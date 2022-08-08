@@ -7,21 +7,18 @@ import java.util.Map;
 public class LongestStringChain {
 	public int longestStrChain(String[] words) {
 		Arrays.sort(words, (a, b) -> a.length() - b.length());
-		int res = 0;
+		int ans = 0;
 		Map<String, Integer> map = new HashMap<>();
 		for (String word : words) {
-			map.put(word, 1);
+			int longestChain = 0;
 			for (int i = 0; i < word.length(); i++) {
-				StringBuilder current = new StringBuilder(word);
-				String next = current.deleteCharAt(i).toString();
-				if (map.containsKey(next)) {
-					map.put(word, Math.max(map.get(word), map.get(next) + 1));
-				}
+				String predecessor = word.substring(0, i) + word.substring(i + 1);
+				longestChain = Math.max(longestChain, map.getOrDefault(predecessor, 0) + 1);
 			}
-
-			res = Math.max(res, map.get(word));
+			map.put(word, longestChain);
+			ans = Math.max(ans, map.get(word));
 		}
-		return res;
+		return ans;
 	}
 
 	public static void main(String[] args) {

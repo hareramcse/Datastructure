@@ -32,11 +32,10 @@ public class ImplementTrie {
 		TrieNode temp = root;
 
 		for (char ch : word.toCharArray()) {
-			int index = ch - 'a';
-			if (temp.child[index] == null) {
+			if (temp.child[ch - 'a'] == null) {
 				return null;
 			}
-			temp = temp.child[index];
+			temp = temp.child[ch - 'a'];
 		}
 		return temp;
 	}

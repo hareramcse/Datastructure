@@ -3,7 +3,6 @@ package com.hs.leetcode.medium;
 import java.util.ArrayList;
 import java.util.List;
 
-// 22. Generate Parentheses Leetcode Medium
 public class GenerateAllBalancedParanthesis {
 	List<String> result = new ArrayList<>(); 
     public List<String> generateParenthesis(int n) {

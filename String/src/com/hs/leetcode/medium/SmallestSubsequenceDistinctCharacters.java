@@ -4,39 +4,37 @@ import java.util.Stack;
 
 public class SmallestSubsequenceDistinctCharacters {
 	public String smallestSubsequence(String s) {
-		int[] maxIndexes = new int[26];
-		boolean[] used = new boolean[26];
-		Stack<Character> stack = new Stack<Character>();
+		Stack<Integer> stack = new Stack<>();
+		int[] lastIndex = new int[26];
+		boolean[] visited = new boolean[26];
 
+		// find the last occurance index of each char
 		for (int i = 0; i < s.length(); i++) {
-			char ch = s.charAt(i);
-			maxIndexes[ch - 'a'] = i;
+			lastIndex[s.charAt(i) - 'a'] = i;
 		}
 
 		for (int i = 0; i < s.length(); i++) {
-			char ch = s.charAt(i);
+			int index = s.charAt(i) - 'a';
 
-			if (used[ch - 'a'] == false) {
-				while (!stack.empty()) {
-					char tmpCh = stack.peek(); // remove the last character, not stack
-					if (maxIndexes[tmpCh - 'a'] > i && ch < tmpCh) {
-						stack.pop(); // The last character is popped from the stack
-						used[tmpCh - 'a'] = false;
-					} else {
-						break;
-					}
-				}
-				stack.push(ch);
-				used[ch - 'a'] = true;
+			// we dont have to add duplicate char
+			if (visited[index])
+				continue;
+
+			visited[index] = true;
+			
+			//
+			while (!stack.isEmpty() && stack.peek() > index && lastIndex[stack.peek()] > i) {
+				visited[stack.pop()] = false;
 			}
+			stack.push(index);
 		}
 
-		StringBuilder sb = new StringBuilder();
-		for (Character character : stack) {
-			sb.append(character);
+		// once we get the result in stack, iterate it and return the result
+		StringBuilder ans = new StringBuilder();
+		for (int i : stack) {
+			ans.append((char) (i + 'a'));
 		}
-
-		return sb.toString();
+		return ans.toString();
 	}
 
 	public static void main(String[] args) {

@@ -1,6 +1,5 @@
 package com.hs.leetcode.medium;
 
-// 151. Reverse Words in a String Leetcode
 public class ReverseWord {
 	public String reverseWords(String s) {
 		if (s.isEmpty()) {

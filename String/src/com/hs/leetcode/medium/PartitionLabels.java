@@ -5,8 +5,12 @@ import java.util.List;
 
 public class PartitionLabels {
 	public List<Integer> partitionLabels(String s) {
-		List<Integer> partionLength = new ArrayList<>();
+		List<Integer> ans = new ArrayList<>();
+		if (s.isEmpty())
+			return ans;
+
 		int[] lastIndex = new int[26];
+
 		for (int i = 0; i < s.length(); i++) {
 			lastIndex[s.charAt(i) - 'a'] = i;
 		}
@@ -14,14 +18,15 @@ public class PartitionLabels {
 		int i = 0;
 		while (i < s.length()) {
 			int end = lastIndex[s.charAt(i) - 'a'];
-			int j = i + 1;
+			int j = i;
 			while (j != end) {
-				end = Math.max(end, lastIndex[s.charAt(j++) - 'a']);
+				end = Math.max(end, lastIndex[s.charAt(j) - 'a']);
+				j++;
 			}
-			partionLength.add(j - i + 1);
+			ans.add(j - i + 1);
 			i = j + 1;
 		}
-		return partionLength;
+		return ans;
 	}
 
 	public static void main(String[] args) {

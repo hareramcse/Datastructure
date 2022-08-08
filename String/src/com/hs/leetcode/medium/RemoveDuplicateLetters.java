@@ -2,43 +2,39 @@ package com.hs.leetcode.medium;
 
 import java.util.Stack;
 
-// 316. Remove Duplicate Letters Leetcode
 public class RemoveDuplicateLetters {
 	public String removeDuplicateLetters(String s) {
-		Stack<Character> stack = new Stack<>();
-		int[] count = new int[26];
-		boolean[] isAdded = new boolean[26];
+		Stack<Integer> stack = new Stack<>();
+		int[] lastIndex = new int[26];
+		boolean[] visited = new boolean[26];
 
-		// count of each char
-		for (char ch : s.toCharArray())
-			count[ch - 'a']++;
+		// find the last occurance index of each char
+		for (int i = 0; i < s.length(); i++) {
+			lastIndex[s.charAt(i) - 'a'] = i;
+		}
 
-		for (char ch : s.toCharArray()) {
-			count[ch - 'a']--;
-			
-			// if char is already present then skip that char
-			if (isAdded[ch - 'a'])
+		for (int i = 0; i < s.length(); i++) {
+			int index = s.charAt(i) - 'a';
+
+			// we dont have to add duplicate char
+			if (visited[index])
 				continue;
 
-			// if last char of res string > current char and count of last char count > 0
-			// then remove the char from the result and mark that element presence to false
-			while (stack.size() > 0 && stack.peek() > ch && count[stack.peek() - 'a'] > 0) {
-				char rem = stack.pop();
-				isAdded[rem - 'a'] = false;
+			visited[index] = true;
+			
+			//
+			while (!stack.isEmpty() && stack.peek() > index && lastIndex[stack.peek()] > i) {
+				visited[stack.pop()] = false;
 			}
-
-			// add the char to result and mark that char present in result
-			stack.push(ch);
-			isAdded[ch - 'a'] = true;
+			stack.push(index);
 		}
 
 		// once we get the result in stack, iterate it and return the result
-		char[] result = new char[stack.size()];
-		int i = stack.size() - 1;
-		while (i >= 0) {
-			result[i--] = stack.pop();
+		StringBuilder ans = new StringBuilder();
+		for (int i : stack) {
+			ans.append((char) (i + 'a'));
 		}
-		return new String(result);
+		return ans.toString();
 	}
 
 	public static void main(String[] args) {

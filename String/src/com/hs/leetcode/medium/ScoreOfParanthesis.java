@@ -2,7 +2,6 @@ package com.hs.leetcode.medium;
 
 import java.util.Stack;
 
-// 856. Score of Parentheses Leetcode Medium
 public class ScoreOfParanthesis {
 	public int scoreOfParentheses(String s) {
 		Stack<Integer> stack = new Stack<>();

@@ -1,6 +1,5 @@
 package com.hs.leetcode.medium;
 
-// 647. Palindromic Substrings Leetcode Medium
 public class PalindromicSubstrings {
 	public int countSubstrings(String s) {
 		if (s.isEmpty())

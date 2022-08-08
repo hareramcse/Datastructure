@@ -5,37 +5,38 @@ import java.util.Set;
 
 public class NumberOfMatchingSubsequences {
 	public int numMatchingSubseq(String s, String[] words) {
-		Set<String> subS = new HashSet<>();
-		Set<String> notSubS = new HashSet<>();
+		Set<String> subSeq = new HashSet<>();
+		Set<String> notSubSeq = new HashSet<>();
 
 		int count = 0;
 		for (String word : words) {
-			if (subS.contains(word)) {
-				count++;
-			} else if (notSubS.contains(word)) {
+			if (notSubSeq.contains(word)) {
 				continue;
+			} else if (subSeq.contains(word)) {
+				count++;
 			} else {
-				if (isSubsequence(s, word)) {
+				if (isSubsequence(word, s)) {
 					count++;
-					subS.add(word);
+					subSeq.add(word);
 				} else {
-					notSubS.add(word);
+					notSubSeq.add(word);
 				}
 			}
 		}
 		return count;
 	}
 
-	private boolean isSubsequence(String s, String word) {
-		int index = 0;
-		for (char ch : word.toCharArray()) {
-			index = s.indexOf(ch, index);
-			if (index == -1) {
-				return false;
-			}
-			index++;
+	public boolean isSubsequence(String s, String t) {
+		if (s.length() == 0)
+			return true;
+
+		int i = 0, j = 0;
+		while (i < s.length() && j < t.length()) {
+			if (s.charAt(i) == t.charAt(j))
+				i++;
+			j++;
 		}
-		return true;
+		return i == s.length();
 	}
 
 	public static void main(String[] args) {

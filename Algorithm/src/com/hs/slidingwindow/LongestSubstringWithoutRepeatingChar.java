@@ -1,9 +1,8 @@
-package com.hs.leetcode.medium;
+package com.hs.slidingwindow;
 
 import java.util.HashMap;
 import java.util.Map;
 
-// 3. Longest Substring Without Repeating Characters
 public class LongestSubstringWithoutRepeatingChar {
 	public int lengthOfLongestSubstring(String s) {
 		Map<Character, Integer> map = new HashMap<>();

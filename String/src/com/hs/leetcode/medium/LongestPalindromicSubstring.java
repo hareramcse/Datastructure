@@ -1,6 +1,5 @@
 package com.hs.leetcode.medium;
 
-// 5. Longest Palindromic Substring Leetcode
 public class LongestPalindromicSubstring {
 	public String longestPalindrome(String s) {
 		if (s != null && s.length() <= 1) {

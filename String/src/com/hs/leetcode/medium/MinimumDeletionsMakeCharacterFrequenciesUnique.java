@@ -5,23 +5,22 @@ import java.util.Set;
 
 public class MinimumDeletionsMakeCharacterFrequenciesUnique {
 	public int minDeletions(String s) {
-		int deletion = 0;
+		int delete = 0;
 		int[] fre = new int[26];
 
 		for (char ch : s.toCharArray()) {
 			fre[ch - 'a']++;
 		}
 
-		Set<Integer> uniqueFre = new HashSet<>();
+		Set<Integer> set = new HashSet<>();
 		for (int count : fre) {
-			while (count > 0 && uniqueFre.contains(count)) {
-				deletion++;
+			while (count > 0 && set.contains(count)) {
+				delete++;
 				count--;
 			}
-			uniqueFre.add(count);
+			set.add(count);
 		}
-
-		return deletion;
+		return delete;
 	}
 
 	public static void main(String[] args) {

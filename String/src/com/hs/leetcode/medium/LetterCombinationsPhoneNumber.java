@@ -10,7 +10,13 @@ public class LetterCombinationsPhoneNumber {
 		List<String> result = new ArrayList<>();
 		if (digits.isEmpty())
 			return result;
+		Map<Character, String> map = mapPhoneKey();
+		StringBuilder sb = new StringBuilder();
+		letterCombinationsUtil(digits, 0, map, sb, result);
+		return result;
+	}
 
+	private Map<Character, String> mapPhoneKey() {
 		Map<Character, String> map = new HashMap<>();
 		map.put('2', "abc");
 		map.put('3', "def");
@@ -19,13 +25,12 @@ public class LetterCombinationsPhoneNumber {
 		map.put('6', "mno");
 		map.put('7', "pqrs");
 		map.put('8', "tuv");
-		map.put('9', "xyz");
-
-		bakTrack(digits, 0, map, new StringBuilder(), result);
-		return result;
+		map.put('9', "wxyz");
+		return map;
 	}
 
-	private void bakTrack(String digits, int i, Map<Character, String> map, StringBuilder sb, List<String> result) {
+	private void letterCombinationsUtil(String digits, int i, Map<Character, String> map, StringBuilder sb,
+			List<String> result) {
 		if (i == digits.length()) {
 			result.add(sb.toString());
 			return;
@@ -34,7 +39,7 @@ public class LetterCombinationsPhoneNumber {
 		String curr = map.get(digits.charAt(i));
 		for (int k = 0; k < curr.length(); k++) {
 			sb.append(curr.charAt(k));
-			bakTrack(digits, i + 1, map, sb, result);
+			letterCombinationsUtil(digits, i + 1, map, sb, result);
 			sb.deleteCharAt(sb.length() - 1);
 		}
 	}

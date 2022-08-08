@@ -31,6 +31,7 @@ public class ReorganizeString {
 			}
 		}
 
+		// if maxHeap size is 1
 		if (!maxHeap.isEmpty()) {
 			char last = maxHeap.remove();
 			if (counts.get(last) > 1) {

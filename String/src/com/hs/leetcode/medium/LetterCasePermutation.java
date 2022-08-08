@@ -3,7 +3,6 @@ package com.hs.leetcode.medium;
 import java.util.ArrayList;
 import java.util.List;
 
-// 784. Letter Case Permutation Medium
 public class LetterCasePermutation {
 	public List<String> letterCasePermutation(String s) {
         List<String> result = new ArrayList<>();

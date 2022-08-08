@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-// 139. Word Break Leetcode
 public class WordBreak {
 	public boolean wordBreak(String s, List<String> wordDict) {
 		int[] pos = new int[s.length() + 1];

@@ -1,6 +1,5 @@
 package com.hs.leetcode.medium;
 
-// 779. K-th Symbol in Grammar leetcode
 public class KthSymbolInGrammer {
 
 	public int kthGrammar(int n, int k) {

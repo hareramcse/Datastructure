@@ -6,6 +6,9 @@ import java.util.List;
 public class DifferentWaysToAddParentheses {
 	public List<Integer> diffWaysToCompute(String expression) {
 		List<Integer> res = new ArrayList<>();
+		if (expression == null || expression.length() == 0)
+			return res;
+
 		for (int i = 0; i < expression.length(); i++) {
 			char ch = expression.charAt(i);
 			if (ch == '-' || ch == '+' || ch == '*') {
@@ -23,7 +26,6 @@ public class DifferentWaysToAddParentheses {
 							res.add(x * y);
 						}
 					}
-
 				}
 			}
 		}

@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-// 438. Find All Anagrams in a String Leetcode Medium
 public class AnagramSubStringSearch {
 
 	// This function search for all permutations of pat[] in txt[]
@@ -29,10 +28,13 @@ public class AnagramSubStringSearch {
 				}
 			}
 			if (j - i + 1 == p.length()) {
-				// ans calculate
+				// calculate answer
 				if (size == 0) {
 					list.add(i);
 				}
+
+				// before sliding the window, restore the count of ith char if its present in
+				// map, which we had decremented in previous step.
 				if (map.containsKey(s.charAt(i))) {
 					map.put(s.charAt(i), map.get(s.charAt(i)) + 1);
 					if (map.get(s.charAt(i)) == 1)
@@ -47,8 +49,8 @@ public class AnagramSubStringSearch {
 
 	public static void main(String args[]) {
 		AnagramSubStringSearch string = new AnagramSubStringSearch();
-		String s = "BACDGABCDA";
-		String p = "ABCD";
+		String s = "cbaebabacd";
+		String p = "abc";
 		List<Integer> ids = string.anagramSearch(s, p);
 		System.out.println(ids);
 	}

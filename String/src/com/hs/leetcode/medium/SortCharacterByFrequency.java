@@ -5,7 +5,6 @@ import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-// 451. Sort Characters By Frequency Leetcode Medium
 public class SortCharacterByFrequency {
 	public String frequencySort(String s) {
 		Map<Character, Integer> map = new HashMap<>();

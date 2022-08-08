@@ -3,7 +3,6 @@ package com.hs.leetcode.medium;
 import java.util.Arrays;
 import java.util.Comparator;
 
-// 179. Largest Number Leetcode Medium
 public class LargestNumber {
 
 	public String largestNumber(int[] nums) {
@@ -31,7 +30,7 @@ public class LargestNumber {
 
 	public static void main(String[] args) {
 		LargestNumber obj = new LargestNumber();
-		int[] nums = { 0, 0 };
+		int[] nums = { 3, 30, 34, 5, 9 };
 		String largestNumber = obj.largestNumber(nums);
 		System.out.println(largestNumber);
 	}

@@ -1,9 +1,8 @@
-package com.hs.leetcode.medium;
+package com.hs.slidingwindow;
 
 import java.util.HashMap;
 import java.util.Map;
 
-// 567. Permutation in String Leetcode Medium
 public class PermutationInString {
 	public boolean checkInclusion(String s1, String s2) {
 		Map<Character, Integer> dict = new HashMap<>();

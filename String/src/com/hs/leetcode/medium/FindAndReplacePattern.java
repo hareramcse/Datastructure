@@ -1,37 +1,37 @@
 package com.hs.leetcode.medium;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class FindAndReplacePattern {
 	public List<String> findAndReplacePattern(String[] words, String pattern) {
 		List<String> result = new ArrayList<>();
 		for (String word : words) {
-			if (matches(word, pattern)) {
+			if (isIsomorphicString(word, pattern)) {
 				result.add(word);
 			}
 		}
-
 		return result;
 	}
 
-	private boolean matches(String word, String pattern) {
-		char[] patternTOWord = new char[26];
-		char[] wordTOPattern = new char[26];
+	private boolean isIsomorphicString(String word, String pattern) {
+		Map<Character, Character> sMap = new HashMap<>();
+		for (int i = 0; i < word.length(); i++) {
+			Character sChar = word.charAt(i);
+			Character tChar = pattern.charAt(i);
 
-		for (int i = 0; i < pattern.length(); i++) {
-			char wordChar = word.charAt(i);
-			char patterChar = pattern.charAt(i);
-
-			if (patternTOWord[patterChar - 'a'] == 0) {
-				patternTOWord[patterChar - 'a'] = wordChar;
-			}
-			if (wordTOPattern[wordChar - 'a'] == 0) {
-				wordTOPattern[wordChar - 'a'] = patterChar;
+			if (sMap.containsKey(sChar)) {
+				if (sMap.get(sChar) != tChar)
+					return false;
 			}
 
-			if (patternTOWord[patterChar - 'a'] != wordChar || wordTOPattern[wordChar - 'a'] != patterChar) {
+			// if map does not contains sChar key but contains tchar as value and vice-versa
+			if (sMap.containsValue(tChar) && !sMap.containsKey(sChar)) {
 				return false;
+			} else {
+				sMap.put(sChar, tChar);
 			}
 		}
 		return true;

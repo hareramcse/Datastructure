@@ -1,22 +1,35 @@
 package com.hs.leetcode.medium;
 
+import java.util.Stack;
+
 public class RemoveAllAdjacentDuplicates2 {
 	public String removeDuplicates(String s, int k) {
-		int count = 1;
-		for (int i = 1; i < s.length(); i++) {
-			if (s.charAt(i) == s.charAt(i - 1)) {
-				count++;
+        Stack<Pair> stack = new Stack<>();
+		for (char ch : s.toCharArray()) {
+			if (!stack.isEmpty() && (stack.peek().key == ch)) {
+				Pair pair = stack.pop();
+				pair.value++;
+				stack.push(pair);
+				if (stack.peek().value == k) {
+					stack.pop();
+				}
 			} else {
-				count = 1;
-			}
-
-			if (count == k) {
-				String reduced = s.substring(0, i - k + 1) + s.substring(i + 1);
-				return removeDuplicates(reduced, k);
+				Pair pair = new Pair(ch, 1);
+				stack.push(pair);
 			}
 		}
-		return s;
-	}
+
+		StringBuilder sb = new StringBuilder();
+		while (!stack.isEmpty()) {
+			Pair pair = stack.pop();
+			int count = pair.value;
+			while (count != 0) {
+				sb.append(pair.key);
+				count--;
+			}
+		}
+		return sb.reverse().toString();
+    }
 
 	public static void main(String[] args) {
 		RemoveAllAdjacentDuplicates2 obj = new RemoveAllAdjacentDuplicates2();

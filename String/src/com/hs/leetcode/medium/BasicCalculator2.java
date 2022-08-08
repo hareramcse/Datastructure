@@ -1,44 +1,50 @@
 package com.hs.leetcode.medium;
 
+import java.util.Stack;
+
 public class BasicCalculator2 {
 	public int calculate(String s) {
-		if (s.isEmpty())
-			return 0;
+		Stack<Integer> st = new Stack<>();
 
-		int curr = 0;
-		char op = '+';
-		char[] ch = s.toCharArray();
-		int sum = 0;
-		int last = 0;
-
-		for (int i = 0; i < ch.length; i++) {
-			if (Character.isDigit(ch[i])) {
-				curr = curr * 10 + ch[i] - '0';
+		char prevSign = '+';
+		int no = 0;
+		for (int i = 0; i < s.length(); i++) {
+			char ch = s.charAt(i);
+			if (Character.isDigit(ch)) {
+				no = no * 10 + (ch - '0');
 			}
 
-			if (!Character.isDigit(ch[i]) && ch[i] != ' ' || i == ch.length - 1) {
-				if (op == '+') {
-					sum += last;
-					last = curr;
-				} else if (op == '-') {
-					sum += last;
-					last =- curr;
-				} else if (op == '*') {
-					last = last * curr;
-				} else if (op == '/') {
-					last = last / curr;
+			if (isOperator(ch) || i == s.length() - 1) {
+				if (prevSign == '+') {
+					st.push(no);
+				} else if (prevSign == '-') {
+					st.push(-no);
+				} else if (prevSign == '*') {
+					int top = st.pop();
+					st.push(top * no);
+				} else if (prevSign == '/') {
+					int top = st.pop();
+					st.push(top / no);
 				}
+				no = 0;
+				prevSign = ch;
 			}
-			op = ch[i];
-			curr = 0;
 		}
-		sum += last;
-		return sum;
+
+		int res = 0;
+		while (!st.empty()) {
+			res += st.pop();
+		}
+		return res;
+	}
+
+	private boolean isOperator(char c) {
+		return c == '+' || c == '-' || c == '/' || c == '*';
 	}
 
 	public static void main(String[] args) {
 		BasicCalculator2 obj = new BasicCalculator2();
-		String s = " 3+5 / 2 ";
+		String s = "3*2+5/2-10";
 		int result = obj.calculate(s);
 		System.out.println(result);
 	}

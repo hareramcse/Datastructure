@@ -21,7 +21,7 @@ public class MinAddToMakeParanthesisValid {
 
 	public static void main(String[] args) {
 		MinAddToMakeParanthesisValid obj = new MinAddToMakeParanthesisValid();
-		String s = "(((";
+		String s = "()(";
 		int result = obj.minAddToMakeValid(s);
 		System.out.println(result);
 	}
