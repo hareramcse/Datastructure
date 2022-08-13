@@ -29,11 +29,4 @@ public class ContiguousArray {
 		}
 		return max;
 	}
-
-	public static void main(String[] args) {
-		ContiguousArray obj = new ContiguousArray();
-		int[] num = { 0, 0, 0, 1, 0, 1, 1 };
-		int result = obj.findMaxLength(num);
-		System.out.println(result);
-	}
 }

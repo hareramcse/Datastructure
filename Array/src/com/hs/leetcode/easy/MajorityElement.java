@@ -14,11 +14,4 @@ public class MajorityElement {
 		}
 		return -1;
 	}
-
-	public static void main(String[] args) {
-		MajorityElement obj = new MajorityElement();
-		int[] nums = { 2, 2, 1, 1, 1, 2, 2 };
-		int result = obj.majorityElement(nums);
-		System.out.println(result);
-	}
 }

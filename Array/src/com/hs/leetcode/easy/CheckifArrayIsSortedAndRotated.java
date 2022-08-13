@@ -12,11 +12,4 @@ public class CheckifArrayIsSortedAndRotated {
 			return false;
 		return true;
 	}
-
-	public static void main(String[] args) {
-		CheckifArrayIsSortedAndRotated obj = new CheckifArrayIsSortedAndRotated();
-		int[] nums = { 3, 4, 5, 1, 2 };
-		boolean result = obj.check(nums);
-		System.out.println(result);
-	}
 }

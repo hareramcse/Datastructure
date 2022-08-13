@@ -16,16 +16,9 @@ public class MinimumAbsoluteDifference {
 			min = Math.min(min, arr[i + 1] - arr[i]);
 
 		for (int i = 0; i < n - 1; i++) {
-			if (arr[i] + min == arr[i + 1])
+			if (arr[i + 1] - arr[i] == min)
 				ans.add(Arrays.asList(arr[i], arr[i + 1]));
 		}
 		return ans;
-	}
-
-	public static void main(String[] args) {
-		MinimumAbsoluteDifference obj = new MinimumAbsoluteDifference();
-		int[] arr = { 4, 2, 1, 3 };
-		List<List<Integer>> result = obj.minimumAbsDifference(arr);
-		System.out.println(result);
 	}
 }

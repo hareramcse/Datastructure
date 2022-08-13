@@ -2,10 +2,20 @@ package com.hs.leetcode.medium;
 
 public class FindTheDuplicateNumber {
 	public int findDuplicate(int[] nums) {
-		return 0;
-	}
+        int slow = nums[0];
+		int fast = nums[0];
 
-	public static void main(String[] args) {
+		do {
+			slow = nums[slow];
+			fast = nums[nums[fast]];
+		} while (slow != fast);
 
-	}
+		slow = nums[0];
+
+		while (slow != fast) {
+			slow = nums[slow];
+			fast = nums[fast];
+		}
+		return fast;
+    }
 }
