@@ -2,6 +2,7 @@ package com.hs.leetcode.medium;
 
 import java.util.Arrays;
 
+// Order is not preserved
 public class RearrangeArrayElementsBySign {
 	public int[] rearrangeArray(int[] nums) {
 		int n = nums.length;

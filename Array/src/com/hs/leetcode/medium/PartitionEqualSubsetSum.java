@@ -13,25 +13,27 @@ public class PartitionEqualSubsetSum {
 		if (sum % 2 != 0)
 			return false;
 
-		boolean part[][] = new boolean[sum / 2 + 1][n + 1];
+		sum = sum / 2;
+
+		boolean part[][] = new boolean[sum + 1][n + 1];
 
 		// initialize top row as true
 		for (i = 0; i <= n; i++)
 			part[0][i] = true;
 
 		// initialize leftmost column, except part[0][0], as 0
-		for (i = 1; i <= sum / 2; i++)
+		for (i = 1; i <= sum; i++)
 			part[i][0] = false;
 
 		// Fill the partition table in bottom up manner
-		for (i = 1; i <= sum / 2; i++) {
+		for (i = 1; i <= sum; i++) {
 			for (j = 1; j <= n; j++) {
 				part[i][j] = part[i][j - 1];
 				if (i >= nums[j - 1])
 					part[i][j] = part[i][j] || part[i - nums[j - 1]][j - 1];
 			}
 		}
-		return part[sum / 2][n];
+		return part[sum][n];
 	}
 
 	public static void main(String[] args) {

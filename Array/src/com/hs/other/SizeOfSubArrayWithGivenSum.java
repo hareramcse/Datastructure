@@ -22,12 +22,10 @@ public class SizeOfSubArrayWithGivenSum {
 		return (end - start + 1);
 	}
 
-	// Driver code
 	public static void main(String[] args) {
 		SizeOfSubArrayWithGivenSum array = new SizeOfSubArrayWithGivenSum();
 		int a[] = { -2, -3, 4, -1, -2, 1, 5, -3 };
 		int n = a.length;
 		System.out.println(array.maxSubArraySum(a, n));
 	}
-
 }

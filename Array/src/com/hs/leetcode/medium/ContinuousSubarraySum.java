@@ -15,7 +15,8 @@ public class ContinuousSubarraySum {
 				sum = sum % k;
 			}
 			if (map.containsKey(sum)) {
-				if (i - map.get(sum) >= 2)
+				int currLen = i - map.get(sum);
+				if (currLen >= 2)
 					return true;
 			} else {
 				map.put(sum, i);

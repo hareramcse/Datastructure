@@ -1,48 +1,50 @@
 package com.hs.leetcode.medium;
 
+import java.util.Arrays;
+
 public class PartitionToKEqualSumSubsets {
 	public boolean canPartitionKSubsets(int[] nums, int k) {
-		int total = 0;
-		for (int el : nums) {
-			total += el;
+		Arrays.sort(nums);
+
+		int sum = 0;
+		for (int num : nums) {
+			sum += num;
 		}
 
-		if (total % k != 0) {
+		if (sum % k != 0) {
 			return false;
 		}
 
 		if (nums.length < k)
 			return false;
 
-		int subsetSum = total / k;
+		int target = sum / k;
 		boolean[] visited = new boolean[nums.length];
-		return canPartition(nums, visited, 0, k, 0, subsetSum);
+		return canPartition(nums, k, visited, 0, 0, target);
 	}
 
-	private boolean canPartition(int[] nums, boolean[] visited, int start, int k, int curSum, int subsetSum) {
+	private boolean canPartition(int[] nums, int k, boolean[] visited, int start, int curSum, int target) {
 		if (k == 0)
 			return true;
-		if (curSum > subsetSum)
-			return false;
-		if (curSum == subsetSum) {
-			return canPartition(nums, visited, 0, k - 1, 0, subsetSum);
+
+		if (curSum == target) {
+			return canPartition(nums, k - 1, visited, 0, 0, target);
 		}
 
 		for (int i = start; i < nums.length; i++) {
-			if (visited[i])
+			if (visited[i] || (curSum + nums[i] > target) || (i > 0 && nums[i] == nums[i - 1] && !visited[i - 1]))
 				continue;
 			visited[i] = true;
-			if (canPartition(nums, visited, i + 1, k, curSum + nums[i], subsetSum))
+			if (canPartition(nums, k, visited, i + 1, curSum + nums[i], target))
 				return true;
 			visited[i] = false;
 		}
-
 		return false;
 	}
 
 	public static void main(String[] args) {
 		PartitionToKEqualSumSubsets obj = new PartitionToKEqualSumSubsets();
-		int[] nums = { 4, 3, 2, 3, 5, 2, 1 };
+		int[] nums = { 2, 2, 2, 2, 3, 4, 5 };
 		int k = 4;
 		boolean result = obj.canPartitionKSubsets(nums, k);
 		System.out.println(result);

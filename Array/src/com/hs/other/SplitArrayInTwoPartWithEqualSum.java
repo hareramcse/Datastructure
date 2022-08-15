@@ -20,8 +20,7 @@ public class SplitArrayInTwoPartWithEqualSum {
 
 	// Returns split point. If not possible, then return -1.
 	private int findSplitPoint(int arr[], int n) {
-		// traverse array element and compute sum
-		// of whole array
+		// traverse array element and compute sum of whole array
 		int leftSum = 0;
 
 		for (int i = 0; i < n; i++)
@@ -51,6 +50,5 @@ public class SplitArrayInTwoPartWithEqualSum {
 		SplitArrayInTwoPartWithEqualSum array = new SplitArrayInTwoPartWithEqualSum();
 		int arr[] = { 1, 2, 3, 4, 5, 5 };
 		array.printTwoParts(arr);
-
 	}
 }

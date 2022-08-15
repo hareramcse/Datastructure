@@ -3,14 +3,20 @@ package com.hs.leetcode.medium;
 import java.util.Arrays;
 
 public class RotateArray {
-	private void leftRotate(int arr[], int d) {
-		int n = arr.length;
-		arrayReversal(arr, 0, d - 1);
-		arrayReversal(arr, d, n - 1);
-		arrayReversal(arr, 0, n - 1);
+	public void rotate(int[] nums, int k) {
+		int n = nums.length;
+		if (nums == null || n == 1) {
+			return;
+		}
+
+		k = k % n;
+		int a = nums.length - k;
+		reverseArray(nums, 0, a - 1);
+		reverseArray(nums, a, n - 1);
+		reverseArray(nums, 0, n - 1);
 	}
 
-	private void arrayReversal(int arr[], int start, int end) {
+	private void reverseArray(int arr[], int start, int end) {
 		while (start < end) {
 			int temp = arr[start];
 			arr[start] = arr[end];
@@ -24,7 +30,7 @@ public class RotateArray {
 		RotateArray rotation = new RotateArray();
 		int arr[] = { 1, 2, 3, 4, 5, 6, 7 };
 		int d = 2;
-		rotation.leftRotate(arr, d);
+		rotation.rotate(arr, d);
 		System.out.println(Arrays.toString(arr));
 	}
 }
