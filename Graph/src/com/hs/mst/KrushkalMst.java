@@ -8,16 +8,10 @@ import java.util.Queue;
 public class KrushkalMst {
 	private int noOfVertices;
 	private List<Edge> edges;
-	private int[] parent;
 
 	KrushkalMst(int noOfVertices) {
 		this.noOfVertices = noOfVertices;
 		edges = new ArrayList<>();
-		// create `n` disjoint sets (one for each vertex)
-		parent = new int[noOfVertices];
-		for (int i = 0; i < noOfVertices; i++) {
-			parent[i] = i;
-		}
 	}
 
 	private void addEdge(int source, int destination, int weight) {
@@ -25,23 +19,28 @@ public class KrushkalMst {
 		edges.add(edge);
 	}
 
-	private void kruskalMST() {
+	private void kruskalMST(List<Edge> edges, int noOfVertices) {
 		List<Edge> mst = new ArrayList<>();
 		Queue<Edge> pq = new PriorityQueue<>(edges.size());
 
 		// add all the edges to priority queue
 		pq.addAll(edges);
 
+		int[] parent = new int[noOfVertices];
+		for (int i = 0; i < noOfVertices; i++) {
+			parent[i] = i;
+		}
+
 		while (!pq.isEmpty()) {
 			Edge edge = pq.poll();
 			// check if adding this edge creates a cycle
-			int x = find(edge.source);
-			int y = find(edge.destination);
+			int x = find(parent, edge.source);
+			int y = find(parent, edge.destination);
 
 			// here parents are diff it means both belongs to diff sets
 			if (x != y) {
 				mst.add(edge);
-				union(x, y);
+				union(parent, x, y);
 			}
 		}
 		// print MST
@@ -49,21 +48,19 @@ public class KrushkalMst {
 		printGraph(mst);
 	}
 
-	// Find the root of the set in which element `k` belongs
-	private int find(int k) {
-		// if `k` is root
+	// Find the parent of the set in which element `k` belongs
+	private int find(int[] parent, int k) {
 		if (parent[k] == k) {
 			return k;
 		}
-		// recur for the parent until we find the root
-		return find(parent[k]);
+		return find(parent, parent[k]);
 	}
 
 	// Perform Union of two subsets
-	private void union(int a, int b) {
-		// find the root of the sets in which elements `x` and `y` belongs
-		int x = find(a);
-		int y = find(b);
+	private void union(int[] parent, int a, int b) {
+		// find the parent of the sets in which elements `x` and `y` belongs
+		int x = find(parent, a);
+		int y = find(parent, b);
 		parent[x] = y;
 	}
 
@@ -79,12 +76,13 @@ public class KrushkalMst {
 	}
 
 	public static void main(String[] args) {
-		KrushkalMst graph = new KrushkalMst(4);
+		int n = 4;
+		KrushkalMst graph = new KrushkalMst(n);
 		graph.addEdge(0, 1, 10);
 		graph.addEdge(0, 2, 6);
 		graph.addEdge(0, 3, 5);
 		graph.addEdge(1, 3, 15);
 		graph.addEdge(2, 3, 4);
-		graph.kruskalMST();
+		graph.kruskalMST(graph.edges, graph.noOfVertices);
 	}
 }

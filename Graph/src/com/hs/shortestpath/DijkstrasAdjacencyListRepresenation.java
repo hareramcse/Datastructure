@@ -9,16 +9,13 @@ import com.hs.mst.Edge;
 public class DijkstrasAdjacencyListRepresenation {
 	private int noOfVertices;
 	private Queue<Edge> adj[];
-	private int[] distance;
 
 	@SuppressWarnings("unchecked")
 	DijkstrasAdjacencyListRepresenation(int noOfVertices) {
 		this.noOfVertices = noOfVertices;
-		distance = new int[noOfVertices];
 		adj = new LinkedList[noOfVertices];
 		for (int i = 0; i < noOfVertices; i++) {
 			adj[i] = new LinkedList<>();
-			distance[i] = Integer.MAX_VALUE;
 		}
 	}
 
@@ -31,7 +28,12 @@ public class DijkstrasAdjacencyListRepresenation {
 	}
 
 	// Function to find the shortest distance of all the vertices from the source
-	private int[] dijkstra(int source) {
+	private int[] dijkstra(Queue<Edge>[] adj, int source) {
+		int[] distance = new int[noOfVertices];
+		for (int i = 0; i < noOfVertices; i++) {
+			distance[i] = Integer.MAX_VALUE;
+		}
+		
 		distance[source] = 0;
 		Queue<Edge> pq = new PriorityQueue<>();
 		pq.add(new Edge());
@@ -96,12 +98,11 @@ public class DijkstrasAdjacencyListRepresenation {
 		dij.addEdge(8, 7, 7);
 
 		int source = 0;
-		int[] distance = dij.dijkstra(source);
+		int[] distance = dij.dijkstra(dij.adj, source);
 
 		System.out.println("Vertex " + " Distance from Source");
 		for (int i = 0; i < dij.noOfVertices; i++) {
 			System.out.println(i + "           " + distance[i]);
 		}
 	}
-
 }

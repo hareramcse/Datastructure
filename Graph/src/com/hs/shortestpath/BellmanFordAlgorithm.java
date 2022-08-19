@@ -8,16 +8,13 @@ import com.hs.mst.Edge;
 public class BellmanFordAlgorithm {
 	private int noOfVertices;
 	private Queue<Edge> adj[];
-	private int[] distance;
 
 	@SuppressWarnings("unchecked")
 	BellmanFordAlgorithm(int noOfVertices) {
 		this.noOfVertices = noOfVertices;
-		distance = new int[noOfVertices];
 		adj = new LinkedList[noOfVertices];
 		for (int i = 0; i < noOfVertices; i++) {
 			adj[i] = new LinkedList<>();
-			distance[i] = Integer.MAX_VALUE;
 		}
 	}
 
@@ -31,11 +28,12 @@ public class BellmanFordAlgorithm {
 
 	// The function also detects negative weight cycle
 	private void bellmanFord(int source) {
-		distance[source] = 0;
+		int[] distance = new int[noOfVertices];
+		for (int i = 0; i < noOfVertices; i++) {
+			distance[i] = Integer.MAX_VALUE;
+		}
 
-		// Step 2: Relax all edges |V| - 1 times. A simple
-		// shortest path from src to any other vertex can
-		// have at-most |V| - 1 edges
+		distance[source] = 0;
 		for (int i = 0; i < noOfVertices; i++) {
 			for (int j = 0; j < noOfVertices; j++) {
 				for (Edge edge : adj[j]) {
@@ -66,14 +64,12 @@ public class BellmanFordAlgorithm {
 		printArr(distance, noOfVertices);
 	}
 
-	// A utility function used to print the solution
 	private void printArr(int dist[], int noOfVertices) {
 		System.out.println("Vertex Distance from Source");
 		for (int i = 0; i < noOfVertices; ++i)
 			System.out.println(i + "\t\t" + dist[i]);
 	}
 
-	// Driver method to test above function
 	public static void main(String[] args) {
 		BellmanFordAlgorithm graph = new BellmanFordAlgorithm(8);
 		graph.addEdge(0, 1, 4);

@@ -7,7 +7,7 @@ import java.util.Queue;
 
 public class AllTopologicalSortOfDirectedAcyclicGraph {
 	private int noOfVertices;
-	private Queue<Integer> adj[];
+	private Queue<Integer>[] adj;
 
 	@SuppressWarnings("unchecked")
 	public AllTopologicalSortOfDirectedAcyclicGraph(int noOfVertices) {
@@ -18,13 +18,11 @@ public class AllTopologicalSortOfDirectedAcyclicGraph {
 		}
 	}
 
-	// Utility function to add edge
 	public void addEdge(int source, int destination) {
 		adj[source].add(destination);
 	}
 
-	// The function finds all the Topological Sort.
-	public void allTopologicalSorts() {
+	public void allTopologicalSorts(Queue<Integer>[] adj) {
 		// Mark all the vertices as not visited
 		boolean[] visited = new boolean[noOfVertices];
 
@@ -75,7 +73,6 @@ public class AllTopologicalSortOfDirectedAcyclicGraph {
 
 	}
 
-	// Driver code
 	public static void main(String[] args) {
 		AllTopologicalSortOfDirectedAcyclicGraph graph = new AllTopologicalSortOfDirectedAcyclicGraph(6);
 		graph.addEdge(5, 2);
@@ -86,7 +83,6 @@ public class AllTopologicalSortOfDirectedAcyclicGraph {
 		graph.addEdge(3, 1);
 
 		System.out.println("All Topological sorts");
-		graph.allTopologicalSorts();
+		graph.allTopologicalSorts(graph.adj);
 	}
-
 }

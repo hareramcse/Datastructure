@@ -1,14 +1,14 @@
-package com.hs.introduction;
+package com.hs.leetcode.medium;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class CountNoOfTreesInForest {
+public class CountFriendCircle {
 	private int noOfVertices;
-	private Queue<Integer> adj[];
+	private Queue<Integer>[] adj;
 
 	@SuppressWarnings("unchecked")
-	CountNoOfTreesInForest(int noOfVertices) {
+	CountFriendCircle(int noOfVertices) {
 		this.noOfVertices = noOfVertices;
 		adj = new LinkedList[noOfVertices];
 		for (int i = 0; i < noOfVertices; i++)
@@ -19,28 +19,21 @@ public class CountNoOfTreesInForest {
 		adj[source].add(detination);
 	}
 
-	private int countTrees() {
-		// Mark all the vertices as not visited
+	private int countTrees(Queue<Integer>[] adj, int noOfVertices) {
 		boolean visited[] = new boolean[noOfVertices];
-		int count = 0;
+		int ans = 0;
 
-		// Call the recursive helper function to print DFS traversal
-		// starting from all vertices one by one
 		for (int i = 0; i < noOfVertices; i++) {
 			if (visited[i] == false) {
 				DFSUtil(i, visited);
-				count++;
+				ans++;
 			}
 		}
-		return count;
+		return ans;
 	}
 
-	// A function used by DFS
 	private void DFSUtil(int source, boolean visited[]) {
-		// Mark the current node as visited and print it
 		visited[source] = true;
-
-		// Recur for all the vertices adjacent to this vertex
 		for (Integer adjNode : adj[source]) {
 			if (!visited[adjNode]) {
 				DFSUtil(adjNode, visited);
@@ -49,10 +42,10 @@ public class CountNoOfTreesInForest {
 	}
 
 	public static void main(String args[]) {
-		CountNoOfTreesInForest graph = new CountNoOfTreesInForest(5);
+		CountFriendCircle graph = new CountFriendCircle(5);
 		graph.addEdge(0, 1);
 		graph.addEdge(0, 2);
 		graph.addEdge(3, 4);
-		System.out.println(graph.countTrees());
+		System.out.println(graph.countTrees(graph.adj, graph.noOfVertices));
 	}
 }

@@ -6,7 +6,7 @@ import java.util.Vector;
 
 public class KahnAlgoForTopologicalSorting {
 	private int noOfVertices;
-	private Queue<Integer> adj[];
+	private Queue<Integer>[] adj;
 
 	@SuppressWarnings("unchecked")
 	public KahnAlgoForTopologicalSorting(int noOfVertices) {
@@ -22,7 +22,7 @@ public class KahnAlgoForTopologicalSorting {
 	}
 
 	// prints a Topological Sort of the complete graph
-	public void topologicalSort() {
+	public void topologicalSort(Queue<Integer>[] adj) {
 		// Initialize all indegrees as 0.
 		int indegree[] = new int[noOfVertices];
 
@@ -69,14 +69,12 @@ public class KahnAlgoForTopologicalSorting {
 			return;
 		}
 
-		// Print topological order
 		for (int i : result) {
 			System.out.print(i + " ");
 		}
 	}
 
 	public static void main(String args[]) {
-		// Create a graph given in the above diagram
 		KahnAlgoForTopologicalSorting g = new KahnAlgoForTopologicalSorting(6);
 		g.addEdge(5, 2);
 		g.addEdge(5, 0);
@@ -85,7 +83,6 @@ public class KahnAlgoForTopologicalSorting {
 		g.addEdge(2, 3);
 		g.addEdge(3, 1);
 		System.out.println("Following is a Topological Sort");
-		g.topologicalSort();
+		g.topologicalSort(g.adj);
 	}
-
 }

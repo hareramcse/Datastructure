@@ -6,28 +6,20 @@ import java.util.Queue;
 
 public class PrimsAlgorithmAdjacencyList {
 	private int noOfVertices;
-	private Queue<Edge> adj[];
-	private Edge[] edge;
-	private int[] parent;
+	private Queue<Edge>[] adj;
 
 	@SuppressWarnings("unchecked")
 	PrimsAlgorithmAdjacencyList(int noOfVertices) {
 		this.noOfVertices = noOfVertices;
 		adj = new LinkedList[noOfVertices];
-		parent = new int[noOfVertices];
-		edge = new Edge[noOfVertices];
 
 		// initialize all vertex's weight with infinity
 		for (int i = 0; i < noOfVertices; i++) {
 			adj[i] = new LinkedList<Edge>();
-			edge[i] = new Edge();
-			edge[i].destination = i;
-			edge[i].weight = Integer.MAX_VALUE;
-			parent[i] = -1;
 		}
 	}
 
-	// method to add an edge between two vertices
+	// method to create an adjancy list
 	private void addEdge(int source, int destination, int weight) {
 		Edge edge = new Edge(source, destination, weight);
 		adj[source].add(edge);
@@ -36,40 +28,45 @@ public class PrimsAlgorithmAdjacencyList {
 		adj[destination].add(edge);
 	}
 
-	// method used to find the mst
-	private void primsMST() {
+	private void primsMST(Queue<Edge>[] adj) {
+		Edge[] edge = new Edge[noOfVertices];
 		boolean[] visited = new boolean[noOfVertices];
-		// mark the source vertex as visited
-		visited[0] = true;
+		int[] parent = new int[noOfVertices];
+
+		// initialize all the edge weight to infinity
+		for (int i = 0; i < noOfVertices; i++) {
+			edge[i] = new Edge();
+			edge[i].destination = i;
+			edge[i].weight = Integer.MAX_VALUE;
+			visited[i] = false;
+			parent[i] = -1;
+		}
 
 		// Set weight of source vertex to 0 so that it is extracted first
 		edge[0].weight = 0;
 
+		// mark the source vertex as visited
+		visited[0] = true;
+
 		Queue<Edge> pq = new PriorityQueue<>(noOfVertices);
-		for (int i = 0; i < noOfVertices; i++)
+		for (int i = 0; i < noOfVertices; i++) {
 			pq.add(edge[i]);
+		}
 
-		// Loops until the queue is not empty
 		while (!pq.isEmpty()) {
-
 			// Extracts a node with min weight value
 			Edge minWeightEdge = pq.poll();
 
 			// mark the node as visited
 			visited[minWeightEdge.destination] = true;
 
-			// For all adjacent vertex of the extracted vertex
+			// update the weight and parent array
 			for (Edge adjEdge : adj[minWeightEdge.destination]) {
-				if (visited[adjEdge.destination] == false) {
-					// If the weight of the adjacent vertex is more than the extracted vertex
-					// then update the weight of adjacent vertex
-					// to update first remove and add the updated vertex
-					if (adjEdge.weight < edge[adjEdge.destination].weight) {
-						pq.remove(edge[adjEdge.destination]);
-						edge[adjEdge.destination].weight = adjEdge.weight;
-						pq.add(edge[adjEdge.destination]);
-						parent[adjEdge.destination] = minWeightEdge.destination;
-					}
+				if (visited[adjEdge.destination] == false && adjEdge.weight < edge[adjEdge.destination].weight) {
+					pq.remove(edge[adjEdge.destination]);
+					edge[adjEdge.destination].weight = adjEdge.weight;
+					pq.add(edge[adjEdge.destination]);
+					parent[adjEdge.destination] = minWeightEdge.destination;
 				}
 			}
 		}
@@ -95,6 +92,6 @@ public class PrimsAlgorithmAdjacencyList {
 		graph.addEdge(6, 7, 1);
 		graph.addEdge(6, 8, 6);
 		graph.addEdge(7, 8, 7);
-		graph.primsMST();
+		graph.primsMST(graph.adj);
 	}
 }

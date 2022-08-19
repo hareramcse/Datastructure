@@ -5,7 +5,7 @@ import java.util.Queue;
 
 public class DetectCycleInDirectedGraph {
 	private int noOfVertices;
-	private Queue<Integer> adj[];
+	private Queue<Integer>[] adj;
 
 	@SuppressWarnings("unchecked")
 	DetectCycleInDirectedGraph(int noOfVertices) {
@@ -21,28 +21,28 @@ public class DetectCycleInDirectedGraph {
 		adj[source].add(destination);
 	}
 
-	private boolean isCyclic(int source) {
+	private boolean isCyclic(Queue<Integer>[] adj, int noOfVertices) {
 		boolean visited[] = new boolean[noOfVertices];
 		boolean recStack[] = new boolean[noOfVertices];
 
 		// Call the recursive helper function to detect cycle in different DFS trees
 		for (int i = 0; i < noOfVertices; i++)
-			if (visited[source] == false)
-				if (isCyclicUtil(i, visited, recStack))
+			if (visited[i] == false)
+				if (isCyclicUtil(adj, i, visited, recStack))
 					return true;
 
 		return false;
 	}
 
-	private boolean isCyclicUtil(int source, boolean visited[], boolean recStack[]) {
+	private boolean isCyclicUtil(Queue<Integer>[] adj, int source, boolean visited[], boolean recStack[]) {
 		// Mark the current node as visited and part of recursion stack
 		visited[source] = true;
 		recStack[source] = true;
 
 		// Recur for all the vertices adjacent to this vertex
-		for(int currentAdjNode : adj[source]) {
+		for (int currentAdjNode : adj[source]) {
 			if (!visited[currentAdjNode]) {
-				if (isCyclicUtil(currentAdjNode, visited, recStack)) {
+				if (isCyclicUtil(adj, currentAdjNode, visited, recStack)) {
 					return true;
 				}
 			}
@@ -64,6 +64,6 @@ public class DetectCycleInDirectedGraph {
 		graph.addEdge(2, 3);
 		graph.addEdge(3, 3);
 
-		System.out.println(graph.isCyclic(0));
+		System.out.println(graph.isCyclic(graph.adj, graph.noOfVertices));
 	}
 }

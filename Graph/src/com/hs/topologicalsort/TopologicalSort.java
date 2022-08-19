@@ -6,7 +6,7 @@ import java.util.Stack;
 
 public class TopologicalSort {
 	private int noOfVertices;
-	private Queue<Integer> adj[];
+	private Queue<Integer>[] adj;
 
 	@SuppressWarnings("unchecked")
 	TopologicalSort(int noOfVertices) {
@@ -23,7 +23,7 @@ public class TopologicalSort {
 	}
 
 	// The function to do Topological Sort.
-	private void topologicalSort() {
+	private void topologicalSort(Queue<Integer>[] adj) {
 		Stack<Integer> stack = new Stack<Integer>();
 
 		// Mark all the vertices as not visited
@@ -33,7 +33,7 @@ public class TopologicalSort {
 		// Topological Sort starting from all vertices one by one
 		for (int i = 0; i < noOfVertices; i++)
 			if (visited[i] == false)
-				topologicalSortUtil(i, visited, stack);
+				DFS(i, visited, stack);
 
 		// Print contents of stack
 		while (!stack.empty())
@@ -41,22 +41,20 @@ public class TopologicalSort {
 	}
 
 	// A recursive function used by topologicalSort
-	private void topologicalSortUtil(int source, boolean visited[], Stack<Integer> stack) {
+	private void DFS(int source, boolean visited[], Stack<Integer> stack) {
 		// Mark the current node as visited.
 		visited[source] = true;
 
 		// Recur for all the vertices adjacent to this vertex
 		for(Integer vertex : adj[source]) {
 			if (!visited[vertex])
-				topologicalSortUtil(vertex, visited, stack);
+				DFS(vertex, visited, stack);
 		}
 		// Push current vertex to stack which stores result
 		stack.push(source);
 	}
 
-	// Driver code
 	public static void main(String args[]) {
-		// Create a graph given in the above diagram
 		TopologicalSort graph = new TopologicalSort(6);
 		graph.addEdge(5, 2);
 		graph.addEdge(5, 0);
@@ -67,7 +65,6 @@ public class TopologicalSort {
 
 		System.out.println("Following is a Topological sort of the given graph");
 		// Function Call
-		graph.topologicalSort();
+		graph.topologicalSort(graph.adj);
 	}
-
 }

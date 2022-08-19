@@ -2,24 +2,16 @@ package com.hs.shortestpath;
 
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class ShortestPathInDirectedACyclicGraph {
-
-	private int INF = Integer.MAX_VALUE;
-
 	private int noOfVertices;
-	private int[] dist;
-	private LinkedList<Edge> adj[];
+	private Queue<Edge>[] adj;
 
 	@SuppressWarnings("unchecked")
 	ShortestPathInDirectedACyclicGraph(int noOfVertices) {
 		this.noOfVertices = noOfVertices;
-		dist = new int[noOfVertices];
-		// Initialize distances to all vertices as infinite and distance to source as 0
-		for (int i = 0; i < noOfVertices; i++)
-			dist[i] = INF;
-
 		adj = new LinkedList[noOfVertices];
 		for (int i = 0; i < noOfVertices; ++i) {
 			adj[i] = new LinkedList<Edge>();
@@ -28,24 +20,21 @@ public class ShortestPathInDirectedACyclicGraph {
 
 	private void addEdge(int source, int destination, int weight) {
 		Edge edge = new Edge(source, destination, weight);
-		adj[source].add(edge);// Add v to u's list
+		adj[source].add(edge);
 	}
 
-	// The function to find shortest paths from given vertex. It
-	// uses recursive topologicalSortUtil() to get topological
-	// sorting of given graph.
-	private void shortestPath(int source) {
+	private void shortestPath(Queue<Edge>[] adj, int source) {
 		Stack<Integer> stack = new Stack<>();
-
-		// Mark all the vertices as not visited
 		boolean visited[] = new boolean[noOfVertices];
 
-		// Call the recursive helper function to store Topological
-		// Sort starting from all vertices one by one
 		for (int i = 0; i < noOfVertices; i++)
 			if (visited[i] == false)
-				topologicalSortUtil(i, visited, stack);
+				DFS(i, visited, stack);
 
+		int[] dist = new int[noOfVertices];
+		for (int i = 0; i < noOfVertices; i++) {
+			dist[i] = Integer.MAX_VALUE;
+		}
 		dist[source] = 0;
 
 		// Process vertices in topological order
@@ -54,7 +43,7 @@ public class ShortestPathInDirectedACyclicGraph {
 			int u = stack.pop();
 
 			// Update distances of all adjacent vertices
-			if (dist[u] != INF) {
+			if (dist[u] != Integer.MAX_VALUE) {
 				Iterator<Edge> it = adj[u].iterator();
 				while (it.hasNext()) {
 					Edge edge = it.next();
@@ -66,23 +55,19 @@ public class ShortestPathInDirectedACyclicGraph {
 
 		// Print the calculated shortest distances
 		for (int i = 0; i < noOfVertices; i++) {
-			if (dist[i] == INF)
+			if (dist[i] == Integer.MAX_VALUE)
 				System.out.print("INF ");
 			else
 				System.out.print(dist[i] + " ");
 		}
 	}
 
-	private void topologicalSortUtil(int source, boolean visited[], Stack<Integer> stack) {
-		// Mark the current node as visited.
+	private void DFS(int source, boolean visited[], Stack<Integer> stack) {
 		visited[source] = true;
-
-		// Recur for all the vertices adjacent to this vertex
 		for (Edge node : adj[source]) {
 			if (!visited[node.destination])
-				topologicalSortUtil(node.destination, visited, stack);
+				DFS(node.destination, visited, stack);
 		}
-		// Push current vertex to stack which stores result
 		stack.push(source);
 	}
 
@@ -100,7 +85,6 @@ public class ShortestPathInDirectedACyclicGraph {
 
 		int source = 1;
 		System.out.println("Following are shortest distances from source " + source);
-		graph.shortestPath(source);
+		graph.shortestPath(graph.adj, source);
 	}
-
 }
