@@ -1,81 +1,65 @@
 package com.hs.greedy;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
+
+class Job {
+	int id, profit, deadline;
+
+	Job(int x, int y, int z) {
+		this.id = x;
+		this.deadline = y;
+		this.profit = z;
+	}
+}
 
 public class JobSequencingProblem {
 
-	// Each job has a unique-id,
-	// profit and deadline
-	char id;
-	int deadline, profit;
+	public int[] jobScheduling(Job[] arr) {
+		Arrays.sort(arr, (a, b) -> (b.profit - a.profit));
 
-	// Constructors
-	public JobSequencingProblem() {
-	}
+		int maxi = 0;
+		for (int i = 0; i < arr.length; i++) {
+			if (arr[i].deadline > maxi) {
+				maxi = arr[i].deadline;
+			}
+		}
 
-	public JobSequencingProblem(char id, int deadline, int profit) {
-		this.id = id;
-		this.deadline = deadline;
-		this.profit = profit;
-	}
+		int result[] = new int[maxi + 1];
 
-	// Function to schedule the jobs take 2
-	// arguments arraylist and no of jobs to schedule
-	void printJobScheduling(ArrayList<JobSequencingProblem> arr, int t) {
-		// Length of array
-		int n = arr.size();
+		for (int i = 1; i <= maxi; i++) {
+			result[i] = -1;
+		}
 
-		// Sort all jobs according to
-		// decreasing order of profit
-		Collections.sort(arr, (a, b) -> b.profit - a.profit);
+		int countJobs = 0, jobProfit = 0;
 
-		// To keep track of free time slots
-		boolean result[] = new boolean[t];
-
-		// To store result (Sequence of jobs)
-		char job[] = new char[t];
-
-		// Iterate through all given jobs
-		for (int i = 0; i < n; i++) {
-			// Find a free slot for this job
-			// (Note that we start from the
-			// last possible slot)
-			for (int j = Math.min(t - 1, arr.get(i).deadline - 1); j >= 0; j--) {
-
+		for (int i = 0; i < arr.length; i++) {
+			for (int j = arr[i].deadline; j > 0; j--) {
 				// Free slot found
-				if (result[j] == false) {
-					result[j] = true;
-					job[j] = arr.get(i).id;
+				if (result[j] == -1) {
+					result[j] = i;
+					countJobs++;
+					jobProfit += arr[i].profit;
 					break;
 				}
 			}
 		}
 
-		// Print the sequence
-		for (char jb : job) {
-			System.out.print(jb + " ");
-		}
-		System.out.println();
+		int ans[] = new int[2];
+		ans[0] = countJobs;
+		ans[1] = jobProfit;
+		return ans;
+
 	}
 
-	// Driver code
 	public static void main(String args[]) {
-		ArrayList<JobSequencingProblem> arr = new ArrayList<JobSequencingProblem>();
+		JobSequencingProblem obj = new JobSequencingProblem();
 
-		arr.add(new JobSequencingProblem('a', 2, 100));
-		arr.add(new JobSequencingProblem('b', 1, 19));
-		arr.add(new JobSequencingProblem('c', 2, 27));
-		arr.add(new JobSequencingProblem('d', 1, 25));
-		arr.add(new JobSequencingProblem('e', 3, 15));
-
-		// Function call
-		System.out.println("Following is maximum " + "profit sequence of jobs");
-
-		JobSequencingProblem job = new JobSequencingProblem();
-
-		// Calling function
-		job.printJobScheduling(arr, 3);
+		Job[] arr = new Job[4];
+		arr[0] = new Job(1, 4, 20);
+		arr[1] = new Job(2, 1, 10);
+		arr[2] = new Job(3, 2, 40);
+		arr[3] = new Job(4, 2, 30);
+		int[] result = obj.jobScheduling(arr);
+		System.out.println(Arrays.toString(result));
 	}
-
 }
