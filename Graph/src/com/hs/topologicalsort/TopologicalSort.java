@@ -23,16 +23,12 @@ public class TopologicalSort {
 	}
 
 	// The function to do Topological Sort.
-	private void topologicalSort(Queue<Integer>[] adj) {
+	public void topologicalSort(Queue<Integer>[] adj) {
 		Stack<Integer> stack = new Stack<Integer>();
-
-		// Mark all the vertices as not visited
 		boolean visited[] = new boolean[noOfVertices];
 
-		// Call the recursive helper function to store
-		// Topological Sort starting from all vertices one by one
 		for (int i = 0; i < noOfVertices; i++)
-			if (visited[i] == false)
+			if (!visited[i])
 				DFS(i, visited, stack);
 
 		// Print contents of stack
@@ -40,7 +36,6 @@ public class TopologicalSort {
 			System.out.print(stack.pop() + " ");
 	}
 
-	// A recursive function used by topologicalSort
 	private void DFS(int source, boolean visited[], Stack<Integer> stack) {
 		// Mark the current node as visited.
 		visited[source] = true;

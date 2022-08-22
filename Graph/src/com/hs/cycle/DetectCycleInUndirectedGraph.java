@@ -4,12 +4,10 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class DetectCycleInUndirectedGraph {
-	private int noOfVertices;
 	private Queue<Integer> adj[];
 
 	@SuppressWarnings("unchecked")
 	DetectCycleInUndirectedGraph(int noOfVertices) {
-		this.noOfVertices = noOfVertices;
 		adj = new LinkedList[noOfVertices];
 		for (int i = 0; i < noOfVertices; ++i)
 			adj[i] = new LinkedList<>();
@@ -21,16 +19,14 @@ public class DetectCycleInUndirectedGraph {
 		adj[destination].add(source);
 	}
 
-	private Boolean isCyclic(Queue<Integer> adj[], int noOfVertices) {
+	public Boolean isCyclic(Queue<Integer> adj[], int noOfVertices) {
 		boolean visited[] = new boolean[noOfVertices];
-		for (int i = 0; i < noOfVertices; i++) {
-			if (!visited[i]) {
+		for (int i = 0; i < noOfVertices; i++)
+			if (!visited[i])
 				// parent of source vertex is -1
-				if (isCyclicUtil(adj, i, visited, -1)) {
+				if (isCyclicUtil(adj, i, visited, -1))
 					return true;
-				}
-			}
-		}
+
 		return false;
 	}
 
@@ -52,13 +48,14 @@ public class DetectCycleInUndirectedGraph {
 	}
 
 	public static void main(String args[]) {
+		int noOfVertices = 5;
 		DetectCycleInUndirectedGraph g1 = new DetectCycleInUndirectedGraph(5);
 		g1.addEdge(1, 0);
 		g1.addEdge(0, 2);
 		g1.addEdge(2, 1);
 		g1.addEdge(0, 3);
 		g1.addEdge(3, 4);
-		Boolean result = g1.isCyclic(g1.adj, g1.noOfVertices);
+		Boolean result = g1.isCyclic(g1.adj, noOfVertices);
 		System.out.println(result);
 	}
 }

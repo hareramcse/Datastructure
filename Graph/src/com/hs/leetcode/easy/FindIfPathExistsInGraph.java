@@ -5,9 +5,7 @@ import java.util.Queue;
 
 public class FindIfPathExistsInGraph {
 	public boolean validPath(int n, int[][] edges, int source, int destination) {
-		// Mark all the vertices as not visited(By default set as false)
 		boolean visited[] = new boolean[n];
-
 		for (int i = 0; i < n; i++) {
 			if (visited[i] == false) {
 				return validPathUtil(visited, n, edges, i, destination);

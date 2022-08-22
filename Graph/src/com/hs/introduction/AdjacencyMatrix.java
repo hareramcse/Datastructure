@@ -1,22 +1,20 @@
 package com.hs.introduction;
 
 public class AdjacencyMatrix {
-
-	private int noOfVertices;
 	private int matrix[][];
 
 	private AdjacencyMatrix(int noOfVertices) {
-		this.noOfVertices = noOfVertices;
 		matrix = new int[noOfVertices][noOfVertices];
 	}
 
 	// A utility function to add an edge in an undirected graph
 	private void addEdge(int matrix[][], int source, int destination) {
 		matrix[source][destination] = 1;
+		matrix[destination][source] = 1;
 	}
 
 	// A utility function to print the adjacency matrix representation of graph
-	private void printGraph(int[][] adj) {
+	private void printGraph(int[][] adj, int noOfVertices) {
 		for (int i = 0; i < noOfVertices; i++) {
 			for (int j = 0; j < noOfVertices; j++) {
 				System.out.print(adj[i][j] + " ");
@@ -26,7 +24,8 @@ public class AdjacencyMatrix {
 	}
 
 	public static void main(String[] args) {
-		AdjacencyMatrix graph = new AdjacencyMatrix(5);
+		int noOfVertices = 5;
+		AdjacencyMatrix graph = new AdjacencyMatrix(noOfVertices);
 		int[][] matrix = graph.matrix;
 		graph.addEdge(matrix, 0, 1);
 		graph.addEdge(matrix, 0, 4);
@@ -35,8 +34,6 @@ public class AdjacencyMatrix {
 		graph.addEdge(matrix, 1, 4);
 		graph.addEdge(matrix, 2, 3);
 		graph.addEdge(matrix, 3, 4);
-
-		graph.printGraph(matrix);
+		graph.printGraph(matrix, noOfVertices);
 	}
-
 }

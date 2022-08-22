@@ -4,32 +4,29 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
-public class LongestPathInDirectedAcyclicGraph {
-	private int noOfVertices;
-	private Queue<Edge> adj[];
+public class LongestPathInDAG {
+	private Queue<Edge>[] adj;
 
 	@SuppressWarnings("unchecked")
-	LongestPathInDirectedAcyclicGraph(int noOfVertices) {
-		this.noOfVertices = noOfVertices;
+	LongestPathInDAG(int noOfVertices) {
 		adj = new LinkedList[noOfVertices];
 		for (int i = 0; i < noOfVertices; i++) {
 			adj[i] = new LinkedList<>();
 		}
 	}
 
-	private void addEdge(int source, int destination, int weight) {
+	private void addEdge(Queue<Edge>[] adj, int source, int destination, int weight) {
 		Edge edge = new Edge(source, destination, weight);
 		adj[source].add(edge);
 	}
 
-	private void longestPath(int source) {
+	private void longestPath(Queue<Edge>[] adj, int noOfVertices, int source) {
+		// in stack we have topologically sorted vertex.
 		Stack<Integer> stack = new Stack<Integer>();
 		boolean visited[] = new boolean[noOfVertices];
 
-		// Call the recursive helper function to store Topological
-		// Sort starting from all vertices one by one
 		for (int i = 0; i < noOfVertices; i++)
-			if (visited[i] == false)
+			if (!visited[i])
 				DFS(i, visited, stack);
 
 		int[] distance = new int[noOfVertices];
@@ -40,7 +37,6 @@ public class LongestPathInDirectedAcyclicGraph {
 
 		// Process vertices in topological order
 		while (!stack.isEmpty()) {
-
 			// Get the next vertex from topological order
 			int nextVertex = stack.pop();
 
@@ -72,20 +68,22 @@ public class LongestPathInDirectedAcyclicGraph {
 	}
 
 	public static void main(String args[]) {
-		LongestPathInDirectedAcyclicGraph graph = new LongestPathInDirectedAcyclicGraph(6);
-		graph.addEdge(0, 1, 5);
-		graph.addEdge(0, 2, 3);
-		graph.addEdge(1, 3, 6);
-		graph.addEdge(1, 2, 2);
-		graph.addEdge(2, 4, 4);
-		graph.addEdge(2, 5, 2);
-		graph.addEdge(2, 3, 7);
-		graph.addEdge(3, 5, 1);
-		graph.addEdge(3, 4, -1);
-		graph.addEdge(4, 5, -2);
+		int noOfVertices = 6;
+		LongestPathInDAG graph = new LongestPathInDAG(6);
+		Queue<Edge>[] adj = graph.adj;
+		graph.addEdge(adj, 0, 1, 5);
+		graph.addEdge(adj, 0, 2, 3);
+		graph.addEdge(adj, 1, 3, 6);
+		graph.addEdge(adj, 1, 2, 2);
+		graph.addEdge(adj, 2, 4, 4);
+		graph.addEdge(adj, 2, 5, 2);
+		graph.addEdge(adj, 2, 3, 7);
+		graph.addEdge(adj, 3, 5, 1);
+		graph.addEdge(adj, 3, 4, -1);
+		graph.addEdge(adj, 4, 5, -2);
 
 		int source = 1;
 		System.out.println("Following are longest distances from source vertex " + source);
-		graph.longestPath(source);
+		graph.longestPath(adj, noOfVertices, source);
 	}
 }

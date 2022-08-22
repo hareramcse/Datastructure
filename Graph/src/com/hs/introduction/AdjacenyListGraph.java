@@ -1,34 +1,32 @@
 package com.hs.introduction;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedList;
+import java.util.Queue;
 
 class AdjacenyListGraph {
-	private int noOfVertices;
-	private List<ArrayList<Integer>> adj;
+	private Queue<Integer>[] adj;
 
+	@SuppressWarnings("unchecked")
 	private AdjacenyListGraph(int noOfVertices) {
-		this.noOfVertices = noOfVertices;
-		adj = new ArrayList<ArrayList<Integer>>(noOfVertices);
-
+		adj = new LinkedList[noOfVertices];
 		for (int i = 0; i < noOfVertices; i++) {
-			adj.add(new ArrayList<Integer>());
+			adj[i] = new LinkedList<>();
 		}
 	}
 
 	// A utility function to add an edge in an undirected graph
-	private void addEdge(List<ArrayList<Integer>> edge, int source, int destination) {
-		edge.get(source).add(destination);
-		edge.get(destination).add(source);
+	private void addEdge(Queue<Integer>[] adj, int source, int destination) {
+		adj[source].add(destination);
+		adj[destination].add(source);
 	}
 
 	// A utility function to print the adjacency list representation of graph
-	private void printGraph(List<ArrayList<Integer>> adj) {
-		for (int i = 0; i < noOfVertices; i++) {
-			System.out.println("Adjacency list of vertex " + i);
+	private void printGraph(Queue<Integer>[] adj) {
+		for (Queue<Integer> queue : adj) {
+			System.out.println("Adjacency list of vertex " + queue.peek());
 			System.out.print("head");
-			for (int j = 0; j < adj.get(i).size(); j++) {
-				System.out.print(" -> " + adj.get(i).get(j));
+			for (Integer adjNode : queue) {
+				System.out.print(" -> " + adjNode);
 			}
 			System.out.println();
 		}
@@ -36,15 +34,14 @@ class AdjacenyListGraph {
 
 	public static void main(String[] args) {
 		AdjacenyListGraph graph = new AdjacenyListGraph(5);
-		List<ArrayList<Integer>> edge = graph.adj;
-		graph.addEdge(edge, 0, 1);
-		graph.addEdge(edge, 0, 4);
-		graph.addEdge(edge, 1, 2);
-		graph.addEdge(edge, 1, 3);
-		graph.addEdge(edge, 1, 4);
-		graph.addEdge(edge, 2, 3);
-		graph.addEdge(edge, 3, 4);
-
-		graph.printGraph(edge);
+		Queue<Integer>[] adj = graph.adj;
+		graph.addEdge(adj, 0, 1);
+		graph.addEdge(adj, 0, 4);
+		graph.addEdge(adj, 1, 2);
+		graph.addEdge(adj, 1, 3);
+		graph.addEdge(adj, 1, 4);
+		graph.addEdge(adj, 2, 3);
+		graph.addEdge(adj, 3, 4);
+		graph.printGraph(adj);
 	}
 }
