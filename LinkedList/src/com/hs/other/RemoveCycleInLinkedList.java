@@ -1,13 +1,12 @@
-package com.hs.linkedlist;
+package com.hs.other;
 
 import com.hs.basic.LinkedListUtil;
-import com.hs.basic.Node;
+import com.hs.basic.ListNode;
 
 public class RemoveCycleInLinkedList {
-
-	public void detectAndRemoveLoop(Node head) {
-		Node slow = head;
-		Node fast = head;
+	public void detectAndRemoveLoop(ListNode head) {
+		ListNode slow = head;
+		ListNode fast = head;
 
 		boolean loopExist = false;
 		while (fast != null && fast.next != null) {
@@ -22,7 +21,7 @@ public class RemoveCycleInLinkedList {
 		// If loop exists
 		if (loopExist) {
 			slow = head;
-			Node temp = null;
+			ListNode temp = null;
 			while (slow != fast) {
 				temp = fast;
 				slow = slow.next;
@@ -30,21 +29,21 @@ public class RemoveCycleInLinkedList {
 			}
 
 			// here slow and fast pointer will point to start node of the loop
-			// so we need just previous node of the starting loop node
+			// so we need just previous node of the starting loop
 			temp.next = null; // remove loop
 		}
 	}
 
 	public static void main(String[] args) {
 		RemoveCycleInLinkedList list = new RemoveCycleInLinkedList();
-		Node head = new Node(10);
-		head.next = new Node(20);
-		head.next.next = new Node(30);
-		head.next.next.next = new Node(40);
-		head.next.next.next.next = new Node(50);
-		head.next.next.next.next.next = new Node(60);
-		head.next.next.next.next.next.next = new Node(70);
-		head.next.next.next.next.next.next.next = new Node(80);
+		ListNode head = new ListNode(10);
+		head.next = new ListNode(20);
+		head.next.next = new ListNode(30);
+		head.next.next.next = new ListNode(40);
+		head.next.next.next.next = new ListNode(50);
+		head.next.next.next.next.next = new ListNode(60);
+		head.next.next.next.next.next.next = new ListNode(70);
+		head.next.next.next.next.next.next.next = new ListNode(80);
 
 		// Creating a loop for testing
 		head.next.next.next.next.next.next.next = head.next.next;

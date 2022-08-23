@@ -1,23 +1,23 @@
-package com.hs.linkedlist;
+package com.hs.other;
 
 import com.hs.basic.LinkedListUtil;
-import com.hs.basic.Node;
+import com.hs.basic.ListNode;
 
 // 147. Insertion Sort List Leetcode
 public class InsertionSortForLinkedList {
 
 	// function to sort a singly linked list using insertion sort
-	public Node insertionSort(Node head) {
-		Node dummy = new Node();
-		Node current = head;
+	public ListNode insertionSort(ListNode head) {
+		ListNode dummy = new ListNode();
+		ListNode current = head;
 
 		while (current != null) {
-			Node temp = current.next;
-			Node prev = dummy;
-			Node next = dummy.next;
+			ListNode temp = current.next;
+			ListNode prev = dummy;
+			ListNode next = dummy.next;
 
 			while (next != null) {
-				if (next.data > current.data)
+				if (next.val > current.val)
 					break;
 				prev = next;
 				next = next.next;
@@ -32,7 +32,7 @@ public class InsertionSortForLinkedList {
 
 	public static void main(String[] args) {
 		InsertionSortForLinkedList list = new InsertionSortForLinkedList();
-		Node head = LinkedListUtil.addLast(null, 5);
+		ListNode head = LinkedListUtil.addLast(null, 5);
 		head = LinkedListUtil.addLast(head, 20);
 		head = LinkedListUtil.addLast(head, 4);
 		head = LinkedListUtil.addLast(head, 3);

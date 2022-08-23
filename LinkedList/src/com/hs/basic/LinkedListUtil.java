@@ -1,26 +1,25 @@
 package com.hs.basic;
 
 public class LinkedListUtil {
-
-	public static Node addBefore(Node head, int data) {
+	public static ListNode addBefore(ListNode head, int data) {
 		if (head == null) {
-			head = new Node(data);
+			head = new ListNode(data);
 		} else {
-			Node newNode = new Node(data);
-			newNode.next = head;
-			head = newNode;
+			ListNode newListNode = new ListNode(data);
+			newListNode.next = head;
+			head = newListNode;
 		}
 		return head;
 	}
 
-	public static void addAtIndex(Node head, int index, int data) {
+	public static void addAtIndex(ListNode head, int index, int data) {
 		if (index > 0) {
 			if (head == null) {
-				head = new Node(data);
+				head = new ListNode(data);
 				return;
 			} else {
-				Node newNode = new Node(data);
-				Node temp = head;
+				ListNode newListNode = new ListNode(data);
+				ListNode temp = head;
 				int count = 0;
 				while (true) {
 					count++;
@@ -30,29 +29,29 @@ public class LinkedListUtil {
 						temp = temp.next;
 					}
 				}
-				newNode.next = temp.next;
-				temp.next = newNode;
+				newListNode.next = temp.next;
+				temp.next = newListNode;
 			}
 		} else {
 			System.out.println("index cant be -ve");
 		}
 	}
 
-	public static Node addLast(Node head, int data) {
-		Node temp = head;
+	public static ListNode addLast(ListNode head, int data) {
+		ListNode temp = head;
 		if (temp == null) {
-			head = new Node(data);
+			head = new ListNode(data);
 		} else {
-			Node newNode = new Node(data);
+			ListNode newListNode = new ListNode(data);
 			while (temp.next != null) {
 				temp = temp.next;
 			}
-			temp.next = newNode;
+			temp.next = newListNode;
 		}
 		return head;
 	}
 
-	public static Node deleteHead(Node head) {
+	public static ListNode deleteHead(ListNode head) {
 		if (head == null) {
 			System.out.println("list is empty");
 		} else {
@@ -61,15 +60,15 @@ public class LinkedListUtil {
 		return head;
 	}
 
-	public static Node deleteAtIndex(Node head, int index) {
+	public static ListNode deleteAtIndex(ListNode head, int index) {
 		if (index > 0) {
 			if (head == null) {
 				System.out.println("list is empty");
 			} else if (index == 0) {
 				head = head.next;
 			} else {
-				Node temp = head;
-				Node t = null;
+				ListNode temp = head;
+				ListNode t = null;
 				int count = 0;
 				while (count != index) {
 					t = temp;
@@ -84,12 +83,12 @@ public class LinkedListUtil {
 		return head;
 	}
 
-	public static Node deleteLast(Node head) {
+	public static ListNode deleteLast(ListNode head) {
 		if (head == null) {
 			System.out.println("list is empty");
 		} else {
-			Node temp = head;
-			Node t = null;
+			ListNode temp = head;
+			ListNode t = null;
 			while (temp.next != null) {
 				t = temp;
 				temp = temp.next;
@@ -99,36 +98,36 @@ public class LinkedListUtil {
 		return head;
 	}
 
-	public static Node reverseByIterativeMethod(Node head) {
+	public static ListNode reverseByIterativeMethod(ListNode head) {
 		if (head == null) {
 			System.out.println("list is empty");
 		} else {
-			Node current = null, previous = null, nextNode = null;
+			ListNode current = null, previous = null, nextListNode = null;
 			current = head;
 			while (current != null) {
-				nextNode = current.next;
+				nextListNode = current.next;
 				current.next = previous;
 				previous = current;
-				current = nextNode;
+				current = nextListNode;
 			}
 			head = previous;
 		}
 		return head;
 	}
 
-	public static Node reverseByRecursion(Node head) {
+	public static ListNode reverseByRecursion(ListNode head) {
 		if (head == null || head.next == null) {
 			return head;
 		}
-		Node reverseList = reverseByRecursion(head.next);
+		ListNode reverseList = reverseByRecursion(head.next);
 		head.next.next = head;
 		head.next = null;
 		return reverseList;
 	}
 
-	public static Node findMiddle(Node head) {
-		Node slow = head;
-		Node fast = head;
+	public static ListNode findMiddle(ListNode head) {
+		ListNode slow = head;
+		ListNode fast = head;
 		while (fast != null && fast.next != null) {
 			slow = slow.next;
 			fast = fast.next.next;
@@ -136,14 +135,14 @@ public class LinkedListUtil {
 		return slow;
 	}
 
-	public static void printLinkedList(Node head) {
-		Node temp = head;
+	public static void printLinkedList(ListNode head) {
+		ListNode temp = head;
 		if (temp == null) {
 			System.out.println("List is Empty");
 			return;
 		} else {
 			while (temp != null) {
-				System.out.print(temp.data + " -> ");
+				System.out.print(temp.val + " -> ");
 				temp = temp.next;
 			}
 		}
@@ -151,7 +150,7 @@ public class LinkedListUtil {
 	}
 
 	public static void main(String[] args) {
-		Node head = LinkedListUtil.addBefore(null, 10);
+		ListNode head = LinkedListUtil.addBefore(null, 10);
 		head = LinkedListUtil.addBefore(head, 20);
 		head = LinkedListUtil.addBefore(head, 30);
 		LinkedListUtil.printLinkedList(head);

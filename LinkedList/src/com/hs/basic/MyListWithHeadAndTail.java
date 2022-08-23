@@ -1,38 +1,37 @@
 package com.hs.basic;
 
 public class MyListWithHeadAndTail {
-
-	private Node head = null;
-	private Node tail = null;
+	private ListNode head = null;
+	private ListNode tail = null;
 
 	private void addFirst(int data) {
 		if (head == null && tail == null) {
-			Node newNode = new Node(data);
-			head = tail = newNode;
+			ListNode newListNode = new ListNode(data);
+			head = tail = newListNode;
 			return;
 		} else {
-			Node newNode = new Node(data);
-			newNode.next = head;
-			head = newNode;
+			ListNode newListNode = new ListNode(data);
+			newListNode.next = head;
+			head = newListNode;
 		}
 	}
 
 	private void addLast(int data) {
 		if (head == null && tail == null) {
-			Node newNode = new Node(data);
-			head = tail = newNode;
+			ListNode newListNode = new ListNode(data);
+			head = tail = newListNode;
 			return;
 		} else {
-			Node newNode = new Node(data);
-			tail.next = newNode;
-			tail = newNode;
+			ListNode newListNode = new ListNode(data);
+			tail.next = newListNode;
+			tail = newListNode;
 		}
 	}
 
 	private void printData() {
-		Node temp = head;
+		ListNode temp = head;
 		while (temp != null) {
-			System.out.println(temp.data);
+			System.out.println(temp.val);
 			temp = temp.next;
 		}
 	}

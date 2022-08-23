@@ -1,27 +1,25 @@
-package com.hs.linkedlist;
+package com.hs.leetcode.medium;
 
 import java.util.Random;
 
-import com.hs.basic.Node;
+import com.hs.basic.ListNode;
 
-// 382. Linked List Random Node Leetcode
 public class RandomNode {
-
 	Random random = null;
-	Node head = null;
+	ListNode head = null;
 
-	public RandomNode(Node head) {
+	public RandomNode(ListNode head) {
 		this.random = new Random();
 		this.head = head;
 	}
 
 	private int getRandom() {
 		int count = 1;
-		Node current = head;
+		ListNode current = head;
 		int result = 0;
 		while (current != null) {
 			if (random.nextInt(count) == 0)
-				result = current.data;
+				result = current.val;
 			count++;
 			current = current.next;
 		}
@@ -29,14 +27,13 @@ public class RandomNode {
 	}
 
 	public static void main(String[] args) {
-		Node head = new Node(5);
-		head.next = new Node(20);
-		head.next.next = new Node(4);
-		head.next.next.next = new Node(3);
-		head.next.next.next.next = new Node(30);
+		ListNode head = new ListNode(5);
+		head.next = new ListNode(20);
+		head.next.next = new ListNode(4);
+		head.next.next.next = new ListNode(3);
+		head.next.next.next.next = new ListNode(30);
 
 		RandomNode list = new RandomNode(head);
-
 		int random = list.getRandom();
 		System.out.println(random);
 	}

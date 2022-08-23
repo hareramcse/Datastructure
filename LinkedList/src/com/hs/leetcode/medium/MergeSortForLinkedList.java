@@ -1,45 +1,43 @@
-package com.hs.linkedlist;
+package com.hs.leetcode.medium;
 
 import com.hs.basic.LinkedListUtil;
-import com.hs.basic.Node;
+import com.hs.basic.ListNode;
 
-// 148. Sort List Leetcode
 public class MergeSortForLinkedList {
-
-	public Node mergeSort(Node head) {
+	public ListNode mergeSort(ListNode head) {
 		// Base case : if head is null
 		if (head == null || head.next == null) {
 			return head;
 		}
 
 		// get the middle of the list
-		Node middle = getMiddle(head);
-		Node nextOfMiddle = middle.next;
+		ListNode middle = getMiddle(head);
+		ListNode nextOfMiddle = middle.next;
 
-		// set the next of middle node to null
+		// set the next of middle ListNode to null
 		middle.next = null;
 
 		// Apply mergeSort on left list
-		Node left = mergeSort(head);
+		ListNode left = mergeSort(head);
 
 		// Apply mergeSort on right list
-		Node right = mergeSort(nextOfMiddle);
+		ListNode right = mergeSort(nextOfMiddle);
 
 		// Merge the left and right lists
-		Node sortedlist = merge(left, right);
+		ListNode sortedlist = merge(left, right);
 		return sortedlist;
 	}
 
-	private Node getMiddle(Node head) {
+	private ListNode getMiddle(ListNode head) {
 		// Base case
 		if (head == null) {
 			return head;
 		}
-		Node slow = head;
-		Node fast = head.next;
+		ListNode slow = head;
+		ListNode fast = head.next;
 
 		// Move fast by two and slow by one
-		// Finally slow will point to middle node
+		// Finally slow will point to middle ListNode
 		while (fast != null && fast.next != null) {
 			slow = slow.next;
 			fast = fast.next.next;
@@ -47,8 +45,8 @@ public class MergeSortForLinkedList {
 		return slow;
 	}
 
-	private Node merge(Node head1, Node head2) {
-		Node result = null;
+	private ListNode merge(ListNode head1, ListNode head2) {
+		ListNode result = null;
 		// Base cases
 		if (head1 == null)
 			return head2;
@@ -56,7 +54,7 @@ public class MergeSortForLinkedList {
 			return head1;
 
 		// Pick either a or b, and recur
-		if (head1.data <= head2.data) {
+		if (head1.val <= head2.val) {
 			result = head1;
 			result.next = merge(head1.next, head2);
 		} else {
@@ -67,9 +65,8 @@ public class MergeSortForLinkedList {
 	}
 
 	public static void main(String[] args) {
-
 		MergeSortForLinkedList list = new MergeSortForLinkedList();
-		Node head = LinkedListUtil.addLast(null, 15);
+		ListNode head = LinkedListUtil.addLast(null, 15);
 		head = LinkedListUtil.addLast(head, 10);
 		head = LinkedListUtil.addLast(head, 5);
 		head = LinkedListUtil.addLast(head, 20);
