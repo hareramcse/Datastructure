@@ -10,18 +10,20 @@ class RemoveDuplicatesFromSortedList2 {
 
 		ListNode dummy = new ListNode();
 		dummy.next = head;
-		ListNode pre = dummy;
+		ListNode prev = dummy;
 		ListNode current = head;
 
-		while (current != null) {
-			if (current.next != null && current.val == current.next.val) {
-				// skip the ListNodes whose values are equal to current ListNode
-				while (current.next != null && current.val == current.next.val) {
-					current = current.next;
-				}
-				pre.next = current.next;
+		while (current != null && current.next != null) {
+			boolean foundDuplicate = false;
+			while (current != null && current.next != null && current.val == current.next.val) {
+				foundDuplicate = true;
+				current = current.next;
+			}
+
+			if (!foundDuplicate) {
+				prev = prev.next;
 			} else {
-				pre = pre.next;
+				prev.next = current.next;
 			}
 			current = current.next;
 		}
