@@ -16,7 +16,9 @@ public class RightRotateByKTimes {
 			current = current.next;
 		}
 
+		// joining last node to head to make it circular
 		current.next = head;
+		
 		k = k % length;
 		k = length - k;
 		while (k > 0) {

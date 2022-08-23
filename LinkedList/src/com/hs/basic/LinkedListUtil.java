@@ -5,9 +5,9 @@ public class LinkedListUtil {
 		if (head == null) {
 			head = new ListNode(data);
 		} else {
-			ListNode newListNode = new ListNode(data);
-			newListNode.next = head;
-			head = newListNode;
+			ListNode newNode = new ListNode(data);
+			newNode.next = head;
+			head = newNode;
 		}
 		return head;
 	}
@@ -18,7 +18,7 @@ public class LinkedListUtil {
 				head = new ListNode(data);
 				return;
 			} else {
-				ListNode newListNode = new ListNode(data);
+				ListNode newNode = new ListNode(data);
 				ListNode temp = head;
 				int count = 0;
 				while (true) {
@@ -29,8 +29,8 @@ public class LinkedListUtil {
 						temp = temp.next;
 					}
 				}
-				newListNode.next = temp.next;
-				temp.next = newListNode;
+				newNode.next = temp.next;
+				temp.next = newNode;
 			}
 		} else {
 			System.out.println("index cant be -ve");
@@ -42,11 +42,11 @@ public class LinkedListUtil {
 		if (temp == null) {
 			head = new ListNode(data);
 		} else {
-			ListNode newListNode = new ListNode(data);
+			ListNode newNode = new ListNode(data);
 			while (temp.next != null) {
 				temp = temp.next;
 			}
-			temp.next = newListNode;
+			temp.next = newNode;
 		}
 		return head;
 	}
@@ -99,20 +99,14 @@ public class LinkedListUtil {
 	}
 
 	public static ListNode reverseByIterativeMethod(ListNode head) {
-		if (head == null) {
-			System.out.println("list is empty");
-		} else {
-			ListNode current = null, previous = null, nextListNode = null;
-			current = head;
-			while (current != null) {
-				nextListNode = current.next;
-				current.next = previous;
-				previous = current;
-				current = nextListNode;
-			}
-			head = previous;
+		ListNode newHead = null;
+		while (head != null) {
+			ListNode nextNode = head.next;
+			head.next = newHead;
+			newHead = head;
+			head = nextNode;
 		}
-		return head;
+		return newHead;
 	}
 
 	public static ListNode reverseByRecursion(ListNode head) {

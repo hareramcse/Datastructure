@@ -2,7 +2,7 @@ package com.hs.leetcode.easy;
 
 import com.hs.basic.ListNode;
 
-public class DecimalEquivalentOfBinaryLinkedList {
+public class ConvertBinaryNumberInLinkedListToInteger {
 	public int decimalValue(ListNode head) {
 		int res = 0;
 		while (head != null) {
@@ -14,7 +14,7 @@ public class DecimalEquivalentOfBinaryLinkedList {
 	}
 
 	public static void main(String args[]) {
-		DecimalEquivalentOfBinaryLinkedList list = new DecimalEquivalentOfBinaryLinkedList();
+		ConvertBinaryNumberInLinkedListToInteger list = new ConvertBinaryNumberInLinkedListToInteger();
 		ListNode head = new ListNode(1);
 		head.next = new ListNode(0);
 		head.next.next = new ListNode(1);

@@ -4,21 +4,19 @@ import com.hs.basic.LinkedListUtil;
 import com.hs.basic.ListNode;
 
 public class SwapNodesInPairs {
-
 	public ListNode swapPairs(ListNode head) {
-
-		// Base Case: The list is empty or has only one ListNode
+		// Base Case: The list is empty or has only one node
 		if (head == null || head.next == null) {
 			return head;
 		}
 
-		// Store head of list after two ListNodes
+		// Store head of list after two nodes
 		ListNode remaing = head.next.next;
 
 		// Change head
 		ListNode newHead = head.next;
 
-		// Change next of second ListNode
+		// Change next of second node
 		head.next.next = head;
 
 		// Recur for remaining list and change next of head

@@ -12,9 +12,9 @@ public class AddOneToLinkedList {
 		// If there is carry after processing all ListNodes,
 		// then we need to add a new ListNode to linked list
 		if (carry > 0) {
-			ListNode newListNode = new ListNode(carry);
-			newListNode.next = head;
-			return newListNode; // New ListNode becomes head now
+			ListNode newNode = new ListNode(carry);
+			newNode.next = head;
+			return newNode; // New ListNode becomes head now
 		}
 		return head;
 	}

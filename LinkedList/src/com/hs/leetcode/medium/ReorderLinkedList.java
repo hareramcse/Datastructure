@@ -15,20 +15,18 @@ public class ReorderLinkedList {
 
 		ListNode head1 = head;
 		ListNode head2 = LinkedListUtil.reverseByRecursion(nextOfMid);
-
-		// iterate till last ListNode of the list
-		while (head2 != null) {
-			ListNode temp1 = head1.next;
-			ListNode temp2 = head2.next;
-			head1.next = head2;
-			head2.next = temp1;
-			head1 = temp1;
-			head2 = temp2;
-		}
-
-		// Assign the head of the new list to head pointer
+		merge(head1, head2);
 		return head;
 	}
+	
+	private void merge(ListNode l1, ListNode l2) {
+        while (l2 != null) {
+            ListNode next = l1.next;
+            l1.next = l2;
+            l1 = l2;
+            l2 = next;
+        }
+    }
 
 	public static void main(String[] args) {
 		ReorderLinkedList list = new ReorderLinkedList();
