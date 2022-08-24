@@ -1,6 +1,6 @@
 package com.hs.queue.basic;
 
-public class QueqeUsingLinkedList {
+public class ImplementQueqeUsingLinkedList {
 
 	private Node front;
 	private Node rear;
@@ -39,7 +39,7 @@ public class QueqeUsingLinkedList {
 	}
 
 	public static void main(String[] args) {
-		QueqeUsingLinkedList queueByList = new QueqeUsingLinkedList();
+		ImplementQueqeUsingLinkedList queueByList = new ImplementQueqeUsingLinkedList();
 		queueByList.enQueue(10);
 		queueByList.enQueue(20);
 		queueByList.enQueue(30);

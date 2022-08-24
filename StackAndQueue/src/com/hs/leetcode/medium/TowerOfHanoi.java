@@ -1,6 +1,6 @@
-package com.hs.leetcode.easy;
+package com.hs.leetcode.medium;
 
-public class ToweOfHanoi {
+public class TowerOfHanoi {
 
 	public void towerOfHanoi(String source, String dest, String helper, int n) {
 		if (n == 1) {
@@ -14,7 +14,7 @@ public class ToweOfHanoi {
 	}
 
 	public static void main(String[] args) {
-		ToweOfHanoi rev = new ToweOfHanoi();
+		TowerOfHanoi rev = new TowerOfHanoi();
 		int n = 3;
 		String source = "source", helper = "helper", dest = "dest";
 		rev.towerOfHanoi(source, dest, helper, n);

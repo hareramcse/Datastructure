@@ -1,12 +1,12 @@
 package com.hs.queue.basic;
 
-public class QueueUsingArray {
+public class ImplementQueueUsingArray {
 	int front;
 	int rear;
 	int size;
 	int queue[];
 
-	QueueUsingArray(int size) {
+	public ImplementQueueUsingArray(int size) {
 		this.front = -1;
 		this.rear = -1;
 		this.size = size;
@@ -62,7 +62,7 @@ public class QueueUsingArray {
 	}
 
 	public static void main(String[] args) {
-		QueueUsingArray queueArray = new QueueUsingArray(10);
+		ImplementQueueUsingArray queueArray = new ImplementQueueUsingArray(10);
 		queueArray.enQueue(10);
 		queueArray.enQueue(20);
 		queueArray.enQueue(30);

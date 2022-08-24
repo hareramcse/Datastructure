@@ -1,4 +1,4 @@
-package com.hs.leetcode.easy;
+package com.hs.leetcode.medium;
 
 // 695. Max Area of Island
 public class MaxAreaOfIsland {

@@ -2,35 +2,21 @@ package com.hs.leetcode.easy;
 
 import java.util.Stack;
 
-// 20. Valid Parentheses Leetcode
 public class CheckBalancedParanthesis {
-	// checks if parentheses are balanced or not
-	public boolean balancedparantheses(String s) {
-		Stack<Character> stack = new Stack<Character>();
-		for (char charValue : s.toCharArray()) {
-			if (charValue == '[' || charValue == '(' || charValue == '{') {
-				stack.push(charValue);
-			} else if (charValue == ']') {
+	public boolean isValid(String s) {
+		Stack<Character> stack = new Stack<>();
+		for (char ch : s.toCharArray()) {
+			if (ch == '(' || ch == '[' || ch == '{')
+				stack.push(ch);
+			else {
 				if (stack.isEmpty()) {
 					return false;
 				}
-				if (stack.pop() != '[') {
+				char c = stack.pop();
+				if ((ch == ')' && c == '(') || (ch == ']' && c == '[') || (ch == '}' && c == '{'))
+					continue;
+				else
 					return false;
-				}
-			} else if (charValue == ')') {
-				if (stack.isEmpty()) {
-					return false;
-				}
-				if (stack.pop() != '(') {
-					return false;
-				}
-			} else if (charValue == '}') {
-				if (stack.isEmpty()) {
-					return false;
-				}
-				if (stack.pop() != '{') {
-					return false;
-				}
 			}
 		}
 		return stack.isEmpty();
@@ -39,7 +25,7 @@ public class CheckBalancedParanthesis {
 	public static void main(String[] args) {
 		CheckBalancedParanthesis ch = new CheckBalancedParanthesis();
 		String exp = "[]";
-		boolean b = ch.balancedparantheses(exp);
+		boolean b = ch.isValid(exp);
 		System.out.println(b);
 	}
 }

@@ -1,4 +1,4 @@
-package com.hs.leetcode.easy;
+package com.hs.leetcode.medium;
 
 import java.util.Arrays;
 import java.util.Stack;
@@ -15,16 +15,16 @@ public class StockSpanProblem {
 		for (int i = 0; i < n; i++) {
 			if (st.empty()) {
 				res[i] = -1;
-			} else if (st.size() > 0 && st.peek().element > arr[i]) {
-				res[i] = st.peek().index;
-			} else if (st.size() > 0 && st.peek().element <= arr[i]) {
-				while (!st.empty() && st.peek().element <= arr[i]) {
+			} else if (st.size() > 0 && st.peek().first > arr[i]) {
+				res[i] = st.peek().second;
+			} else if (st.size() > 0 && st.peek().first <= arr[i]) {
+				while (!st.empty() && st.peek().first <= arr[i]) {
 					st.pop();
 				}
 				if (st.empty()) {
 					res[i] = -1;
 				} else {
-					res[i] = st.peek().index;
+					res[i] = st.peek().second;
 				}
 			}
 			st.push(new Pair(arr[i], i));

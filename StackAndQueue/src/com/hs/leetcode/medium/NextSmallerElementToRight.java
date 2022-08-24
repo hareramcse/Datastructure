@@ -1,15 +1,15 @@
-package com.hs.leetcode.easy;
+package com.hs.leetcode.medium;
 
 import java.util.Arrays;
 import java.util.Stack;
 
-public class NextSmallerElementToLeft {
-	public int[] nearestSmallerToLeft(int[] arr) {
+public class NextSmallerElementToRight {
+	public int[] nearestSmallerToRight(int[] arr) {
 		Stack<Integer> stack = new Stack<>();
 		int n = arr.length;
 		int[] res = new int[n];
 
-		for (int i = 0; i < n; i++) {
+		for (int i = n - 1; i >= 0; i--) {
 			if (stack.empty()) {
 				res[i] = -1;
 			} else if (stack.size() > 0 && stack.peek() < arr[i]) {
@@ -31,8 +31,8 @@ public class NextSmallerElementToLeft {
 
 	public static void main(String[] args) {
 		int[] arr = { 5, 2, 1, 6, 3, 4, 8, 7 };
-		NextSmallerElementToLeft stack = new NextSmallerElementToLeft();
-		int[] res = stack.nearestSmallerToLeft(arr);
+		NextSmallerElementToRight stack = new NextSmallerElementToRight();
+		int[] res = stack.nearestSmallerToRight(arr);
 		System.out.println(Arrays.toString(res));
 	}
 }
