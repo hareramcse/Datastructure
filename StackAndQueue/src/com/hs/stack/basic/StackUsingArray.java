@@ -1,11 +1,11 @@
 package com.hs.stack.basic;
 
-public class StackUsingFixedArray {
+public class StackUsingArray {
 	private int top;
 	private int stack[];
 	private int capacity;
 
-	public StackUsingFixedArray(int size) {
+	public StackUsingArray(int size) {
 		this.capacity = size;
 		stack = new int[size];
 		top = -1;
@@ -55,7 +55,7 @@ public class StackUsingFixedArray {
 	}
 
 	public static void main(String[] args) {
-		StackUsingFixedArray stack = new StackUsingFixedArray(5);
+		StackUsingArray stack = new StackUsingArray(5);
 		try {
 			stack.push(10);
 			stack.push(20);

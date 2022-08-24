@@ -1,6 +1,6 @@
 package com.hs.queue.basic;
 
-public class MyQueqeByLinkedList {
+public class QueqeUsingLinkedList {
 
 	private Node front;
 	private Node rear;
@@ -39,7 +39,7 @@ public class MyQueqeByLinkedList {
 	}
 
 	public static void main(String[] args) {
-		MyQueqeByLinkedList queueByList = new MyQueqeByLinkedList();
+		QueqeUsingLinkedList queueByList = new QueqeUsingLinkedList();
 		queueByList.enQueue(10);
 		queueByList.enQueue(20);
 		queueByList.enQueue(30);

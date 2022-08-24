@@ -1,4 +1,4 @@
-package com.hs.stack.basic;
+package com.hs.queue.basic;
 
 import java.util.Stack;
 
