@@ -1,12 +1,12 @@
-package com.hs.queue.basic;
+package com.hs.leetcode.easy;
 
 import java.util.Stack;
 
-public class QueueUsingStack {
+public class ImplementQueueUsingStacks {
 	private Stack<Integer> input = new Stack<>();
     private Stack<Integer> output = new Stack<>();
     
-    public QueueUsingStack() {
+    public ImplementQueueUsingStacks() {
         
     }
     
