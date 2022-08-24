@@ -3,7 +3,6 @@ package com.hs.leetcode.easy;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-// Leetcode MEDIUM
 public class KthLargestElement {
 	private int findKthLargest(int[] nums, int k) {
         Queue<Integer> minHeap = new PriorityQueue<>();

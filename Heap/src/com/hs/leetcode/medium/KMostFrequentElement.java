@@ -6,9 +6,7 @@ import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-// Leetcode MEDIUM
 public class KMostFrequentElement {
-
 	private int[] topKFrequent(int[] nums, int k) {
 		int res[] = new int[k];
 		Map<Integer, Integer> map = new HashMap<>();
