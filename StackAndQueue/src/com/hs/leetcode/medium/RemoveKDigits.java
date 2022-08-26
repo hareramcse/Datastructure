@@ -17,6 +17,7 @@ public class RemoveKDigits {
 			stack.push(ch);
 		}
 
+		// if input is having same repeating number
 		while (k > 0) {
 			stack.pop();
 			k--;
@@ -27,6 +28,7 @@ public class RemoveKDigits {
 			ans.append(ch);
 		}
 
+		// to handle the leading 0 at starting of the input
 		while (ans.length() > 1 & ans.charAt(0) == '0') {
 			ans.deleteCharAt(0);
 		}

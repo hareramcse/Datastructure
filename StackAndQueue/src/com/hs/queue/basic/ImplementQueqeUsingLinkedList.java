@@ -1,40 +1,23 @@
 package com.hs.queue.basic;
 
-public class ImplementQueqeUsingLinkedList {
+import java.util.LinkedList;
 
-	private Node front;
-	private Node rear;
+public class ImplementQueqeUsingLinkedList {
+	LinkedList<Integer> ll = new LinkedList<>();
 
 	// insert at last index
 	private void enQueue(int data) {
-		if (front == null && rear == null) {
-			Node newNode = new Node(data);
-			front = rear = newNode;
-			return;
-		} else {
-			Node newNode = new Node(data);
-			rear.next = newNode;
-			rear = newNode;
-		}
+		ll.addLast(data);
 	}
 
 	// delete head element
 	private void deQueue() {
-		if (front == null && rear == null) {
-			System.out.println("queue is empty");
-			return;
-		} else if (front == rear) {
-			front = rear = null;
-		} else {
-			front = front.next;
-		}
+		ll.removeFirst();
 	}
 
 	private void printData() {
-		Node temp = front;
-		while (temp != null) {
-			System.out.println(temp.data);
-			temp = temp.next;
+		for (Integer i : ll) {
+			System.out.println(i);
 		}
 	}
 

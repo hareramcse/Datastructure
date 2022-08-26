@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Stack;
 
 public class NextGreaterElementToLeft {
-	private int[] nearestGreatestToLeft(int[] arr) {
+	public int[] nearestGreatestToLeft(int[] arr) {
 		Stack<Integer> st = new Stack<>();
 		int n = arr.length;
 		int[] res = new int[n];

@@ -1,15 +1,13 @@
 package com.hs.stack.basic;
 
+import java.util.LinkedList;
+
 public class ImplementStackUsingLinkedList {
-	private int length;
-	private Node head;
+	LinkedList<Integer> ll = new LinkedList<>();
 
 	// add head element
 	private void push(int data) {
-		Node temp = new Node(data);
-		temp.next = head;
-		head = temp;
-		length++;
+		ll.addFirst(data);
 	}
 
 	// delete head element
@@ -17,33 +15,23 @@ public class ImplementStackUsingLinkedList {
 		if (isEmpty()) {
 			System.out.println("Stack is empty");
 		}
-		int result = head.data;
-		head = head.next;
-		length++;
-		return result;
+		return ll.removeFirst();
 	}
 
 	private int peek() {
 		if (isEmpty()) {
 			System.out.println("Stack is empty");
 		}
-		return head.data;
+		return ll.peek();
 	}
 
 	private boolean isEmpty() {
-		return length == 0;
+		return ll.isEmpty();
 	}
 
 	private void printData() {
-		if (head == null) {
-			System.out.println("stack is empty");
-			return;
-		} else {
-			Node temp = head;
-			while (temp != null) {
-				System.out.println(temp.data);
-				temp = temp.next;
-			}
+		for(Integer i : ll) {
+			System.out.println(i);
 		}
 	}
 

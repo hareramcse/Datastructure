@@ -2,12 +2,12 @@ package com.hs.stack.basic;
 
 public class implementStackUsingArray {
 	private int top;
-	private int stack[];
+	private int[] arr;
 	private int capacity;
 
 	public implementStackUsingArray(int size) {
 		this.capacity = size;
-		stack = new int[size];
+		arr = new int[size];
 		top = -1;
 	}
 
@@ -15,22 +15,21 @@ public class implementStackUsingArray {
 		if (isFull()) {
 			throw new Exception("stack is full");
 		} else {
-			stack[++top] = data;
+			arr[++top] = data;
 		}
 	}
 
-	// this method removes and return the top element
 	private int pop() throws Exception {
 		if (isEmpty()) {
 			throw new Exception("stack is empty");
 		} else {
-			return stack[top--];
+			return arr[top--];
 		}
 	}
 
 	private void printData() {
 		for (int i = 0; i <= top; i++) {
-			System.out.println(stack[i]);
+			System.out.println(arr[i]);
 		}
 	}
 
@@ -46,7 +45,7 @@ public class implementStackUsingArray {
 		if (isEmpty()) {
 			throw new Exception("Stack is empty");
 		} else {
-			return stack[top];
+			return arr[top];
 		}
 	}
 

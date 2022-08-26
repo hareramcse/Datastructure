@@ -8,8 +8,8 @@ public class LRUCache {
 	Node head, tail;
 	int capacity;
 
-	public LRUCache(int _capacity) {
-		capacity = _capacity;
+	public LRUCache(int capacity) {
+		this.capacity = capacity;
 		head = new Node(0, 0);
 		tail = new Node(0, 0);
 		head.next = tail;

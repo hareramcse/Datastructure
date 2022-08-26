@@ -12,7 +12,7 @@ public class ImplementQueueUsingStacks {
 
 	public int pop() {
 		if (output.empty()) {
-			while (input.empty() == false) {
+			while (!input.isEmpty()) {
 				output.push(input.pop());
 			}
 		}
@@ -21,7 +21,7 @@ public class ImplementQueueUsingStacks {
 
 	public int peek() {
 		if (output.empty()) {
-			while (input.empty() == false) {
+			while (!input.isEmpty()) {
 				output.push(input.pop());
 			}
 		}
