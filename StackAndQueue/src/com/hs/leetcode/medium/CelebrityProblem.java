@@ -26,7 +26,6 @@ public class CelebrityProblem {
 				continue;
 			if (arr[x][i] == 1 || arr[i][x] == 0)
 				flag = false;
-
 		}
 
 		if (!flag)

@@ -1,7 +1,6 @@
 package com.hs.leetcode.medium;
 
 public class TowerOfHanoi {
-
 	public void towerOfHanoi(String source, String dest, String helper, int n) {
 		if (n == 1) {
 			System.out.println("Moving plate " + n + " from " + source + " to " + dest);

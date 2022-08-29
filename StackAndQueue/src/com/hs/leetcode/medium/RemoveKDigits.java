@@ -3,6 +3,7 @@ package com.hs.leetcode.medium;
 import java.util.Stack;
 
 public class RemoveKDigits {
+	// it finds smallest possible integer after removing k digits from num
 	public String removeKdigits(String num, int k) {
 		int len = num.length();
 		if (k == len)
@@ -34,5 +35,13 @@ public class RemoveKDigits {
 		}
 
 		return ans.toString();
+	}
+
+	public static void main(String[] args) {
+		RemoveKDigits obj = new RemoveKDigits();
+		String num = "1432219";
+		int k = 3;
+		String result = obj.removeKdigits(num, k);
+		System.out.println(result);
 	}
 }

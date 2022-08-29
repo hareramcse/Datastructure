@@ -3,7 +3,6 @@ package com.hs.stack.basic;
 import java.util.Stack;
 
 public class SortStack {
-
 	public void sort(Stack<Integer> stack) {
 		// base case: stack is empty
 		if (stack.isEmpty()) {
