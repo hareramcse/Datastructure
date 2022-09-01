@@ -3,74 +3,65 @@ package com.hs.leetcode.hard;
 import java.util.Stack;
 
 public class LargestRectangleInHistogram {
-	private int maxHistogram(int[] input) {
+	public int largestRectangleArea(int[] input) {
 		if (input.length == 1) {
 			return input[0];
 		}
 		int[] NSR = findNSR(input);
 		int[] NSL = findNSL(input);
 		int max = 0;
-		int width[] = new int[input.length];
 		for (int i = 0; i < input.length; i++) {
-			width[i] = NSR[i] - NSL[i] - 1;
-			int area = width[i] * input[i];
-			if (area > max) {
-				max = area;
-			}
+			max = Math.max(max, (NSR[i] - NSL[i] + 1) * input[i]);
 		}
 		return max;
 	}
 
-	private int[] findNSR(int[] input) {
-		int right[] = new int[input.length];
+	private int[] findNSR(int[] nums) {
 		Stack<Integer> stack = new Stack<>();
-		for (int i = input.length - 1; i >= 0; i--) {
-			if (stack.isEmpty()) {
-				right[i] = input.length;
-			} else if (!stack.isEmpty() && input[stack.peek()] < input[i]) {
-				right[i] = stack.peek();
-			} else if (!stack.isEmpty() && input[stack.peek()] >= input[i]) {
-				while (!stack.isEmpty() && input[stack.peek()] >= input[i]) {
-					stack.pop();
-				}
-				if (stack.isEmpty()) {
-					right[i] = input.length;
-				} else {
-					right[i] = stack.peek();
-				}
+		int n = nums.length;
+		int[] res = new int[n];
+
+		for (int i = n - 1; i >= 0; i--) {
+			while (!stack.isEmpty() && nums[stack.peek()] >= nums[i]) {
+				stack.pop();
 			}
+
+			if (stack.isEmpty()) {
+				res[i] = n - 1;
+			} else {
+				res[i] = stack.peek() - 1;
+			}
+
 			stack.push(i);
 		}
-		return right;
+		return res;
 	}
 
-	private int[] findNSL(int[] input) {
-		int[] left = new int[input.length];
+	private int[] findNSL(int[] nums) {
 		Stack<Integer> stack = new Stack<>();
-		for (int i = 0; i < input.length; i++) {
-			if (stack.isEmpty()) {
-				left[i] = -1;
-			} else if (!stack.isEmpty() && input[stack.peek()] < input[i]) {
-				left[i] = stack.peek();
-			} else if (!stack.isEmpty() && input[stack.peek()] >= input[i]) {
-				while (!stack.isEmpty() && input[stack.peek()] >= input[i]) {
-					stack.pop();
-				}
-				if (stack.isEmpty()) {
-					left[i] = -1;
-				} else {
-					left[i] = stack.peek();
-				}
+		int n = nums.length;
+		int[] res = new int[n];
+
+		for (int i = 0; i < n; i++) {
+			while (!stack.isEmpty() && nums[stack.peek()] >= nums[i]) {
+				stack.pop();
 			}
+
+			if (stack.isEmpty()) {
+				res[i] = 0;
+			} else {
+				res[i] = stack.peek() + 1;
+			}
+
 			stack.push(i);
 		}
-		return left;
+		return res;
 	}
 
 	public static void main(String[] args) {
 		LargestRectangleInHistogram stack = new LargestRectangleInHistogram();
 		int[] arr = { 6, 2, 5, 4, 5, 1, 6 };
-		int res = stack.maxHistogram(arr);
+		int res = stack.largestRectangleArea(arr);
 		System.out.println(res);
 	}
 }

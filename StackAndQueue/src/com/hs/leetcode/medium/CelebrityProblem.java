@@ -24,8 +24,12 @@ public class CelebrityProblem {
 		for (int i = 0; i < n; i++) {
 			if (i == x)
 				continue;
-			if (arr[x][i] == 1 || arr[i][x] == 0)
+			
+			// if x knows someone or someone does not know x
+			if (arr[x][i] == 1 || arr[i][x] == 0) {
 				flag = false;
+				break;
+			}
 		}
 
 		if (!flag)

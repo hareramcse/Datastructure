@@ -4,27 +4,23 @@ import java.util.Arrays;
 import java.util.Stack;
 
 public class NextGreaterElementToLeft {
-	public int[] nearestGreatestToLeft(int[] arr) {
-		Stack<Integer> st = new Stack<>();
-		int n = arr.length;
+	public int[] nearestGreatestToLeft(int[] nums) {
+		Stack<Integer> stack = new Stack<>();
+		int n = nums.length;
 		int[] res = new int[n];
 
 		for (int i = 0; i < n; i++) {
-			if (st.empty()) {
-				res[i] = -1;
-			} else if (st.size() > 0 && st.peek() > arr[i]) {
-				res[i] = st.peek();
-			} else if (st.size() > 0 && st.peek() <= arr[i]) {
-				while (!st.empty() && st.peek() <= arr[i]) {
-					st.pop();
-				}
-				if (st.empty()) {
-					res[i] = -1;
-				} else {
-					res[i] = st.peek();
-				}
+			while (!stack.isEmpty() && stack.peek() <= nums[i]) {
+				stack.pop();
 			}
-			st.push(arr[i]);
+
+			if (stack.isEmpty()) {
+				res[i] = -1;
+			} else {
+				res[i] = stack.peek();
+			}
+
+			stack.push(nums[i]);
 		}
 		return res;
 	}

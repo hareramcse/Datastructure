@@ -4,31 +4,25 @@ import java.util.Arrays;
 import java.util.Stack;
 
 public class StockSpanProblem {
-	public int[] nearestGreatestToLeft(int[] arr) {
+	public int[] nearestGreatestToLeft(int[] nums) {
 		// Pair consist of NGL value and its index
-		Stack<Pair> st = new Stack<Pair>();
-		int n = arr.length;
-
-		// it will store the index of NGL
+		Stack<Pair> stack = new Stack<>();
+		int n = nums.length;
 		int[] res = new int[n];
 
 		for (int i = 0; i < n; i++) {
-			if (st.empty()) {
-				res[i] = -1;
-			} else if (st.size() > 0 && st.peek().first > arr[i]) {
-				res[i] = st.peek().second;
-			} else if (st.size() > 0 && st.peek().first <= arr[i]) {
-				while (!st.empty() && st.peek().first <= arr[i]) {
-					st.pop();
-				}
-				if (st.empty()) {
-					res[i] = -1;
-				} else {
-					res[i] = st.peek().second;
-				}
+			while (!stack.isEmpty() && stack.peek().first <= nums[i]) {
+				stack.pop();
 			}
-			st.push(new Pair(arr[i], i));
-		}
+
+			if (stack.isEmpty()) {
+				res[i] = -1;
+			} else {
+				res[i] = stack.peek().second;
+			}
+
+			stack.push(new Pair(nums[i], i));
+		}	
 
 		// once we get the index of NGL we find the count by i - res[i] for each element
 		for (int i = 0; i < n; i++) {

@@ -4,27 +4,23 @@ import java.util.Arrays;
 import java.util.Stack;
 
 public class NextGreaterElementToRight {
-	private int[] nearestGreatestToRight(int[] arr) {
+	public int[] nextGreaterElements(int[] nums) {
 		Stack<Integer> stack = new Stack<>();
-		int n = arr.length;
+		int n = nums.length;
 		int[] res = new int[n];
 
 		for (int i = n - 1; i >= 0; i--) {
-			if (stack.empty()) {
-				res[i] = -1;
-			} else if (stack.size() > 0 && stack.peek() > arr[i]) {
-				res[i] = stack.peek();
-			} else if (stack.size() > 0 && stack.peek() <= arr[i]) {
-				while (!stack.empty() && stack.peek() <= arr[i]) {
-					stack.pop();
-				}
-				if (stack.empty()) {
-					res[i] = -1;
-				} else {
-					res[i] = stack.peek();
-				}
+			while (!stack.isEmpty() && stack.peek() <= nums[i]) {
+				stack.pop();
 			}
-			stack.push(arr[i]);
+
+			if (stack.isEmpty()) {
+				res[i] = -1;
+			} else {
+				res[i] = stack.peek();
+			}
+			
+			stack.push(nums[i]);
 		}
 		return res;
 	}
@@ -32,7 +28,7 @@ public class NextGreaterElementToRight {
 	public static void main(String[] args) {
 		int[] arr = { 5, 2, 1, 6, 3, 4, 8, 7 };
 		NextGreaterElementToRight stack = new NextGreaterElementToRight();
-		int[] res = stack.nearestGreatestToRight(arr);
+		int[] res = stack.nextGreaterElements(arr);
 		System.out.println(Arrays.toString(res));
 	}
 }
