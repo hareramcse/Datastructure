@@ -1,11 +1,10 @@
-package com.hs.slidingwindow.fixed;
+package com.hs.leetcode.hard;
 
 import java.util.Arrays;
 import java.util.Deque;
 import java.util.LinkedList;
 
 public class MaxInSlidingWindow {
-
 	private int[] maxSlidingWindow(int[] nums, int k) {
 		int n = nums.length;
 		int[] result = new int[n - k + 1];

@@ -5,17 +5,17 @@ import java.util.Map;
 
 public class LongestRepeatingCharacterReplacement {
 	public int characterReplacement(String s, int k) {
-		int i = 0, j = 0;
-
 		Map<Character, Integer> map = new HashMap<>();
+
+		int i = 0, j = 0;
 		int maxLength = 0, mostFreq = 0;
 		while (j < s.length()) {
 			char ch = s.charAt(j);
-			map.put(s.charAt(j), map.getOrDefault(ch, 0) + 1);
+			map.put(ch, map.getOrDefault(ch, 0) + 1);
 			mostFreq = Math.max(mostFreq, map.get(ch));
 
 			if ((j - i + 1) - mostFreq > k) {
-				// remove the ith char before sliding the window
+				// remove the ith index calculation before sliding the window
 				map.put(s.charAt(i), map.get(s.charAt(i)) - 1);
 				i++;
 			}

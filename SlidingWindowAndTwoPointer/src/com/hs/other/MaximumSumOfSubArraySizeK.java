@@ -1,14 +1,13 @@
-package com.hs.slidingwindow.fixed;
+package com.hs.other;
 
-public class MaximumSubArraySumOfSizeK {
-
-	private int solve(int[] arr, int k) {
+public class MaximumSumOfSubArraySizeK {
+	public int solve(int[] arr, int k) {
 		int i = 0, j = 0, max = Integer.MIN_VALUE, sum = 0;
 		while (j < arr.length) {
 			sum += arr[j];
 			if (j - i + 1 == k) {
 				max = Math.max(max, sum);
-				// remove the ith char before sliding the window
+				// remove the ith index val from sum before sliding the window
 				sum -= arr[i];
 				i++;
 			}
@@ -18,7 +17,7 @@ public class MaximumSubArraySumOfSizeK {
 	}
 
 	public static void main(String[] args) {
-		MaximumSubArraySumOfSizeK msask = new MaximumSubArraySumOfSizeK();
+		MaximumSumOfSubArraySizeK msask = new MaximumSumOfSubArraySizeK();
 		int arr[] = { 2, 5, 1, 8, 2, 9, 1 };
 		int k = 3;
 		

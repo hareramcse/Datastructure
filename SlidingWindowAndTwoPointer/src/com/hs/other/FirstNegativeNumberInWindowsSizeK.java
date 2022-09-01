@@ -1,4 +1,4 @@
-package com.hs.slidingwindow.fixed;
+package com.hs.other;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

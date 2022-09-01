@@ -1,11 +1,10 @@
-package com.hs.slidingwindow.variable;
+package com.hs.leetcode.medium;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class LargestSubstringOfKUniqueChar {
-
-	public int solve(String s, int k) {
+public class LongestSubstringWithAtMostKDistinctCharacters {
+	public int lengthOfLongestSubstringKDistinct(String s, int k) {
 		Map<Character, Integer> map = new HashMap<>();
 		int j = 0;
 		int i = 0;
@@ -15,8 +14,9 @@ public class LargestSubstringOfKUniqueChar {
 			map.put(s.charAt(j), map.getOrDefault(s.charAt(j), 0) + 1);
 			while (map.size() > k) {
 				map.put(s.charAt(i), map.get(s.charAt(i)) - 1);
-				if (map.get(s.charAt(i)) == 0)
+				if (map.get(s.charAt(i)) == 0) {
 					map.remove(s.charAt(i));
+				}
 				i++;
 			}
 			max = Math.max(max, j - i + 1);
@@ -26,10 +26,10 @@ public class LargestSubstringOfKUniqueChar {
 	}
 
 	public static void main(String[] args) {
-		LargestSubstringOfKUniqueChar mwsok = new LargestSubstringOfKUniqueChar();
+		LongestSubstringWithAtMostKDistinctCharacters mwsok = new LongestSubstringWithAtMostKDistinctCharacters();
 		String str = "aabacbebebe";
 		int k = 3;
-		int maxWindowsSize = mwsok.solve(str, k);
-		System.out.println(maxWindowsSize);
+		int result = mwsok.lengthOfLongestSubstringKDistinct(str, k);
+		System.out.println(result);
 	}
 }

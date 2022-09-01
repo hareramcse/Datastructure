@@ -1,9 +1,8 @@
-package com.hs.slidingwindow.variable;
+package com.hs.leetcode.medium;
 
 import java.util.HashMap;
 import java.util.Map;
 
-// TODO its not working for -ve numbers.
 public class LongestSubstringWithAtLeastKRepeatingCharacters {
 	public int longestSubstring(String s, int k) {
 		if (s.isEmpty() || k == 0)

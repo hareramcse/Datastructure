@@ -1,10 +1,10 @@
-package com.hs.slidingwindow.fixed;
+package com.hs.leetcode.medium;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class AnagramCount {
+public class FindAllAnagramsInString {
 	public List<Integer> findAnagrams(String s, String p) {
 		List<Integer> ans = new ArrayList<>();
 		int[] pArr = new int[26];
@@ -23,7 +23,7 @@ public class AnagramCount {
 				if (Arrays.equals(pArr, sArr)) {
 					ans.add(i);
 				}
-				// remove the ith char before sliding the window
+				// remove the ith char count before sliding the window
 				sArr[s.charAt(i) - 'a']--;
 				i++;
 			}
@@ -35,7 +35,7 @@ public class AnagramCount {
 	public static void main(String[] args) {
 		String str = "cbaebabacd";
 		String pattern = "abc";
-		AnagramCount obj = new AnagramCount();
+		FindAllAnagramsInString obj = new FindAllAnagramsInString();
 		List<Integer> result = obj.findAnagrams(str, pattern);
 		System.out.println(result);
 	}
