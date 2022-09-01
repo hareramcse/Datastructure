@@ -16,12 +16,12 @@ public class MergeTwoSortedList {
 		if (list2 == null) {
 			return list1;
 		}
-		if (list1.val > list2.val) {
-			result = list2;
-			result.next = mergeTwoListsUtil(list1, list2.next, result);
-		} else {
+		if (list1.val < list2.val) {
 			result = list1;
 			result.next = mergeTwoListsUtil(list1.next, list2, result);
+		} else {
+			result = list2;
+			result.next = mergeTwoListsUtil(list1, list2.next, result);
 		}
 		return result;
 	}

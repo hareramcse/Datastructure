@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.Queue;
 
 public class FirstNegativeNumberInWindowsSizeK {
-
 	public List<Integer> solve(int arr[], int K) {
-		int i = 0;
-		int j = 0;
 		List<Integer> ans = new ArrayList<>();
 		Queue<Integer> queue = new LinkedList<>();
+		
+		int i = 0;
+		int j = 0;
 		while (j < arr.length) {
 			if (arr[j] < 0) {
 				queue.add(arr[j]);

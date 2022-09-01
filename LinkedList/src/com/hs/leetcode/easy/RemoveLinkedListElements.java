@@ -5,6 +5,7 @@ import com.hs.basic.ListNode;
 
 public class RemoveLinkedListElements {
 	public ListNode removeElements(ListNode head, int val) {
+		// if number is starting of the list
 		while (head != null && head.val == val) {
 			head = head.next;
 		}

@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class AnagramCount {
-
 	public List<Integer> findAnagrams(String s, String p) {
 		List<Integer> ans = new ArrayList<>();
 		int[] pArr = new int[26];

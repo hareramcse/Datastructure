@@ -8,37 +8,40 @@ public class ReverseNodesInKGroup {
 		if (head == null || head.next == null)
 			return head;
 
-		int length = length(head);
+		ListNode current = head;
+		ListNode prev = null;
+		ListNode next = null;
 
-		ListNode dummy = new ListNode();
-		dummy.next = head;
-
-		ListNode previous = dummy;
-		ListNode current;
-		ListNode nextNode;
-
-		while (length >= k) {
-			current = previous.next;
-			nextNode = current.next;
-			for (int i = 1; i < k; i++) {
-				current.next = nextNode.next;
-				nextNode.next = previous.next;
-				previous.next = nextNode;
-				nextNode = current.next;
-			}
-			previous = current;
-			length -= k;
+		// this case is only for if length of linkedlist size is not divisible by k
+		boolean isCheck = check(head, k);
+		if (isCheck) {
+			return head;
 		}
-		return dummy.next;
+
+		int count = 0;
+		while (current != null && count < k) {
+			next = current.next;
+			current.next = prev;
+			prev = current;
+			current = next;
+			count++;
+		}
+
+		if (next != null) {
+			head.next = reverseKGroup(next, k);
+		}
+
+		return prev;
 	}
 
-	private int length(ListNode head) {
-		int length = 0;
-		while (head != null) {
-			++length;
-			head = head.next;
+	private boolean check(ListNode head, int k) {
+		ListNode temp = head;
+		int count = 0;
+		while (temp != null) {
+			temp = temp.next;
+			count++;
 		}
-		return length;
+		return count < k ? true : false;
 	}
 
 	public static void main(String[] args) {

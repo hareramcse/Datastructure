@@ -8,7 +8,7 @@ public class PalindromeLinkedList {
 	public boolean checkIfPolindrom(ListNode head) {
 		ListNode mid = LinkedListUtil.findMiddle(head);
 		ListNode reverse = LinkedListUtil.reverseByRecursion(mid);
-		while (head != mid && reverse != null) {
+		while (reverse != null) {
 			if (head.val != reverse.val) {
 				return false;
 			}
