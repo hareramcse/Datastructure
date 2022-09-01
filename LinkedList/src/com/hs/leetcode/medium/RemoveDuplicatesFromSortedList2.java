@@ -20,10 +20,10 @@ class RemoveDuplicatesFromSortedList2 {
 				current = current.next;
 			}
 
-			if (!foundDuplicate) {
-				prev = prev.next;
-			} else {
+			if (foundDuplicate) {
 				prev.next = current.next;
+			} else {
+				prev = prev.next;
 			}
 			current = current.next;
 		}
