@@ -10,6 +10,8 @@ public class LongestSubstringWithoutRepeatingChar {
 
 		while (j < s.length()) {
 			map.put(s.charAt(j), map.getOrDefault(s.charAt(j), 0) + 1);
+			
+			// it means there are some duplicate char in the window.
 			while (map.size() < j - i + 1) {
 				map.put(s.charAt(i), map.get(s.charAt(i)) - 1);
 				if (map.get(s.charAt(i)) == 0)

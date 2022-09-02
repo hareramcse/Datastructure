@@ -8,7 +8,7 @@ public class LongestSubstringWithAtMostKDistinctCharacters {
 		Map<Character, Integer> map = new HashMap<>();
 		int j = 0;
 		int i = 0;
-		int max = 0;
+		int ans = 0;
 
 		while (j < s.length()) {
 			map.put(s.charAt(j), map.getOrDefault(s.charAt(j), 0) + 1);
@@ -19,10 +19,10 @@ public class LongestSubstringWithAtMostKDistinctCharacters {
 				}
 				i++;
 			}
-			max = Math.max(max, j - i + 1);
+			ans = Math.max(ans, j - i + 1);
 			j++;
 		}
-		return max;
+		return ans;
 	}
 
 	public static void main(String[] args) {

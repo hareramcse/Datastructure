@@ -5,7 +5,7 @@ import java.util.Deque;
 import java.util.LinkedList;
 
 public class MaxInSlidingWindow {
-	private int[] maxSlidingWindow(int[] nums, int k) {
+	public int[] maxSlidingWindow(int[] nums, int k) {
 		int n = nums.length;
 		int[] result = new int[n - k + 1];
 		Deque<Integer> queue = new LinkedList<>();
@@ -14,22 +14,16 @@ public class MaxInSlidingWindow {
 		int j = 0;
 		int m = 0;
 		while (j < n) {
-			// calculations
 			while (queue.size() > 0 && queue.peekLast() < nums[j]) {
 				queue.removeLast();
 			}
 			queue.add(nums[j]);
 
 			if (j - i + 1 == k) {
-				// find the answer from calculation
 				result[m++] = queue.peek();
-
-				// remove the ith index as we need to move the window
 				if (queue.peek() == nums[i]) {
 					queue.removeFirst();
 				}
-
-				// move the window
 				i++;
 			}
 			j++;
