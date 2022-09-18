@@ -1,4 +1,4 @@
-package com.hs.leetcode.easy;
+package com.hs.other;
 
 class Node {
 	int data;

@@ -1,14 +1,13 @@
-package com.hs.leetcode.easy;
+package com.hs.leetcode.medium;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class KClosestPointToOrigin {
-	private int[][] kClosest(int[][] points, int k) {
-		Queue<Pair> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
-
+	public int[][] kClosest(int[][] points, int k) {
+		Queue<Pair> maxHeap = new PriorityQueue<>(
+				(a, b) -> ((b.value == a.value) ? (b.key - a.key) : (b.value - a.value)));
 		for (int i = 0; i < points.length; i++) {
 			Integer square = takeSquare(points[i]);
 			maxHeap.add(new Pair(square, i));

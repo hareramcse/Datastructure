@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-public class KMostFrequentElement {
+public class TopKFrequentElements {
 	private int[] topKFrequent(int[] nums, int k) {
 		int res[] = new int[k];
 		Map<Integer, Integer> map = new HashMap<>();
@@ -24,7 +24,7 @@ public class KMostFrequentElement {
 	}
 
 	public static void main(String[] args) {
-		KMostFrequentElement sol = new KMostFrequentElement();
+		TopKFrequentElements sol = new TopKFrequentElements();
 		int[] nums = { 1, 1, 1, 2, 2, 3 };
 		int k = 2;
 		int[] topKFrequent = sol.topKFrequent(nums, k);
