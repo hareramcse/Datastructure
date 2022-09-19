@@ -1,7 +1,7 @@
 package com.hs.basic;
 
 public class BinarySearchByIterativeMethod {
-	public int search(int arr[], int value) {
+	public int search(int[] arr, int value) {
 		int low = 0, high = arr.length - 1;
 		while (low <= high) {
 			int mid = low + (high - low) / 2;

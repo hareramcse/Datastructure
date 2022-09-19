@@ -1,9 +1,10 @@
-package com.hs.basic;
+package com.hs.bst;
 
 import java.util.HashSet;
 import java.util.Set;
 
-// 653. Two Sum IV - Input is a BST Leetcode
+import com.hs.tree.Node;
+
 public class FindPairSumEqualToK {
 	public boolean findPair(Node root, int sum) {
 		Set<Integer> set = new HashSet<>();

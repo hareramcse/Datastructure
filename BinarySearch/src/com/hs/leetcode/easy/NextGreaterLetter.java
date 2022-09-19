@@ -1,6 +1,5 @@
 package com.hs.leetcode.easy;
 
-//744. Find Smallest Letter Greater Than Target Leetcode
 public class NextGreaterLetter {
 	private char nextGreatestLetter(char[] arr, char value) {
 		int low = 0;

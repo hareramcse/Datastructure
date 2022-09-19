@@ -16,7 +16,6 @@ public class MinDiffFromGivenKeyInSortedArray {
 				high = mid - 1;
 			}
 		}
-		// if while loop doesn't return anything means value is not there in the array
 		if (res != -1) {
 			return res;
 		} else {

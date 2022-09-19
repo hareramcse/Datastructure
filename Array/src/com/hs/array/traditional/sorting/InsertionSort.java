@@ -6,12 +6,12 @@ public class InsertionSort {
 	private void sort(int arr[]) {
 		for (int i = 1; i < arr.length; i++) {
 			int value = arr[i];
-			int hole = i;
-			while (hole > 0 && arr[hole - 1] > value) {
-				arr[hole] = arr[hole - 1];
-				hole--;
+			int k = i;
+			while (k > 0 && arr[k - 1] > value) {
+				arr[k] = arr[k - 1];
+				k--;
 			}
-			arr[hole] = value;
+			arr[k] = value;
 			System.out.println("array : " + Arrays.toString(arr));
 		}
 	}

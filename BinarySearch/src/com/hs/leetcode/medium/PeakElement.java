@@ -1,6 +1,5 @@
 package com.hs.leetcode.medium;
 
-// 162. Find Peak Element Leetcode
 public class PeakElement {
 	public int findPeakElement(int[] arr) {
 		int n = arr.length;

@@ -1,7 +1,7 @@
 package com.hs.basic;
 
 public class BinarySearchInInfiniteArray {
-	public int search(int arr[], int key) {
+	public int search(int[] arr, int key) {
 		int low = 0, high = 1;
 		int val = arr[0];
 
