@@ -1,4 +1,4 @@
-package com.hs.leetcode.easy;
+package com.hs.basic;
 
 public class NextGreaterLetter {
 	private char nextGreatestLetter(char[] arr, char value) {

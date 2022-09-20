@@ -12,12 +12,12 @@ public class NearlySortedArraySearch {
 		// If the element is present at one of the middle 3 positions
 		if (arr[mid] == value)
 			return mid;
-		if (low < mid  && arr[mid - 1] == value)
+		if (mid > low  && arr[mid - 1] == value)
 			return mid - 1;
-		if (high > mid  && arr[mid + 1] == value)
+		if (mid < high && arr[mid + 1] == value)
 			return mid + 1;
 
-		// If element is smaller than mid, then it can only be present in left subarray
+		// If element is smaller than all 3 mids, then it can only be present in left subarray
 		// we have already searched in mid - 1 index in above steps. so will check it
 		// from mid - 2 index
 		if (value < arr[mid])

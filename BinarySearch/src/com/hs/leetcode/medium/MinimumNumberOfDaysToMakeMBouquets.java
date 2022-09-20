@@ -4,7 +4,8 @@ public class MinimumNumberOfDaysToMakeMBouquets {
 	public int minDays(int[] bloomDay, int m, int k) {
 		if (m * k > bloomDay.length)
 			return -1;
-		int low = 1, high = 1, mid;
+		
+		int low = 1, high = 1;
 		for (int i : bloomDay) {
 			low = Math.min(low, i);
 			high = Math.max(high, i);
@@ -12,7 +13,7 @@ public class MinimumNumberOfDaysToMakeMBouquets {
 
 		int ans = 0;
 		while (low <= high) {
-			mid = low + (high - low) / 2;
+			int mid = low + (high - low) / 2;
 			if (canmake(bloomDay, mid, m, k)) {
 				ans = mid;
 				high = mid - 1;

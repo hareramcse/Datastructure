@@ -9,7 +9,7 @@ public class FindAPeakElement2 {
 			int middleRow = startRow + (endRow - startRow) / 2;
 
 			// will get max element position for that row
-			int rowmax = maxRowElementPosition(mat[middleRow], mat[middleRow].length - 1);
+			int rowmax = maxRowElementPosition(mat[middleRow]);
 
 			// middle row is the first row
 			if (middleRow == 0) {
@@ -44,9 +44,9 @@ public class FindAPeakElement2 {
 		return new int[] { -1, -1 };
 	}
 
-	private int maxRowElementPosition(int[] arr, int end) {
+	private int maxRowElementPosition(int[] arr) {
 		int max = 0;
-		for (int i = 0; i <= end; i++) {
+		for (int i = 0; i < arr.length; i++) {
 			if (arr[i] > arr[max]) {
 				max = i;
 			}
