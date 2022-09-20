@@ -7,7 +7,6 @@ public class FloorInSortedArray {
 
 		while (low <= high) {
 			int mid = low + (high - low) / 2;
-
 			if (value == arr[mid]) {
 				return value;
 			} else if (value < arr[mid]) {
