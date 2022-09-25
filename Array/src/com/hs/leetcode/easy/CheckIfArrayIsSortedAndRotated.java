@@ -1,6 +1,6 @@
 package com.hs.leetcode.easy;
 
-public class CheckifArrayIsSortedAndRotated {
+public class CheckIfArrayIsSortedAndRotated {
 	public boolean check(int[] nums) {
 		int count = 0;
 		for (int i = 0; i < nums.length; i++) {
@@ -12,4 +12,5 @@ public class CheckifArrayIsSortedAndRotated {
 			return false;
 		return true;
 	}
+
 }

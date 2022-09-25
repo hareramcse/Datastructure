@@ -1,4 +1,4 @@
-package com.hs.other;
+package com.hs.gfg.easy;
 
 import java.util.Arrays;
 

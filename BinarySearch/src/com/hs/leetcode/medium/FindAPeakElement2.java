@@ -1,5 +1,7 @@
 package com.hs.leetcode.medium;
 
+import java.util.Arrays;
+
 public class FindAPeakElement2 {
 	public int[] findPeakGrid(int[][] mat) {
 		int startRow = 0;
@@ -52,5 +54,14 @@ public class FindAPeakElement2 {
 			}
 		}
 		return max;
+	}
+
+	public static void main(String[] args) {
+		FindAPeakElement2 matrix = new FindAPeakElement2();
+		int a[][] = { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 10, 11, 12 }, { 13, 14, 15, 16 } };
+
+		// Function Call
+		int[] res = matrix.findPeakGrid(a);
+		System.out.println(Arrays.toString(res));
 	}
 }

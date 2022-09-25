@@ -1,4 +1,4 @@
-package com.hs.other;
+package com.hs.gfg.easy;
 
 public class SplitArrayInTwoPartWithEqualSum {
 	// Prints two parts after finding split point using findSplitPoint()
