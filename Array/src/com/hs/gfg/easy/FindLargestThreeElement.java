@@ -2,14 +2,13 @@ package com.hs.gfg.easy;
 
 class FindLargestThreeElement {
 	private void print3largest(int arr[], int arr_size) {
-		int i, first, second, third;
 		if (arr_size < 3) {
 			System.out.print(" Invalid Input ");
 			return;
 		}
 
-		first = second = third = Integer.MIN_VALUE;
-		for (i = 0; i < arr_size; i++) {
+		int first = Integer.MIN_VALUE, second = Integer.MIN_VALUE, third = Integer.MIN_VALUE;
+		for (int i = 0; i < arr_size; i++) {
 			if (arr[i] > first) {
 				third = second;
 				second = first;

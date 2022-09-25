@@ -1,4 +1,4 @@
-package com.hs.gfg.easy;
+package com.hs.gfg.hard;
 
 import java.util.ArrayList;
 import java.util.List;

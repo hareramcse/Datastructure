@@ -1,4 +1,4 @@
-package com.hs.gfg.easy;
+package com.hs.basic;
 
 public class SmallestMissingNumber {
 
