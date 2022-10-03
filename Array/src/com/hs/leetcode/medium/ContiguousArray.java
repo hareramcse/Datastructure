@@ -12,10 +12,10 @@ public class ContiguousArray {
 			if (nums[i] == 0)
 				nums[i] = -1;
 		}
-		return maxSubArraySumLength(nums, 0);
+		return maxSubArrayLengthOfSumZero(nums, 0);
 	}
 
-	private int maxSubArraySumLength(int[] nums, int k) {
+	private int maxSubArrayLengthOfSumZero(int[] nums, int k) {
 		Map<Integer, Integer> map = new HashMap<>();
 		map.put(0, -1);
 
@@ -32,5 +32,12 @@ public class ContiguousArray {
 			}
 		}
 		return maxLen;
+	}
+
+	public static void main(String[] args) {
+		ContiguousArray obj = new ContiguousArray();
+		int[] arr = { 0, 1, 1, 1, -1, 1, -1 };
+		int result = obj.findMaxLength(arr);
+		System.out.println(result);
 	}
 }

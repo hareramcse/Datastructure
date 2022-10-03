@@ -2,20 +2,9 @@ package com.hs.leetcode.medium;
 
 public class JumpGame {
 	public static boolean canJump(int[] nums) {
-		if (nums.length == 1)
-			return true;
-
-		int left = 0, right = 0;
-		while (right < nums.length) {
-			int maxReach = 0;
-			for (int i = left; i < right + 1; i++) {
-				maxReach = Math.max(maxReach, i + nums[i]);
-			}
-
-			left = right + 1;
-			right = maxReach;
-			if (left > right)
-				return false;
+		int maxReach = 0;
+		for (int i = 0; i <= maxReach; i++) {
+			maxReach = Math.max(maxReach, i + nums[i]);
 			if (maxReach >= nums.length - 1)
 				return true;
 		}

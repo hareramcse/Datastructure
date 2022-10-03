@@ -1,37 +1,38 @@
 package com.hs.leetcode.medium;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LongestConsecutiveSequence {
 	public int longestConsecutive(int[] nums) {
-		Set<Integer> set = new HashSet<>();
-
-		for (int num : nums) {
-			set.add(num);
+		Map<Integer, Boolean> map = new HashMap<>();
+		for (int i = 0; i < nums.length; i++) {
+			map.put(nums[i], true);
 		}
 
-		int maxLength = 0;
-		for (int num : nums) {
-			int currLen = 1;
-			int left = num;
-			int right = num;
-
-			while (set.contains(left - 1)) {
-				currLen++;
-				set.remove(left - 1);
-				left--;
+		for (int i = 0; i < nums.length; i++) {
+			if (map.containsKey(nums[i] - 1)) {
+				map.put(nums[i], false);
 			}
-
-			while (set.contains(right + 1)) {
-				currLen++;
-				set.remove(right + 1);
-				right++;
-			}
-
-			maxLength = Math.max(maxLength, currLen);
 		}
-		return maxLength;
+
+		int max = 0;
+		for (Integer key : map.keySet()) {
+			if (map.get(key) == true) {
+				int len = findLength(map, key);
+				max = Math.max(max, len);
+			}
+		}
+		return max;
+	}
+
+	private int findLength(Map<Integer, Boolean> map, int key) {
+		int ans = 0;
+		while (map.containsKey(key)) {
+			ans++;
+			key++;
+		}
+		return ans;
 	}
 
 	public static void main(String[] args) {

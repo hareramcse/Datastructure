@@ -24,4 +24,11 @@ public class ContinuousSubarraySum {
 		}
 		return false;
 	}
+
+	public static void main(String[] args) {
+		ContinuousSubarraySum obj = new ContinuousSubarraySum();
+		int[] arr = { 23, 2, 4, 6, 7 };
+		boolean result = obj.checkSubarraySum(arr, 6);
+		System.out.println(result);
+	}
 }
