@@ -12,9 +12,9 @@ public class MaximumProductSubArray {
 		int res = nums[0];
 
 		for (int i = 1; i < nums.length; i++) {
-			int copyMaxSoFar = maxSoFar;
+			int temp = maxSoFar;
 			maxSoFar = Math.max(nums[i], Math.max(nums[i] * maxSoFar, nums[i] * minSoFar));
-			minSoFar = Math.min(nums[i], Math.min(nums[i] * copyMaxSoFar, nums[i] * minSoFar));
+			minSoFar = Math.min(nums[i], Math.min(nums[i] * temp, nums[i] * minSoFar));
 			res = Math.max(res, maxSoFar);
 		}
 		return res;

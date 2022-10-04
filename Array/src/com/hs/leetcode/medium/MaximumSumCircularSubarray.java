@@ -1,33 +1,35 @@
 package com.hs.leetcode.medium;
 
 public class MaximumSumCircularSubarray {
-
 	public int maxSubarraySumCircular(int[] nums) {
-        int kadane = kadane(nums);
 		int sum = 0;
 		for (int i = 0; i < nums.length; i++) {
 			sum += nums[i];
 		}
+		
+		int kadane = kadane(nums);
 
 		for (int i = 0; i < nums.length; i++) {
 			nums[i] *= -1;
 		}
 
 		int inverseKadane = kadane(nums);
-        if (sum + inverseKadane == 0)
+		if (sum + inverseKadane == 0)
 			return kadane;
 		return Math.max(kadane, sum + inverseKadane);
-    }
-    
-    private int kadane(int[] nums) {
-		int maxSoFar = Integer.MIN_VALUE;
-		int maxEndingHere = 0;
+	}
+
+	private int kadane(int[] nums) {
+		int max = Integer.MIN_VALUE;
+		int sum = 0;
 		for (int i = 0; i < nums.length; i++) {
-			maxEndingHere = maxEndingHere + nums[i];
-			maxEndingHere = Integer.max(maxEndingHere, nums[i]);
-			maxSoFar = Integer.max(maxSoFar, maxEndingHere);
+			sum = sum + nums[i];
+			if (sum < nums[i]) {
+				sum = nums[i];
+			}
+			max = Integer.max(max, sum);
 		}
-		return maxSoFar;
+		return max;
 	}
 
 	public static void main(String[] args) {
