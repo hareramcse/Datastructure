@@ -2,26 +2,24 @@ package com.hs.leetcode.easy;
 
 public class AddBinary {
 	public String addBinary(String a, String b) {
-		StringBuilder ans = new StringBuilder();
-		int i = a.length() - 1;
-		int j = b.length() - 1;
-
 		int carry = 0;
-		while (i >= 0 || j >= 0) {
-			int digit1 = i >= 0 ? a.charAt(i) - '0' : 0;
-			int digit2 = j >= 0 ? b.charAt(j) - '0' : 0;
-			int sum = digit1 + digit2 + carry;
-			carry = sum / 2;
-			sum = sum % 2;
-            ans.append(sum);
-			i--;
-			j--;
+		String result = "";
+		int i = 0;
+		int alen = a.length();
+		int blen = b.length();
+		while (i < alen || i < blen || carry != 0) {
+			int x = 0;
+			if (i < alen && a.charAt(alen - 1 - i) == '1')
+				x = 1;
+			int y = 0;
+			if (i < blen && b.charAt(blen - 1 - i) == '1')
+				y = 1;
+
+			result = (x + y + carry) % 2 + result;
+			carry = (x + y + carry) / 2;
+			i++;
 		}
-
-		if (carry > 0)
-            ans.append(carry);
-
-		return ans.reverse().toString();
+		return result;
 	}
 
 	public static void main(String[] args) {
