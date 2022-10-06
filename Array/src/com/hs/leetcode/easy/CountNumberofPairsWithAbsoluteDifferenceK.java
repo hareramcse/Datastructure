@@ -20,4 +20,12 @@ public class CountNumberofPairsWithAbsoluteDifferenceK {
 		}
 		return ans;
 	}
+	
+	public static void main(String[] args) {
+		CountNumberofPairsWithAbsoluteDifferenceK obj  = new CountNumberofPairsWithAbsoluteDifferenceK();
+		int[] nums = {1,2,2,1};
+		int k = 1;
+		int result = obj.countKDifference(nums, k);
+		System.out.println(result);
+	}
 }

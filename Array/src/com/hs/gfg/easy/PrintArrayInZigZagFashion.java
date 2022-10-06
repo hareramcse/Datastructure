@@ -3,14 +3,11 @@ package com.hs.gfg.easy;
 import java.util.Arrays;
 
 public class PrintArrayInZigZagFashion {
-
-	// Method for zig-zag conversion of array
 	private void zigZag(int[] arr) {
 		// Flag true indicates relation "<" is expected,
 		// else ">" is expected. The first expected relation
 		// is "<"
 		boolean flag = true;
-
 		int temp = 0;
 
 		for (int i = 0; i <= arr.length - 2; i++) {

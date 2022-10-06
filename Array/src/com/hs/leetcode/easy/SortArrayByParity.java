@@ -1,5 +1,7 @@
 package com.hs.leetcode.easy;
 
+import java.util.Arrays;
+
 public class SortArrayByParity {
 	public int[] sortArrayByParity(int[] nums) {
 		int i = 0, j = 0;
@@ -18,5 +20,12 @@ public class SortArrayByParity {
 		int temp = nums[i];
 		nums[i] = nums[j];
 		nums[j] = temp;
+	}
+
+	public static void main(String[] args) {
+		SortArrayByParity obj = new SortArrayByParity();
+		int[] nums = { 3, 1, 2, 4 };
+		int[] result = obj.sortArrayByParity(nums);
+		System.out.println(Arrays.toString(result));
 	}
 }
