@@ -1,5 +1,7 @@
 package com.hs.leetcode.medium;
 
+import java.util.Arrays;
+
 public class SetMatrixZeroes {
 	public void setZeroes(int[][] matrix) {
 		int col0 = 1, rows = matrix.length, cols = matrix[0].length;
@@ -18,6 +20,15 @@ public class SetMatrixZeroes {
 					matrix[i][j] = 0;
 			if (col0 == 0)
 				matrix[i][0] = 0;
+		}
+	}
+
+	public static void main(String[] args) {
+		SetMatrixZeroes obj = new SetMatrixZeroes();
+		int[][] matrix = { { 1, 2, 3 }, { 4, 0, 6 }, { 7, 8, 9 } };
+		obj.setZeroes(matrix);
+		for (int[] mat : matrix) {
+			System.out.println(Arrays.toString(mat));
 		}
 	}
 }

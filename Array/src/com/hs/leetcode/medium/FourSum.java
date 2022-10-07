@@ -6,7 +6,7 @@ import java.util.List;
 
 public class FourSum {
 	public List<List<Integer>> fourSum(int[] nums, int target) {
-		ArrayList<List<Integer>> res = new ArrayList<List<Integer>>();
+		List<List<Integer>> res = new ArrayList<List<Integer>>();
 
 		if (nums == null || nums.length == 0)
 			return res;

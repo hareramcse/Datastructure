@@ -27,10 +27,10 @@ public class RotateArray {
 	}
 
 	public static void main(String[] args) {
-		RotateArray rotation = new RotateArray();
+		RotateArray obj = new RotateArray();
 		int arr[] = { 1, 2, 3, 4, 5, 6, 7 };
 		int d = 2;
-		rotation.rotate(arr, d);
+		obj.rotate(arr, d);
 		System.out.println(Arrays.toString(arr));
 	}
 }

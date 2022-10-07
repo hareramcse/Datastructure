@@ -21,8 +21,8 @@ public class MaximumProductSubArray {
 	}
 
 	public static void main(String[] args) {
-		MaximumProductSubArray array = new MaximumProductSubArray();
-		int arr[] = { 1, -2, -3, 0, 7, -8, -2 };
-		System.out.println("Maximum Sub array product is " + array.maxProduct(arr));
+		MaximumProductSubArray obj = new MaximumProductSubArray();
+		int[] nums = { 1, -2, -3, 0, 7, -8, -2 };
+		System.out.println("Maximum Sub array product is " + obj.maxProduct(nums));
 	}
 }

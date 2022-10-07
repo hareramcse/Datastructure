@@ -12,12 +12,12 @@ public class IncreasingSubsequences {
 		return ans;
 	}
 
-	private void findSubsequencesUtil(int[] nums, int s, ArrayList<Integer> path, List<List<Integer>> ans) {
+	private void findSubsequencesUtil(int[] nums, int start, List<Integer> path, List<List<Integer>> ans) {
 		if (path.size() > 1)
 			ans.add(new ArrayList<>(path));
 
 		Set<Integer> used = new HashSet<>();
-		for (int i = s; i < nums.length; ++i) {
+		for (int i = start; i < nums.length; i++) {
 			if (used.contains(nums[i]))
 				continue;
 			if (path.isEmpty() || nums[i] >= path.get(path.size() - 1)) {

@@ -6,7 +6,7 @@ public class MaximumSumCircularSubarray {
 		for (int i = 0; i < nums.length; i++) {
 			sum += nums[i];
 		}
-		
+
 		int kadane = kadane(nums);
 
 		for (int i = 0; i < nums.length; i++) {
@@ -34,7 +34,7 @@ public class MaximumSumCircularSubarray {
 
 	public static void main(String[] args) {
 		MaximumSumCircularSubarray array = new MaximumSumCircularSubarray();
-		int arr[] = { 1, -2, 3, -2 };
+		int arr[] = { 2, 1, -5, 4, -3, 1, -3, 4, 1 };
 		int maxSum = array.maxSubarraySumCircular(arr);
 		System.out.println("max sum is " + maxSum);
 	}

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MajorityElement2 {
-
 	public List<Integer> majorityElement(int[] nums) {
 		int candidate1 = Integer.MIN_VALUE, candidate2 = Integer.MIN_VALUE, count1 = 0, count2 = 0;
 		for (int i = 0; i < nums.length; i++) {

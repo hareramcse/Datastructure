@@ -4,24 +4,25 @@ import java.util.Arrays;
 
 public class ProductOfArrayExceptSelf {
 	public int[] productExceptSelf(int[] nums) {
-        int[] product = new int[nums.length];
+		int[] res = new int[nums.length];
 
-		product[0] = 1;
-		for (int i = 1; i < nums.length; i++) {
-			product[i] = nums[i - 1] * product[i - 1];
+		int prefix = 1;
+		for (int i = 0; i < nums.length; i++) {
+			res[i] = prefix;
+			prefix *= nums[i];
 		}
 
-		int right = 1;
+		int postfix = 1;
 		for (int i = nums.length - 1; i >= 0; i--) {
-			product[i] = right * product[i]; // left * right
-			right *= nums[i];
+			res[i] = postfix * res[i]; // left * right
+			postfix *= nums[i];
 		}
-		return product;
-    }
+		return res;
+	}
 
 	public static void main(String[] args) {
 		ProductOfArrayExceptSelf obj = new ProductOfArrayExceptSelf();
-		int[] nums = { 1, 2, 3, 4 };
+		int[] nums = { 2, 3, 4, 5 };
 		int[] result = obj.productExceptSelf(nums);
 		System.out.println(Arrays.toString(result));
 	}

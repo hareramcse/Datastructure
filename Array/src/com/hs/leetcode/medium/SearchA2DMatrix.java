@@ -2,24 +2,35 @@ package com.hs.leetcode.medium;
 
 public class SearchA2DMatrix {
 	public boolean searchMatrix(int[][] matrix, int target) {
-		int low = 0;
 		if (matrix.length == 0)
 			return false;
-		int n = matrix.length;
-		int m = matrix[0].length;
-		int high = (n * m) - 1;
+
+		int row = matrix.length;
+		int col = matrix[0].length;
+
+		int low = 0;
+		int high = (row * col) - 1;
 
 		while (low <= high) {
-			int mid = (low + (high - low) / 2);
-			if (matrix[mid / m][mid % m] == target) {
+			int mid = low + (high - low) / 2;
+			if (matrix[mid / row][mid % row] == target) {
 				return true;
 			}
-			if (matrix[mid / m][mid % m] < target) {
+			if (matrix[mid / row][mid % row] < target) {
 				low = mid + 1;
 			} else {
 				high = mid - 1;
 			}
 		}
 		return false;
+	}
+
+	public static void main(String[] args) {
+		SearchA2DMatrix obj = new SearchA2DMatrix();
+		int[][] matrix = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+		boolean result = obj.searchMatrix(matrix, 5);
+		System.out.println(result);
+		result = obj.searchMatrix(matrix, 15);
+		System.out.println(result);
 	}
 }

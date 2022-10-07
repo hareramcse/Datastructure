@@ -15,7 +15,7 @@ public class ShortestUnsortedContinuousSubarray {
 					max = Math.max(max, nums[i]);
 				}
 			} else if (i == nums.length - 1) {
-				if (nums[i] < nums[i - 1]) {
+				if (nums[i - 1] > nums[i]) {
 					min = Math.min(min, nums[i]);
 					max = Math.max(max, nums[i]);
 				}
@@ -32,16 +32,16 @@ public class ShortestUnsortedContinuousSubarray {
 		}
 
 		int i, j;
-		for (i = 0; i < nums.length; i++){
-            if(nums[i] > min){
-                break;
-            }
-        }
-		for (j = nums.length - 1; j >= 0; j--){
-            if(nums[j] < max){
-                break;
-            }
-        }
+		for (i = 0; i < nums.length; i++) {
+			if (nums[i] > min) {
+				break;
+			}
+		}
+		for (j = nums.length - 1; j >= 0; j--) {
+			if (nums[j] < max) {
+				break;
+			}
+		}
 
 		return j - i + 1;
 	}

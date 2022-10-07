@@ -30,4 +30,13 @@ public class MergeIntervals {
 		res.add(new int[] { start, end });
 		return res.toArray(new int[0][]);
 	}
+
+	public static void main(String[] args) {
+		MergeIntervals obj = new MergeIntervals();
+		int[][] intervals = { { 1, 3 }, { 2, 6 }, { 8, 10 }, { 15, 18 } };
+		int[][] result = obj.merge(intervals);
+		for (int[] interval : result) {
+			System.out.println(Arrays.toString(interval));
+		}
+	}
 }
