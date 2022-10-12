@@ -15,7 +15,7 @@ public class LeaderInArray {
 		ans.add(max_from_right);
 
 		for (int i = n - 2; i >= 0; i--) {
-			if (max_from_right < arr[i]) {
+			if (arr[i] > max_from_right) {
 				max_from_right = arr[i];
 				ans.add(max_from_right);
 			}

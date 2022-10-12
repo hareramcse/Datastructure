@@ -1,27 +1,28 @@
 package com.hs.introduction;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 public class FindIfThereIsPathBetweenTwoVertices {
-	private int noOfVertices;
-	private Queue<Integer>[] adj;
+	private List<List<Integer>> adjList;
 
-	@SuppressWarnings("unchecked")
-	FindIfThereIsPathBetweenTwoVertices(int noOfVertices) {
-		this.noOfVertices = noOfVertices;
-		adj = new LinkedList[noOfVertices];
-		for (int i = 0; i < noOfVertices; ++i)
-			adj[i] = new LinkedList<>();
+	private FindIfThereIsPathBetweenTwoVertices(int noOfVertices) {
+		adjList = new ArrayList<>();
+		for (int i = 0; i < noOfVertices; i++) {
+			adjList.add(new ArrayList<>());
+		}
 	}
 
-	private void addEdge(int source, int destination) {
-		adj[source].add(destination);
+	// A utility function to add an edge in an undirected graph
+	private void addEdge(List<List<Integer>> adjList, int source, int destination) {
+		adjList.get(source).add(destination);
 	}
 
 	// prints BFS traversal from a given source
-	private Boolean isReachable(Queue<Integer>[] adj, int source, int destination) {
-		boolean visited[] = new boolean[noOfVertices];
+	private Boolean isReachable(List<List<Integer>> adjList, int source, int destination) {
+		boolean visited[] = new boolean[adjList.size()];
 		Queue<Integer> queue = new LinkedList<Integer>();
 		visited[source] = true;
 		queue.add(source);
@@ -29,7 +30,7 @@ public class FindIfThereIsPathBetweenTwoVertices {
 		while (queue.size() != 0) {
 			source = queue.poll();
 
-			for (int adjNode : adj[source]) {
+			for (int adjNode : adjList.get(source)) {
 				if (adjNode == destination)
 					return true;
 
@@ -44,16 +45,17 @@ public class FindIfThereIsPathBetweenTwoVertices {
 
 	public static void main(String args[]) {
 		FindIfThereIsPathBetweenTwoVertices graph = new FindIfThereIsPathBetweenTwoVertices(4);
-		graph.addEdge(0, 1);
-		graph.addEdge(0, 2);
-		graph.addEdge(1, 2);
-		graph.addEdge(2, 0);
-		graph.addEdge(2, 3);
-		graph.addEdge(3, 3);
+		List<List<Integer>> adjList = graph.adjList;
+		graph.addEdge(adjList, 0, 1);
+		graph.addEdge(adjList, 0, 2);
+		graph.addEdge(adjList, 1, 2);
+		graph.addEdge(adjList, 2, 0);
+		graph.addEdge(adjList, 2, 3);
+		graph.addEdge(adjList, 3, 3);
 
 		int source = 1;
 		int destination = 3;
-		if (graph.isReachable(graph.adj, source, destination))
+		if (graph.isReachable(graph.adjList, source, destination))
 			System.out.println("There is a path from " + source + " to " + destination);
 		else
 			System.out.println("There is no path from " + source + " to " + destination);

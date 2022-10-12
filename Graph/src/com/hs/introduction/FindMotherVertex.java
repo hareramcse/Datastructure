@@ -1,43 +1,42 @@
 package com.hs.introduction;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FindMotherVertex {
-	private int noOfVertices;
-	private Queue<Integer> adj[];
+	private List<List<Integer>> adjList;
 
-	@SuppressWarnings("unchecked")
-	FindMotherVertex(int noOfVertices) {
-		this.noOfVertices = noOfVertices;
-		adj = new LinkedList[noOfVertices];
-		for (int i = 0; i < noOfVertices; i++)
-			adj[i] = new LinkedList<>();
+	private FindMotherVertex(int noOfVertices) {
+		adjList = new ArrayList<>();
+		for (int i = 0; i < noOfVertices; i++) {
+			adjList.add(new ArrayList<>());
+		}
 	}
 
-	private void addEdge(int source, int destination) {
-		adj[source].add(destination);
+	// A utility function to add an edge in an undirected graph
+	private void addEdge(List<List<Integer>> adjList, int source, int destination) {
+		adjList.get(source).add(destination);
 	}
 
-	private int findMotherVertex() {
-		boolean visited[] = new boolean[noOfVertices];
+	private int findMotherVertex(List<List<Integer>> adjList) {
+		boolean visited[] = new boolean[adjList.size()];
 		int lastIndex = 0;
 
 		// Do a DFS traversal and find the last finished vertex
-		for (int i = 0; i < noOfVertices; i++) {
+		for (int i = 0; i < adjList.size(); i++) {
 			if (visited[i] == false) {
-				DFSUtil(i, visited);
+				DFSUtil(i, visited, adjList);
 				lastIndex = i;
 			}
 		}
 
-		for (int i = 0; i < noOfVertices; i++) {
+		for (int i = 0; i < adjList.size(); i++) {
 			visited[i] = false;
 		}
 
-		DFSUtil(lastIndex, visited);
+		DFSUtil(lastIndex, visited, adjList);
 
-		for (int i = 0; i < noOfVertices; i++) {
+		for (int i = 0; i < adjList.size(); i++) {
 			if (visited[i] == false) {
 				return -1;
 			}
@@ -45,24 +44,25 @@ public class FindMotherVertex {
 		return lastIndex;
 	}
 
-	private void DFSUtil(int source, boolean visited[]) {
+	private void DFSUtil(int source, boolean visited[], List<List<Integer>> adjList) {
 		visited[source] = true;
-		for (int adjNode : adj[source]) {
+		for (int adjNode : adjList.get(source)) {
 			if (!visited[adjNode])
-				DFSUtil(adjNode, visited);
+				DFSUtil(adjNode, visited, adjList);
 		}
 	}
 
 	public static void main(String[] args) {
 		FindMotherVertex graph = new FindMotherVertex(7);
-		graph.addEdge(0, 1);
-		graph.addEdge(0, 2);
-		graph.addEdge(1, 3);
-		graph.addEdge(4, 1);
-		graph.addEdge(6, 4);
-		graph.addEdge(5, 6);
-		graph.addEdge(5, 2);
-		graph.addEdge(6, 0);
-		System.out.println(graph.findMotherVertex());
+		List<List<Integer>> adjList = graph.adjList;
+		graph.addEdge(adjList, 0, 1);
+		graph.addEdge(adjList, 0, 2);
+		graph.addEdge(adjList, 1, 3);
+		graph.addEdge(adjList, 4, 1);
+		graph.addEdge(adjList, 6, 4);
+		graph.addEdge(adjList, 5, 6);
+		graph.addEdge(adjList, 5, 2);
+		graph.addEdge(adjList, 6, 0);
+		System.out.println(graph.findMotherVertex(adjList));
 	}
 }

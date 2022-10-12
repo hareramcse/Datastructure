@@ -1,31 +1,30 @@
 package com.hs.introduction;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.ArrayList;
+import java.util.List;
 
 class AdjacenyListGraph {
-	private Queue<Integer>[] adj;
+	private List<List<Integer>> adjList;
 
-	@SuppressWarnings("unchecked")
 	private AdjacenyListGraph(int noOfVertices) {
-		adj = new LinkedList[noOfVertices];
+		adjList = new ArrayList<>();
 		for (int i = 0; i < noOfVertices; i++) {
-			adj[i] = new LinkedList<>();
+			adjList.add(new ArrayList<>());
 		}
 	}
 
 	// A utility function to add an edge in an undirected graph
-	private void addEdge(Queue<Integer>[] adj, int source, int destination) {
-		adj[source].add(destination);
-		adj[destination].add(source);
+	private void addEdge(List<List<Integer>> adjList, int source, int destination) {
+		adjList.get(source).add(destination);
+		adjList.get(destination).add(source);
 	}
 
 	// A utility function to print the adjacency list representation of graph
-	private void printGraph(Queue<Integer>[] adj) {
-		for (Queue<Integer> queue : adj) {
-			System.out.println("Adjacency list of vertex " + queue.peek());
+	private void printGraph(List<List<Integer>> adjList) {
+		for (List<Integer> list : adjList) {
+			System.out.println("Adjacency list of vertex " + list.get(0));
 			System.out.print("head");
-			for (Integer adjNode : queue) {
+			for (Integer adjNode : list) {
 				System.out.print(" -> " + adjNode);
 			}
 			System.out.println();
@@ -34,14 +33,14 @@ class AdjacenyListGraph {
 
 	public static void main(String[] args) {
 		AdjacenyListGraph graph = new AdjacenyListGraph(5);
-		Queue<Integer>[] adj = graph.adj;
-		graph.addEdge(adj, 0, 1);
-		graph.addEdge(adj, 0, 4);
-		graph.addEdge(adj, 1, 2);
-		graph.addEdge(adj, 1, 3);
-		graph.addEdge(adj, 1, 4);
-		graph.addEdge(adj, 2, 3);
-		graph.addEdge(adj, 3, 4);
-		graph.printGraph(adj);
+		List<List<Integer>> adjList = graph.adjList;
+		graph.addEdge(adjList, 0, 1);
+		graph.addEdge(adjList, 0, 4);
+		graph.addEdge(adjList, 1, 2);
+		graph.addEdge(adjList, 1, 3);
+		graph.addEdge(adjList, 1, 4);
+		graph.addEdge(adjList, 2, 3);
+		graph.addEdge(adjList, 3, 4);
+		graph.printGraph(adjList);
 	}
 }

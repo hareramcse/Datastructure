@@ -1,63 +1,60 @@
 package com.hs.topologicalsort;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 
 public class AllTopologicalSortOfDirectedAcyclicGraph {
-	private int noOfVertices;
-	private Queue<Integer>[] adj;
+	private List<List<Integer>> adjList;
 
-	@SuppressWarnings("unchecked")
-	public AllTopologicalSortOfDirectedAcyclicGraph(int noOfVertices) {
-		this.noOfVertices = noOfVertices;
-		adj = new LinkedList[noOfVertices];
+	private AllTopologicalSortOfDirectedAcyclicGraph(int noOfVertices) {
+		adjList = new ArrayList<>();
 		for (int i = 0; i < noOfVertices; i++) {
-			adj[i] = new LinkedList<>();
+			adjList.add(new ArrayList<>());
 		}
 	}
 
-	public void addEdge(int source, int destination) {
-		adj[source].add(destination);
+	// A utility function to add an edge in an undirected graph
+	private void addEdge(List<List<Integer>> adjList, int source, int destination) {
+		adjList.get(source).add(destination);
 	}
 
-	public void allTopologicalSorts(Queue<Integer>[] adj) {
+	public void allTopologicalSorts(List<List<Integer>> adjList, int noOfVertices) {
 		boolean[] visited = new boolean[noOfVertices];
 		int[] indegree = new int[noOfVertices];
 		for (int i = 0; i < noOfVertices; i++) {
-			for (int j : adj[i]) {
+			for (int j : adjList.get(i)) {
 				indegree[j]++;
 			}
 		}
 
 		List<Integer> result = new ArrayList<>();
-		allTopologicalSortsUtil(visited, indegree, result);
+		allTopologicalSortsUtil(visited, indegree, result, adjList, noOfVertices);
 	}
 
-	private void allTopologicalSortsUtil(boolean[] visited, int[] indegree, List<Integer> result) {
+	private void allTopologicalSortsUtil(boolean[] visited, int[] indegree, List<Integer> result,
+			List<List<Integer>> adjList, int noOfVertices) {
 		// To indicate whether all topological are found or not
 		boolean flag = false;
 		for (int i = 0; i < noOfVertices; i++) {
 			if (!visited[i] && indegree[i] == 0) {
 				visited[i] = true;
 				result.add(i);
-				for (int adjacent : adj[i]) {
+				for (int adjacent : adjList.get(i)) {
 					indegree[adjacent]--;
 				}
-				allTopologicalSortsUtil(visited, indegree, result);
+				allTopologicalSortsUtil(visited, indegree, result, adjList, noOfVertices);
 
-				//backtracks
+				// backtracks
 				visited[i] = false;
 				result.remove(result.size() - 1);
-				for (int adjacent : adj[i]) {
+				for (int adjacent : adjList.get(i)) {
 					indegree[adjacent]++;
 				}
 
 				flag = true;
 			}
 		}
-		
+
 		// We reach here if all vertices are visited. So we print the solution
 		if (!flag) {
 			result.forEach(i -> System.out.print(i + " "));
@@ -67,13 +64,14 @@ public class AllTopologicalSortOfDirectedAcyclicGraph {
 
 	public static void main(String[] args) {
 		AllTopologicalSortOfDirectedAcyclicGraph graph = new AllTopologicalSortOfDirectedAcyclicGraph(6);
-		graph.addEdge(5, 2);
-		graph.addEdge(5, 0);
-		graph.addEdge(4, 0);
-		graph.addEdge(4, 1);
-		graph.addEdge(2, 3);
-		graph.addEdge(3, 1);
+		List<List<Integer>> adjList = graph.adjList;
+		graph.addEdge(adjList, 5, 2);
+		graph.addEdge(adjList, 5, 0);
+		graph.addEdge(adjList, 4, 0);
+		graph.addEdge(adjList, 4, 1);
+		graph.addEdge(adjList, 2, 3);
+		graph.addEdge(adjList, 3, 1);
 		System.out.println("All Topological sorts");
-		graph.allTopologicalSorts(graph.adj);
+		graph.allTopologicalSorts(adjList, 6);
 	}
 }

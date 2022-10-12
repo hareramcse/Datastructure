@@ -1,61 +1,60 @@
 package com.hs.introduction;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 
 public class DFSTraversal {
-	private Queue<Integer> adj[];
+	private List<List<Integer>> adjList;
 
-	@SuppressWarnings("unchecked")
-	DFSTraversal(int noOfVertices) {
-		adj = new LinkedList[noOfVertices];
-		for (int i = 0; i < noOfVertices; i++)
-			adj[i] = new LinkedList<>();
+	private DFSTraversal(int noOfVertices) {
+		adjList = new ArrayList<>();
+		for (int i = 0; i < noOfVertices; i++) {
+			adjList.add(new ArrayList<>());
+		}
 	}
 
-	private void addEdge(Queue<Integer>[] adj, int source, int destination) {
-		adj[source].add(destination);
-		adj[destination].add(source);
+	// A utility function to add an edge in an undirected graph
+	private void addEdge(List<List<Integer>> adjList, int source, int destination) {
+		adjList.get(source).add(destination);
+		adjList.get(destination).add(source);
 	}
 
-	private List<Integer> dfsTraversl(Queue<Integer>[] adj, int noOfVertices, int source) {
+	private List<Integer> dfsTraversl(List<List<Integer>> adjList, int noOfVertices, int source) {
 		List<Integer> ans = new ArrayList<>();
 		boolean visited[] = new boolean[noOfVertices];
 		for (int i = 0; i < noOfVertices; i++) {
 			if (!visited[i]) {
 				// Call the recursive helper function to print DFS traversal
-				DFS(i, visited, ans);
+				DFS(i, visited, adjList, ans);
 			}
 		}
 		return ans;
 	}
 
-	private void DFS(int source, boolean visited[], List<Integer> ans) {
+	private void DFS(int source, boolean visited[], List<List<Integer>> adjList, List<Integer> ans) {
 		// Mark the current node as visited and print it
 		visited[source] = true;
 		ans.add(source);
 
 		// Recur for all the vertices adjacent to this vertex
-		for (int adjNode : adj[source]) {
+		for (int adjNode : adjList.get(source)) {
 			if (!visited[adjNode])
-				DFS(adjNode, visited, ans);
+				DFS(adjNode, visited, adjList, ans);
 		}
 	}
 
 	public static void main(String args[]) {
 		int noOfVertices = 4;
 		DFSTraversal graph = new DFSTraversal(noOfVertices);
-		Queue<Integer>[] adj = graph.adj;
-		graph.addEdge(adj, 0, 1);
-		graph.addEdge(adj, 0, 2);
-		graph.addEdge(adj, 1, 2);
-		graph.addEdge(adj, 2, 0);
-		graph.addEdge(adj, 2, 3);
-		graph.addEdge(adj, 3, 3);
+		List<List<Integer>> adjList = graph.adjList;
+		graph.addEdge(adjList, 0, 1);
+		graph.addEdge(adjList, 0, 2);
+		graph.addEdge(adjList, 1, 2);
+		graph.addEdge(adjList, 2, 0);
+		graph.addEdge(adjList, 2, 3);
+		graph.addEdge(adjList, 3, 3);
 		System.out.println("Following is Depth First Traversal starting from vertex 2");
-		List<Integer> result = graph.dfsTraversl(adj, noOfVertices, 2);
+		List<Integer> result = graph.dfsTraversl(adjList, noOfVertices, 2);
 		System.out.println(result);
 	}
 }

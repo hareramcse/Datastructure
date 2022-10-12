@@ -6,24 +6,25 @@ import java.util.List;
 import java.util.Queue;
 
 public class KahnAlgoForTopologicalSorting {
-	private Queue<Integer>[] adj;
+	private List<List<Integer>> adjList;
 
-	@SuppressWarnings("unchecked")
-	public KahnAlgoForTopologicalSorting(int noOfVertices) {
-		adj = new LinkedList[noOfVertices];
-		for (int i = 0; i < noOfVertices; i++)
-			adj[i] = new LinkedList<>();
+	private KahnAlgoForTopologicalSorting(int noOfVertices) {
+		adjList = new ArrayList<>();
+		for (int i = 0; i < noOfVertices; i++) {
+			adjList.add(new ArrayList<>());
+		}
 	}
 
-	public void addEdge(Queue<Integer>[] adj, int source, int destination) {
-		adj[source].add(destination);
+	// A utility function to add an edge in an undirected graph
+	private void addEdge(List<List<Integer>> adjList, int source, int destination) {
+		adjList.get(source).add(destination);
 	}
 
 	// prints a Topological Sort of the complete graph
-	public void topologicalSort(Queue<Integer>[] adj, int noOfVertices) {
+	public void topologicalSort(List<List<Integer>> adjList, int noOfVertices) {
 		int indegree[] = new int[noOfVertices];
 		for (int i = 0; i < noOfVertices; i++) {
-			for (int j : adj[i]) {
+			for (int j : adjList.get(i)) {
 				indegree[j]++;
 			}
 		}
@@ -45,7 +46,7 @@ public class KahnAlgoForTopologicalSorting {
 			int u = queue.poll();
 			result.add(u);
 
-			for (int currentAdjNode : adj[u]) {
+			for (int currentAdjNode : adjList.get(u)) {
 				indegree[currentAdjNode]--;
 				if (indegree[currentAdjNode] == 0) {
 					queue.add(currentAdjNode);
@@ -68,14 +69,14 @@ public class KahnAlgoForTopologicalSorting {
 	public static void main(String args[]) {
 		int noOfVertices = 6;
 		KahnAlgoForTopologicalSorting g = new KahnAlgoForTopologicalSorting(noOfVertices);
-		Queue<Integer>[] adj = g.adj;
-		g.addEdge(adj, 5, 2);
-		g.addEdge(adj, 5, 0);
-		g.addEdge(adj, 4, 0);
-		g.addEdge(adj, 4, 1);
-		g.addEdge(adj, 2, 3);
-		g.addEdge(adj, 3, 1);
+		List<List<Integer>> adjList = g.adjList;
+		g.addEdge(adjList, 5, 2);
+		g.addEdge(adjList, 5, 0);
+		g.addEdge(adjList, 4, 0);
+		g.addEdge(adjList, 4, 1);
+		g.addEdge(adjList, 2, 3);
+		g.addEdge(adjList, 3, 1);
 		System.out.println("Following is a Topological Sort");
-		g.topologicalSort(adj, noOfVertices);
+		g.topologicalSort(adjList, noOfVertices);
 	}
 }

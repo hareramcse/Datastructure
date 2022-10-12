@@ -1,10 +1,13 @@
 package com.hs.leetcode.medium;
 
 public class Pair {
-	int x;
-    int y;
-    public Pair(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
+	int row;
+	int col;
+	int time;
+
+	public Pair(int row, int col, int time) {
+		this.row = row;
+		this.col = col;
+		this.time = time;
+	}
 }
