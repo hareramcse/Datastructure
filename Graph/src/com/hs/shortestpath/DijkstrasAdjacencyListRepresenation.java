@@ -1,107 +1,75 @@
 package com.hs.shortestpath;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-import com.hs.mst.Edge;
-
 public class DijkstrasAdjacencyListRepresenation {
-	private int noOfVertices;
-	private Queue<Edge> adj[];
 
-	@SuppressWarnings("unchecked")
-	DijkstrasAdjacencyListRepresenation(int noOfVertices) {
-		this.noOfVertices = noOfVertices;
-		adj = new LinkedList[noOfVertices];
-		for (int i = 0; i < noOfVertices; i++) {
-			adj[i] = new LinkedList<>();
-		}
-	}
-
-	private void addEdge(int source, int destination, int weight) {
-		Edge edge = new Edge(source, destination, weight);
-		adj[source].add(edge);
-
-		edge = new Edge(destination, source, weight);
-		adj[destination].add(edge);
+	private void addEdge(List<List<Node>> adjList, int source, int destination, int weight) {
+		Node node = new Node(weight, destination);
+		adjList.get(source).add(node);
+		node = new Node(weight, source);
+		adjList.get(destination).add(node);
 	}
 
 	// Function to find the shortest distance of all the vertices from the source
-	private int[] dijkstra(Queue<Edge>[] adj, int source) {
-		int[] distance = new int[noOfVertices];
-		for (int i = 0; i < noOfVertices; i++) {
-			distance[i] = Integer.MAX_VALUE;
+	private int[] dijkstra(int V, int source, List<List<Node>> adjList) {
+		int[] dist = new int[V];
+		for (int i = 0; i < V; i++) {
+			dist[i] = Integer.MAX_VALUE;
 		}
-		
-		distance[source] = 0;
-		Queue<Edge> pq = new PriorityQueue<>();
-		pq.add(new Edge());
 
-		while (pq.size() > 0) {
-			Edge minWeightEdge = pq.poll();
+		Queue<Node> pq = new PriorityQueue<>((x, y) -> x.distance - y.distance);
+		dist[source] = 0;
+		pq.add(new Node(0, source));
 
-			for (Edge adjEdge : adj[minWeightEdge.destination]) {
-				if (distance[minWeightEdge.destination] + adjEdge.weight < distance[adjEdge.destination]) {
-					distance[adjEdge.destination] = distance[minWeightEdge.destination] + adjEdge.weight;
-					pq.add(new Edge(adjEdge.source, adjEdge.destination, distance[adjEdge.destination]));
+		while (!pq.isEmpty()) {
+			int distance = pq.peek().distance;
+			int node = pq.peek().node;
+			pq.remove();
+
+			for (Node it : adjList.get(node)) {
+				int edgeWeight = it.distance;
+				int adjNode = it.node;
+
+				if (distance + edgeWeight < dist[adjNode]) {
+					dist[adjNode] = distance + edgeWeight;
+					pq.add(new Node(dist[adjNode], adjNode));
 				}
 			}
 		}
-		return distance;
+		return dist;
 	}
 
 	public static void main(String[] args) {
-
-		DijkstrasAdjacencyListRepresenation dij = new DijkstrasAdjacencyListRepresenation(9);
-
-		dij.addEdge(0, 1, 4);
-		dij.addEdge(1, 0, 4);
-
-		dij.addEdge(0, 7, 8);
-		dij.addEdge(7, 0, 8);
-
-		dij.addEdge(1, 2, 8);
-		dij.addEdge(2, 1, 8);
-
-		dij.addEdge(1, 7, 11);
-		dij.addEdge(7, 1, 11);
-
-		dij.addEdge(2, 3, 7);
-		dij.addEdge(3, 2, 7);
-
-		dij.addEdge(2, 8, 2);
-		dij.addEdge(8, 2, 2);
-
-		dij.addEdge(2, 5, 4);
-		dij.addEdge(5, 2, 4);
-
-		dij.addEdge(3, 4, 9);
-		dij.addEdge(4, 3, 9);
-
-		dij.addEdge(3, 5, 14);
-		dij.addEdge(5, 3, 14);
-
-		dij.addEdge(4, 5, 10);
-		dij.addEdge(5, 4, 10);
-
-		dij.addEdge(5, 6, 2);
-		dij.addEdge(6, 5, 2);
-
-		dij.addEdge(6, 7, 1);
-		dij.addEdge(7, 6, 1);
-
-		dij.addEdge(6, 8, 6);
-		dij.addEdge(8, 6, 6);
-
-		dij.addEdge(7, 8, 7);
-		dij.addEdge(8, 7, 7);
+		DijkstrasAdjacencyListRepresenation dij = new DijkstrasAdjacencyListRepresenation();
+		List<List<Node>> adjList = new ArrayList<>();
+		int V = 9;
+		for (int i = 0; i < V; i++) {
+			adjList.add(new ArrayList<>());
+		}
+		dij.addEdge(adjList, 0, 1, 4);
+		dij.addEdge(adjList, 0, 7, 8);
+		dij.addEdge(adjList, 1, 2, 8);
+		dij.addEdge(adjList, 1, 7, 11);
+		dij.addEdge(adjList, 2, 3, 7);
+		dij.addEdge(adjList, 2, 8, 2);
+		dij.addEdge(adjList, 2, 5, 4);
+		dij.addEdge(adjList, 3, 4, 9);
+		dij.addEdge(adjList, 3, 5, 14);
+		dij.addEdge(adjList, 4, 5, 10);
+		dij.addEdge(adjList, 5, 6, 2);
+		dij.addEdge(adjList, 6, 7, 1);
+		dij.addEdge(adjList, 6, 8, 6);
+		dij.addEdge(adjList, 7, 8, 7);
 
 		int source = 0;
-		int[] distance = dij.dijkstra(dij.adj, source);
+		int[] distance = dij.dijkstra(V, source, adjList);
 
 		System.out.println("Vertex " + " Distance from Source");
-		for (int i = 0; i < dij.noOfVertices; i++) {
+		for (int i = 0; i < V; i++) {
 			System.out.println(i + "           " + distance[i]);
 		}
 	}

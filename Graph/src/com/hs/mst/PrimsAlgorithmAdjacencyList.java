@@ -1,40 +1,28 @@
 package com.hs.mst;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class PrimsAlgorithmAdjacencyList {
-	private int noOfVertices;
-	private Queue<Edge>[] adj;
 
-	@SuppressWarnings("unchecked")
-	PrimsAlgorithmAdjacencyList(int noOfVertices) {
-		this.noOfVertices = noOfVertices;
-		adj = new LinkedList[noOfVertices];
-
-		// initialize all vertex's weight with infinity
-		for (int i = 0; i < noOfVertices; i++) {
-			adj[i] = new LinkedList<Edge>();
-		}
-	}
-
-	// method to create an adjancy list
-	private void addEdge(int source, int destination, int weight) {
+	// method to add edge
+	private void addEdge(List<List<Edge>> adjList, int source, int destination, int weight) {
 		Edge edge = new Edge(source, destination, weight);
-		adj[source].add(edge);
+		adjList.get(source).add(edge);
 
 		edge = new Edge(destination, source, weight);
-		adj[destination].add(edge);
+		adjList.get(destination).add(edge);
 	}
 
-	private void primsMST(Queue<Edge>[] adj) {
-		Edge[] edge = new Edge[noOfVertices];
-		boolean[] visited = new boolean[noOfVertices];
-		int[] parent = new int[noOfVertices];
+	private void primsMST(int V, List<List<Edge>> adjList) {
+		Edge[] edge = new Edge[V];
+		boolean[] visited = new boolean[V];
+		int[] parent = new int[V];
 
 		// initialize all the edge weight to infinity
-		for (int i = 0; i < noOfVertices; i++) {
+		for (int i = 0; i < V; i++) {
 			edge[i] = new Edge();
 			edge[i].destination = i;
 			edge[i].weight = Integer.MAX_VALUE;
@@ -48,8 +36,8 @@ public class PrimsAlgorithmAdjacencyList {
 		// mark the source vertex as visited
 		visited[0] = true;
 
-		Queue<Edge> pq = new PriorityQueue<>(noOfVertices);
-		for (int i = 0; i < noOfVertices; i++) {
+		Queue<Edge> pq = new PriorityQueue<>(V);
+		for (int i = 0; i < V; i++) {
 			pq.add(edge[i]);
 		}
 
@@ -61,7 +49,7 @@ public class PrimsAlgorithmAdjacencyList {
 			visited[minWeightEdge.destination] = true;
 
 			// update the weight and parent array
-			for (Edge adjEdge : adj[minWeightEdge.destination]) {
+			for (Edge adjEdge : adjList.get(minWeightEdge.destination)) {
 				if (visited[adjEdge.destination] == false && adjEdge.weight < edge[adjEdge.destination].weight) {
 					pq.remove(edge[adjEdge.destination]);
 					edge[adjEdge.destination].weight = adjEdge.weight;
@@ -72,26 +60,31 @@ public class PrimsAlgorithmAdjacencyList {
 		}
 
 		System.out.println("Edge \tWeight ");
-		for (int i = 1; i < noOfVertices; i++)
+		for (int i = 1; i < V; i++)
 			System.out.println(parent[i] + " " + "-" + " " + i + "\t" + edge[i].weight);
 	}
 
 	public static void main(String[] args) {
-		PrimsAlgorithmAdjacencyList graph = new PrimsAlgorithmAdjacencyList(9);
-		graph.addEdge(0, 1, 4);
-		graph.addEdge(0, 7, 8);
-		graph.addEdge(1, 2, 8);
-		graph.addEdge(1, 7, 11);
-		graph.addEdge(2, 3, 7);
-		graph.addEdge(2, 8, 2);
-		graph.addEdge(2, 5, 4);
-		graph.addEdge(3, 4, 9);
-		graph.addEdge(3, 5, 14);
-		graph.addEdge(4, 5, 10);
-		graph.addEdge(5, 6, 2);
-		graph.addEdge(6, 7, 1);
-		graph.addEdge(6, 8, 6);
-		graph.addEdge(7, 8, 7);
-		graph.primsMST(graph.adj);
+		PrimsAlgorithmAdjacencyList graph = new PrimsAlgorithmAdjacencyList();
+		List<List<Edge>> adjList = new ArrayList<>();
+		int V = 9;
+		for (int i = 0; i < V; i++) {
+			adjList.add(new ArrayList<>());
+		}
+		graph.addEdge(adjList, 0, 1, 4);
+		graph.addEdge(adjList, 0, 7, 8);
+		graph.addEdge(adjList, 1, 2, 8);
+		graph.addEdge(adjList, 1, 7, 11);
+		graph.addEdge(adjList, 2, 3, 7);
+		graph.addEdge(adjList, 2, 8, 2);
+		graph.addEdge(adjList, 2, 5, 4);
+		graph.addEdge(adjList, 3, 4, 9);
+		graph.addEdge(adjList, 3, 5, 14);
+		graph.addEdge(adjList, 4, 5, 10);
+		graph.addEdge(adjList, 5, 6, 2);
+		graph.addEdge(adjList, 6, 7, 1);
+		graph.addEdge(adjList, 6, 8, 6);
+		graph.addEdge(adjList, 7, 8, 7);
+		graph.primsMST(V, adjList);
 	}
 }

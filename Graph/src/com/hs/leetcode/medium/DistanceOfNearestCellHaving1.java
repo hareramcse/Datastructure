@@ -11,13 +11,13 @@ public class DistanceOfNearestCellHaving1 {
 		int visited[][] = new int[n][m];
 		int dist[][] = new int[n][m];
 		// <coordinates, steps>
-		Queue<Pair> queue = new LinkedList<Pair>();
+		Queue<Tuple> queue = new LinkedList<>();
 		// traverse the matrix
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < m; j++) {
 				// start BFS if cell contains 1
 				if (mat[i][j] == 1) {
-					queue.add(new Pair(i, j, 0));
+					queue.add(new Tuple(i, j, 0));
 					visited[i][j] = 1;
 				} else {
 					// mark unvisted
@@ -32,9 +32,9 @@ public class DistanceOfNearestCellHaving1 {
 		// n x m x 4
 		// traverse till queue becomes empty
 		while (!queue.isEmpty()) {
-			int row = queue.peek().row;
-			int col = queue.peek().col;
-			int steps = queue.peek().time;
+			int row = queue.peek().second;
+			int col = queue.peek().third;
+			int steps = queue.peek().first;
 			queue.remove();
 			dist[row][col] = steps;
 			// for all 4 neighbours
@@ -44,7 +44,7 @@ public class DistanceOfNearestCellHaving1 {
 				// check for valid unvisited cell
 				if (nrow >= 0 && nrow < n && ncol >= 0 && ncol < m && visited[nrow][ncol] == 0) {
 					visited[nrow][ncol] = 1;
-					queue.add(new Pair(nrow, ncol, steps + 1));
+					queue.add(new Tuple(nrow, ncol, steps + 1));
 				}
 			}
 		}

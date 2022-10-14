@@ -9,7 +9,7 @@ public class RottingOranges {
 		int n = grid.length;
 		int m = grid[0].length;
 		// n x m
-		Queue<Pair> queue = new LinkedList<>();
+		Queue<Tuple> queue = new LinkedList<>();
 		// n x m
 		int[][] visited = new int[n][m];
 		int count = 0;
@@ -18,7 +18,7 @@ public class RottingOranges {
 			for (int j = 0; j < m; j++) {
 				// if cell contains rotten orange
 				if (grid[i][j] == 2) {
-					queue.add(new Pair(i, j, 0));
+					queue.add(new Tuple(i, j, 0));
 					// mark as visited (rotten) in visited array
 					visited[i][j] = 2;
 				}
@@ -41,9 +41,9 @@ public class RottingOranges {
 
 		// until the queue becomes empty
 		while (!queue.isEmpty()) {
-			int row = queue.peek().row;
-			int col = queue.peek().col;
-			int time = queue.peek().time;
+			int row = queue.peek().first;
+			int col = queue.peek().second;
+			int time = queue.peek().third;
 			tm = Math.max(tm, time);
 			queue.remove();
 			// exactly 4 neighbours
@@ -54,7 +54,7 @@ public class RottingOranges {
 				if (nrow >= 0 && nrow < n && ncol >= 0 && ncol < m && visited[nrow][ncol] == 0
 						&& grid[nrow][ncol] == 1) {
 					// push in queue with timer increased
-					queue.add(new Pair(nrow, ncol, time + 1));
+					queue.add(new Tuple(nrow, ncol, time + 1));
 					// mark as rotten
 					visited[nrow][ncol] = 2;
 					cnt++;

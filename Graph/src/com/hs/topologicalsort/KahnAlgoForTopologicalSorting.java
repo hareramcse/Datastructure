@@ -46,10 +46,10 @@ public class KahnAlgoForTopologicalSorting {
 			int u = queue.poll();
 			result.add(u);
 
-			for (int currentAdjNode : adjList.get(u)) {
-				indegree[currentAdjNode]--;
-				if (indegree[currentAdjNode] == 0) {
-					queue.add(currentAdjNode);
+			for (int adjNode : adjList.get(u)) {
+				indegree[adjNode]--;
+				if (indegree[adjNode] == 0) {
+					queue.add(adjNode);
 				}
 			}
 			count++;

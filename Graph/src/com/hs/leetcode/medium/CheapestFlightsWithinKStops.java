@@ -1,42 +1,54 @@
 package com.hs.leetcode.medium;
 
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
-import java.util.PriorityQueue;
+import java.util.Queue;
 
-// TLE
 public class CheapestFlightsWithinKStops {
 	public int findCheapestPrice(int n, int[][] flights, int src, int dst, int K) {
-		Map<Integer, List<int[]>> map = new HashMap<>();
-		for (int[] f : flights) {
-			map.putIfAbsent(f[0], new ArrayList<>());
-			map.get(f[0]).add(new int[] { f[1], f[2] });
+		List<List<Pair>> adjList = new ArrayList<>();
+		for (int i = 0; i < n; i++) {
+			adjList.add(new ArrayList<>());
 		}
-		PriorityQueue<int[]> q = new PriorityQueue<>(new Comparator<int[]>() {
-			@Override
-			public int compare(int[] o1, int[] o2) {
-				return Integer.compare(o1[1], o2[1]);
-			}
-		});
-		q.offer(new int[] { src, 0, K });
-		while (!q.isEmpty()) {
-			int[] c = q.poll();
-			int curr = c[0];
-			int cost = c[1];
-			int stop = c[2];
-			if (curr == dst)
-				return cost;
-			if (stop >= 0) {
-				if (!map.containsKey(curr))
-					continue;
-				for (int[] next : map.get(curr)) {
-					q.add(new int[] { next[0], cost + next[1], stop - 1 });
+
+		int m = flights.length;
+		for (int i = 0; i < m; i++) {
+			adjList.get(flights[i][0]).add(new Pair(flights[i][1], flights[i][2]));
+		}
+
+		Queue<Tuple> queue = new LinkedList<>();
+		queue.add(new Tuple(0, src, 0));
+		int[] dist = new int[n];
+		for (int i = 0; i < n; i++) {
+			dist[i] = Integer.MAX_VALUE;
+		}
+
+		dist[src] = 0;
+
+		while (!queue.isEmpty()) {
+			Tuple tuple = queue.peek();
+			queue.poll();
+			int stops = tuple.first;
+			int node = tuple.second;
+			int cost = tuple.third;
+
+			if (stops > K)
+				continue;
+
+			for (Pair pair : adjList.get(node)) {
+				int adjNode = pair.first;
+				int edgeWeight = pair.second;
+
+				if (cost + edgeWeight < dist[adjNode] && stops <= K) {
+					dist[adjNode] = cost + edgeWeight;
+					queue.add(new Tuple(stops + 1, adjNode, cost + edgeWeight));
 				}
 			}
 		}
-		return -1;
+
+		if (dist[dst] == Integer.MAX_VALUE)
+			return -1;
+		return dist[dst];
 	}
 }

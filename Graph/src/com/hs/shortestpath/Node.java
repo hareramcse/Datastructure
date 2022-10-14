@@ -1,11 +1,10 @@
 package com.hs.shortestpath;
 
 public class Node {
-	public int src, dest, distance;
+	public int distance, node;
 
-	Node(int source, int destination, int dist) {
-		this.src = source;
-		this.dest = destination;
-		this.distance = dist;
+	Node(int distance, int node) {
+		this.distance = distance;
+		this.node = node;
 	}
 }

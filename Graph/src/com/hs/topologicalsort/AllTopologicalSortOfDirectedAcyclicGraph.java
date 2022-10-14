@@ -39,8 +39,8 @@ public class AllTopologicalSortOfDirectedAcyclicGraph {
 			if (!visited[i] && indegree[i] == 0) {
 				visited[i] = true;
 				result.add(i);
-				for (int adjacent : adjList.get(i)) {
-					indegree[adjacent]--;
+				for (int adjNode : adjList.get(i)) {
+					indegree[adjNode]--;
 				}
 				allTopologicalSortsUtil(visited, indegree, result, adjList, noOfVertices);
 
