@@ -5,14 +5,6 @@ import java.util.List;
 import java.util.Stack;
 
 public class TopologicalSort {
-	private List<List<Integer>> adjList;
-
-	private TopologicalSort(int noOfVertices) {
-		adjList = new ArrayList<>();
-		for (int i = 0; i < noOfVertices; i++) {
-			adjList.add(new ArrayList<>());
-		}
-	}
 
 	// A utility function to add an edge in an undirected graph
 	private void addEdge(List<List<Integer>> adjList, int source, int destination) {
@@ -20,11 +12,11 @@ public class TopologicalSort {
 	}
 
 	// The function to do Topological Sort.
-	public void topologicalSort(List<List<Integer>> adjList, int noOfVertices) {
+	public void topologicalSort(int V, List<List<Integer>> adjList) {
 		Stack<Integer> stack = new Stack<Integer>();
-		boolean visited[] = new boolean[noOfVertices];
+		boolean visited[] = new boolean[V];
 
-		for (int i = 0; i < noOfVertices; i++)
+		for (int i = 0; i < V; i++)
 			if (!visited[i])
 				DFS(i, visited, stack, adjList);
 
@@ -47,8 +39,12 @@ public class TopologicalSort {
 	}
 
 	public static void main(String args[]) {
-		TopologicalSort graph = new TopologicalSort(6);
-		List<List<Integer>> adjList = graph.adjList;
+		TopologicalSort graph = new TopologicalSort();
+		List<List<Integer>> adjList = new ArrayList<>();
+		int V = 6;
+		for (int i = 0; i < V; i++) {
+			adjList.add(new ArrayList<>());
+		}
 		graph.addEdge(adjList, 5, 2);
 		graph.addEdge(adjList, 5, 0);
 		graph.addEdge(adjList, 4, 0);
@@ -58,6 +54,6 @@ public class TopologicalSort {
 
 		System.out.println("Following is a Topological sort of the given graph");
 		// Function Call
-		graph.topologicalSort(adjList, 6);
+		graph.topologicalSort(V, adjList);
 	}
 }

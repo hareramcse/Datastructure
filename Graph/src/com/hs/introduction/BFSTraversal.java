@@ -6,14 +6,6 @@ import java.util.List;
 import java.util.Queue;
 
 public class BFSTraversal {
-	private List<List<Integer>> adjList;
-
-	private BFSTraversal(int noOfVertices) {
-		adjList = new ArrayList<>();
-		for (int i = 0; i < noOfVertices; i++) {
-			adjList.add(new ArrayList<>());
-		}
-	}
 
 	// A utility function to add an edge in an undirected graph
 	private void addEdge(List<List<Integer>> adjList, int source, int destination) {
@@ -22,9 +14,9 @@ public class BFSTraversal {
 	}
 
 	// prints BFS traversal from a given source s
-	private List<Integer> bfsTraversal(List<List<Integer>> adjList, int noOfVertices, int source) {
+	private List<Integer> bfsTraversal(int noOfVertices, int source, List<List<Integer>> adjList) {
 		List<Integer> ans = new ArrayList<>();
-		boolean visited[] = new boolean[noOfVertices];
+		boolean[] visited = new boolean[noOfVertices];
 		for (int i = 0; i < noOfVertices; i++) {
 			if (!visited[i]) {
 				BFS(i, visited, adjList, ans);
@@ -58,16 +50,19 @@ public class BFSTraversal {
 	}
 
 	public static void main(String args[]) {
-		int noOfvertices = 4;
-		BFSTraversal graph = new BFSTraversal(noOfvertices);
-		List<List<Integer>> adjList = graph.adjList;
+		BFSTraversal graph = new BFSTraversal();
+		List<List<Integer>> adjList = new ArrayList<>();
+		int V = 4;
+		for (int i = 0; i < V; i++) {
+			adjList.add(new ArrayList<>());
+		}
 		graph.addEdge(adjList, 0, 1);
 		graph.addEdge(adjList, 0, 2);
 		graph.addEdge(adjList, 1, 2);
 		graph.addEdge(adjList, 2, 0);
 		graph.addEdge(adjList, 2, 3);
 		graph.addEdge(adjList, 3, 3);
-		List<Integer> result = graph.bfsTraversal(adjList, noOfvertices, 2);
+		List<Integer> result = graph.bfsTraversal(V, 2, adjList);
 		System.out.println(result);
 	}
 }

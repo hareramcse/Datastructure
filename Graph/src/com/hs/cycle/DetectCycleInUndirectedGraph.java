@@ -4,14 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DetectCycleInUndirectedGraph {
-	private List<List<Integer>> adjList;
-
-	private DetectCycleInUndirectedGraph(int noOfVertices) {
-		adjList = new ArrayList<>();
-		for (int i = 0; i < noOfVertices; i++) {
-			adjList.add(new ArrayList<>());
-		}
-	}
 
 	// A utility function to add an edge in an undirected graph
 	private void addEdge(List<List<Integer>> adjList, int source, int destination) {
@@ -19,22 +11,25 @@ public class DetectCycleInUndirectedGraph {
 		adjList.get(destination).add(source);
 	}
 
-	public Boolean isCyclic(List<List<Integer>> adjList, int noOfVertices) {
-		boolean visited[] = new boolean[noOfVertices];
-		for (int i = 0; i < noOfVertices; i++)
-			if (!visited[i])
-				// parent of source vertex is -1
-				if (isCyclicUtil(adjList, i, visited, -1))
+	public Boolean isCyclic(int V, List<List<Integer>> adjList) {
+		boolean visited[] = new boolean[V];
+		for (int i = 0; i < V; i++) {
+			if (!visited[i]) {
+				boolean isCyclic = DFS(i, visited, -1, adjList);
+				if (isCyclic) {
 					return true;
-
+				}
+			}
+		}
 		return false;
 	}
 
-	private Boolean isCyclicUtil(List<List<Integer>> adjList, int source, boolean visited[], int parent) {
+	private Boolean DFS(int source, boolean visited[], int parent, List<List<Integer>> adjList) {
 		visited[source] = true;
 		for (int adjNode : adjList.get(source)) {
 			if (!visited[adjNode]) {
-				if (isCyclicUtil(adjList, adjNode, visited, source)) {
+				boolean isCyclic = DFS(adjNode, visited, source, adjList);
+				if (isCyclic) {
 					return true;
 				}
 			}
@@ -48,15 +43,18 @@ public class DetectCycleInUndirectedGraph {
 	}
 
 	public static void main(String args[]) {
-		int noOfVertices = 5;
-		DetectCycleInUndirectedGraph graph = new DetectCycleInUndirectedGraph(5);
-		List<List<Integer>> adjList = graph.adjList;
+		DetectCycleInUndirectedGraph graph = new DetectCycleInUndirectedGraph();
+		List<List<Integer>> adjList = new ArrayList<>();
+		int V = 5;
+		for (int i = 0; i < V; i++) {
+			adjList.add(new ArrayList<>());
+		}
 		graph.addEdge(adjList, 1, 0);
 		graph.addEdge(adjList, 0, 2);
 		graph.addEdge(adjList, 2, 1);
 		graph.addEdge(adjList, 0, 3);
 		graph.addEdge(adjList, 3, 4);
-		Boolean result = graph.isCyclic(adjList, noOfVertices);
+		Boolean result = graph.isCyclic(V, adjList);
 		System.out.println(result);
 	}
 }

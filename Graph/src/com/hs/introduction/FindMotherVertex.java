@@ -4,22 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FindMotherVertex {
-	private List<List<Integer>> adjList;
-
-	private FindMotherVertex(int noOfVertices) {
-		adjList = new ArrayList<>();
-		for (int i = 0; i < noOfVertices; i++) {
-			adjList.add(new ArrayList<>());
-		}
-	}
 
 	// A utility function to add an edge in an undirected graph
 	private void addEdge(List<List<Integer>> adjList, int source, int destination) {
 		adjList.get(source).add(destination);
 	}
 
-	private int findMotherVertex(List<List<Integer>> adjList) {
-		boolean visited[] = new boolean[adjList.size()];
+	private int findMotherVertex(int V, List<List<Integer>> adjList) {
+		boolean visited[] = new boolean[V];
 		int lastIndex = 0;
 
 		// Do a DFS traversal and find the last finished vertex
@@ -53,8 +45,12 @@ public class FindMotherVertex {
 	}
 
 	public static void main(String[] args) {
-		FindMotherVertex graph = new FindMotherVertex(7);
-		List<List<Integer>> adjList = graph.adjList;
+		FindMotherVertex graph = new FindMotherVertex();
+		List<List<Integer>> adjList = new ArrayList<>();
+		int V = 7;
+		for (int i = 0; i < V; i++) {
+			adjList.add(new ArrayList<>());
+		}
 		graph.addEdge(adjList, 0, 1);
 		graph.addEdge(adjList, 0, 2);
 		graph.addEdge(adjList, 1, 3);
@@ -63,6 +59,6 @@ public class FindMotherVertex {
 		graph.addEdge(adjList, 5, 6);
 		graph.addEdge(adjList, 5, 2);
 		graph.addEdge(adjList, 6, 0);
-		System.out.println(graph.findMotherVertex(adjList));
+		System.out.println(graph.findMotherVertex(V, adjList));
 	}
 }

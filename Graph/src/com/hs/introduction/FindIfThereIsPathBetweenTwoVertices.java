@@ -6,14 +6,6 @@ import java.util.List;
 import java.util.Queue;
 
 public class FindIfThereIsPathBetweenTwoVertices {
-	private List<List<Integer>> adjList;
-
-	private FindIfThereIsPathBetweenTwoVertices(int noOfVertices) {
-		adjList = new ArrayList<>();
-		for (int i = 0; i < noOfVertices; i++) {
-			adjList.add(new ArrayList<>());
-		}
-	}
 
 	// A utility function to add an edge in an undirected graph
 	private void addEdge(List<List<Integer>> adjList, int source, int destination) {
@@ -21,13 +13,13 @@ public class FindIfThereIsPathBetweenTwoVertices {
 	}
 
 	// prints BFS traversal from a given source
-	private Boolean isReachable(List<List<Integer>> adjList, int source, int destination) {
-		boolean visited[] = new boolean[adjList.size()];
+	private Boolean isReachable(int V, int source, int destination, List<List<Integer>> adjList) {
+		boolean visited[] = new boolean[V];
 		Queue<Integer> queue = new LinkedList<Integer>();
 		visited[source] = true;
 		queue.add(source);
 
-		while (queue.size() != 0) {
+		while (!queue.isEmpty()) {
 			source = queue.poll();
 
 			for (int adjNode : adjList.get(source)) {
@@ -44,8 +36,12 @@ public class FindIfThereIsPathBetweenTwoVertices {
 	}
 
 	public static void main(String args[]) {
-		FindIfThereIsPathBetweenTwoVertices graph = new FindIfThereIsPathBetweenTwoVertices(4);
-		List<List<Integer>> adjList = graph.adjList;
+		FindIfThereIsPathBetweenTwoVertices graph = new FindIfThereIsPathBetweenTwoVertices();
+		List<List<Integer>> adjList = new ArrayList<>();
+		int V = 4;
+		for (int i = 0; i < V; i++) {
+			adjList.add(new ArrayList<>());
+		}
 		graph.addEdge(adjList, 0, 1);
 		graph.addEdge(adjList, 0, 2);
 		graph.addEdge(adjList, 1, 2);
@@ -55,7 +51,7 @@ public class FindIfThereIsPathBetweenTwoVertices {
 
 		int source = 1;
 		int destination = 3;
-		if (graph.isReachable(graph.adjList, source, destination))
+		if (graph.isReachable(V, source, destination, adjList))
 			System.out.println("There is a path from " + source + " to " + destination);
 		else
 			System.out.println("There is no path from " + source + " to " + destination);

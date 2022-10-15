@@ -4,45 +4,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AllTopologicalSortOfDirectedAcyclicGraph {
-	private List<List<Integer>> adjList;
-
-	private AllTopologicalSortOfDirectedAcyclicGraph(int noOfVertices) {
-		adjList = new ArrayList<>();
-		for (int i = 0; i < noOfVertices; i++) {
-			adjList.add(new ArrayList<>());
-		}
-	}
 
 	// A utility function to add an edge in an undirected graph
 	private void addEdge(List<List<Integer>> adjList, int source, int destination) {
 		adjList.get(source).add(destination);
 	}
 
-	public void allTopologicalSorts(List<List<Integer>> adjList, int noOfVertices) {
-		boolean[] visited = new boolean[noOfVertices];
-		int[] indegree = new int[noOfVertices];
-		for (int i = 0; i < noOfVertices; i++) {
+	public void allTopologicalSorts(int V, List<List<Integer>> adjList) {
+		boolean[] visited = new boolean[V];
+		int[] indegree = new int[V];
+		for (int i = 0; i < V; i++) {
 			for (int j : adjList.get(i)) {
 				indegree[j]++;
 			}
 		}
 
 		List<Integer> result = new ArrayList<>();
-		allTopologicalSortsUtil(visited, indegree, result, adjList, noOfVertices);
+		allTopologicalSortsUtil(V, visited, indegree, adjList, result);
 	}
 
-	private void allTopologicalSortsUtil(boolean[] visited, int[] indegree, List<Integer> result,
-			List<List<Integer>> adjList, int noOfVertices) {
+	private void allTopologicalSortsUtil(int V, boolean[] visited, int[] indegree, List<List<Integer>> adjList,
+			List<Integer> result) {
 		// To indicate whether all topological are found or not
 		boolean flag = false;
-		for (int i = 0; i < noOfVertices; i++) {
+		for (int i = 0; i < V; i++) {
 			if (!visited[i] && indegree[i] == 0) {
 				visited[i] = true;
 				result.add(i);
 				for (int adjNode : adjList.get(i)) {
 					indegree[adjNode]--;
 				}
-				allTopologicalSortsUtil(visited, indegree, result, adjList, noOfVertices);
+				allTopologicalSortsUtil(V, visited, indegree, adjList, result);
 
 				// backtracks
 				visited[i] = false;
@@ -63,8 +55,12 @@ public class AllTopologicalSortOfDirectedAcyclicGraph {
 	}
 
 	public static void main(String[] args) {
-		AllTopologicalSortOfDirectedAcyclicGraph graph = new AllTopologicalSortOfDirectedAcyclicGraph(6);
-		List<List<Integer>> adjList = graph.adjList;
+		AllTopologicalSortOfDirectedAcyclicGraph graph = new AllTopologicalSortOfDirectedAcyclicGraph();
+		List<List<Integer>> adjList = new ArrayList<>();
+		int V = 6;
+		for (int i = 0; i < V; i++) {
+			adjList.add(new ArrayList<>());
+		}
 		graph.addEdge(adjList, 5, 2);
 		graph.addEdge(adjList, 5, 0);
 		graph.addEdge(adjList, 4, 0);
@@ -72,6 +68,6 @@ public class AllTopologicalSortOfDirectedAcyclicGraph {
 		graph.addEdge(adjList, 2, 3);
 		graph.addEdge(adjList, 3, 1);
 		System.out.println("All Topological sorts");
-		graph.allTopologicalSorts(adjList, 6);
+		graph.allTopologicalSorts(V, adjList);
 	}
 }

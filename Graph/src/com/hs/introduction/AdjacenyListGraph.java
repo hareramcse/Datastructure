@@ -4,14 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 class AdjacenyListGraph {
-	private List<List<Integer>> adjList;
-
-	private AdjacenyListGraph(int noOfVertices) {
-		adjList = new ArrayList<>();
-		for (int i = 0; i < noOfVertices; i++) {
-			adjList.add(new ArrayList<>());
-		}
-	}
 
 	// A utility function to add an edge in an undirected graph
 	private void addEdge(List<List<Integer>> adjList, int source, int destination) {
@@ -32,8 +24,12 @@ class AdjacenyListGraph {
 	}
 
 	public static void main(String[] args) {
-		AdjacenyListGraph graph = new AdjacenyListGraph(5);
-		List<List<Integer>> adjList = graph.adjList;
+		AdjacenyListGraph graph = new AdjacenyListGraph();
+		int V = 5;
+		List<List<Integer>> adjList = new ArrayList<>();
+		for (int i = 0; i < V; i++) {
+			adjList.add(new ArrayList<>());
+		}
 		graph.addEdge(adjList, 0, 1);
 		graph.addEdge(adjList, 0, 4);
 		graph.addEdge(adjList, 1, 2);

@@ -5,14 +5,6 @@ import java.util.List;
 import java.util.Stack;
 
 public class LongestPathInDAG {
-	private List<List<Edge>> adjList;
-
-	private LongestPathInDAG(int noOfVertices) {
-		adjList = new ArrayList<>();
-		for (int i = 0; i < noOfVertices; i++) {
-			adjList.add(new ArrayList<>());
-		}
-	}
 
 	// A utility function to add an edge in an undirected graph
 	private void addEdge(List<List<Edge>> adjList, int source, int destination, int weight) {
@@ -20,17 +12,17 @@ public class LongestPathInDAG {
 		adjList.get(source).add(edge);
 	}
 
-	private void longestPath(List<List<Edge>> adjList, int noOfVertices, int source) {
+	private void longestPath(int V, int source, List<List<Edge>> adjList) {
 		// in stack we have topologically sorted vertex.
 		Stack<Integer> stack = new Stack<Integer>();
-		boolean visited[] = new boolean[noOfVertices];
+		boolean visited[] = new boolean[V];
 
-		for (int i = 0; i < noOfVertices; i++)
+		for (int i = 0; i < V; i++)
 			if (!visited[i])
-				DFS(i, visited, stack);
+				DFS(i, visited, stack, adjList);
 
-		int[] distance = new int[noOfVertices];
-		for (int i = 0; i < noOfVertices; i++) {
+		int[] distance = new int[V];
+		for (int i = 0; i < V; i++) {
 			distance[i] = Integer.MIN_VALUE;
 		}
 		distance[source] = 0;
@@ -51,26 +43,29 @@ public class LongestPathInDAG {
 		}
 
 		// Print the calculated longest distances
-		for (int i = 0; i < noOfVertices; i++)
+		for (int i = 0; i < V; i++)
 			if (distance[i] == Integer.MIN_VALUE)
 				System.out.print("INF ");
 			else
 				System.out.print(distance[i] + " ");
 	}
 
-	private void DFS(int source, boolean visited[], Stack<Integer> stack) {
+	private void DFS(int source, boolean visited[], Stack<Integer> stack, List<List<Edge>> adjList) {
 		visited[source] = true;
 		for (Edge node : adjList.get(source)) {
 			if (!visited[node.destination])
-				DFS(node.destination, visited, stack);
+				DFS(node.destination, visited, stack, adjList);
 		}
 		stack.push(source);
 	}
 
 	public static void main(String args[]) {
-		int noOfVertices = 6;
-		LongestPathInDAG graph = new LongestPathInDAG(6);
-		List<List<Edge>> adjList = graph.adjList;
+		LongestPathInDAG graph = new LongestPathInDAG();
+		List<List<Edge>> adjList = new ArrayList<>();
+		int V = 6;
+		for (int i = 0; i < V; i++) {
+			adjList.add(new ArrayList<>());
+		}
 		graph.addEdge(adjList, 0, 1, 5);
 		graph.addEdge(adjList, 0, 2, 3);
 		graph.addEdge(adjList, 1, 3, 6);
@@ -84,6 +79,6 @@ public class LongestPathInDAG {
 
 		int source = 1;
 		System.out.println("Following are longest distances from source vertex " + source);
-		graph.longestPath(adjList, noOfVertices, source);
+		graph.longestPath(V, source, adjList);
 	}
 }
