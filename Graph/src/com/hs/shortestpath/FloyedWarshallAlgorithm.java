@@ -3,7 +3,7 @@ package com.hs.shortestpath;
 import java.util.Arrays;
 
 public class FloyedWarshallAlgorithm {
-	public void shortestDistance(int[][] matrix) {
+	public void floyedWarshall(int[][] matrix) {
 		int n = matrix.length;
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < n; j++) {
@@ -36,7 +36,7 @@ public class FloyedWarshallAlgorithm {
 	public static void main(String[] args) {
 		FloyedWarshallAlgorithm graph = new FloyedWarshallAlgorithm();
 		int[][] matrix = { { 0, 5, -1, 10 }, { -1, 0, 3, -1 }, { -1, -1, 0, 1 }, { -1, -1, -1, 0 } };
-		graph.shortestDistance(matrix);
+		graph.floyedWarshall(matrix);
 		for (int i = 0; i < matrix.length; i++) {
 			System.out.println(Arrays.toString(matrix[i]));
 		}

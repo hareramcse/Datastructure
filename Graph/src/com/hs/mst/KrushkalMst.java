@@ -6,28 +6,21 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class KrushkalMst {
-	private int noOfVertices;
-	private List<Edge> edges;
 
-	KrushkalMst(int noOfVertices) {
-		this.noOfVertices = noOfVertices;
-		edges = new ArrayList<>();
-	}
-
-	private void addEdge(int source, int destination, int weight) {
+	private void addEdge(List<Edge> edges, int source, int destination, int weight) {
 		Edge edge = new Edge(source, destination, weight);
 		edges.add(edge);
 	}
 
-	private void kruskalMST(List<Edge> edges, int noOfVertices) {
+	private void kruskalMST(int V, List<Edge> edges) {
 		List<Edge> mst = new ArrayList<>();
 		Queue<Edge> pq = new PriorityQueue<>(edges.size());
 
 		// add all the edges to priority queue
 		pq.addAll(edges);
 
-		int[] parent = new int[noOfVertices];
-		for (int i = 0; i < noOfVertices; i++) {
+		int[] parent = new int[V];
+		for (int i = 0; i < V; i++) {
 			parent[i] = i;
 		}
 
@@ -76,13 +69,14 @@ public class KrushkalMst {
 	}
 
 	public static void main(String[] args) {
-		int n = 4;
-		KrushkalMst graph = new KrushkalMst(n);
-		graph.addEdge(0, 1, 10);
-		graph.addEdge(0, 2, 6);
-		graph.addEdge(0, 3, 5);
-		graph.addEdge(1, 3, 15);
-		graph.addEdge(2, 3, 4);
-		graph.kruskalMST(graph.edges, graph.noOfVertices);
+		KrushkalMst graph = new KrushkalMst();
+		List<Edge> edges = new ArrayList<>();
+		int V = 4;
+		graph.addEdge(edges, 0, 1, 10);
+		graph.addEdge(edges, 0, 2, 6);
+		graph.addEdge(edges, 0, 3, 5);
+		graph.addEdge(edges, 1, 3, 15);
+		graph.addEdge(edges, 2, 3, 4);
+		graph.kruskalMST(V, edges);
 	}
 }

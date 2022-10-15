@@ -58,6 +58,7 @@ public class DijkstrasShortestPath {
 				{ 0, 0, 0, 0, 0, 2, 0, 1, 6 }, { 8, 11, 0, 0, 0, 0, 1, 0, 7 }, { 0, 0, 2, 0, 0, 0, 6, 7, 0 } };
 		DijkstrasShortestPath dij = new DijkstrasShortestPath();
 		int V = matrix.length;
-		dij.dijkstra(V, 0, matrix);
+		int source = 0;
+		dij.dijkstra(V, source, matrix);
 	}
 }

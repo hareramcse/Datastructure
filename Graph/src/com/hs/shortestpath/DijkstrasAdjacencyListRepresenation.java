@@ -33,7 +33,7 @@ public class DijkstrasAdjacencyListRepresenation {
 			for (Node it : adjList.get(node)) {
 				int edgeWeight = it.distance;
 				int adjNode = it.node;
-
+				
 				if (distance + edgeWeight < dist[adjNode]) {
 					dist[adjNode] = distance + edgeWeight;
 					pq.add(new Node(dist[adjNode], adjNode));

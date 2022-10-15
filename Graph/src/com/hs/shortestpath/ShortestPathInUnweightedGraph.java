@@ -1,42 +1,31 @@
 package com.hs.shortestpath;
 
-import java.util.Iterator;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 public class ShortestPathInUnweightedGraph {
-	private int noOfVertices;
-	private Queue<Integer>[] adj;
-
-	@SuppressWarnings("unchecked")
-	ShortestPathInUnweightedGraph(int noOfVertices) {
-		this.noOfVertices = noOfVertices;
-		adj = new LinkedList[noOfVertices];
-		for (int i = 0; i < noOfVertices; i++) {
-			adj[i] = new LinkedList<>();
-		}
-	}
 
 	// function to form edge between two vertices source and dest
-	private void addEdge(int source, int destination) {
-		adj[source].add(destination);
-		adj[destination].add(source);
+	private void addEdge(List<List<Integer>> adjList, int source, int destination) {
+		adjList.get(source).add(destination);
+		adjList.get(destination).add(source);
 	}
 
 	// print the shortest distance and path between source and destination
-	private void printShortestDistance(Queue<Integer>[] adj, int source, int destination) {
+	private void printShortestDistance(int V, int source, int destination, List<List<Integer>> adjList) {
 		// predecessor[i] array stores predecessor of i
 		// distance array stores distance of i from s
-		int pred[] = new int[noOfVertices];
-		int dist[] = new int[noOfVertices];
+		int pred[] = new int[V];
+		int dist[] = new int[V];
 
-		if (BFS(adj, source, destination, pred, dist) == false) {
+		if (BFS(V, source, destination, pred, dist, adjList) == false) {
 			System.out.println("Given source and destination are not connected");
 			return;
 		}
 
-		// LinkedList to store path
-		LinkedList<Integer> path = new LinkedList<Integer>();
+		List<Integer> path = new ArrayList<>();
 		int crawl = destination;
 		path.add(crawl);
 		while (pred[crawl] != -1) {
@@ -56,10 +45,10 @@ public class ShortestPathInUnweightedGraph {
 
 	// a modified version of BFS that stores predecessor of each vertex in array
 	// pred and its distance from source in array dist
-	private boolean BFS(Queue<Integer>[] adj, int src, int dest, int pred[], int dist[]) {
+	private boolean BFS(int V, int src, int dest, int pred[], int dist[], List<List<Integer>> adjList) {
 		Queue<Integer> queue = new LinkedList<Integer>();
-		boolean visited[] = new boolean[noOfVertices];
-		for (int i = 0; i < noOfVertices; i++) {
+		boolean visited[] = new boolean[V];
+		for (int i = 0; i < V; i++) {
 			dist[i] = Integer.MAX_VALUE;
 			pred[i] = -1;
 		}
@@ -73,10 +62,7 @@ public class ShortestPathInUnweightedGraph {
 		// bfs Algorithm
 		while (!queue.isEmpty()) {
 			int u = queue.remove();
-
-			Iterator<Integer> it = adj[u].iterator();
-			while (it.hasNext()) {
-				Integer node = it.next();
+			for (Integer node : adjList.get(u)) {
 				if (visited[node] == false) {
 					visited[node] = true;
 					dist[node] = dist[u] + 1;
@@ -93,18 +79,23 @@ public class ShortestPathInUnweightedGraph {
 	}
 
 	public static void main(String args[]) {
-		ShortestPathInUnweightedGraph graph = new ShortestPathInUnweightedGraph(8);
-		graph.addEdge(0, 1);
-		graph.addEdge(0, 3);
-		graph.addEdge(1, 2);
-		graph.addEdge(3, 4);
-		graph.addEdge(3, 7);
-		graph.addEdge(4, 5);
-		graph.addEdge(4, 6);
-		graph.addEdge(4, 7);
-		graph.addEdge(5, 6);
-		graph.addEdge(6, 7);
+		ShortestPathInUnweightedGraph graph = new ShortestPathInUnweightedGraph();
+		List<List<Integer>> adjList = new ArrayList<>();
+		int V = 8;
+		for (int i = 0; i < V; i++) {
+			adjList.add(new ArrayList<>());
+		}
+		graph.addEdge(adjList, 0, 1);
+		graph.addEdge(adjList, 0, 3);
+		graph.addEdge(adjList, 1, 2);
+		graph.addEdge(adjList, 3, 4);
+		graph.addEdge(adjList, 3, 7);
+		graph.addEdge(adjList, 4, 5);
+		graph.addEdge(adjList, 4, 6);
+		graph.addEdge(adjList, 4, 7);
+		graph.addEdge(adjList, 5, 6);
+		graph.addEdge(adjList, 6, 7);
 		int source = 0, dest = 7;
-		graph.printShortestDistance(graph.adj, source, dest);
+		graph.printShortestDistance(V, source, dest, adjList);
 	}
 }
