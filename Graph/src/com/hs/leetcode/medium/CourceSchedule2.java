@@ -1,6 +1,7 @@
 package com.hs.leetcode.medium;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -47,10 +48,10 @@ public class CourceSchedule2 {
 			int u = queue.poll();
 			result.add(u);
 
-			for (int currentAdjNode : adjList.get(u)) {
-				indegree[currentAdjNode]--;
-				if (indegree[currentAdjNode] == 0) {
-					queue.add(currentAdjNode);
+			for (int adjNode : adjList.get(u)) {
+				indegree[adjNode]--;
+				if (indegree[adjNode] == 0) {
+					queue.add(adjNode);
 				}
 			}
 		}
@@ -59,5 +60,13 @@ public class CourceSchedule2 {
 		if (result.size() != noOfVertices)
 			return Collections.emptyList();
 		return result;
+	}
+
+	public static void main(String[] args) {
+		CourceSchedule2 graph = new CourceSchedule2();
+		int numCourses = 4;
+		int[][] prerequisites = { { 1, 0 }, { 2, 0 }, { 3, 1 }, { 3, 2 } };
+		int[] result = graph.findOrder(numCourses, prerequisites);
+		System.out.println(Arrays.toString(result));
 	}
 }

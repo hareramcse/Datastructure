@@ -13,6 +13,7 @@ public class CheapestFlightsWithinKStops {
 		}
 
 		int m = flights.length;
+		// col 0 -- from, col 1 -- to, col 3 -- price
 		for (int i = 0; i < m; i++) {
 			adjList.get(flights[i][0]).add(new Pair(flights[i][1], flights[i][2]));
 		}

@@ -6,7 +6,6 @@ public class KeysAndRooms {
 	public boolean canVisitAllRooms(List<List<Integer>> rooms) {
 		int n = rooms.size();
 		boolean visited[] = new boolean[n];
-		boolean result;
 
 		int count = 0;
 		for (int i = 0; i < n; i++) {
@@ -15,7 +14,7 @@ public class KeysAndRooms {
 				count++;
 			}
 		}
-		result = count == 1 ? true : false;
+		boolean result = count == 1 ? true : false;
 		return result;
 	}
 

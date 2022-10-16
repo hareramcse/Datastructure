@@ -5,7 +5,7 @@ import java.util.Queue;
 
 public class PathWithMinimumEffort {
 	public int minimumEffortPath(int[][] heights) {
-		Queue<Tuple> pq = new PriorityQueue<>((x, y) -> x.third - y.third);
+		Queue<Tuple> pq = new PriorityQueue<>((x, y) -> x.first - y.first);
 
 		int n = heights.length;
 		int m = heights[0].length;

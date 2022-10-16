@@ -19,15 +19,15 @@ public class KnightOnChessBoard {
 			int nodesAtCurrentBreadth = queue.size();
 			for (int count = 0; count < nodesAtCurrentBreadth; count++) {
 				Pair currPos = queue.remove();
-				if (currPos.x == x2 && currPos.y == y2) {
+				if (currPos.first == x2 && currPos.second == y2) {
 					return moveCount;
 				}
 
 				for (int i = 0; i < 8; i++) {
-					if (isValid(currPos.x + dx[i], currPos.y + dy[i], N, M)
-							&& isVisited[currPos.x + dx[i]][currPos.y + dy[i]] == false) {
-						queue.add(new Pair(currPos.x + dx[i], currPos.y + dy[i]));
-						isVisited[currPos.x + dx[i]][currPos.y + dy[i]] = true;
+					if (isValid(currPos.first + dx[i], currPos.second + dy[i], N, M)
+							&& isVisited[currPos.first + dx[i]][currPos.second + dy[i]] == false) {
+						queue.add(new Pair(currPos.first + dx[i], currPos.second + dy[i]));
+						isVisited[currPos.first + dx[i]][currPos.second + dy[i]] = true;
 					}
 				}
 			}

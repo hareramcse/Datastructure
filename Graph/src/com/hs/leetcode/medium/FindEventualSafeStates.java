@@ -57,4 +57,11 @@ public class FindEventualSafeStates {
 
 		return result;
 	}
+
+	public static void main(String[] args) {
+		FindEventualSafeStates graph = new FindEventualSafeStates();
+		int[][] matrix = { { 1, 2 }, { 2, 3 }, { 5 }, { 0 }, { 5 }, {}, {} };
+		List<Integer> result = graph.eventualSafeNodes(matrix);
+		System.out.println(result);
+	}
 }

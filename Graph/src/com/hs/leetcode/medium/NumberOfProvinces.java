@@ -14,7 +14,6 @@ public class NumberOfProvinces {
 				dfs(i, adjList, visited);
 			}
 		}
-
 		return count;
 	}
 
@@ -32,7 +31,6 @@ public class NumberOfProvinces {
 				}
 			}
 		}
-
 		return adjList;
 	}
 

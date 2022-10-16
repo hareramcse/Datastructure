@@ -12,7 +12,7 @@ public class IsGraphBipartite {
 
 		for (int i = 0; i < V; i++) {
 			if (color[i] == -1) {
-				if (check(i, V, matrix, color) == false) {
+				if (BFS(i, V, matrix, color) == false) {
 					return false;
 				}
 			}
@@ -20,7 +20,7 @@ public class IsGraphBipartite {
 		return true;
 	}
 
-	private boolean check(int start, int V, int[][] matrix, int color[]) {
+	private boolean BFS(int start, int V, int[][] matrix, int color[]) {
 		Queue<Integer> queue = new LinkedList<Integer>();
 		queue.add(start);
 		color[start] = 0;
