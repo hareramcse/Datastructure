@@ -10,14 +10,13 @@ import java.util.TreeMap;
 import com.hs.tree.Node;
 
 class TopViewOfBinaryTree {
-
 	public List<Integer> topView(Node root) {
 		List<Integer> ans = new ArrayList<>();
 		if (root == null)
 			return ans;
 		
 		Map<Integer, Integer> map = new TreeMap<>();
-		Queue<Pair> queue = new LinkedList<Pair>();
+		Queue<Pair> queue = new LinkedList<>();
 		queue.add(new Pair(root, 0));
 		while (!queue.isEmpty()) {
 			Pair pair = queue.poll();

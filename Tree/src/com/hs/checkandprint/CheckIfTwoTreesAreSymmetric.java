@@ -2,33 +2,23 @@ package com.hs.checkandprint;
 
 import com.hs.tree.Node;
 
-/*For two trees ‘a’ and ‘b’ to be mirror images, the following three conditions must be 
+/*For two trees ï¿½aï¿½ and ï¿½bï¿½ to be mirror images, the following three conditions must be 
  * true: 
 
-Their root node’s key must be same
-Left subtree of root of ‘a’ and right subtree root of ‘b’ are mirror.
-Right subtree of ‘a’ and left subtree of ‘b’ are mirror.*/
-
-// 101. Symmetric Tree Leetcode
+Their root nodeï¿½s key must be same
+Left subtree of root of ï¿½aï¿½ and right subtree root of ï¿½bï¿½ are mirror.
+Right subtree of ï¿½aï¿½ and left subtree of ï¿½bï¿½ are mirror.*/
 class CheckIfTwoTreesAreSymmetric {
 
 	public boolean isSymmetric(Node root) {
-		if (root == null)
-			return true;
-
 		return isSymmetricUtil(root.left, root.right);
-	}
-
-	private boolean isSymmetricUtil(Node a, Node b) {
-		// If only one is empty
+    }
+    
+    private boolean isSymmetricUtil(Node a, Node b) {
 		if (a == null || b == null)
 			return a == b;
 
-		if (a.data != b.data) {
-			return false;
-		}
-
-		return isSymmetricUtil(a.left, b.right) && isSymmetricUtil(a.right, b.left);
+		return (a.data == b.data) && isSymmetricUtil(a.left, b.right) && isSymmetricUtil(a.right, b.left);
 	}
 
 	public static void main(String[] args) {

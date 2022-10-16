@@ -2,8 +2,6 @@ package com.hs.misc;
 
 import com.hs.tree.Node;
 
-// number of nodes along the longest path from the root node down to the farthest leaf node.
-// 104. Maximum Depth of Binary Tree Leetcode
 class MaximumDepthOfTree {
 
 	public int maxDepth(Node root) {
@@ -13,14 +11,9 @@ class MaximumDepthOfTree {
 		int lDepth = maxDepth(root.left);
 		int rDepth = maxDepth(root.right);
 
-		// use the larger one
-		if (lDepth > rDepth)
-			return lDepth + 1;
-		else
-			return rDepth + 1;
+		return 1 + Math.max(lDepth, rDepth);
 	}
 
-	// Driver program to test above functions
 	public static void main(String[] args) {
 		MaximumDepthOfTree tree = new MaximumDepthOfTree();
 

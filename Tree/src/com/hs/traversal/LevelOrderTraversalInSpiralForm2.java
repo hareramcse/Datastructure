@@ -8,15 +8,13 @@ import java.util.Queue;
 
 import com.hs.tree.Node;
 
-// 103. Binary Tree Zigzag Level Order Traversal Leetcode
 class LevelOrderTraversalInSpiralForm2 {
-
 	public List<List<Integer>> zigZagTraversal(Node root) {
 		List<List<Integer>> list = new ArrayList<>();
 		if (root == null)
 			return list;
 
-		Queue<Node> queue = new LinkedList<Node>();
+		Queue<Node> queue = new LinkedList<>();
 		queue.add(root);
 		boolean ltr = false;
 		while (!queue.isEmpty()) {
@@ -45,7 +43,6 @@ class LevelOrderTraversalInSpiralForm2 {
 		return list;
 	}
 
-	// Driver program to test the above functions
 	public static void main(String[] args) {
 		LevelOrderTraversalInSpiralForm2 tree = new LevelOrderTraversalInSpiralForm2();
 		Node root = new Node(1);

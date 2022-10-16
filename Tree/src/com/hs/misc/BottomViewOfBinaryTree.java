@@ -22,7 +22,7 @@ public class BottomViewOfBinaryTree {
 			return ans;
 		
 		Map<Integer, Integer> map = new TreeMap<>();
-		Queue<Pair> queue = new LinkedList<Pair>();
+		Queue<Pair> queue = new LinkedList<>();
 		queue.add(new Pair(root, 0));
 		while (!queue.isEmpty()) {
 			Pair pair = queue.poll();
