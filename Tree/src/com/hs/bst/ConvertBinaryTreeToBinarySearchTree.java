@@ -19,7 +19,8 @@ public class ConvertBinaryTreeToBinarySearchTree {
 		convertToBST(root, it);
 	}
 
-	// Function to traverse the binary tree and store its values in a set
+	// do inorder traversal of BT and sort it
+	// or we can store the data into Treeset
 	private void extractValues(Node root, Set<Integer> set) {
 		if (root == null) {
 			return;

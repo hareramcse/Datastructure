@@ -42,7 +42,7 @@ public class BinaryTreeRecursiveTraversal {
 		/* first print data of node */
 		System.out.print(root.data + " ");
 
-		/* then recur on left sutree */
+		/* then recur on left subtree */
 		printPreorder(root.left);
 
 		/* now recur on right subtree */

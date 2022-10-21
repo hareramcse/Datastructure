@@ -2,7 +2,6 @@ package com.hs.bst;
 
 import com.hs.tree.Node;
 
-// 108. Convert Sorted Array to Binary Search Tree Leetcode
 public class ConvertSortedArrayToBST {
 
 	public Node arrayToBST(int[] arr) {

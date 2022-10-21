@@ -7,7 +7,6 @@ import java.util.Queue;
 
 import com.hs.tree.Node;
 
-// 102. Binary Tree Level Order Traversal Leetcode
 class LevelOrderTraversal2 {
 
 	public List<List<Integer>> levelOrderTraversal(Node root) {

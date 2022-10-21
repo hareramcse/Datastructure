@@ -16,7 +16,7 @@ public class BSTIterator {
 		return !stack.isEmpty();
 	}
 
-	// @return the next smallest number
+	// the next smallest number
 	public int next() {
 		Node tmpNode = stack.pop();
 		pushAll(tmpNode.right);

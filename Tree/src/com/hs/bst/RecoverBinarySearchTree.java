@@ -8,6 +8,17 @@ public class RecoverBinarySearchTree {
 	private Node middle;
 	private Node last;
 
+	public void recoverTree(Node root) {
+		first = middle = last = null;
+		prev = new Node(Integer.MIN_VALUE);
+		inorder(root);
+		if (first != null && last != null) {
+			swap(first, last);
+		} else if (first != null && middle != null) {
+			swap(first, middle);
+		}
+	}
+
 	private void inorder(Node root) {
 		if (root == null)
 			return;
@@ -33,18 +44,9 @@ public class RecoverBinarySearchTree {
 		inorder(root.right);
 	}
 
-	public void recoverTree(Node root) {
-		first = middle = last = null;
-		prev = new Node(Integer.MIN_VALUE);
-		inorder(root);
-		if (first != null && last != null) {
-			int t = first.data;
-			first.data = last.data;
-			last.data = t;
-		} else if (first != null && middle != null) {
-			int t = first.data;
-			first.data = middle.data;
-			middle.data = t;
-		}
+	private void swap(Node first, Node last) {
+		int t = first.data;
+		first.data = last.data;
+		last.data = t;
 	}
 }

@@ -29,17 +29,14 @@ class LevelOrderTraversalInSpiralForm {
 		int lHeight = height(root.left);
 		int rHeight = height(root.right);
 
-		// use the larger one
-		if (lHeight > rHeight)
-			return lHeight + 1;
-		else
-			return rHeight + 1;
+		return 1 + Math.max(lHeight, rHeight);
 	}
 
 	// Print nodes at a given level
 	private void printGivenLevel(Node root, int level, boolean ltr) {
 		if (root == null)
 			return;
+		
 		if (level == 1)
 			System.out.print(root.data + " ");
 		else if (level > 1) {
@@ -53,7 +50,6 @@ class LevelOrderTraversalInSpiralForm {
 		}
 	}
 
-	// Driver program to test the above functions
 	public static void main(String[] args) {
 		LevelOrderTraversalInSpiralForm tree = new LevelOrderTraversalInSpiralForm();
 		Node root = new Node(1);

@@ -23,11 +23,7 @@ class LevelOrderTraversal1 {
 		int lHeight = height(root.left);
 		int rHeight = height(root.right);
 
-		// use the larger one
-		if (lHeight > rHeight)
-			return lHeight + 1;
-		else
-			return rHeight + 1;
+		return 1 + Math.max(lHeight, rHeight);
 	}
 
 	// Print nodes at the given level

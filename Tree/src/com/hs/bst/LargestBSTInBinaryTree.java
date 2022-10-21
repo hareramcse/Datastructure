@@ -3,11 +3,11 @@ package com.hs.bst;
 import com.hs.tree.Node;
 
 class NodeValue {
-	public int maxNode, minNode, maxSize;
+	public int minNode, maxNode, maxSize;
 
 	NodeValue(int minNode, int maxNode, int maxSize) {
-		this.maxNode = maxNode;
 		this.minNode = minNode;
+		this.maxNode = maxNode;
 		this.maxSize = maxSize;
 	}
 }
@@ -27,8 +27,8 @@ public class LargestBSTInBinaryTree {
 		NodeValue left = largestBSTSubtreeHelper(root.left);
 		NodeValue right = largestBSTSubtreeHelper(root.right);
 
-		// Current node is greater than max in left AND smaller than min in right, it is
-		// a BST.
+		// Current node is greater than max in left AND smaller than min in right
+		// it is a BST.
 		if (left.maxNode < root.data && root.data < right.minNode) {
 			// It is a BST.
 			return new NodeValue(Math.min(root.data, left.minNode), Math.max(root.data, right.maxNode),

@@ -25,9 +25,9 @@ class BoundryTraversal {
 	// A function to print all left boundary nodes, except a leaf node.
 	// Print the nodes in TOP DOWN manner
 	private void printBoundaryLeft(Node root) {
-		if (root == null) {
+		if (root == null)
 			return;
-		}
+
 		if (root.left != null) {
 			// to ensure top down order, print the node before calling itself for left
 			// subtree
@@ -38,14 +38,13 @@ class BoundryTraversal {
 
 	// A simple function to print leaf nodes of a binary tree
 	private void printLeaves(Node root) {
-		if (root == null) {
+		if (root == null)
 			return;
-		}
-		
+
 		if (root.left == null && root.right == null) {
 			System.out.print(root.data + " ");
 		}
-		
+
 		printLeaves(root.left);
 		printLeaves(root.right);
 	}
@@ -53,9 +52,9 @@ class BoundryTraversal {
 	// A function to print all right boundary nodes, except a leaf node
 	// Print the nodes in BOTTOM UP manner
 	private void printBoundaryRight(Node root) {
-		if (root == null) {
+		if (root == null)
 			return;
-		}
+
 		if (root.right != null) {
 			// to ensure bottom up order, first call for right subtree, then print this node
 			printBoundaryRight(root.right);
