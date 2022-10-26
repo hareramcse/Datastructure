@@ -9,39 +9,47 @@ import java.util.TreeMap;
 
 import com.hs.tree.Node;
 
+// find the vertical order traversal, get the 1st node of each level
 class TopViewOfBinaryTree {
 	public List<Integer> topView(Node root) {
-		List<Integer> ans = new ArrayList<>();
-		if (root == null)
-			return ans;
-		
-		Map<Integer, Integer> map = new TreeMap<>();
-		Queue<Pair> queue = new LinkedList<>();
-		queue.add(new Pair(root, 0));
-		while (!queue.isEmpty()) {
-			Pair pair = queue.poll();
-			int hd = pair.hd;
-			Node tempNode = pair.node;
-			if (map.get(hd) == null) {
-				map.put(hd, tempNode.data);
-			}
-				
-			if (tempNode.left != null) {
-				queue.add(new Pair(tempNode.left, hd - 1));
-			}
-			
-			if (tempNode.right != null) {
-				queue.add(new Pair(tempNode.right, hd + 1));
-			}
+		Map<Integer, List<Integer>> map = new TreeMap<>();
+		Pair pair = new Pair(root, 0);
+		map = verticalTraversalUtil(root, map, pair);
+		List<Integer> result = new ArrayList<>();
+		for (Integer key : map.keySet()) {
+			List<Integer> list = map.get(key);
+			result.add(list.get(0));
 		}
-
-		for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-			ans.add(entry.getValue());
-		}
-		return ans;
+		return result;
 	}
 
-	// Driver Program to test above functions
+	public Map<Integer, List<Integer>> verticalTraversalUtil(Node root, Map<Integer, List<Integer>> map, Pair pair) {
+		Queue<Pair> queue = new LinkedList<>();
+		queue.add(pair);
+		while (!queue.isEmpty()) {
+			Pair curr = queue.poll();
+			int hd = curr.hd;
+
+			List<Integer> list = map.get(hd);
+			if (list == null) {
+				list = new ArrayList<>();
+				list.add(curr.node.data);
+			} else {
+				list.add(curr.node.data);
+			}
+			map.put(hd, list);
+
+			if (curr.node.left != null) {
+				queue.add(new Pair(curr.node.left, hd - 1));
+			}
+
+			if (curr.node.right != null) {
+				queue.add(new Pair(curr.node.right, hd + 1));
+			}
+		}
+		return map;
+	}
+
 	public static void main(String[] args) {
 		TopViewOfBinaryTree tree = new TopViewOfBinaryTree();
 		Node root = new Node(1);

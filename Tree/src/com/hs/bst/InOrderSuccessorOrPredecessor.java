@@ -12,6 +12,10 @@ public class InOrderSuccessorOrPredecessor {
 		while (root != null) {
 			if (k.data < root.data) {
 				prev = root;
+				// once we find the root greater than K then we will go to left
+				// this node is greater than k node, but we are not sure
+				// whether this is the immediate greater node
+				// to find out immediate greater node we will go left left
 				root = root.left;
 			} else {
 				root = root.right;
@@ -19,14 +23,14 @@ public class InOrderSuccessorOrPredecessor {
 		}
 		return prev;
 	}
-	
+
 	public Node inOrderPredecessor(Node root, Node k) {
 		if (root == null)
 			return null;
 
 		Node prev = null;
 		while (root != null) {
-			if (k.data < root.data) {
+			if ( k.data < root.data) {
 				root = root.left;
 			} else {
 				prev = root;
@@ -37,15 +41,18 @@ public class InOrderSuccessorOrPredecessor {
 	}
 
 	public static void main(String[] args) {
-		InOrderSuccessorOrPredecessor tree = new InOrderSuccessorOrPredecessor();
-		Node root = new Node(50);
-		root.left = new Node(30);
-		root.left.left = new Node(20);
-		root.left.right = new Node(40);
-		root.right = new Node(70);
-		root.right.left = new Node(60);
-		root.right.right = new Node(80);
-		Node temp = root.left.right;
-		System.out.println(tree.inOrderSuccessor(root, temp).data);
+		InOrderSuccessorOrPredecessor obj = new InOrderSuccessorOrPredecessor();
+		Node root = new Node(4);
+		root.left = new Node(2);
+		root.right = new Node(6);
+		root.left.left = new Node(1);
+		root.left.right = new Node(3);
+		root.right.left = new Node(5);
+		root.right.right = new Node(7);
+		Node k = root.left.right;
+		Node successor = obj.inOrderSuccessor(root, k);
+		System.out.println(successor.data);
+		Node predecessor = obj.inOrderPredecessor(root, k);
+		System.out.println(predecessor.data);
 	}
 }

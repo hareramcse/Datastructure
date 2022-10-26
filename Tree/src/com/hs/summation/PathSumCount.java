@@ -5,34 +5,30 @@ import java.util.List;
 
 import com.hs.tree.Node;
 
-// 437. Path Sum III Leetcode
 public class PathSumCount {
-	int count = 0;
-
 	public int pathSum(Node root, int targetSum) {
-		if (root == null)
-			return count;
 		List<Integer> path = new ArrayList<>();
-		pathSumUtil(root, path, targetSum);
-		return count;
+		int[] count = new int[1];
+		pathSumUtil(root, targetSum, path, count);
+		return count[0];
 	}
 
-	private void pathSumUtil(Node root, List<Integer> path, int targetSum) {
+	private void pathSumUtil(Node root, int targetSum, List<Integer> path, int[] count) {
+		if (root == null)
+			return;
+
 		path.add(root.data);
-		
+
 		// Here we need to check every node not only leaf node
 		int sum = 0;
 		for (int i = path.size() - 1; i >= 0; i--) {
 			sum += path.get(i);
 			if (sum == targetSum)
-				count++;
+				count[0]++;
 		}
-		
-		if (root.left != null)
-			pathSumUtil(root.left, path, targetSum);
 
-		if (root.right != null)
-			pathSumUtil(root.right, path, targetSum);
+		pathSumUtil(root.left, targetSum, path, count);
+		pathSumUtil(root.right, targetSum, path, count);
 		path.remove(path.size() - 1);
 	}
 

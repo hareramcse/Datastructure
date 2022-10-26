@@ -4,25 +4,24 @@ import com.hs.tree.Node;
 
 public class KthSmallestNodeInBST {
 
-	int count = 0;
-
 	public int kthSmallest(Node root, int k) {
-		Node res = findKthSmallest(root, k);
+		int[] kthSmallest = new int[1];
+		kthSmallest[0] = k;
+		Node res = findKthSmallest(root, kthSmallest);
 		return res.data;
 	}
 
-	private Node findKthSmallest(Node root, int k) {
-		if (root == null) {
+	private Node findKthSmallest(Node root, int[] k) {
+		if (root == null)
 			return null;
-		}
 
 		Node left = findKthSmallest(root.left, k);
 		if (left != null) {
 			return left;
 		}
 
-		count++;
-		if (count == k) {
+		k[0]--;
+		if (k[0] == 0) {
 			return root;
 		}
 

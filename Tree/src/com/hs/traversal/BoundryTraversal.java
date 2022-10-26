@@ -1,68 +1,80 @@
 package com.hs.traversal;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.hs.tree.Node;
 
 class BoundryTraversal {
-
-	// A function to do boundary traversal of a given binary tree
-	public void printBoundary(Node root) {
+	public List<Integer> printBoundary(Node root) {
+		List<Integer> result = new ArrayList<>();
 		if (root == null) {
+			return result;
+		}
+
+		// if there is only node in the BT
+		if (root.left == null && root.right == null) {
+			result.add(root.data);
+			return result;
+		} else {
+			result.add(root.data);
+		}
+
+		// Print the left boundary in top-down manner.
+		leftBoundary(root.left, result);
+
+		// Print all leaf nodes
+		printLeaves(root, result);
+
+		// Print the right boundary in bottom-up manner
+		rightBoundary(root.right, result);
+		return result;
+	}
+
+	// Print the nodes in TOP DOWN manner
+	private void leftBoundary(Node root, List<Integer> result) {
+		if (root == null)
+			return;
+		
+		if (root.left == null && root.right == null) {
 			return;
 		}
 
-		System.out.print(root.data + " ");
-
-		// Print the left boundary in top-down manner.
-		printBoundaryLeft(root.left);
-
-		// Print all leaf nodes
-		printLeaves(root);
-
-		// Print the right boundary in bottom-up manner
-		printBoundaryRight(root.right);
-	}
-
-	// A function to print all left boundary nodes, except a leaf node.
-	// Print the nodes in TOP DOWN manner
-	private void printBoundaryLeft(Node root) {
-		if (root == null)
-			return;
-
+		result.add(root.data);
 		if (root.left != null) {
-			// to ensure top down order, print the node before calling itself for left
-			// subtree
-			System.out.print(root.data + " ");
-			printBoundaryLeft(root.left);
+			leftBoundary(root.left, result);
+		} else if (root.right != null) {
+			leftBoundary(root.right, result);
 		}
 	}
 
 	// A simple function to print leaf nodes of a binary tree
-	private void printLeaves(Node root) {
+	private void printLeaves(Node root, List<Integer> result) {
 		if (root == null)
 			return;
 
 		if (root.left == null && root.right == null) {
-			System.out.print(root.data + " ");
+			result.add(root.data);
 		}
 
-		printLeaves(root.left);
-		printLeaves(root.right);
+		printLeaves(root.left, result);
+		printLeaves(root.right, result);
 	}
 
-	// A function to print all right boundary nodes, except a leaf node
 	// Print the nodes in BOTTOM UP manner
-	private void printBoundaryRight(Node root) {
-		if (root == null)
+	private void rightBoundary(Node root, List<Integer> result) {
+		if (root == null || (root.left == null && root.right == null)) {
 			return;
+		}
 
 		if (root.right != null) {
-			// to ensure bottom up order, first call for right subtree, then print this node
-			printBoundaryRight(root.right);
-			System.out.print(root.data + " ");
+			rightBoundary(root.right, result);
+		} else if (root.left != null) {
+			rightBoundary(root.left, result);
 		}
+		result.add(root.data);
 	}
 
-	// Driver program to test above functions
 	public static void main(String args[]) {
 		BoundryTraversal tree = new BoundryTraversal();
 		Node root = new Node(20);
@@ -73,6 +85,7 @@ class BoundryTraversal {
 		root.left.right.right = new Node(14);
 		root.right = new Node(22);
 		root.right.right = new Node(25);
-		tree.printBoundary(root);
+		List<Integer> result = tree.printBoundary(root);
+		System.out.println(result);
 	}
 }

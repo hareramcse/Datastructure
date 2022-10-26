@@ -5,42 +5,34 @@ import java.util.List;
 
 import com.hs.tree.Node;
 
-// 113. Path Sum II Leetcode
 public class AllPathWithSumKFromRootToLeaf {
-
-	List<List<Integer>> result = new ArrayList<>();
-
 	public List<List<Integer>> pathSum(Node root, int targetSum) {
-		if (root == null) {
-			return result;
-		}
+		List<List<Integer>> result = new ArrayList<>();
 		List<Integer> path = new ArrayList<>();
-		pathSumUtil(root, path, targetSum);
+		pathSumUtil(root, targetSum, path, result);
 		return result;
 	}
 
-	private void pathSumUtil(Node root, List<Integer> path, int targetSum) {
-		path.add(root.data);
-
-		if (root.left == null && root.right == null) {
-			int sum = 0;
-			for (int i = path.size() - 1; i >= 0; i--) {
-				sum += path.get(i);
-			}
-			if (sum == targetSum)
-				result.add(new ArrayList<>(path));
+	public void pathSumUtil(Node root, int targetSum, List<Integer> path, List<List<Integer>> result) {
+		// base case
+		if (root == null) {
+			return;
 		}
 
-		if (root.left != null)
-			pathSumUtil(root.left, path, targetSum);
+		// include the current node to the path
+		path.add(root.data);
 
-		if (root.right != null)
-			pathSumUtil(root.right, path, targetSum);
+		if (root.left == null && root.right == null && root.data == targetSum) {
+			result.add(new ArrayList<>(path));
+		}
+
+		// recur for the left and right subtree
+		pathSumUtil(root.left, targetSum - root.data, path, result);
+		pathSumUtil(root.right, targetSum - root.data, path, result);
 		path.remove(path.size() - 1);
 	}
 
 	public static void main(String[] args) {
-
 		AllPathWithSumKFromRootToLeaf tree = new AllPathWithSumKFromRootToLeaf();
 
 		Node root = new Node(1);

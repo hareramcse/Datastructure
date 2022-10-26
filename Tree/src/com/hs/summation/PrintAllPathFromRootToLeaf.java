@@ -5,21 +5,20 @@ import java.util.List;
 
 import com.hs.tree.Node;
 
-// 257. Binary Tree Paths Leetcode
 class PrintAllPathFromRootToLeaf {
-
-	List<String> result = new ArrayList<>();
-
 	public List<String> binaryTreePaths(Node root) {
-		if (root == null) {
-			return result;
-		}
+		List<String> result = new ArrayList<>();
 		List<String> path = new ArrayList<>();
-		binaryTreePathsUtil(root, path);
+		binaryTreePathsUtil(root, path, result);
 		return result;
 	}
 
-	private void binaryTreePathsUtil(Node root, List<String> path) {
+	private void binaryTreePathsUtil(Node root, List<String> path, List<String> result) {
+		// base case
+		if (root == null) {
+			return;
+		}
+
 		// include the current node to the path
 		path.add("" + root.data);
 
@@ -29,11 +28,9 @@ class PrintAllPathFromRootToLeaf {
 			result.add(pathToAdd);
 		}
 
-		if (root.left != null)
-			binaryTreePathsUtil(root.left, path);
-
-		if (root.right != null)
-			binaryTreePathsUtil(root.right, path);
+		// recur for the left and right subtree
+		binaryTreePathsUtil(root.left, path, result);
+		binaryTreePathsUtil(root.right, path, result);
 		path.remove(path.size() - 1);
 	}
 

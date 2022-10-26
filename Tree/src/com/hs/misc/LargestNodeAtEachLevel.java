@@ -7,9 +7,7 @@ import java.util.Queue;
 
 import com.hs.tree.Node;
 
-// 515. Find Largest Value in Each Tree Row Leetcode
 public class LargestNodeAtEachLevel {
-
 	public List<Integer> largestValueInEachLevel(Node root) {
 		List<Integer> list = new ArrayList<>();
 		if (root == null)
@@ -22,17 +20,17 @@ public class LargestNodeAtEachLevel {
 			int levelSize = queue.size();
 			int max = Integer.MIN_VALUE;
 			for (int i = 0; i < levelSize; i++) {
-				Node tempNode = queue.poll();
-				max = Math.max(max, tempNode.data);
+				Node temp = queue.poll();
+				max = Math.max(max, temp.data);
 
 				// Enqueue left child
-				if (tempNode.left != null) {
-					queue.add(tempNode.left);
+				if (temp.left != null) {
+					queue.add(temp.left);
 				}
 
 				// Enqueue right child
-				if (tempNode.right != null) {
-					queue.add(tempNode.right);
+				if (temp.right != null) {
+					queue.add(temp.right);
 				}
 			}
 			list.add(max);
@@ -42,8 +40,7 @@ public class LargestNodeAtEachLevel {
 
 	public static void main(String[] args) {
 		LargestNodeAtEachLevel tree = new LargestNodeAtEachLevel();
-		Node root = null;
-		root = new Node(4);
+		Node root = new Node(4);
 		root.left = new Node(9);
 		root.right = new Node(2);
 		root.left.left = new Node(3);

@@ -2,29 +2,24 @@ package com.hs.summation;
 
 import com.hs.tree.Node;
 
-// 404. Sum of Left Leaves Leetcode
 class SumOfAllLeftLeaves {
-	int sum = 0;
-
 	public int sumOfLeftLeaves(Node root) {
-		if (root == null)
-			return sum;
-
 		boolean isLeft = false;
-		sumOfLeftLeavesUtil(root, isLeft);
-		return sum;
+		int[] sum = new int[1];
+		sumOfLeftLeavesUtil(root, isLeft, sum);
+		return sum[0];
 	}
 
-	private void sumOfLeftLeavesUtil(Node root, boolean isLeft) {
+	private void sumOfLeftLeavesUtil(Node root, boolean isLeft, int[] sum) {
+		if (root == null)
+			return;
+
 		if (root.left == null && root.right == null && isLeft)
-			sum = sum + root.data;
+			sum[0] = sum[0] + root.data;
 
 		// Pass true for left and false for right
-		if (root.left != null)
-			sumOfLeftLeavesUtil(root.left, true);
-
-		if (root.right != null)
-			sumOfLeftLeavesUtil(root.right, false);
+		sumOfLeftLeavesUtil(root.left, true, sum);
+		sumOfLeftLeavesUtil(root.right, false, sum);
 	}
 
 	public static void main(String args[]) {
@@ -39,7 +34,7 @@ class SumOfAllLeftLeaves {
 		root.left.right.right = new Node(12);
 		root.right.right.left = new Node(50);
 
-		tree.sumOfLeftLeaves(root);
-		System.out.println("The sum of leaves is: " + tree.sum);
+		int sum = tree.sumOfLeftLeaves(root);
+		System.out.println("The sum of leaves is: " + sum);
 	}
 }

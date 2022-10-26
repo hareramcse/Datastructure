@@ -29,7 +29,7 @@ class RightViewOfBinaryTree {
 					queue.add(tempNode.right);
 				}
 
-				/* Enqueue left child */
+				// Enqueue left child
 				if (tempNode.left != null) {
 					queue.add(tempNode.left);
 				}

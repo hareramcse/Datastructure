@@ -8,7 +8,6 @@ import java.util.Queue;
 import com.hs.tree.Node;
 
 class LevelOrderTraversal2 {
-
 	public List<List<Integer>> levelOrderTraversal(Node root) {
 		List<List<Integer>> list = new ArrayList<>();
 		if (root == null)

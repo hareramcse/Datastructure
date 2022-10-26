@@ -5,9 +5,7 @@ import java.util.Queue;
 
 import com.hs.tree.Node;
 
-//1161. Maximum Level Sum of a Binary Tree Leetcode
 public class LevelMaximumSum {
-
 	public int maxLevelSum(Node root) {
 		if (root == null)
 			return 0;

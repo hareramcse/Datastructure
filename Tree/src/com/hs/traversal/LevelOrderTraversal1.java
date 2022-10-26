@@ -30,6 +30,7 @@ class LevelOrderTraversal1 {
 	private void printGivenLevel(Node root, int level) {
 		if (root == null)
 			return;
+		
 		if (level == 1)
 			System.out.print(root.data + " ");
 		else if (level > 1) {
@@ -38,7 +39,6 @@ class LevelOrderTraversal1 {
 		}
 	}
 
-	// Driver program to test above functions
 	public static void main(String args[]) {
 		LevelOrderTraversal1 tree = new LevelOrderTraversal1();
 		Node root = new Node(1);

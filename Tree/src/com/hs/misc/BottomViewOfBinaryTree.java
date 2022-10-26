@@ -9,40 +9,47 @@ import java.util.TreeMap;
 
 import com.hs.tree.Node;
 
-
-// The logic for top view and bottom view is exactly same. 
-// Just use map.putIfAbsent(line,node.val) for Top view and map.put(line,node.val) for Bottom view. 
-// In top view we put on the map only once because all other nodes on lower level are hidden. 
-// In bottom view we replace because we got another node on lower node that hides the upper node.
+//find the vertical order traversal
+//get the last node of each level
 public class BottomViewOfBinaryTree {
 
 	public List<Integer> printBottomView(Node root) {
-		List<Integer> ans = new ArrayList<>();
-		if (root == null)
-			return ans;
-		
-		Map<Integer, Integer> map = new TreeMap<>();
-		Queue<Pair> queue = new LinkedList<>();
-		queue.add(new Pair(root, 0));
-		while (!queue.isEmpty()) {
-			Pair pair = queue.poll();
-			int hd = pair.hd;
-			Node tempNode = pair.node;
-			map.put(hd, tempNode.data);
-				
-			if (tempNode.left != null) {
-				queue.add(new Pair(tempNode.left, hd - 1));
-			}
-			
-			if (tempNode.right != null) {
-				queue.add(new Pair(tempNode.right, hd + 1));
-			}
+		Map<Integer, List<Integer>> map = new TreeMap<>();
+		Pair pair = new Pair(root, 0);
+		map = verticalTraversalUtil(root, map, pair);
+		List<Integer> result = new ArrayList<>();
+		for (Integer key : map.keySet()) {
+			List<Integer> list = map.get(key);
+			result.add(list.get(list.size() - 1));
 		}
+		return result;
+	}
 
-		for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-			ans.add(entry.getValue());
+	public Map<Integer, List<Integer>> verticalTraversalUtil(Node root, Map<Integer, List<Integer>> map, Pair pair) {
+		Queue<Pair> queue = new LinkedList<>();
+		queue.add(pair);
+		while (!queue.isEmpty()) {
+			Pair curr = queue.poll();
+			int hd = curr.hd;
+
+			List<Integer> list = map.get(hd);
+			if (list == null) {
+				list = new ArrayList<>();
+				list.add(curr.node.data);
+			} else {
+				list.add(curr.node.data);
+			}
+			map.put(hd, list);
+
+			if (curr.node.left != null) {
+				queue.add(new Pair(curr.node.left, hd - 1));
+			}
+
+			if (curr.node.right != null) {
+				queue.add(new Pair(curr.node.right, hd + 1));
+			}
 		}
-		return ans;
+		return map;
 	}
 
 	public static void main(String[] args) {

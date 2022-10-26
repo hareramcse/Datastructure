@@ -25,10 +25,9 @@ public class RecoverBinarySearchTree {
 
 		inorder(root.left);
 
-		if (prev != null && (root.data < prev.data)) {
+		if (prev != null && root.data < prev.data) {
 
-			// If this is first violation, mark these two nodes as
-			// 'first' and 'middle'
+			// If this is first violation, mark these two nodes as 'first' and 'middle'
 			if (first == null) {
 				first = prev;
 				middle = root;

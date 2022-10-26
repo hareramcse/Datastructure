@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import com.hs.tree.Node;
 
@@ -15,10 +14,10 @@ public class DiagonalTraversal {
 		// create a map of list to store Diagonal elements
 		Map<Integer, List<Integer>> map = new HashMap<>();
 		printDiagonal(root, map, 0);
-		
+
 		List<List<Integer>> list = new ArrayList<>();
-		for (Entry<Integer, List<Integer>> entrySet : map.entrySet()) {
-			list.add(entrySet.getValue());
+		for (Integer key : map.keySet()) {
+			list.add(map.get(key));
 		}
 		return list;
 	}

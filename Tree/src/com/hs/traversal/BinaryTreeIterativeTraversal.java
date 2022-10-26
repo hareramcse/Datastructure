@@ -61,8 +61,7 @@ public class BinaryTreeIterativeTraversal {
 				s1.push(root.right);
 		}
 		while (!s2.isEmpty()) {
-			postOrder.add(s2.peek().data);
-			s2.pop();
+			postOrder.add(s2.pop().data);
 		}
 		return postOrder;
 	}

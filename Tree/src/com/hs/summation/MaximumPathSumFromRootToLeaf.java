@@ -1,39 +1,23 @@
 package com.hs.summation;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.hs.tree.Node;
 
 class MaximumPathSumFromRootToLeaf {
-	int maxPathSum = Integer.MIN_VALUE;
-
 	public int maxPathSum(Node root) {
-		if (root == null) {
-			return 0;
-		}
-		List<Integer> path = new ArrayList<>();
-		maxPathSumutil(root, path);
-		return maxPathSum;
+		int[] maxValue = new int[1];
+		maxValue[0] = Integer.MIN_VALUE;
+		maxPath(root, maxValue);
+		return maxValue[0];
 	}
 
-	private void maxPathSumutil(Node root, List<Integer> path) {
-		path.add(root.data);
+	private int maxPath(Node root, int[] maxValue) {
+		if (root == null)
+			return 0;
 
-		if (root.left == null && root.right == null) {
-			int sum = 0;
-			for (int i = path.size() - 1; i >= 0; i--) {
-				sum += path.get(i);
-			}
-			maxPathSum = Math.max(maxPathSum, sum);
-		}
-
-		if (root.left != null)
-			maxPathSumutil(root.left, path);
-
-		if (root.right != null)
-			maxPathSumutil(root.right, path);
-		path.remove(path.size() - 1);
+		int left = Math.max(0, maxPath(root.left, maxValue));
+		int right = Math.max(0, maxPath(root.right, maxValue));
+		maxValue[0] = Math.max(maxValue[0], left + right + root.data);
+		return root.data + Math.max(left, right);
 	}
 
 	public static void main(String[] args) {

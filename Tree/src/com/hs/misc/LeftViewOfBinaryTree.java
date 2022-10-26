@@ -20,19 +20,19 @@ class LeftViewOfBinaryTree {
 		while (!queue.isEmpty()) {
 			int levelSize = queue.size();
 			for (int i = 0; i < levelSize; i++) {
-				Node tempNode = queue.poll();
+				Node temp = queue.poll();
 				if (i == 0) {
-					list.add(tempNode.data);
+					list.add(temp.data);
 				}
 
 				// Enqueue left child
-				if (tempNode.left != null) {
-					queue.add(tempNode.left);
+				if (temp.left != null) {
+					queue.add(temp.left);
 				}
 
 				// Enqueue right child
-				if (tempNode.right != null) {
-					queue.add(tempNode.right);
+				if (temp.right != null) {
+					queue.add(temp.right);
 				}
 			}
 		}

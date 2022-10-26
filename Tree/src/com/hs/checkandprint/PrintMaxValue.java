@@ -13,11 +13,7 @@ class PrintMaxValue {
 		int lRes = findMax(root.left);
 		int rRes = findMax(root.right);
 
-		if (lRes > res)
-			res = lRes;
-		if (rRes > res)
-			res = rRes;
-		return res;
+		return Math.max(res, Math.max(lRes, rRes));
 	}
 
 	public static void main(String args[]) {
