@@ -2,6 +2,7 @@ package com.hs.checkandprint;
 
 import com.hs.tree.Node;
 
+// balanced binary tree is a tree which left height and right height difference is not more than 1
 public class CheckForBalancedBinaryTree {
 	public boolean isBalanced(Node root) {
 		return height(root) != -1;

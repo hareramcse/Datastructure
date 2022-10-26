@@ -2,12 +2,12 @@ package com.hs.checkandprint;
 
 import com.hs.tree.Node;
 
-/*For two trees �a� and �b� to be mirror images, the following three conditions must be 
+/*For two trees a and b to be mirror images, the following three conditions must be 
  * true: 
 
-Their root node�s key must be same
-Left subtree of root of �a� and right subtree root of �b� are mirror.
-Right subtree of �a� and left subtree of �b� are mirror.*/
+Their root node must be same
+Left subtree of root of a and right subtree root of b are mirror.
+Right subtree of a and left subtree of b are mirror.*/
 class CheckIfTwoTreesAreSymmetric {
 
 	public boolean isSymmetric(Node root) {

@@ -18,24 +18,21 @@ public class CheckBinaryTreeIsMinHeap {
 	}
 
 	private int size(Node root) {
-		if (root == null) {
+		if (root == null)
 			return 0;
-		}
+
 		return 1 + size(root.left) + size(root.right);
 	}
 
 	// Function to check if a given binary tree is a complete binary tree
 	// and each node has a higher value than its parent
 	private boolean isHeap(Node root, int i, int n) {
-		// base case
-		if (root == null) {
+		if (root == null)
 			return true;
-		}
 
 		// not complete binary tree: out of valid index range
-		if (i >= n) {
+		if (i >= n)
 			return false;
-		}
 
 		// current node has a higher value than its left or right child
 		if ((root.left != null && root.left.data <= root.data)
@@ -47,7 +44,6 @@ public class CheckBinaryTreeIsMinHeap {
 		return isHeap(root.left, 2 * i + 1, n) && isHeap(root.right, 2 * i + 2, n);
 	}
 
-	// Driver code
 	public static void main(String[] args) throws IOException {
 		CheckBinaryTreeIsMinHeap tree = new CheckBinaryTreeIsMinHeap();
 		Node root = new Node(2);

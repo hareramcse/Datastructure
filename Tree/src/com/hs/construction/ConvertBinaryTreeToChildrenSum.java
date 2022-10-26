@@ -2,43 +2,39 @@ package com.hs.construction;
 
 import com.hs.tree.Node;
 
-// O(n^2), Worst case complexity is for a skewed tree such that nodes are in decreasing order from root to leaf.
 public class ConvertBinaryTreeToChildrenSum {
-
-	// Function to convert a given binary tree to satisfy the children-sum property
 	public void convertTree(Node root) {
 		if (root == null)
 			return;
 
-		if (root.left == null && root.right == null) {
-			return;
+		int child = 0;
+
+		if (root.left != null) {
+			child += root.left.data;
+		}
+		if (root.right != null) {
+			child += root.right.data;
+		}
+
+		if (child < root.data) {
+			if (root.left != null)
+				root.left.data = root.data;
+			else if (root.right != null)
+				root.right.data = root.data;
 		}
 
 		convertTree(root.left);
 		convertTree(root.right);
 
-		// calculate the difference between the root and its children
-		int diff = root.data - findChildrenSum(root);
+		int tot = 0;
+		if (root.left != null)
+			tot += root.left.data;
 
-		// if the root is less than the children's sum, increment it by `abs(diff)`
-		if (diff < 0) {
-			root.data += Math.abs(diff);
-		}
+		if (root.right != null)
+			tot += root.right.data;
 
-		// if the root is greater than the children's sum, fix the root by
-		// either updating the left or right subtree by `diff`
-		else if (diff > 0) {
-			Node subtree = root.left != null ? root.left : root.right;
-			subtree.data += diff;
-			convertTree(subtree);
-		}
-	}
-
-	private int findChildrenSum(Node node) {
-		int left = node.left != null ? node.left.data : 0;
-		int right = node.right != null ? node.right.data : 0;
-
-		return left + right;
+		if (root.left != null || root.right != null)
+			root.data = tot;
 	}
 
 	private void printInorder(Node node) {

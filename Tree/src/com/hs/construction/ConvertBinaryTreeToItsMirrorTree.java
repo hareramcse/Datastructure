@@ -3,20 +3,16 @@ package com.hs.construction;
 import com.hs.tree.Node;
 
 class ConvertBinaryTreeToItsMirrorTree {
+	public void mirror(Node root) {
+		if (root == null)
+			return;
 
-	private Node mirror(Node node) {
-		if (node == null)
-			return node;
+		mirror(root.left);
+		mirror(root.right);
 
-		// do the subtrees
-		Node left = mirror(node.left);
-		Node right = mirror(node.right);
-
-		// swap the left and right pointers
-		node.left = right;
-		node.right = left;
-
-		return node;
+		Node temp = root.left;
+		root.left = root.right;
+		root.right = temp;
 	}
 
 	private void inOrder(Node node) {

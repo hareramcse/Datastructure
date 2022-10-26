@@ -37,7 +37,6 @@ public class ConstructTreeFromInorderData {
 		return maxind;
 	}
 
-	// This funtcion is here just to test buildTree()
 	private void printInorder(Node node) {
 		if (node == null)
 			return;

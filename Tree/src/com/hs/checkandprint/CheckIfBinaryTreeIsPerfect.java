@@ -5,43 +5,36 @@ import com.hs.tree.Node;
 /*
 1) Find depth of any node. Let this depth be d. Now recursively traverse the tree and check 
 for following two conditions. Every internal node should have both children non-empty 
-2) All leaves are at depth ‘d’*/
-// O(n) 
+2) All leaves are at depth */
 class CheckIfBinaryTreeIsPerfect {
-
 	public boolean isPerfect(Node root) {
-		int depth = findLeftDepth(root);
-		return isPerfectTree(root, 0, depth);
+		int depth = findDepth(root);
+		return isPerfect(root, 0, depth);
 	}
 
-	// Returns depth of leftmost leaf.
-	private int findLeftDepth(Node root) {
-		int d = 0;
+	private int findDepth(Node root) {
+		int depth = 0;
 		while (root != null) {
-			d++;
+			depth++;
 			root = root.left;
 		}
-		return d;
+		return depth;
 	}
 
-	private boolean isPerfectTree(Node root, int level, int depth) {
-		// An empty tree is perfect
+	private boolean isPerfect(Node root, int level, int depth) {
 		if (root == null)
 			return true;
 
-		// If leaf node, then its depth must be same as depth of all other leaves.
+		// if it is leaf node then its level should be same as other leaf node
 		if (root.left == null && root.right == null)
-			return (depth == level + 1);
+			return depth == level + 1;
 
-		// If internal node and one child is empty
 		if (root.left == null || root.right == null)
 			return false;
 
-		// Left and right subtrees must be perfect.
-		return isPerfectTree(root.left, level + 1, depth) && isPerfectTree(root.right, level + 1, depth);
+		return isPerfect(root.left, level + 1, depth) && isPerfect(root.right, level + 1, depth);
 	}
 
-	// Driver Program
 	public static void main(String args[]) {
 		CheckIfBinaryTreeIsPerfect tree = new CheckIfBinaryTreeIsPerfect();
 		Node root = new Node(10);

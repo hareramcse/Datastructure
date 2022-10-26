@@ -8,23 +8,25 @@ import com.hs.tree.Node;
 twice the value of this node (Assuming that the tree rooted with this node is SumTree).*/
 // O(n)
 class CheckBinaryTreeIsSumTree {
+	public boolean isSumTree(Node root) {
+		int result = isSumTreeUtil(root);
+		if (result != Integer.MIN_VALUE)
+			return true;
+		return false;
+	}
 
-	public int isSumTree(Node root) {
-		if (root == null) {
+	private int isSumTreeUtil(Node root) {
+		if (root == null)
 			return 0;
-		}
 
-		// special case: leaf node
 		if (root.left == null && root.right == null) {
 			return root.data;
 		}
 
-		int left = isSumTree(root.left);
-		int right = isSumTree(root.right);
+		int left = isSumTreeUtil(root.left);
+		int right = isSumTreeUtil(root.right);
 
-		// if the root's value is equal to the sum of all elements present in its
-		// left and right subtree
-		if (left != Integer.MIN_VALUE && right != Integer.MIN_VALUE && root.data == left + right) {
+		if (left != Integer.MIN_VALUE && right != Integer.MIN_VALUE & root.data == left + right) {
 			return 2 * root.data;
 		}
 
@@ -40,9 +42,7 @@ class CheckBinaryTreeIsSumTree {
 		root.left.right = new Node(6);
 		root.right.right = new Node(3);
 
-		if (tree.isSumTree(root) != Integer.MIN_VALUE)
-			System.out.println("The given tree is a sum tree");
-		else
-			System.out.println("The given tree is not a sum tree");
+		boolean result = tree.isSumTree(root);
+		System.out.println(result);
 	}
 }

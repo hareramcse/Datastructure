@@ -3,17 +3,26 @@ package com.hs.checkandprint;
 import com.hs.tree.Node;
 
 class PrintMaxValue {
-
-	// Returns the max value in a binary tree
-	private int findMax(Node root) {
+	public int findMax(Node root) {
 		if (root == null)
 			return Integer.MIN_VALUE;
 
-		int res = root.data;
-		int lRes = findMax(root.left);
-		int rRes = findMax(root.right);
+		int data = root.data;
+		int left = findMax(root.left);
+		int right = findMax(root.right);
 
-		return Math.max(res, Math.max(lRes, rRes));
+		return Math.max(data, Math.max(left, right));
+	}
+
+	public int findMin(Node root) {
+		if (root == null)
+			return Integer.MAX_VALUE;
+
+		int data = root.data;
+		int left = findMin(root.left);
+		int right = findMin(root.right);
+
+		return Math.min(data, Math.min(left, right));
 	}
 
 	public static void main(String args[]) {

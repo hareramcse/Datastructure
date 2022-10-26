@@ -32,6 +32,5 @@ class CheckIfTwoTreesAreSame {
 			System.out.println("Both trees are identical");
 		else
 			System.out.println("Trees are not identical");
-
 	}
 }

@@ -2,13 +2,12 @@ package com.hs.checkandprint;
 
 import com.hs.tree.Node;
 
-/* The idea is to find level of one of the nodes. Using the found level, check if ‘a’ 
- * and ‘b’ are at this level. If ‘a’ and ‘b’ are at given level, then finally check if 
+/* The idea is to find level of one of the nodes. Using the found level, check if a 
+ * and b are at this level. If a and b are at given level, then finally check if 
  * they are not children of same parent.*/
 
 // 993. Cousins in Binary Tree Leetcode
 class CheckIfTwoNodesAreCousin {
-	// Returns 1 if a and b are cousins, otherwise 0
 	public boolean isCousins(Node root, int x, int y) {
 		int levelA = findLevel(root, x, 1);
 		int levelB = findLevel(root, y, 1);
@@ -18,6 +17,20 @@ class CheckIfTwoNodesAreCousin {
 		} else {
 			return false;
 		}
+	}
+
+	private int findLevel(Node root, int data, int level) {
+		if (root == null)
+			return 0;
+		
+		if (root.data == data)
+			return level;
+		
+		int left = findLevel(root.left, data, level + 1);
+		if (left != 0) {
+			return left;
+		}
+		return findLevel(root.right, data, level + 1);
 	}
 
 	private boolean isSibling(Node root, int x, int y) {
@@ -30,19 +43,6 @@ class CheckIfTwoNodesAreCousin {
 		return false;
 	}
 
-	private int findLevel(Node root, int data, int level) {
-		if (root == null)
-			return 0;
-		if (root.data == data)
-			return level;
-		int left = findLevel(root.left, data, level + 1);
-		if (left != 0) {
-			return left;
-		}
-		return findLevel(root.right, data, level + 1);
-	}
-
-	// Driver program to test above functions
 	public static void main(String args[]) {
 		CheckIfTwoNodesAreCousin tree = new CheckIfTwoNodesAreCousin();
 		Node root = new Node(1);

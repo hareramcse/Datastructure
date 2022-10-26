@@ -10,58 +10,63 @@ import java.util.Queue;
 import com.hs.tree.Node;
 
 public class PrintNodesAtDistanceKFromTargetNode {
-	private void markParents(Node root, Map<Node, Node> parent_track, Node target) {
-		Queue<Node> queue = new LinkedList<>();
-		queue.offer(root);
-		while (!queue.isEmpty()) {
-			Node current = queue.poll();
-			if (current.left != null) {
-				parent_track.put(current.left, current);
-				queue.offer(current.left);
-			}
-			if (current.right != null) {
-				parent_track.put(current.right, current);
-				queue.offer(current.right);
-			}
-		}
-	}
-
 	public List<Integer> distanceK(Node root, Node target, int k) {
-		Map<Node, Node> parent_track = new HashMap<>();
-		markParents(root, parent_track, root);
+		Map<Node, Node> map = new HashMap<>();
+		makeParents(root, map);
+
 		Map<Node, Boolean> visited = new HashMap<>();
 		Queue<Node> queue = new LinkedList<>();
-		queue.offer(target);
+		queue.add(target);
 		visited.put(target, true);
-		int curr_level = 0;
-		while (!queue.isEmpty()) { /*
-									 * Second BFS to go upto K level from target node and using our hashtable info
-									 */
-			int size = queue.size();
-			if (curr_level == k)
+
+		int current_level = 0;
+		while (!queue.isEmpty()) {
+			if (current_level == k)
 				break;
-			curr_level++;
-			for (int i = 0; i < size; i++) {
-				Node current = queue.poll();
-				if (current.left != null && visited.get(current.left) == null) {
-					queue.offer(current.left);
-					visited.put(current.left, true);
+
+			current_level++;
+			int levelSize = queue.size();
+			for (int i = 0; i < levelSize; i++) {
+				Node node = queue.poll();
+				if (node.left != null && visited.get(node.left) == null) {
+					visited.put(node.left, true);
+					queue.add(node.left);
 				}
-				if (current.right != null && visited.get(current.right) == null) {
-					queue.offer(current.right);
-					visited.put(current.right, true);
+
+				if (node.right != null && visited.get(node.right) == null) {
+					visited.put(node.right, true);
+					queue.add(node.right);
 				}
-				if (parent_track.get(current) != null && visited.get(parent_track.get(current)) == null) {
-					queue.offer(parent_track.get(current));
-					visited.put(parent_track.get(current), true);
+
+				if (map.get(node) != null && visited.get(map.get(node)) == null) {
+					visited.put(map.get(node), true);
+					queue.add(map.get(node));
 				}
 			}
 		}
+
 		List<Integer> result = new ArrayList<>();
 		while (!queue.isEmpty()) {
-			Node current = queue.poll();
-			result.add(current.data);
+			result.add(queue.poll().data);
 		}
 		return result;
+	}
+
+	private void makeParents(Node root, Map<Node, Node> map) {
+		Queue<Node> queue = new LinkedList<>();
+		queue.add(root);
+
+		while (!queue.isEmpty()) {
+			Node node = queue.poll();
+			if (node.left != null) {
+				map.put(node.left, node);
+				queue.add(node.left);
+			}
+
+			if (node.right != null) {
+				map.put(node.right, node);
+				queue.add(node.right);
+			}
+		}
 	}
 }

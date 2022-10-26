@@ -1,19 +1,27 @@
 package com.hs.checkandprint;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.hs.tree.Node;
 
 class PrintAllNodeAtDistanceK {
+	List<Integer> Kdistance(Node root, int k) {
+		List<Integer> list = new ArrayList<>();
+		Kdistance(root, k, list);
+		return list;
+	}
 
-	private void printKDistant(Node root, int k) {
+	private void Kdistance(Node root, int k, List<Integer> result) {
 		if (root == null)
 			return;
 
 		if (k == 0) {
-			System.out.print(root.data + " ");
-			return;
+			result.add(root.data);
 		}
-		printKDistant(root.left, k - 1);
-		printKDistant(root.right, k - 1);
+
+		Kdistance(root.left, k - 1, result);
+		Kdistance(root.right, k - 1, result);
 	}
 
 	public static void main(String args[]) {
@@ -25,6 +33,7 @@ class PrintAllNodeAtDistanceK {
 		root.left.right = new Node(5);
 		root.right.left = new Node(8);
 
-		tree.printKDistant(root, 2);
+		List<Integer> result = tree.Kdistance(root, 2);
+		System.out.println(result);
 	}
 }
