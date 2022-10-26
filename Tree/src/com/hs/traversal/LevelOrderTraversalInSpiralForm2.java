@@ -1,7 +1,6 @@
 package com.hs.traversal;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -21,21 +20,22 @@ class LevelOrderTraversalInSpiralForm2 {
 			int levelSize = queue.size();
 			List<Integer> subList = new ArrayList<>();
 			for (int i = 0; i < levelSize; i++) {
-				Node tempNode = queue.poll();
-				subList.add(tempNode.data);
+				Node temp = queue.poll();
+				if (ltr) {
+					subList.add(0, temp.data);
+				} else {
+					subList.add(temp.data);
+				}
 
 				// Enqueue left child
-				if (tempNode.left != null) {
-					queue.add(tempNode.left);
+				if (temp.left != null) {
+					queue.add(temp.left);
 				}
 
 				// Enqueue right child
-				if (tempNode.right != null) {
-					queue.add(tempNode.right);
+				if (temp.right != null) {
+					queue.add(temp.right);
 				}
-			}
-			if (ltr) {
-				Collections.reverse(subList);
 			}
 			list.add(subList);
 			ltr = !ltr;
