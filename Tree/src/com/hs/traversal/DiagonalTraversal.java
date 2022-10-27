@@ -8,10 +8,7 @@ import java.util.Map;
 import com.hs.tree.Node;
 
 public class DiagonalTraversal {
-
-	// Print diagonal traversal of given binary tree
 	public List<List<Integer>> diagonalPrint(Node root) {
-		// create a map of list to store Diagonal elements
 		Map<Integer, List<Integer>> map = new HashMap<>();
 		printDiagonal(root, map, 0);
 
@@ -53,7 +50,6 @@ public class DiagonalTraversal {
 		printDiagonal(root.right, map, d);
 	}
 
-	// Driver program
 	public static void main(String[] args) {
 		DiagonalTraversal tree = new DiagonalTraversal();
 		Node root = new Node(8);

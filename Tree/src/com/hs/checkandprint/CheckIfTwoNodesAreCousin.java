@@ -6,7 +6,6 @@ import com.hs.tree.Node;
  * and b are at this level. If a and b are at given level, then finally check if 
  * they are not children of same parent.*/
 
-// 993. Cousins in Binary Tree Leetcode
 class CheckIfTwoNodesAreCousin {
 	public boolean isCousins(Node root, int x, int y) {
 		int levelA = findLevel(root, x, 1);

@@ -22,7 +22,6 @@ public class MaximumWidthOfBinaryTree {
 			for (int i = 0; i < levelSize; i++) {
 				Pair curr = queue.poll();
 				int cur_id = curr.hd - mmin; // to make the starting id from 0
-				Node node = curr.node;
 
 				if (i == 0)
 					first = cur_id;
@@ -30,11 +29,11 @@ public class MaximumWidthOfBinaryTree {
 				if (i == levelSize - 1)
 					last = cur_id;
 
-				if (node.left != null)
-					queue.offer(new Pair(node.left, cur_id * 2 + 1));
+				if (curr.node.left != null)
+					queue.offer(new Pair(curr.node.left, cur_id * 2 + 1));
 
-				if (node.right != null)
-					queue.offer(new Pair(node.right, cur_id * 2 + 2));
+				if (curr.node.right != null)
+					queue.offer(new Pair(curr.node.right, cur_id * 2 + 2));
 			}
 			ans = Math.max(ans, last - first + 1);
 		}

@@ -4,19 +4,19 @@ import com.hs.tree.Node;
 
 class MaximumPathSumFromRootToLeaf {
 	public int maxPathSum(Node root) {
-		int[] maxValue = new int[1];
-		maxValue[0] = Integer.MIN_VALUE;
-		maxPath(root, maxValue);
-		return maxValue[0];
+		int[] maxSum = new int[1];
+		maxSum[0] = Integer.MIN_VALUE;
+		maxPath(root, maxSum);
+		return maxSum[0];
 	}
 
-	private int maxPath(Node root, int[] maxValue) {
+	private int maxPath(Node root, int[] maxSum) {
 		if (root == null)
 			return 0;
 
-		int left = Math.max(0, maxPath(root.left, maxValue));
-		int right = Math.max(0, maxPath(root.right, maxValue));
-		maxValue[0] = Math.max(maxValue[0], left + right + root.data);
+		int left = Math.max(0, maxPath(root.left, maxSum));
+		int right = Math.max(0, maxPath(root.right, maxSum));
+		maxSum[0] = Math.max(maxSum[0], left + right + root.data);
 		return root.data + Math.max(left, right);
 	}
 

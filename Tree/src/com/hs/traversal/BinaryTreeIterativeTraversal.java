@@ -8,26 +8,28 @@ import com.hs.tree.Node;
 
 public class BinaryTreeIterativeTraversal {
 	private List<Integer> printPreorder(Node root) {
-		List<Integer> preOrder = new ArrayList<>();
+		List<Integer> result = new ArrayList<>();
 		if (root == null)
-			return preOrder;
+			return result;
 
 		Stack<Node> stack = new Stack<>();
 		stack.push(root);
 
 		while (!stack.isEmpty()) {
 			Node topNode = stack.pop();
-			preOrder.add(topNode.data);
+			result.add(topNode.data);
+			
 			if (topNode.right != null)
 				stack.push(topNode.right);
+			
 			if (topNode.left != null)
 				stack.push(topNode.left);
 		}
-		return preOrder;
+		return result;
 	}
 
 	private List<Integer> printInorder(Node root) {
-		List<Integer> inOrder = new ArrayList<>();
+		List<Integer> result = new ArrayList<>();
 		Stack<Node> stack = new Stack<>();
 		while (true) {
 			if (root != null) {
@@ -37,17 +39,17 @@ public class BinaryTreeIterativeTraversal {
 				if (stack.isEmpty())
 					break;
 				root = stack.pop();
-				inOrder.add(root.data);
+				result.add(root.data);
 				root = root.right;
 			}
 		}
-		return inOrder;
+		return result;
 	}
 
 	private List<Integer> printPostorder(Node root) {
-		List<Integer> postOrder = new ArrayList<>();
+		List<Integer> result = new ArrayList<>();
 		if (root == null)
-			return postOrder;
+			return result;
 
 		Stack<Node> s1 = new Stack<>();
 		Stack<Node> s2 = new Stack<>();
@@ -55,15 +57,17 @@ public class BinaryTreeIterativeTraversal {
 		while (!s1.isEmpty()) {
 			root = s1.pop();
 			s2.push(root);
+			
 			if (root.left != null)
 				s1.push(root.left);
+			
 			if (root.right != null)
 				s1.push(root.right);
 		}
 		while (!s2.isEmpty()) {
-			postOrder.add(s2.pop().data);
+			result.add(s2.pop().data);
 		}
-		return postOrder;
+		return result;
 	}
 
 	public static void main(String[] args) {

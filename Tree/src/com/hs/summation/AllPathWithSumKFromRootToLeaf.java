@@ -14,19 +14,15 @@ public class AllPathWithSumKFromRootToLeaf {
 	}
 
 	public void pathSumUtil(Node root, int targetSum, List<Integer> path, List<List<Integer>> result) {
-		// base case
-		if (root == null) {
+		if (root == null)
 			return;
-		}
 
-		// include the current node to the path
 		path.add(root.data);
 
 		if (root.left == null && root.right == null && root.data == targetSum) {
 			result.add(new ArrayList<>(path));
 		}
 
-		// recur for the left and right subtree
 		pathSumUtil(root.left, targetSum - root.data, path, result);
 		pathSumUtil(root.right, targetSum - root.data, path, result);
 		path.remove(path.size() - 1);

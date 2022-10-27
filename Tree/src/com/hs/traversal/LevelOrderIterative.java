@@ -7,20 +7,20 @@ import java.util.Queue;
 
 import com.hs.tree.Node;
 
-class LevelOrderTraversal2 {
+class LevelOrderIterative {
 	public List<List<Integer>> levelOrderTraversal(Node root) {
-		List<List<Integer>> list = new ArrayList<>();
+		List<List<Integer>> result = new ArrayList<>();
 		if (root == null)
-			return list;
+			return result;
 
 		Queue<Node> queue = new LinkedList<>();
 		queue.add(root);
 		while (!queue.isEmpty()) {
 			int levelSize = queue.size();
-			List<Integer> subList = new ArrayList<>();
+			List<Integer> list = new ArrayList<>();
 			for (int i = 0; i < levelSize; i++) {
 				Node tempNode = queue.poll();
-				subList.add(tempNode.data);
+				list.add(tempNode.data);
 				
 				// Enqueue left child
 				if (tempNode.left != null) {
@@ -32,18 +32,20 @@ class LevelOrderTraversal2 {
 					queue.add(tempNode.right);
 				}
 			}
-			list.add(subList);
+			result.add(list);
 		}
-		return list;
+		return result;
 	}
 
 	public static void main(String args[]) {
-		LevelOrderTraversal2 tree = new LevelOrderTraversal2();
+		LevelOrderIterative tree = new LevelOrderIterative();
 		Node root = new Node(1);
 		root.left = new Node(2);
 		root.right = new Node(3);
-		root.left.left = new Node(4);
-		root.left.right = new Node(5);
+		root.left.left = new Node(7);
+		root.left.right = new Node(6);
+		root.right.left = new Node(5);
+		root.right.right = new Node(4);
 
 		System.out.println("Level order traversal of binary tree is:");
 		List<List<Integer>> list = tree.levelOrderTraversal(root);

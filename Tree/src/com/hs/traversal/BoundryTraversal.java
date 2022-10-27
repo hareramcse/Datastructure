@@ -43,7 +43,9 @@ class BoundryTraversal {
 		result.add(root.data);
 		if (root.left != null) {
 			leftBoundary(root.left, result);
-		} else if (root.right != null) {
+		} 
+		
+		if (root.right != null) {
 			leftBoundary(root.right, result);
 		}
 	}
@@ -63,13 +65,18 @@ class BoundryTraversal {
 
 	// Print the nodes in BOTTOM UP manner
 	private void rightBoundary(Node root, List<Integer> result) {
-		if (root == null || (root.left == null && root.right == null)) {
+		if (root == null)
+			return;
+		
+		if (root.left == null && root.right == null) {
 			return;
 		}
 
 		if (root.right != null) {
 			rightBoundary(root.right, result);
-		} else if (root.left != null) {
+		} 
+		
+		if (root.left != null) {
 			rightBoundary(root.left, result);
 		}
 		result.add(root.data);

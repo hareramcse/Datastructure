@@ -3,7 +3,6 @@ package com.hs.construction;
 import com.hs.tree.Node;
 
 public class ConstructTreeFromInorderData {
-
 	public Node buildTree(Node root, int start, int end, int inorder[]) {
 		if (start > end)
 			return null;

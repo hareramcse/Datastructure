@@ -22,7 +22,7 @@ public class VerticalTraversal {
 		return result;
 	}
 
-	public Map<Integer, List<Integer>> verticalTraversalUtil(Node root, Map<Integer, List<Integer>> map, Pair pair) {
+	private Map<Integer, List<Integer>> verticalTraversalUtil(Node root, Map<Integer, List<Integer>> map, Pair pair) {
 		Queue<Pair> queue = new LinkedList<>();
 		queue.add(pair);
 		while (!queue.isEmpty()) {

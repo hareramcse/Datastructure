@@ -26,15 +26,15 @@ public class ConvertBinaryTreeToChildrenSum {
 		convertTree(root.left);
 		convertTree(root.right);
 
-		int tot = 0;
+		int total = 0;
 		if (root.left != null)
-			tot += root.left.data;
+			total += root.left.data;
 
 		if (root.right != null)
-			tot += root.right.data;
+			total += root.right.data;
 
 		if (root.left != null || root.right != null)
-			root.data = tot;
+			root.data = total;
 	}
 
 	private void printInorder(Node node) {

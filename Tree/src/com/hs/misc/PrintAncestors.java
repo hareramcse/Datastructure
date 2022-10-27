@@ -1,17 +1,28 @@
 package com.hs.misc;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.hs.tree.Node;
 
 public class PrintAncestors {
-	public boolean printAncestors(Node root, int target) {
+	public List<Integer> printAncestors(Node root, int target) {
+		List<Integer> result = new ArrayList<>();
+		ancestors(root, target, result);
+		return result;
+	}
+
+	private boolean ancestors(Node root, int target, List<Integer> result) {
 		if (root == null)
 			return false;
 
 		if (root.data == target)
 			return true;
 
-		if (printAncestors(root.left, target) || printAncestors(root.right, target)) {
-			System.out.print(root.data + " ");
+		boolean left = ancestors(root.left, target, result);
+		boolean right = ancestors(root.right, target, result);
+		if (left || right) {
+			result.add(root.data);
 			return true;
 		}
 		return false;
@@ -24,8 +35,7 @@ public class PrintAncestors {
 		root.right = new Node(3);
 		root.left.left = new Node(4);
 		root.left.right = new Node(5);
-
-		// print ancestors of given node
-		tree.printAncestors(root, 5);
+		List<Integer> result = tree.printAncestors(root, 5);
+		System.out.println(result);
 	}
 }

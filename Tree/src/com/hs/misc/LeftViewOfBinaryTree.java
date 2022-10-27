@@ -39,7 +39,6 @@ class LeftViewOfBinaryTree {
 		return list;
 	}
 
-	// testing for example nodes
 	public static void main(String args[]) {
 		LeftViewOfBinaryTree tree = new LeftViewOfBinaryTree();
 		Node root = new Node(12);

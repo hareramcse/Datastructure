@@ -12,7 +12,6 @@ import com.hs.tree.Node;
 //find the vertical order traversal
 //get the last node of each level
 public class BottomViewOfBinaryTree {
-
 	public List<Integer> printBottomView(Node root) {
 		Map<Integer, List<Integer>> map = new TreeMap<>();
 		Pair pair = new Pair(root, 0);

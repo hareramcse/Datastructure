@@ -14,12 +14,10 @@ class PrintAllPathFromRootToLeaf {
 	}
 
 	private void binaryTreePathsUtil(Node root, List<String> path, List<String> result) {
-		// base case
 		if (root == null) {
 			return;
 		}
 
-		// include the current node to the path
 		path.add("" + root.data);
 
 		// if a leaf node is found, print the path
@@ -28,7 +26,6 @@ class PrintAllPathFromRootToLeaf {
 			result.add(pathToAdd);
 		}
 
-		// recur for the left and right subtree
 		binaryTreePathsUtil(root.left, path, result);
 		binaryTreePathsUtil(root.right, path, result);
 		path.remove(path.size() - 1);

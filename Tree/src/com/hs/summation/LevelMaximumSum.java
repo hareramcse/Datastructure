@@ -21,17 +21,17 @@ public class LevelMaximumSum {
 			int sum = 0;
 			int levelSize = queue.size();
 			for (int i = 0; i < levelSize; i++) {
-				Node tempNode = queue.poll();
-				sum += tempNode.data;
+				Node temp = queue.poll();
+				sum += temp.data;
 
 				// Enqueue left child
-				if (tempNode.left != null) {
-					queue.add(tempNode.left);
+				if (temp.left != null) {
+					queue.add(temp.left);
 				}
 
 				// Enqueue right child
-				if (tempNode.right != null) {
-					queue.add(tempNode.right);
+				if (temp.right != null) {
+					queue.add(temp.right);
 				}
 			}
 			if (sum > max) {

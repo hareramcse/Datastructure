@@ -9,22 +9,22 @@ import com.hs.tree.Node;
 
 class LevelOrderTraversalInSpiralForm2 {
 	public List<List<Integer>> zigZagTraversal(Node root) {
-		List<List<Integer>> list = new ArrayList<>();
+		List<List<Integer>> result = new ArrayList<>();
 		if (root == null)
-			return list;
+			return result;
 
 		Queue<Node> queue = new LinkedList<>();
 		queue.add(root);
 		boolean ltr = false;
 		while (!queue.isEmpty()) {
 			int levelSize = queue.size();
-			List<Integer> subList = new ArrayList<>();
+			List<Integer> list = new ArrayList<>();
 			for (int i = 0; i < levelSize; i++) {
 				Node temp = queue.poll();
 				if (ltr) {
-					subList.add(0, temp.data);
+					list.add(0, temp.data);
 				} else {
-					subList.add(temp.data);
+					list.add(temp.data);
 				}
 
 				// Enqueue left child
@@ -37,10 +37,10 @@ class LevelOrderTraversalInSpiralForm2 {
 					queue.add(temp.right);
 				}
 			}
-			list.add(subList);
+			result.add(list);
 			ltr = !ltr;
 		}
-		return list;
+		return result;
 	}
 
 	public static void main(String[] args) {
