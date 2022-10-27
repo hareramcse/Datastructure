@@ -2,41 +2,45 @@ package com.hs.bst;
 
 import com.hs.tree.Node;
 
-class NodeValue {
-	public int minNode, maxNode, maxSize;
+class NodeInfo {
+	public int min, max, size;
+	public boolean isBST;
 
-	NodeValue(int minNode, int maxNode, int maxSize) {
-		this.minNode = minNode;
-		this.maxNode = maxNode;
-		this.maxSize = maxSize;
+	NodeInfo() {
+
+	}
+
+	NodeInfo(int min, int max, boolean isBST, int size) {
+		this.min = min;
+		this.max = max;
+		this.size = size;
+		this.isBST = isBST;
 	}
 }
 
 public class LargestBSTInBinaryTree {
 	public int largestBSTSubtree(Node root) {
-		return largestBSTSubtreeHelper(root).maxSize;
+		return findLargestBst(root).size;
 	}
 
-	private NodeValue largestBSTSubtreeHelper(Node root) {
-		// An empty tree is a BST of size 0.
+	private NodeInfo findLargestBst(Node root) {
 		if (root == null) {
-			return new NodeValue(Integer.MAX_VALUE, Integer.MIN_VALUE, 0);
+			return new NodeInfo(Integer.MAX_VALUE, Integer.MIN_VALUE, true, 0);
 		}
 
-		// Get values from left and right subtree of current tree.
-		NodeValue left = largestBSTSubtreeHelper(root.left);
-		NodeValue right = largestBSTSubtreeHelper(root.right);
+		NodeInfo left = findLargestBst(root.left);
+		NodeInfo right = findLargestBst(root.right);
 
-		// Current node is greater than max in left AND smaller than min in right
-		// it is a BST.
-		if (left.maxNode < root.data && root.data < right.minNode) {
-			// It is a BST.
-			return new NodeValue(Math.min(root.data, left.minNode), Math.max(root.data, right.maxNode),
-					left.maxSize + right.maxSize + 1);
+		NodeInfo current = new NodeInfo();
+		current.min = Math.min(root.data, left.min);
+		current.max = Math.max(root.data, right.max);
+		current.isBST = left.isBST && right.isBST && root.data > left.max && root.data < right.min;
+
+		if (current.isBST) {
+			current.size = 1 + left.size + right.size;
+		} else {
+			current.size = Math.max(left.size, right.size);
 		}
-
-		// Otherwise, return [-inf, inf] so that parent can't be valid BST
-		return new NodeValue(Integer.MIN_VALUE, Integer.MAX_VALUE, Math.max(left.maxSize, right.maxSize));
+		return current;
 	}
-
 }

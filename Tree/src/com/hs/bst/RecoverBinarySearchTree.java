@@ -4,14 +4,16 @@ import com.hs.tree.Node;
 
 public class RecoverBinarySearchTree {
 	private Node first;
-	private Node prev;
 	private Node middle;
 	private Node last;
+	private Node prev;
 
 	public void recoverTree(Node root) {
 		first = middle = last = null;
 		prev = new Node(Integer.MIN_VALUE);
+
 		inorder(root);
+
 		if (first != null && last != null) {
 			swap(first, last);
 		} else if (first != null && middle != null) {
@@ -44,8 +46,8 @@ public class RecoverBinarySearchTree {
 	}
 
 	private void swap(Node first, Node last) {
-		int t = first.data;
+		int temp = first.data;
 		first.data = last.data;
-		last.data = t;
+		last.data = temp;
 	}
 }
