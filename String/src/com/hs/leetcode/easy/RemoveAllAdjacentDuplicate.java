@@ -3,12 +3,11 @@ package com.hs.leetcode.easy;
 import java.util.Stack;
 
 public class RemoveAllAdjacentDuplicate {
-
 	public String removeDuplicates(String s) {
 		Stack<Character> stack = new Stack<>();
 
-		for (int j = 0; j < s.length(); j++) {
-			char curr = s.charAt(j);
+		for (int i = 0; i < s.length(); i++) {
+			char curr = s.charAt(i);
 
 			if (stack.size() > 0 && stack.peek() == curr) {
 				stack.pop();

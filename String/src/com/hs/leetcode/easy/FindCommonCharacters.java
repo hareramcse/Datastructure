@@ -10,13 +10,13 @@ public class FindCommonCharacters {
 		Arrays.fill(common, Integer.MAX_VALUE);
 
 		for (String word : words) {
-			int[] frequencies = new int[26];
+			int[] freq = new int[26];
 			for (char ch : word.toCharArray()) {
-				frequencies[ch - 'a']++;
+				freq[ch - 'a']++;
 			}
 
 			for (int i = 0; i < 26; i++) {
-				common[i] = Math.min(common[i], frequencies[i]);
+				common[i] = Math.min(common[i], freq[i]);
 			}
 		}
 
