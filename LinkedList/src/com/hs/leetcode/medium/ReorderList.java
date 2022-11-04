@@ -3,7 +3,7 @@ package com.hs.leetcode.medium;
 import com.hs.basic.LinkedListUtil;
 import com.hs.basic.ListNode;
 
-public class ReorderLinkedList {
+public class ReorderList {
 
 	// find the mid element
 	// reverse the second half of the element
@@ -29,7 +29,7 @@ public class ReorderLinkedList {
     }
 
 	public static void main(String[] args) {
-		ReorderLinkedList list = new ReorderLinkedList();
+		ReorderList list = new ReorderList();
 
 		ListNode head = new ListNode(10);
 		head.next = new ListNode(4);

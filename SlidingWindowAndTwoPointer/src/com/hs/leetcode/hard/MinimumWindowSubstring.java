@@ -3,7 +3,7 @@ package com.hs.leetcode.hard;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MinWindowSubString {
+public class MinimumWindowSubstring {
 	public String minWindow(String s, String t) {
         Map<Character, Integer> map = new HashMap<>();
         for(int i = 0; i < t.length(); i++){
@@ -52,7 +52,7 @@ public class MinWindowSubString {
     }
 
 	public static void main(String[] args) {
-		MinWindowSubString sol = new MinWindowSubString();
+		MinimumWindowSubstring sol = new MinimumWindowSubstring();
 		String s = "ADOBECODEBANC";
 		String t = "ABC";
 		String res = sol.minWindow(s, t);
