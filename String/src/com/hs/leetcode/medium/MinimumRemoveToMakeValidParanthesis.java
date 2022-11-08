@@ -2,34 +2,34 @@ package com.hs.leetcode.medium;
 
 import java.util.Stack;
 
-public class MinRemoveToMakeValidParanthesis {
+public class MinimumRemoveToMakeValidParanthesis {
 	public String minRemoveToMakeValid(String s) {
-		StringBuilder sb = new StringBuilder(s);
-		Stack<Pair> stack = new Stack<>();
+		Stack<Integer> stack = new Stack<>();
 
 		for (int i = 0; i < s.length(); i++) {
 			char ch = s.charAt(i);
 			if (ch == '(') {
-				stack.push(new Pair(ch, i));
-			} else if (ch == ')') {
-				if (!stack.isEmpty() && stack.peek().key == '(') {
+				stack.push(i);
+			} else {
+				if (!stack.isEmpty() && s.charAt(stack.peek()) == '(') {
 					stack.pop();
 				} else {
-					stack.push(new Pair(ch, i));
+					stack.push(i);
 				}
 			}
 		}
 
+		StringBuilder sb = new StringBuilder(s);
 		while (!stack.isEmpty()) {
-			Pair pair = stack.pop();
-			sb.deleteCharAt(pair.value);
+			int index = stack.pop();
+			sb.deleteCharAt(index);
 		}
 		return sb.toString();
 	}
 
 	public static void main(String[] args) {
-		MinRemoveToMakeValidParanthesis obj = new MinRemoveToMakeValidParanthesis();
-		String s = "))((";
+		MinimumRemoveToMakeValidParanthesis obj = new MinimumRemoveToMakeValidParanthesis();
+		String s = "))(()";
 		String result = obj.minRemoveToMakeValid(s);
 		System.out.println(result);
 	}

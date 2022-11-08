@@ -2,8 +2,9 @@ package com.hs.leetcode.medium;
 
 public class PalindromicSubstrings {
 	public int countSubstrings(String s) {
-		if (s.isEmpty())
+		if (s == null || s.length() == 0)
 			return 0;
+		
 		int n = s.length();
 		int count = 0;
 		char[] ch = s.toCharArray();

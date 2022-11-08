@@ -4,35 +4,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GenerateParentheses {
-	List<String> result = new ArrayList<>(); 
-    public List<String> generateParenthesis(int n) {
-        int open = n;
-        int closed = n;
-        String output = "";
-        generateParenthesisUtil(open, closed, output, n);
-        return result;
-    }
-    
-    private void generateParenthesisUtil(int open, int closed, String output, int n) {
-		if (open == 0 && closed == 0) {
-			result.add(output);
+	public List<String> generateParenthesis(int n) {
+		List<String> result = new ArrayList<>();
+		generateParenthesisUtil("(", 1, 0, n, result);
+		return result;
+	}
+
+	private void generateParenthesisUtil(String current, int open, int closed, int n, List<String> result) {
+		if (current.length() == 2 * n) {
+			result.add(current);
 			return;
 		}
-		if (open != 0) {
-			String op1 = output;
-			op1 = op1 + "(";
-			generateParenthesisUtil(open - 1, closed, op1, n);
+
+		if (open < n) {
+			generateParenthesisUtil(current + "(", open + 1, closed, n, result);
 		}
-		if (closed > open) {
-			String op2 = output;
-			op2 = op2 + ")";
-			generateParenthesisUtil(open, closed - 1, op2, n);
+
+		if (closed < open) {
+			generateParenthesisUtil(current + ")", open, closed + 1, n, result);
 		}
 	}
 
 	public static void main(String[] args) {
-		GenerateParentheses pas = new GenerateParentheses();
-		pas.generateParenthesis(3);
-		System.out.println(pas.result);
+		GenerateParentheses obj = new GenerateParentheses();
+		List<String> result = obj.generateParenthesis(3);
+		System.out.println(result);
 	}
 }

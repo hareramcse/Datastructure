@@ -16,11 +16,12 @@ public class RemoveAllAdjacentDuplicate {
 			}
 		}
 
-		StringBuilder res = new StringBuilder();
-		while (!stack.isEmpty()) {
-			res.append(stack.pop());
+		StringBuilder res = new StringBuilder();		
+		for(char ch : stack) {
+			res.append(ch);
 		}
-		return res.reverse().toString();
+		
+		return res.toString();
 	}
 
 	public static void main(String[] args) {

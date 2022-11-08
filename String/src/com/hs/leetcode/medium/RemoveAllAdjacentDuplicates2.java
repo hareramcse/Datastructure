@@ -5,6 +5,7 @@ import java.util.Stack;
 public class RemoveAllAdjacentDuplicates2 {
 	public String removeDuplicates(String s, int k) {
         Stack<Pair> stack = new Stack<>();
+        
 		for (char ch : s.toCharArray()) {
 			if (!stack.isEmpty() && (stack.peek().key == ch)) {
 				Pair pair = stack.pop();

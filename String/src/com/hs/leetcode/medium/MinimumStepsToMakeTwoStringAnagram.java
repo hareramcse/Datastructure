@@ -1,6 +1,6 @@
 package com.hs.leetcode.medium;
 
-public class MinStepsToMakeTwoStringAnagram {
+public class MinimumStepsToMakeTwoStringAnagram {
 	public int minSteps(String s, String t) {
 		int[] counts = new int[26];
 
@@ -19,7 +19,7 @@ public class MinStepsToMakeTwoStringAnagram {
 	}
 
 	public static void main(String[] args) {
-		MinStepsToMakeTwoStringAnagram obj = new MinStepsToMakeTwoStringAnagram();
+		MinimumStepsToMakeTwoStringAnagram obj = new MinimumStepsToMakeTwoStringAnagram();
 		String s = "leetcode";
 		String t = "practice";
 		int result = obj.minSteps(s, t);

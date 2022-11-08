@@ -24,7 +24,7 @@ public class MaximumProductWordLengths {
 		int state = 0;
 		for (char ch : word.toCharArray()) {
 			int index = ch - 'a';
-			state |= 1 << (index);
+			state |= 1 << index;
 		}
 		return state;
 	}

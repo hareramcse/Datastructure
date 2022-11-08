@@ -1,29 +1,24 @@
 package com.hs.leetcode.medium;
 
-import java.util.Stack;
-
 public class ScoreOfParanthesis {
 	public int scoreOfParentheses(String s) {
-		Stack<Integer> stack = new Stack<>();
 		int score = 0;
-		for (char ch : s.toCharArray()) {
-			int val = 0;
-			if (ch == '(') {
-				stack.push(0);
+		int depth = 0;
+
+		for (int i = 0; i < s.length(); i++) {
+			if (s.charAt(i) == '(') {
+				depth++;
 			} else {
-				// calculate the score
-				while (stack.peek() != 0) {
-					val += stack.pop();
-				}
-				val = Math.max(2 * val, 1); // () for this it will return 1
-				stack.pop();
-				stack.push(val);
+				depth--;
+			}
+
+			if (s.charAt(i) == ')' && s.charAt(i - 1) == '(') {
+				// Whenever you meet a () pair, you multiply 1 by all the 2 outside of it, and
+				// accumulate the result
+				score += Math.pow(2, depth);
 			}
 		}
 
-		while (!stack.isEmpty()) {
-			score += stack.pop();
-		}
 		return score;
 	}
 

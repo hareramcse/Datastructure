@@ -23,6 +23,7 @@ public class ReorganizeString {
 			result.append(next);
 			counts.put(current, counts.get(current) - 1);
 			counts.put(next, counts.get(next) - 1);
+			
 			if (counts.get(current) > 0) {
 				maxHeap.add(current);
 			}

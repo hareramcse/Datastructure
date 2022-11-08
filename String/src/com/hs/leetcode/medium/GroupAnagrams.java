@@ -8,22 +8,22 @@ import java.util.Map;
 
 public class GroupAnagrams {
 	public List<List<String>> groupAnagrams(String[] strs) {
-		List<List<String>> groupAnagrams = new ArrayList<>();
+		List<List<String>> result = new ArrayList<>();
 		Map<String, List<String>> map = new HashMap<>();
 
-		for (String current : strs) {
-			char[] chars = current.toCharArray();
+		for (String str : strs) {
+			char[] chars = str.toCharArray();
 			Arrays.sort(chars);
 			String sorted = new String(chars);
 
 			if (!map.containsKey(sorted)) {
 				map.put(sorted, new ArrayList<>());
 			}
-			map.get(sorted).add(current);
+			map.get(sorted).add(str);
 		}
 
-		groupAnagrams.addAll(map.values());
-		return groupAnagrams;
+		result.addAll(map.values());
+		return result;
 	}
 
 	public static void main(String[] args) {
