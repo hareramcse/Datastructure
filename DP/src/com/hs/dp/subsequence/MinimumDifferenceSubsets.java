@@ -1,4 +1,4 @@
-package com.hs.subsequence;
+package com.hs.dp.subsequence;
 
 public class MinimumDifferenceSubsets {
 	public int minSubsetSumDifference(int[] arr, int n) {
