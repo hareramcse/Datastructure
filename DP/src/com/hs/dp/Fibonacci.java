@@ -1,34 +1,51 @@
 package com.hs.dp;
 
+import java.util.Arrays;
+
 public class Fibonacci {
 
-	final int MAX = 100;
-	final int NIL = -1;
+	public int fibRecursion(int n) {
+		if (n <= 1)
+			return n;
 
-	int lookup[] = new int[MAX];
-
-	/* Function to initialize NIL values in lookup table */
-	void _initialize() {
-		for (int i = 0; i < MAX; i++)
-			lookup[i] = NIL;
+		return fibRecursion(n - 1) + fibRecursion(n - 2);
 	}
 
-	/* function for nth Fibonacci number */
-	int fib(int n) {
-		if (lookup[n] == NIL) {
-			if (n <= 1)
-				lookup[n] = n;
-			else
-				lookup[n] = fib(n - 1) + fib(n - 2);
+	public int fibMemoization(int n, int[] dp) {
+		if (n <= 1)
+			return n;
+
+		if (dp[n] != -1)
+			return dp[n];
+
+		dp[n] = fibMemoization(n - 1, dp) + fibMemoization(n - 2, dp);
+		return dp[n];
+	}
+
+	public int fibTabular(int n) {
+		int[] dp = new int[n + 1];
+
+		dp[0] = 0;
+		dp[1] = 1;
+
+		for (int i = 2; i <= n; i++) {
+			dp[i] = dp[i - 1] + dp[i - 2];
 		}
-		return lookup[n];
+		return dp[n];
 	}
 
 	public static void main(String[] args) {
-		Fibonacci f = new Fibonacci();
-		int n = 40;
-		f._initialize();
-		System.out.println("Fibonacci number is" + " " + f.fib(n));
-	}
+		Fibonacci obj = new Fibonacci();
+		int n = 5;
+		int result = obj.fibRecursion(n);
+		System.out.println("Fibonacci number through recursion " + result);
 
+		int[] dp = new int[n + 1];
+		Arrays.fill(dp, -1);
+		result = obj.fibMemoization(n, dp);
+		System.out.println("Fibonacci number through memoization " + result);
+
+		result = obj.fibTabular(n);
+		System.out.println(result);
+	}
 }

@@ -6,22 +6,22 @@ import java.util.List;
 public class GenerateParentheses {
 	public List<String> generateParenthesis(int n) {
 		List<String> result = new ArrayList<>();
-		generateParenthesisUtil("(", 1, 0, n, result);
+		backTrack("(", 1, 0, n, result);
 		return result;
 	}
 
-	private void generateParenthesisUtil(String current, int open, int closed, int n, List<String> result) {
+	private void backTrack(String current, int open, int closed, int n, List<String> result) {
 		if (current.length() == 2 * n) {
 			result.add(current);
 			return;
 		}
 
 		if (open < n) {
-			generateParenthesisUtil(current + "(", open + 1, closed, n, result);
+			backTrack(current + "(", open + 1, closed, n, result);
 		}
 
 		if (closed < open) {
-			generateParenthesisUtil(current + ")", open, closed + 1, n, result);
+			backTrack(current + ")", open, closed + 1, n, result);
 		}
 	}
 

@@ -16,8 +16,9 @@ public class AddBinary {
 			if (i < blen && b.charAt(blen - 1 - i) == '1')
 				y = 1;
 
-			result.insert(0, (x + y + carry) % 2);
-			carry = (x + y + carry) / 2;
+			int value = x + y + carry;
+			result.insert(0, value % 2);
+			carry = value / 2;
 			i++;
 		}
 		return result.toString();
