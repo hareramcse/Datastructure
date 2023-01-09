@@ -4,14 +4,15 @@ import com.hs.tree.Node;
 
 public class SearchInBST {
 	public boolean search(Node root, int data) {
-		if (root == null) {
+		if (root == null)
 			return false;
-		} else if (root.data == data) {
+
+		if (root.data == data)
 			return true;
-		} else if (data < root.data) {
+		
+		if (data < root.data)
 			return search(root.left, data);
-		} else {
+		else
 			return search(root.right, data);
-		}
 	}
 }

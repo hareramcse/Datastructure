@@ -28,7 +28,8 @@ public class FindDistanceBetweenTwoNodes {
 	private int distanceFromRoot(Node root, int x) {
 		if (root.data == x)
 			return 0;
-		else if (x < root.data)
+		
+		if (x < root.data)
 			return 1 + distanceFromRoot(root.left, x);
 		return 1 + distanceFromRoot(root.right, x);
 	}
