@@ -3,7 +3,6 @@ package com.hs.bst;
 import com.hs.tree.Node;
 
 public class CheckBinaryTreeIsBinarySearchTree {
-
 	public boolean isBinaryTreeBST(Node root) {
 		return isBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
 	}

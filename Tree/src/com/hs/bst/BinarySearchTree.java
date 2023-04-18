@@ -5,35 +5,31 @@ import java.util.Queue;
 import com.hs.tree.Node;
 
 public class BinarySearchTree {
-
 	public void preOrderTraversal(Node root) {
-		if (root == null) {
+		if (root == null)
 			return;
-		} else {
-			System.out.println(root.data);
-			preOrderTraversal(root.left);
-			preOrderTraversal(root.right);
-		}
+
+		System.out.println(root.data);
+		preOrderTraversal(root.left);
+		preOrderTraversal(root.right);
 	}
 
 	public void inOrderTraversal(Node root) {
-		if (root == null) {
+		if (root == null)
 			return;
-		} else {
-			inOrderTraversal(root.left);
-			System.out.println(root.data);
-			inOrderTraversal(root.right);
-		}
+
+		inOrderTraversal(root.left);
+		System.out.println(root.data);
+		inOrderTraversal(root.right);
 	}
 
 	public void postOrderTraversal(Node root) {
-		if (root == null) {
+		if (root == null)
 			return;
-		} else {
-			postOrderTraversal(root.left);
-			postOrderTraversal(root.right);
-			System.out.println(root.data);
-		}
+
+		postOrderTraversal(root.left);
+		postOrderTraversal(root.right);
+		System.out.println(root.data);
 	}
 
 	public void levelOrderTraversal(Node root) {
@@ -50,26 +46,25 @@ public class BinarySearchTree {
 	}
 
 	public int findHeightOfTree(Node root) {
-		if (root == null) {
+		if (root == null)
 			return 0;
-		} else {
-			int leftHeight = findHeightOfTree(root.left);
-			int rightHeight = findHeightOfTree(root.right);
-			return 1 + Math.max(leftHeight, rightHeight);
-		}
+
+		int leftHeight = findHeightOfTree(root.left);
+		int rightHeight = findHeightOfTree(root.right);
+		return 1 + Math.max(leftHeight, rightHeight);
 	}
 
 	public int findMaxInBST(Node root) {
 		Node temp = root;
-		if (temp == null) {
+		if (temp == null)
 			return -1;
-		}
+
 		while (temp.right != null) {
 			temp = temp.right;
 		}
 		return temp.data;
 	}
-	
+
 	public static void main(String[] args) {
 		Node root = new Node(4);
 		root.left = new Node(2);
@@ -78,7 +73,7 @@ public class BinarySearchTree {
 		root.left.right = new Node(3);
 		root.right.left = new Node(5);
 		root.right.right = new Node(7);
-		
+
 		BinarySearchTree obj = new BinarySearchTree();
 		obj.preOrderTraversal(root);
 	}

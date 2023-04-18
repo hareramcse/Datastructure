@@ -18,9 +18,9 @@ public class BSTIterator {
 
 	// the next smallest number
 	public int next() {
-		Node tmpNode = stack.pop();
-		pushAll(tmpNode.right);
-		return tmpNode.data;
+		Node temp = stack.pop();
+		pushAll(temp.right);
+		return temp.data;
 	}
 
 	private void pushAll(Node node) {
