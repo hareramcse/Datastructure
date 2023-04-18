@@ -1,4 +1,4 @@
-package com.hs.misc;
+package com.hs.seelater;
 
 public class CountGoodNodesInBinaryTree {
 
