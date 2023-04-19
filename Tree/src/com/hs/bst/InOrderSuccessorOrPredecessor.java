@@ -3,7 +3,6 @@ package com.hs.bst;
 import com.hs.tree.Node;
 
 public class InOrderSuccessorOrPredecessor {
-
 	public Node inOrderSuccessor(Node root, Node k) {
 		if (root == null)
 			return null;

@@ -3,7 +3,6 @@ package com.hs.bst;
 import com.hs.tree.Node;
 
 public class ConvertSortedArrayToBST {
-
 	public Node arrayToBST(int[] arr) {
 		int low = 0;
 		int high = arr.length - 1;

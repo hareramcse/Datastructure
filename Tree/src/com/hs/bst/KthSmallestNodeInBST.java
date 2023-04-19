@@ -3,7 +3,6 @@ package com.hs.bst;
 import com.hs.tree.Node;
 
 public class KthSmallestNodeInBST {
-
 	public int kthSmallest(Node root, int k) {
 		int[] kthSmallest = new int[1];
 		kthSmallest[0] = k;
