@@ -5,7 +5,7 @@ import com.hs.tree.Node;
 /*
 1) Find depth of any node. Let this depth be d. Now recursively traverse the tree and check 
 for following two conditions. Every internal node should have both children non-empty 
-2) All leaves are at depth */
+2) All leaves are at depth d*/
 class CheckIfBinaryTreeIsPerfect {
 	public boolean isPerfect(Node root) {
 		int depth = findDepth(root);

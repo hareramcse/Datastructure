@@ -13,8 +13,8 @@ class LevelOrderTraversalInSpiralForm {
 		for (int i = 1; i <= h; i++) {
 			List<Integer> list = new ArrayList<>();
 			printGivenLevel(root, i, ltr, list);
-			ltr = !ltr;
 			result.add(list);
+			ltr = !ltr;
 		}
 		return result;
 	}

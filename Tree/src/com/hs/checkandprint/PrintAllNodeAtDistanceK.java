@@ -6,10 +6,10 @@ import java.util.List;
 import com.hs.tree.Node;
 
 class PrintAllNodeAtDistanceK {
-	List<Integer> Kdistance(Node root, int k) {
-		List<Integer> list = new ArrayList<>();
-		Kdistance(root, k, list);
-		return list;
+	public List<Integer> Kdistance(Node root, int k) {
+		List<Integer> result = new ArrayList<>();
+		Kdistance(root, k, result);
+		return result;
 	}
 
 	private void Kdistance(Node root, int k, List<Integer> result) {

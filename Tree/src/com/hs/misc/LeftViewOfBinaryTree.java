@@ -10,9 +10,9 @@ import com.hs.tree.Node;
 // do level order traversal and print the first node in every level
 class LeftViewOfBinaryTree {
 	private List<Integer> leftView(Node root) {
-		List<Integer> list = new ArrayList<>();
+		List<Integer> result = new ArrayList<>();
 		if (root == null)
-			return list;
+			return result;
 
 		Queue<Node> queue = new LinkedList<>();
 		queue.add(root);
@@ -22,7 +22,7 @@ class LeftViewOfBinaryTree {
 			for (int i = 0; i < levelSize; i++) {
 				Node temp = queue.poll();
 				if (i == 0) {
-					list.add(temp.data);
+					result.add(temp.data);
 				}
 
 				// Enqueue left child
@@ -36,7 +36,7 @@ class LeftViewOfBinaryTree {
 				}
 			}
 		}
-		return list;
+		return result;
 	}
 
 	public static void main(String args[]) {

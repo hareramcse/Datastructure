@@ -1,11 +1,11 @@
-package com.hs.summation;
+package com.hs.seelater;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
 import com.hs.tree.Node;
 
-public class LevelMaximumSum {
+public class LevelWithMaximumSum {
 	public int maxLevelSum(Node root) {
 		if (root == null)
 			return 0;
@@ -43,7 +43,7 @@ public class LevelMaximumSum {
 	}
 
 	public static void main(String[] args) {
-		LevelMaximumSum tree = new LevelMaximumSum();
+		LevelWithMaximumSum tree = new LevelWithMaximumSum();
 		Node root = new Node(1);
 		root.left = new Node(2);
 		root.right = new Node(3);

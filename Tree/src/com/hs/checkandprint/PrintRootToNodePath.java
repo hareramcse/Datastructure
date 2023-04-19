@@ -7,10 +7,11 @@ import com.hs.tree.Node;
 
 public class PrintRootToNodePath {
 	public List<Integer> printRootToNode(Node root, int target) {
-		List<Integer> result = new ArrayList<>();
 		if (root == null) {
-			return result;
+			return null;
 		}
+		
+		List<Integer> result = new ArrayList<>();
 		printRootToNodeUtil(root, target, result);
 		return result;
 	}
