@@ -3,16 +3,16 @@ package com.hs.construction;
 import com.hs.tree.Node;
 
 class ConvertBinaryTreeToSumTree {
-	public void toSumTree(Node root){
-        toSumTreeUtil(root);
+	public void sumTree(Node root){
+		sumTreeHelper(root);
    }
    
-   private int toSumTreeUtil(Node root){
+   private int sumTreeHelper(Node root){
        if(root == null)
            return 0;
        
-       int left = toSumTreeUtil(root.left);
-       int right = toSumTreeUtil(root.right);
+       int left = sumTreeHelper(root.left);
+       int right = sumTreeHelper(root.right);
        
        int rootData = root.data;
        root.data = left + right;
@@ -40,7 +40,7 @@ class ConvertBinaryTreeToSumTree {
         root.right.left.left = new Node(7);
         root.right.left.right = new Node(8);
 
-		tree.toSumTree(root);
+		tree.sumTree(root);
 
 		System.out.println("Inorder Traversal of the resultant tree is:");
 		tree.printPreorder(root);

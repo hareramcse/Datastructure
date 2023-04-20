@@ -16,10 +16,10 @@ public class ConvertSortedArrayToBST {
 
 		// Get the middle element and make it root
 		int mid = low + (high - low) / 2;
-		Node node = new Node(arr[mid]);
-		node.left = convertTOBST(arr, low, mid - 1);
-		node.right = convertTOBST(arr, mid + 1, high);
-		return node;
+		Node root = new Node(arr[mid]);
+		root.left = convertTOBST(arr, low, mid - 1);
+		root.right = convertTOBST(arr, mid + 1, high);
+		return root;
 	}
 
 	private void inorder(Node root) {

@@ -6,16 +6,16 @@ class MaximumPathSumFromRootToLeaf {
 	public int maxPathSum(Node root) {
 		int[] maxSum = new int[1];
 		maxSum[0] = Integer.MIN_VALUE;
-		maxPath(root, maxSum);
+		maxPathSumHelper(root, maxSum);
 		return maxSum[0];
 	}
 
-	private int maxPath(Node root, int[] maxSum) {
+	private int maxPathSumHelper(Node root, int[] maxSum) {
 		if (root == null)
 			return 0;
 
-		int left = Math.max(0, maxPath(root.left, maxSum));
-		int right = Math.max(0, maxPath(root.right, maxSum));
+		int left = Math.max(0, maxPathSumHelper(root.left, maxSum));
+		int right = Math.max(0, maxPathSumHelper(root.right, maxSum));
 		maxSum[0] = Math.max(maxSum[0], left + right + root.data);
 		return root.data + Math.max(left, right);
 	}

@@ -2,7 +2,6 @@ package com.hs.misc;
 
 import java.util.LinkedList;
 import java.util.Queue;
-
 import com.hs.tree.Node;
 
 public class MaximumWidthOfBinaryTree {

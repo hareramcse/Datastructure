@@ -1,4 +1,4 @@
-package com.hs.misc;
+package com.hs.seelater;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -15,7 +15,7 @@ public class BottomViewOfBinaryTree {
 	public List<Integer> printBottomView(Node root) {
 		Map<Integer, List<Integer>> map = new TreeMap<>();
 		Pair pair = new Pair(root, 0);
-		map = verticalTraversalUtil(root, map, pair);
+		map = verticalTraversalUtil(map, pair);
 		List<Integer> result = new ArrayList<>();
 		for (Integer key : map.keySet()) {
 			List<Integer> list = map.get(key);
@@ -24,7 +24,7 @@ public class BottomViewOfBinaryTree {
 		return result;
 	}
 
-	public Map<Integer, List<Integer>> verticalTraversalUtil(Node root, Map<Integer, List<Integer>> map, Pair pair) {
+	public Map<Integer, List<Integer>> verticalTraversalUtil(Map<Integer, List<Integer>> map, Pair pair) {
 		Queue<Pair> queue = new LinkedList<>();
 		queue.add(pair);
 		while (!queue.isEmpty()) {
@@ -34,10 +34,9 @@ public class BottomViewOfBinaryTree {
 			List<Integer> list = map.get(hd);
 			if (list == null) {
 				list = new ArrayList<>();
-				list.add(curr.node.data);
-			} else {
-				list.add(curr.node.data);
 			}
+			
+			list.add(curr.node.data);
 			map.put(hd, list);
 
 			if (curr.node.left != null) {

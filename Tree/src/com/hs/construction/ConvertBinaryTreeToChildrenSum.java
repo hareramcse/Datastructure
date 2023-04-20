@@ -2,6 +2,10 @@ package com.hs.construction;
 
 import com.hs.tree.Node;
 
+// sum up the left and right child value
+// if child sum is less than parent then update the child value to root data
+// do left and right recursion
+// while coming back sum up the child value and replace to the parent value.
 public class ConvertBinaryTreeToChildrenSum {
 	public void convertTree(Node root) {
 		if (root == null)

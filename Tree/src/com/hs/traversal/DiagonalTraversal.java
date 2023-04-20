@@ -35,10 +35,8 @@ public class DiagonalTraversal {
 		// else add the data into existing list
 		if (list == null) {
 			list = new ArrayList<>();
-			list.add(root.data);
-		} else {
-			list.add(root.data);
 		}
+		list.add(root.data);
 
 		// Store all nodes of same line together as a list
 		map.put(d, list);

@@ -1,4 +1,4 @@
-package com.hs.misc;
+package com.hs.seelater;
 
 import java.util.HashMap;
 import java.util.LinkedList;

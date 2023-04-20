@@ -9,11 +9,14 @@ import java.util.TreeMap;
 
 import com.hs.tree.Node;
 
+// With this question we can solve other 2 problem, botto view and top view
+// for bottom view we need to return last element at each level
+// for top view we need to return first element at each level
 public class VerticalTraversal {
 	public List<List<Integer>> verticalTraversal(Node root) {
 		Map<Integer, List<Integer>> map = new TreeMap<>();
 		Pair pair = new Pair(root, 0);
-		map = verticalTraversalUtil(root, map, pair);
+		map = verticalTraversalUtil(map, pair);
 		List<List<Integer>> result = new ArrayList<>();
 		for (Integer key : map.keySet()) {
 			List<Integer> list = map.get(key);
@@ -22,28 +25,28 @@ public class VerticalTraversal {
 		return result;
 	}
 
-	private Map<Integer, List<Integer>> verticalTraversalUtil(Node root, Map<Integer, List<Integer>> map, Pair pair) {
+	private Map<Integer, List<Integer>> verticalTraversalUtil(Map<Integer, List<Integer>> map, Pair pair) {
 		Queue<Pair> queue = new LinkedList<>();
 		queue.add(pair);
 		while (!queue.isEmpty()) {
-			Pair curr = queue.poll();
-			int hd = curr.hd;
+			Pair p = queue.poll();
+			int hd = p.hd;
 			
 			List<Integer> list = map.get(hd);
 			if (list == null) {
 				list = new ArrayList<>();
-				list.add(curr.node.data);
+				list.add(p.node.data);
 			} else {
-				list.add(curr.node.data);
+				list.add(p.node.data);
 			}
 			map.put(hd, list);
 
-			if (curr.node.left != null) {
-				queue.add(new Pair(curr.node.left, hd - 1));
+			if (p.node.left != null) {
+				queue.add(new Pair(p.node.left, hd - 1));
 			}
 
-			if (curr.node.right != null) {
-				queue.add(new Pair(curr.node.right, hd + 1));
+			if (p.node.right != null) {
+				queue.add(new Pair(p.node.right, hd + 1));
 			}
 		}
 		return map;
