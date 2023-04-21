@@ -1,4 +1,4 @@
-package com.hs.leetcode.easy;
+package com.hs.seelater;
 
 import com.hs.basic.LinkedListUtil;
 import com.hs.basic.ListNode;

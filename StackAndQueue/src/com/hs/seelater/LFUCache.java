@@ -1,4 +1,4 @@
-package com.hs.leetcode.hard;
+package com.hs.seelater;
 
 public class LFUCache {
 

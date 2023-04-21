@@ -22,7 +22,7 @@ public class StockSpanProblem {
 			}
 
 			stack.push(new Pair(nums[i], i));
-		}	
+		}
 
 		// once we get the index of NGL we find the count by i - res[i] for each element
 		for (int i = 0; i < n; i++) {

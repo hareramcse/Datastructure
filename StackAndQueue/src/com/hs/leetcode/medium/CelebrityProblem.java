@@ -24,7 +24,7 @@ public class CelebrityProblem {
 		for (int i = 0; i < n; i++) {
 			if (i == x)
 				continue;
-			
+
 			// if x knows someone or someone does not know x
 			if (arr[x][i] == 1 || arr[i][x] == 0) {
 				flag = false;
@@ -35,5 +35,14 @@ public class CelebrityProblem {
 		if (!flag)
 			return -1;
 		return x;
+	}
+
+	public static void main(String[] args) {
+		CelebrityProblem obj = new CelebrityProblem();
+		int N = 4;
+
+		int MATRIX[][] = { { 0, 0, 1, 0 }, { 0, 0, 1, 0 }, { 0, 0, 0, 0 }, { 0, 0, 1, 0 } };
+		int id = obj.getId(MATRIX, N);
+		System.out.println(id);
 	}
 }

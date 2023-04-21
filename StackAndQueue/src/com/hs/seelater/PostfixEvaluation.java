@@ -1,4 +1,4 @@
-package com.hs.leetcode.easy;
+package com.hs.seelater;
 
 import java.util.Stack;
 

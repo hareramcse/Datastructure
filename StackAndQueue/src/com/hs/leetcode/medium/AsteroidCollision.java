@@ -16,8 +16,8 @@ public class AsteroidCollision {
 				}
 
 				// while deleting in prev step if stack becomes empty
-				// then we need to push that astroid into stack.
-				// or if astroid is moving in same direction then it will never collide
+				// then we need to push that asteroid into stack.
+				// or if asteroid is moving in same direction then it will never collide
 				if (stack.isEmpty() || stack.peek() < 0) {
 					stack.push(asteroid);
 				} else if (stack.peek() == Math.abs(asteroid)) {

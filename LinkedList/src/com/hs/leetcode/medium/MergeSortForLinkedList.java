@@ -5,7 +5,7 @@ import com.hs.basic.ListNode;
 
 public class MergeSortForLinkedList {
 	public ListNode mergeSort(ListNode head) {
-		// Base case : if head is null
+		// Base case : if head is null, or there is only node
 		if (head == null || head.next == null) {
 			return head;
 		}
@@ -47,10 +47,12 @@ public class MergeSortForLinkedList {
 
 	private ListNode merge(ListNode head1, ListNode head2) {
 		ListNode result = null;
+		
 		// Base cases
 		if (head1 == null)
 			return head2;
-		else if (head2 == null)
+		
+		if (head2 == null)
 			return head1;
 
 		// Pick either a or b, and recur
