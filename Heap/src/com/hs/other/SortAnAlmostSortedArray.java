@@ -5,7 +5,6 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class SortAnAlmostSortedArray {
-
 	private void kSort(int[] arr, int k) {
 		Queue<Integer> minHeap = new PriorityQueue<>();
 		// add first k + 1 items to the min heap

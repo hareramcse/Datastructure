@@ -10,8 +10,8 @@ public class TopKFrequentElements {
 	private int[] topKFrequent(int[] nums, int k) {
 		int res[] = new int[k];
 		Map<Integer, Integer> map = new HashMap<>();
-		for (int i = 0; i < nums.length; i++) {
-			map.put(nums[i], map.getOrDefault(nums[i], 0) + 1);
+		for (int num : nums) {
+			map.put(num, map.getOrDefault(num, 0) + 1);
 		}
 
 		Queue<Integer> maxHeap = new PriorityQueue<>((a, b) -> map.get(b) - map.get(a));

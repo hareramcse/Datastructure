@@ -1,4 +1,4 @@
-package com.hs.other;
+package com.hs.seelater;
 
 class Node {
 	int data;

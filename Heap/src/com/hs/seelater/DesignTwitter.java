@@ -1,4 +1,4 @@
-package com.hs.leetcode.medium;
+package com.hs.seelater;
 
 import java.util.ArrayList;
 import java.util.HashMap;

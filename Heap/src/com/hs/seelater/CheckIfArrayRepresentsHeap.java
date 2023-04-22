@@ -1,4 +1,4 @@
-package com.hs.other;
+package com.hs.seelater;
 
 public class CheckIfArrayRepresentsHeap {
 
