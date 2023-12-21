@@ -1,4 +1,4 @@
-package com.hs.other;
+package com.hs.leetcode.medium;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

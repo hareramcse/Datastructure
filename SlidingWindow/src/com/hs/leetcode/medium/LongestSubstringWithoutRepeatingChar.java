@@ -1,26 +1,23 @@
 package com.hs.leetcode.medium;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.HashSet;
+import java.util.Set;
 
 public class LongestSubstringWithoutRepeatingChar {
 	public int lengthOfLongestSubstring(String s) {
-		Map<Character, Integer> map = new HashMap<>();
-		int i = 0, j = 0, ans = 0;
-
-		while (j < s.length()) {
-			map.put(s.charAt(j), map.getOrDefault(s.charAt(j), 0) + 1);
-			
-			// it means there are some duplicate char in the window.
-			while (map.size() < j - i + 1) {
-				map.put(s.charAt(i), map.get(s.charAt(i)) - 1);
-				if (map.get(s.charAt(i)) == 0)
-					map.remove(s.charAt(i));
+		if (s.length() == 0)
+			return 0;
+		
+		int ans = Integer.MIN_VALUE;
+		Set<Character> set = new HashSet<>();
+		int i = 0;
+		for (int j = 0; j < s.length(); j++) {
+			while (set.contains(s.charAt(j))) {
+				set.remove(s.charAt(i));
 				i++;
 			}
-
+			set.add(s.charAt(j));
 			ans = Math.max(ans, j - i + 1);
-			j++;
 		}
 		return ans;
 	}
