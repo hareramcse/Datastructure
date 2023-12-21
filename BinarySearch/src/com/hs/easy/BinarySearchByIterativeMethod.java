@@ -1,4 +1,4 @@
-package com.hs.basic;
+package com.hs.easy;
 
 public class BinarySearchByIterativeMethod {
 	public int search(int[] arr, int value) {

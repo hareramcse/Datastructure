@@ -1,4 +1,4 @@
-package com.hs.leetcode.medium;
+package com.hs.medium;
 
 public class SearchA2DMatrix {
 	public boolean searchMatrix(int[][] matrix, int target) {

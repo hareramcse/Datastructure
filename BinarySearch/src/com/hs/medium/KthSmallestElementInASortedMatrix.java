@@ -1,4 +1,4 @@
-package com.hs.leetcode.medium;
+package com.hs.medium;
 
 public class KthSmallestElementInASortedMatrix {
 	public int kthSmallest(int[][] matrix, int k) {

@@ -1,4 +1,4 @@
-package com.hs.leetcode.hard;
+package com.hs.hard;
 
 public class MedianOfTwoSortedArrays {
 	public double findMedianSortedArrays(int[] nums1, int[] nums2) {

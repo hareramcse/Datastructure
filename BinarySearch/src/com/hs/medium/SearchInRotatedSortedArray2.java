@@ -1,4 +1,4 @@
-package com.hs.leetcode.medium;
+package com.hs.medium;
 
 public class SearchInRotatedSortedArray2 {
 	public boolean search(int[] nums, int target) {

@@ -1,4 +1,4 @@
-package com.hs.basic;
+package com.hs.easy;
 
 public class BinarySearchInInfiniteArray {
 	public int search(int[] arr, int key) {

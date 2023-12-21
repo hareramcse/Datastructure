@@ -1,4 +1,4 @@
-package com.hs.leetcode.hard;
+package com.hs.hard;
 
 public class SplitArrayLargestSum {
 	public int splitArray(int[] nums, int m) {

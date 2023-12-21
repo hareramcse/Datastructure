@@ -1,4 +1,4 @@
-package com.hs.leetcode.medium;
+package com.hs.medium;
 
 public class PeakElement {
 	public int findPeakElement(int[] arr) {

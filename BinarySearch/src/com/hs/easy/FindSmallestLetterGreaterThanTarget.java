@@ -1,4 +1,4 @@
-package com.hs.leetcode.easy;
+package com.hs.easy;
 
 public class FindSmallestLetterGreaterThanTarget {
 	public char nextGreatestLetter(char[] letters, char target) {

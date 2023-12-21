@@ -1,4 +1,4 @@
-package com.hs.leetcode.medium;
+package com.hs.medium;
 
 public class KokoEatingBananas {
 	public int minEatingSpeed(int[] piles, int h) {

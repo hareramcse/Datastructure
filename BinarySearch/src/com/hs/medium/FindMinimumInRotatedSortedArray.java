@@ -1,4 +1,4 @@
-package com.hs.leetcode.medium;
+package com.hs.medium;
 
 public class FindMinimumInRotatedSortedArray {
 	public int findMin(int[] nums) {

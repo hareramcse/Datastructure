@@ -1,4 +1,4 @@
-package com.hs.leetcode.medium;
+package com.hs.medium;
 
 public class SingleElementInSortedArray {
 	public int singleNonDuplicate(int[] nums) {
