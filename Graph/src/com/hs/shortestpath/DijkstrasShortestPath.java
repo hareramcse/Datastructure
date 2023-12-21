@@ -6,33 +6,32 @@ public class DijkstrasShortestPath {
 		// visited[i] will be true if vertex i is included in shortest path tree
 		boolean[] visited = new boolean[V];
 
-		int[] dist = new int[V];
+		int[] distance = new int[V];
 		// Initialize all distances as INFINITE
 		for (int i = 0; i < V; i++) {
-			dist[i] = Integer.MAX_VALUE;
+			distance[i] = Integer.MAX_VALUE;
 		}
 
 		// Distance of source vertex from itself is always 0
-		dist[src] = 0;
+		distance[src] = 0;
 
 		// Find shortest path for all vertices
 		for (int i = 0; i < V - 1; i++) {
 			// Pick the minimum distance
-			int u = minDistance(dist, visited);
+			int u = minDistance(distance, visited);
 
 			// Mark the picked vertex as visited
 			visited[u] = true;
 
 			for (int v = 0; v < V; v++)
-				// Update dist[v] only
-				// if vertex is not visited
-				// there is an edge from u to v
-				// total weight of path from src to v through u is smaller than current value of
-				// dist[v]
-				if (!visited[v] && graph[u][v] != 0 && dist[u] != Integer.MAX_VALUE && dist[u] + graph[u][v] < dist[v])
-					dist[v] = dist[u] + graph[u][v];
+				// Update dist[v] only if vertex is not visited
+				// and there is an edge from u to v total weight of path from src to v through u
+				// is smaller than current value of dist[v]
+				if (!visited[v] && graph[u][v] != 0 && distance[u] != Integer.MAX_VALUE
+						&& distance[u] + graph[u][v] < distance[v])
+					distance[v] = distance[u] + graph[u][v];
 		}
-		printSolution(dist);
+		printSolution(distance);
 	}
 
 	private int minDistance(int distance[], boolean visited[]) {

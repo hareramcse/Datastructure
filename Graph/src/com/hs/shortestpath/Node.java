@@ -1,10 +1,10 @@
 package com.hs.shortestpath;
 
 public class Node {
-	public int distance, node;
+	public int destination, weight;
 
-	Node(int distance, int node) {
-		this.distance = distance;
-		this.node = node;
+	public Node(int destination, int weight) {
+		this.destination = destination;
+		this.weight = weight;
 	}
 }

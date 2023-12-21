@@ -1,20 +1,15 @@
 package com.hs.topologicalsort;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
 public class KahnAlgoForTopologicalSorting {
 
-	// A utility function to add an edge in an undirected graph
-	private void addEdge(List<List<Integer>> adjList, int source, int destination) {
-		adjList.get(source).add(destination);
-	}
-
-	// prints a Topological Sort of the complete graph
-	public void topologicalSort(int V, List<List<Integer>> adjList) {
-		int indegree[] = new int[V];
+	public int[] topologicalSort(int V, List<List<Integer>> adjList) {
+		int[] indegree = new int[V];
 		for (int i = 0; i < V; i++) {
 			for (int j : adjList.get(i)) {
 				indegree[j]++;
@@ -30,13 +25,12 @@ public class KahnAlgoForTopologicalSorting {
 		}
 
 		// Initialize count of visited vertices
-		int count = 0;
-
-		List<Integer> result = new ArrayList<>();
+		int[] result = new int[V];
+		int i = 0;
 		while (!queue.isEmpty()) {
 			// perform dequeue and add it to topological order
 			int u = queue.poll();
-			result.add(u);
+			result[i++] = u;
 
 			for (int adjNode : adjList.get(u)) {
 				indegree[adjNode]--;
@@ -44,18 +38,19 @@ public class KahnAlgoForTopologicalSorting {
 					queue.add(adjNode);
 				}
 			}
-			count++;
 		}
 
 		// Check if there was a cycle
-		if (count != V) {
+		if (i != V) {
 			System.out.println("There exists a cycle in the graph");
-			return;
 		}
 
-		for (int i : result) {
-			System.out.print(i + " ");
-		}
+		return result;
+	}
+
+	// A utility function to add an edge in an undirected graph
+	private void addEdge(List<List<Integer>> adjList, int source, int destination) {
+		adjList.get(source).add(destination);
 	}
 
 	public static void main(String args[]) {
@@ -72,6 +67,7 @@ public class KahnAlgoForTopologicalSorting {
 		g.addEdge(adjList, 2, 3);
 		g.addEdge(adjList, 3, 1);
 		System.out.println("Following is a Topological Sort");
-		g.topologicalSort(V, adjList);
+		int[] result = g.topologicalSort(V, adjList);
+		System.out.println(Arrays.toString(result));
 	}
 }
