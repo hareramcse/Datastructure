@@ -1,4 +1,4 @@
-package com.hs.leetcode.easy;
+package com.hs.easy;
 
 import java.util.PriorityQueue;
 import java.util.Queue;

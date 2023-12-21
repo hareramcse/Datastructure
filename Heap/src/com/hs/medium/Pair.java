@@ -1,4 +1,4 @@
-package com.hs.leetcode.medium;
+package com.hs.medium;
 
 class Pair implements Comparable<Pair> {
 	public int key;

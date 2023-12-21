@@ -1,4 +1,4 @@
-package com.hs.other;
+package com.hs.easy;
 
 import java.util.Arrays;
 
