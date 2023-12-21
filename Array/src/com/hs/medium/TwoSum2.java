@@ -1,4 +1,4 @@
-package com.hs.twopointer;
+package com.hs.medium;
 
 public class TwoSum2 {
 	public int[] twoSum(int[] numbers, int target) {

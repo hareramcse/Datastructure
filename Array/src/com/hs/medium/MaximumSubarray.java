@@ -1,4 +1,4 @@
-package com.hs.greedy;
+package com.hs.medium;
 
 public class MaximumSubarray {
 	public int maxSubArray(int[] nums) {

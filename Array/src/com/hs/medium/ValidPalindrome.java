@@ -1,4 +1,4 @@
-package com.hs.twopointer;
+package com.hs.medium;
 
 public class ValidPalindrome {
 	public boolean isPalindrome(String s) {

@@ -1,4 +1,4 @@
-package com.hs.greedy;
+package com.hs.medium;
 
 public class JumpGame {
 	public static boolean canJump(int[] nums) {

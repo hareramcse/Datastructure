@@ -1,4 +1,4 @@
-package com.hs.greedy;
+package com.hs.medium;
 
 public class JumpGame2 {
 	public int jump(int[] nums) {

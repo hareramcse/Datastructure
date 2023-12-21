@@ -1,4 +1,4 @@
-package com.hs.twopointer;
+package com.hs.medium;
 
 // find the leftMax and rightMax for each building
 // water on each building will be min(leftMax - rightMax) - height[i] 

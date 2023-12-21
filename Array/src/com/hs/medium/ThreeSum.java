@@ -1,4 +1,4 @@
-package com.hs.twopointer;
+package com.hs.medium;
 
 import java.util.ArrayList;
 import java.util.Arrays;

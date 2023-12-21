@@ -1,4 +1,4 @@
-package com.hs.twopointer;
+package com.hs.medium;
 
 public class ContainerWithMostWater {
 	public int brutforce(int[] height) {
