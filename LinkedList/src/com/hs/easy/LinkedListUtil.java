@@ -1,4 +1,4 @@
-package com.hs.basic;
+package com.hs.easy;
 
 public class LinkedListUtil {
 	public static ListNode addBefore(ListNode head, int data) {

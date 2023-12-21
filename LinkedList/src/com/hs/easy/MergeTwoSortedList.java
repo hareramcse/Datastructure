@@ -1,7 +1,4 @@
-package com.hs.leetcode.easy;
-
-import com.hs.basic.LinkedListUtil;
-import com.hs.basic.ListNode;
+package com.hs.easy;
 
 public class MergeTwoSortedList {
 	public ListNode mergeTwoLists(ListNode list1, ListNode list2) {

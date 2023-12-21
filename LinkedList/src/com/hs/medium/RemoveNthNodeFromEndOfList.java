@@ -1,6 +1,6 @@
-package com.hs.leetcode.medium;
+package com.hs.medium;
 
-import com.hs.basic.ListNode;
+import com.hs.easy.ListNode;
 
 // TC O(N), SC O(1)
 public class RemoveNthNodeFromEndOfList {

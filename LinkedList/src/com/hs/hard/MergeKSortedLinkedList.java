@@ -1,10 +1,10 @@
-package com.hs.leetcode.hard;
+package com.hs.hard;
 
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-import com.hs.basic.LinkedListUtil;
-import com.hs.basic.ListNode;
+import com.hs.easy.LinkedListUtil;
+import com.hs.easy.ListNode;
 
 public class MergeKSortedLinkedList {
 	public ListNode mergeKLists(ListNode[] lists) {

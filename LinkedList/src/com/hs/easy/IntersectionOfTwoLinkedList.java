@@ -1,6 +1,4 @@
-package com.hs.leetcode.easy;
-
-import com.hs.basic.ListNode;
+package com.hs.easy;
 
 class IntersectionOfTwoLinkedList {
 	public ListNode getIntersectionNode(ListNode head1, ListNode head2) {

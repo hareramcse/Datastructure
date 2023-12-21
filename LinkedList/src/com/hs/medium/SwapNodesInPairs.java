@@ -1,7 +1,7 @@
-package com.hs.leetcode.medium;
+package com.hs.medium;
 
-import com.hs.basic.LinkedListUtil;
-import com.hs.basic.ListNode;
+import com.hs.easy.LinkedListUtil;
+import com.hs.easy.ListNode;
 
 public class SwapNodesInPairs {
 	public ListNode swapPairs(ListNode head) {

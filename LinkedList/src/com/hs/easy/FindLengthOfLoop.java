@@ -1,10 +1,7 @@
-package com.hs.other;
+package com.hs.easy;
 
-import com.hs.basic.LinkedListUtil;
-import com.hs.basic.ListNode;
-
-public class RemoveCycleInLinkedList {
-	public void detectAndRemoveLoop(ListNode head) {
+class FindLengthOfLoop {
+	public int countListNodesInLoop(ListNode head) {
 		ListNode slow = head;
 		ListNode fast = head;
 
@@ -18,24 +15,20 @@ public class RemoveCycleInLinkedList {
 			}
 		}
 
-		// If loop exists
+		int count = 0;
 		if (loopExist) {
-			slow = head;
-			ListNode temp = null;
-			while (slow != fast) {
-				temp = fast;
-				slow = slow.next;
-				fast = fast.next;
+			count = 1;
+			ListNode temp = slow;
+			while (temp.next != slow) {
+				count++;
+				temp = temp.next;
 			}
-
-			// here slow and fast pointer will point to start node of the loop
-			// so we need just previous node of the starting loop
-			temp.next = null; // remove loop
 		}
+		return count;
 	}
 
 	public static void main(String[] args) {
-		RemoveCycleInLinkedList list = new RemoveCycleInLinkedList();
+		FindLengthOfLoop list = new FindLengthOfLoop();
 		ListNode head = new ListNode(10);
 		head.next = new ListNode(20);
 		head.next.next = new ListNode(30);
@@ -47,8 +40,6 @@ public class RemoveCycleInLinkedList {
 
 		// Creating a loop for testing
 		head.next.next.next.next.next.next.next = head.next.next;
-		list.detectAndRemoveLoop(head);
-		System.out.println("Linked List after removing loop : ");
-		LinkedListUtil.printLinkedList(head);
+		System.out.println(list.countListNodesInLoop(head));
 	}
 }

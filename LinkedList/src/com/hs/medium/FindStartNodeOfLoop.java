@@ -1,28 +1,34 @@
-package com.hs.leetcode.easy;
+package com.hs.medium;
 
-import com.hs.basic.ListNode;
+import com.hs.easy.ListNode;
 
-public class LinkedListCycle {
-	public boolean detectLoop(ListNode head) {
-		if (head == null)
-			return false;
-
+public class FindStartNodeOfLoop {
+	public ListNode detectCycle(ListNode head) {
 		ListNode slow = head;
 		ListNode fast = head;
-
+		boolean loopExist = false;
 		while (fast != null && fast.next != null) {
 			slow = slow.next;
 			fast = fast.next.next;
 			if (slow == fast) {
-				return true;
+				loopExist = true;
+				break;
 			}
 		}
-		return false;
+
+		if (loopExist) {
+			slow = head;
+			while (slow != fast) {
+				slow = slow.next;
+				fast = fast.next;
+			}
+			return slow;
+		}
+		return null;
 	}
 
 	public static void main(String[] args) {
-		LinkedListCycle list = new LinkedListCycle();
-
+		FindStartNodeOfLoop list = new FindStartNodeOfLoop();
 		ListNode head = new ListNode(10);
 		head.next = new ListNode(20);
 		head.next.next = new ListNode(30);
@@ -32,10 +38,9 @@ public class LinkedListCycle {
 		head.next.next.next.next.next.next = new ListNode(70);
 		head.next.next.next.next.next.next.next = new ListNode(80);
 
-		// Creating a loop for testing
 		head.next.next.next.next.next.next.next = head.next.next;
 
-		boolean result = list.detectLoop(head);
-		System.out.println(result);
+		ListNode startListNode = list.detectCycle(head);
+		System.out.println(startListNode.val);
 	}
 }

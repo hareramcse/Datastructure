@@ -1,7 +1,4 @@
-package com.hs.leetcode.easy;
-
-import com.hs.basic.LinkedListUtil;
-import com.hs.basic.ListNode;
+package com.hs.easy;
 
 //TC O(N), SC O(1)
 public class PalindromeLinkedList {
