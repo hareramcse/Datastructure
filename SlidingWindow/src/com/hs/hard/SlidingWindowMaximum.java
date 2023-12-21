@@ -1,4 +1,4 @@
-package com.hs.leetcode.hard;
+package com.hs.hard;
 
 import java.util.Arrays;
 import java.util.Deque;

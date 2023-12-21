@@ -1,4 +1,4 @@
-package com.hs.leetcode.medium;
+package com.hs.medium;
 
 public class MaximumSumOfSubArraySizeK {
 	public int solve(int[] arr, int k) {

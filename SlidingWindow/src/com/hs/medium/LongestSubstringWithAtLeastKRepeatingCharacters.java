@@ -1,4 +1,4 @@
-package com.hs.leetcode.medium;
+package com.hs.medium;
 
 // TODO
 public class LongestSubstringWithAtLeastKRepeatingCharacters {
