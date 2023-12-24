@@ -4,9 +4,8 @@ import java.util.Arrays;
 
 public class PrintArrayInZigZagFashion {
 	private void zigZag(int[] arr) {
-		// Flag true indicates relation "<" is expected,
-		// else ">" is expected. The first expected relation
-		// is "<"
+		// Flag true indicates relation "<" is expected, else ">" is expected.
+		// The first expected relation is "<"
 		boolean flag = true;
 		int temp = 0;
 

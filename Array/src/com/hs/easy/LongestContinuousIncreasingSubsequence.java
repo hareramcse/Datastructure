@@ -1,20 +1,6 @@
 package com.hs.easy;
 
 public class LongestContinuousIncreasingSubsequence {
-	public int brutForce(int[] nums) {
-		int max = 1;
-		int count = 1;
-		for (int i = 0; i < nums.length - 1; i++) {
-			if (nums[i] < nums[i + 1]) {
-				count++;
-				max = Math.max(max, count);
-			} else {
-				count = 1;
-			}
-		}
-		return max;
-	}
-
 	public int findLengthOfLCIS(int[] nums) {
 		int i = 0;
 		int j = 0;

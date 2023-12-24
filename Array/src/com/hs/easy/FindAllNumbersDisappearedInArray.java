@@ -18,4 +18,11 @@ public class FindAllNumbersDisappearedInArray {
 		}
 		return ans;
 	}
+
+	public static void main(String[] args) {
+		FindAllNumbersDisappearedInArray obj = new FindAllNumbersDisappearedInArray();
+		int[] nums = { 4, 3, 2, 7, 8, 2, 3, 1 };
+		List<Integer> result = obj.findDisappearedNumbers(nums);
+		System.out.println(result);
+	}
 }
