@@ -20,6 +20,7 @@ public class IncreasingSubsequences {
 		for (int i = start; i < nums.length; i++) {
 			if (used.contains(nums[i]))
 				continue;
+			
 			if (path.isEmpty() || nums[i] >= path.get(path.size() - 1)) {
 				used.add(nums[i]);
 				path.add(nums[i]);

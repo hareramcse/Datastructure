@@ -1,27 +1,15 @@
 package com.hs.medium;
 
 public class ContainerWithMostWater {
-	public int brutforce(int[] height) {
-		int maxWater = 0;
-		for (int i = 0; i < height.length; i++) {
-			for (int j = i + 1; j < height.length; j++) {
-				int lenght = Math.min(height[i], height[j]);
-				int width = j - i;
-				maxWater = Math.max(maxWater, lenght * width);
-			}
-		}
-		return maxWater;
-	}
-
 	public int maxArea(int[] height) {
         int maxWater = 0;
         int start =0;
         int end = height.length - 1;
 		
         while(start < end){
-            int lenght = Math.min(height[start], height[end]);
+            int length = Math.min(height[start], height[end]);
 			int width = end - start;
-			maxWater = Math.max(maxWater, lenght * width);
+			maxWater = Math.max(maxWater, length * width);
             if(height[start] > height[end]){
                 end--;
             }else{
