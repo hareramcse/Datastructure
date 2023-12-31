@@ -4,6 +4,7 @@ public class HappyNumber {
 	public boolean isHappy(int n) {
 		int slow = n;
 		int fast = n;
+
 		// while loop is not used here because initially slow and
 		// fast pointer will be equal only, so the loop won't run.
 		do {
@@ -17,14 +18,20 @@ public class HappyNumber {
 		return slow == 1;
 	}
 
-	public int square(int num) {
-		int ans = 0;
-
-		while (num > 0) {
-			int remainder = num % 10;
-			ans += remainder * remainder;
-			num /= 10;
+	private int square(int n) {
+		int result = 0;
+		while (n > 0) {
+			int remainer = n % 10;
+			result = result + remainer * remainer;
+			n = n / 10;
 		}
-		return ans;
+		return result;
+	}
+
+	public static void main(String[] args) {
+		HappyNumber obj = new HappyNumber();
+		int n = 19;
+		boolean result = obj.isHappy(n);
+		System.out.println(result);
 	}
 }
