@@ -2,14 +2,18 @@ package com.hs.easy;
 
 public class MajorityElement {
 	public int majorityElement(int[] nums) {
-        int res = 0, count = 0;
+        int element = 0;
+        int count = 0;
 
-		for (int n : nums) {
-			if (count == 0)
-				res = n;
-			count += (n == res ? 1 : -1);
-		}
+        for (int num : nums) {
+            if (count == 0)
+                element = num;
 
-		return res;
+            if (element == num)
+                count++;
+            else
+                count--;
+        }
+        return element;
     }
 }

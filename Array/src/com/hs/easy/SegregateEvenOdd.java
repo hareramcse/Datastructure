@@ -5,26 +5,29 @@ import java.util.Arrays;
 public class SegregateEvenOdd {
 
 	private void segregateEvenOdd(int arr[]) {
-		// Initialize left and right indexes
+		// Initialize start and end indexes
 		int start = 0, end = arr.length - 1;
 		while (start < end) {
-			// Increment left index while we see 0 at left
+			// Increment start index when we see even number in left
 			while (arr[start] % 2 == 0 && start < end)
 				start++;
 
-			// Decrement right index while we see 1 at right
+			// Decrement right index when we see odd number from right
 			while (arr[end] % 2 == 1 && start < end)
 				end--;
 
 			if (start < end) {
-				// Swap arr[left] and arr[right]
-				int temp = arr[start];
-				arr[start] = arr[end];
-				arr[end] = temp;
+				swap(arr, start, end);
 				start++;
 				end--;
 			}
 		}
+	}
+
+	private void swap(int[] nums, int i, int j) {
+		int temp = nums[i];
+		nums[i] = nums[j];
+		nums[j] = temp;
 	}
 
 	public static void main(String[] args) {

@@ -8,7 +8,6 @@ public class HappyNumber {
 		// while loop is not used here because initially slow and
 		// fast pointer will be equal only, so the loop won't run.
 		do {
-			// slow moving one step ahead and fast moving two steps ahead
 			slow = square(slow);
 			fast = square(square(fast));
 		} while (slow != fast);
@@ -21,8 +20,8 @@ public class HappyNumber {
 	private int square(int n) {
 		int result = 0;
 		while (n > 0) {
-			int remainer = n % 10;
-			result = result + remainer * remainer;
+			int remainder = n % 10;
+			result += remainder * remainder;
 			n = n / 10;
 		}
 		return result;

@@ -2,16 +2,17 @@ package com.hs.easy;
 
 public class MissingNumber {
 	public int missingNumber(int[] nums) {
-		int n = nums.length;
-		int ans = 0;
+        int missingNumber = 0;
+        for (int num : nums) {
+            missingNumber = missingNumber ^ num;
+        }
 
-		for (int i = 0; i < n; i++) {
-			ans ^= nums[i] ^ i;
-		}
+        for (int i = 0; i <= nums.length; i++) {
+            missingNumber = missingNumber ^ i;
+        }
 
-		ans ^= n;
-		return ans;
-	}
+        return missingNumber;
+    }
 
 	public static void main(String[] args) {
 		MissingNumber obj = new MissingNumber();

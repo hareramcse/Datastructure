@@ -7,10 +7,10 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class SortArraybyIncreasingFrequency {
-	public static int[] frequencySort(int[] nums) {
+	public int[] frequencySort(int[] nums) {
 		Map<Integer, Integer> map = new HashMap<>();
-		for (int i = 0; i < nums.length; i++) {
-			map.put(nums[i], map.getOrDefault(nums[i], 0) + 1);
+		for (int num : nums) {
+			map.put(num, map.getOrDefault(num, 0) + 1);
 		}
 
 		Queue<Integer> minHeap = new PriorityQueue<>(
@@ -18,21 +18,23 @@ public class SortArraybyIncreasingFrequency {
 
 		minHeap.addAll(map.keySet());
 
-		int[] res = new int[nums.length];
+		int[] result = new int[nums.length];
 		int j = 0;
+
 		while (!minHeap.isEmpty()) {
-			Integer key = minHeap.poll();
-			int fre = map.get(key);
-			for (int i = 0; i < fre; i++) {
-				res[j++] = key;
+			int key = minHeap.poll();
+			int freq = map.get(key);
+			for (int i = 0; i < freq; i++) {
+				result[j++] = key;
 			}
 		}
-		return res;
+		return result;
 	}
 
 	public static void main(String[] args) {
-		int[] nums = { 1,1,2,2,2,3 };
-		int[] result = SortArraybyIncreasingFrequency.frequencySort(nums);
+		SortArraybyIncreasingFrequency obj = new SortArraybyIncreasingFrequency();
+		int[] nums = { 1, 1, 2, 2, 2, 3 };
+		int[] result = obj.frequencySort(nums);
 		System.out.println(Arrays.toString(result));
 	}
 }
