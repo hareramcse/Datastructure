@@ -16,10 +16,10 @@ public class CustomSortString {
 			}
 		}
 
-		for (int i = 0; i < 26; i++) {
-			while (fre[i] > 0) {
-				sb.append((char) (i + 'a'));
-				fre[i]--;
+		for (char ch : s.toCharArray()) {
+			while (fre[ch - 'a'] > 0) {
+				sb.append(ch);
+				fre[ch - 'a']--;
 			}
 		}
 		return sb.toString();

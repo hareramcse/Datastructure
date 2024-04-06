@@ -2,31 +2,21 @@ package com.hs.medium;
 
 public class SortColors {
 	public void sortColors(int[] nums) {
-		int low = 0;
-		int high = nums.length - 1;
-		int mid = 0;
-		int temp;
-		while (mid <= high) {
-			switch (nums[mid]) {
-			case 0: {
-				temp = nums[low];
-				nums[low] = nums[mid];
-				nums[mid] = temp;
-				low++;
+		int left = 0, mid = 0, right = nums.length - 1;
+		while (mid <= right) {
+			if (nums[mid] == 1) {
 				mid++;
-				break;
-			}
-			case 1:
-				mid++;
-				break;
-			case 2: {
-				temp = nums[mid];
-				nums[mid] = nums[high];
-				nums[high] = temp;
-				high--;
-				break;
-			}
+			} else if (nums[mid] == 0) {
+				swap(nums, mid++, left++);
+			} else if (nums[mid] == 2) {
+				swap(nums, mid, right--);
 			}
 		}
+	}
+
+	public void swap(int[] nums, int i, int j) {
+		int temp = nums[i];
+		nums[i] = nums[j];
+		nums[j] = temp;
 	}
 }

@@ -1,38 +1,33 @@
 package com.hs.medium;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.HashSet;
+import java.util.Set;
 
 public class LongestConsecutiveSequence {
 	public int longestConsecutive(int[] nums) {
-		Map<Integer, Boolean> map = new HashMap<>();
-		for (int i = 0; i < nums.length; i++) {
-			map.put(nums[i], true);
+		if (nums.length == 0)
+			return 0;
+
+		Set<Integer> set = new HashSet<>();
+		for (int num : nums) {
+			set.add(num);
 		}
 
-		for (int i = 0; i < nums.length; i++) {
-			if (map.containsKey(nums[i] - 1)) {
-				map.put(nums[i], false);
+		int maxLen = 1;
+		for (int num : nums) {
+			// if left to num does not exist it means it can be a starting point
+			if (!set.contains(num - 1)) {
+				int count = 1;
+				
+				// once we got the starting point check the consecutive numbers
+				while (set.contains(num + 1)) {
+					num++;
+					count++;
+				}
+				maxLen = Math.max(maxLen, count);
 			}
 		}
-
-		int max = 0;
-		for (Integer key : map.keySet()) {
-			if (map.get(key) == true) {
-				int len = findLength(map, key);
-				max = Math.max(max, len);
-			}
-		}
-		return max;
-	}
-
-	private int findLength(Map<Integer, Boolean> map, int key) {
-		int ans = 0;
-		while (map.containsKey(key)) {
-			ans++;
-			key++;
-		}
-		return ans;
+		return maxLen;
 	}
 
 	public static void main(String[] args) {

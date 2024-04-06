@@ -2,21 +2,21 @@ package com.hs.medium;
 
 public class ContainerWithMostWater {
 	public int maxArea(int[] height) {
-        int maxWater = 0;
-        int start =0;
+        int start = 0;
         int end = height.length - 1;
-		
-        while(start < end){
-            int length = Math.min(height[start], height[end]);
-			int width = end - start;
-			maxWater = Math.max(maxWater, length * width);
-            if(height[start] > height[end]){
+        int maxWater = 0;
+
+        while (start < end) {
+            int minHeight = Math.min(height[start], height[end]);
+            int width = end - start;
+            maxWater = Math.max(maxWater, minHeight * width);
+            if (height[start] > height[end]) {
                 end--;
-            }else{
+            } else {
                 start++;
             }
         }
-		return maxWater;
+        return maxWater;
     }
 
 	public static void main(String[] args) {
