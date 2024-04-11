@@ -3,9 +3,7 @@ package com.hs.easy;
 import java.util.Arrays;
 
 public class SegregateEvenOdd {
-
 	private void segregateEvenOdd(int arr[]) {
-		// Initialize start and end indexes
 		int start = 0, end = arr.length - 1;
 		while (start < end) {
 			// Increment start index when we see even number in left
