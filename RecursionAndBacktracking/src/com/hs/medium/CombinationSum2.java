@@ -5,29 +5,35 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CombinationSum2 {
-	public List<List<Integer>> combinationSum2(int[] candidates, int target) {
-		List<List<Integer>> ans = new ArrayList<>();
-		Arrays.sort(candidates);
-		combinationSum2Util(candidates, target, 0, candidates.length, ans, new ArrayList<>());
-		return ans;
+	public List<List<Integer>> combinationSum2(int[] nums, int target) {
+		List<List<Integer>> result = new ArrayList<>();
+		Arrays.sort(nums);
+		backtrack(result, new ArrayList<>(), nums, target, 0);
+		return result;
 	}
 
-	private void combinationSum2Util(int[] arr, int target, int ind, int n, List<List<Integer>> ans,
-			List<Integer> list) {
-		if (target == 0) {
-			ans.add(new ArrayList<>(list));
+	private void backtrack(List<List<Integer>> result, List<Integer> list, int[] nums, int remain, int start) {
+		if (remain < 0)
 			return;
-		}
+		else if (remain == 0)
+			result.add(new ArrayList<>(list));
+		else {
+			for (int i = start; i < nums.length; i++) {
+				if (i > start && nums[i] == nums[i - 1])
+					continue; // skip duplicates
 
-		for (int i = ind; i < n; i++) {
-			if (i > ind && arr[i] == arr[i - 1])
-				continue;
-			if (arr[i] > target)
-				break;
-
-			list.add(arr[i]);
-			combinationSum2Util(arr, target - arr[i], i + 1, n, ans, list);
-			list.remove(list.size() - 1);
+				list.add(nums[i]);
+				backtrack(result, list, nums, remain - nums[i], i + 1);
+				list.remove(list.size() - 1);
+			}
 		}
+	}
+	
+	public static void main(String[] args) {
+		CombinationSum2 obj = new CombinationSum2();
+		int[] nums = { 10,1,2,7,6,1,5 };
+		int target = 8;
+		List<List<Integer>> result = obj.combinationSum2(nums, target);
+		System.out.println(result);
 	}
 }

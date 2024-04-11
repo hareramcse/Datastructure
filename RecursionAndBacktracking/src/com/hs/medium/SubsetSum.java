@@ -6,25 +6,24 @@ import java.util.List;
 
 // finds out all the subset sums in increasing order
 public class SubsetSum {
-	List<Integer> subsetSums(int[] nums) {
-		// code here
+	public List<Integer> subsetSums(int[] nums) {
 		List<Integer> sumSubset = new ArrayList<>();
-		subsetSumsUtil(nums, 0, nums.length, 0, sumSubset);
+		backtrack(nums, 0, nums.length, 0, sumSubset);
 		Collections.sort(sumSubset);
 		return sumSubset;
 	}
 
-	private void subsetSumsUtil(int[] nums, int i, int n, int sum, List<Integer> sumSubset) {
+	private void backtrack(int[] nums, int i, int n, int sum, List<Integer> sumSubset) {
 		if (i == n) {
 			sumSubset.add(sum);
 			return;
 		}
 
 		// pick the element
-		subsetSumsUtil(nums, i + 1, n, sum + nums[i], sumSubset);
+		backtrack(nums, i + 1, n, sum + nums[i], sumSubset);
 
 		// Do-not pick the element
-		subsetSumsUtil(nums, i + 1, n, sum, sumSubset);
+		backtrack(nums, i + 1, n, sum, sumSubset);
 	}
 
 	public static void main(String[] args) {

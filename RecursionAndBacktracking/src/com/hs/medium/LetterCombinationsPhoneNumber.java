@@ -10,9 +10,10 @@ public class LetterCombinationsPhoneNumber {
 		List<String> result = new ArrayList<>();
 		if (digits.isEmpty())
 			return result;
+		
 		Map<Character, String> map = mapPhoneKey();
 		StringBuilder sb = new StringBuilder();
-		letterCombinationsUtil(digits, 0, map, sb, result);
+		backtrack(digits, 0, map, sb, result);
 		return result;
 	}
 
@@ -29,7 +30,7 @@ public class LetterCombinationsPhoneNumber {
 		return map;
 	}
 
-	private void letterCombinationsUtil(String digits, int i, Map<Character, String> map, StringBuilder sb,
+	private void backtrack(String digits, int i, Map<Character, String> map, StringBuilder sb,
 			List<String> result) {
 		if (i == digits.length()) {
 			result.add(sb.toString());
@@ -39,7 +40,7 @@ public class LetterCombinationsPhoneNumber {
 		String curr = map.get(digits.charAt(i));
 		for (int k = 0; k < curr.length(); k++) {
 			sb.append(curr.charAt(k));
-			letterCombinationsUtil(digits, i + 1, map, sb, result);
+			backtrack(digits, i + 1, map, sb, result);
 			sb.deleteCharAt(sb.length() - 1);
 		}
 	}

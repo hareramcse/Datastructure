@@ -1,25 +1,30 @@
 package com.hs.medium;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Subsets {
 	public List<List<Integer>> subsets(int[] nums) {
-		List<List<Integer>> ans = new ArrayList<>();
-		subsetsUtil(nums, 0, nums.length, ans, new ArrayList<>());
-		return ans;
+		 List<List<Integer>> list = new ArrayList<>();
+		    Arrays.sort(nums);
+		    backtrack(list, new ArrayList<>(), nums, 0);
+		    return list;
 	}
 
-	private void subsetsUtil(int[] nums, int i, int n, List<List<Integer>> ans, List<Integer> list) {
-		if (i >= n) {
-			ans.add(new ArrayList<>(list));
-			return;
+	private void backtrack(List<List<Integer>> list, List<Integer> tempList, int[] nums, int start) {
+		list.add(new ArrayList<>(tempList));
+		for (int i = start; i < nums.length; i++) {
+			tempList.add(nums[i]);
+			backtrack(list, tempList, nums, i + 1);
+			tempList.remove(tempList.size() - 1);
 		}
-
-		list.add(nums[i]);
-		subsetsUtil(nums, i + 1, n, ans, list);
-		list.remove(list.size() - 1);
-
-		subsetsUtil(nums, i + 1, n, ans, list);
+	}
+	
+	public static void main(String[] args) {
+		Subsets obj = new Subsets();
+		int[] nums = { 1, 2, 3 };
+		List<List<Integer>> result = obj.subsets(nums);
+		System.out.println(result);
 	}
 }

@@ -5,22 +5,21 @@ import java.util.List;
 
 public class PalindromPartitionig {
 	public List<List<String>> partition(String s) {
-		List<List<String>> ans = new ArrayList<>();
-		List<String> path = new ArrayList<>();
-		partitionUtil(0, s, path, ans);
-		return ans;
+		List<List<String>> result = new ArrayList<>();
+		backtrack(result, new ArrayList<>(), s, 0);
+		return result;
 	}
 
-	private void partitionUtil(int index, String s, List<String> path, List<List<String>> ans) {
-		if (index == s.length()) {
-			ans.add(new ArrayList<>(path));
-			return;
-		}
-		for (int i = index; i < s.length(); i++) {
-			if (isPalindrome(s, index, i)) {
-				path.add(s.substring(index, i + 1));
-				partitionUtil(i + 1, s, path, ans);
-				path.remove(path.size() - 1);
+	public void backtrack(List<List<String>> result, List<String> list, String s, int start) {
+		if (start == s.length())
+			result.add(new ArrayList<>(list));
+		else {
+			for (int i = start; i < s.length(); i++) {
+				if (isPalindrome(s, start, i)) {
+					list.add(s.substring(start, i + 1));
+					backtrack(result, list, s, i + 1);
+					list.remove(list.size() - 1);
+				}
 			}
 		}
 	}
@@ -31,5 +30,12 @@ public class PalindromPartitionig {
 				return false;
 		}
 		return true;
+	}
+
+	public static void main(String[] args) {
+		PalindromPartitionig obj = new PalindromPartitionig();
+		String s = "aab";
+		List<List<String>> result = obj.partition(s);
+		System.out.println(result);
 	}
 }

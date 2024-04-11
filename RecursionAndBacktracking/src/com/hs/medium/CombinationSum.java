@@ -1,28 +1,36 @@
 package com.hs.medium;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class CombinationSum {
-	public List<List<Integer>> combinationSum(int[] candidates, int target) {
-		List<List<Integer>> ans = new ArrayList<>();
-		findCombinations(candidates, target, 0, candidates.length, ans, new ArrayList<>());
-		return ans;
+	public List<List<Integer>> combinationSum(int[] nums, int target) {
+		List<List<Integer>> result = new ArrayList<>();
+		Arrays.sort(nums);
+		backtrack(result, new ArrayList<>(), nums, target, 0);
+		return result;
 	}
 
-	private void findCombinations(int[] arr, int target, int i, int n, List<List<Integer>> ans, List<Integer> list) {
-		if (i == n) {
-			if (target == 0) {
-				ans.add(new ArrayList<>(list));
-			}
+	private void backtrack(List<List<Integer>> result, List<Integer> list, int[] nums, int remain, int start) {
+		if (remain < 0)
 			return;
+		else if (remain == 0)
+			result.add(new ArrayList<>(list));
+		else {
+			for (int i = start; i < nums.length; i++) {
+				list.add(nums[i]);
+				backtrack(result, list, nums, remain - nums[i], i); // not i + 1 because we can reuse same elements
+				list.remove(list.size() - 1);
+			}
 		}
+	}
 
-		if (arr[i] <= target) {
-			list.add(arr[i]);
-			findCombinations(arr, target - arr[i], i, n, ans, list);
-			list.remove(list.size() - 1);
-		}
-		findCombinations(arr, target, i + 1, n, ans, list);
+	public static void main(String[] args) {
+		CombinationSum obj = new CombinationSum();
+		int[] nums = { 2, 3, 6, 7 };
+		int target = 7;
+		List<List<Integer>> result = obj.combinationSum(nums, target);
+		System.out.println(result);
 	}
 }
