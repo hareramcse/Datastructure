@@ -1,6 +1,5 @@
 package com.hs.easy;
 
-// 67
 public class AddBinary {
 	public String addBinary(String a, String b) {
 		StringBuilder sb = new StringBuilder();
