@@ -1,5 +1,7 @@
 package com.hs.avltree;
 
+import com.hs.tree.Node;
+
 public class AVLTree {
 
 	private Node root;
