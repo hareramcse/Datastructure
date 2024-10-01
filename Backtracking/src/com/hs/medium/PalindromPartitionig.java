@@ -11,15 +11,16 @@ public class PalindromPartitionig {
 	}
 
 	public void backtrack(List<List<String>> result, List<String> list, String s, int start) {
-		if (start == s.length())
+		if (start == s.length()) {
 			result.add(new ArrayList<>(list));
-		else {
-			for (int i = start; i < s.length(); i++) {
-				if (isPalindrome(s, start, i)) {
-					list.add(s.substring(start, i + 1));
-					backtrack(result, list, s, i + 1);
-					list.remove(list.size() - 1);
-				}
+			return;
+		}
+		
+		for (int i = start; i < s.length(); i++) {
+			if (isPalindrome(s, start, i)) {
+				list.add(s.substring(start, i + 1));
+				backtrack(result, list, s, i + 1);
+				list.remove(list.size() - 1);
 			}
 		}
 	}

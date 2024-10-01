@@ -15,14 +15,16 @@ public class CombinationSum {
 	private void backtrack(List<List<Integer>> result, List<Integer> list, int[] nums, int remain, int start) {
 		if (remain < 0)
 			return;
-		else if (remain == 0)
+		
+		if (remain == 0) {
 			result.add(new ArrayList<>(list));
-		else {
-			for (int i = start; i < nums.length; i++) {
-				list.add(nums[i]);
-				backtrack(result, list, nums, remain - nums[i], i); // not i + 1 because we can reuse same elements
-				list.remove(list.size() - 1);
-			}
+			return;
+		}
+		
+		for (int i = start; i < nums.length; i++) {
+			list.add(nums[i]);
+			backtrack(result, list, nums, remain - nums[i], i); // not i + 1 because we can reuse same elements
+			list.remove(list.size() - 1);
 		}
 	}
 

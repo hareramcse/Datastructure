@@ -15,23 +15,25 @@ public class CombinationSum2 {
 	private void backtrack(List<List<Integer>> result, List<Integer> list, int[] nums, int remain, int start) {
 		if (remain < 0)
 			return;
-		else if (remain == 0)
-			result.add(new ArrayList<>(list));
-		else {
-			for (int i = start; i < nums.length; i++) {
-				if (i > start && nums[i] == nums[i - 1])
-					continue; // skip duplicates
 
-				list.add(nums[i]);
-				backtrack(result, list, nums, remain - nums[i], i + 1);
-				list.remove(list.size() - 1);
-			}
+		if (remain == 0) {
+			result.add(new ArrayList<>(list));
+			return;
+		}
+
+		for (int i = start; i < nums.length; i++) {
+			if (i > start && nums[i] == nums[i - 1])
+				continue; // skip duplicates
+
+			list.add(nums[i]);
+			backtrack(result, list, nums, remain - nums[i], i + 1);
+			list.remove(list.size() - 1);
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		CombinationSum2 obj = new CombinationSum2();
-		int[] nums = { 10,1,2,7,6,1,5 };
+		int[] nums = { 10, 1, 2, 7, 6, 1, 5 };
 		int target = 8;
 		List<List<Integer>> result = obj.combinationSum2(nums, target);
 		System.out.println(result);

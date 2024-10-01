@@ -17,8 +17,10 @@ public class WordSearch {
 	private boolean dfs(char[][] board, int i, int j, int count, String word) {
 		if (count == word.length())
 			return true;
+		
 		if (i == -1 || i == board.length || j == -1 || j == board[0].length || board[i][j] != word.charAt(count))
 			return false;
+		
 		char temp = board[i][j];
 		board[i][j] = '*';
 		boolean found = dfs(board, i + 1, j, count + 1, word) || dfs(board, i - 1, j, count + 1, word)
