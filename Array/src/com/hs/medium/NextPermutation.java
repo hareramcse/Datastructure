@@ -4,21 +4,34 @@ import java.util.Arrays;
 
 public class NextPermutation {
 	public void nextPermutation(int[] nums) {
-		if (nums == null || nums.length <= 1)
+		int n = nums.length;
+		int k = n - 2;
+		if (nums == null || n <= 1)
 			return;
-        
-		int i = nums.length - 2;
-		while (i >= 0 && nums[i] >= nums[i + 1])
-			i--;
-        
-		if (i >= 0) {
-			int j = nums.length - 1;
-			while (nums[j] <= nums[i])
-				j--;
-            
-			swap(nums, i, j);
+
+		// find k such that, after kth index all elements are in descending order
+		for (int i = n - 1; i > 0; i--) {
+			if (nums[i] <= nums[i - 1]) // here = is for,if there is any duplicate number
+				k--;
+			else
+				break;
 		}
-		reverse(nums, i + 1, nums.length - 1);
+
+		// if k == -1
+		if (k == -1) {
+			reverse(nums, 0, n - 1);
+			return;
+		}
+
+		// else replace k with next greater element from right and then reverse
+		for (int i = n - 1; i > 0; i--) {
+			if (nums[i] > nums[k]) {
+				swap(nums, i, k);
+				break;
+			}
+		}
+
+		reverse(nums, k + 1, n - 1);
 	}
 
 	private void swap(int[] nums, int i, int j) {

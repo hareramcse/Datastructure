@@ -43,4 +43,11 @@ public class MajorityElement2 {
 
 		return ansList;
 	}
+
+	public static void main(String[] args) {
+		MajorityElement2 obj = new MajorityElement2();
+		int[] arr = { 2, 2 };
+		List<Integer> result = obj.majorityElement(arr);
+		System.out.println(result);
+	}
 }

@@ -21,15 +21,17 @@ public class MaximumSumCircularSubarray {
 
 	private int kadane(int[] nums) {
 		int max = Integer.MIN_VALUE;
-		int sum = 0;
-		for (int i = 0; i < nums.length; i++) {
-			sum = sum + nums[i];
-			if (sum < nums[i]) {
-				sum = nums[i];
-			}
-			max = Integer.max(max, sum);
-		}
-		return max;
+        int sum = 0;
+
+        for (int num : nums) {
+            sum += num;
+            if (num > sum) {
+                sum = num;
+            }
+
+            max = Math.max(max, sum);
+        }
+        return max;
 	}
 
 	public static void main(String[] args) {

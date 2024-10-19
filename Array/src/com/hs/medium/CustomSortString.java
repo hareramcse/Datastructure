@@ -24,4 +24,11 @@ public class CustomSortString {
 		}
 		return sb.toString();
 	}
+
+	public static void main(String[] args) {
+		String order = "cba", s = "abcd";
+		CustomSortString obj = new CustomSortString();
+		String result = obj.customSortString(order, s);
+		System.out.println(result);
+	}
 }

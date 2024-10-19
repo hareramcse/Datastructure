@@ -2,31 +2,25 @@ package com.hs.medium;
 
 public class MaximumProductSubArray {
 	public int maxProduct(int[] nums) {
+		int leftMax = 0;
+		int rightMax = 0;
 		int max = nums[0];
-		int min = nums[0];
-		int result = nums[0];
 
-		for (int i = 1; i < nums.length; i++) {
+		for (int i = 0; i < nums.length; i++) {
+			leftMax = leftMax == 0 ? 1 : leftMax;
+			rightMax = rightMax == 0 ? 1 : rightMax;
 
-			// On multiplying with negative number max will become min and min
-			// will become max, when we encounter negative element, swap min, max
-			if (nums[i] < 0) {
-				int temp = max;
-				max = min;
-				min = temp;
-			}
+			leftMax *= nums[i];
+			rightMax *= nums[nums.length - 1 - i];
 
-			max = Math.max(nums[i], max * nums[i]);
-			min = Math.min(nums[i], min * nums[i]);
-
-			result = Math.max(result, max);
+			max = Math.max(max, Math.max(leftMax, rightMax));
 		}
-		return result;
+		return max;
 	}
 
 	public static void main(String[] args) {
 		MaximumProductSubArray obj = new MaximumProductSubArray();
-		int[] nums = { 2,3,-2,4 };
+		int[] nums = { 2, 3, -2, -5, 6, -1, 4 };
 		System.out.println("Maximum Sub array product is " + obj.maxProduct(nums));
 	}
 }

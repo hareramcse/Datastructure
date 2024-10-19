@@ -16,11 +16,13 @@ public class IncreasingSubsequences {
 		if (path.size() > 1)
 			ans.add(new ArrayList<>(path));
 
+		// Set is used to avoid adding duplicate subsequences that start with
+		// the same number in the same level of recursion.
 		Set<Integer> used = new HashSet<>();
 		for (int i = start; i < nums.length; i++) {
 			if (used.contains(nums[i]))
 				continue;
-			
+
 			if (path.isEmpty() || nums[i] >= path.get(path.size() - 1)) {
 				used.add(nums[i]);
 				path.add(nums[i]);
