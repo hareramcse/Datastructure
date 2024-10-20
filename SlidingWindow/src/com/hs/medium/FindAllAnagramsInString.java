@@ -7,24 +7,22 @@ import java.util.List;
 public class FindAllAnagramsInString {
 	public List<Integer> findAnagrams(String s, String p) {
 		List<Integer> ans = new ArrayList<>();
-		int[] pArr = new int[26];
-		int[] sArr = new int[26];
+		int[] pFre = new int[26];
+		int[] sFre = new int[26];
 
-		// put all elements of pattern and its count
 		for (char ch : p.toCharArray()) {
-			pArr[ch - 'a']++;
+			pFre[ch - 'a']++;
 		}
 
 		int i = 0, j = 0;
 		while (j < s.length()) {
-			sArr[s.charAt(j) - 'a']++;
+			sFre[s.charAt(j) - 'a']++;
 
 			if (j - i + 1 == p.length()) {
-				if (Arrays.equals(pArr, sArr)) {
+				if (Arrays.equals(pFre, sFre)) {
 					ans.add(i);
 				}
-				// remove the ith char count before sliding the window
-				sArr[s.charAt(i) - 'a']--;
+				sFre[s.charAt(i) - 'a']--;
 				i++;
 			}
 			j++;
