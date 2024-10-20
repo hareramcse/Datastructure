@@ -1,15 +1,15 @@
 package com.hs.medium;
 
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 
 public class FirstNegativeNumberInWindowsSizeK {
-	public List<Integer> solve(int arr[], int K) {
+	public List<Integer> solve(int[] arr, int K) {
 		List<Integer> ans = new ArrayList<>();
-		Queue<Integer> queue = new LinkedList<>();
-		
+		Deque<Integer> queue = new LinkedList<>();
+
 		int i = 0;
 		int j = 0;
 		while (j < arr.length) {
@@ -23,7 +23,7 @@ public class FirstNegativeNumberInWindowsSizeK {
 						queue.poll();
 					}
 				} else {
-					ans.add(0);
+					ans.add(0); // No negative number in the current window
 				}
 				i++;
 			}

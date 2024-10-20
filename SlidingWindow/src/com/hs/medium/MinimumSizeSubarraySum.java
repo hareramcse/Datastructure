@@ -5,7 +5,7 @@ public class MinimumSizeSubarraySum {
 		int minLength = Integer.MAX_VALUE;
 		int sum = 0;
 		int i = 0, j = 0;
-		
+
 		while (j < nums.length) {
 			sum = sum + nums[j];
 			// while sum is greater than the value of target
@@ -19,5 +19,13 @@ public class MinimumSizeSubarraySum {
 			j++;
 		}
 		return (minLength == Integer.MAX_VALUE) ? 0 : minLength;
+	}
+
+	public static void main(String[] args) {
+		MinimumSizeSubarraySum obj = new MinimumSizeSubarraySum();
+		int[] nums = { 2, 3, 1, 2, 4, 3 };
+		int target = 7;
+		int result = obj.minSubArrayLen(target, nums);
+		System.out.println(result);
 	}
 }

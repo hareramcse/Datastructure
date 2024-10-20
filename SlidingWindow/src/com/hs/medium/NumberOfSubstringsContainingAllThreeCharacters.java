@@ -5,10 +5,10 @@ import java.util.Map;
 
 public class NumberOfSubstringsContainingAllThreeCharacters {
 	public int numberOfSubstrings(String s) {
-        return numberOfSubstringsUtil(s, 3) - numberOfSubstringsUtil(s, 2);
-    }
-    
-    public int numberOfSubstringsUtil(String s, int k) {
+		return numberOfSubstringsWithAtMostKDiffChar(s, 3) - numberOfSubstringsWithAtMostKDiffChar(s, 2);
+	}
+
+	public int numberOfSubstringsWithAtMostKDiffChar(String s, int k) {
 		Map<Character, Integer> map = new HashMap<>();
 		int j = 0;
 		int i = 0;
@@ -27,5 +27,13 @@ public class NumberOfSubstringsContainingAllThreeCharacters {
 			j++;
 		}
 		return ans;
+	}
+
+	public static void main(String[] args) {
+		NumberOfSubstringsContainingAllThreeCharacters obj = new NumberOfSubstringsContainingAllThreeCharacters();
+		String s = "abcabc";
+		int result = obj.numberOfSubstrings(s);
+		System.out.println(result);
+
 	}
 }

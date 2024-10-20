@@ -4,26 +4,6 @@ package com.hs.medium;
 // water on each building will be min(leftMax - rightMax) - height[i] 
 public class TrappingRainWater {
 	public int trap(int[] heights) {
-		int left[] = new int[heights.length], right[] = new int[heights.length], max = heights[0], res = 0;
-
-		for (int i = 0; i < heights.length; i++) {
-			left[i] = Math.max(heights[i], max);
-			max = left[i];
-		}
-
-		max = heights[heights.length - 1];
-		for (int i = heights.length - 1; i >= 0; i--) {
-			right[i] = Math.max(heights[i], max);
-			max = right[i];
-		}
-
-		for (int i = 0; i < heights.length; i++) {
-			res = res + Math.min(left[i], right[i]) - heights[i];
-		}
-		return res;
-	}
-
-	public int trapWithTwoPointer(int[] heights) {
 		if (heights.length == 0)
 			return 0;
 
