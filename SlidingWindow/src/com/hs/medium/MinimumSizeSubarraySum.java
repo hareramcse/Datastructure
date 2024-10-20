@@ -8,11 +8,8 @@ public class MinimumSizeSubarraySum {
 
 		while (j < nums.length) {
 			sum = sum + nums[j];
-			// while sum is greater than the value of target
 			while (i <= j && sum >= target) {
-				// Keep track of minLength
 				minLength = Math.min(minLength, j - i + 1);
-				// Subtract the value from sum variable and move start pointer
 				sum = sum - nums[i];
 				i++;
 			}

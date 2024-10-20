@@ -7,7 +7,6 @@ public class MaximumSumOfSubArraySizeK {
 			sum += arr[j];
 			if (j - i + 1 == k) {
 				max = Math.max(max, sum);
-				// remove the ith index val from sum before sliding the window
 				sum -= arr[i];
 				i++;
 			}

@@ -20,7 +20,7 @@ public class FirstNegativeNumberInWindowsSizeK {
 				if (!queue.isEmpty()) {
 					ans.add(queue.peek());
 					if (queue.peek() == arr[i]) {
-						queue.poll();
+						queue.removeFirst();
 					}
 				} else {
 					ans.add(0); // No negative number in the current window
