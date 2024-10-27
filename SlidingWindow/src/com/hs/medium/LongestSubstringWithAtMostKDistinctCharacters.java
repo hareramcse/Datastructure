@@ -6,8 +6,8 @@ import java.util.Map;
 public class LongestSubstringWithAtMostKDistinctCharacters {
 	public int lengthOfLongestSubstringKDistinct(String s, int k) {
 		Map<Character, Integer> map = new HashMap<>();
-		int j = 0;
 		int i = 0;
+		int j = 0;
 		int ans = 0;
 
 		while (j < s.length()) {

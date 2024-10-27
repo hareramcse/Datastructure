@@ -1,46 +1,29 @@
 package com.hs.medium;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class LetterCombinationsPhoneNumber {
 	public List<String> letterCombinations(String digits) {
 		List<String> result = new ArrayList<>();
-		if (digits.isEmpty())
+		if (digits == null || digits.length() == 0)
 			return result;
-		
-		Map<Character, String> map = mapPhoneKey();
-		StringBuilder sb = new StringBuilder();
-		backtrack(digits, 0, map, sb, result);
+
+		String[] key = { "", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
+		backtrack(result, new StringBuilder(), key, digits, 0);
 		return result;
 	}
 
-	private Map<Character, String> mapPhoneKey() {
-		Map<Character, String> map = new HashMap<>();
-		map.put('2', "abc");
-		map.put('3', "def");
-		map.put('4', "ghi");
-		map.put('5', "jkl");
-		map.put('6', "mno");
-		map.put('7', "pqrs");
-		map.put('8', "tuv");
-		map.put('9', "wxyz");
-		return map;
-	}
-
-	private void backtrack(String digits, int i, Map<Character, String> map, StringBuilder sb,
-			List<String> result) {
-		if (i == digits.length()) {
+	private void backtrack(List<String> result, StringBuilder sb, String[] key, String digits, int start) {
+		if (sb.length() == digits.length()) {
 			result.add(sb.toString());
 			return;
 		}
 
-		String curr = map.get(digits.charAt(i));
-		for (int k = 0; k < curr.length(); k++) {
-			sb.append(curr.charAt(k));
-			backtrack(digits, i + 1, map, sb, result);
+		String curr = key[digits.charAt(start) - '0'];
+		for (int i = 0; i < curr.length(); i++) {
+			sb.append(curr.charAt(i));
+			backtrack(result, sb, key, digits, start + 1);
 			sb.deleteCharAt(sb.length() - 1);
 		}
 	}

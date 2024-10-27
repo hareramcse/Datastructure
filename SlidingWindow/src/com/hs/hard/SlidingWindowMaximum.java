@@ -22,7 +22,7 @@ public class SlidingWindowMaximum {
 			queue.add(nums[j]);
 
 			if (j - i + 1 == k) {
-				result[m++] = queue.peek();
+				result[m++] = queue.peekFirst();
 				if (queue.peek() == nums[i]) {
 					queue.removeFirst();
 				}
