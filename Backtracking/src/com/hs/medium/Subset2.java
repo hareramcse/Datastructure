@@ -6,21 +6,21 @@ import java.util.List;
 
 public class Subset2 {
 	public List<List<Integer>> subsetsWithDup(int[] nums) {
-		List<List<Integer>> list = new ArrayList<>();
+		List<List<Integer>> result = new ArrayList<>();
 		Arrays.sort(nums);
-		backtrack(list, new ArrayList<>(), nums, 0);
-		return list;
+		backtrack(result, new ArrayList<>(), nums, 0);
+		return result;
 	}
 
-	private void backtrack(List<List<Integer>> list, List<Integer> tempList, int[] nums, int start) {
-		list.add(new ArrayList<>(tempList));
+	private void backtrack(List<List<Integer>> result, List<Integer> list, int[] nums, int start) {
+		result.add(new ArrayList<>(list));
 		for (int i = start; i < nums.length; i++) {
 			if (i > start && nums[i] == nums[i - 1])
 				continue; // skip duplicates
 
-			tempList.add(nums[i]);
-			backtrack(list, tempList, nums, i + 1);
-			tempList.remove(tempList.size() - 1);
+			list.add(nums[i]);
+			backtrack(result, list, nums, i + 1);
+			list.remove(list.size() - 1);
 		}
 	}
 

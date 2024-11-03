@@ -11,7 +11,7 @@ public class MinimumWindowSubstring {
 		}
 
 		int i = 0, j = 0, count = map.size();
-		String res = "";
+		String result = "";
 		int min = Integer.MAX_VALUE;
 
 		while (j < s.length()) {
@@ -25,7 +25,7 @@ public class MinimumWindowSubstring {
 
 			while (count == 0) {
 				if (j - i + 1 < min) {
-					res = s.substring(i, j + 1);
+					result = s.substring(i, j + 1);
 					min = j - i + 1;
 				}
 
@@ -40,7 +40,7 @@ public class MinimumWindowSubstring {
 			}
 			j++;
 		}
-		return res;
+		return result;
 	}
 
 	public static void main(String[] args) {
