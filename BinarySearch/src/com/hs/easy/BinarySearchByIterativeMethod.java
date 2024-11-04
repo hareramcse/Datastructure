@@ -18,9 +18,9 @@ public class BinarySearchByIterativeMethod {
 	}
 
 	public static void main(String[] args) {
-		BinarySearchByIterativeMethod tree = new BinarySearchByIterativeMethod();
+		BinarySearchByIterativeMethod obj = new BinarySearchByIterativeMethod();
 		int arr[] = { 2, 4, 12, 15, 22, 23, 25, 65 };
-		int index = tree.search(arr, 23);
+		int index = obj.search(arr, 23);
 		if (index == -1) {
 			System.out.println("value not found");
 		} else {

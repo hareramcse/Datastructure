@@ -1,26 +1,25 @@
 package com.hs.medium;
 
 public class PeakElement {
-	public int findPeakElement(int[] arr) {
-		int n = arr.length;
-		int low = 0, high = n - 1;
-		while (low <= high) {
+	public int findPeakElement(int[] nums) {
+		int low = 0;
+		int high = nums.length - 1;
+
+		while (low < high) {
 			int mid = low + (high - low) / 2;
-			if ((mid == 0 || arr[mid - 1] <= arr[mid]) && (mid == n - 1 || arr[mid] >= arr[mid + 1])) {
-				return mid;
-			} else if (mid > 0 && arr[mid - 1] > arr[mid]) {
-				high = mid - 1;
+			if (nums[mid] > nums[mid + 1]) {
+				high = mid;
 			} else {
 				low = mid + 1;
 			}
 		}
-		return -1;
+		return low;
 	}
 
 	public static void main(String[] args) {
-		PeakElement tree = new PeakElement();
+		PeakElement object = new PeakElement();
 		int arr[] = { 2, 4, 12, 15, 22, 23, 25, 65 };
-		int index = tree.findPeakElement(arr);
+		int index = object.findPeakElement(arr);
 		System.out.println(index);
 	}
 }

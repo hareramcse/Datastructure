@@ -16,9 +16,9 @@ public class BinarySearchByRecursion {
 	}
 
 	public static void main(String[] args) {
-		int arr[] = { 2, 4, 12, 15, 22, 23, 25, 65 };
-		BinarySearchByRecursion tree = new BinarySearchByRecursion();
-		int index = tree.search(arr, 0, arr.length - 1, 23);
+		BinarySearchByRecursion obj = new BinarySearchByRecursion();
+		int[] arr = { 2, 4, 12, 15, 22, 23, 25, 65 };
+		int index = obj.search(arr, 0, arr.length - 1, 23);
 		if (index == -1) {
 			System.out.println("value not found");
 		} else {

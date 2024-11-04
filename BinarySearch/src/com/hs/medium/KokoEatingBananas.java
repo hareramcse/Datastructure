@@ -2,38 +2,39 @@ package com.hs.medium;
 
 public class KokoEatingBananas {
 	public int minEatingSpeed(int[] piles, int h) {
-		int max = 0;
-		for (int pile : piles) {
-			max = Math.max(max, pile);
-		}
-
-		if (piles.length == h) {
-			return max;
-		}
-
 		int low = 1;
-		int high = max;
-		int ans = 0;
+		int high = 0;
+		for (int pile : piles) {
+			high = Math.max(high, pile);
+		}
 
 		while (low <= high) {
 			int mid = low + (high - low) / 2;
-			if (isPossible(piles, mid, h)) {
-				ans = mid;
+			int totalHour = findTotalHour(piles, mid, h);
+			if (totalHour <= h) {
 				high = mid - 1;
 			} else {
 				low = mid + 1;
 			}
 		}
 
-		return ans;
+		return low;
 	}
 
-	private boolean isPossible(int[] piles, int mid, int h) {
-		int res = 0;
+	private int findTotalHour(int[] piles, int mid, int h) {
+		int totalHour = 0;
 		for (int i = 0; i < piles.length; i++) {
-			res += Math.ceil(piles[i] * 1.0 / mid);
+			totalHour += Math.ceil((double) piles[i] / mid);
 		}
 
-		return res <= h;
+		return totalHour;
+	}
+
+	public static void main(String[] args) {
+		KokoEatingBananas obj = new KokoEatingBananas();
+		int[] piles = { 3, 6, 7, 11 };
+		int h = 8;
+		int result = obj.minEatingSpeed(piles, h);
+		System.out.println(result);
 	}
 }

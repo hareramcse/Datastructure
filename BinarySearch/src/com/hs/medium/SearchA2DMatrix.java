@@ -10,7 +10,7 @@ public class SearchA2DMatrix {
 		int high = (n * m) - 1;
 
 		while (low <= high) {
-			int mid = (low + (high - low) / 2);
+			int mid = low + (high - low) / 2;
 			if (matrix[mid / m][mid % m] == target) {
 				return true;
 			}
