@@ -13,6 +13,7 @@ public class SortArrayByIncreasingFrequency {
 			map.put(num, map.getOrDefault(num, 0) + 1);
 		}
 
+		// If frequencies are the same, sort by value in descending order
 		Queue<Integer> minHeap = new PriorityQueue<>(
 				(a, b) -> map.get(a) == map.get(b) ? b - a : map.get(a) - map.get(b));
 		minHeap.addAll(map.keySet());

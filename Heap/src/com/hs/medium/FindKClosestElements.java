@@ -8,10 +8,9 @@ import java.util.Queue;
 
 public class FindKClosestElements {
 	public List<Integer> findClosestElements(int[] arr, int k, int x) {
-		Queue<Pair> maxHeap = new PriorityQueue<>(
-				(a, b) -> ((b.value == a.value) ? (b.key - a.key) : (b.value - a.value)));
+		Queue<int[]> maxHeap = new PriorityQueue<>((a, b) -> ((b[1] == a[1]) ? (b[0] - a[0]) : (b[1] - a[1])));
 		for (int num : arr) {
-			maxHeap.add(new Pair(num, Math.abs(num - x)));
+			maxHeap.add(new int[] { num, Math.abs(num - x) });
 			if (maxHeap.size() > k) {
 				maxHeap.poll();
 			}
@@ -19,7 +18,7 @@ public class FindKClosestElements {
 
 		List<Integer> ans = new ArrayList<>();
 		while (!maxHeap.isEmpty()) {
-			ans.add(maxHeap.poll().key);
+			ans.add(maxHeap.poll()[0]);
 		}
 		Collections.sort(ans);
 		return ans;

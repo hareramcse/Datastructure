@@ -3,32 +3,47 @@ package com.hs.hard.hard;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
+// maxHeap to store all the element smaller than minHeap
+// minHeap to store all the elements greater than MaxHeap
+// initially add all the elements in maxHeap and eventually based on condition 
+// 1) difference in Heap size should not be > 1
+// 2) all the elements in the maxHeap <= minHeap
 public class FindMedianFromDataStream {
-	private Queue<Integer> smallHeap; // small elements - maxHeap
-	private Queue<Integer> largeHeap; // large elements - minHeap
+	private Queue<Integer> maxHeap;
+	private Queue<Integer> minHeap;
 
 	public FindMedianFromDataStream() {
-		smallHeap = new PriorityQueue<>((a, b) -> b - a);
-		largeHeap = new PriorityQueue<>((a, b) -> a - b);
+		maxHeap = new PriorityQueue<>((a, b) -> b - a);
+		minHeap = new PriorityQueue<>((a, b) -> a - b);
 	}
 
 	public void addNum(int num) {
-		smallHeap.add(num);
-		if (smallHeap.size() - largeHeap.size() > 1 || !largeHeap.isEmpty() && smallHeap.peek() > largeHeap.peek()) {
-			largeHeap.add(smallHeap.poll());
+		maxHeap.add(num);
+		if (maxHeap.size() - minHeap.size() > 1 || !minHeap.isEmpty() && maxHeap.peek() > minHeap.peek()) {
+			minHeap.add(maxHeap.poll());
 		}
-		if (largeHeap.size() - smallHeap.size() > 1) {
-			smallHeap.add(largeHeap.poll());
+		if (minHeap.size() - maxHeap.size() > 1) {
+			maxHeap.add(minHeap.poll());
 		}
 	}
 
 	public double findMedian() {
-		if (smallHeap.size() == largeHeap.size()) {
-			return (double) (largeHeap.peek() + smallHeap.peek()) / 2;
-		} else if (smallHeap.size() > largeHeap.size()) {
-			return (double) smallHeap.peek();
+		if (maxHeap.size() == minHeap.size()) {
+			return (double) (minHeap.peek() + maxHeap.peek()) / 2;
+		} else if (maxHeap.size() > minHeap.size()) {
+			return (double) maxHeap.peek();
 		} else {
-			return (double) largeHeap.peek();
+			return (double) minHeap.peek();
 		}
+	}
+
+	public static void main(String[] args) {
+		FindMedianFromDataStream obj = new FindMedianFromDataStream();
+		obj.addNum(3);
+		obj.addNum(2);
+		obj.addNum(7);
+		obj.addNum(4);
+		double result = obj.findMedian();
+		System.out.println(result);
 	}
 }
