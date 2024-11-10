@@ -12,11 +12,12 @@ public class CountDistinctSubstring {
 		for (int i = 0; i < word.length(); i++) {
 			TrieNode temp = root;
 			for (int j = i; j < word.length(); j++) {
-				if (temp.child[word.charAt(i) - 'a'] == null) {
-					temp.child[word.charAt(i) - 'a'] = new TrieNode();
+				char ch = word.charAt(i);
+				if (temp.child[ch - 'a'] == null) {
+					temp.child[ch - 'a'] = new TrieNode();
 					count++;
 				}
-				temp = temp.child[word.charAt(i) - 'a'];
+				temp = temp.child[ch - 'a'];
 			}
 		}
 		return count + 1;

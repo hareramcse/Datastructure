@@ -27,6 +27,7 @@ public class DesignAddAndSearchWords {
 	public boolean search(String word, int index, TrieNode temp) {
 		if (temp == null)
 			return false;
+		
 		if (index == word.length())
 			return temp.isWord;
 
@@ -49,6 +50,8 @@ public class DesignAddAndSearchWords {
 		boolean result = obj.search("pad");
 		System.out.println(result);
 		result = obj.search("bad");
+		System.out.println(result);
+		result = obj.search(".ad");
 		System.out.println(result);
 	}
 }

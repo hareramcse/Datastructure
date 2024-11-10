@@ -8,17 +8,17 @@ public class LongestWordWithAllPrefixes {
 	}
 
 	public String longestWord(String[] words) {
-		for (int i = 0; i < words.length; i++) {
-			insert(words[i]);
+		for (String word : words) {
+			insert(word);
 		}
 
 		String longest = "";
-		for (int i = 0; i < words.length; i++) {
-			if (startsWith(words[i])) {
-				if (words[i].length() > longest.length()) {
-					longest = words[i];
-				} else if (words[i].length() == longest.length() && words[i].compareTo(longest) < 0) {
-					longest = words[i];
+		for (String word : words) {
+			if (startsWith(word)) {
+				if (word.length() > longest.length()) {
+					longest = word;
+				} else if (word.length() == longest.length() && word.compareTo(longest) < 0) {
+					longest = word;
 				}
 			}
 		}
