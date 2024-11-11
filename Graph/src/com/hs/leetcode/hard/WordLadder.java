@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Queue;
 import java.util.Set;
 
-public class WordLadder1 {
+public class WordLadder {
 
 	public int ladderLength(String beginWord, String endWord, List<String> wordList) {
 		Queue<Pair> queue = new LinkedList<>();
@@ -48,7 +48,7 @@ public class WordLadder1 {
 	}
 
 	public static void main(String[] args) throws IOException {
-		WordLadder1 obj = new WordLadder1();
+		WordLadder obj = new WordLadder();
 		String startWord = "der", targetWord = "dfs";
 		String[] words = { "des", "der", "dfr", "dgt", "dfs" };
 		List<String> wordList = Arrays.asList(words);

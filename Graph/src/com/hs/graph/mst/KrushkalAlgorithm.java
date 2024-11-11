@@ -16,10 +16,11 @@ public class KrushkalAlgorithm {
 
 		// add all the edges to priority queue
 		Queue<Edge> pq = new PriorityQueue<>((x, y) -> x.weight - y.weight);
-		DisjointSet ds = new DisjointSet(V);
-		int mstWeight = 0;
 		pq.addAll(edgeList);
 
+		DisjointSet ds = new DisjointSet(V);
+		int mstWeight = 0;
+		
 		while (!pq.isEmpty()) {
 			Edge edge = pq.poll();
 			int u = edge.source;

@@ -50,4 +50,12 @@ public class CheapestFlightsWithinKStops {
 			return -1;
 		return dist[dst];
 	}
+
+	public static void main(String[] args) {
+		CheapestFlightsWithinKStops obj = new CheapestFlightsWithinKStops();
+		int[][] grid = { { 0, 1, 100 }, { 1, 2, 100 }, { 2, 0, 100 }, { 1, 3, 600 }, { 2, 3, 200 } };
+		int src = 0, dst = 3, k = 1;
+		int result = obj.findCheapestPrice(grid.length, grid, src, dst, k);
+		System.out.println(result);
+	}
 }

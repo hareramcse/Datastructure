@@ -1,48 +1,36 @@
 package com.hs.graph.shortestpath;
 
+import java.util.Arrays;
+import java.util.PriorityQueue;
+import java.util.Queue;
+
 public class DijkstrasShortestPath {
 
-	private void dijkstra(int V, int src, int graph[][]) {
-		// visited[i] will be true if vertex i is included in shortest path tree
-		boolean[] visited = new boolean[V];
-
+	private void dijkstra(int V, int src, int[][] graph) {
 		int[] distance = new int[V];
-		// Initialize all distances as INFINITE
-		for (int i = 0; i < V; i++) {
-			distance[i] = Integer.MAX_VALUE;
-		}
+		Arrays.fill(distance, Integer.MAX_VALUE);
 
 		// Distance of source vertex from itself is always 0
 		distance[src] = 0;
 
-		// Find shortest path for all vertices
-		for (int i = 0; i < V - 1; i++) {
-			// Pick the minimum distance
-			int u = minDistance(distance, visited);
+		Queue<Node> pq = new PriorityQueue<>((x, y) -> x.weight - y.weight);
+		pq.add(new Node(src, 0));
 
-			// Mark the picked vertex as visited
-			visited[u] = true;
+		while (!pq.isEmpty()) {
+			Node currentNode = pq.poll();
+			int u = currentNode.destination;
+			int weight = currentNode.weight;
 
-			for (int v = 0; v < V; v++)
-				// Update dist[v] only if vertex is not visited
-				// and there is an edge from u to v total weight of path from src to v through u
-				// is smaller than current value of dist[v]
-				if (!visited[v] && graph[u][v] != 0 && distance[u] != Integer.MAX_VALUE
-						&& distance[u] + graph[u][v] < distance[v])
-					distance[v] = distance[u] + graph[u][v];
-		}
-		printSolution(distance);
-	}
-
-	private int minDistance(int distance[], boolean visited[]) {
-		int min = Integer.MAX_VALUE, minIndex = -1;
-		for (int i = 0; i < distance.length; i++) {
-			if (visited[i] == false && distance[i] <= min) {
-				min = distance[i];
-				minIndex = i;
+			// For each neighbor of the current node (u)
+			for (int v = 0; v < V; v++) {
+				if (graph[u][v] != 0 && weight + graph[u][v] < distance[v]) {
+					// Relax the edge if a shorter path is found
+					distance[v] = weight + graph[u][v];
+					pq.add(new Node(v, distance[v]));
+				}
 			}
 		}
-		return minIndex;
+		printSolution(distance);
 	}
 
 	private void printSolution(int dist[]) {

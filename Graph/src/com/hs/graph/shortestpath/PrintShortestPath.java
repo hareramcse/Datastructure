@@ -42,7 +42,6 @@ public class PrintShortestPath {
 			Node node = pq.poll();
 			int u = node.destination;
 			int weight = node.weight;
-			pq.remove();
 
 			for (Node adjNode : adjList.get(u)) {
 				int v = adjNode.destination;
