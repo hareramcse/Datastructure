@@ -1,4 +1,4 @@
-package com.hs.leetcode;
+package com.hs.hard;
 
 import java.io.IOException;
 import java.util.Arrays;

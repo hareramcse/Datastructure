@@ -5,14 +5,14 @@ import java.util.List;
 
 public class DetectCycleInDirectedGraph {
 
-	// A utility function to add an edge in an undirected graph
+	// A utility function to add an edge in an directed graph
 	private void addEdge(List<List<Integer>> adjList, int source, int destination) {
 		adjList.get(source).add(destination);
 	}
 
 	public boolean isCyclic(int V, List<List<Integer>> adjList) {
-		boolean visited[] = new boolean[V];
-		boolean recStack[] = new boolean[V];
+		boolean[] visited = new boolean[V];
+		boolean[] recStack = new boolean[V];
 
 		// Call the recursive helper function to detect cycle in different DFS trees
 		for (int i = 0; i < V; i++) {
@@ -31,16 +31,13 @@ public class DetectCycleInDirectedGraph {
 		visited[source] = true;
 		recStack[source] = true;
 
-		// Recur for all the vertices adjacent to this vertex
 		for (int adjNode : adjList.get(source)) {
 			if (!visited[adjNode]) {
 				boolean isCyclic = DFS(adjNode, visited, recStack, adjList);
 				if (isCyclic) {
 					return true;
 				}
-			}
-
-			if (recStack[adjNode])
+			} else if (recStack[adjNode])
 				return true;
 		}
 

@@ -12,7 +12,7 @@ public class DetectCycleInUndirectedGraph {
 	}
 
 	public Boolean isCyclic(int V, List<List<Integer>> adjList) {
-		boolean visited[] = new boolean[V];
+		boolean[] visited = new boolean[V];
 		for (int i = 0; i < V; i++) {
 			if (!visited[i]) {
 				boolean isCyclic = DFS(i, visited, -1, adjList);
@@ -24,7 +24,7 @@ public class DetectCycleInUndirectedGraph {
 		return false;
 	}
 
-	private Boolean DFS(int source, boolean visited[], int parent, List<List<Integer>> adjList) {
+	private Boolean DFS(int source, boolean[] visited, int parent, List<List<Integer>> adjList) {
 		visited[source] = true;
 		for (int adjNode : adjList.get(source)) {
 			if (!visited[adjNode]) {
@@ -32,10 +32,7 @@ public class DetectCycleInUndirectedGraph {
 				if (isCyclic) {
 					return true;
 				}
-			}
-
-			// adjacent is visited and not parent of current vertex, then there is a cycle.
-			else if (adjNode != parent) {
+			} else if (adjNode != parent) { // visited and not parent of current vertex, then there is a cycle.
 				return true;
 			}
 		}

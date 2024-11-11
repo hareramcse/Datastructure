@@ -5,7 +5,7 @@ import java.util.List;
 
 public class PrintAllPathsFromSourceToDestinationUsingDFS {
 
-	// A utility function to add an edge in an undirected graph
+	// A utility function to add an edge in an directed graph
 	private void addEdge(List<List<Integer>> adjList, int source, int destination) {
 		adjList.get(source).add(destination);
 	}
@@ -14,38 +14,28 @@ public class PrintAllPathsFromSourceToDestinationUsingDFS {
 	public void printAllPaths(int V, int source, int destination, List<List<Integer>> adjList) {
 		boolean[] visited = new boolean[V];
 		List<Integer> path = new ArrayList<>();
-		// add source to path[]
 		path.add(source);
 
-		// Call recursive utility
-		printAllPathsUtil(source, destination, visited, adjList, path);
+		DFS(source, destination, visited, adjList, path);
 	}
 
-	// A recursive function to print all paths from 'source' to 'destination'.
-	private void printAllPathsUtil(Integer source, Integer destination, boolean[] visited, List<List<Integer>> adjList,
+	private void DFS(Integer source, Integer destination, boolean[] visited, List<List<Integer>> adjList,
 			List<Integer> path) {
 		if (source == destination) {
 			System.out.println(path);
-			// if match found then no need to traverse more till depth
 			return;
 		}
 
-		// Mark the current node
 		visited[source] = true;
 
-		// Recur for all the vertices adjacent to current vertex
 		for (Integer adjNode : adjList.get(source)) {
 			if (!visited[adjNode]) {
-				// store current node in path[]
 				path.add(adjNode);
-				printAllPathsUtil(adjNode, destination, visited, adjList, path);
-
-				// remove current node in path[]
+				DFS(adjNode, destination, visited, adjList, path);
 				path.remove(adjNode);
 			}
 		}
 
-		// Mark the current node
 		visited[source] = false;
 	}
 

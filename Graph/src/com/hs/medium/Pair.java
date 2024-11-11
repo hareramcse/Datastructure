@@ -1,4 +1,4 @@
-package com.hs.leetcode;
+package com.hs.medium;
 
 public class Pair {
 	public String first;

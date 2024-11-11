@@ -1,4 +1,4 @@
-package com.hs.shortestpath;
+package com.hs.medium;
 
 import java.util.Arrays;
 import java.util.PriorityQueue;

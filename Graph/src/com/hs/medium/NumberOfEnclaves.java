@@ -1,4 +1,4 @@
-package com.hs.leetcode;
+package com.hs.medium;
 
 import java.util.LinkedList;
 import java.util.Queue;
