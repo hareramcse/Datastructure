@@ -1,7 +1,9 @@
-package com.hs.graph.mst;
+package com.hs.leetcode.medium;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import com.hs.graph.mst.DisjointSet;
 
 public class MostStonesRemovedWithSameRowOrColumn {
 	public int removeStones(int[][] stones) {

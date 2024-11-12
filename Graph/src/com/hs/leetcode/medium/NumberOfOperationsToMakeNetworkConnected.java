@@ -1,4 +1,6 @@
-package com.hs.graph.mst;
+package com.hs.leetcode.medium;
+
+import com.hs.graph.mst.DisjointSet;
 
 public class NumberOfOperationsToMakeNetworkConnected {
 	public int makeConnected(int V, int[][] connections) {

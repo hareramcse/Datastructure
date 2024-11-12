@@ -1,10 +1,12 @@
-package com.hs.graph.mst;
+package com.hs.leetcode.medium;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.hs.graph.mst.DisjointSet;
 
 public class AccountsMerge {
 	public List<List<String>> accountsMerge(List<List<String>> accounts) {

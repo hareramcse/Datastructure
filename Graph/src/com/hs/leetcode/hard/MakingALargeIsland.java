@@ -1,7 +1,9 @@
-package com.hs.graph.mst;
+package com.hs.leetcode.hard;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import com.hs.graph.mst.DisjointSet;
 
 public class MakingALargeIsland {
 	public int largestIsland(int[][] grid) {

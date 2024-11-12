@@ -41,20 +41,20 @@ public class NumberOfWaysToArriveAtDestination {
 		while (!pq.isEmpty()) {
 			Pair u = pq.poll();
 			int city = u.destination;
-			long currCost = u.weight;
+			long cost = u.weight;
 
-			if (currCost > minCost[city])
+			if (cost > minCost[city])
 				continue;
 
 			for (Pair adjNode : adjList.get(city)) {
-				int neighbour = adjNode.destination;
-				long cost = adjNode.weight;
-				if (currCost + cost < minCost[neighbour]) {
-					minCost[neighbour] = currCost + cost;
-					pq.offer(new Pair(neighbour, minCost[neighbour]));
-					ways[neighbour] = ways[city];
-				} else if (currCost + cost == minCost[neighbour])
-					ways[neighbour] = (ways[neighbour] % mod + ways[city] % mod) % mod;
+				int v = adjNode.destination;
+				long edgeCCost = adjNode.weight;
+				if (cost + edgeCCost < minCost[v]) {
+					minCost[v] = cost + edgeCCost;
+					pq.offer(new Pair(v, minCost[v]));
+					ways[v] = ways[city];
+				} else if (cost + edgeCCost == minCost[v])
+					ways[v] = (ways[v] % mod + ways[city] % mod) % mod;
 			}
 		}
 		return (int) ways[target - 1];

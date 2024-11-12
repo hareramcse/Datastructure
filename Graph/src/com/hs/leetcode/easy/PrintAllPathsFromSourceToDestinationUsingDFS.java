@@ -1,4 +1,4 @@
-package com.hs.graph.introduction;
+package com.hs.leetcode.easy;
 
 import java.util.ArrayList;
 import java.util.List;
