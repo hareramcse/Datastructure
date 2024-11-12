@@ -8,8 +8,8 @@ public class ZeroOneMatrix {
 		int n = grid.length;
 		int m = grid[0].length;
 
-		int visited[][] = new int[n][m];
-		int distance[][] = new int[n][m];
+		int[][] visited = new int[n][m];
+		int[][] distance = new int[n][m];
 
 		Queue<int[]> queue = new LinkedList<>();
 

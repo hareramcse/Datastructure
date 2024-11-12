@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
+import com.hs.leetcode.medium.Node;
+
 public class DijkstrasShortestPath {
 
 	private void dijkstra(int V, int src, int[][] graph) {

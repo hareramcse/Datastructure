@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
+import com.hs.leetcode.medium.Node;
+
 public class PrintShortestPath {
 
 	public List<Integer> shortestPath(int n, int m, int edges[][]) {

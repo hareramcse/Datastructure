@@ -5,9 +5,11 @@ import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
+import com.hs.leetcode.medium.Node;
+
 public class PrimsAlgorithm {
 	public int primsMST(int V, int[][] edges) {
-		List<List<Pair>> adjList = new ArrayList<>();
+		List<List<Node>> adjList = new ArrayList<>();
 		for (int i = 0; i < V; i++) {
 			adjList.add(new ArrayList<>());
 		}
@@ -16,13 +18,13 @@ public class PrimsAlgorithm {
 			int v = edges[i][1];
 			int weight = edges[i][2];
 
-			adjList.get(u).add(new Pair(v, weight));
-			adjList.get(v).add(new Pair(u, weight));
+			adjList.get(u).add(new Node(v, weight));
+			adjList.get(v).add(new Node(u, weight));
 		}
 
 		Queue<Edge> pq = new PriorityQueue<>((x, y) -> x.weight - y.weight);
 		pq.add(new Edge(0, 0, 0));
-		
+
 		boolean[] visited = new boolean[V];
 		int minWeight = 0;
 
@@ -37,9 +39,9 @@ public class PrimsAlgorithm {
 			minWeight += weight;
 			visited[u] = true;
 
-			for (Pair it : adjList.get(u)) {
-				if (!visited[it.destination]) {
-					pq.add(new Edge(u, it.destination, it.weight));
+			for (Node adjNode : adjList.get(u)) {
+				if (!visited[adjNode.destination]) {
+					pq.add(new Edge(u, adjNode.destination, adjNode.weight));
 				}
 			}
 		}

@@ -1,10 +1,12 @@
-package com.hs.graph.shortestpath;
+package com.hs.leetcode.medium;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
+
+import com.hs.graph.shortestpath.Pair;
 
 public class NumberOfWaysToArriveAtDestination {
 	public int countPaths(int n, int[][] roads) {

@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
 
+import com.hs.leetcode.medium.Node;
+
 public class ShortestPathInDAG {
 	public int[] longestPath(int N, int M, int[][] edges) {
 		List<List<Node>> adjList = new ArrayList<>();
