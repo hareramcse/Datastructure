@@ -7,23 +7,21 @@ import java.util.List;
 import java.util.Queue;
 
 public class CourceSchedule2 {
-	
 	public int[] findOrder(int numCourses, int[][] prerequisites) {
 		List<List<Integer>> adjList = new ArrayList<>();
 		for (int i = 0; i < numCourses; i++) {
 			adjList.add(new ArrayList<>());
 		}
 
-		int m = prerequisites.length;
-		for (int i = 0; i < m; i++) {
-			adjList.get(prerequisites[i][1]).add(prerequisites[i][0]);
+		for (int[] prerequisite : prerequisites) {
+			adjList.get(prerequisite[1]).add(prerequisite[0]);
 		}
-		
-		return  topologicalSort(adjList, numCourses);
+
+		return topologicalSort(adjList, numCourses);
 	}
 
 	private int[] topologicalSort(List<List<Integer>> adjList, int V) {
-		int indegree[] = new int[V];
+		int[] indegree = new int[V];
 		for (int i = 0; i < V; i++) {
 			for (int j : adjList.get(i)) {
 				indegree[j]++;
@@ -41,7 +39,6 @@ public class CourceSchedule2 {
 		int[] result = new int[V];
 		int i = 0;
 		while (!queue.isEmpty()) {
-			// perform dequeue and add it to topological order
 			int u = queue.poll();
 			result[i++] = u;
 
@@ -55,8 +52,8 @@ public class CourceSchedule2 {
 
 		// Check if there was a cycle
 		if (i != V)
-			return new int[]{};
-		
+			return new int[] {};
+
 		return result;
 	}
 

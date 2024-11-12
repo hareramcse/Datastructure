@@ -8,7 +8,7 @@ public class NumberOfEnclaves {
 		Queue<int[]> queue = new LinkedList<>();
 		int n = grid.length;
 		int m = grid[0].length;
-		int visited[][] = new int[n][m];
+		int[][] visited = new int[n][m];
 
 		// traverse boundary elements
 		for (int i = 0; i < n; i++) {
@@ -24,14 +24,13 @@ public class NumberOfEnclaves {
 			}
 		}
 
-		int[] dRow = { +1, 0, -1, 0 };
-		int[] dCol = { 0, +1, 0, -1 };
+		int[][] directions = { { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 } };
 
 		while (!queue.isEmpty()) {
-			int[] cell = queue.poll();
-			for (int i = 0; i < 4; i++) {
-				int nRow = cell[0] + dRow[i];
-				int nCol = cell[1] + dCol[i];
+			int[] current = queue.poll();
+			for (int[] direction : directions) {
+				int nRow = current[0] + direction[0];
+				int nCol = current[1] + direction[1];
 				// check for valid coordinates and for land cell
 				if (nRow >= 0 && nRow < n && nCol >= 0 && nCol < m && visited[nRow][nCol] == 0
 						&& grid[nRow][nCol] == 1) {

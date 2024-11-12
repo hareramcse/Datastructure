@@ -6,14 +6,12 @@ import java.util.List;
 import java.util.Stack;
 
 public class ShortestPathInDAG {
-
 	public int[] longestPath(int N, int M, int[][] edges) {
 		List<List<Node>> adjList = new ArrayList<>();
 		for (int i = 0; i < N; i++) {
 			adjList.add(new ArrayList<>());
 		}
 
-		// We create a graph first in the form of an adjacency list.
 		for (int i = 0; i < M; i++) {
 			int u = edges[i][0];
 			int v = edges[i][1];
@@ -37,10 +35,8 @@ public class ShortestPathInDAG {
 
 		// Process vertices in topological order
 		while (!stack.isEmpty()) {
-			// Get the next vertex from topological order
 			int u = stack.pop();
 
-			// Update distances of all adjacent vertices
 			for (Node adjNode : adjList.get(u)) {
 				int v = adjNode.destination;
 				int weight = adjNode.weight;
@@ -59,7 +55,7 @@ public class ShortestPathInDAG {
 		return distance;
 	}
 
-	private void DFS(int source, boolean visited[], Stack<Integer> stack, List<List<Node>> adjList) {
+	private void DFS(int source, boolean[] visited, Stack<Integer> stack, List<List<Node>> adjList) {
 		visited[source] = true;
 		for (Node adjNode : adjList.get(source)) {
 			if (!visited[adjNode.destination])

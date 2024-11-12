@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Queue;
 
 public class KahnAlgoForTopologicalSorting {
-
 	public int[] topologicalSort(int V, List<List<Integer>> adjList) {
 		int[] indegree = new int[V];
 		for (int i = 0; i < V; i++) {
@@ -24,11 +23,9 @@ public class KahnAlgoForTopologicalSorting {
 			}
 		}
 
-		// Initialize count of visited vertices
 		int[] result = new int[V];
 		int i = 0;
 		while (!queue.isEmpty()) {
-			// perform dequeue and add it to topological order
 			int u = queue.poll();
 			result[i++] = u;
 
@@ -48,7 +45,7 @@ public class KahnAlgoForTopologicalSorting {
 		return result;
 	}
 
-	// A utility function to add an edge in an undirected graph
+	// A utility function to add an edge in an directed graph
 	private void addEdge(List<List<Integer>> adjList, int source, int destination) {
 		adjList.get(source).add(destination);
 	}

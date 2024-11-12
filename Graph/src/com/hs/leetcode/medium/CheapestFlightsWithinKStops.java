@@ -17,8 +17,9 @@ public class CheapestFlightsWithinKStops {
 			adjList.get(from).add(new Node(to, price));
 		}
 
-		Queue<Tuple> queue = new LinkedList<>();
-		queue.add(new Tuple(0, src, 0));
+		Queue<int[]> queue = new LinkedList<>();
+		queue.add(new int[] { src, 0, 0 });
+
 		int[] dist = new int[n];
 		for (int i = 0; i < n; i++) {
 			dist[i] = Integer.MAX_VALUE;
@@ -27,21 +28,21 @@ public class CheapestFlightsWithinKStops {
 		dist[src] = 0;
 
 		while (!queue.isEmpty()) {
-			Tuple u = queue.poll();
-			int stops = u.first;
-			int node = u.second;
-			int cost = u.third;
+			int[] current = queue.poll();
+			int u = current[0];
+			int cost = current[1];
+			int stops = current[2];
 
 			if (stops > K)
 				continue;
 
-			for (Node adjNode : adjList.get(node)) {
-				int destination = adjNode.destination;
+			for (Node adjNode : adjList.get(u)) {
+				int v = adjNode.destination;
 				int weight = adjNode.weight;
 
-				if (cost + weight < dist[destination] && stops <= K) {
-					dist[destination] = cost + weight;
-					queue.add(new Tuple(stops + 1, destination, cost + weight));
+				if (cost + weight < dist[v]) {
+					dist[v] = cost + weight;
+					queue.add(new int[] { v, cost + weight, stops + 1 });
 				}
 			}
 		}

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AllTopologicalSortOfDAG {
-	
 	public void allTopologicalSorts(int V, List<List<Integer>> adjList) {
 		boolean[] visited = new boolean[V];
 		int[] indegree = new int[V];
@@ -50,7 +49,7 @@ public class AllTopologicalSortOfDAG {
 		}
 	}
 
-	// A utility function to add an edge in an undirected graph
+	// A utility function to add an edge in an directed graph
 	private void addEdge(List<List<Integer>> adjList, int source, int destination) {
 		adjList.get(source).add(destination);
 	}

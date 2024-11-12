@@ -6,8 +6,6 @@ import java.util.Queue;
 
 public class PathWithMinimumEffort {
 	public int minimumEffortPath(int[][] heights) {
-		Queue<Tuple> pq = new PriorityQueue<>((x, y) -> x.first - y.first);
-
 		int n = heights.length;
 		int m = heights[0].length;
 
@@ -16,37 +14,37 @@ public class PathWithMinimumEffort {
 			Arrays.fill(distance[i], Integer.MAX_VALUE);
 		}
 
-		distance[0][0] = 0;
-		pq.add(new Tuple(0, 0, 0));
+		int[][] directions = { { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 } };
 
-		int[] dRow = { -1, 0, 1, 0 };
-		int[] dCol = { 0, 1, 0, -1 };
+		Queue<int[]> pq = new PriorityQueue<>((x, y) -> x[2] - y[2]);
+		pq.add(new int[] { 0, 0, 0 });
+		distance[0][0] = 0;
 
 		while (!pq.isEmpty()) {
-			Tuple tuple = pq.poll();
-			int diff = tuple.first;
-			int row = tuple.second;
-			int col = tuple.third;
+			int[] current = pq.poll();
+			int row = current[0];
+			int col = current[1];
+			int diff = current[2];
 
-			for (int i = 0; i < 4; i++) {
-				int nRow = row + dRow[i];
-				int nCol = col + dCol[i];
+			if (row == n - 1 && col == m - 1) {
+				return diff;
+			}
+
+			for (int[] direction : directions) {
+				int nRow = row + direction[0];
+				int nCol = col + direction[1];
 
 				if (nRow >= 0 && nCol >= 0 && nRow < n && nCol < m) {
 					int newEffort = Math.max(Math.abs(heights[row][col] - heights[nRow][nCol]), diff);
 					if (newEffort < distance[nRow][nCol]) {
 						distance[nRow][nCol] = newEffort;
-						pq.add(new Tuple(newEffort, nRow, nCol));
+						pq.add(new int[] { nRow, nCol, newEffort });
 					}
 				}
 			}
 		}
 
-		// Check if end cell is reachable
-		if (distance[n - 1][m - 1] == Integer.MAX_VALUE) {
-			return 0;
-		}
-		return distance[n - 1][m - 1];
+		return -1;
 	}
 
 	public static void main(String[] args) {

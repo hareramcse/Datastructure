@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Queue;
 
 public class FindEventualSafeStates {
-	
 	public List<Integer> eventualSafeNodes(int[][] graph) {
 		List<List<Integer>> adjList = new ArrayList<>();
 		int V = graph.length;
@@ -18,6 +17,7 @@ public class FindEventualSafeStates {
 		for (int i = 0; i < V; i++) {
 			// here i -> j means there is a edge between i -> j
 			// so we need to change its direction and make it to j -> i
+			// so that outdegree will become as indegree
 			for (int j : graph[i]) {
 				adjList.get(j).add(i);
 			}
@@ -34,7 +34,6 @@ public class FindEventualSafeStates {
 			}
 		}
 
-		// Create a queue and enqueue all vertices with indegree 0
 		Queue<Integer> queue = new LinkedList<>();
 		for (int i = 0; i < V; i++) {
 			if (indegree[i] == 0) {
@@ -44,7 +43,6 @@ public class FindEventualSafeStates {
 
 		List<Integer> result = new ArrayList<>();
 		while (!queue.isEmpty()) {
-			// perform dequeue and add it to topological order
 			int u = queue.poll();
 			result.add(u);
 

@@ -14,46 +14,40 @@ public class ShortestPathInBinaryMatrix {
 			return -1;
 		}
 
-		// Initialize distances array with maximum values
-		int distance[][] = new int[n][m];
+		int[][] distance = new int[n][m];
 		for (int i = 0; i < n; i++) {
 			Arrays.fill(distance[i], Integer.MAX_VALUE);
 		}
 
 		distance[0][0] = 1; // Start distance is 1
 
-		Queue<Tuple> queue = new LinkedList<>();
-		queue.add(new Tuple(1, 0, 0)); // Add start tuple to the queue with distance 1
+		Queue<int[]> queue = new LinkedList<>();
+		queue.add(new int[] { 0, 0, 1 });
 
-		int dRow[] = { -1, -1, 0, 1, 1, 1, 0, -1 };
-		int dCol[] = { 0, 1, 1, 1, 0, -1, -1, -1 };
+		int[][] directions = { { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 }, { 1, -1 }, { -1, 1 }, { -1, -1 }, { 1, 1 } };
 
 		while (!queue.isEmpty()) {
-			Tuple tupple = queue.poll();
-			int dist = tupple.first;
-			int row = tupple.second;
-			int col = tupple.third;
+			int[] current = queue.poll();
+			int row = current[0];
+			int col = current[1];
+			int dist = current[2];
 
-			// Iterate through 8 possible directions
-			for (int i = 0; i < 8; i++) {
-				int nRow = row + dRow[i];
-				int nCol = col + dCol[i];
+			if (row == n - 1 && col == m - 1)
+				return dist;
 
-				// Check bounds and if cell is open and if new distance is smaller
+			for (int[] direction : directions) {
+				int nRow = row + direction[0];
+				int nCol = col + direction[1];
+
 				if (nRow >= 0 && nRow < n && nCol >= 0 && nCol < m && grid[nRow][nCol] == 0
 						&& dist + 1 < distance[nRow][nCol]) {
-
-					distance[nRow][nCol] = dist + 1; // Update distance
-					queue.add(new Tuple(dist + 1, nRow, nCol)); // Add to queue
+					distance[nRow][nCol] = dist + 1;
+					queue.add(new int[] { nRow, nCol, dist + 1 });
 				}
 			}
 		}
 
-		// Check if end cell is reachable
-		if (distance[n - 1][m - 1] == Integer.MAX_VALUE) {
-			return -1;
-		}
-		return distance[n - 1][m - 1]; // Return shortest path to end cell
+		return -1;
 	}
 
 	public static void main(String[] args) {
