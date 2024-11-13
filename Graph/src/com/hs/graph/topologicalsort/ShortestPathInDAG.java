@@ -17,8 +17,8 @@ public class ShortestPathInDAG {
 		for (int i = 0; i < M; i++) {
 			int u = edges[i][0];
 			int v = edges[i][1];
-			int weight = edges[i][2];
-			adjList.get(u).add(new Node(v, weight));
+			int w = edges[i][2];
+			adjList.get(u).add(new Node(v, w));
 		}
 
 		// in stack we have topologically sorted vertex.

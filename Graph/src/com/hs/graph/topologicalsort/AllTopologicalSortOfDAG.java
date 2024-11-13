@@ -14,10 +14,10 @@ public class AllTopologicalSortOfDAG {
 		}
 
 		List<Integer> result = new ArrayList<>();
-		allTopologicalSortsUtil(V, visited, indegree, adjList, result);
+		backtrack(V, visited, indegree, adjList, result);
 	}
 
-	private void allTopologicalSortsUtil(int V, boolean[] visited, int[] indegree, List<List<Integer>> adjList,
+	private void backtrack(int V, boolean[] visited, int[] indegree, List<List<Integer>> adjList,
 			List<Integer> result) {
 		// To indicate whether all topological are found or not
 		boolean flag = false;
@@ -29,7 +29,7 @@ public class AllTopologicalSortOfDAG {
 				for (int adjNode : adjList.get(i)) {
 					indegree[adjNode]--;
 				}
-				allTopologicalSortsUtil(V, visited, indegree, adjList, result);
+				backtrack(V, visited, indegree, adjList, result);
 
 				// backtracks
 				visited[i] = false;

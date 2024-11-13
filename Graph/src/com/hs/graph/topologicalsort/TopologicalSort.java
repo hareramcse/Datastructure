@@ -21,7 +21,7 @@ public class TopologicalSort {
 		return result;
 	}
 
-	private void DFS(int source, boolean visited[], Stack<Integer> stack, List<List<Integer>> adjList) {
+	private void DFS(int source, boolean[] visited, Stack<Integer> stack, List<List<Integer>> adjList) {
 		visited[source] = true;
 
 		for (Integer adjNode : adjList.get(source)) {

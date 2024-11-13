@@ -16,6 +16,7 @@ public class PathWithMaximumProbability {
 			int u = edges[i][0];
 			int v = edges[i][1];
 			double prob = succProb[i];
+
 			adjList.get(u).add(new Node(v, prob));
 			adjList.get(v).add(new Node(u, prob));
 		}
@@ -29,21 +30,21 @@ public class PathWithMaximumProbability {
 		while (!pq.isEmpty()) {
 			Node current = pq.poll();
 			int u = current.destination;
-			double probU = current.probability;
+			double prob = current.probability;
 
 			// If we reach the end node, return the probability
 			if (u == end_node)
-				return probU;
+				return prob;
 
 			// Visit each neighbor
 			for (Node adjNode : adjList.get(u)) {
 				int v = adjNode.destination;
-				double probUV = adjNode.probability;
+				double edgeProb = adjNode.probability;
 
 				// Update the probability if we found a higher one
-				if (probU * probUV > probabilities[v]) {
-					probabilities[v] = probU * probUV;
-					pq.offer(new Node(v, probabilities[v]));
+				if (prob * edgeProb > probabilities[v]) {
+					probabilities[v] = prob * edgeProb;
+					pq.add(new Node(v, probabilities[v]));
 				}
 			}
 		}

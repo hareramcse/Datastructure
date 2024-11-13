@@ -12,7 +12,7 @@ import com.hs.leetcode.medium.Node;
 
 public class PrintShortestPath {
 
-	public List<Integer> shortestPath(int n, int m, int edges[][]) {
+	public List<Integer> shortestPath(int n, int m, int[][] edges) {
 		List<List<Node>> adjList = new ArrayList<>();
 
 		for (int i = 0; i <= n; i++) {
@@ -52,7 +52,6 @@ public class PrintShortestPath {
 				if (weight + edgeWeight < distance[v]) {
 					distance[v] = weight + edgeWeight;
 					pq.add(new Node(v, distance[v]));
-					
 					parents[v] = u;
 				}
 			}

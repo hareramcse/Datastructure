@@ -54,6 +54,10 @@ public class DisjointSet {
 		}
 	}
 
+	public boolean connected(int x, int y) {
+		return findUPar(x) == findUPar(y);
+	}
+
 	public static void main(String[] args) {
 		DisjointSet ds = new DisjointSet(7);
 		ds.unionBySize(1, 2);

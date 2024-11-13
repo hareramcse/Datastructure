@@ -30,7 +30,7 @@ public class CheapestFlightsWithinKStops {
 		while (!queue.isEmpty()) {
 			int[] current = queue.poll();
 			int u = current[0];
-			int cost = current[1];
+			int price = current[1];
 			int stops = current[2];
 
 			if (stops > K)
@@ -38,11 +38,11 @@ public class CheapestFlightsWithinKStops {
 
 			for (Node adjNode : adjList.get(u)) {
 				int v = adjNode.destination;
-				int weight = adjNode.weight;
+				int edgePrice = adjNode.weight;
 
-				if (cost + weight < dist[v]) {
-					dist[v] = cost + weight;
-					queue.add(new int[] { v, cost + weight, stops + 1 });
+				if (price + edgePrice < dist[v]) {
+					dist[v] = price + edgePrice;
+					queue.add(new int[] { v, price + edgePrice, stops + 1 });
 				}
 			}
 		}

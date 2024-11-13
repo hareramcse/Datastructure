@@ -14,7 +14,6 @@ public class DetectCycleInDirectedGraph {
 		boolean[] visited = new boolean[V];
 		boolean[] recStack = new boolean[V];
 
-		// Call the recursive helper function to detect cycle in different DFS trees
 		for (int i = 0; i < V; i++) {
 			if (!visited[i]) {
 				boolean isCyclic = DFS(i, visited, recStack, adjList);
@@ -27,7 +26,6 @@ public class DetectCycleInDirectedGraph {
 	}
 
 	private boolean DFS(int source, boolean[] visited, boolean[] recStack, List<List<Integer>> adjList) {
-		// Mark the current node as visited and part of recursion stack
 		visited[source] = true;
 		recStack[source] = true;
 

@@ -23,7 +23,7 @@ public class NumberOfConnectedComponents {
 
 		for (int i = 0; i < n; i++) {
 			if (!visited[i]) {
-				dfs(i, adjList, visited);
+				DFS(i, adjList, visited);
 				connectedComponents++;
 			}
 		}
@@ -31,12 +31,12 @@ public class NumberOfConnectedComponents {
 		return connectedComponents;
 	}
 
-	private void dfs(int start, List<List<Integer>> adjList, boolean[] visited) {
-		visited[start] = true;
+	private void DFS(int source, List<List<Integer>> adjList, boolean[] visited) {
+		visited[source] = true;
 
-		for (int adjNode : adjList.get(start)) {
+		for (int adjNode : adjList.get(source)) {
 			if (!visited[adjNode]) {
-				dfs(adjNode, adjList, visited);
+				DFS(adjNode, adjList, visited);
 			}
 		}
 	}

@@ -3,7 +3,7 @@ package com.hs.leetcode.easy;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PrintAllPathsFromSourceToDestinationUsingDFS {
+public class PrintAllPathsFromSourceToDestination {
 
 	// A utility function to add an edge in an directed graph
 	private void addEdge(List<List<Integer>> adjList, int source, int destination) {
@@ -40,7 +40,7 @@ public class PrintAllPathsFromSourceToDestinationUsingDFS {
 	}
 
 	public static void main(String[] args) {
-		PrintAllPathsFromSourceToDestinationUsingDFS graph = new PrintAllPathsFromSourceToDestinationUsingDFS();
+		PrintAllPathsFromSourceToDestination graph = new PrintAllPathsFromSourceToDestination();
 		List<List<Integer>> adjList = new ArrayList<>();
 		int V = 4;
 		for (int i = 0; i < V; i++) {

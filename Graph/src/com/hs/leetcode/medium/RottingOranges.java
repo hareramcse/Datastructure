@@ -23,9 +23,9 @@ public class RottingOranges {
 		while (fresh > 0 && !queue.isEmpty()) {
 			int size = queue.size();
 			for (int i = 0; i < size; i++) {
-				int[] rottenCell = queue.poll();
-				int row = rottenCell[0];
-				int col = rottenCell[1];
+				int[] current = queue.poll();
+				int row = current[0];
+				int col = current[1];
 
 				for (int[] direction : directions) {
 					int dRow = row + direction[0];

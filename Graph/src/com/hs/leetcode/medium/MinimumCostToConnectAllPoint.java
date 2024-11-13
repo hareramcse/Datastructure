@@ -29,7 +29,7 @@ public class MinimumCostToConnectAllPoint {
 			// Add all edges from this point to unvisited points
 			for (int i = 0; i < n; i++) {
 				int nextCost = calculateDistance(points, pointIndex, i);
-				pq.offer(new int[] { nextCost, i });
+				pq.add(new int[] { nextCost, i });
 			}
 		}
 		return totalCost;

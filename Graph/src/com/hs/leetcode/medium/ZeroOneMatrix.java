@@ -28,7 +28,8 @@ public class ZeroOneMatrix {
 			int[] current = queue.poll();
 			int row = current[0];
 			int col = current[1];
-			distance[row][col] = current[2];
+			int dist = current[2];
+			distance[row][col] = dist;
 
 			for (int[] direction : directions) {
 				int nRow = row + direction[0];
@@ -36,7 +37,7 @@ public class ZeroOneMatrix {
 
 				if (nRow >= 0 && nRow < n && nCol >= 0 && nCol < m && visited[nRow][nCol] == 0) {
 					visited[nRow][nCol] = 1;
-					queue.add(new int[] { nRow, nCol, distance[row][col] + 1 });
+					queue.add(new int[] { nRow, nCol, dist + 1 });
 				}
 			}
 		}

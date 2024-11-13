@@ -19,9 +19,9 @@ public class DijkstrasShortestPath {
 		pq.add(new Node(src, 0));
 
 		while (!pq.isEmpty()) {
-			Node currentNode = pq.poll();
-			int u = currentNode.destination;
-			int weight = currentNode.weight;
+			Node current = pq.poll();
+			int u = current.destination;
+			int weight = current.weight;
 
 			// For each neighbor of the current node (u)
 			for (int v = 0; v < V; v++) {

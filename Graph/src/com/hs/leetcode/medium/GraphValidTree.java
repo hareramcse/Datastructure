@@ -1,9 +1,7 @@
 package com.hs.leetcode.medium;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class GraphValidTree {
 	public boolean validTree(int n, int[][] edges) {
@@ -21,21 +19,26 @@ public class GraphValidTree {
 			adjList.get(edge[1]).add(edge[0]);
 		}
 
-		Set<Integer> visited = new HashSet<>();
+		boolean[] visited = new boolean[n];
 		// Start DFS from node 0 and check for cycles
 		if (!DFS(0, -1, adjList, visited)) {
 			return false;
 		}
 
 		// Ensure all nodes are visited (i.e., graph is connected)
-		return visited.size() == n;
+		for (boolean isVisited : visited) {
+			if (!isVisited) {
+				return false;
+			}
+		}
+		return true;
 	}
 
-	private boolean DFS(int node, int parent, List<List<Integer>> adjList, Set<Integer> visited) {
-		if (visited.contains(node))
-			return false; // Cycle detected
+	private boolean DFS(int node, int parent, List<List<Integer>> adjList, boolean[] visited) {
+		if (visited[node])// Cycle detected
+			return false;
 
-		visited.add(node);
+		visited[node] = true;
 
 		for (int neighbor : adjList.get(node)) {
 			if (neighbor == parent) // Ignore the edge back to the parent

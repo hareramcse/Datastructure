@@ -31,7 +31,7 @@ public class NumberOfEnclaves {
 			for (int[] direction : directions) {
 				int nRow = current[0] + direction[0];
 				int nCol = current[1] + direction[1];
-				// check for valid coordinates and for land cell
+				// check for valid coordinates
 				if (nRow >= 0 && nRow < n && nCol >= 0 && nCol < m && visited[nRow][nCol] == 0
 						&& grid[nRow][nCol] == 1) {
 					queue.add(new int[] { nRow, nCol });

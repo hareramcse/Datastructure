@@ -48,12 +48,12 @@ public class NumberOfWaysToArriveAtDestination {
 
 			for (Pair adjNode : adjList.get(city)) {
 				int v = adjNode.destination;
-				long edgeCCost = adjNode.weight;
-				if (cost + edgeCCost < minCost[v]) {
-					minCost[v] = cost + edgeCCost;
+				long edgeCost = adjNode.weight;
+				if (cost + edgeCost < minCost[v]) {
+					minCost[v] = cost + edgeCost;
 					pq.offer(new Pair(v, minCost[v]));
 					ways[v] = ways[city];
-				} else if (cost + edgeCCost == minCost[v])
+				} else if (cost + edgeCost == minCost[v])
 					ways[v] = (ways[v] % mod + ways[city] % mod) % mod;
 			}
 		}
