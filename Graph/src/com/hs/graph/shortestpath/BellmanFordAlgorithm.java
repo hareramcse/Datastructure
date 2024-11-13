@@ -6,14 +6,13 @@ import java.util.List;
 
 import com.hs.graph.mst.Edge;
 
+// it works only for directed graph
+// if you want to make it work for un directed then you can make u -> v && v -> u
 public class BellmanFordAlgorithm {
 
 	private void addEdge(List<List<Edge>> adjList, int source, int destination, int weight) {
 		Edge edge = new Edge(source, destination, weight);
 		adjList.get(source).add(edge);
-
-		edge = new Edge(destination, source, weight);
-		adjList.get(destination).add(edge);
 	}
 
 	// The function also detects negative weight cycle
@@ -27,11 +26,11 @@ public class BellmanFordAlgorithm {
 		for (int i = 0; i < V; i++) {
 			for (int j = 0; j < V; j++) {
 				for (Edge edge : adjList.get(j)) {
-					int src = edge.source;
-					int dest = edge.destination;
-					int weight = edge.weight;
-					if (distance[src] != Integer.MAX_VALUE && distance[src] + weight < distance[dest])
-						distance[dest] = distance[src] + weight;
+					int u = edge.source;
+					int v = edge.destination;
+					int w = edge.weight;
+					if (distance[u] != Integer.MAX_VALUE && distance[u] + w < distance[v])
+						distance[v] = distance[u] + w;
 				}
 			}
 		}
@@ -42,10 +41,10 @@ public class BellmanFordAlgorithm {
 		// path, then there is a cycle.
 		for (int j = 0; j < V; j++) {
 			for (Edge edge : adjList.get(j)) {
-				int src = edge.source;
-				int dest = edge.destination;
-				int weight = edge.weight;
-				if (distance[src] != Integer.MAX_VALUE && distance[src] + weight < distance[dest]) {
+				int u = edge.source;
+				int v = edge.destination;
+				int w = edge.weight;
+				if (distance[u] != Integer.MAX_VALUE && distance[u] + w < distance[v]) {
 					System.out.println("Graph contains negative weight cycle");
 					return new int[] { -1 };
 				}

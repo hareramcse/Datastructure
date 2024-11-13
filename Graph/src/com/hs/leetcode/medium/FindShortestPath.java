@@ -1,4 +1,4 @@
-package com.hs.graph.shortestpath;
+package com.hs.leetcode.medium;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,10 +8,7 @@ import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-import com.hs.leetcode.medium.Node;
-
-public class PrintShortestPath {
-
+public class FindShortestPath {
 	public List<Integer> shortestPath(int n, int m, int[][] edges) {
 		List<List<Node>> adjList = new ArrayList<>();
 
@@ -41,9 +38,9 @@ public class PrintShortestPath {
 			parents[i] = i;
 		
 		while (!pq.isEmpty()) {
-			Node node = pq.poll();
-			int u = node.destination;
-			int weight = node.weight;
+			Node current = pq.poll();
+			int u = current.destination;
+			int weight = current.weight;
 
 			for (Node adjNode : adjList.get(u)) {
 				int v = adjNode.destination;
@@ -58,12 +55,12 @@ public class PrintShortestPath {
 		}
 
 		List<Integer> path = new LinkedList<Integer>();
-		int node = n;
 		if (distance[n] == Integer.MAX_VALUE) {
 			path.add(-1);
 			return path;
 		}
 		
+		int node = n;
 		while (parents[node] != node) {
 			path.add(node);
 			node = parents[node];
@@ -76,7 +73,7 @@ public class PrintShortestPath {
 	}
 
 	public static void main(String[] args) {
-		PrintShortestPath obj = new PrintShortestPath();
+		FindShortestPath obj = new FindShortestPath();
 		int[][] matrix = { { 1, 2, 2 }, { 2, 5, 5 }, { 2, 3, 4 }, { 1, 4, 1 }, { 4, 3, 3 }, { 3, 5, 1 } };
 		int V = 5;
 		int E = 6;

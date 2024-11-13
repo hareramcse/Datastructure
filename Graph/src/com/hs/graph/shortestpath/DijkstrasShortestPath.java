@@ -15,19 +15,26 @@ public class DijkstrasShortestPath {
 		// Distance of source vertex from itself is always 0
 		distance[src] = 0;
 
+		boolean[] visited = new boolean[V];
+
 		Queue<Node> pq = new PriorityQueue<>((x, y) -> x.weight - y.weight);
 		pq.add(new Node(src, 0));
 
 		while (!pq.isEmpty()) {
 			Node current = pq.poll();
 			int u = current.destination;
-			int weight = current.weight;
+			int w = current.weight;
+
+			if (visited[u])
+				continue;
+
+			visited[u] = true;
 
 			// For each neighbor of the current node (u)
 			for (int v = 0; v < V; v++) {
-				if (graph[u][v] != 0 && weight + graph[u][v] < distance[v]) {
+				if (graph[u][v] != 0 && w + graph[u][v] < distance[v]) {
 					// Relax the edge if a shorter path is found
-					distance[v] = weight + graph[u][v];
+					distance[v] = w + graph[u][v];
 					pq.add(new Node(v, distance[v]));
 				}
 			}
