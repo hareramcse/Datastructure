@@ -16,10 +16,10 @@ public class NumberOfWaysToArriveAtDestination {
 		}
 
 		for (int[] road : roads) {
-			int src = road[0], dest = road[1];
+			int u = road[0], v = road[1];
 			long time = road[2];
-			adjList.get(src).add(new Pair(dest, time));
-			adjList.get(dest).add(new Pair(src, time));
+			adjList.get(u).add(new Pair(v, time));
+			adjList.get(v).add(new Pair(u, time));
 		}
 
 		return shortestPath(adjList, 0, n);
@@ -49,9 +49,10 @@ public class NumberOfWaysToArriveAtDestination {
 			for (Pair adjNode : adjList.get(city)) {
 				int v = adjNode.destination;
 				long edgeCost = adjNode.weight;
+				
 				if (cost + edgeCost < minCost[v]) {
 					minCost[v] = cost + edgeCost;
-					pq.offer(new Pair(v, minCost[v]));
+					pq.add(new Pair(v, minCost[v]));
 					ways[v] = ways[city];
 				} else if (cost + edgeCost == minCost[v])
 					ways[v] = (ways[v] % mod + ways[city] % mod) % mod;

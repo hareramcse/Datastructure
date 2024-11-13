@@ -1,11 +1,9 @@
-package com.hs.graph.topologicalsort;
+package com.hs.leetcode.medium;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
-
-import com.hs.leetcode.medium.Node;
 
 public class ShortestPathInDAG {
 	public int[] longestPath(int N, int M, int[][] edges) {
@@ -25,9 +23,11 @@ public class ShortestPathInDAG {
 		Stack<Integer> stack = new Stack<>();
 		boolean[] visited = new boolean[N];
 
-		for (int i = 0; i < N; i++)
-			if (!visited[i])
+		for (int i = 0; i < N; i++) {
+			if (!visited[i]) {
 				DFS(i, visited, stack, adjList);
+			}
+		}
 
 		int[] distance = new int[N];
 		for (int i = 0; i < N; i++) {
@@ -60,8 +60,9 @@ public class ShortestPathInDAG {
 	private void DFS(int source, boolean[] visited, Stack<Integer> stack, List<List<Node>> adjList) {
 		visited[source] = true;
 		for (Node adjNode : adjList.get(source)) {
-			if (!visited[adjNode.destination])
+			if (!visited[adjNode.destination]) {
 				DFS(adjNode.destination, visited, stack, adjList);
+			}
 		}
 		stack.push(source);
 	}
