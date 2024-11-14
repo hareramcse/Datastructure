@@ -1,4 +1,4 @@
-package com.hs.dp;
+package com.hs.fibonacci;
 
 import java.util.Arrays;
 
