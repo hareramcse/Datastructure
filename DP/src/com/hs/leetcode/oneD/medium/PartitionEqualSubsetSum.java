@@ -1,44 +1,36 @@
 package com.hs.leetcode.oneD.medium;
 
-import java.util.Arrays;
-
 public class PartitionEqualSubsetSum {
 	public boolean canPartition(int[] nums) {
-		int sum = 0;
-		for (int num : nums) {
-			sum += num;
-		}
-		if (sum % 2 != 0)
-			return false;
+        int n = nums.length;
+        int sum = 0;
+        for (int num : nums) {
+            sum += num;
+        }
+        if (sum % 2 != 0) {
+            return false;
+        }
+        
+        int target = sum / 2;
+        boolean[][] dp = new boolean[n + 1][target + 1];
 
-		int n = nums.length;
-		int target = sum / 2;
-		int[][] dp = new int[n][target + 1];
-		for (int[] row : dp)
-			Arrays.fill(row, -1);
+        for (int i = 0; i <= n; i++) {
+            dp[i][0] = true;
+        }
 
-		return solveMemo(nums, n - 1, target, dp);
-	}
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= target; j++) {
+                if (nums[i - 1] <= j) {
+                    dp[i][j] = dp[i - 1][j] || 
+                               dp[i - 1][j - nums[i - 1]];
+                } else {
+                    dp[i][j] = dp[i - 1][j];
+                }
+            }
+        }
 
-	private boolean solveMemo(int[] nums, int n, int target, int[][] dp) {
-		if (target == 0)
-			return true;
-
-		if (n == 0)
-			return nums[n] == target;
-
-		if (dp[n][target] != -1)
-			return dp[n][target] == 0 ? false : true;
-
-		boolean notTaken = solveMemo(nums, n - 1, target, dp);
-
-		boolean taken = false;
-		if (target >= nums[n])
-			taken = solveMemo(nums, n - 1, target - nums[n], dp);
-
-		dp[n][target] = notTaken || taken ? 1 : 0;
-		return notTaken || taken;
-	}
+        return dp[n][target];
+    }
 
 	public static void main(String[] args) {
 		PartitionEqualSubsetSum obj = new PartitionEqualSubsetSum();

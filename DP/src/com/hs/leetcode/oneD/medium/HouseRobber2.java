@@ -1,43 +1,45 @@
 package com.hs.leetcode.oneD.medium;
 
-import java.util.Arrays;
-
 public class HouseRobber2 {
 	public int rob(int[] nums) {
-		int[] arr1 = new int[nums.length - 1];
-		int[] arr2 = new int[nums.length - 1];
+        if (nums.length == 0)
+            return 0;
+        if (nums.length == 1)
+            return nums[0];
 
-		arr1 = Arrays.copyOfRange(nums, 1, nums.length);
-		arr2 = Arrays.copyOfRange(nums, 0, nums.length - 1);
+        int[] robSkippingLast = new int[nums.length - 1];
+        int[] robSkippingFirst = new int[nums.length - 1];
 
-		if (nums.length == 1) {
-			return nums[0];
-		}
+        for (int i = 0; i < nums.length - 1; i++) {
+        	robSkippingLast[i] = nums[i];
+            robSkippingFirst[i] = nums[i + 1];
+        }
 
-		int first = solve(arr1, arr1.length);
-		int second = solve(arr2, arr2.length);
-		return Math.max(first, second);
-	}
+        int first = hourseRob1(robSkippingLast);
+        int second = hourseRob1(robSkippingFirst);
+        return Math.max(first, second);
+    }
 
-	private int solve(int[] arr, int n) {
-		int[] dp = new int[n];
-		dp[0] = arr[0];
+    private int hourseRob1(int[] nums) {
+        if (nums.length == 0)
+            return 0;
+        if (nums.length == 1)
+            return nums[0];
 
-		for (int i = 1; i < n; i++) {
-			int pick = arr[i];
-			if (i > 1)
-				pick += dp[i - 2];
-			int nonPick = 0 + dp[i - 1];
+        int[] dp = new int[nums.length];
+        dp[0] = nums[0];
+        dp[1] = Math.max(nums[0], nums[1]);
 
-			dp[i] = Math.max(pick, nonPick);
-		}
+        for (int i = 2; i < nums.length; i++) {
+            dp[i] = Math.max(dp[i - 1], nums[i] + dp[i - 2]);
+        }
 
-		return dp[n - 1];
-	}
+        return dp[nums.length - 1];
+    }
 
 	public static void main(String[] args) {
 		HouseRobber2 obj = new HouseRobber2();
-		int[] arr = { 1, 2, 3, 1 };
+		int[] arr = { 2, 3, 2 };
 		int result = obj.rob(arr);
 		System.out.println(result);
 	}
