@@ -26,7 +26,7 @@ public class DisjointSet {
 	public void unionByRank(int u, int v) {
 		int ulp_u = findUPar(u);
 		int ulp_v = findUPar(v);
-		if (ulp_u == ulp_v)
+		if (ulp_u == ulp_v) // it means u and v belongs to same group and combining them will form cycle
 			return;
 
 		if (rank[ulp_u] < rank[ulp_v]) {
