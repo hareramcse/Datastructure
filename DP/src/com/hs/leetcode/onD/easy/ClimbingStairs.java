@@ -1,4 +1,4 @@
-package com.hs.dp.oneD;
+package com.hs.leetcode.onD.easy;
 
 import java.util.Arrays;
 
