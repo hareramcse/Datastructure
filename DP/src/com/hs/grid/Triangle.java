@@ -1,4 +1,4 @@
-package com.hs.dp.twoD;
+package com.hs.grid;
 
 import java.util.Arrays;
 
@@ -12,18 +12,18 @@ public class Triangle {
 			Arrays.fill(row, -1);
 		}
 
-		return solveMemo(0, 0, grid, dp);
+		return solve(0, 0, grid, dp);
 	}
 
-	private int solveMemo(int m, int n, int[][] grid, int[][] dp) {
+	private int solve(int m, int n, int[][] grid, int[][] dp) {
 		if (m == grid.length - 1)
 			return grid[m][n];
 
 		if (dp[m][n] != -1)
 			return dp[m][n];
 
-		int down = grid[m][n] + solveMemo(m + 1, n, grid, dp);
-		int diagonal = grid[m][n] + solveMemo(m + 1, n + 1, grid, dp);
+		int down = grid[m][n] + solve(m + 1, n, grid, dp);
+		int diagonal = grid[m][n] + solve(m + 1, n + 1, grid, dp);
 
 		return dp[m][n] = Math.min(down, diagonal);
 	}

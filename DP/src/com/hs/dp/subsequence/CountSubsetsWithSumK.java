@@ -13,22 +13,17 @@ public class CountSubsetsWithSumK {
 	}
 
 	private int solveMemo(int[] arr, int n, int target, int[][] dp) {
-		if (n == 0) {
-			if (target == 0 && arr[0] == 0)
-				return 2;
-			if (target == 0 || target == arr[0])
-				return 1;
+		if (target == 0)
+			return 1;
+
+		if (n < 0 || target < 0)
 			return 0;
-		}
 
 		if (dp[n][target] != -1)
 			return dp[n][target];
 
 		int notTake = solveMemo(arr, n - 1, target, dp);
-
-		int take = 0;
-		if (target >= arr[n])
-			take = solveMemo(arr, n - 1, target - arr[n], dp);
+		int take = solveMemo(arr, n - 1, target - arr[n], dp);
 
 		return dp[n][target] = notTake + take;
 	}

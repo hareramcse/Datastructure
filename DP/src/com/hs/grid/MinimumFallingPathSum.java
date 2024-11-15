@@ -1,4 +1,4 @@
-package com.hs.dp.twoD;
+package com.hs.grid;
 
 import java.util.Arrays;
 
@@ -11,21 +11,19 @@ public class MinimumFallingPathSum {
 		for (int row[] : dp)
 			Arrays.fill(row, -1);
 
-		int mini = Integer.MAX_VALUE;
+		int min = Integer.MAX_VALUE;
 
 		for (int j = 0; j < n; j++) {
 			int ans = solveMemo(m - 1, j, n, matrix, dp);
-			mini = Math.min(mini, ans);
+			min = Math.min(min, ans);
 		}
 
-		return mini;
+		return min;
 	}
 
 	private int solveMemo(int m, int j, int n, int[][] matrix, int[][] dp) {
-
-		// Base Conditions
 		if (j < 0 || j >= n)
-			return (int) Math.pow(10, 9);
+			return (int) 1e9;
 
 		if (m == 0)
 			return matrix[0][j];

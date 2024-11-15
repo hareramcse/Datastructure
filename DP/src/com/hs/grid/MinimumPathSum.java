@@ -1,4 +1,4 @@
-package com.hs.dp.twoD;
+package com.hs.grid;
 
 import java.util.Arrays;
 
@@ -12,21 +12,21 @@ public class MinimumPathSum {
 			Arrays.fill(row, -1);
 		}
 
-		return solveMemo(m - 1, n - 1, grid, dp);
+		return solve(m - 1, n - 1, grid, dp);
 	}
 
-	private int solveMemo(int m, int n, int[][] grid, int[][] dp) {
+	private int solve(int m, int n, int[][] grid, int[][] dp) {
 		if (m == 0 && n == 0)
 			return grid[m][n];
 
 		if (m < 0 || n < 0)
-			return (int) Math.pow(10, 9);
+			return (int) 1e9;
 
 		if (dp[m][n] != -1)
 			return dp[m][n];
 
-		int up = grid[m][n] + solveMemo(m - 1, n, grid, dp);
-		int left = grid[m][n] + solveMemo(m, n - 1, grid, dp);
+		int up = grid[m][n] + solve(m - 1, n, grid, dp);
+		int left = grid[m][n] + solve(m, n - 1, grid, dp);
 
 		return dp[m][n] = Math.min(up, left);
 	}

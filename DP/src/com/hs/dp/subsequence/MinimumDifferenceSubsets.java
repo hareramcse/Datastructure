@@ -3,47 +3,42 @@ package com.hs.dp.subsequence;
 public class MinimumDifferenceSubsets {
 	public int minSubsetSumDifference(int[] arr, int n) {
 		int sum = 0;
-		for (int num : arr)
+		for (int num : arr) {
 			sum += num;
-
-		int target = sum;
-		boolean[][] dp = targetSumTab(arr, n, target);
-
-		int mini = (int) 1e9;
-		for (int s1 = 0; s1 <= sum / 2; s1++) {
-			if (dp[n - 1][s1] == true)
-				mini = Math.min(mini, Math.abs((sum - s1) - s1));
-		}
-		return mini;
-	}
-
-	public boolean[][] targetSumTab(int[] arr, int n, int k) {
-		boolean dp[][] = new boolean[n][k + 1];
-
-		for (int i = 0; i < n; i++) {
-			dp[i][0] = true;
 		}
 
-		if (arr[0] <= k)
-			dp[0][arr[0]] = true;
+		Boolean[][] dp = new Boolean[n][sum + 1];
+		int target = sum / 2;
 
-		for (int i = 1; i < n; i++) {
-			for (int target = 1; target <= k; target++) {
-				boolean notTaken = dp[i - 1][target];
-
-				boolean taken = false;
-				if (arr[i] <= target)
-					taken = dp[i - 1][target - arr[i]];
-
-				dp[i][target] = notTaken || taken;
+		int min = Integer.MAX_VALUE;
+		for (int s1 = 0; s1 <= target; s1++) {
+			if (solve(arr, n - 1, s1, dp)) {
+				min = Math.min(min, Math.abs(sum - 2 * s1));
 			}
 		}
-		return dp;
+		return min;
+	}
+
+	private boolean solve(int[] nums, int n, int target, Boolean[][] dp) {
+		if (target == 0)
+			return true;
+
+		if (n < 0 || target < 0)
+			return false;
+
+		if (dp[n][target] != null)
+			return dp[n][target];
+
+		boolean taken = solve(nums, n - 1, target - nums[n], dp);
+		boolean notTaken = solve(nums, n - 1, target, dp);
+
+		dp[n][target] = notTaken || taken;
+		return notTaken || taken;
 	}
 
 	public static void main(String[] args) {
 		MinimumDifferenceSubsets obj = new MinimumDifferenceSubsets();
-		int[] arr = { 1, 2, 3, 4 };
+		int[] arr = { 3, 9, 7, 3 };
 		int result = obj.minSubsetSumDifference(arr, arr.length);
 		System.out.println(result);
 	}

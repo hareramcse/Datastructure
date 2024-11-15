@@ -1,7 +1,5 @@
 package com.hs.dp.subsequence;
 
-import java.util.Arrays;
-
 public class PartitionEqualSubsetSum {
 	public boolean canPartition(int[] nums) {
 		int sum = 0;
@@ -13,30 +11,25 @@ public class PartitionEqualSubsetSum {
 
 		int n = nums.length;
 		int target = sum / 2;
-		int[][] dp = new int[n][target + 1];
-		for (int[] row : dp)
-			Arrays.fill(row, -1);
+		Boolean[][] dp = new Boolean[n][target + 1];
 
-		return solveMemo(nums, n - 1, target, dp);
+		return solve(nums, n - 1, target, dp);
 	}
 
-	private boolean solveMemo(int[] nums, int n, int target, int[][] dp) {
+	private boolean solve(int[] nums, int n, int target, Boolean[][] dp) {
 		if (target == 0)
 			return true;
 
-		if (n == 0)
-			return nums[n] == target;
+		if (n < 0 || target < 0)
+			return false;
 
-		if (dp[n][target] != -1)
-			return dp[n][target] == 0 ? false : true;
+		if (dp[n][target] != null)
+			return dp[n][target];
 
-		boolean notTaken = solveMemo(nums, n - 1, target, dp);
+		boolean taken = solve(nums, n - 1, target - nums[n], dp);
+		boolean notTaken = solve(nums, n - 1, target, dp);
 
-		boolean taken = false;
-		if (target >= nums[n])
-			taken = solveMemo(nums, n - 1, target - nums[n], dp);
-
-		dp[n][target] = notTaken || taken ? 1 : 0;
+		dp[n][target] = notTaken || taken;
 		return notTaken || taken;
 	}
 
