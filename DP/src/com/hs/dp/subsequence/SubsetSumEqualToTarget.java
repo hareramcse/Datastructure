@@ -21,7 +21,7 @@ public class SubsetSumEqualToTarget {
 		boolean notTake = solve(arr, n - 1, target, dp);
 
 		dp[n][target] = notTake || take;
-		return take || notTake;
+		return dp[n][target];
 	}
 
 	public static void main(String[] args) {

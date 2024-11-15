@@ -24,8 +24,8 @@ public class CountSubsetsWithSumK {
 
 		int notTake = solveMemo(arr, n - 1, target, dp);
 		int take = solveMemo(arr, n - 1, target - arr[n], dp);
-
-		return dp[n][target] = notTake + take;
+		dp[n][target] = notTake + take;
+		return dp[n][target];
 	}
 
 	public static void main(String[] args) {

@@ -30,7 +30,7 @@ public class PartitionEqualSubsetSum {
 		boolean notTaken = solve(nums, n - 1, target, dp);
 
 		dp[n][target] = notTaken || taken;
-		return notTaken || taken;
+		return dp[n][target];
 	}
 
 	public static void main(String[] args) {

@@ -9,23 +9,23 @@ public class UnboundedKnapsack {
 		for (int row[] : dp)
 			Arrays.fill(row, -1);
 
-		return solveMemo(wt, val, n - 1, W, dp);
+		return solve(wt, val, n - 1, W, dp);
 	}
 
-	private int solveMemo(int[] wt, int[] val, int ind, int W, int[][] dp) {
-		if (ind == 0) {
-			return ((int) (W / wt[0])) * val[0];
-		}
+	private int solve(int[] wt, int[] val, int n, int W, int[][] dp) {
+		if (n < 0 || W <= 0)
+			return 0;
 
-		if (dp[ind][W] != -1)
-			return dp[ind][W];
+		if (dp[n][W] != -1)
+			return dp[n][W];
 
-		int notTaken = 0 + solveMemo(wt, val, ind - 1, W, dp);
+		int notTaken = solve(wt, val, n - 1, W, dp);
 
 		int taken = Integer.MIN_VALUE;
-		if (wt[ind] <= W)
-			taken = val[ind] + solveMemo(wt, val, ind, W - wt[ind], dp);
+		if (wt[n] <= W)
+			taken = val[n] + solve(wt, val, n, W - wt[n], dp);
 
-		return dp[ind][W] = Math.max(notTaken, taken);
+		dp[n][W] = Math.max(notTaken, taken);
+		return dp[n][W];
 	}
 }

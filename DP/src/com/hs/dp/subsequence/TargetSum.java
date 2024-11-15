@@ -5,28 +5,25 @@ import java.util.Arrays;
 public class TargetSum {
 	public int findTargetSumWays(int[] nums, int target) {
 		int n = nums.length;
-		int totSum = 0;
+		int sum = 0;
 		for (int i = 0; i < nums.length; i++) {
-			totSum += nums[i];
+			sum += nums[i];
 		}
 
-		// Checking for edge cases
-		if (totSum - target < 0)
-			return 0;
-		if ((totSum - target) % 2 == 1)
+		if (sum - target < 0 || (sum - target) % 2 != 0)
 			return 0;
 
-		int s2 = (totSum - target) / 2;
+		int s2 = (sum - target) / 2;
 
 		int[][] dp = new int[n][s2 + 1];
 
 		for (int row[] : dp)
 			Arrays.fill(row, -1);
 
-		return solveMemo(nums, n - 1, s2, dp);
+		return solve(nums, n - 1, s2, dp);
 	}
 
-	private int solveMemo(int[] arr, int n, int target, int[][] dp) {
+	private int solve(int[] arr, int n, int target, int[][] dp) {
 		if (n == 0) {
 			if (target == 0 && arr[0] == 0)
 				return 2;
@@ -38,13 +35,14 @@ public class TargetSum {
 		if (dp[n][target] != -1)
 			return dp[n][target];
 
-		int notTake = solveMemo(arr, n - 1, target, dp);
+		int notTake = solve(arr, n - 1, target, dp);
 
 		int take = 0;
 		if (target >= arr[n])
-			take = solveMemo(arr, n - 1, target - arr[n], dp);
+			take = solve(arr, n - 1, target - arr[n], dp);
 
-		return dp[n][target] = notTake + take;
+		dp[n][target] = notTake + take;
+		return dp[n][target];
 	}
 
 	public static void main(String[] args) {
