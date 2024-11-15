@@ -4,29 +4,32 @@ import java.util.Arrays;
 
 public class LCS {
 	public int longestCommonSubsequence(String text1, String text2) {
-		int index1 = text1.length();
-		int index2 = text2.length();
+		int n = text1.length();
+		int m = text2.length();
 
-		int[][] dp = new int[index1][index2];
+		int[][] dp = new int[n][m];
 		for (int[] row : dp) {
 			Arrays.fill(row, -1);
 		}
 
-		return solveMemo(text1, text2, index1 - 1, index2 - 1, dp);
+		return solveMemo(text1, text2, n - 1, m - 1, dp);
 	}
 
-	public int solveMemo(String text1, String text2, int index1, int index2, int[][] dp) {
-		if (index1 < 0 || index2 < 0)
+	public int solveMemo(String text1, String text2, int n, int m, int[][] dp) {
+		if (n < 0 || m < 0)
 			return 0;
 
-		if (dp[index1][index2] != -1)
-			return dp[index1][index2];
+		if (dp[n][m] != -1)
+			return dp[n][m];
 
-		if (text1.charAt(index1) == text2.charAt(index2))
-			return dp[index1][index2] = 1 + solveMemo(text1, text2, index1 - 1, index2 - 1, dp);
+		if (text1.charAt(n) == text2.charAt(m))
+			return dp[n][m] = 1 + solveMemo(text1, text2, n - 1, m - 1, dp);
 
-		return dp[index1][index2] = Math.max(solveMemo(text1, text2, index1 - 1, index2, dp),
-				solveMemo(text1, text2, index1, index2 - 1, dp));
+		// take the maximum of excluding one character from either string
+		int first = solveMemo(text1, text2, n - 1, m, dp);
+		int second = solveMemo(text1, text2, n, m - 1, dp);
+		dp[n][m] = Math.max(first, second);
+		return dp[n][m];
 	}
 
 	public int solveTab(String text1, String text2) {
