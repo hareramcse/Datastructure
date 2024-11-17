@@ -7,31 +7,33 @@ public class DistinctSubsequences {
 		int n = s.length();
 		int m = t.length();
 
-		int[][] dp = new int[n][m];
+		int[][] dp = new int[n + 1][m + 1];
 		for (int[] row : dp) {
 			Arrays.fill(row, -1);
 		}
 
-		return solveMemo(s, t, n - 1, m - 1, dp);
+		return solveMemo(s, t, n, m, dp);
 	}
 
-	private int solveMemo(String s, String t, int i, int j, int[][] dp) {
-		if (j < 0)
+	private int solveMemo(String s, String t, int n, int m, int[][] dp) {
+		if (m == 0)
 			return 1;
-		if (i < 0)
+
+		if (n == 0)
 			return 0;
 
-		if (dp[i][j] != -1)
-			return dp[i][j];
+		if (dp[n][m] != -1)
+			return dp[n][m];
 
-		if (s.charAt(i) == t.charAt(j)) {
-			int leaveOne = solveMemo(s, t, i - 1, j - 1, dp);
-			int stay = solveMemo(s, t, i - 1, j, dp);
+		if (s.charAt(n - 1) == t.charAt(m - 1)) {
+			int take = solveMemo(s, t, n - 1, m - 1, dp);
+			int notTake = solveMemo(s, t, n - 1, m, dp);
 
-			return dp[i][j] = (leaveOne + stay);
+			dp[n][m] = take + notTake;
 		} else {
-			return dp[i][j] = solveMemo(s, t, i - 1, j, dp);
+			dp[n][m] = solveMemo(s, t, n - 1, m, dp);
 		}
+		return dp[n][m];
 	}
 
 	private int solveTab(String s, String t) {

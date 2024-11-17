@@ -5,19 +5,19 @@ public class MinimumInsertionsToMakeStringPalindrome {
 		return s.length() - longestPalindromeSubseq(s);
 	}
 
-	public int longestPalindromeSubseq(String x) {
+	private int longestPalindromeSubseq(String x) {
 		String y = reverse(x);
 		return solveTab(x, y);
 	}
 
-	public int solveTab(String text1, String text2) {
+	private int solveTab(String text1, String text2) {
 		int n = text1.length();
 		int m = text2.length();
 
 		int[][] dp = new int[n + 1][m + 1];
 
-		for (int i = 1; i <= n; i++) {
-			for (int j = 1; j <= m; j++) {
+		for (int i = 0; i <= n; i++) {
+			for (int j = 0; j <= m; j++) {
 				if (i == 0 || j == 0)
 					dp[i][j] = 0;
 				else if (text1.charAt(i - 1) == text2.charAt(j - 1))
