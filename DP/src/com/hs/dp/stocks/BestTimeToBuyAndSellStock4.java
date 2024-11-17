@@ -21,23 +21,21 @@ public class BestTimeToBuyAndSellStock4 {
 		if (dp[i][buy][cap] != -1)
 			return dp[i][buy][cap];
 
-		int profit = 0;
-
 		if (buy == 0) {
 			int buyStock = -prices[i] + solveMemo(prices, i + 1, 1, cap, dp);
 			int notBuyStock = solveMemo(prices, i + 1, 0, cap, dp);
-			profit = Math.max(buyStock, notBuyStock);
+			dp[i][buy][cap] = Math.max(buyStock, notBuyStock);
 		} else {
 			int sale = prices[i] + solveMemo(prices, i + 1, 0, cap - 1, dp);
 			int notSale = solveMemo(prices, i + 1, 1, cap, dp);
-			profit = Math.max(sale, notSale);
+			dp[i][buy][cap] = Math.max(sale, notSale);
 		}
-		return dp[i][buy][cap] = profit;
+		return dp[i][buy][cap];
 	}
 
 	private int solveTab(int k, int[] prices) {
 		int n = prices.length;
-		int[][][] dp = new int[n + 1][2][k+1];
+		int[][][] dp = new int[n + 1][2][k + 1];
 		for (int[][] rows : dp) {
 			for (int[] row : rows) {
 				Arrays.fill(row, 0);

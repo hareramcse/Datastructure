@@ -16,21 +16,19 @@ public class BestTimeToBuyAndSellStockWithTransactionFee {
 		if (i == prices.length)
 			return 0;
 
-		int profit = 0;
-
 		if (dp[i][buy] != -1)
 			return dp[i][buy];
 
 		if (buy == 0) {
 			int buyStock = -prices[i] + solveMemo(prices, i + 1, 1, fee, dp);
 			int notBuyStock = solveMemo(prices, i + 1, 0, fee, dp);
-			profit = Math.max(buyStock, notBuyStock);
+			dp[i][buy] = Math.max(buyStock, notBuyStock);
 		} else {
 			int sale = prices[i] - fee + solveMemo(prices, i + 1, 0, fee, dp);
 			int notSale = solveMemo(prices, i + 1, 1, fee, dp);
-			profit = Math.max(sale, notSale);
+			dp[i][buy] = Math.max(sale, notSale);
 		}
-		return dp[i][buy] = profit;
+		return dp[i][buy];
 	}
 
 	private int solveTab(int[] prices, int fee) {

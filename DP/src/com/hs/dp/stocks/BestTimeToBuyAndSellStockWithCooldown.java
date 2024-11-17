@@ -16,28 +16,25 @@ public class BestTimeToBuyAndSellStockWithCooldown {
 		if (i >= prices.length)
 			return 0;
 
-		int profit = 0;
-
 		if (dp[i][buy] != -1)
 			return dp[i][buy];
 
 		if (buy == 0) {
 			int buyStock = -prices[i] + solveMemo(prices, i + 1, 1, dp);
 			int notBuyStock = solveMemo(prices, i + 1, 0, dp);
-			profit = Math.max(buyStock, notBuyStock);
+			dp[i][buy] = Math.max(buyStock, notBuyStock);
 		} else {
 			int sale = prices[i] + solveMemo(prices, i + 2, 0, dp);
 			int notSale = solveMemo(prices, i + 1, 1, dp);
-			profit = Math.max(sale, notSale);
+			dp[i][buy] = Math.max(sale, notSale);
 		}
-		return dp[i][buy] = profit;
+		return dp[i][buy];
 	}
 
 	public int solveTab(int[] prices) {
 		int n = prices.length;
 		int[][] dp = new int[n + 2][2];
 
-		// base condition
 		dp[n][0] = dp[n][1] = 0;
 
 		for (int i = n - 1; i >= 0; i--) {
