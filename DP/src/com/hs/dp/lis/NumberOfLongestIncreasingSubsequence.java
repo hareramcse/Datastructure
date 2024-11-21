@@ -8,7 +8,6 @@ public class NumberOfLongestIncreasingSubsequence {
 		int[] dp = new int[n];
 		int[] count = new int[n];
 
-		// each element itself is an increasing sub sequence
 		Arrays.fill(dp, 1);
 		Arrays.fill(count, 1);
 

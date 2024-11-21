@@ -14,10 +14,10 @@ public class PalindromePartitioning2 {
 		if (i == n)
 			return 0;
 
-		int minCost = Integer.MAX_VALUE;
 		if (dp[i] != -1)
 			return dp[i];
 
+		int minCost = Integer.MAX_VALUE;
 		for (int j = i; j < n; j++) {
 			if (isPolindrome(str, i, j)) {
 				int cost = 1 + solveMemo(j + 1, n, str, dp);
