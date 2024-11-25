@@ -4,31 +4,32 @@ import java.util.Arrays;
 
 public class MinimumPathSum {
 	public int minPathSum(int[][] grid) {
-		int m = grid.length;
-		int n = grid[0].length;
+		int n = grid.length;
+		int m = grid[0].length;
 
-		int[][] dp = new int[m][n];
+		int[][] dp = new int[n][m];
 		for (int[] row : dp) {
 			Arrays.fill(row, -1);
 		}
 
-		return solve(m - 1, n - 1, grid, dp);
+		return solve(n - 1, m - 1, grid, dp);
 	}
 
-	private int solve(int m, int n, int[][] grid, int[][] dp) {
-		if (m == 0 && n == 0)
-			return grid[m][n];
-
-		if (m < 0 || n < 0)
+	private int solve(int n, int m, int[][] grid, int[][] dp) {
+		if (n == 0 && m == 0)
+			return grid[n][m];
+		
+		if (n < 0 || m < 0)
 			return (int) 1e9;
 
-		if (dp[m][n] != -1)
-			return dp[m][n];
+		if (dp[n][m] != -1)
+			return dp[n][m];
 
-		int up = grid[m][n] + solve(m - 1, n, grid, dp);
-		int left = grid[m][n] + solve(m, n - 1, grid, dp);
+		int up = grid[n][m] + solve(n - 1, m, grid, dp);
+		int left = grid[n][m] + solve(n, m - 1, grid, dp);
+		dp[n][m] = Math.min(up, left);
 
-		return dp[m][n] = Math.min(up, left);
+		return dp[n][m];
 	}
 
 	public static void main(String[] args) {

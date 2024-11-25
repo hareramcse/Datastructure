@@ -4,38 +4,38 @@ import java.util.Arrays;
 
 public class MinimumFallingPathSum {
 	public int minFallingPathSum(int[][] matrix) {
-		int m = matrix.length;
-		int n = matrix[0].length;
+		int n = matrix.length;
+		int m = matrix[0].length;
 
-		int dp[][] = new int[m][n];
+		int dp[][] = new int[n][m];
 		for (int row[] : dp)
 			Arrays.fill(row, -1);
 
 		int min = Integer.MAX_VALUE;
-
-		for (int j = 0; j < n; j++) {
-			int ans = solveMemo(m - 1, j, n, matrix, dp);
+		for (int j = 0; j < m; j++) {
+			int ans = solveMemo(n - 1, j, m, matrix, dp);
 			min = Math.min(min, ans);
 		}
 
 		return min;
 	}
 
-	private int solveMemo(int m, int j, int n, int[][] matrix, int[][] dp) {
-		if (j < 0 || j >= n)
+	private int solveMemo(int n, int j, int m, int[][] matrix, int[][] dp) {
+		if (n == 0)
+			return matrix[0][j];
+		
+		if (j < 0 || j >= m)
 			return (int) 1e9;
 
-		if (m == 0)
-			return matrix[0][j];
+		if (dp[n][j] != -1)
+			return dp[n][j];
 
-		if (dp[m][j] != -1)
-			return dp[m][j];
+		int up = matrix[n][j] + solveMemo(n - 1, j, m, matrix, dp);
+		int leftDiagonal = matrix[n][j] + solveMemo(n - 1, j - 1, m, matrix, dp);
+		int rightDiagonal = matrix[n][j] + solveMemo(n - 1, j + 1, m, matrix, dp);
+		dp[n][j] = Math.min(up, Math.min(leftDiagonal, rightDiagonal));
 
-		int up = matrix[m][j] + solveMemo(m - 1, j, n, matrix, dp);
-		int leftDiagonal = matrix[m][j] + solveMemo(m - 1, j - 1, n, matrix, dp);
-		int rightDiagonal = matrix[m][j] + solveMemo(m - 1, j + 1, n, matrix, dp);
-
-		return dp[m][j] = Math.min(up, Math.min(leftDiagonal, rightDiagonal));
+		return dp[n][j];
 	}
 
 	public static void main(String[] args) {

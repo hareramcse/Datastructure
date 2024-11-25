@@ -24,8 +24,9 @@ public class Triangle {
 
 		int down = grid[m][n] + solve(m + 1, n, grid, dp);
 		int diagonal = grid[m][n] + solve(m + 1, n + 1, grid, dp);
+		dp[m][n] = Math.min(down, diagonal);
 
-		return dp[m][n] = Math.min(down, diagonal);
+		return dp[m][n];
 	}
 
 	public static void main(String[] args) {

@@ -23,4 +23,12 @@ public class SubarraySumEqualsK {
 		}
 		return count;
 	}
+
+	public static void main(String[] args) {
+		SubarraySumEqualsK obj = new SubarraySumEqualsK();
+		int[] nums = { 1, 2, 3 };
+		int k = 3;
+		int result = obj.subarraySum(nums, k);
+		System.out.println(result);
+	}
 }

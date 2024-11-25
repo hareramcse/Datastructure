@@ -10,28 +10,29 @@ public class CoinChange {
 		for (int row[] : dp)
 			Arrays.fill(row, -1);
 
-		int ans = solve(coins, n - 1, amount, dp);
+		int ans = solveMemo(n - 1, coins, amount, dp);
 		if (ans >= (int) 1e9)
 			return -1;
-		
+
 		return ans;
 	}
 
-	private int solve(int[] coins, int n, int amount, int[][] dp) {
-		if (amount == 0)
-			return 0;
-
-		if (n < 0 || amount < 0) // returning (int) 1e9 means this is not valid case
-			return (int) 1e9;
+	private int solveMemo(int n, int[] coins, int amount, int[][] dp) {
+		if (n == 0) {
+			if (amount % coins[0] == 0)
+				return amount / coins[0];
+			else
+				return (int) 1e9;
+		}
 
 		if (dp[n][amount] != -1)
 			return dp[n][amount];
 
-		int notTaken = solve(coins, n - 1, amount, dp);
+		int notTaken = solveMemo(n - 1, coins, amount, dp);
 
 		int taken = (int) 1e9;
-		if (coins[n] <= amount)
-			taken = 1 + solve(coins, n, amount - coins[n], dp);
+		if (amount >= coins[n])
+			taken = 1 + solveMemo(n, coins, amount - coins[n], dp);
 
 		dp[n][amount] = Math.min(notTaken, taken);
 		return dp[n][amount];

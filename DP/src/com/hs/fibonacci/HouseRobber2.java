@@ -6,6 +6,7 @@ public class HouseRobber2 {
 	public int rob(int[] nums) {
 		if (nums.length == 0)
 			return 0;
+		
 		if (nums.length == 1)
 			return nums[0];
 
@@ -22,14 +23,14 @@ public class HouseRobber2 {
 		return Math.max(first, second);
 	}
 
-	private int houseRob1(int[] nums) {
+	public int houseRob1(int[] nums) {
 		int n = nums.length;
 		int[] dp = new int[n];
 		Arrays.fill(dp, -1);
-		return robMemoization(nums, dp, n - 1);
+		return solveMemo(n - 1, nums, dp);
 	}
 
-	private int robMemoization(int[] arr, int[] dp, int n) {
+	private int solveMemo(int n, int[] arr, int[] dp) {
 		if (n < 0)
 			return 0;
 
@@ -39,10 +40,10 @@ public class HouseRobber2 {
 		if (dp[n] != -1)
 			return dp[n];
 
-		int pick = arr[n] + robMemoization(arr, dp, n - 2);
-		int nonPick = 0 + robMemoization(arr, dp, n - 1);
-
-		return dp[n] = Math.max(pick, nonPick);
+		int notPick = solveMemo(n - 1, arr, dp);
+		int pick = arr[n] + solveMemo(n - 2, arr, dp);
+		dp[n] = Math.max(pick, notPick);
+		return dp[n];
 	}
 
 	public static void main(String[] args) {

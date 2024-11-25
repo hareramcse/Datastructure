@@ -24,7 +24,9 @@ public class UniquePaths {
 
 		int up = solve(m - 1, n, dp);
 		int left = solve(m, n - 1, dp);
-		return dp[m][n] = up + left;
+		dp[m][n] = up + left;
+		
+		return dp[m][n];
 	}
 
 	public static void main(String[] args) {
