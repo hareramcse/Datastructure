@@ -1,13 +1,13 @@
-package com.hs.dp.subsequence;
+package com.hs.dp.subset;
 
 public class SubsetSumEqualToTarget {
 	public boolean isSubsetSumEqualToTarget(int[] arr, int target) {
 		int n = arr.length;
 		Boolean[][] dp = new Boolean[n][target + 1];
-		return solve(arr, n - 1, target, dp);
+		return solveMemo(n - 1, arr, target, dp);
 	}
 
-	private boolean solve(int[] arr, int n, int target, Boolean[][] dp) {
+	private boolean solveMemo(int n, int[] nums, int target, Boolean[][] dp) {
 		if (target == 0)
 			return true;
 
@@ -17,10 +17,10 @@ public class SubsetSumEqualToTarget {
 		if (dp[n][target] != null)
 			return dp[n][target];
 
-		boolean take = solve(arr, n - 1, target - arr[n], dp);
-		boolean notTake = solve(arr, n - 1, target, dp);
+		boolean taken = solveMemo(n - 1, nums, target - nums[n], dp);
+		boolean notTaken = solveMemo(n - 1, nums, target, dp);
 
-		dp[n][target] = notTake || take;
+		dp[n][target] = notTaken || taken;
 		return dp[n][target];
 	}
 

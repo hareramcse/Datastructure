@@ -12,18 +12,18 @@ public class Triangle {
 			Arrays.fill(row, -1);
 		}
 
-		return solve(0, 0, grid, dp);
+		return solveMemo(0, 0, grid, dp);
 	}
 
-	private int solve(int n, int m, int[][] grid, int[][] dp) {
+	private int solveMemo(int n, int m, int[][] grid, int[][] dp) {
 		if (n == grid.length - 1)
 			return grid[n][m];
 
 		if (dp[n][m] != -1)
 			return dp[n][m];
 
-		int down = grid[n][m] + solve(n + 1, m, grid, dp);
-		int diagonal = grid[n][m] + solve(n + 1, m + 1, grid, dp);
+		int down = grid[n][m] + solveMemo(n + 1, m, grid, dp);
+		int diagonal = grid[n][m] + solveMemo(n + 1, m + 1, grid, dp);
 		dp[n][m] = Math.min(down, diagonal);
 
 		return dp[n][m];

@@ -12,10 +12,10 @@ public class MinimumPathSum {
 			Arrays.fill(row, -1);
 		}
 
-		return solve(n - 1, m - 1, grid, dp);
+		return solveMemo(n - 1, m - 1, grid, dp);
 	}
 
-	private int solve(int n, int m, int[][] grid, int[][] dp) {
+	private int solveMemo(int n, int m, int[][] grid, int[][] dp) {
 		if (n == 0 && m == 0)
 			return grid[n][m];
 		
@@ -25,8 +25,8 @@ public class MinimumPathSum {
 		if (dp[n][m] != -1)
 			return dp[n][m];
 
-		int up = grid[n][m] + solve(n - 1, m, grid, dp);
-		int left = grid[n][m] + solve(n, m - 1, grid, dp);
+		int up = grid[n][m] + solveMemo(n - 1, m, grid, dp);
+		int left = grid[n][m] + solveMemo(n, m - 1, grid, dp);
 		dp[n][m] = Math.min(up, left);
 
 		return dp[n][m];

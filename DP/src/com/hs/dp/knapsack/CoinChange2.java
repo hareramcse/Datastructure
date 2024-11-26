@@ -1,4 +1,4 @@
-package com.hs.dp.subsequence;
+package com.hs.dp.knapsack;
 
 import java.util.Arrays;
 

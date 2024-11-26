@@ -1,4 +1,4 @@
-package com.hs.dp.subsequence;
+package com.hs.dp.subset;
 
 import java.util.Arrays;
 
@@ -9,10 +9,10 @@ public class CountSubsetsWithSumK {
 		for (int[] row : dp)
 			Arrays.fill(row, -1);
 
-		return solveMemo(arr, n - 1, K, dp);
+		return solveMemo(n - 1, arr, K, dp);
 	}
 
-	private int solveMemo(int[] arr, int n, int target, int[][] dp) {
+	private int solveMemo(int n, int[] arr, int target, int[][] dp) {
 		if (target == 0)
 			return 1;
 
@@ -22,9 +22,10 @@ public class CountSubsetsWithSumK {
 		if (dp[n][target] != -1)
 			return dp[n][target];
 
-		int notTake = solveMemo(arr, n - 1, target, dp);
-		int take = solveMemo(arr, n - 1, target - arr[n], dp);
+		int notTake = solveMemo(n - 1, arr, target, dp);
+		int take = solveMemo(n - 1, arr, target - arr[n], dp);
 		dp[n][target] = notTake + take;
+
 		return dp[n][target];
 	}
 

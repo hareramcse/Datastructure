@@ -11,14 +11,14 @@ public class Fibonacci {
 		return fibRecursion(n - 1) + fibRecursion(n - 2);
 	}
 
-	public int fibMemoization(int n, int[] dp) {
+	public int solveMemo(int n, int[] dp) {
 		if (n <= 1)
 			return n;
 
 		if (dp[n] != -1)
 			return dp[n];
 
-		dp[n] = fibMemoization(n - 1, dp) + fibMemoization(n - 2, dp);
+		dp[n] = solveMemo(n - 1, dp) + solveMemo(n - 2, dp);
 		return dp[n];
 	}
 
@@ -42,7 +42,7 @@ public class Fibonacci {
 
 		int[] dp = new int[n + 1];
 		Arrays.fill(dp, -1);
-		result = obj.fibMemoization(n, dp);
+		result = obj.solveMemo(n, dp);
 		System.out.println("Fibonacci number through memoization " + result);
 
 		result = obj.fibTabular(n);

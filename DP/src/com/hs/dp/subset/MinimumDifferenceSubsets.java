@@ -1,4 +1,4 @@
-package com.hs.dp.subsequence;
+package com.hs.dp.subset;
 
 public class MinimumDifferenceSubsets {
 	public int minSubsetSumDifference(int[] arr, int n) {
@@ -12,14 +12,14 @@ public class MinimumDifferenceSubsets {
 
 		int min = Integer.MAX_VALUE;
 		for (int s1 = 0; s1 <= target; s1++) {
-			if (solve(arr, n - 1, s1, dp)) {
+			if (solve(n - 1, arr, s1, dp)) {
 				min = Math.min(min, Math.abs(sum - 2 * s1));
 			}
 		}
 		return min;
 	}
 
-	private boolean solve(int[] nums, int n, int target, Boolean[][] dp) {
+	private boolean solve(int n, int[] nums, int target, Boolean[][] dp) {
 		if (target == 0)
 			return true;
 
@@ -29,10 +29,10 @@ public class MinimumDifferenceSubsets {
 		if (dp[n][target] != null)
 			return dp[n][target];
 
-		boolean taken = solve(nums, n - 1, target - nums[n], dp);
-		boolean notTaken = solve(nums, n - 1, target, dp);
-
+		boolean taken = solve(n - 1, nums, target - nums[n], dp);
+		boolean notTaken = solve(n - 1, nums, target, dp);
 		dp[n][target] = notTaken || taken;
+
 		return dp[n][target];
 	}
 

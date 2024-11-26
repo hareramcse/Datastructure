@@ -1,4 +1,4 @@
-package com.hs.dp.subsequence;
+package com.hs.dp.subset;
 
 import java.util.Arrays;
 
@@ -32,16 +32,16 @@ public class TargetSum {
 			return 0;
 		}
 
+		if (n < 0 || target < 0)
+			return 0;
+
 		if (dp[n][target] != -1)
 			return dp[n][target];
 
 		int notTake = solve(arr, n - 1, target, dp);
-
-		int take = 0;
-		if (target >= arr[n])
-			take = solve(arr, n - 1, target - arr[n], dp);
-
+		int take = solve(arr, n - 1, target - arr[n], dp);
 		dp[n][target] = notTake + take;
+		
 		return dp[n][target];
 	}
 

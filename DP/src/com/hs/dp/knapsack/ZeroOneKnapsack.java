@@ -1,4 +1,4 @@
-package com.hs.dp.subsequence;
+package com.hs.dp.knapsack;
 
 import java.util.Arrays;
 
@@ -8,10 +8,10 @@ public class ZeroOneKnapsack {
 		for (int row[] : dp)
 			Arrays.fill(row, -1);
 
-		return solve(wt, val, n - 1, W, dp);
+		return solve(n - 1, wt, val, W, dp);
 	}
 
-	private int solve(int[] wt, int[] val, int n, int W, int[][] dp) {
+	private int solve(int n, int[] wt, int[] val, int W, int[][] dp) {
 		if (n < 0 || W <= 0) {
 			return 0;
 		}
@@ -19,11 +19,11 @@ public class ZeroOneKnapsack {
 		if (dp[n][W] != -1)
 			return dp[n][W];
 
-		int notTaken = solve(wt, val, n - 1, W, dp);
+		int notTaken = solve(n - 1, wt, val, W, dp);
 
 		int taken = Integer.MIN_VALUE;
 		if (W >= wt[n]) {
-			taken = val[n] + solve(wt, val, n - 1, W - wt[n], dp);
+			taken = val[n] + solve(n - 1, wt, val, W - wt[n], dp);
 		}
 
 		dp[n][W] = Math.max(notTaken, taken);
