@@ -22,7 +22,7 @@ public class MinimumFallingPathSum {
 
 	private int solveMemo(int n, int j, int m, int[][] matrix, int[][] dp) {
 		if (n == 0)
-			return matrix[0][j];
+			return matrix[n][j];
 		
 		if (j < 0 || j >= m)
 			return (int) 1e9;

@@ -4,10 +4,10 @@ import java.util.Arrays;
 
 public class Triangle {
 	public int minimumTotal(int[][] grid) {
-		int m = grid.length;
 		int n = grid.length;
+		int m = grid.length;
 
-		int[][] dp = new int[m][n];
+		int[][] dp = new int[n][m];
 		for (int[] row : dp) {
 			Arrays.fill(row, -1);
 		}
@@ -15,18 +15,18 @@ public class Triangle {
 		return solve(0, 0, grid, dp);
 	}
 
-	private int solve(int m, int n, int[][] grid, int[][] dp) {
-		if (m == grid.length - 1)
-			return grid[m][n];
+	private int solve(int n, int m, int[][] grid, int[][] dp) {
+		if (n == grid.length - 1)
+			return grid[n][m];
 
-		if (dp[m][n] != -1)
-			return dp[m][n];
+		if (dp[n][m] != -1)
+			return dp[n][m];
 
-		int down = grid[m][n] + solve(m + 1, n, grid, dp);
-		int diagonal = grid[m][n] + solve(m + 1, n + 1, grid, dp);
-		dp[m][n] = Math.min(down, diagonal);
+		int down = grid[n][m] + solve(n + 1, m, grid, dp);
+		int diagonal = grid[n][m] + solve(n + 1, m + 1, grid, dp);
+		dp[n][m] = Math.min(down, diagonal);
 
-		return dp[m][n];
+		return dp[n][m];
 	}
 
 	public static void main(String[] args) {

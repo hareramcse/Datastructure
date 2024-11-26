@@ -15,13 +15,10 @@ public class UniquePaths2 {
 	}
 
 	private int solve(int m, int n, int[][] obstacleGrid, int[][] dp) {
-		if (m >= 0 && n >= 0 && obstacleGrid[m][n] == 1)
-			return 0;
-		
 		if (m == 0 && n == 0)
 			return 1;
 
-		if (m < 0 || n < 0)
+		if (m < 0 || n < 0 || obstacleGrid[m][n] == 1)
 			return 0;
 
 		if (dp[m][n] != -1)
