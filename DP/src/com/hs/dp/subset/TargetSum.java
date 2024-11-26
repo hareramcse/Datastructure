@@ -20,10 +20,10 @@ public class TargetSum {
 		for (int row[] : dp)
 			Arrays.fill(row, -1);
 
-		return solve(nums, n - 1, s2, dp);
+		return solve(n - 1, nums, s2, dp);
 	}
 
-	private int solve(int[] arr, int n, int target, int[][] dp) {
+	private int solve(int n, int[] arr, int target, int[][] dp) {
 		if (n == 0) {
 			if (target == 0 && arr[0] == 0)
 				return 2;
@@ -38,10 +38,10 @@ public class TargetSum {
 		if (dp[n][target] != -1)
 			return dp[n][target];
 
-		int notTake = solve(arr, n - 1, target, dp);
-		int take = solve(arr, n - 1, target - arr[n], dp);
+		int notTake = solve(n - 1, arr, target, dp);
+		int take = solve(n - 1, arr, target - arr[n], dp);
 		dp[n][target] = notTake + take;
-		
+
 		return dp[n][target];
 	}
 

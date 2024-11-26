@@ -13,23 +13,21 @@ public class CoinChange2 {
 	}
 
 	private int solveMemo(int n, int[] coins, int amount, int[][] dp) {
-		if (n == 0) {
-			if (amount % coins[0] == 0)
-				return 1;
-			else
-				return 0;
+		if (amount == 0) {
+			return 1;
+		}
+
+		if (n < 0 || amount < 0) {
+			return 0;
 		}
 
 		if (dp[n][amount] != -1)
 			return dp[n][amount];
 
 		int notTaken = solveMemo(n - 1, coins, amount, dp);
-
-		int taken = 0;
-		if (amount >= coins[n])
-			taken = solveMemo(n, coins, amount - coins[n], dp);
-
+		int taken = solveMemo(n, coins, amount - coins[n], dp);
 		dp[n][amount] = taken + notTaken;
+
 		return dp[n][amount];
 	}
 
