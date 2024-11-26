@@ -9,21 +9,21 @@ public class UnboundedKnapsack {
 		for (int row[] : dp)
 			Arrays.fill(row, -1);
 
-		return solve(n - 1, wt, val, W, dp);
+		return solveMemo(n - 1, wt, val, W, dp);
 	}
 
-	private int solve(int n, int[] wt, int[] val, int W, int[][] dp) {
+	private int solveMemo(int n, int[] wt, int[] val, int W, int[][] dp) {
 		if (n < 0 || W <= 0)
 			return 0;
 
 		if (dp[n][W] != -1)
 			return dp[n][W];
 
-		int notTaken = solve(n - 1, wt, val, W, dp);
+		int notTaken = solveMemo(n - 1, wt, val, W, dp);
 
 		int taken = Integer.MIN_VALUE;
 		if (W >= wt[n]) {
-			taken = val[n] + solve(n, wt, val, W - wt[n], dp);
+			taken = val[n] + solveMemo(n, wt, val, W - wt[n], dp);
 		}
 		dp[n][W] = Math.max(notTaken, taken);
 

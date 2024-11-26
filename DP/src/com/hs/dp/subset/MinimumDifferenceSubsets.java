@@ -12,14 +12,14 @@ public class MinimumDifferenceSubsets {
 
 		int min = Integer.MAX_VALUE;
 		for (int s1 = 0; s1 <= target; s1++) {
-			if (solve(n - 1, arr, s1, dp)) {
+			if (solveMemo(n - 1, arr, s1, dp)) {
 				min = Math.min(min, Math.abs(sum - 2 * s1));
 			}
 		}
 		return min;
 	}
 
-	private boolean solve(int n, int[] nums, int target, Boolean[][] dp) {
+	private boolean solveMemo(int n, int[] nums, int target, Boolean[][] dp) {
 		if (target == 0)
 			return true;
 
@@ -29,8 +29,8 @@ public class MinimumDifferenceSubsets {
 		if (dp[n][target] != null)
 			return dp[n][target];
 
-		boolean taken = solve(n - 1, nums, target - nums[n], dp);
-		boolean notTaken = solve(n - 1, nums, target, dp);
+		boolean taken = solveMemo(n - 1, nums, target - nums[n], dp);
+		boolean notTaken = solveMemo(n - 1, nums, target, dp);
 		dp[n][target] = notTaken || taken;
 
 		return dp[n][target];
