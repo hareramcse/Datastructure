@@ -3,6 +3,8 @@ package com.hs.dp.stocks;
 import java.util.Arrays;
 
 public class BestTimeToBuyAndSellStock2 {
+	// Time complexity O(n)
+	// Space Complexity O(n)
 	public int maxProfit(int[] prices) {
 		int n = prices.length;
 		int[][] dp = new int[n][2];
@@ -40,23 +42,19 @@ public class BestTimeToBuyAndSellStock2 {
 
 		dp[n][0] = dp[n][1] = 0;
 
-		int profit = 0;
-
 		for (int i = n - 1; i >= 0; i--) {
 			for (int j = 0; j <= 1; j++) {
 				if (j == 0) {// We can buy the stock
 					int buy = -prices[i] + dp[i + 1][1];
 					int notBuy = dp[i + 1][0];
-					profit = Math.max(buy, notBuy);
+					dp[i][j] = Math.max(buy, notBuy);
 				}
 
 				if (j == 1) {// We can sell the stock
 					int sale = prices[i] + dp[i + 1][0];
 					int notSale = dp[i + 1][1];
-					profit = Math.max(sale, notSale);
+					dp[i][j] = Math.max(sale, notSale);
 				}
-
-				dp[i][j] = profit;
 			}
 		}
 		return dp[0][0];

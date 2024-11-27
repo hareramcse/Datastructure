@@ -3,6 +3,8 @@ package com.hs.dp.stocks;
 import java.util.Arrays;
 
 public class BestTimeToBuyAndSellStock4 {
+	// Time Complexity O(n*k)
+	// Space Complexity O(n*k)
 	public int maxProfit(int k, int[] prices) {
 		int n = prices.length;
 		int[][][] dp = new int[n][2][k + 1];
@@ -14,23 +16,23 @@ public class BestTimeToBuyAndSellStock4 {
 		return solveMemo(prices, 0, 0, k, dp);
 	}
 
-	private int solveMemo(int[] prices, int i, int buy, int cap, int[][][] dp) {
-		if (i == prices.length || cap == 0)
+	private int solveMemo(int[] prices, int i, int buy, int k, int[][][] dp) {
+		if (i == prices.length || k == 0)
 			return 0;
 
-		if (dp[i][buy][cap] != -1)
-			return dp[i][buy][cap];
+		if (dp[i][buy][k] != -1)
+			return dp[i][buy][k];
 
 		if (buy == 0) {
-			int buyStock = -prices[i] + solveMemo(prices, i + 1, 1, cap, dp);
-			int notBuyStock = solveMemo(prices, i + 1, 0, cap, dp);
-			dp[i][buy][cap] = Math.max(buyStock, notBuyStock);
+			int buyStock = -prices[i] + solveMemo(prices, i + 1, 1, k, dp);
+			int notBuyStock = solveMemo(prices, i + 1, 0, k, dp);
+			dp[i][buy][k] = Math.max(buyStock, notBuyStock);
 		} else {
-			int sale = prices[i] + solveMemo(prices, i + 1, 0, cap - 1, dp);
-			int notSale = solveMemo(prices, i + 1, 1, cap, dp);
-			dp[i][buy][cap] = Math.max(sale, notSale);
+			int sale = prices[i] + solveMemo(prices, i + 1, 0, k - 1, dp);
+			int notSale = solveMemo(prices, i + 1, 1, k, dp);
+			dp[i][buy][k] = Math.max(sale, notSale);
 		}
-		return dp[i][buy][cap];
+		return dp[i][buy][k];
 	}
 
 	private int solveTab(int k, int[] prices) {
