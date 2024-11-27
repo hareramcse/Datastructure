@@ -3,6 +3,8 @@ package com.hs.dp.string;
 import java.util.Arrays;
 
 public class EditDistance {
+	// Time Complexity O(n*m)
+	// Space Complexity O(n*m)
 	public int minDistance(String word1, String word2) {
 		int n = word1.length();
 		int m = word2.length();
@@ -19,7 +21,7 @@ public class EditDistance {
 		if (n == 0) {
 			return m; // All insertions
 		}
-		
+
 		if (m == 0) {
 			return n; // All deletions
 		}
@@ -41,6 +43,8 @@ public class EditDistance {
 		return dp[n][m];
 	}
 
+	// Time Complexity O(n*m)
+	// Space Complexity O(n*m)
 	public int solveTab(String word1, String word2) {
 		int n = word1.length();
 		int m = word2.length();

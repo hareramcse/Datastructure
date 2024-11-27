@@ -1,6 +1,8 @@
 package com.hs.dp.string;
 
 public class MinimumNumberOfDeletionsAndInsertions {
+	// Time Complexity O(n*m)
+	// Space Complexity O(n*m)
 	public int minOperations(String str1, String str2) {
 		return str1.length() + str2.length() - 2 * solveTab(str1, str2);
 	}

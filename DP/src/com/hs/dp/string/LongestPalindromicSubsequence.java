@@ -1,6 +1,8 @@
 package com.hs.dp.string;
 
 public class LongestPalindromicSubsequence {
+	// Time Complexity O(n*m)
+	// Space Complexity O(n*m)
 	public int longestPalindromeSubseq(String x) {
 		String y = reverse(x);
 		return solveTab(x, y);

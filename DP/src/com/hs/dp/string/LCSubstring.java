@@ -3,7 +3,8 @@ package com.hs.dp.string;
 import java.util.Arrays;
 
 public class LCSubstring {
-
+	// Time Complexity O(n*m)
+	// Space Complexity O(n*m)
 	public int longestCommonSubString(String text1, String text2) {
 		int n = text1.length();
 		int m = text2.length();
@@ -33,6 +34,8 @@ public class LCSubstring {
 		return max[0];
 	}
 
+	// Time Complexity O(n*m)
+	// Space Complexity O(n*m)
 	public int solveTab(String text1, String text2) {
 		int n = text1.length();
 		int m = text2.length();

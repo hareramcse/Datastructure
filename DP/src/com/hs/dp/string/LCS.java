@@ -3,6 +3,8 @@ package com.hs.dp.string;
 import java.util.Arrays;
 
 public class LCS {
+	// Time Complexity O(n*m)
+	// Space Complexity O(n*m)
 	public int longestCommonSubsequence(String text1, String text2) {
 		int n = text1.length();
 		int m = text2.length();
@@ -33,6 +35,8 @@ public class LCS {
 		return dp[n][m];
 	}
 
+	// Time Complexity O(n*m)
+	// Space Complexity O(n*m)
 	public int solveTab(String text1, String text2) {
 		int n = text1.length();
 		int m = text2.length();

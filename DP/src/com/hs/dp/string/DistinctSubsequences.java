@@ -3,6 +3,8 @@ package com.hs.dp.string;
 import java.util.Arrays;
 
 public class DistinctSubsequences {
+	// Time Complexity O(n*m)
+	// Space Complexity O(n*m)
 	public int numDistinct(String s, String t) {
 		int n = s.length();
 		int m = t.length();
@@ -36,6 +38,8 @@ public class DistinctSubsequences {
 		return dp[n][m];
 	}
 
+	// Time Complexity O(n*m)
+	// Space Complexity O(n*m)
 	private int solveTab(String s, String t) {
 		int n = s.length();
 		int m = t.length();
@@ -53,7 +57,7 @@ public class DistinctSubsequences {
 		for (int i = 1; i <= n; i++) {
 			for (int j = 1; j <= m; j++) {
 				if (s.charAt(i - 1) == t.charAt(j - 1))
-					dp[i][j] = (dp[i - 1][j - 1] + dp[i - 1][j]);
+					dp[i][j] = dp[i - 1][j - 1] + dp[i - 1][j];
 				else
 					dp[i][j] = dp[i - 1][j];
 			}

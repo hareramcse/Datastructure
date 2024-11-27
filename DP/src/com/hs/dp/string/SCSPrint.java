@@ -1,13 +1,14 @@
 package com.hs.dp.string;
 
 public class SCSPrint {
+	// Time Complexity O(n*m)
+	// Space Complexity O(n*m)
 	public String shortestCommonSupersequence(String str1, String str2) {
 		int[][] dp = solveTab(str1, str2);
 		int i = str1.length();
 		int j = str2.length();
 
 		StringBuilder result = new StringBuilder();
-
 		while (i > 0 && j > 0) {
 			if (str1.charAt(i - 1) == str2.charAt(j - 1)) {
 				result.insert(0, str1.charAt(i - 1));
@@ -34,6 +35,8 @@ public class SCSPrint {
 		return result.toString();
 	}
 
+	// Time Complexity O(n*m)
+	// Space Complexity O(n*m)
 	private int[][] solveTab(String text1, String text2) {
 		int n = text1.length();
 		int m = text2.length();

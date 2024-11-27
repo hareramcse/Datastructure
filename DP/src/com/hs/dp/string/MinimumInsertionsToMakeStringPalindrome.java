@@ -1,6 +1,8 @@
 package com.hs.dp.string;
 
 public class MinimumInsertionsToMakeStringPalindrome {
+	// Time Complexity O(n*m)
+	// Space Complexity O(n*m)
 	public int minInsertions(String s) {
 		return s.length() - longestPalindromeSubseq(s);
 	}

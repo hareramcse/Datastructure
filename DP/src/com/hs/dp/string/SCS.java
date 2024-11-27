@@ -1,6 +1,8 @@
 package com.hs.dp.string;
 
 public class SCS {
+	// Time Complexity O(n*m)
+	// Space Complexity O(n*m)
 	public int scs(String text1, String text2) {
 		return text1.length() + text2.length() - solveTab(text1, text2);
 	}
