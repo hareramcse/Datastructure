@@ -9,7 +9,7 @@ public class NextGreaterElementToLeft {
 		int n = nums.length;
 		int[] res = new int[n];
 
-		for (int i = 0; i < n; i++) {
+		for (int i = 0; i < n; i++) { // for (int i = n - 1; i >= 0; i--) its for next greater element to right
 			while (!stack.isEmpty() && stack.peek() <= nums[i]) {
 				stack.pop();
 			}

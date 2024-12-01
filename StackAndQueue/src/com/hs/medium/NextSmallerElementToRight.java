@@ -9,7 +9,7 @@ public class NextSmallerElementToRight {
 		int n = nums.length;
 		int[] res = new int[n];
 
-		for (int i = n - 1; i >= 0; i--) {
+		for (int i = n - 1; i >= 0; i--) { // for (int i = 0; i < n; i++) next smaller element to left 
 			while (!stack.isEmpty() && stack.peek() >= nums[i]) {
 				stack.pop();
 			}
