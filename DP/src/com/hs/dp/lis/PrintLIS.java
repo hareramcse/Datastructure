@@ -33,10 +33,9 @@ public class PrintLIS {
 		}
 
 		List<Integer> lis = new ArrayList<>();
-		int currentIndex = lastIndex;
-		while (currentIndex != -1) {
-			lis.add(nums[currentIndex]);
-			currentIndex = parent[currentIndex];
+		while (lastIndex != -1) {
+			lis.add(nums[lastIndex]);
+			lastIndex = parent[lastIndex];
 		}
 		Collections.reverse(lis);
 		return lis;
