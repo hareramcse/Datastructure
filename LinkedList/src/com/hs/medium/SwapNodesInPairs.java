@@ -9,16 +9,20 @@ public class SwapNodesInPairs {
 			return head;
 		}
 
-		// Identify the first and second nodes
-		ListNode firstNode = head;
-		ListNode secondNode = head.next;
+		// Store head of list after two nodes
+		ListNode remaing = head.next.next;
 
-		// Swap the first two nodes
-		firstNode.next = swapPairs(secondNode.next);
-		secondNode.next = firstNode;
+		// Change head
+		ListNode newHead = head.next;
 
-		// Return the new head (second node)
-		return secondNode;
+		// Change next of second node
+		head.next.next = head;
+
+		// Recur for remaining list and change next of head
+		head.next = swapPairs(remaing);
+
+		// Return new head of modified list
+		return newHead;
 	}
 
 	public static void main(String[] args) {
