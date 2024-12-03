@@ -4,10 +4,6 @@ import com.hs.easy.LinkedListUtil;
 import com.hs.easy.ListNode;
 
 public class ReorderList {
-
-	// find the mid element
-	// reverse the second half of the element
-	// add alternatively from the 1st list and 2nd list into dummy ListNode
 	public ListNode reorderList(ListNode head) {
 		if (head == null || head.next == null)
 			return null;
@@ -23,7 +19,7 @@ public class ReorderList {
 	}
 
 	private void merge(ListNode l1, ListNode l2) {
-		while (l2 != null) {
+		while (l1 != null && l2 != null) {
 			ListNode next = l1.next;
 			l1.next = l2;
 			l1 = l2;
@@ -34,15 +30,15 @@ public class ReorderList {
 	public static void main(String[] args) {
 		ReorderList list = new ReorderList();
 
-		ListNode head = new ListNode(10);
-		head.next = new ListNode(4);
+		ListNode head = new ListNode(5);
+		head.next = new ListNode(10);
 		head.next.next = new ListNode(15);
 		head.next.next.next = new ListNode(20);
-		head.next.next.next.next = new ListNode(45);
-		head.next.next.next.next.next = new ListNode(50);
-		head.next.next.next.next.next.next = new ListNode(25);
-		head.next.next.next.next.next.next.next = new ListNode(30);
-		head.next.next.next.next.next.next.next.next = new ListNode(60);
+		head.next.next.next.next = new ListNode(25);
+		head.next.next.next.next.next = new ListNode(30);
+		head.next.next.next.next.next.next = new ListNode(35);
+		head.next.next.next.next.next.next.next = new ListNode(40);
+		head.next.next.next.next.next.next.next.next = new ListNode(45);
 
 		ListNode reverseList = list.reorderList(head);
 		LinkedListUtil.printLinkedList(reverseList);
