@@ -5,25 +5,20 @@ import com.hs.easy.ListNode;
 
 public class SwapNodesInPairs {
 	public ListNode swapPairs(ListNode head) {
-		// Base Case: The list is empty or has only one node
 		if (head == null || head.next == null) {
 			return head;
 		}
 
-		// Store head of list after two nodes
-		ListNode remaing = head.next.next;
+		// Identify the first and second nodes
+		ListNode firstNode = head;
+		ListNode secondNode = head.next;
 
-		// Change head
-		ListNode newHead = head.next;
+		// Swap the first two nodes
+		firstNode.next = swapPairs(secondNode.next);
+		secondNode.next = firstNode;
 
-		// Change next of second node
-		head.next.next = head;
-
-		// Recur for remaining list and change next of head
-		head.next = swapPairs(remaing);
-
-		// Return new head of modified list
-		return newHead;
+		// Return the new head (second node)
+		return secondNode;
 	}
 
 	public static void main(String[] args) {

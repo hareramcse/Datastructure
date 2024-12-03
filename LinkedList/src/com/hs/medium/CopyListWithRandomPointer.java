@@ -16,14 +16,13 @@ public class CopyListWithRandomPointer {
 			map.put(temp, newNode);
 			temp = temp.next;
 		}
-		ListNode t = head;
 
-		// second iteration for linking next and random pointer as given question.
-		while (t != null) {
-			ListNode node = map.get(t);
-			node.next = (t.next != null) ? map.get(t.next) : null;
-			node.random = (t.random != null) ? map.get(t.random) : null;
-			t = t.next;
+		temp = head;
+		while (temp != null) {
+			ListNode node = map.get(temp);
+			node.next = (temp.next != null) ? map.get(temp.next) : null;
+			node.random = (temp.random != null) ? map.get(temp.random) : null;
+			temp = temp.next;
 		}
 		return map.get(head);
 	}

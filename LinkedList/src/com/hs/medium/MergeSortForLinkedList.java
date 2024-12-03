@@ -5,22 +5,22 @@ import com.hs.easy.ListNode;
 
 public class MergeSortForLinkedList {
 	public ListNode mergeSort(ListNode head) {
-		// Base case : if head is null, or there is only node
+		// Base case: if head is null, or there is only one node
 		if (head == null || head.next == null) {
 			return head;
 		}
 
-		// get the middle of the list
+		// Get the middle of the list
 		ListNode middle = getMiddle(head);
 		ListNode nextOfMiddle = middle.next;
 
-		// set the next of middle ListNode to null
+		// Split the list into two halves
 		middle.next = null;
 
-		// Apply mergeSort on left list
+		// Apply mergeSort on the left list
 		ListNode left = mergeSort(head);
 
-		// Apply mergeSort on right list
+		// Apply mergeSort on the right list
 		ListNode right = mergeSort(nextOfMiddle);
 
 		// Merge the left and right lists
@@ -29,41 +29,34 @@ public class MergeSortForLinkedList {
 	}
 
 	private ListNode getMiddle(ListNode head) {
-		// Base case
-		if (head == null) {
+		if (head == null)
 			return head;
-		}
-		ListNode slow = head;
-		ListNode fast = head.next;
 
-		// Move fast by two and slow by one
-		// Finally slow will point to middle ListNode
-		while (fast != null && fast.next != null) {
+		ListNode slow = head;
+		ListNode fast = head;
+
+		// Move fast by two steps and slow by one step
+		while (fast.next != null && fast.next.next != null) {
 			slow = slow.next;
 			fast = fast.next.next;
 		}
-		return slow;
+		return slow; // slow will point to the first middle node in an even-length list
 	}
 
 	private ListNode merge(ListNode head1, ListNode head2) {
-		ListNode result = null;
-		
-		// Base cases
 		if (head1 == null)
 			return head2;
-		
+
 		if (head2 == null)
 			return head1;
 
-		// Pick either a or b, and recur
 		if (head1.val <= head2.val) {
-			result = head1;
-			result.next = merge(head1.next, head2);
+			head1.next = merge(head1.next, head2);
+			return head1;
 		} else {
-			result = head2;
-			result.next = merge(head1, head2.next);
+			head2.next = merge(head1, head2.next);
+			return head2;
 		}
-		return result;
 	}
 
 	public static void main(String[] args) {

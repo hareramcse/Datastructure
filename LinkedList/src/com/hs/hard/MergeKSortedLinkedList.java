@@ -1,28 +1,43 @@
 package com.hs.hard;
 
-import java.util.PriorityQueue;
-import java.util.Queue;
-
 import com.hs.easy.LinkedListUtil;
 import com.hs.easy.ListNode;
 
 public class MergeKSortedLinkedList {
 	public ListNode mergeKLists(ListNode[] lists) {
-		Queue<Integer> minHeap = new PriorityQueue<>();
-		for (ListNode head : lists) {
-			while (head != null) {
-				minHeap.add(head.val);
-				head = head.next;
-			}
+		if (lists == null || lists.length == 0) {
+			return null;
 		}
 
-		ListNode dummy = new ListNode();
-		ListNode head = dummy;
-		while (!minHeap.isEmpty()) {
-			head.next = new ListNode(minHeap.remove());
-			head = head.next;
+		return mergeKListsHelper(lists, 0, lists.length - 1);
+	}
+
+	private ListNode mergeKListsHelper(ListNode[] lists, int start, int end) {
+		if (start == end) {
+			return lists[start];
 		}
-		return dummy.next;
+
+		int mid = start + (end - start) / 2;
+		ListNode left = mergeKListsHelper(lists, start, mid);
+		ListNode right = mergeKListsHelper(lists, mid + 1, end);
+
+		return mergeTwoLists(left, right);
+	}
+
+	private ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+		if (list1 == null)
+			return list2;
+
+		if (list2 == null)
+			return list1;
+
+		if (list1.val < list2.val) {
+			list1.next = mergeTwoLists(list1.next, list2);
+			return list1;
+		} else {
+			list2.next = mergeTwoLists(list1, list2.next);
+			return list2;
+		}
 	}
 
 	public static void main(String args[]) {

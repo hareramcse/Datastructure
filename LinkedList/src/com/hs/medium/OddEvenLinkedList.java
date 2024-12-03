@@ -5,7 +5,7 @@ import com.hs.easy.ListNode;
 
 public class OddEvenLinkedList {
 	public ListNode rearrange(ListNode head) {
-		if (head == null)
+		if (head == null || head.next == null)
 			return null;
 
 		ListNode odd = head;
