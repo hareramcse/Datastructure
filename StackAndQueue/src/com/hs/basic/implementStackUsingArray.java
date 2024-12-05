@@ -1,4 +1,4 @@
-package com.hs.easy;
+package com.hs.basic;
 
 public class implementStackUsingArray {
 	private int top;

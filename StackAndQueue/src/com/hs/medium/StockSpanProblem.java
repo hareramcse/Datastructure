@@ -6,22 +6,22 @@ import java.util.Stack;
 public class StockSpanProblem {
 	public int[] nearestGreatestToLeft(int[] nums) {
 		// Pair consist of NGL value and its index
-		Stack<Pair> stack = new Stack<>();
+		Stack<int[]> stack = new Stack<>();
 		int n = nums.length;
 		int[] res = new int[n];
 
 		for (int i = 0; i < n; i++) {
-			while (!stack.isEmpty() && stack.peek().first <= nums[i]) {
+			while (!stack.isEmpty() && nums[i] >= stack.peek()[0]) {
 				stack.pop();
 			}
 
 			if (stack.isEmpty()) {
 				res[i] = -1;
 			} else {
-				res[i] = stack.peek().second;
+				res[i] = stack.peek()[1];
 			}
 
-			stack.push(new Pair(nums[i], i));
+			stack.push(new int[] { nums[i], i });
 		}
 
 		// once we get the index of NGL we find the count by i - res[i] for each element

@@ -10,22 +10,21 @@ public class AsteroidCollision {
 			if (asteroid > 0) {
 				stack.push(asteroid);
 			} else {
-				// only previous one will explode
-				while (!stack.isEmpty() && stack.peek() > 0 && stack.peek() < Math.abs(asteroid)) {
-					stack.pop();
+				while (!stack.isEmpty() && stack.peek() > 0 && Math.abs(asteroid) > stack.peek()) {
+					stack.pop(); // Remove the smaller right-moving asteroid since it collides and explodes
 				}
 
-				// while deleting in prev step if stack becomes empty
-				// then we need to push that asteroid into stack.
-				// or if asteroid is moving in same direction then it will never collide
+				// if stack becomes empty or asteroid is moving in same direction then it will
+				// never collide
 				if (stack.isEmpty() || stack.peek() < 0) {
 					stack.push(asteroid);
-				} else if (stack.peek() == Math.abs(asteroid)) {
+				} else if (Math.abs(asteroid) == stack.peek()) {
 					// both will explode
 					stack.pop();
 				}
 			}
 		}
+
 		int[] result = new int[stack.size()];
 		for (int i = result.length - 1; i >= 0; i--) {
 			result[i] = stack.pop();

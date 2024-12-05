@@ -1,4 +1,4 @@
-package com.hs.queue.basic;
+package com.hs.basic;
 
 import java.util.LinkedList;
 

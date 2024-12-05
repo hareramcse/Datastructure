@@ -3,29 +3,30 @@ package com.hs.medium;
 import java.util.Stack;
 
 public class RemoveKDigits {
-	// it finds smallest possible integer after removing k digits from num
 	public String removeKdigits(String num, int k) {
-		int len = num.length();
-		if (k == len)
+		int length = num.length();
+		if (k == length)
 			return "0";
 
 		Stack<Character> stack = new Stack<>();
 		for (char ch : num.toCharArray()) {
-			while (!stack.isEmpty() && stack.peek() > ch && k > 0) {
+			while (!stack.isEmpty() && ch < stack.peek() && k > 0) { // create decreasing monotonic seq
 				stack.pop();
 				k--;
 			}
 			stack.push(ch);
 		}
 
-		// if input is having same repeating number
-		while (k > 0) {
+		// if input is in increasing order in that case stack will already be in
+		// decreasing monotonic seq, in that case k will remain k as we could not delete
+		// any number to make decreasing monotonic seq
+		while (!stack.isEmpty() && k > 0) {
 			stack.pop();
 			k--;
 		}
 
 		StringBuilder ans = new StringBuilder();
-		for (char ch : stack) {
+		for (char ch : stack) { // this way no need to reverse the ans
 			ans.append(ch);
 		}
 

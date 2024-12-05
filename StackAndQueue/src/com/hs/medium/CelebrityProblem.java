@@ -13,28 +13,24 @@ public class CelebrityProblem {
 			int a = stack.pop();
 			int b = stack.pop();
 			if (arr[a][b] == 0) {
-				stack.push(a);
+				stack.push(a); // if a does not know b then a could be celebrity
 			} else {
 				stack.push(b);
 			}
 		}
 
-		int x = stack.pop();
-		boolean flag = true;
+		int candidate = stack.pop();
 		for (int i = 0; i < n; i++) {
-			if (i == x)
+			if (i == candidate)
 				continue;
 
-			// if x knows someone or someone does not know x
-			if (arr[x][i] == 1 || arr[i][x] == 0) {
-				flag = false;
-				break;
+			// if candidate knows someone or someone does not know candidate
+			if (arr[candidate][i] == 1 || arr[i][candidate] == 0) {
+				return -1;
 			}
 		}
 
-		if (!flag)
-			return -1;
-		return x;
+		return candidate;
 	}
 
 	public static void main(String[] args) {
