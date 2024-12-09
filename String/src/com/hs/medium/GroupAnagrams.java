@@ -13,9 +13,9 @@ public class GroupAnagrams {
 			return res;
 
 		Map<String, List<String>> map = new HashMap<>();
-		for (String s : strs) {
+		for (String str : strs) {
 			int[] count = new int[26];
-			for (char c : s.toCharArray()) {
+			for (char c : str.toCharArray()) {
 				count[c - 'a']++;
 			}
 			String key = new String(Arrays.toString(count));
@@ -23,7 +23,7 @@ public class GroupAnagrams {
 			if (list == null) {
 				list = new ArrayList<>();
 			}
-			list.add(s);
+			list.add(str);
 			map.put(key, list);
 		}
 		res.addAll(map.values());

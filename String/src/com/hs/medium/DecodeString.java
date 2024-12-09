@@ -8,8 +8,8 @@ public class DecodeString {
 			return s;
 		}
 
-		Stack<Integer> noStack = new Stack<>();
-		Stack<StringBuilder> strStack = new Stack<>();
+		Stack<Integer> stack1 = new Stack<>();
+		Stack<StringBuilder> stack2 = new Stack<>();
 
 		StringBuilder res = new StringBuilder();
 		int no = 0;
@@ -20,14 +20,14 @@ public class DecodeString {
 			} else if (Character.isDigit(ch)) {
 				no = no * 10 + (ch - '0');
 			} else if (ch == '[') {
-				noStack.push(no);
-				strStack.push(res);
+				stack1.push(no);
+				stack2.push(res);
 				res = new StringBuilder();
 				no = 0;
 			} else if (ch == ']') {
 				StringBuilder temp = res;
-				res = strStack.pop();
-				int fre = noStack.pop();
+				res = stack2.pop();
+				int fre = stack1.pop();
 				while (fre > 0) {
 					res.append(temp);
 					fre--;

@@ -1,21 +1,38 @@
 package com.hs.medium;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class DifferentWaysToAddParentheses {
 	public List<Integer> diffWaysToCompute(String expression) {
+		Map<String, List<Integer>> map = new HashMap<>();
+		return solve(expression, map);
+	}
+
+	private List<Integer> solve(String expression, Map<String, List<Integer>> map) {
+		// If the expression is just a number, return its value as a single result
+		if (expression.length() == 0
+				|| !expression.contains("+") && !expression.contains("-") && !expression.contains("*")) {
+			List<Integer> result = new ArrayList<>();
+			result.add(Integer.parseInt(expression));
+			return result;
+		}
+
+		if (map.containsKey(expression)) {
+			return map.get(expression);
+		}
+
 		List<Integer> res = new ArrayList<>();
-		if (expression == null || expression.length() == 0)
-			return res;
 
 		for (int i = 0; i < expression.length(); i++) {
 			char ch = expression.charAt(i);
 			if (ch == '-' || ch == '+' || ch == '*') {
 				String a = expression.substring(0, i);
 				String b = expression.substring(i + 1);
-				List<Integer> a1 = diffWaysToCompute(a);
-				List<Integer> b1 = diffWaysToCompute(b);
+				List<Integer> a1 = solve(a, map);
+				List<Integer> b1 = solve(b, map);
 				for (int x : a1) {
 					for (int y : b1) {
 						if (ch == '-') {
@@ -29,8 +46,8 @@ public class DifferentWaysToAddParentheses {
 				}
 			}
 		}
-		if (res.size() == 0)
-			res.add(Integer.valueOf(expression));
+		
+		map.put(expression, res);
 		return res;
 	}
 

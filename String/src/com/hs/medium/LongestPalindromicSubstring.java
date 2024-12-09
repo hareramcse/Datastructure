@@ -5,15 +5,15 @@ public class LongestPalindromicSubstring {
 		if (s != null && s.length() <= 1) {
 			return s;
 		}
-		
-		String longest = s.substring(0, 1);
+
+		String longest = "";
 		for (int i = 0; i < s.length(); i++) {
-			String temp = expand(s, i, i);
+			String temp = expand(s, i, i); // for odd length palindrome
 			if (temp.length() > longest.length()) {
 				longest = temp;
 			}
-			
-			temp = expand(s, i, i + 1);
+
+			temp = expand(s, i, i + 1); // for even length palindrome
 			if (temp.length() > longest.length()) {
 				longest = temp;
 			}
@@ -22,7 +22,7 @@ public class LongestPalindromicSubstring {
 	}
 
 	private String expand(String s, int left, int right) {
-		while (left >= 0 && right <= s.length() - 1 && s.charAt(left) == s.charAt(right)) {
+		while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
 			left--;
 			right++;
 		}

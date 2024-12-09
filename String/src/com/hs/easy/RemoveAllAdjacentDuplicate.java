@@ -6,21 +6,19 @@ public class RemoveAllAdjacentDuplicate {
 	public String removeDuplicates(String s) {
 		Stack<Character> stack = new Stack<>();
 
-		for (int i = 0; i < s.length(); i++) {
-			char curr = s.charAt(i);
-
-			if (stack.size() > 0 && stack.peek() == curr) {
+		for (Character ch : s.toCharArray()) {
+			if (stack.size() > 0 && stack.peek() == ch) {
 				stack.pop();
 			} else {
-				stack.push(curr);
+				stack.push(ch);
 			}
 		}
 
-		StringBuilder res = new StringBuilder();		
-		for(char ch : stack) {
+		StringBuilder res = new StringBuilder();
+		for (char ch : stack) {
 			res.append(ch);
 		}
-		
+
 		return res.toString();
 	}
 

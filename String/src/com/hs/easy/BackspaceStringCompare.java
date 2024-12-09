@@ -2,12 +2,12 @@ package com.hs.easy;
 
 public class BackspaceStringCompare {
 	public boolean backspaceCompare(String s, String t) {
-		String a = backspaceCompareUtil(s);
-		String b = backspaceCompareUtil(t);
+		String a = solve(s);
+		String b = solve(t);
 		return a.equals(b);
 	}
 
-	private String backspaceCompareUtil(String s) {
+	private String solve(String s) {
 		StringBuilder ans = new StringBuilder();
 		int count = 0;
 		for (int i = s.length() - 1; i >= 0; i--) {

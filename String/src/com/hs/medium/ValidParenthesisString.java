@@ -1,37 +1,30 @@
 package com.hs.medium;
 
-import java.util.Stack;
-
 public class ValidParenthesisString {
 	public boolean checkValidString(String s) {
-		char[] chars = s.toCharArray();
+		int minOpen = 0; // Minimum possible open parentheses count
+		int maxOpen = 0; // Maximum possible open parentheses count
 
-		Stack<Integer> s1 = new Stack<>();
-		Stack<Integer> s2 = new Stack<>();
+		for (char c : s.toCharArray()) {
+			if (c == '(') {
+				minOpen++; // '(' adds one possible open parenthesis
+				maxOpen++; // '(' definitely adds one open parenthesis
+			} else if (c == ')') {
+				minOpen = Math.max(0, minOpen - 1); // ')' matches one possible '('
+				maxOpen--; // ')' closes one '('
+			} else if (c == '*') {
+				minOpen = Math.max(0, minOpen - 1); // '*' treated as ')'
+				maxOpen++; // '*' treated as '('
+			}
 
-		for (int i = 0; i < s.length(); i++) {
-			char ch = chars[i];
-			if (ch == '(') {
-				s1.push(i);
-			} else if (ch == ')') {
-				if (!s1.isEmpty()) {
-					s1.pop();
-				} else if (!s2.isEmpty()) {
-					s2.pop();
-				} else {
-					return false;
-				}
-			} else if (ch == '*') {
-				s2.push(i);
+			// If maxOpen is negative, we have more ')' than '('
+			if (maxOpen < 0) {
+				return false;
 			}
 		}
 
-		while (!s1.isEmpty() && !s2.isEmpty()) {
-			Integer value = s2.pop();
-			if (s1.peek() < value)
-				s1.pop();
-		}
-		return s1.isEmpty();
+		// Check if we can balance all open parentheses
+		return minOpen == 0;
 	}
 
 	public static void main(String[] args) {

@@ -11,7 +11,7 @@ public class LargestNumber {
 
 		Arrays.sort(arr, (a, b) -> (b + a).compareTo(a + b));
 
-		if(arr[0].equals("0")) {
+		if(arr[0].equals("0")) { // if input contains only zeros
 			return "0";
 		}
 		

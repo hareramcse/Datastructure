@@ -27,7 +27,7 @@ public class ValidPalindrome2 {
 
 	public static void main(String[] args) {
 		ValidPalindrome2 obj = new ValidPalindrome2();
-		String s = "abca";
+		String s = "baca";
 		boolean result = obj.validPalindrome(s);
 		System.out.println(result);
 	}

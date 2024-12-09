@@ -7,21 +7,17 @@ public class ReverseWordsInString3 {
 		for (int j = 0; j < chars.length; j++) {
 			if (chars[j] == ' ') {
 				reverse(chars, i, j - 1);
-
-				// jth char is white space so next non white space char will start from j + 1th
-				// index
-				i = j + 1;
+				i = j + 1; // Move i to the next word
 			}
 		}
 
-		// this is to reverse the last word
-		// as there will be no white space after last word
+		// reverse the last word as there will be no white space after last word
 		reverse(chars, i, chars.length - 1);
 		return new String(chars);
 	}
 
 	private void reverse(char[] chars, int i, int j) {
-		while (i <= j) {
+		while (i < j) {
 			char ch = chars[i];
 			chars[i] = chars[j];
 			chars[j] = ch;

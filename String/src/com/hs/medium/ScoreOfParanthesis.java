@@ -1,25 +1,21 @@
 package com.hs.medium;
 
+import java.util.Stack;
+
 public class ScoreOfParanthesis {
 	public int scoreOfParentheses(String s) {
-		int score = 0;
-		int depth = 0;
+		Stack<Integer> stack = new Stack<>();
+        int score = 0;
 
-		for (int i = 0; i < s.length(); i++) {
-			if (s.charAt(i) == '(') {
-				depth++;
-			} else {
-				depth--;
-			}
-
-			if (s.charAt(i) == ')' && s.charAt(i - 1) == '(') {
-				// Whenever you meet a () pair, you multiply 1 by all the 2 outside of it, and
-				// accumulate the result
-				score += Math.pow(2, depth);
-			}
-		}
-
-		return score;
+        for (char ch : s.toCharArray()) {
+            if (ch == '(') {
+                stack.push(score);
+                score = 0;
+            } else {
+                score = stack.pop() + Math.max(2 * score, 1);
+            }
+        }
+        return score;
 	}
 
 	public static void main(String[] args) {

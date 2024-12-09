@@ -4,20 +4,18 @@ public class PalindromicSubstrings {
 	public int countSubstrings(String s) {
 		if (s == null || s.length() == 0)
 			return 0;
-		
-		int n = s.length();
+
 		int count = 0;
-		char[] ch = s.toCharArray();
-		for (int i = 0; i < n; i++) {
-			count += isPalindrome(ch, i, i);
-			count += isPalindrome(ch, i, i + 1);
+		for (int i = 0; i < s.length(); i++) {
+			count += expand(s, i, i); 
+			count += expand(s, i, i + 1);
 		}
 		return count;
 	}
 
-	private int isPalindrome(char[] chars, int left, int right) {
+	private int expand(String s, int left, int right) {
 		int count = 0;
-		while (left >= 0 && right < chars.length && chars[left] == chars[right]) {
+		while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
 			left--;
 			right++;
 			count++;

@@ -8,7 +8,7 @@ public class RemoveDuplicateLetters {
 		int[] lastIndex = new int[26];
 		boolean[] visited = new boolean[26];
 
-		// find the last occurance index of each char
+		// find the last occurrence index of each char
 		for (int i = 0; i < s.length(); i++) {
 			lastIndex[s.charAt(i) - 'a'] = i;
 		}
