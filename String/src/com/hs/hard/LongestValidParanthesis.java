@@ -1,44 +1,27 @@
 package com.hs.hard;
 
-//32
+import java.util.Stack;
+
 public class LongestValidParanthesis {
 	public int longestValidParentheses(String s) {
-		int open = 0;
-		int close = 0;
-		int max = 0;
+		Stack<Integer> stack = new Stack<>();
+		stack.push(-1); // Base for valid substring calculation
+		int maxLength = 0;
+
 		for (int i = 0; i < s.length(); i++) {
-			char ch = s.charAt(i);
-			if (ch == '(') {
-				open++;
+			if (s.charAt(i) == '(') {
+				stack.push(i);
 			} else {
-				close++;
-			}
-
-			if (open == close) {
-				int length = open + close;
-				max = Math.max(max, length);
-			} else if (close > open) {
-				open = close = 0;
+				stack.pop(); // Match a previous '('
+				if (stack.isEmpty()) {
+					stack.push(i); // Update base index
+				} else {
+					maxLength = Math.max(maxLength, i - stack.peek());
+				}
 			}
 		}
 
-		open = close = 0;
-		for (int i = s.length() - 1; i >= 0; i--) {
-			char ch = s.charAt(i);
-			if (ch == '(') {
-				open++;
-			} else {
-				close++;
-			}
-
-			if (open == close) {
-				int length = open + close;
-				max = Math.max(max, length);
-			} else if (open > close) {
-				open = close = 0;
-			}
-		}
-		return max;
+		return maxLength;
 	}
 
 	public static void main(String[] args) {

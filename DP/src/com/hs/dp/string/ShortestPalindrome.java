@@ -1,6 +1,5 @@
-package com.hs.hard;
+package com.hs.dp.string;
 
-// 214. Shortest Palindrome Leetcode
 public class ShortestPalindrome {
 	public String shortestPalindrome(String s) {
 		int i = 0;
