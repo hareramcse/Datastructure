@@ -7,7 +7,7 @@ import java.util.Queue;
 
 import com.hs.tree.Node;
 
-class LevelOrderTraversalInSpiralForm2 {
+class LevelOrderTraversalSpiralFormBFS {
 	public List<List<Integer>> zigZagTraversal(Node root) {
 		List<List<Integer>> result = new ArrayList<>();
 		if (root == null)
@@ -44,7 +44,7 @@ class LevelOrderTraversalInSpiralForm2 {
 	}
 
 	public static void main(String[] args) {
-		LevelOrderTraversalInSpiralForm2 tree = new LevelOrderTraversalInSpiralForm2();
+		LevelOrderTraversalSpiralFormBFS tree = new LevelOrderTraversalSpiralFormBFS();
 		Node root = new Node(1);
 		root.left = new Node(2);
 		root.right = new Node(3);

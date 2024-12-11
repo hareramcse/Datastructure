@@ -7,7 +7,7 @@ import java.util.Queue;
 
 import com.hs.tree.Node;
 
-class LevelOrderIterative {
+class LevelOrderBFS {
 	public List<List<Integer>> levelOrderTraversal(Node root) {
 		List<List<Integer>> result = new ArrayList<>();
 		if (root == null)
@@ -38,7 +38,7 @@ class LevelOrderIterative {
 	}
 
 	public static void main(String args[]) {
-		LevelOrderIterative tree = new LevelOrderIterative();
+		LevelOrderBFS tree = new LevelOrderBFS();
 		Node root = new Node(1);
 		root.left = new Node(2);
 		root.right = new Node(3);

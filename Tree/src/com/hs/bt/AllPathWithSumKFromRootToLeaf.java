@@ -9,11 +9,11 @@ public class AllPathWithSumKFromRootToLeaf {
 	public List<List<Integer>> pathSum(Node root, int targetSum) {
 		List<List<Integer>> result = new ArrayList<>();
 		List<Integer> path = new ArrayList<>();
-		pathSumUtil(root, targetSum, path, result);
+		backtrack(root, targetSum, path, result);
 		return result;
 	}
 
-	public void pathSumUtil(Node root, int targetSum, List<Integer> path, List<List<Integer>> result) {
+	public void backtrack(Node root, int targetSum, List<Integer> path, List<List<Integer>> result) {
 		if (root == null)
 			return;
 
@@ -23,8 +23,8 @@ public class AllPathWithSumKFromRootToLeaf {
 			result.add(new ArrayList<>(path));
 		}
 
-		pathSumUtil(root.left, targetSum - root.data, path, result);
-		pathSumUtil(root.right, targetSum - root.data, path, result);
+		backtrack(root.left, targetSum - root.data, path, result);
+		backtrack(root.right, targetSum - root.data, path, result);
 		path.remove(path.size() - 1);
 	}
 

@@ -5,16 +5,14 @@ import java.util.List;
 
 import com.hs.tree.Node;
 
-class LevelOrderTraversalInSpiralForm {
-	public List<List<Integer>> printSpiral(Node root) {
+class LevelOrderDFS {
+	public List<List<Integer>> levelOrderTraversal(Node root) {
 		int h = height(root);
-		boolean ltr = false;
 		List<List<Integer>> result = new ArrayList<>();
 		for (int i = 1; i <= h; i++) {
 			List<Integer> list = new ArrayList<>();
-			printGivenLevel(root, i, ltr, list);
+			printGivenLevel(root, i, list);
 			result.add(list);
-			ltr = !ltr;
 		}
 		return result;
 	}
@@ -29,7 +27,7 @@ class LevelOrderTraversalInSpiralForm {
 		return 1 + Math.max(lHeight, rHeight);
 	}
 
-	private void printGivenLevel(Node root, int level, boolean ltr, List<Integer> list) {
+	private void printGivenLevel(Node root, int level, List<Integer> list) {
 		if (root == null)
 			return;
 
@@ -37,18 +35,13 @@ class LevelOrderTraversalInSpiralForm {
 			list.add(root.data);
 
 		if (level > 1) {
-			if (ltr) {
-				printGivenLevel(root.left, level - 1, ltr, list);
-				printGivenLevel(root.right, level - 1, ltr, list);
-			} else {
-				printGivenLevel(root.right, level - 1, ltr, list);
-				printGivenLevel(root.left, level - 1, ltr, list);
-			}
+			printGivenLevel(root.left, level - 1, list);
+			printGivenLevel(root.right, level - 1, list);
 		}
 	}
 
-	public static void main(String[] args) {
-		LevelOrderTraversalInSpiralForm tree = new LevelOrderTraversalInSpiralForm();
+	public static void main(String args[]) {
+		LevelOrderDFS tree = new LevelOrderDFS();
 		Node root = new Node(1);
 		root.left = new Node(2);
 		root.right = new Node(3);
@@ -56,8 +49,9 @@ class LevelOrderTraversalInSpiralForm {
 		root.left.right = new Node(6);
 		root.right.left = new Node(5);
 		root.right.right = new Node(4);
-		System.out.println("Spiral order traversal of Binary Tree is ");
-		List<List<Integer>> result = tree.printSpiral(root);
+
+		System.out.println("Level order traversal of binary tree is ");
+		List<List<Integer>> result = tree.levelOrderTraversal(root);
 		System.out.println(result);
 	}
 }

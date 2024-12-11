@@ -5,7 +5,7 @@ import java.util.Stack;
 public class LongestValidParanthesis {
 	public int longestValidParentheses(String s) {
 		Stack<Integer> stack = new Stack<>();
-		stack.push(-1); // Base for valid substring calculation
+		stack.push(-1); // Base index if valid substring starts from 0th index
 		int maxLength = 0;
 
 		for (int i = 0; i < s.length(); i++) {
