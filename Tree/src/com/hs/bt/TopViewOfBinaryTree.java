@@ -8,6 +8,7 @@ import java.util.Queue;
 import java.util.TreeMap;
 
 import com.hs.tree.Node;
+import com.hs.tree.Pair;
 
 // find the vertical order traversal, get the 1st node of each level
 class TopViewOfBinaryTree {

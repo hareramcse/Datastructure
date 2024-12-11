@@ -1,12 +1,10 @@
-package com.hs.bt;
-
-import com.hs.tree.Node;
+package com.hs.tree;
 
 public class Pair {
 	public Node node;
 	public int hd;
 
-	Pair(Node node, int hd) {
+	public Pair(Node node, int hd) {
 		this.node = node;
 		this.hd = hd;
 	}
