@@ -4,14 +4,21 @@ import java.util.Arrays;
 
 public class SortArrayByParity {
 	public int[] sortArrayByParity(int[] nums) {
-		int i = 0, j = 0;
+		int start = 0, end = nums.length - 1;
+		while (start < end) {
+			// Increment start index when we see even number in left
+			while (start < end && nums[start] % 2 == 0)
+				start++;
 
-		while (j < nums.length) {
-			if (nums[j] % 2 == 0) {
-				swap(nums, i, j);
-				i++;
+			// Decrement right index when we see odd number from right
+			while (start < end && nums[end] % 2 == 1)
+				end--;
+
+			if (start < end) {
+				swap(nums, start, end);
+				start++;
+				end--;
 			}
-			j++;
 		}
 		return nums;
 	}

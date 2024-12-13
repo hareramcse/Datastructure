@@ -2,26 +2,27 @@ package com.hs.medium;
 
 public class JumpGame2 {
 	public int jump(int[] nums) {
-        int left = 0;
-        int right = 0;
-        int jump = 0;
+		int start = 0;
+		int end = 0;
+		int jump = 0;
 
-        while (right < nums.length - 1) {
-            int farthest = 0;
-            for (int i = left; i <= right; i++)
-                farthest = Math.max(farthest, i + nums[i]);
+		while (end < nums.length - 1) {
+			int farthest = 0;
+			for (int i = start; i <= end; i++) {
+				farthest = Math.max(farthest, i + nums[i]);
+			}
 
-            left = right + 1;
-            right = farthest;
+			start = end + 1;
+			end = farthest;
 
-            if (left > right)
-                return -1;
+			if (start > end)
+				return -1;
 
-            jump++;
-        }
+			jump++;
+		}
 
-        return jump;
-    }
+		return jump;
+	}
 
 	public static void main(String[] args) {
 		JumpGame2 obj = new JumpGame2();
