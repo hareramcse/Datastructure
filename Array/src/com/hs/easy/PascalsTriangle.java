@@ -15,7 +15,6 @@ public class PascalsTriangle {
         list.add(1);
         triangle.add(list);
 
-        // Build each row
         for (int i = 1; i < numRows; i++) {
             List<Integer> row = new ArrayList<>();
             List<Integer> prevRow = triangle.get(i - 1);

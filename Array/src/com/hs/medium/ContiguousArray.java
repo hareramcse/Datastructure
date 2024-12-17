@@ -18,7 +18,7 @@ public class ContiguousArray {
 
 	private int maxSubArrayLengthOfSumZero(int[] nums, int k) {
 		Map<Integer, Integer> map = new HashMap<>();
-		map.put(0, -1); // to handle cases where the subarray starts at index 0
+		map.put(0, -1); // to handle cases where the sub array starts at index 0
 
 		int sum = 0;
 		int maxLen = 0;

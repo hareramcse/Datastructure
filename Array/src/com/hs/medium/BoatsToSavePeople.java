@@ -8,7 +8,7 @@ public class BoatsToSavePeople {
 		int start = 0;
 		int end = people.length - 1;
 		int boat = 0;
-		while (start <= end) {
+		while (start <= end) { // here = because even if there is only one people left still boat is needed
 			if (people[start] + people[end] <= limit) {
 				start++;
 				end--;

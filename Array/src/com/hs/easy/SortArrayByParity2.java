@@ -4,30 +4,30 @@ import java.util.Arrays;
 
 public class SortArrayByParity2 {
 	public int[] sortArrayByParityII(int[] nums) {
-		int i = 0;
-		int j = 1;
+		int start = 0;
+		int end = 1;
 		int n = nums.length;
 
-		while (i < n && j < n) {
-			while (i < n && nums[i] % 2 == 0) {
-				i += 2;
+		while (start < n && end < n) {
+			while (start < n && nums[end] % 2 == 0) {
+				start += 2;
 			}
 
-			while (j < n && nums[j] % 2 == 1) {
-				j += 2;
+			while (end < n && nums[end] % 2 == 1) {
+				end += 2;
 			}
 
-			if (i < n && j < n) {
-				swap(nums, i, j);
+			if (start < n && end < n) {
+				swap(nums, start, end);
 			}
 		}
 		return nums;
 	}
 
-	private void swap(int[] nums, int i, int j) {
-		int temp = nums[i];
-		nums[i] = nums[j];
-		nums[j] = temp;
+	private void swap(int[] nums, int start, int end) {
+		int temp = nums[start];
+		nums[start] = nums[end];
+		nums[end] = temp;
 	}
 
 	public static void main(String[] args) {

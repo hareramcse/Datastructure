@@ -16,7 +16,7 @@ public class TwoSum2 {
 				end--;
 			}
 		}
-		return null;
+		return new int[] {};
 	}
 
 	public static void main(String[] args) {
