@@ -23,4 +23,11 @@ public class ValidPalindrome {
 		}
 		return true;
 	}
+
+	public static void main(String[] args) {
+		ValidPalindrome obj = new ValidPalindrome();
+		String s = "A man, a plan, a canal: Panama";
+		boolean result = obj.isPalindrome(s);
+		System.out.println(result);
+	}
 }

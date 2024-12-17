@@ -32,4 +32,11 @@ public class MajorityElement {
 			throw new IllegalArgumentException("No majority element");
 		}
 	}
+
+	public static void main(String[] args) {
+		MajorityElement obj = new MajorityElement();
+		int[] nums = { 2, 2, 1, 1, 1, 2, 2 };
+		int result = obj.majorityElement(nums);
+		System.out.println(result);
+	}
 }

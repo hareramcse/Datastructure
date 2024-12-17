@@ -24,4 +24,12 @@ public class SubarraySumsDivisibleByK {
 
 		return count;
 	}
+
+	public static void main(String[] args) {
+		SubarraySumsDivisibleByK obj = new SubarraySumsDivisibleByK();
+		int[] nums = { 4, 5, 0, -2, -3, 1 };
+		int k = 5;
+		int result = obj.subarraysDivByK(nums, k);
+		System.out.println(result);
+	}
 }

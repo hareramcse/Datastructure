@@ -1,5 +1,7 @@
 package com.hs.medium;
 
+import java.util.Arrays;
+
 public class SortColors {
 	public void sortColors(int[] nums) {
 		int left = 0, mid = 0, right = nums.length - 1;
@@ -18,5 +20,12 @@ public class SortColors {
 		int temp = nums[i];
 		nums[i] = nums[j];
 		nums[j] = temp;
+	}
+
+	public static void main(String[] args) {
+		SortColors obj = new SortColors();
+		int[] nums = { 2, 0, 2, 1, 1, 0 };
+		obj.sortColors(nums);
+		System.out.println(Arrays.toString(nums));
 	}
 }

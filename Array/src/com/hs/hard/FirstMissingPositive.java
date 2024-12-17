@@ -24,4 +24,11 @@ public class FirstMissingPositive {
 		// If all numbers are in their correct positions, return n + 1
 		return n + 1;
 	}
+
+	public static void main(String[] args) {
+		FirstMissingPositive obj = new FirstMissingPositive();
+		int[] nums = { 3, 4, -1, 1 };
+		int result = obj.firstMissingPositive(nums);
+		System.out.println(result);
+	}
 }

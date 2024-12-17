@@ -24,4 +24,12 @@ public class GasStation {
 		}
 		return start;
 	}
+
+	public static void main(String[] args) {
+		GasStation obj = new GasStation();
+		int[] gas = { 1, 2, 3, 4, 5 };
+		int[] cost = { 3, 4, 5, 1, 2 };
+		int result = obj.canCompleteCircuit(gas, cost);
+		System.out.println(result);
+	}
 }
