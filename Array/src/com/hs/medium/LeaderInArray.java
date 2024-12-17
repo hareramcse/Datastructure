@@ -3,15 +3,11 @@ package com.hs.medium;
 import java.util.ArrayList;
 import java.util.List;
 
-// An element is leader if it is greater than all the elements to its right side. 
-// And the rightmost element is always a leader.
 public class LeaderInArray {
-
-	private List<Integer> printLeaders(int arr[], int n) {
+	private List<Integer> printLeaders(int[] arr, int n) {
 		int max_from_right = arr[n - 1];
 
 		List<Integer> ans = new ArrayList<>();
-		// Rightmost element is always leader
 		ans.add(max_from_right);
 
 		for (int i = n - 2; i >= 0; i--) {

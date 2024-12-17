@@ -2,18 +2,18 @@ package com.hs.medium;
 
 public class MaximumProductSubArray {
 	public int maxProduct(int[] nums) {
-		int leftMax = 0;
-		int rightMax = 0;
-		int max = nums[0];
+		int prefix = 0;
+		int suffix = 0;
+		int max = Integer.MIN_VALUE;
 
 		for (int i = 0; i < nums.length; i++) {
-			leftMax = leftMax == 0 ? 1 : leftMax;
-			rightMax = rightMax == 0 ? 1 : rightMax;
+			prefix = prefix == 0 ? 1 : prefix;
+			suffix = suffix == 0 ? 1 : suffix;
 
-			leftMax *= nums[i];
-			rightMax *= nums[nums.length - 1 - i];
+			prefix *= nums[i];
+			suffix *= nums[nums.length - 1 - i];
 
-			max = Math.max(max, Math.max(leftMax, rightMax));
+			max = Math.max(max, Math.max(prefix, suffix));
 		}
 		return max;
 	}

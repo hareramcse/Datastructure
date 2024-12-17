@@ -2,36 +2,37 @@ package com.hs.medium;
 
 public class MaximumSumCircularSubarray {
 	public int maxSubarraySumCircular(int[] nums) {
-		int sum = 0;
+		int totalSum = 0;
 		for (int i = 0; i < nums.length; i++) {
-			sum += nums[i];
+			totalSum += nums[i];
 		}
 
-		int kadane = kadane(nums);
+		int kadaneMax = kadane(nums);
 
 		for (int i = 0; i < nums.length; i++) {
 			nums[i] *= -1;
 		}
 
-		int inverseKadane = kadane(nums);
-		if (sum + inverseKadane == 0)
-			return kadane;
-		return Math.max(kadane, sum + inverseKadane);
+		int kadaneMin = kadane(nums);
+		if (totalSum + kadaneMin == 0) // All elements are negative
+			return kadaneMax;
+
+		return Math.max(kadaneMax, totalSum + kadaneMin);
 	}
 
 	private int kadane(int[] nums) {
 		int max = Integer.MIN_VALUE;
-        int sum = 0;
+		int sum = 0;
 
-        for (int num : nums) {
-            sum += num;
-            if (num > sum) {
-                sum = num;
-            }
+		for (int num : nums) {
+			sum += num;
+			if (num > sum) {
+				sum = num;
+			}
 
-            max = Math.max(max, sum);
-        }
-        return max;
+			max = Math.max(max, sum);
+		}
+		return max;
 	}
 
 	public static void main(String[] args) {
