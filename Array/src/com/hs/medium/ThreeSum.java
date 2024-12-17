@@ -6,34 +6,41 @@ import java.util.List;
 
 public class ThreeSum {
 	public List<List<Integer>> threeSum(int[] nums) {
-		List<List<Integer>> ans = new ArrayList<>();
+		List<List<Integer>> result = new ArrayList<>();
 
 		Arrays.sort(nums);
 
 		for (int i = 0; i < nums.length - 2; i++) {
-			if (i == 0 || (i > 0 && nums[i] != nums[i - 1])) {
-				int low = i + 1, high = nums.length - 1, sum = 0 - nums[i];
-				while (low < high) {
-					if (nums[low] + nums[high] == sum) {
-						ans.add(Arrays.asList(nums[i], nums[low], nums[high]));
+			if (i > 0 && nums[i] == nums[i - 1])
+				continue;
 
-						while (low < high && nums[low] == nums[low + 1])
-							low++;
+			int start = i + 1;
+			int end = nums.length - 1;
 
-						while (low < high && nums[high] == nums[high - 1])
-							high--;
+			while (start < end) {
+				int sum = nums[i] + nums[start] + nums[end];
 
-						low++;
-						high--;
-					} else if (nums[low] + nums[high] < sum) {
-						low++;
-					} else {
-						high--;
-					}
+				if (sum == 0) {
+					result.add(List.of(nums[i], nums[start], nums[end]));
+
+					// Skip duplicate values for start and end
+					while (start < end && nums[start] == nums[start + 1])
+						start++;
+
+					while (start < end && nums[end] == nums[end - 1])
+						end--;
+
+					start++;
+					end--;
+				} else if (sum < 0) {
+					start++;
+				} else {
+					end--;
 				}
 			}
 		}
-		return ans;
+
+		return result;
 	}
 
 	public static void main(String[] args) {

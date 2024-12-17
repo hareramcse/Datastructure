@@ -5,18 +5,18 @@ import java.util.Set;
 
 public class ValidSudoku {
 	public static boolean isValidSudoku(char[][] board) {
-		Set<String> seen = new HashSet<>();
+		Set<String> set = new HashSet<>();
 
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
-				char currentVal = board[i][j];
+				char ch = board[i][j];
 
-				if (currentVal == '.')
+				if (ch == '.')
 					continue;
 
 				// Check for row, column, and sub-box uniqueness
-				if (!seen.add(currentVal + " in row " + i) || !seen.add(currentVal + " in column " + j)
-						|| !seen.add(currentVal + " in box " + (i / 3) + "-" + (j / 3))) {
+				if (!set.add(ch + " found in row " + i) || !set.add(ch + " found in column " + j)
+						|| !set.add(ch + " found in box " + (i / 3) + "-" + (j / 3))) {
 					return false; // Duplicate found
 				}
 			}

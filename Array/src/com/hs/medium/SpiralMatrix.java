@@ -5,12 +5,12 @@ import java.util.List;
 
 public class SpiralMatrix {
 	public List<Integer> spiralOrder(int[][] matrix) {
+		List<Integer> list = new ArrayList<>();
+		if (matrix == null || matrix.length == 0)
+			return list;
+
 		int row = matrix.length;
 		int col = matrix[0].length;
-
-		List<Integer> list = new ArrayList<>();
-		if (row == 0)
-			return list;
 
 		int left = 0, right = col - 1, top = 0, bottom = row - 1, dir = 0;
 

@@ -12,7 +12,7 @@ public class SubarraySumEqualsK {
 		int count = 0;
 		int sum = 0;
 		Map<Integer, Integer> map = new HashMap<>();
-		map.put(0, 1);
+		map.put(0, 1); // this condition is for, if a subarray starting at index 0 has a sum equal to k
 
 		for (int num : nums) {
 			sum += num;
