@@ -4,16 +4,15 @@ import java.util.Arrays;
 
 public class RotateArray {
 	public void rotate(int[] nums, int k) {
-		int n = nums.length;
-		if (nums == null || n == 1) {
+		if (nums == null) {
 			return;
 		}
 
+		int n = nums.length;
 		k = k % n;
-		int a = nums.length - k;
-		reverseArray(nums, 0, a - 1);
-		reverseArray(nums, a, n - 1);
 		reverseArray(nums, 0, n - 1);
+		reverseArray(nums, 0, k - 1);
+		reverseArray(nums, k, n - 1);
 	}
 
 	private void reverseArray(int arr[], int start, int end) {

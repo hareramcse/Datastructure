@@ -25,17 +25,16 @@ public class SplitArrayInTwoPartWithEqualSum {
 		for (int i = 0; i < arr.length; i++) {
 			runningSum += arr[i];
 			firstPart.add(arr[i]);
-
 			if (runningSum == targetSum) {
 				for (int j = i + 1; j < arr.length; j++) {
 					secondPart.add(arr[j]);
 				}
-
-				result.add(new ArrayList<>(firstPart));
-				result.add(new ArrayList<>(secondPart));
-				return result;
+				break;
 			}
 		}
+		
+		result.add(firstPart);
+		result.add(secondPart);
 		return result;
 	}
 
