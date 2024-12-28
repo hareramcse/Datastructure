@@ -27,18 +27,19 @@ public class MajorityElement2 {
 
 		// Verifying candidate
 		List<Integer> ansList = new ArrayList<>();
-		int ans1 = 0, ans2 = 0;
+		count1 = 0;
+		count2 = 0;
 		for (int num : nums) {
 			if (candidate1 == num)
-				ans1++;
+				count1++;
 			if (candidate2 == num)
-				ans2++;
+				count2++;
 		}
 
 		// Checking if candidate is majority element
-		if (ans1 > nums.length / 3)
+		if (count1 > nums.length / 3)
 			ansList.add(candidate1);
-		if (ans2 > nums.length / 3)
+		if (count2 > nums.length / 3)
 			ansList.add(candidate2);
 
 		return ansList;
