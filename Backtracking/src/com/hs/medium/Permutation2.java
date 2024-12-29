@@ -8,11 +8,11 @@ public class Permutation2 {
 	public List<List<Integer>> permuteUnique(int[] nums) {
 		List<List<Integer>> result = new ArrayList<>();
 		Arrays.sort(nums);
-		backtrack(result, new ArrayList<>(), nums, new boolean[nums.length]);
+		backtrack(nums, new boolean[nums.length], new ArrayList<>(), result);
 		return result;
 	}
 
-	private void backtrack(List<List<Integer>> result, List<Integer> list, int[] nums, boolean[] visited) {
+	private void backtrack(int[] nums, boolean[] visited, List<Integer> list, List<List<Integer>> result) {
 		if (list.size() == nums.length) {
 			result.add(new ArrayList<>(list));
 			return;
@@ -24,9 +24,9 @@ public class Permutation2 {
 
 			visited[i] = true;
 			list.add(nums[i]);
-			backtrack(result, list, nums, visited);
-			visited[i] = false;
+			backtrack(nums, visited, list, result);
 			list.remove(list.size() - 1);
+			visited[i] = false;
 		}
 	}
 

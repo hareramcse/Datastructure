@@ -6,11 +6,11 @@ import java.util.List;
 public class CombinationSum {
 	public List<List<Integer>> combinationSum(int[] candidates, int target) {
 		List<List<Integer>> result = new ArrayList<>();
-		backtrack(result, new ArrayList<>(), candidates, target, 0);
+		backtrack(0, candidates, target, new ArrayList<>(), result);
 		return result;
 	}
 
-	private void backtrack(List<List<Integer>> result, List<Integer> list, int[] candidates, int target, int start) {
+	private void backtrack(int start, int[] candidates, int target, List<Integer> list, List<List<Integer>> result) {
 		if (target < 0)
 			return;
 
@@ -21,7 +21,7 @@ public class CombinationSum {
 
 		for (int i = start; i < candidates.length; i++) {
 			list.add(candidates[i]);
-			backtrack(result, list, candidates, target - candidates[i], i); // not i + 1 because we can reuse same
+			backtrack(i, candidates, target - candidates[i], list, result); // not i + 1 because we can reuse same
 																			// elements
 			list.remove(list.size() - 1);
 		}

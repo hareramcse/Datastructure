@@ -6,30 +6,25 @@ import java.util.List;
 public class CombinationSum3 {
 	public List<List<Integer>> combinationSum3(int k, int n) {
 		List<List<Integer>> result = new ArrayList<>();
-		backtrack(result, new ArrayList<>(), k, n, 1);
+		backtrack(1, 9, k, n, new ArrayList<>(), result);
 		return result;
 	}
 
-	private void backtrack(List<List<Integer>> result, List<Integer> list, int k, int target, int start) {
+	private void backtrack(int start, int end, int k, int target, List<Integer> list, List<List<Integer>> result) {
 		if (list.size() == k && target == 0) {
 			result.add(new ArrayList<>(list));
 			return;
 		}
 
-		if (list.size() == k || target < 0) {
-			return;
-		}
-
-		for (int i = start; i <= 9; i++) {
+		for (int i = start; i <= end; i++) {
 			list.add(i);
-			backtrack(result, list, k, target - i, i + 1);
+			backtrack(i + 1, end, k, target - i, list, result);
 			list.remove(list.size() - 1);
 		}
 	}
 
 	public static void main(String[] args) {
 		CombinationSum3 obj = new CombinationSum3();
-		System.out.println(obj.combinationSum3(3, 7));
 		System.out.println(obj.combinationSum3(3, 9));
 	}
 }

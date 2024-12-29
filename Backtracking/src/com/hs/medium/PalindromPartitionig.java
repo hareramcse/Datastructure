@@ -6,20 +6,20 @@ import java.util.List;
 public class PalindromPartitionig {
 	public List<List<String>> partition(String s) {
 		List<List<String>> result = new ArrayList<>();
-		backtrack(result, new ArrayList<>(), s, 0);
+		backtrack(0, s, new ArrayList<>(), result);
 		return result;
 	}
 
-	public void backtrack(List<List<String>> result, List<String> list, String s, int start) {
+	public void backtrack(int start, String s, List<String> list, List<List<String>> result) {
 		if (start == s.length()) {
 			result.add(new ArrayList<>(list));
 			return;
 		}
-		
+
 		for (int i = start; i < s.length(); i++) {
 			if (isPalindrome(s, start, i)) {
 				list.add(s.substring(start, i + 1));
-				backtrack(result, list, s, i + 1);
+				backtrack(i + 1, s, list, result);
 				list.remove(list.size() - 1);
 			}
 		}

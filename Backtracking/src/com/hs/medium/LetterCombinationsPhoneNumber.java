@@ -10,11 +10,11 @@ public class LetterCombinationsPhoneNumber {
 			return result;
 
 		String[] key = { "", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz" };
-		backtrack(result, new StringBuilder(), key, digits, 0);
+		backtrack(0, digits, key, new StringBuilder(), result);
 		return result;
 	}
 
-	private void backtrack(List<String> result, StringBuilder sb, String[] key, String digits, int start) {
+	private void backtrack(int start, String digits, String[] key, StringBuilder sb, List<String> result) {
 		if (sb.length() == digits.length()) {
 			result.add(sb.toString());
 			return;
@@ -23,7 +23,7 @@ public class LetterCombinationsPhoneNumber {
 		String curr = key[digits.charAt(start) - '0'];
 		for (int i = 0; i < curr.length(); i++) {
 			sb.append(curr.charAt(i));
-			backtrack(result, sb, key, digits, start + 1);
+			backtrack(start + 1, digits, key, sb, result);
 			sb.deleteCharAt(sb.length() - 1);
 		}
 	}

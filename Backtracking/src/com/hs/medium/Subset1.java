@@ -5,19 +5,19 @@ import java.util.List;
 
 public class Subset1 {
 	public List<List<Integer>> subsets(int[] nums) {
-        List<List<Integer>> result = new ArrayList<>();
-        backtrack(result, new ArrayList<>(), nums, 0);
-        return result;
-    }
+		List<List<Integer>> result = new ArrayList<>();
+		backtrack(0, nums, new ArrayList<>(), result);
+		return result;
+	}
 
-    private void backtrack(List<List<Integer>> result, List<Integer> list, int[] nums, int start) {
-        result.add(new ArrayList<>(list));
-        for (int i = start; i < nums.length; i++) {
-            list.add(nums[i]);
-            backtrack(result, list, nums, i + 1);
-            list.remove(list.size() - 1);
-        }
-    }
+	private void backtrack(int start, int[] nums, List<Integer> list, List<List<Integer>> result) {
+		result.add(new ArrayList<>(list));
+		for (int i = start; i < nums.length; i++) {
+			list.add(nums[i]);
+			backtrack(i + 1, nums, list, result);
+			list.remove(list.size() - 1);
+		}
+	}
 
 	public static void main(String[] args) {
 		Subset1 obj = new Subset1();

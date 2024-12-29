@@ -8,11 +8,11 @@ public class CombinationSum2 {
 	public List<List<Integer>> combinationSum2(int[] candidates, int target) {
 		List<List<Integer>> result = new ArrayList<>();
 		Arrays.sort(candidates);
-		backtrack(result, new ArrayList<>(), candidates, target, 0);
+		backtrack(0, candidates, target, new ArrayList<>(), result);
 		return result;
 	}
 
-	private void backtrack(List<List<Integer>> result, List<Integer> list, int[] candidates, int target, int start) {
+	private void backtrack(int start, int[] candidates, int target, List<Integer> list, List<List<Integer>> result) {
 		if (target < 0)
 			return;
 
@@ -26,7 +26,7 @@ public class CombinationSum2 {
 				continue; // skip duplicates
 
 			list.add(candidates[i]);
-			backtrack(result, list, candidates, target - candidates[i], i + 1);
+			backtrack(i + 1, candidates, target - candidates[i], list, result);
 			list.remove(list.size() - 1);
 		}
 	}
