@@ -46,7 +46,7 @@ public class SetMatrixZeroes {
 
 	public static void main(String[] args) {
 		SetMatrixZeroes obj = new SetMatrixZeroes();
-		int[][] matrix = { { 1, 2, 3 }, { 4, 0, 6 }, { 7, 8, 9 } };
+		int[][] matrix = { { 0, 1, 2, 0 }, { 3, 4, 5, 2 }, { 1, 3, 1, 5 } };
 		obj.setZeroes(matrix);
 		for (int[] mat : matrix) {
 			System.out.println(Arrays.toString(mat));

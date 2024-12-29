@@ -5,33 +5,40 @@ import java.util.Arrays;
 public class NextPermutation {
 	public void nextPermutation(int[] nums) {
 		int n = nums.length;
-		int k = n - 2;
 		if (nums == null || n <= 1)
 			return;
 
-		// find k such that, after kth index all elements are in descending order
-		for (int i = n - 1; i > 0; i--) {
-			if (nums[i] <= nums[i - 1]) // here = is for,if there is any duplicate number
-				k--;
-			else
+		int k = -1; // index from where all elements are in descending order
+		for (int i = n - 2; i >= 0; i--) {
+			if (nums[i] < nums[i + 1]) {
+				k = i;
 				break;
+			}
 		}
 
-		// if k == -1
+		// If k == -1, it means all elements are sorted in descending order.
+		// Reverse the array to get the smallest permutation.
 		if (k == -1) {
 			reverse(nums, 0, n - 1);
 			return;
 		}
 
-		// else replace k with next greater element from right and then reverse
-		for (int i = n - 1; i > 0; i--) {
+		// Replace kth index with the next greater element from the right
+		for (int i = n - 1; i >= 0; i--) {
 			if (nums[i] > nums[k]) {
 				swap(nums, i, k);
 				break;
 			}
 		}
 
+		// Reverse the part of the array to the right of index k
 		reverse(nums, k + 1, n - 1);
+	}
+
+	private void reverse(int[] nums, int left, int right) {
+		while (left < right) {
+			swap(nums, left++, right--);
+		}
 	}
 
 	private void swap(int[] nums, int i, int j) {
@@ -40,14 +47,9 @@ public class NextPermutation {
 		nums[j] = tmp;
 	}
 
-	private void reverse(int[] nums, int i, int j) {
-		while (i < j)
-			swap(nums, i++, j--);
-	}
-
 	public static void main(String[] args) {
 		NextPermutation obj = new NextPermutation();
-		int[] nums = { 1, 2, 3 };
+		int[] nums = { 1, 3, 2 };
 		obj.nextPermutation(nums);
 		System.out.println(Arrays.toString(nums));
 	}
