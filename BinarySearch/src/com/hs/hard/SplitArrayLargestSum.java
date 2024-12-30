@@ -2,25 +2,22 @@ package com.hs.hard;
 
 public class SplitArrayLargestSum {
 	public int splitArray(int[] nums, int m) {
-		int max = 0;
-		int sum = 0;
+		int low = 0;
+		int high = 0;
 
 		for (int num : nums) {
-			sum += num;
-			max = Math.max(max, num);
+			low = Math.max(low, num);
+			high += num;
 		}
 
 		if (m == nums.length) {
-			return max;
+			return low;
 		}
 
-		int low = max;
-		int high = sum;
 		int ans = 0;
-
 		while (low <= high) {
 			int mid = low + (high - low) / 2;
-			if (isPossible(nums, mid, m)) {
+			if (canSplit(nums, m, mid)) {
 				ans = mid;
 				high = mid - 1;
 			} else {
@@ -30,16 +27,28 @@ public class SplitArrayLargestSum {
 		return ans;
 	}
 
-	private boolean isPossible(int[] arr, int mid, int m) {
-		int sa = 1;
-		int sum = 0;
-		for (int i = 0; i < arr.length; i++) {
-			sum += arr[i];
-			if (sum > mid) {
-				sa++;
-				sum = arr[i];
+	private boolean canSplit(int[] nums, int m, int maxSum) {
+		int count = 1; // Number of subarrays
+		int currentSum = 0;
+		for (int num : nums) {
+			if (currentSum + num > maxSum) {
+				count++; // Need a new subarray
+				currentSum = num; // Start the new subarray
+				if (count > m) {
+					return false;
+				}
+			} else {
+				currentSum += num;
 			}
 		}
-		return sa <= m;
+		return true;
+	}
+
+	public static void main(String[] args) {
+		SplitArrayLargestSum obj = new SplitArrayLargestSum();
+		int[] nums = { 7, 2, 5, 10, 8 };
+		int k = 2;
+		int result = obj.splitArray(nums, k);
+		System.out.println(result);
 	}
 }

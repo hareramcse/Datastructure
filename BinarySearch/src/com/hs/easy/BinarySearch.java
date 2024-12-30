@@ -1,7 +1,7 @@
 package com.hs.easy;
 
-public class BinarySearchByIterativeMethod {
-	public int search(int[] arr, int value) {
+public class BinarySearch {
+	public int searchIterative(int[] arr, int value) {
 		int low = 0, high = arr.length - 1;
 		while (low <= high) {
 			int mid = low + (high - low) / 2;
@@ -17,10 +17,25 @@ public class BinarySearchByIterativeMethod {
 		return -1;
 	}
 
+	public int searchRecursive(int[] arr, int low, int high, int value) {
+		if (low > high) {
+			return -1;
+		}
+		
+		int mid = low + (high - low) / 2;
+		if (arr[mid] == value) {
+			return mid;
+		} else if (value < arr[mid]) {
+			return searchRecursive(arr, low, mid - 1, value);
+		} else {
+			return searchRecursive(arr, mid + 1, high, value);
+		}
+	}
+	
 	public static void main(String[] args) {
-		BinarySearchByIterativeMethod obj = new BinarySearchByIterativeMethod();
+		BinarySearch obj = new BinarySearch();
 		int arr[] = { 2, 4, 12, 15, 22, 23, 25, 65 };
-		int index = obj.search(arr, 23);
+		int index = obj.searchIterative(arr, 23);
 		if (index == -1) {
 			System.out.println("value not found");
 		} else {

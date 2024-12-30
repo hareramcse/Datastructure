@@ -4,15 +4,11 @@ public class FindFirstAndLastPositionOfElementInSortedArray {
 	public int[] searchRange(int[] nums, int target) {
 		int firstIndex = countOccurance(nums, target, true);
 		int lastIndex = countOccurance(nums, target, false);
-		int[] res = new int[2];
-		res[0] = firstIndex;
-		res[1] = lastIndex;
-		return res;
+		return new int[] { firstIndex, lastIndex };
 	}
 
 	private int countOccurance(int[] nums, int target, boolean searchFirst) {
-		int length = nums.length;
-		int low = 0, high = length - 1, result = -1;
+		int low = 0, high = nums.length - 1, result = -1;
 		while (low <= high) {
 			int mid = low + (high - low) / 2;
 			if (target == nums[mid]) {
