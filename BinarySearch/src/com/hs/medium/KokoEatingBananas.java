@@ -8,26 +8,27 @@ public class KokoEatingBananas {
 			high = Math.max(high, pile);
 		}
 
+		int result = high;
 		while (low <= high) {
 			int mid = low + (high - low) / 2;
-			int totalHour = findTotalHour(piles, mid, h);
-			if (totalHour <= h) {
+			if (canFinish(piles, h, mid)) {
+				result = mid;
 				high = mid - 1;
 			} else {
 				low = mid + 1;
 			}
 		}
 
-		return low;
+		return result;
 	}
 
-	private int findTotalHour(int[] piles, int mid, int h) {
-		int totalHour = 0;
+	private boolean canFinish(int[] piles, int h, int mid) {
+		int hoursNeeded = 0;
 		for (int i = 0; i < piles.length; i++) {
-			totalHour += Math.ceil((double) piles[i] / mid);
+			hoursNeeded += Math.ceil((double) piles[i] / mid);
 		}
 
-		return totalHour;
+		return hoursNeeded <= h;
 	}
 
 	public static void main(String[] args) {

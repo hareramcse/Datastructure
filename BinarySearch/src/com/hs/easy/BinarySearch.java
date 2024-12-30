@@ -21,9 +21,9 @@ public class BinarySearch {
 		if (low > high) {
 			return -1;
 		}
-		
+
 		int mid = low + (high - low) / 2;
-		if (arr[mid] == value) {
+		if (value == arr[mid]) {
 			return mid;
 		} else if (value < arr[mid]) {
 			return searchRecursive(arr, low, mid - 1, value);
@@ -31,7 +31,7 @@ public class BinarySearch {
 			return searchRecursive(arr, mid + 1, high, value);
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		BinarySearch obj = new BinarySearch();
 		int arr[] = { 2, 4, 12, 15, 22, 23, 25, 65 };

@@ -2,8 +2,7 @@ package com.hs.medium;
 
 public class SearchInRotatedSortedArray2 {
 	public boolean search(int[] nums, int target) {
-		int low = 0;
-		int high = nums.length - 1;
+		int low = 0, high = nums.length - 1;
 		while (low <= high) {
 			int mid = low + (high - low) / 2;
 			if (target == nums[mid])
@@ -15,13 +14,13 @@ public class SearchInRotatedSortedArray2 {
 				continue;
 			}
 
-			if (nums[low] <= nums[mid]) { // it means left part is sorted
+			if (nums[low] <= nums[mid]) { // left part is sorted
 				if (target >= nums[low] && target <= nums[mid]) {
 					high = mid - 1;
 				} else {
 					low = mid + 1;
 				}
-			} else if (nums[mid] <= nums[high]) { // mid to high part is sorted
+			} else { // right part is sorted
 				if (target >= nums[mid] && target <= nums[high]) {
 					low = mid + 1;
 				} else {
@@ -29,6 +28,7 @@ public class SearchInRotatedSortedArray2 {
 				}
 			}
 		}
+
 		return false;
 	}
 

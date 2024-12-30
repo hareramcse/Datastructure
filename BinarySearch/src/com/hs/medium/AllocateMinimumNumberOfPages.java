@@ -13,11 +13,11 @@ public class AllocateMinimumNumberOfPages {
 			low = Math.max(low, page);
 			high += page;
 		}
-		
+
 		int result = high;
 		while (low <= high) {
 			int mid = low + (high - low) / 2;
-			if (isPossible(pages, n, m, mid)) {
+			if (canAllocate(pages, m, mid)) {
 				result = mid;
 				high = mid - 1; // Try for a smaller value
 			} else {
@@ -28,7 +28,7 @@ public class AllocateMinimumNumberOfPages {
 		return result;
 	}
 
-	private boolean isPossible(int[] pages, int n, int m, int maxPages) {
+	private boolean canAllocate(int[] pages, int m, int maxPages) {
 		int studentsRequired = 1;
 		int currentPageSum = 0;
 

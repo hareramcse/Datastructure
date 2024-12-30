@@ -2,18 +2,18 @@ package com.hs.medium;
 
 public class FindFirstAndLastPositionOfElementInSortedArray {
 	public int[] searchRange(int[] nums, int target) {
-		int firstIndex = countOccurance(nums, target, true);
-		int lastIndex = countOccurance(nums, target, false);
+		int firstIndex = search(nums, target, true);
+		int lastIndex = search(nums, target, false);
 		return new int[] { firstIndex, lastIndex };
 	}
 
-	private int countOccurance(int[] nums, int target, boolean searchFirst) {
+	private int search(int[] nums, int target, boolean searchLeft) {
 		int low = 0, high = nums.length - 1, result = -1;
 		while (low <= high) {
 			int mid = low + (high - low) / 2;
 			if (target == nums[mid]) {
 				result = mid;
-				if (searchFirst) {
+				if (searchLeft) {
 					high = mid - 1;
 				} else {
 					low = mid + 1;
@@ -24,6 +24,7 @@ public class FindFirstAndLastPositionOfElementInSortedArray {
 				low = mid + 1;
 			}
 		}
+
 		return result;
 	}
 

@@ -13,4 +13,13 @@ public class SearchA2DMatrix2 {
 		}
 		return false;
 	}
+
+	public static void main(String[] args) {
+		SearchA2DMatrix2 obj = new SearchA2DMatrix2();
+		int[][] matrix = { { 1, 4, 7, 11, 15 }, { 2, 5, 8, 12, 19 }, { 3, 6, 9, 16, 22 }, { 10, 13, 14, 17, 24 },
+				{ 18, 21, 23, 26, 30 } };
+		int target = 5;
+		boolean result = obj.searchMatrix(matrix, target);
+		System.out.println(result);
+	}
 }
