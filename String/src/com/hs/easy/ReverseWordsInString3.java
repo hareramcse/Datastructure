@@ -7,7 +7,7 @@ public class ReverseWordsInString3 {
 		for (int j = 0; j < chars.length; j++) {
 			if (chars[j] == ' ') {
 				reverse(chars, i, j - 1);
-				i = j + 1; // Move i to the next word
+				i = j + 1; // Move i to the starting index of the next word
 			}
 		}
 
@@ -28,7 +28,7 @@ public class ReverseWordsInString3 {
 
 	public static void main(String[] args) {
 		ReverseWordsInString3 obj = new ReverseWordsInString3();
-		String input = "Let's take LeetCode contest";
+		String input = "Let's take online contest";
 		String reverseWords = obj.reverseWords(input);
 		System.out.println(reverseWords);
 	}

@@ -4,20 +4,33 @@ import java.util.Arrays;
 
 public class SetMatrixZeroes {
 	public void setZeroes(int[][] matrix) {
-		boolean firstRow = false;
-		boolean firstCol = false;
+		int rows = matrix.length;
+		int cols = matrix[0].length;
+		boolean firstRowZero = false;
+		boolean firstColZero = false;
 
-		// set markers in first row and first col
-		for (int i = 0; i < matrix.length; i++) {
-			for (int j = 0; j < matrix[0].length; j++) {
+		// Check if the first row has any zeros
+		for (int j = 0; j < cols; j++) {
+			if (matrix[0][j] == 0) {
+				firstRowZero = true;
+				break;
+			}
+		}
+
+		// Check if the first column has any zeros
+		for (int i = 0; i < rows; i++) {
+			if (matrix[i][0] == 0) {
+				firstColZero = true;
+				break;
+			}
+		}
+
+		// Mark zeros in the first row and column
+		for (int i = 1; i < rows; i++) {
+			for (int j = 1; j < cols; j++) {
 				if (matrix[i][j] == 0) {
-					if (i == 0)
-						firstRow = true;
-					if (j == 0)
-						firstCol = true;
-
-					matrix[0][j] = 0;
 					matrix[i][0] = 0;
+					matrix[0][j] = 0;
 				}
 			}
 		}
@@ -31,13 +44,13 @@ public class SetMatrixZeroes {
 		}
 
 		// Last remaining checks
-		if (firstRow) {
+		if (firstRowZero) {
 			for (int j = 0; j < matrix[0].length; j++) {
 				matrix[0][j] = 0;
 			}
 		}
 
-		if (firstCol) {
+		if (firstColZero) {
 			for (int i = 0; i < matrix.length; i++) {
 				matrix[i][0] = 0;
 			}

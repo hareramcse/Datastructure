@@ -15,7 +15,7 @@ public class JumpGame2 {
 			start = end + 1;
 			end = farthest;
 
-			if (start > end)
+			if (start > end) // This means that at some point, we were unable to move beyond a dead-end (0)
 				return -1;
 
 			jump++;

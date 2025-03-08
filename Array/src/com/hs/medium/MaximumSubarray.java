@@ -2,18 +2,14 @@ package com.hs.medium;
 
 public class MaximumSubarray {
 	public int maxSubArray(int[] nums) {
-		int max = Integer.MIN_VALUE;
-        int sum = 0;
+		int sum = nums[0];
+		int max = nums[0];
 
-        for (int num : nums) {
-            sum += num;
-            if (num > sum) {
-                sum = num;
-            }
-
-            max = Math.max(max, sum);
-        }
-        return max;
+		for (int i = 1; i < nums.length; i++) {
+			sum = Math.max(nums[i], sum + nums[i]);
+			max = Math.max(max, sum);
+		}
+		return max;
 	}
 
 	public static void main(String[] args) {
