@@ -17,14 +17,14 @@ public class NextPermutation {
 		}
 
 		// If k == -1, it means all elements are sorted in descending order.
-		// Reverse the array to get the smallest permutation.
+		// Reverse the array to get the next greater permutation.
 		if (k == -1) {
 			reverse(nums, 0, n - 1);
 			return;
 		}
 
-		// Replace kth index with the next greater element from the right
-		for (int i = n - 1; i >= 0; i--) {
+		// Swap kth index with the next greater element than nums[k] from the right
+		for (int i = n - 1; i >= k; i--) {
 			if (nums[i] > nums[k]) {
 				swap(nums, i, k);
 				break;
@@ -49,7 +49,7 @@ public class NextPermutation {
 
 	public static void main(String[] args) {
 		NextPermutation obj = new NextPermutation();
-		int[] nums = { 1, 3, 2 };
+		int[] nums = { 2, 1, 5, 4, 3, 0, 0 };
 		obj.nextPermutation(nums);
 		System.out.println(Arrays.toString(nums));
 	}

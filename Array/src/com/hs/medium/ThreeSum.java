@@ -18,6 +18,8 @@ public class ThreeSum {
 			int end = nums.length - 1;
 
 			while (start < end) {
+				// We find two numbers (nums[start] and nums[end]) such that their sum,
+				// together with nums[i], equals zero
 				int sum = nums[i] + nums[start] + nums[end];
 
 				if (sum == 0) {

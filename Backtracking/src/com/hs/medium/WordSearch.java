@@ -5,7 +5,7 @@ public class WordSearch {
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board[0].length; j++) {
 				if (board[i][j] == word.charAt(0)) {
-					boolean result = dfs(board, i, j, 0, word);
+					boolean result = dfs(0, i, j, board, word);
 					if (result)
 						return true;
 				}
@@ -14,18 +14,28 @@ public class WordSearch {
 		return false;
 	}
 
-	private boolean dfs(char[][] board, int i, int j, int count, String word) {
-		if (count == word.length())
+	private boolean dfs(int start, int row, int col, char[][] board, String word) {
+		if (start == word.length())
 			return true;
-		
-		if (i == -1 || i == board.length || j == -1 || j == board[0].length || board[i][j] != word.charAt(count))
+
+		if (row < 0 || col < 0 || row >= board.length || col >= board[0].length
+				|| board[row][col] != word.charAt(start))
 			return false;
+
+		board[row][col] = '*';
+
+		// Define the possible directions to move in the maze
+		int[][] directions = { { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 } };
+
+		for (int[] direction : directions) {
+			boolean ans = dfs(start + 1, row + direction[0], col + direction[1], board, word);
+			if (ans == true) {
+				return ans; // If the word is found, return true
+			}
+		}
 		
-		char temp = board[i][j];
-		board[i][j] = '*';
-		boolean found = dfs(board, i + 1, j, count + 1, word) || dfs(board, i - 1, j, count + 1, word)
-				|| dfs(board, i, j + 1, count + 1, word) || dfs(board, i, j - 1, count + 1, word);
-		board[i][j] = temp;
-		return found;
+		// Backtrack: Restore the original character in the maze
+		board[row][col] = word.charAt(start);
+		return false;
 	}
 }

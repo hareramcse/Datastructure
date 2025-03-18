@@ -22,7 +22,7 @@ public class ProductOfArrayExceptSelf {
 
 	public static void main(String[] args) {
 		ProductOfArrayExceptSelf obj = new ProductOfArrayExceptSelf();
-		int[] nums = { 2, 3, 4, 5 };
+		int[] nums = { 2, 3, 4, 5, 6 };
 		int[] result = obj.productExceptSelf(nums);
 		System.out.println(Arrays.toString(result));
 	}

@@ -6,15 +6,17 @@ public class ValidPalindrome {
 		int end = s.length() - 1;
 		while (start < end) {
 			Character leftChar = s.charAt(start);
-			Character rightChar = s.charAt(end);
 			if (!Character.isLetterOrDigit(leftChar)) {
 				start++;
 				continue;
 			}
+			
+			Character rightChar = s.charAt(end);
 			if (!Character.isLetterOrDigit(rightChar)) {
 				end--;
 				continue;
 			}
+			
 			if (Character.toLowerCase(leftChar) != Character.toLowerCase(rightChar)) {
 				return false;
 			}

@@ -10,7 +10,7 @@ public class PalindromPartitionig {
 		return result;
 	}
 
-	public void backtrack(int start, String s, List<String> list, List<List<String>> result) {
+	private void backtrack(int start, String s, List<String> list, List<List<String>> result) {
 		if (start == s.length()) {
 			result.add(new ArrayList<>(list));
 			return;

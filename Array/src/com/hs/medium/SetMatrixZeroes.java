@@ -35,9 +35,9 @@ public class SetMatrixZeroes {
 			}
 		}
 
-		// replace inner matrix
-		for (int i = 1; i < matrix.length; i++) {
-			for (int j = 1; j < matrix[0].length; j++) {
+		// replace inner matrix based on first row and first col values
+		for (int i = 1; i < rows; i++) {
+			for (int j = 1; j < cols; j++) {
 				if (matrix[0][j] == 0 || matrix[i][0] == 0)
 					matrix[i][j] = 0;
 			}
@@ -45,13 +45,13 @@ public class SetMatrixZeroes {
 
 		// Last remaining checks
 		if (firstRowZero) {
-			for (int j = 0; j < matrix[0].length; j++) {
+			for (int j = 0; j < cols; j++) {
 				matrix[0][j] = 0;
 			}
 		}
 
 		if (firstColZero) {
-			for (int i = 0; i < matrix.length; i++) {
+			for (int i = 0; i < cols; i++) {
 				matrix[i][0] = 0;
 			}
 		}
@@ -59,7 +59,7 @@ public class SetMatrixZeroes {
 
 	public static void main(String[] args) {
 		SetMatrixZeroes obj = new SetMatrixZeroes();
-		int[][] matrix = { { 0, 1, 2, 0 }, { 3, 4, 5, 2 }, { 1, 3, 1, 5 } };
+		int[][] matrix = { { 0, 1, 2, 0 }, { 3, 4, 0, 2 }, { 1, 3, 1, 5 }, { 8, 7, 6, 9 } };
 		obj.setZeroes(matrix);
 		for (int[] mat : matrix) {
 			System.out.println(Arrays.toString(mat));
