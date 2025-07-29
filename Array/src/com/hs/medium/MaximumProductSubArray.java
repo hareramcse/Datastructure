@@ -7,8 +7,11 @@ public class MaximumProductSubArray {
 		int max = Integer.MIN_VALUE;
 
 		for (int i = 0; i < nums.length; i++) {
-			prefix = prefix == 0 ? 1 : prefix;
-			suffix = suffix == 0 ? 1 : suffix;
+			if (prefix == 0)
+				prefix = 1;
+
+			if (suffix == 0)
+				suffix = 1;
 
 			prefix *= nums[i];
 			suffix *= nums[nums.length - 1 - i];

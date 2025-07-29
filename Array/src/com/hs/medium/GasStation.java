@@ -3,11 +3,16 @@ package com.hs.medium;
 public class GasStation {
 	public int canCompleteCircuit(int[] gas, int[] cost) {
 		int totalGas = 0, totalCost = 0;
-		int currentGas = 0, startIndex = 0;
-
 		for (int i = 0; i < gas.length; i++) {
 			totalGas += gas[i];
 			totalCost += cost[i];
+		}
+
+		if (totalGas < totalCost)
+			return -1;
+
+		int currentGas = 0, startIndex = 0;
+		for (int i = 0; i < gas.length; i++) {
 			currentGas += gas[i] - cost[i];
 
 			// If we run out of gas, reset the starting point
@@ -17,8 +22,7 @@ public class GasStation {
 			}
 		}
 
-		// Check if the total gas is sufficient
-		return totalGas >= totalCost ? startIndex : -1;
+		return startIndex;
 	}
 
 	public static void main(String[] args) {

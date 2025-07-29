@@ -1,30 +1,32 @@
 package com.hs.easy;
 
+/*
+ *  We use two pointers:
+	slow moves one step at a time, fast moves two steps at a time.
+	If there’s a cycle, slow and fast will eventually meet. If fast becomes 1, then no cycle → happy number.
+ * */
 public class HappyNumber {
 	public boolean isHappy(int n) {
 		int slow = n;
-		int fast = n;
+		int fast = getNext(n);
 
-		// while loop is not used here because initially slow and
-		// fast pointer will be equal only, so the loop won't run.
-		do {
-			slow = square(slow);
-			fast = square(square(fast));
-		} while (slow != fast);
-
-		// if a cycle exists, then the number is not a happy number and slow will have a
-		// value other than 1
-		return slow == 1;
-	}
-
-	private int square(int n) {
-		int result = 0;
-		while (n > 0) {
-			int remainder = n % 10;
-			result += remainder * remainder;
-			n = n / 10;
+		while (fast != 1 && slow != fast) {
+			slow = getNext(slow);
+			fast = getNext(getNext(fast));
 		}
-		return result;
+
+		// If fast reached 1, number is happy
+		return fast == 1;
+	}
+	
+	private int getNext(int n) {
+		int totalSum = 0;
+		while (n > 0) {
+			int digit = n % 10;
+			totalSum += digit * digit;
+			n /= 10;
+		}
+		return totalSum;
 	}
 
 	public static void main(String[] args) {
