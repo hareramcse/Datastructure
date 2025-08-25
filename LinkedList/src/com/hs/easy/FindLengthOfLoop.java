@@ -4,25 +4,24 @@ class FindLengthOfLoop {
 	public int countListNodesInLoop(ListNode head) {
 		ListNode slow = head;
 		ListNode fast = head;
-
-		boolean loopExist = false;
 		while (fast != null && fast.next != null) {
 			slow = slow.next;
 			fast = fast.next.next;
 			if (slow == fast) {
-				loopExist = true;
-				break;
+				return countLoopLength(slow);
 			}
 		}
 
-		int count = 0;
-		if (loopExist) {
-			count = 1;
-			ListNode temp = slow;
-			while (temp.next != slow) {
-				count++;
-				temp = temp.next;
-			}
+		return 0;
+	}
+
+	private int countLoopLength(ListNode slow) {
+		int count = 1;
+		ListNode temp = slow;
+
+		while (temp.next != slow) {
+			count++;
+			temp = temp.next;
 		}
 		return count;
 	}

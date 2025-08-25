@@ -5,7 +5,7 @@ public class MedianOfTwoSortedArrays {
 		int n = nums1.length;
 		int m = nums2.length;
 
-		// Ensure nums1 is the smaller array
+		// Ensure nums1 is the smaller array, because it will reduce time complexity
 		if (n > m) {
 			return findMedianSortedArrays(nums2, nums1);
 		}

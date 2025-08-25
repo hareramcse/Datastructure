@@ -15,20 +15,20 @@ public class RemoveCycleInLinkedList {
 			}
 		}
 
-		// If loop exists
-		if (loopExist) {
-			slow = head;
-			ListNode temp = null;
-			while (slow != fast) {
-				temp = fast;
-				slow = slow.next;
-				fast = fast.next;
-			}
+		if (!loopExist)
+			return;
 
-			// here slow and fast pointer will point to start node of the loop
-			// so we need just previous node of the starting loop
-			temp.next = null; // remove loop
+		slow = head;
+		ListNode temp = null;
+		while (slow != fast) {
+			temp = fast;
+			slow = slow.next;
+			fast = fast.next;
 		}
+
+		// here slow and fast pointer will point to start node of the loop
+		// so we need just previous node of the starting loop
+		temp.next = null; // remove loop
 	}
 
 	public static void main(String[] args) {

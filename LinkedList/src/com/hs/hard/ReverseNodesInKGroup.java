@@ -13,19 +13,28 @@ public class ReverseNodesInKGroup {
 		}
 
 		if (count == k) {
-			current = head;
-			ListNode prev = null;
-			for (int i = 0; i < k; i++) {
-				ListNode next = current.next;
-				current.next = prev;
-				prev = current;
-				current = next;
-			}
+			// reverse first k nodes
+			ListNode newHead = reverseKNodes(head, k);
 
+			// 'head' is now the tail of this reversed segment
 			head.next = reverseKGroup(current, k);
-			return prev;
+			return newHead;
 		}
 		return head;
+	}
+
+	private ListNode reverseKNodes(ListNode head, int k) {
+		ListNode newHead = null;
+		while (k > 0 && head != null) {
+			ListNode nextNode = head.next;
+			head.next = newHead;
+			newHead = head;
+			head = nextNode;
+			k--;
+		}
+
+		// return new head after reversing k nodes
+		return newHead;
 	}
 
 	public static void main(String[] args) {
