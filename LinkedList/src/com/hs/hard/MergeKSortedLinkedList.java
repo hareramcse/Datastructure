@@ -21,10 +21,10 @@ public class MergeKSortedLinkedList {
 		ListNode left = mergeKListsHelper(lists, start, mid);
 		ListNode right = mergeKListsHelper(lists, mid + 1, end);
 
-		return mergeTwoLists(left, right);
+		return merge(left, right);
 	}
 
-	private ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+	private ListNode merge(ListNode list1, ListNode list2) {
 		if (list1 == null)
 			return list2;
 
@@ -32,10 +32,10 @@ public class MergeKSortedLinkedList {
 			return list1;
 
 		if (list1.val < list2.val) {
-			list1.next = mergeTwoLists(list1.next, list2);
+			list1.next = merge(list1.next, list2);
 			return list1;
 		} else {
-			list2.next = mergeTwoLists(list1, list2.next);
+			list2.next = merge(list1, list2.next);
 			return list2;
 		}
 	}

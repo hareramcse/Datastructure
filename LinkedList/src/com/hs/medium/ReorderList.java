@@ -20,11 +20,14 @@ public class ReorderList {
 
 	private void merge(ListNode l1, ListNode l2) {
 		while (l1 != null && l2 != null) {
-			ListNode next = l1.next;
-			l1.next = l2;
-			l1 = l2;
-			l2 = next;
-		}
+	        ListNode l1Next = l1.next;
+	        ListNode l2Next = l2.next;
+
+	        l1.next = l2;           // attach node from l2
+	        l2.next = l1Next;       // attach next from l1
+	        l1 = l1Next;            // move forward in l1
+	        l2 = l2Next;            // move forward in l2
+	    }
 	}
 
 	public static void main(String[] args) {
