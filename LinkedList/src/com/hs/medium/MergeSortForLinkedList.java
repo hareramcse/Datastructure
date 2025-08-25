@@ -43,6 +43,7 @@ public class MergeSortForLinkedList {
 		return slow; // slow will point to the first middle node in an even-length list
 	}
 
+	// merge two sorted list
 	private ListNode merge(ListNode head1, ListNode head2) {
 		if (head1 == null)
 			return head2;
