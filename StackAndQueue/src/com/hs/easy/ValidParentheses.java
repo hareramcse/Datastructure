@@ -9,13 +9,11 @@ public class ValidParentheses {
 			if (ch == '(' || ch == '[' || ch == '{')
 				stack.push(ch);
 			else {
-				if (stack.isEmpty()) {
+				if (stack.isEmpty())
 					return false;
-				}
+
 				char c = stack.pop();
-				if ((ch == ')' && c == '(') || (ch == ']' && c == '[') || (ch == '}' && c == '{'))
-					continue;
-				else
+				if ((ch == ')' && c != '(') || (ch == ']' && c != '[') || (ch == '}' && c != '{'))
 					return false;
 			}
 		}

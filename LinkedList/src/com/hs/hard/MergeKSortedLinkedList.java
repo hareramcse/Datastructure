@@ -3,6 +3,7 @@ package com.hs.hard;
 import com.hs.easy.LinkedListUtil;
 import com.hs.easy.ListNode;
 
+// we can use priorityQ as well, we should use pq if list size is huge
 public class MergeKSortedLinkedList {
 	public ListNode mergeKLists(ListNode[] lists) {
 		if (lists == null || lists.length == 0) {

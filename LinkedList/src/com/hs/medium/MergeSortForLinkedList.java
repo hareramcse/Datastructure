@@ -33,10 +33,10 @@ public class MergeSortForLinkedList {
 			return head;
 
 		ListNode slow = head;
-		ListNode fast = head;
+		ListNode fast = head.next;
 
 		// Move fast by two steps and slow by one step
-		while (fast.next != null && fast.next.next != null) {
+		while (fast != null && fast.next != null) {
 			slow = slow.next;
 			fast = fast.next.next;
 		}

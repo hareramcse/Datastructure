@@ -3,48 +3,31 @@ package com.hs.medium;
 import java.util.Stack;
 
 public class MinStack {
-	Stack<Long> stack = new Stack<Long>();
-	Long minEle;
+	private Stack<int[]> stack;
 
 	public MinStack() {
-		minEle = Long.MAX_VALUE;
+		stack = new Stack<int[]>();
 	}
 
-	public void push(int value) {
-		Long val = Long.valueOf(value);
+	public void push(int val) {
 		if (stack.isEmpty()) {
-			minEle = val;
-			stack.push(val);
+			stack.push(new int[] { val, val }); // (value, minSoFar)
 		} else {
-			if (val < minEle) {
-				stack.push(2 * val - minEle);
-				minEle = val;
-			} else {
-				stack.push(val);
-			}
+			int currentMin = stack.peek()[1];
+			stack.push(new int[] { val, Math.min(val, currentMin) });
 		}
 	}
 
 	public void pop() {
-		if (stack.isEmpty())
-			return;
-
-		Long val = stack.pop();
-		if (val < minEle) {
-			minEle = 2 * minEle - val;
-		}
+		stack.pop();
 	}
 
 	public int top() {
-		Long val = stack.peek();
-		if (val < minEle) {
-			return minEle.intValue();
-		}
-		return val.intValue();
+		return stack.peek()[0];
 	}
 
 	public int getMin() {
-		return minEle.intValue();
+		return stack.peek()[1];
 	}
 
 	public static void main(String[] args) {

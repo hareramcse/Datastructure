@@ -4,7 +4,7 @@ public class ImplementQueueUsingArray {
 	int front;
 	int rear;
 	int size;
-	int queue[];
+	int[] queue;
 
 	public ImplementQueueUsingArray(int size) {
 		this.front = -1;

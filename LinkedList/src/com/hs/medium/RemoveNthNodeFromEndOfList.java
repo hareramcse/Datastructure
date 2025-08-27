@@ -2,7 +2,6 @@ package com.hs.medium;
 
 import com.hs.easy.ListNode;
 
-// TC O(N), SC O(1)
 public class RemoveNthNodeFromEndOfList {
 	public ListNode removeNthFromEnd(ListNode head, int n) {
 		ListNode dummy = new ListNode();
@@ -22,7 +21,7 @@ public class RemoveNthNodeFromEndOfList {
 
 		slow.next = slow.next.next;
 		return dummy.next;
-    }
+	}
 
 	public static void main(String[] args) {
 		RemoveNthNodeFromEndOfList list = new RemoveNthNodeFromEndOfList();
