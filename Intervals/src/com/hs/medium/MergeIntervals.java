@@ -13,20 +13,22 @@ public class MergeIntervals {
 
 		Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
 
-		int start = intervals[0][0];
-		int end = intervals[0][1];
+		int[] current = intervals[0];
+		result.add(current);
 
-		for (int i = 1; i < intervals.length; i++) {
-			if (intervals[i][0] <= end) {
-				end = Math.max(end, intervals[i][1]);
+		// Step 2: process each interval
+		for (int[] interval : intervals) {
+			if (interval[0] <= current[1]) {
+				// overlap → merge
+				current[1] = Math.max(current[1], interval[1]);
 			} else {
-				result.add(new int[] { start, end });
-				start = intervals[i][0];
-				end = intervals[i][1];
+				// no overlap → move to next interval
+				current = interval;
+				result.add(current);
 			}
 		}
-		result.add(new int[] { start, end });
-		return result.toArray(new int[0][]);
+
+		return result.toArray(new int[result.size()][]);
 	}
 
 	public static void main(String[] args) {
