@@ -11,7 +11,7 @@ public class AsteroidCollision {
 				stack.push(asteroid);
 			} else {
 				while (!stack.isEmpty() && stack.peek() > 0 && Math.abs(asteroid) > stack.peek()) {
-					stack.pop(); // // right asteroid destroyed, continue checking
+					stack.pop(); // right asteroid destroyed, continue checking
 				}
 
 				// if asteroid is moving in same direction then it will never collide
