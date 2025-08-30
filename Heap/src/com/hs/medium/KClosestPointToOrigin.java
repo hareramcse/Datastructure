@@ -6,6 +6,7 @@ import java.util.Queue;
 
 public class KClosestPointToOrigin {
 	public int[][] kClosest(int[][] points, int k) {
+		// If b is farther, it returns a positive value, meaning b should come before a.
 		Queue<int[]> maxHeap = new PriorityQueue<>(
 				(a, b) -> Integer.compare((b[0] * b[0] + b[1] * b[1]), (a[0] * a[0] + a[1] * a[1])));
 

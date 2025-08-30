@@ -4,12 +4,12 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 
 public class ConectNRopesWithMinimumCost {
-
 	private int minCost(int[] arr) {
 		Queue<Integer> minHeap = new PriorityQueue<>();
 		for (int i = 0; i < arr.length; i++) {
 			minHeap.add(arr[i]);
 		}
+		
 		int res = 0;
 		while (minHeap.size() > 1) {
 			// Extract shortest two ropes from pq

@@ -13,7 +13,7 @@ public class LastStoneWeight {
 		while (maxHeap.size() > 1) {
 			int x = maxHeap.poll();
 			int y = maxHeap.poll();
-			if (y <= x) {
+			if (x >= y) {
 				maxHeap.add(x - y);
 			}
 		}

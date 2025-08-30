@@ -8,6 +8,8 @@ import java.util.Queue;
 
 public class FindKClosestElements {
 	public List<Integer> findClosestElements(int[] arr, int k, int x) {
+		// Larger distance comes first, farthest element is at the root of the heap.
+		// If distances are equal larger number comes first.
 		Queue<int[]> maxHeap = new PriorityQueue<>((a, b) -> ((b[1] == a[1]) ? (b[0] - a[0]) : (b[1] - a[1])));
 		for (int num : arr) {
 			maxHeap.add(new int[] { num, Math.abs(num - x) });
