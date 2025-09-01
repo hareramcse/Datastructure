@@ -7,18 +7,18 @@ public class NonOverlappingIntervals {
 		if (intervals == null || intervals.length == 0)
 			return 0;
 
-		Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
+		Arrays.sort(intervals, (a, b) -> a[1] - b[1]);
 
 		int result = 0;
-		int currentEnd = intervals[0][1];
+		int previousEnd = intervals[0][1];
 
-		for (int i = 1; i < intervals.length; i++)
-			if (intervals[i][0] >= currentEnd)
-				currentEnd = intervals[i][1];
-			else {
-				currentEnd = Math.min(currentEnd, intervals[i][1]);
+		for (int i = 1; i < intervals.length; i++) {
+			if (previousEnd > intervals[i][0]) {
 				result++;
+			} else {
+				previousEnd = intervals[i][1];
 			}
+		}
 
 		return result;
 	}
