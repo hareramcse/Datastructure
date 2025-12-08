@@ -3,7 +3,7 @@ package com.hs.sorting;
 import java.util.Arrays;
 
 public class MergeSort {
-	private void partitionAndMerge(int arr[]) {
+	private void partitionAndMerge(int[] arr) {
 		int length = arr.length;
 		int midLength = arr.length / 2;
 		if (length <= 1) {
@@ -54,7 +54,7 @@ public class MergeSort {
 	}
 
 	public static void main(String[] args) {
-		int arr[] = { 6, 7, 5, 4, 3, 2 };
+		int[] arr = { 6, 7, 5, 4, 3, 2 };
 		MergeSort mergeSort = new MergeSort();
 		System.out.println("data Before sorting " + Arrays.toString(arr));
 		mergeSort.partitionAndMerge(arr);

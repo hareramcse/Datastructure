@@ -3,7 +3,7 @@ package com.hs.sorting;
 import java.util.Arrays;
 
 public class InsertionSort {
-	private void sort(int arr[]) {
+	private void sort(int[] arr) {
 		for (int i = 1; i < arr.length; i++) {
 			int value = arr[i];
 			int k = i;
@@ -17,7 +17,7 @@ public class InsertionSort {
 	}
 
 	public static void main(String[] args) {
-		int arr[] = { 32, 24, 13, 21 };
+		int[] arr = { 32, 24, 13, 21 };
 		InsertionSort insertionSort = new InsertionSort();
 		System.out.println("data Before sorting " + Arrays.toString(arr));
 		insertionSort.sort(arr);

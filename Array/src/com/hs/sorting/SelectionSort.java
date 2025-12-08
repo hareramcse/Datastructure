@@ -3,7 +3,7 @@ package com.hs.sorting;
 import java.util.Arrays;
 
 public class SelectionSort {
-	public void sort(int arr[]) {
+	public void sort(int[] arr) {
 		for (int i = 0; i < arr.length - 1; i++) {// last element is already sorted so till n-1
 			int minIndex = i; // first lets assume 0th index value is the minimum value in the array
 								// it compares like 0th to 1st, 0th to 2nd, 0th to 3rd and so on
@@ -21,7 +21,7 @@ public class SelectionSort {
 	}
 
 	public static void main(String[] args) {
-		int arr[] = { 32, 24, 13, 21 };
+		int[] arr = { 32, 24, 13, 21 };
 		SelectionSort selectionSort = new SelectionSort();
 		System.out.println("data Before sorting " + Arrays.toString(arr));
 		selectionSort.sort(arr);
