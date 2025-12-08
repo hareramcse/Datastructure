@@ -5,7 +5,7 @@ public class CelebrityProblem {
 		int candidate = 0;
 		for (int i = 1; i < n; i++) {
 			if (arr[candidate][i] == 1) {
-				candidate = i; // Candidate knows i, so candidate cannot be celebrity
+				candidate = i; // Candidate knows i, so candidate cannot be celebrity, replace candidate
 			}
 		}
 
@@ -25,7 +25,7 @@ public class CelebrityProblem {
 		CelebrityProblem obj = new CelebrityProblem();
 		int N = 4;
 
-		int MATRIX[][] = { { 0, 0, 1, 0 }, { 0, 0, 1, 0 }, { 0, 0, 0, 0 }, { 0, 0, 1, 0 } };
+		int[][] MATRIX = { { 0, 0, 1, 0 }, { 0, 0, 1, 0 }, { 0, 0, 0, 0 }, { 0, 0, 1, 0 } };
 		int id = obj.getId(MATRIX, N);
 		System.out.println(id);
 	}
