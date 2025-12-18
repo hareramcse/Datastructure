@@ -3,7 +3,6 @@ package com.hs.bt;
 import com.hs.tree.Node;
 
 // this is also called as longest distance from any 2 nodes.
-// diameter of a tree is maximum value of (left_height + right_height) for each node + 1
 class DiameterOfBinaryTree {
 	public int diameterOfBinaryTree(Node root) {
 		int[] diameter = new int[1];

@@ -4,10 +4,10 @@ import com.hs.tree.Node;
 
 class CheckBinaryTreeIsSumTree {
 	public boolean isSumTree(Node root) {
-		return sum(root) != -1;
+		return checkAndSum(root) != -1;
 	}
 
-	private int sum(Node node) {
+	private int checkAndSum(Node node) {
 		// Empty tree
 		if (node == null)
 			return 0;
@@ -16,11 +16,11 @@ class CheckBinaryTreeIsSumTree {
 		if (node.left == null && node.right == null)
 			return node.data;
 
-		int leftSum = sum(node.left);
+		int leftSum = checkAndSum(node.left);
 		if (leftSum == -1)
 			return -1;
 
-		int rightSum = sum(node.right);
+		int rightSum = checkAndSum(node.right);
 		if (rightSum == -1)
 			return -1;
 

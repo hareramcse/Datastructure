@@ -10,8 +10,7 @@ import java.util.TreeMap;
 import com.hs.tree.Node;
 import com.hs.tree.Pair;
 
-//find the vertical order traversal
-//get the last node of each level
+// find the vertical order traversal and get the last node of each level
 public class BottomViewOfBinaryTree {
 	public List<Integer> printBottomView(Node root) {
 		Map<Integer, List<Integer>> map = new TreeMap<>();
@@ -36,7 +35,7 @@ public class BottomViewOfBinaryTree {
 			if (list == null) {
 				list = new ArrayList<>();
 			}
-			
+
 			list.add(curr.node.data);
 			map.put(hd, list);
 

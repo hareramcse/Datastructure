@@ -2,13 +2,8 @@ package com.hs.bt;
 
 import com.hs.tree.Node;
 
-/*
-A binary tree is perfect if:
-
-1) All internal nodes have exactly two children
-2) All leaf nodes are at the same depth (same level). */
-//Time Complexity: O(n) where n = number of nodes
-//Space Complexity: O(h) where h = height of tree.
+// Time Complexity: O(n) where n = number of nodes
+// Space Complexity: O(h) where h = height of tree.
 class CheckIfBinaryTreeIsPerfect {
 	public boolean isPerfect(Node root) {
 		int depth = findDepth(root);
@@ -32,7 +27,7 @@ class CheckIfBinaryTreeIsPerfect {
 		if (root.left == null && root.right == null)
 			return depth == level + 1;
 
-		// Internal node must have two children
+		// internal node must have two children
 		if (root.left == null || root.right == null)
 			return false;
 
