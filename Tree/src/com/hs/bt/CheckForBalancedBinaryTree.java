@@ -2,6 +2,8 @@ package com.hs.bt;
 
 import com.hs.tree.Node;
 
+//Time Complexity: O(n) where n = number of nodes
+//Space Complexity: O(h) where h = height of tree.
 // balanced binary tree is a tree which left height and right height difference is not more than 1
 public class CheckForBalancedBinaryTree {
 	public boolean isBalanced(Node root) {

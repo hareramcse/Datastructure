@@ -15,7 +15,7 @@ class TopViewOfBinaryTree {
 	public List<Integer> topView(Node root) {
 		Map<Integer, List<Integer>> map = new TreeMap<>();
 		Pair pair = new Pair(root, 0);
-		map = verticalTraversalUtil(root, map, pair);
+		map = verticalTraversal(map, pair);
 		List<Integer> result = new ArrayList<>();
 		for (Integer key : map.keySet()) {
 			List<Integer> list = map.get(key);
@@ -24,7 +24,7 @@ class TopViewOfBinaryTree {
 		return result;
 	}
 
-	public Map<Integer, List<Integer>> verticalTraversalUtil(Node root, Map<Integer, List<Integer>> map, Pair pair) {
+	private Map<Integer, List<Integer>> verticalTraversal(Map<Integer, List<Integer>> map, Pair pair) {
 		Queue<Pair> queue = new LinkedList<>();
 		queue.add(pair);
 		while (!queue.isEmpty()) {
@@ -34,10 +34,9 @@ class TopViewOfBinaryTree {
 			List<Integer> list = map.get(hd);
 			if (list == null) {
 				list = new ArrayList<>();
-				list.add(curr.node.data);
-			} else {
-				list.add(curr.node.data);
 			}
+
+			list.add(curr.node.data);
 			map.put(hd, list);
 
 			if (curr.node.left != null) {

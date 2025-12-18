@@ -12,11 +12,11 @@ public class PrintRootToNodePath {
 		}
 		
 		List<Integer> result = new ArrayList<>();
-		printRootToNodeUtil(root, target, result);
+		backtrack(root, target, result);
 		return result;
 	}
 
-	private boolean printRootToNodeUtil(Node root, int target, List<Integer> result) {
+	private boolean backtrack(Node root, int target, List<Integer> result) {
 		if (root == null)
 			return false;
 
@@ -25,8 +25,8 @@ public class PrintRootToNodePath {
 			return true;
 		}
 
-		boolean left = printRootToNodeUtil(root.left, target, result);
-		boolean right = printRootToNodeUtil(root.right, target, result);
+		boolean left = backtrack(root.left, target, result);
+		boolean right = backtrack(root.right, target, result);
 		if (left || right) {
 			return true;
 		}

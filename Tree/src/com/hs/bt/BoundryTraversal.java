@@ -5,14 +5,15 @@ import java.util.List;
 
 import com.hs.tree.Node;
 
+//Time Complexity: O(n) where n = number of nodes
+//Space Complexity: O(h) where h = height of tree.
 class BoundryTraversal {
 	public List<Integer> printBoundary(Node root) {
 		List<Integer> result = new ArrayList<>();
-		if (root == null) {
+		if (root == null)
 			return result;
-		}
 
-		// if there is only node in the BT
+		// if there is only one node in the BT
 		if (root.left == null && root.right == null) {
 			result.add(root.data);
 			return result;
@@ -35,7 +36,7 @@ class BoundryTraversal {
 	private void leftBoundary(Node root, List<Integer> result) {
 		if (root == null)
 			return;
-		
+
 		if (root.left == null && root.right == null) {
 			return;
 		}
@@ -43,9 +44,7 @@ class BoundryTraversal {
 		result.add(root.data);
 		if (root.left != null) {
 			leftBoundary(root.left, result);
-		} 
-		
-		if (root.right != null) {
+		} else {
 			leftBoundary(root.right, result);
 		}
 	}
@@ -67,18 +66,17 @@ class BoundryTraversal {
 	private void rightBoundary(Node root, List<Integer> result) {
 		if (root == null)
 			return;
-		
+
 		if (root.left == null && root.right == null) {
 			return;
 		}
 
 		if (root.right != null) {
 			rightBoundary(root.right, result);
-		} 
-		
-		if (root.left != null) {
+		} else {
 			rightBoundary(root.left, result);
 		}
+
 		result.add(root.data);
 	}
 

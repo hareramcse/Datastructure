@@ -2,35 +2,34 @@ package com.hs.bt;
 
 import com.hs.tree.Node;
 
-/*1) If the node is a leaf node then the sum of the subtree rooted with this node is 
- * equal to the value of this node. 
-2) If the node is not a leaf node then the sum of the subtree rooted with this node is 
-twice the value of this node (Assuming that the tree rooted with this node is SumTree).*/
-// O(n)
 class CheckBinaryTreeIsSumTree {
 	public boolean isSumTree(Node root) {
-		int result = isSumTreeUtil(root);
-		if (result != Integer.MIN_VALUE)
-			return true;
-		return false;
+		return sum(root) != -1;
 	}
 
-	private int isSumTreeUtil(Node root) {
-		if (root == null)
+	private int sum(Node node) {
+		// Empty tree
+		if (node == null)
 			return 0;
 
-		if (root.left == null && root.right == null) {
-			return root.data;
-		}
+		// Leaf node
+		if (node.left == null && node.right == null)
+			return node.data;
 
-		int left = isSumTreeUtil(root.left);
-		int right = isSumTreeUtil(root.right);
+		int leftSum = sum(node.left);
+		if (leftSum == -1)
+			return -1;
 
-		if (left != Integer.MIN_VALUE && right != Integer.MIN_VALUE & root.data == left + right) {
-			return 2 * root.data;
-		}
+		int rightSum = sum(node.right);
+		if (rightSum == -1)
+			return -1;
 
-		return Integer.MIN_VALUE;
+		// Check Sum Tree property
+		if (node.data != leftSum + rightSum)
+			return -1;
+
+		// Return total sum of subtree
+		return node.data + leftSum + rightSum;
 	}
 
 	public static void main(String args[]) {

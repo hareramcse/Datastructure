@@ -9,11 +9,11 @@ public class PathSumCount {
 	public int pathSum(Node root, int targetSum) {
 		List<Integer> path = new ArrayList<>();
 		int[] count = new int[1];
-		pathSumUtil(root, targetSum, path, count);
+		backtrack(root, targetSum, path, count);
 		return count[0];
 	}
 
-	private void pathSumUtil(Node root, int targetSum, List<Integer> path, int[] count) {
+	private void backtrack(Node root, int targetSum, List<Integer> path, int[] count) {
 		if (root == null)
 			return;
 
@@ -27,8 +27,8 @@ public class PathSumCount {
 				count[0]++;
 		}
 
-		pathSumUtil(root.left, targetSum, path, count);
-		pathSumUtil(root.right, targetSum, path, count);
+		backtrack(root.left, targetSum, path, count);
+		backtrack(root.right, targetSum, path, count);
 		path.remove(path.size() - 1);
 	}
 

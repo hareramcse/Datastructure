@@ -9,11 +9,11 @@ class PrintAllPathFromRootToLeaf {
 	public List<String> binaryTreePaths(Node root) {
 		List<String> result = new ArrayList<>();
 		List<String> path = new ArrayList<>();
-		binaryTreePathsUtil(root, path, result);
+		backtrack(root, path, result);
 		return result;
 	}
 
-	private void binaryTreePathsUtil(Node root, List<String> path, List<String> result) {
+	private void backtrack(Node root, List<String> path, List<String> result) {
 		if (root == null) {
 			return;
 		}
@@ -26,8 +26,8 @@ class PrintAllPathFromRootToLeaf {
 			result.add(pathToAdd);
 		}
 
-		binaryTreePathsUtil(root.left, path, result);
-		binaryTreePathsUtil(root.right, path, result);
+		backtrack(root.left, path, result);
+		backtrack(root.right, path, result);
 		path.remove(path.size() - 1);
 	}
 

@@ -5,6 +5,8 @@ import java.util.List;
 
 import com.hs.tree.Node;
 
+// Time Complexity: O(n*h) where n = number of nodes
+// Space Complexity: O(h) where h = height of tree.
 public class AllPathWithSumKFromRootToLeaf {
 	public List<List<Integer>> pathSum(Node root, int targetSum) {
 		List<List<Integer>> result = new ArrayList<>();

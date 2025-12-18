@@ -18,10 +18,10 @@ public class BinaryTreeIterativeTraversal {
 		while (!stack.isEmpty()) {
 			Node topNode = stack.pop();
 			result.add(topNode.data);
-			
+
 			if (topNode.right != null)
 				stack.push(topNode.right);
-			
+
 			if (topNode.left != null)
 				stack.push(topNode.left);
 		}
@@ -31,6 +31,7 @@ public class BinaryTreeIterativeTraversal {
 	private List<Integer> printInorder(Node root) {
 		List<Integer> result = new ArrayList<>();
 		Stack<Node> stack = new Stack<>();
+
 		while (true) {
 			if (root != null) {
 				stack.push(root);
@@ -54,16 +55,18 @@ public class BinaryTreeIterativeTraversal {
 		Stack<Node> s1 = new Stack<>();
 		Stack<Node> s2 = new Stack<>();
 		s1.push(root);
+
 		while (!s1.isEmpty()) {
 			root = s1.pop();
 			s2.push(root);
-			
+
 			if (root.left != null)
 				s1.push(root.left);
-			
+
 			if (root.right != null)
 				s1.push(root.right);
 		}
+
 		while (!s2.isEmpty()) {
 			result.add(s2.pop().data);
 		}

@@ -16,7 +16,7 @@ public class BottomViewOfBinaryTree {
 	public List<Integer> printBottomView(Node root) {
 		Map<Integer, List<Integer>> map = new TreeMap<>();
 		Pair pair = new Pair(root, 0);
-		map = verticalTraversalUtil(map, pair);
+		map = verticalTraversal(map, pair);
 		List<Integer> result = new ArrayList<>();
 		for (Integer key : map.keySet()) {
 			List<Integer> list = map.get(key);
@@ -25,7 +25,7 @@ public class BottomViewOfBinaryTree {
 		return result;
 	}
 
-	public Map<Integer, List<Integer>> verticalTraversalUtil(Map<Integer, List<Integer>> map, Pair pair) {
+	private Map<Integer, List<Integer>> verticalTraversal(Map<Integer, List<Integer>> map, Pair pair) {
 		Queue<Pair> queue = new LinkedList<>();
 		queue.add(pair);
 		while (!queue.isEmpty()) {
