@@ -2,6 +2,8 @@ package com.hs.bst;
 
 import com.hs.tree.Node;
 
+//Time Complexity: O(h) where h = height of tree.
+// Space Complexity: O(h) where h = height of tree.
 public class FindDistanceBetweenTwoNodes {
 	public int findDistanceBetweenTwoNodes(Node root, int a, int b) {
 		Node lca = lca(root, a, b);
@@ -28,7 +30,7 @@ public class FindDistanceBetweenTwoNodes {
 	private int distanceFromRoot(Node root, int x) {
 		if (root.data == x)
 			return 0;
-		
+
 		if (x < root.data)
 			return 1 + distanceFromRoot(root.left, x);
 		return 1 + distanceFromRoot(root.right, x);

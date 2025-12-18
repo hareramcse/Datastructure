@@ -32,7 +32,7 @@ public class Permutation2 {
 
 	public static void main(String[] args) {
 		Permutation2 obj = new Permutation2();
-		int[] nums = { 1, 2, 3 };
+		int[] nums = { 1, 2, 2 };
 		List<List<Integer>> result = obj.permuteUnique(nums);
 		System.out.println(result);
 	}

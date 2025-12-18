@@ -6,6 +6,8 @@ import java.util.Queue;
 import com.hs.tree.Node;
 
 public class BinarySearchTree {
+	// Time Complexity: O(n) where n = number of nodes
+	// Space Complexity: O(h) where h = height of tree.
 	public void preOrderTraversal(Node root) {
 		if (root == null)
 			return;
@@ -33,6 +35,8 @@ public class BinarySearchTree {
 		System.out.println(root.data);
 	}
 
+	// Time Complexity: O(n) where n = number of nodes
+	// Space Complexity: O(w) where w = maximum width of the tree
 	public void levelOrderTraversal(Node root) {
 		Queue<Node> queue = new LinkedList<>();
 		queue.add(root);
@@ -46,6 +50,8 @@ public class BinarySearchTree {
 		}
 	}
 
+	// Time Complexity: O(n) where n = number of nodes
+	// Space Complexity: O(h) where h = height of tree.
 	public int findHeightOfTree(Node root) {
 		if (root == null)
 			return 0;
@@ -55,6 +61,8 @@ public class BinarySearchTree {
 		return 1 + Math.max(leftHeight, rightHeight);
 	}
 
+	// Time Complexity: O(n) where n = number of nodes
+	// Space Complexity: O(1) iterative, no recursion
 	public int findMaxInBST(Node root) {
 		Node temp = root;
 		if (temp == null)
@@ -66,6 +74,8 @@ public class BinarySearchTree {
 		return temp.data;
 	}
 
+	// Time Complexity: O(h) where h = height of tree.
+	// Space Complexity: O(h) where h = height of tree.
 	public Node insert(Node root, int data) {
 		if (root == null) {
 			root = new Node(data);
@@ -79,6 +89,8 @@ public class BinarySearchTree {
 		return root;
 	}
 
+	// Time Complexity: O(h) traverse to node + possibly find min in right subtree
+	// Space Complexity: O(h) where h = height of tree.
 	public Node delete(Node root, int data) {
 		// tree is empty
 		if (root == null) {
@@ -109,7 +121,6 @@ public class BinarySearchTree {
 		return root;
 	}
 
-	// min value comes left to root so we traverse left to root
 	private Node findMinInBST(Node root) {
 		Node temp = root;
 		if (temp == null) {
@@ -121,6 +132,8 @@ public class BinarySearchTree {
 		return temp;
 	}
 
+	// Time Complexity: O(h) traverse from root to leaf
+	// Space Complexity: O(h) where h = height of tree.
 	public boolean search(Node root, int data) {
 		if (root == null)
 			return false;

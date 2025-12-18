@@ -2,23 +2,21 @@ package com.hs.bst;
 
 import com.hs.tree.Node;
 
+//Time Complexity: O(n) where n = number of nodes
+//Space Complexity: O(h) where h = height of tree.
 public class RecoverBinarySearchTree {
 	private Node first;
-	private Node middle;
-	private Node last;
+	private Node second;
 	private Node prev;
 
 	public void recoverTree(Node root) {
-		first = middle = last = null;
-		prev = new Node(Integer.MIN_VALUE);
-
+		first = second = prev = null;
 		inorder(root);
 
-		if (first != null && last != null) {
-			swap(first, last);
-		} else if (first != null && middle != null) {
-			swap(first, middle);
-		}
+		// Swap the misplaced nodes
+		int temp = first.data;
+		first.data = second.data;
+		second.data = temp;
 	}
 
 	private void inorder(Node root) {
@@ -28,26 +26,15 @@ public class RecoverBinarySearchTree {
 		inorder(root.left);
 
 		if (prev != null && root.data < prev.data) {
-
-			// If this is first violation, mark these two nodes as 'first' and 'middle'
 			if (first == null) {
 				first = prev;
-				middle = root;
 			}
 
-			// If this is second violation, mark this node as last
-			else
-				last = root;
+			// Always update second
+			second = root;
 		}
 
-		// Mark this node as previous
 		prev = root;
 		inorder(root.right);
-	}
-
-	private void swap(Node first, Node last) {
-		int temp = first.data;
-		first.data = last.data;
-		last.data = temp;
 	}
 }

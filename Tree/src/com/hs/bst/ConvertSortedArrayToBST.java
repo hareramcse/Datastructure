@@ -2,6 +2,8 @@ package com.hs.bst;
 
 import com.hs.tree.Node;
 
+//Time Complexity: O(n) where n = number of nodes
+// Space Complexity: O(h) where h = height of tree.
 public class ConvertSortedArrayToBST {
 	public Node arrayToBST(int[] arr) {
 		int low = 0;

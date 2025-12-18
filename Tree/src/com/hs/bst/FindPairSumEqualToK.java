@@ -5,6 +5,8 @@ import java.util.Set;
 
 import com.hs.tree.Node;
 
+//Time Complexity: O(n) where n = number of nodes
+//Space Complexity: O(n) where n = number of nodes
 public class FindPairSumEqualToK {
 	public boolean findPair(Node root, int sum) {
 		Set<Integer> set = new HashSet<>();
